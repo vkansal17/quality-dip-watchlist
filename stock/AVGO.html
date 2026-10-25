@@ -25,6 +25,13 @@ tr:hover td{background:#14213d}
 .range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
 .flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
 .star{color:#fbbf24}
+.tabs{display:flex;gap:8px;margin:0 0 16px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card)}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
@@ -63,6 +70,7 @@ section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:1
 <section><h2>What analysts say</h2><p>Consensus Buy — 52 of 57 analysts rate Buy, 5 Hold, zero Sell. MarketBeat average target $511.88 (+59% vs price); JPMorgan $580, BofA $530, BMO $455.</p></section>
 <section><h2>Media &amp; social buzz</h2><p>Explicit buy-the-dip framing: TipRanks (Oct 20) — 'Broadcom's Sell-Off Is Starting to Look Like an Overreaction.' Social creators tag it a 'right now' buy on Google/Meta custom-chip demand.</p></section>
 <section><h2>Risks &amp; what would break the thesis</h2><p>The bar is extreme — a 0.7% guidance shortfall caused a selloff, so any wobble at the Dec 9 print hits hard. ~41x earnings prices in flawless execution; insiders sold $533.7M vs $374K of buys Apr-Oct (often routine/planned, but noted).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip h" title="Revisions">Revi C</span> <span class="fgrade chip r" title="Value">Valu D-</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip sb" title="Growth">Grow A</span></p><p>Piotroski F-score <b>8/9</b> · FCF yield <b>1.7%</b> · avg EPS surprise (last 4) <b>+7.0%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Cash flow: free cash flow turns negative on a trailing-year basis.</li><li>Price structure: a weekly close below the 52-week low of $293.41 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
 <section><h2>Dig deeper</h2><p>
 <a href="https://finance.yahoo.com/quote/AVGO" target="_blank" rel="noopener">Yahoo Finance — AVGO</a> ·
 <a href="https://stockanalysis.com/stocks/avgo/" target="_blank" rel="noopener">StockAnalysis — AVGO</a> ·

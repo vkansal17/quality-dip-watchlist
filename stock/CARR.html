@@ -25,6 +25,13 @@ tr:hover td{background:#14213d}
 .range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
 .flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
 .star{color:#fbbf24}
+.tabs{display:flex;gap:8px;margin:0 0 16px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card)}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
@@ -59,6 +66,7 @@ section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:1
 <div class="muted" style="font-size:12px">One year of daily closes.</div></div>
 <section><h2>Why it's on this list</h2><p>Down 26% from its 52-week high of $76.00, trading at 23% of its 52-week range. 20-day momentum is -0.2% — easing, inside the screen's not-in-freefall limit. RSI 52 says washed out rather than euphoric, and $284M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
 <section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof D</span> <span class="fgrade chip r" title="Revisions">Revi D+</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip r" title="Safety">Safe D-</span> <span class="fgrade chip r" title="Growth">Grow F</span></p><p>Piotroski F-score <b>5/9</b> · net debt/EBITDA <b>3.1×</b> · avg EPS surprise (last 4) <b>+8.5%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 5/9).</li><li>Balance sheet: net debt/EBITDA rises above 4.6× (now 3.1×).</li><li>Profitability: gross margin compresses for two straight fiscal years.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
 <section><h2>Dig deeper</h2><p>
 <a href="https://finance.yahoo.com/quote/CARR" target="_blank" rel="noopener">Yahoo Finance — CARR</a> ·
 <a href="https://stockanalysis.com/stocks/carr/" target="_blank" rel="noopener">StockAnalysis — CARR</a> ·

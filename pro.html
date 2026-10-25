@@ -1,0 +1,872 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Professional Top 50 — Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt)}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 60px}
+h1{font-size:26px;margin:0 0 4px} .sub{color:var(--mut);font-size:13.5px;margin-bottom:18px;line-height:1.55}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:#0e1730}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.tabs{display:flex;gap:8px;margin:0 0 16px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card)}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+@media(max-width:900px){.nm{max-width:110px}}
+</style></head><body>
+<div class="wrap">
+<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a><a class="tab active" href="pro.html">🏦 Professional Top 50</a></div>
+<h1>🏦 Professional Top 50</h1>
+<div class="sub">The professionals' lens, applied to the same 800 most-traded US stocks:
+<b>cash-flow quality and balance-sheet survivability first, price last</b> — a factor composite in the
+spirit of Seeking Alpha Quant and the Zacks Rank. Six factors, percentile-ranked across
+703 names with full SEC filing data: Profitability (22%), Revisions (20%), Value (20%),
+Safety (15%), Growth (13%), Momentum (10%). Veto grades remove names outright
+(96 vetoed today: Piotroski F-score ≤ 3, extreme leverage with thin coverage,
+persistent EPS misses, or cash-burn with dilution). Prices as of the <b>2026-10-23</b> close.
+Click any symbol for its factor breakdown and pre-written exit rules.</div>
+<table id="t"><thead><tr>
+<th>#</th><th>Symbol</th><th>Industry</th><th>Grade</th><th>Factors (Prof · Rev · Val · Safe · Grow · Mom)</th>
+<th class="num">F-score</th><th class="num">FCF yield</th><th class="num">Net debt/EBITDA</th>
+<th class="num">EPS surprise (last 4)</th><th class="num">Momentum 12-1</th><th class="num">P/E</th>
+<th class="num">Last</th><th class="num">vs Prev</th><th class="num">Earnings</th>
+</tr></thead><tbody>
+<tr data-ind="">
+  <td>1</td>
+  <td><a class="sym" href="stock/INCY.html">INCY</a><span class="nm">Incyte</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A+</span></td>
+  <td><span class="fgrade chip sb" title="Profitability">Prof A</span> <span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">7/9</td>
+  <td class="num">—</td>
+  <td class="num">-2.5×</td>
+  <td class="num">+38.7% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">18.0</td>
+  <td class="num">$115.71</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-10-29</td>
+</tr>
+<tr data-ind="">
+  <td>2</td>
+  <td><a class="sym" href="stock/FOXA.html">FOXA</a><span class="nm">Fox</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip b" title="Growth">Grow B+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">9.7%</td>
+  <td class="num">—</td>
+  <td class="num">+35.7% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">13.6</td>
+  <td class="num">$66.60</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-11-02</td>
+</tr>
+<tr data-ind="">
+  <td>3</td>
+  <td><a class="sym" href="stock/RNR.html">RNR</a><span class="nm">RenaissanceRe Holdings Ltd.</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A+</span></td>
+  <td><span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">6/9</td>
+  <td class="num">—</td>
+  <td class="num">—</td>
+  <td class="num">+25.8% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">6.1</td>
+  <td class="num">$352.60</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-10-27</td>
+</tr>
+<tr data-ind="">
+  <td>4</td>
+  <td><a class="sym" href="stock/NEM.html">NEM</a><span class="nm">Newmont</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A+</span></td>
+  <td><span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip sb" title="Growth">Grow A</span></td>
+  <td class="num">8/9</td>
+  <td class="num">—</td>
+  <td class="num">—</td>
+  <td class="num">+22.1% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">17.0</td>
+  <td class="num">$108.87</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num"><span class="muted">—</span></td>
+</tr>
+<tr data-ind="">
+  <td>5</td>
+  <td><a class="sym" href="stock/APA.html">APA</a><span class="nm">APA</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip sb" title="Value">Valu A+</span> <span class="fgrade chip h" title="Safety">Safe C</span></td>
+  <td class="num">5/9</td>
+  <td class="num">—</td>
+  <td class="num">-0.1×</td>
+  <td class="num">+26.1% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">13.0</td>
+  <td class="num">$51.90</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-11-04</td>
+</tr>
+<tr data-ind="">
+  <td>6</td>
+  <td><a class="sym" href="stock/RGA.html">RGA</a><span class="nm">Reinsurance Group of America, Incorporated</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A+</span></td>
+  <td><span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">6/9</td>
+  <td class="num">—</td>
+  <td class="num">—</td>
+  <td class="num">+22.8% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">14.9</td>
+  <td class="num">$263.94</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-11-05</td>
+</tr>
+<tr data-ind="">
+  <td>7</td>
+  <td><a class="sym" href="stock/RRC.html">RRC</a><span class="nm">Range Resources</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">8/9</td>
+  <td class="num">—</td>
+  <td class="num">—</td>
+  <td class="num">+21.6% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">16.6</td>
+  <td class="num">$45.52</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-10-27</td>
+</tr>
+<tr data-ind="">
+  <td>8</td>
+  <td><a class="sym" href="stock/PGR.html">PGR</a><span class="nm">Progressive Corporation (The)</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">6/9</td>
+  <td class="num">12.8%</td>
+  <td class="num">—</td>
+  <td class="num">+3.5% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">11.9</td>
+  <td class="num">$228.07</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num"><span class="muted">—</span></td>
+</tr>
+<tr data-ind="">
+  <td>9</td>
+  <td><a class="sym" href="stock/DECK.html">DECK</a><span class="nm">Deckers Outdoor</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip r" title="Growth">Grow D+</span></td>
+  <td class="num">6/9</td>
+  <td class="num">9.3%</td>
+  <td class="num">—</td>
+  <td class="num">+14.3% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">11.5</td>
+  <td class="num">$81.09</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num"><span class="muted">—</span></td>
+</tr>
+<tr data-ind="">
+  <td>10</td>
+  <td><a class="sym" href="stock/QLYS.html">QLYS</a><span class="nm">Qualys</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip sb" title="Profitability">Prof A</span> <span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip r" title="Value">Valu D</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">8/9</td>
+  <td class="num">3.9%</td>
+  <td class="num">-1.1×</td>
+  <td class="num">+18.0% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">39.8</td>
+  <td class="num">$216.70</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-11-03</td>
+</tr>
+<tr data-ind="">
+  <td>11</td>
+  <td><a class="sym" href="stock/RL.html">RL</a><span class="nm">Ralph Lauren</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">8/9</td>
+  <td class="num">—</td>
+  <td class="num">-0.3×</td>
+  <td class="num">+8.7% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">25.0</td>
+  <td class="num">$377.40</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-11-05</td>
+</tr>
+<tr data-ind="">
+  <td>12</td>
+  <td><a class="sym" href="stock/APP.html">APP</a><span class="nm">Applovin</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip sb" title="Profitability">Prof A+</span> <span class="fgrade chip r" title="Revisions">Revi D+</span> <span class="fgrade chip r" title="Value">Valu D+</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip sb" title="Growth">Grow A+</span></td>
+  <td class="num">9/9</td>
+  <td class="num">4.5%</td>
+  <td class="num">0.1×</td>
+  <td class="num">+5.3% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">26.7</td>
+  <td class="num">$260.25</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-11-04</td>
+</tr>
+<tr data-ind="">
+  <td>13</td>
+  <td><a class="sym" href="stock/INTU.html">INTU</a><span class="nm">Intuit</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">7/9</td>
+  <td class="num">6.3%</td>
+  <td class="num">—</td>
+  <td class="num">+11.8% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">25.1</td>
+  <td class="num">$343.39</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-11-19</td>
+</tr>
+<tr data-ind="">
+  <td>14</td>
+  <td><a class="sym" href="stock/RDDT.html">RDDT</a><span class="nm">Reddit, Inc. Class A</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip sb" title="Revisions">Revi A+</span> <span class="fgrade chip r" title="Value">Valu D-</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip b" title="Growth">Grow B+</span></td>
+  <td class="num">6/9</td>
+  <td class="num">2.3%</td>
+  <td class="num">-3.2×</td>
+  <td class="num">+33.9% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">55.0</td>
+  <td class="num">$144.25</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-10-29</td>
+</tr>
+<tr data-ind="">
+  <td>15</td>
+  <td><a class="sym" href="stock/CF.html">CF</a><span class="nm">CF Industries Holdings</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip r" title="Revisions">Revi D+</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip b" title="Growth">Grow B+</span></td>
+  <td class="num">9/9</td>
+  <td class="num">9.2%</td>
+  <td class="num">1.0×</td>
+  <td class="num">+7.1% · 75% beats</td>
+  <td class="num up">—</td>
+  <td class="num">10.9</td>
+  <td class="num">$120.68</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-11-04</td>
+</tr>
+<tr data-ind="">
+  <td>16</td>
+  <td><a class="sym" href="stock/EVR.html">EVR</a><span class="nm">Evercore Inc. Class A</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip h" title="Revisions">Revi C</span> <span class="fgrade chip b" title="Value">Valu B</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip sb" title="Growth">Grow A</span></td>
+  <td class="num">5/9</td>
+  <td class="num">—</td>
+  <td class="num">—</td>
+  <td class="num">+20.3% · 75% beats</td>
+  <td class="num up">—</td>
+  <td class="num">17.9</td>
+  <td class="num">$251.88</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-10-28</td>
+</tr>
+<tr data-ind="">
+  <td>17</td>
+  <td><a class="sym" href="stock/OWL.html">OWL</a><span class="nm">Blue Owl Capital Inc. Class A</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip b" title="Value">Valu B+</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip h" title="Growth">Grow C</span></td>
+  <td class="num">4/9</td>
+  <td class="num">19.3%</td>
+  <td class="num">—</td>
+  <td class="num">+9.1% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">20.3</td>
+  <td class="num">$9.36</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-10-29</td>
+</tr>
+<tr data-ind="">
+  <td>18</td>
+  <td><a class="sym" href="stock/MTZ.html">MTZ</a><span class="nm">MasTec</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip b" title="Value">Valu B</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip b" title="Growth">Grow B+</span></td>
+  <td class="num">6/9</td>
+  <td class="num">—</td>
+  <td class="num">—</td>
+  <td class="num">+14.0% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">33.7</td>
+  <td class="num">$171.05</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-10-29</td>
+</tr>
+<tr data-ind="">
+  <td>19</td>
+  <td><a class="sym" href="stock/EXEL.html">EXEL</a><span class="nm">Exelixis</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip sb" title="Profitability">Prof A+</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip h" title="Growth">Grow C</span></td>
+  <td class="num">6/9</td>
+  <td class="num">4.8%</td>
+  <td class="num">-0.3×</td>
+  <td class="num">+13.6% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">23.2</td>
+  <td class="num">$64.53</td>
+  <td class="num"><span class="muted">—</span></td>
+  <td class="num">2026-10-29</td>
+</tr>
+<tr data-ind="Telecommunications">
+  <td>20</td>
+  <td><a class="sym" href="stock/TMUS.html">TMUS</a><span class="nm">T-Mobile US</span></td>
+  <td class="ind">Telecommunications</td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip h" title="Profitability">Prof C+</span> <span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip r" title="Growth">Grow D+</span></td>
+  <td class="num">5/9</td>
+  <td class="num">10.9%</td>
+  <td class="num">2.5×</td>
+  <td class="num">+17.3% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">15.1</td>
+  <td class="num">$146.54</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-28</td>
+</tr>
+<tr data-ind="">
+  <td>21</td>
+  <td><a class="sym" href="stock/PLTR.html">PLTR</a><span class="nm">Palantir Technologies</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip r" title="Value">Valu F</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip sb" title="Growth">Grow A</span></td>
+  <td class="num">6/9</td>
+  <td class="num">0.4%</td>
+  <td class="num">-1.4×</td>
+  <td class="num">+26.1% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">310.6</td>
+  <td class="num">$196.75</td>
+  <td class="num"><span class="dn">▼ 1</span></td>
+  <td class="num">2026-11-02</td>
+</tr>
+<tr data-ind="">
+  <td>22</td>
+  <td><a class="sym" href="stock/NCLH.html">NCLH</a><span class="nm">Norwegian Cruise Line Holdings Ltd.</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip r" title="Safety">Safe D+</span></td>
+  <td class="num">5/9</td>
+  <td class="num">-16.2%</td>
+  <td class="num">-0.1×</td>
+  <td class="num">+18.9% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">17.0</td>
+  <td class="num">$15.10</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-29</td>
+</tr>
+<tr data-ind="">
+  <td>23</td>
+  <td><a class="sym" href="stock/LDOS.html">LDOS</a><span class="nm">Leidos Holdings</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip h" title="Profitability">Prof C</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip h" title="Growth">Grow C</span></td>
+  <td class="num">7/9</td>
+  <td class="num">—</td>
+  <td class="num">-0.3×</td>
+  <td class="num">+12.7% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">12.2</td>
+  <td class="num">$136.08</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-03</td>
+</tr>
+<tr data-ind="">
+  <td>24</td>
+  <td><a class="sym" href="stock/JKHY.html">JKHY</a><span class="nm">Jack Henry & Associates</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">5.0%</td>
+  <td class="num">—</td>
+  <td class="num">+17.3% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">26.1</td>
+  <td class="num">$162.55</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-03</td>
+</tr>
+<tr data-ind="">
+  <td>25</td>
+  <td><a class="sym" href="stock/NTNX.html">NTNX</a><span class="nm">Nutanix</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip r" title="Value">Valu D-</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip b" title="Growth">Grow B+</span></td>
+  <td class="num">5/9</td>
+  <td class="num">3.6%</td>
+  <td class="num">-3.2×</td>
+  <td class="num">+40.0% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">110.2</td>
+  <td class="num">$70.58</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-24</td>
+</tr>
+<tr data-ind="">
+  <td>26</td>
+  <td><a class="sym" href="stock/BMY.html">BMY</a><span class="nm">Bristol-Myers Squibb Company</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip b" title="Value">Valu B+</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip r" title="Growth">Grow D</span></td>
+  <td class="num">7/9</td>
+  <td class="num">10.2%</td>
+  <td class="num">—</td>
+  <td class="num">+14.4% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">17.8</td>
+  <td class="num">$61.48</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-29</td>
+</tr>
+<tr data-ind="">
+  <td>27</td>
+  <td><a class="sym" href="stock/AER.html">AER</a><span class="nm">AerCap Holdings N.V.</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip b" title="Value">Valu B+</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">—</td>
+  <td class="num">—</td>
+  <td class="num">+32.5% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">6.9</td>
+  <td class="num">$145.92</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-28</td>
+</tr>
+<tr data-ind="">
+  <td>28</td>
+  <td><a class="sym" href="stock/CHKP.html">CHKP</a><span class="nm">Check Point Software Technologies Ltd.</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip sb" title="Profitability">Prof A</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip r" title="Growth">Grow D+</span></td>
+  <td class="num">—/9</td>
+  <td class="num">6.7%</td>
+  <td class="num">-2.1×</td>
+  <td class="num">+15.6% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">16.5</td>
+  <td class="num">$159.03</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-02</td>
+</tr>
+<tr data-ind="">
+  <td>29</td>
+  <td><a class="sym" href="stock/EAT.html">EAT</a><span class="nm">Brinker International</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip sb">A</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip h" title="Revisions">Revi C</span> <span class="fgrade chip b" title="Value">Valu B+</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">6.8%</td>
+  <td class="num">—</td>
+  <td class="num">+8.3% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">16.8</td>
+  <td class="num">$182.70</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-28</td>
+</tr>
+<tr data-ind="">
+  <td>30</td>
+  <td><a class="sym" href="stock/RMD.html">RMD</a><span class="nm">ResMed</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">8/9</td>
+  <td class="num">4.5%</td>
+  <td class="num">-0.6×</td>
+  <td class="num">+2.8% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">26.6</td>
+  <td class="num">$252.86</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-29</td>
+</tr>
+<tr data-ind="">
+  <td>31</td>
+  <td><a class="sym" href="stock/APH.html">APH</a><span class="nm">Amphenol</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip h" title="Revisions">Revi C</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip sb" title="Growth">Grow A</span></td>
+  <td class="num">5/9</td>
+  <td class="num">4.6%</td>
+  <td class="num">-0.7×</td>
+  <td class="num">+11.8% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">22.2</td>
+  <td class="num">$74.09</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-28</td>
+</tr>
+<tr data-ind="">
+  <td>32</td>
+  <td><a class="sym" href="stock/SFM.html">SFM</a><span class="nm">Sprouts Farmers Market</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip h" title="Profitability">Prof C</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">7/9</td>
+  <td class="num">7.2%</td>
+  <td class="num">-0.3×</td>
+  <td class="num">+2.7% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">12.5</td>
+  <td class="num">$66.26</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-28</td>
+</tr>
+<tr data-ind="">
+  <td>33</td>
+  <td><a class="sym" href="stock/MNST.html">MNST</a><span class="nm">Monster Beverage</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">6/9</td>
+  <td class="num">4.3%</td>
+  <td class="num">-0.8×</td>
+  <td class="num">+8.0% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">23.9</td>
+  <td class="num">$46.19</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-05</td>
+</tr>
+<tr data-ind="">
+  <td>34</td>
+  <td><a class="sym" href="stock/PATH.html">PATH</a><span class="nm">UiPath, Inc. Class A</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip h" title="Profitability">Prof C</span> <span class="fgrade chip sb" title="Revisions">Revi A+</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">4.6%</td>
+  <td class="num">—</td>
+  <td class="num">+40.0% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">27.3</td>
+  <td class="num">$14.13</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-12-02</td>
+</tr>
+<tr data-ind="">
+  <td>35</td>
+  <td><a class="sym" href="stock/PODD.html">PODD</a><span class="nm">Insulet</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip r" title="Value">Valu D+</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">3.5%</td>
+  <td class="num">0.0×</td>
+  <td class="num">+13.6% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">43.3</td>
+  <td class="num">$149.01</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-04</td>
+</tr>
+<tr data-ind="">
+  <td>36</td>
+  <td><a class="sym" href="stock/GILD.html">GILD</a><span class="nm">Gilead Sciences</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip sb" title="Profitability">Prof A</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">4.8%</td>
+  <td class="num">—</td>
+  <td class="num">+8.9% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">23.0</td>
+  <td class="num">$156.04</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-29</td>
+</tr>
+<tr data-ind="">
+  <td>37</td>
+  <td><a class="sym" href="stock/MNDY.html">MNDY</a><span class="nm">monday.com Ltd.</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip h" title="Profitability">Prof C+</span> <span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip r" title="Value">Valu D</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">5/9</td>
+  <td class="num">5.5%</td>
+  <td class="num">-124.7×</td>
+  <td class="num">+40.0% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">47.6</td>
+  <td class="num">$106.53</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-09</td>
+</tr>
+<tr data-ind="">
+  <td>38</td>
+  <td><a class="sym" href="stock/DG.html">DG</a><span class="nm">Dollar General</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip h" title="Profitability">Prof C</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">—</td>
+  <td class="num">-0.5×</td>
+  <td class="num">+19.1% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">19.4</td>
+  <td class="num">$132.69</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-12-03</td>
+</tr>
+<tr data-ind="">
+  <td>39</td>
+  <td><a class="sym" href="stock/CTVA.html">CTVA</a><span class="nm">Corteva</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip r" title="Profitability">Prof D+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip sb" title="Value">Valu A+</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">—</td>
+  <td class="num">—</td>
+  <td class="num">+18.6% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">7.8</td>
+  <td class="num">$12.45</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-11</td>
+</tr>
+<tr data-ind="">
+  <td>40</td>
+  <td><a class="sym" href="stock/ALL.html">ALL</a><span class="nm">Allstate Corporation (The)</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip sb" title="Value">Valu A+</span> <span class="fgrade chip r" title="Safety">Safe D-</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">5/9</td>
+  <td class="num">14.6%</td>
+  <td class="num">—</td>
+  <td class="num">+39.1% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">6.7</td>
+  <td class="num">$253.19</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-04</td>
+</tr>
+<tr data-ind="Interactive Media">
+  <td>41</td>
+  <td><a class="sym" href="stock/GOOGL.html">GOOGL</a><span class="nm">Alphabet</span></td>
+  <td class="ind">Interactive Media</td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip r" title="Value">Valu D</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">6/9</td>
+  <td class="num">1.9%</td>
+  <td class="num">—</td>
+  <td class="num">+29.2% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">29.6</td>
+  <td class="num">$320.21</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-28</td>
+</tr>
+<tr data-ind="">
+  <td>42</td>
+  <td><a class="sym" href="stock/PAYX.html">PAYX</a><span class="nm">Paychex</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip sb" title="Profitability">Prof A</span> <span class="fgrade chip h" title="Revisions">Revi C</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">5.5%</td>
+  <td class="num">1.2×</td>
+  <td class="num">+1.2% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">24.1</td>
+  <td class="num">$118.04</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num"><span class="muted">—</span></td>
+</tr>
+<tr data-ind="">
+  <td>43</td>
+  <td><a class="sym" href="stock/EXE.html">EXE</a><span class="nm">Expand Energy</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip h" title="Profitability">Prof C</span> <span class="fgrade chip h" title="Revisions">Revi C</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip h" title="Safety">Safe C+</span></td>
+  <td class="num">7/9</td>
+  <td class="num">8.2%</td>
+  <td class="num">0.6×</td>
+  <td class="num">+7.7% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">12.3</td>
+  <td class="num">$93.23</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-27</td>
+</tr>
+<tr data-ind="">
+  <td>44</td>
+  <td><a class="sym" href="stock/DLTR.html">DLTR</a><span class="nm">Dollar Tree</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip h" title="Profitability">Prof C+</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip b" title="Value">Valu B+</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip h" title="Growth">Grow C+</span></td>
+  <td class="num">8/9</td>
+  <td class="num">—</td>
+  <td class="num">0.8×</td>
+  <td class="num">+12.2% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">20.2</td>
+  <td class="num">$125.31</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-12-02</td>
+</tr>
+<tr data-ind="">
+  <td>45</td>
+  <td><a class="sym" href="stock/LLY.html">LLY</a><span class="nm">Eli Lilly and Company</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip sb" title="Profitability">Prof A</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip r" title="Value">Valu D-</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip sb" title="Growth">Grow A</span></td>
+  <td class="num">8/9</td>
+  <td class="num">—</td>
+  <td class="num">—</td>
+  <td class="num">+21.3% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">55.5</td>
+  <td class="num">$1,273.46</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-29</td>
+</tr>
+<tr data-ind="">
+  <td>46</td>
+  <td><a class="sym" href="stock/GMED.html">GMED</a><span class="nm">Globus Medical, Inc. Class A</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip h" title="Profitability">Prof C</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip h" title="Growth">Grow C</span></td>
+  <td class="num">7/9</td>
+  <td class="num">5.3%</td>
+  <td class="num">-0.7×</td>
+  <td class="num">+25.5% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">20.7</td>
+  <td class="num">$81.41</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-05</td>
+</tr>
+<tr data-ind="">
+  <td>47</td>
+  <td><a class="sym" href="stock/JLL.html">JLL</a><span class="nm">Jones Lang LaSalle Incorporated</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip r" title="Profitability">Prof D+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip sb" title="Value">Valu A</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">7/9</td>
+  <td class="num">—</td>
+  <td class="num">—</td>
+  <td class="num">+16.2% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">18.3</td>
+  <td class="num">$300.30</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-10-28</td>
+</tr>
+<tr data-ind="">
+  <td>48</td>
+  <td><a class="sym" href="stock/M.html">M</a><span class="nm">Macy's Inc</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip r" title="Profitability">Prof D+</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip sb" title="Value">Valu A+</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip r" title="Growth">Grow D</span></td>
+  <td class="num">7/9</td>
+  <td class="num">15.9%</td>
+  <td class="num">0.6×</td>
+  <td class="num">+24.3% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">10.4</td>
+  <td class="num">$24.10</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-12-02</td>
+</tr>
+<tr data-ind="">
+  <td>49</td>
+  <td><a class="sym" href="stock/DUOL.html">DUOL</a><span class="nm">Duolingo</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip b" title="Growth">Grow B</span></td>
+  <td class="num">4/9</td>
+  <td class="num">5.4%</td>
+  <td class="num">-7.9×</td>
+  <td class="num">+17.9% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">16.7</td>
+  <td class="num">$143.04</td>
+  <td class="num"><span class="up">▲ 1</span></td>
+  <td class="num">2026-11-03</td>
+</tr>
+<tr data-ind="">
+  <td>50</td>
+  <td><a class="sym" href="stock/SEI.html">SEI</a><span class="nm">Solaris Energy Infrastructure, Inc. Class A</span></td>
+  <td class="ind"></td>
+  <td><span class="biggrade chip b">B+</span></td>
+  <td><span class="fgrade chip r" title="Profitability">Prof D</span> <span class="fgrade chip sb" title="Revisions">Revi A+</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip sb" title="Growth">Grow A+</span></td>
+  <td class="num">4/9</td>
+  <td class="num">—</td>
+  <td class="num">3.5×</td>
+  <td class="num">+34.8% · 100% beats</td>
+  <td class="num up">—</td>
+  <td class="num">—</td>
+  <td class="num">$58.74</td>
+  <td class="num"><span class="chip b">NEW</span></td>
+  <td class="num">2026-11-04</td>
+</tr>
+</tbody></table>
+<p class="foot"><b>How to read this:</b> the composite grade is a percentile blend, not a recommendation.
+<b>Revisions</b> uses reported EPS-surprise history (mean surprise and beat rate over the last four
+quarters) — the free proxy for analyst revision momentum; clean revision-breadth history is paid data,
+and it is the first upgrade this lens would buy. <b>Safety</b> blends the Piotroski F-score (9 filing
+signals: profitability, leverage, liquidity, dilution, margins, turnover), net debt/EBITDA, interest
+coverage, current ratio and accrual quality. <b>Value</b> blends FCF yield, earnings yield, EV/EBITDA
+and price/sales. Balance-sheet factors use industrial-company definitions — read them cautiously for
+banks, insurers and REITs, whose filings structure debt differently; the F-score veto therefore
+applies only to companies that report a cost-of-sales line. Fundamentals are the latest
+reported fiscal year from SEC EDGAR. <b>Research and education only — not investment advice.</b></p>
+</div></body></html>

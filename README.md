@@ -29,6 +29,31 @@ screened daily from the 800 most-traded US common stocks.
   serves the result. The first column movement (▲/▼/NEW) is versus the
   previous day's list.
 
+## The Professional tab
+
+The second tab (`pro.html`) ranks the same universe the way institutional
+screens do — quality and revision momentum first, price last — in the style
+of published composites like Seeking Alpha Quant and the Zacks Rank:
+
+- **Six factors, percentile-scored across ~700 graded names:**
+  Profitability 22% (ROE, ROIC, margins), Revisions 20% (reported
+  EPS-surprise history — the free proxy for analyst revision momentum,
+  since true revision breadth is paid data), Value 20% (FCF yield,
+  earnings yield, EV/EBITDA, price/sales), Safety 15% (Piotroski F-score,
+  leverage, coverage, accruals), Growth 13%, Momentum 10% (12-1 month).
+  The letter grade is the composite's percentile rank in the pool.
+- **Hard vetoes** exclude names regardless of score: F-score ≤ 3
+  (operating companies), net debt/EBITDA > 6× with thin coverage,
+  three-plus straight EPS misses averaging under −8%, or cash-burning
+  + loss-making + diluting > 5%.
+- **Kill criteria:** every name carries exit rules written in advance
+  (estimate, quality, leverage, cash-flow and price-structure triggers)
+  on its detail page — the professional habit this screen is modeled on.
+- Fundamentals come from SEC EDGAR bulk frames (latest reported fiscal
+  year); the F-score veto applies only to companies reporting a
+  cost-of-sales line, since bank/insurer balance sheets break its
+  leverage and liquidity signals.
+
 ## Run it yourself
 
 ```bash

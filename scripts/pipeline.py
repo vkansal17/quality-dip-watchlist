@@ -431,6 +431,369 @@ def edgar_roic(ticker):
 
 
 # ---------------------------------------------------------------------------
+# Professional lens — factor model in the spirit of Seeking Alpha Quant /
+# Zacks: profitability, estimate-revision momentum, value, safety (Piotroski
+# F-score + leverage), growth, momentum; veto grades exclude names outright.
+# Fundamentals come from SEC EDGAR *frames* (one call per concept per period
+# covers every filer) merged with per-company balance-sheet snapshots.
+# Revisions use the free proxy that exists: reported EPS surprise history
+# from the Nasdaq calendar (true analyst revision breadth is paid data).
+# ---------------------------------------------------------------------------
+
+def _frame(tag, unit, period):
+    try:
+        j = json.loads(http_get(
+            f"https://data.sec.gov/api/xbrl/frames/us-gaap/{tag}/{unit}/{period}.json",
+            timeout=40, ua=EDGAR_UA).decode("utf-8", "replace"))
+        return j.get("data") or []
+    except Exception:
+        return []
+
+
+def _cik_to_ticker(prefer=()):
+    if not _EDGAR_CACHE:
+        _edgar_cik("AAPL")
+    inv = {}
+    for t, cik in _EDGAR_CACHE.items():
+        c = int(cik)
+        cur = inv.get(c)
+        # Preferred shares and funds can share the parent's CIK (JPM-PC, VYLD
+        # -> JPMorgan). The common stock must win the inversion.
+        if (cur is None or (t in prefer and cur not in prefer)
+                or ("-" in cur and "-" not in t)):
+            inv[c] = t
+    return inv
+
+
+def fetch_fundamentals(tickers_wanted):
+    """Returns {ticker: fundamentals dict} using EDGAR frames."""
+    inv = _cik_to_ticker(prefer=tickers_wanted)
+    dur_tags = {
+        "rev": ["RevenueFromContractWithCustomerExcludingAssessedTax",
+                "Revenues", "SalesRevenueNet"],
+        "gp": ["GrossProfit"], "oi": ["OperatingIncomeLoss"],
+        "ni": ["NetIncomeLoss", "ProfitLoss"],
+        "cfo": ["NetCashProvidedByUsedInOperatingActivities",
+                "NetCashProvidedByOperatingActivities"],
+        "capex": ["PaymentsToAcquirePropertyPlantAndEquipment"],
+        "da": ["DepreciationDepletionAndAmortization"],
+        "int": ["InterestExpense", "InterestExpenseNonoperating"],
+        "shares": ["WeightedAverageNumberOfDilutedSharesOutstanding"],
+        "cogs": ["CostOfGoodsAndServicesSold", "CostOfRevenue"],
+    }
+    years = ["CY2025", "CY2024", "CY2023"]
+    dur = {}  # key -> {year: {cik: val}}
+    for key, tags in dur_tags.items():
+        unit = "shares" if key == "shares" else "USD"
+        for yr in years:
+            merged = {}
+            for tag in tags:
+                for row in _frame(tag, unit, yr):
+                    merged.setdefault(row["cik"], row["val"])
+            dur[(key, yr)] = merged
+    inst_tags = {
+        "assets": ["Assets"], "ca": ["AssetsCurrent"], "cl": ["LiabilitiesCurrent"],
+        "equity": ["StockholdersEquity",
+                   "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"],
+        "cash": ["CashAndCashEquivalentsAtCarryingValue"],
+        "ltd": ["LongTermDebtNoncurrent", "LongTermDebt", "LongTermBorrowings"],
+        "debtcur": ["DebtCurrent"],
+    }
+    quarters = ["CY2025Q1I", "CY2025Q2I", "CY2025Q3I", "CY2025Q4I",
+                "CY2026Q1I", "CY2026Q2I"]
+    inst = {}  # key -> {cik: {qidx: val}}
+    for key, tags in inst_tags.items():
+        per_cik = {}
+        for qi, q in enumerate(quarters):
+            for tag in tags:
+                for row in _frame(tag, "USD", q):
+                    per_cik.setdefault(row["cik"], {}).setdefault(qi, row["val"])
+        inst[key] = per_cik
+
+    def lp(key, cik):
+        vals = [(yr, dur[(key, yr)][cik]) for yr in years if cik in dur[(key, yr)]]
+        if not vals:
+            return None, None, None
+        latest = vals[0][1]
+        prior = vals[1][1] if len(vals) > 1 else None
+        prior2 = vals[2][1] if len(vals) > 2 else None
+        return latest, prior, prior2
+
+    def snap(key, cik):
+        qs = inst[key].get(cik)
+        if not qs:
+            return None, None
+        latest_q = max(qs)
+        prior = qs.get(latest_q - 4)
+        if prior is None:
+            older = [q for q in qs if q <= latest_q - 2]
+            prior = qs[max(older)] if older else None
+        return qs[latest_q], prior
+
+    out = {}
+    for cik, t in inv.items():
+        if t not in tickers_wanted:
+            continue
+        f = {}
+        for key in dur_tags:
+            f[key], f[key + "_p"], f[key + "_p2"] = lp(key, cik)
+        for suf in ("", "_p", "_p2"):
+            if (f["gp" + suf] is None and f["rev" + suf] is not None
+                    and f["cogs" + suf] is not None):
+                f["gp" + suf] = f["rev" + suf] - f["cogs" + suf]
+        for key in inst_tags:
+            f[key], f[key + "_p"] = snap(key, cik)
+        if f["ni"] is not None and f["assets"]:
+            out[t] = f
+    return out
+
+
+def piotroski(f):
+    """Classic 9-signal F-score. Needs latest+prior income and two balance
+    sheet snapshots; returns None when the pieces aren't there."""
+    try:
+        a, a_p = f["assets"], f["assets_p"]
+        if not a or not a_p or f["ni"] is None or f["ni_p"] is None or f["cfo"] is None:
+            return None
+        s = 0
+        roa, roa_p = f["ni"] / a, f["ni_p"] / a_p
+        s += roa > 0
+        s += f["cfo"] > 0
+        s += roa > roa_p
+        s += f["cfo"] > f["ni"]  # earnings backed by cash, not accruals
+        lev = (f["ltd"] or 0) / a
+        lev_p = (f["ltd_p"] or 0) / a_p
+        s += lev < lev_p
+        if f["ca"] and f["cl"] and f["ca_p"] and f["cl_p"]:
+            s += (f["ca"] / f["cl"]) > (f["ca_p"] / f["cl_p"])
+        if f["shares"] and f["shares_p"]:
+            s += f["shares"] <= f["shares_p"] * 1.005  # no dilution
+        if f["gp"] and f["rev"] and f["gp_p"] and f["rev_p"]:
+            s += (f["gp"] / f["rev"]) > (f["gp_p"] / f["rev_p"])
+        if f["rev"] and f["rev_p"]:
+            s += (f["rev"] / a) > (f["rev_p"] / a_p)
+        return int(s)
+    except (TypeError, ZeroDivisionError):
+        return None
+
+
+def surprise_history(days=380):
+    """Backward Nasdaq calendar scan -> {symbol: [(date, surprise%), ...]}
+    most recent first. Reported EPS vs consensus at the time."""
+    out = {}
+    today = date.today()
+    dates = [today - timedelta(days=i) for i in range(1, days)]
+
+    def one(d):
+        try:
+            j = json.loads(http_get(
+                f"https://api.nasdaq.com/api/calendar/earnings?date={d.isoformat()}",
+                timeout=20).decode("utf-8", "replace"))
+            return d, (j.get("data") or {}).get("rows") or []
+        except Exception:
+            return d, []
+
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        for d, rows in ex.map(one, dates):
+            for row in rows:
+                sym = (row.get("symbol") or "").strip()
+                sp = row.get("surprise")
+                if sym and row.get("eps") and sp not in (None, ""):
+                    try:
+                        out.setdefault(sym, []).append((d.isoformat(), float(sp)))
+                    except (TypeError, ValueError):
+                        pass
+    for sym in out:
+        out[sym].sort(reverse=True)
+    return out
+
+
+def _pct_ranks(values):
+    """{ticker: value} -> {ticker: percentile 0-100}, higher value = higher pct."""
+    items = sorted((v, t) for t, v in values.items() if v is not None)
+    n = len(items)
+    if n == 0:
+        return {}
+    out = {}
+    for i, (v, t) in enumerate(items):
+        out[t] = (i / (n - 1) * 100) if n > 1 else 50.0
+    return out
+
+
+def _grade(pct):
+    if pct is None:
+        return "—"
+    for cut, g in ((93, "A+"), (85, "A"), (77, "B+"), (69, "B"), (60, "C+"),
+                   (50, "C"), (40, "D+"), (30, "D"), (20, "D-")):
+        if pct >= cut:
+            return g
+    return "F"
+
+
+def _grade_cls(g):
+    return {"A": "sb", "B": "b", "C": "h", "D": "r", "F": "r"}.get(g[:1], "na")
+
+
+def _grade_composite(pct):
+    """Headline grade bands for the composite percentile. Tighter at the
+    top than the factor bands: the Top 50 all sit above the ~93rd
+    percentile of the graded pool, and a column where every name reads
+    A+ discriminates nothing."""
+    if pct is None:
+        return "—"
+    for cut, g in ((99, "A+"), (96, "A"), (92, "B+"), (87, "B"), (81, "C+"),
+                   (74, "C"), (60, "D+"), (45, "D"), (30, "D-")):
+        if pct >= cut:
+            return g
+    return "F"
+
+
+def build_professional(results, spy_closes):
+    """results: {ticker: kpis}. Returns (top50 rows, all graded records)."""
+    funds = fetch_fundamentals(set(results))
+    surp = surprise_history()
+    spy12 = (spy_closes[-21] / spy_closes[-252] - 1) * 100 if len(spy_closes) > 252 else 0.0
+    recs = {}
+    for t, f in funds.items():
+        k = results.get(t)
+        if not k:
+            continue
+        price = k["last"]
+        shares = f["shares"]
+        shares_p = f["shares_p"]
+        if shares and shares < 5e6:
+            # Some filers report share counts in thousands despite the
+            # "shares" unit (Nutanix: 294,083 filed = 294.1M actual;
+            # Repligen: 56,561 = 56.6M); the EDGAR frames API does not
+            # apply filing scale attributes. Detect via an implausibly
+            # small market cap relative to revenue or total assets.
+            mc0 = price * shares
+            tiny = mc0 < 1e8 and (
+                (f["rev"] and mc0 / f["rev"] < 0.1)
+                or (f["assets"] and mc0 < 0.02 * f["assets"])
+                or (not f["rev"] and not f["assets"]))
+            if tiny:
+                shares *= 1000
+                shares_p = shares_p * 1000 if shares_p else None
+        mktcap = price * shares if shares else None
+        fcf = (f["cfo"] - f["capex"]) if (f["cfo"] is not None and f["capex"] is not None) else None
+        ebitda = (f["oi"] + f["da"]) if (f["oi"] is not None and f["da"] is not None) else None
+        debt = (f["ltd"] or 0) + (f["debtcur"] or 0)
+        net_debt = debt - (f["cash"] or 0)
+        ev = (mktcap + net_debt) if mktcap else None
+        s4 = [s for _, s in surp.get(t, [])[:4]]
+        recs[t] = {
+            "ticker": t, "fscore": piotroski(f),
+            "has_cost_line": (f["gp"] is not None or f["cogs"] is not None),
+            "roe": (f["ni"] / f["equity"] * 100) if (f["ni"] is not None and f["equity"]) else None,
+            "roic_f": (f["oi"] * 0.79 / (debt + f["equity"] - (f["cash"] or 0)) * 100)
+                      if (f["oi"] is not None and f["equity"] and (debt + f["equity"] - (f["cash"] or 0)) > 0) else None,
+            "gm": (f["gp"] / f["rev"] * 100) if (f["gp"] is not None and f["rev"]) else None,
+            "gm_d": ((f["gp"] / f["rev"] - f["gp_p"] / f["rev_p"]) * 100)
+                    if (f["gp"] and f["rev"] and f["gp_p"] and f["rev_p"]) else None,
+            "fcfm": (fcf / f["rev"] * 100) if (fcf is not None and f["rev"]) else None,
+            "opm": (f["oi"] / f["rev"] * 100) if (f["oi"] is not None and f["rev"]) else None,
+            "rev_g": ((f["rev"] / f["rev_p"] - 1) * 100) if (f["rev"] and f["rev_p"]) else None,
+            "ni_g": (max(-150.0, min(300.0, (f["ni"] / f["ni_p"] - 1) * 100))
+                     if (f["ni"] is not None and f["ni_p"] and f["ni_p"] > 0) else None),
+            "fcf_y": (fcf / mktcap * 100) if (fcf is not None and mktcap) else None,
+            "earn_y": (f["ni"] / mktcap * 100) if (f["ni"] is not None and mktcap) else None,
+            "ev_ebitda": (ev / ebitda) if (ev and ebitda and ebitda > 0) else None,
+            "ps": (mktcap / f["rev"]) if (mktcap and f["rev"]) else None,
+            "nd_ebitda": (net_debt / ebitda) if (ebitda and ebitda > 0) else None,
+            "cover": (f["oi"] / f["int"]) if (f["oi"] is not None and f["int"]) else None,
+            "curr": (f["ca"] / f["cl"]) if (f["ca"] and f["cl"]) else None,
+            "accrual": ((f["ni"] - f["cfo"]) / f["assets"])
+                       if (f["ni"] is not None and f["cfo"] is not None and f["assets"]) else None,
+            "surp_mean": (sum(max(-40.0, min(40.0, s)) for s in s4) / len(s4)) if s4 else None,
+            "surp_beat": (sum(1 for s in s4 if s > 0) / len(s4) * 100) if s4 else None,
+            "surp_n": len(s4), "surp_all_neg": bool(s4) and all(s < 0 for s in s4),
+            "mom12_1": (k["chart"][-21] / k["chart"][-252] - 1) * 100 if len(k["chart"]) > 252 else None,
+            "fcf": fcf, "ni": f["ni"], "shares_d": ((shares / shares_p - 1) * 100)
+                   if (shares and shares_p) else None,
+        }
+        r = recs[t]
+        r["rs12"] = (r["mom12_1"] - spy12) if r["mom12_1"] is not None else None
+
+    def factor(comp):
+        """comp: {name: (values_dict, invert)} -> {ticker: avg percentile}"""
+        per = {}
+        for name, (vals, invert) in comp.items():
+            vv = {t: (-v if invert else v) for t, v in vals.items() if v is not None}
+            for t, p in _pct_ranks(vv).items():
+                per.setdefault(t, []).append(p)
+        return {t: sum(ps) / len(ps) for t, ps in per.items() if len(ps) >= 2}
+
+    G = lambda key: {t: r[key] for t, r in recs.items()}  # noqa: E731
+    factors = {
+        "Profitability": factor({"roe": (G("roe"), False), "roic": (G("roic_f"), False),
+                                 "gm": (G("gm"), False), "fcfm": (G("fcfm"), False),
+                                 "opm": (G("opm"), False)}),
+        "Revisions": factor({"sm": (G("surp_mean"), False), "sb": (G("surp_beat"), False)}),
+        "Value": factor({"fy": (G("fcf_y"), False), "ey": (G("earn_y"), False),
+                         "ev": (G("ev_ebitda"), True), "ps": (G("ps"), True)}),
+        "Safety": factor({"fs": (G("fscore"), False), "nd": (G("nd_ebitda"), True),
+                          "cov": (G("cover"), False), "cur": (G("curr"), False),
+                          "acc": (G("accrual"), True)}),
+        "Growth": factor({"rg": (G("rev_g"), False), "ng": (G("ni_g"), False),
+                          "gmd": (G("gm_d"), False)}),
+        "Momentum": factor({"m12": (G("mom12_1"), False), "rs": (G("rs12"), False)}),
+    }
+    weights = {"Profitability": 0.22, "Revisions": 0.20, "Value": 0.20,
+               "Safety": 0.15, "Growth": 0.13, "Momentum": 0.10}
+    for t, r in recs.items():
+        r["factors"] = {fn: factors[fn].get(t) for fn in weights}
+        have = {fn: p for fn, p in r["factors"].items() if p is not None}
+        r["composite"] = (sum(weights[fn] * p for fn, p in have.items())
+                          / sum(weights[fn] for fn in have)) if len(have) >= 4 else None
+        r["veto"] = None
+    # The letter grade is the composite's percentile rank across the graded
+    # pool (relative grading, SA-Quant style): averaging six factor
+    # percentiles compresses raw composites, so absolute cutoffs would cap
+    # even the best all-rounder at a B+.
+    comp_pct = _pct_ranks({t: r["composite"] for t, r in recs.items()
+                           if r["composite"] is not None})
+    for t, r in recs.items():
+        r["grade"] = _grade_composite(comp_pct[t]) if t in comp_pct else None
+        if (r["fscore"] is not None and r["fscore"] <= 3 and r["has_cost_line"]):
+            # The F-score veto applies to operating companies with a
+            # cost-of-sales line; bank/insurer balance sheets break its
+            # leverage and liquidity signals, so they are exempt (their
+            # F-score still displays, with the financials caveat).
+            r["veto"] = f"Piotroski F-score {r['fscore']}/9 — quality veto"
+        elif (r["nd_ebitda"] is not None and r["nd_ebitda"] > 6
+              and (r["cover"] is None or r["cover"] < 1.5)):
+            r["veto"] = f"net debt/EBITDA {r['nd_ebitda']:.1f}× with thin coverage — balance-sheet veto"
+        elif r["surp_all_neg"] and r["surp_n"] >= 3 and (r["surp_mean"] or 0) < -8:
+            r["veto"] = "three-plus straight EPS misses averaging under −8% — revisions veto"
+        elif (r["fcf"] is not None and r["fcf"] < 0 and (r["ni"] or 0) < 0
+              and (r["shares_d"] or 0) > 5):
+            r["veto"] = "cash-burning, loss-making and diluting (>5% share growth) — burn veto"
+    pool = [r for r in recs.values() if r["composite"] is not None and not r["veto"]]
+    pool.sort(key=lambda r: r["composite"], reverse=True)
+    return pool[:50], recs
+
+
+def kill_criteria(r, k):
+    rules = []
+    rules.append("Estimates: two straight negative EPS surprises, or a guidance cut "
+                 "at the next print — the professional exit signal.")
+    if r["fscore"] is not None and r["fscore"] <= 6:
+        rules.append(f"Quality: Piotroski F-score slips below {max(3, r['fscore'] - 2)} "
+                     f"(now {r['fscore']}/9).")
+    if r["nd_ebitda"] is not None and r["nd_ebitda"] > 2:
+        rules.append(f"Balance sheet: net debt/EBITDA rises above {r['nd_ebitda'] + 1.5:.1f}× "
+                     f"(now {r['nd_ebitda']:.1f}×).")
+    if r["fcf_y"] is not None and r["fcf_y"] < 3:
+        rules.append("Cash flow: free cash flow turns negative on a trailing-year basis.")
+    if (r["factors"].get("Profitability") or 100) < 45:
+        rules.append("Profitability: gross margin compresses for two straight fiscal years.")
+    rules.append(f"Price structure: a weekly close below the 52-week low of "
+                 f"${k['low52']:,.2f} — structure break, not noise.")
+    return rules[:4]
+
+
+# ---------------------------------------------------------------------------
 # Site building
 # ---------------------------------------------------------------------------
 
@@ -459,6 +822,13 @@ tr:hover td{background:#14213d}
 .range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
 .flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
 .star{color:#fbbf24}
+.tabs{display:flex;gap:8px;margin:0 0 16px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card)}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
@@ -547,11 +917,52 @@ def rationale(t, k, notes):
     return " ".join(bits)
 
 
-def build_site(rows, prev_ranks, meta):
+TABS_DIP = ('<div class="tabs"><a class="tab active" href="index.html">📉 Quality-Dip Top 50</a>'
+            '<a class="tab" href="pro.html">🏦 Professional Top 50</a></div>')
+TABS_PRO = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
+            '<a class="tab active" href="pro.html">🏦 Professional Top 50</a></div>')
+
+
+def pro_section(t, prec, k, rank=None):
+    if not prec:
+        return ""
+    fchips = " ".join(
+        f'<span class="fgrade chip {_grade_cls(_grade(p))}" title="{fn}">'
+        f'{fn[:4]} {_grade(p)}</span>'
+        for fn, p in prec["factors"].items() if p is not None)
+    veto = (f"<p class='flag'>⛔ Professional veto: {prec['veto']}</p>" if prec.get("veto") else "")
+    rankline = (f"Professional rank #{rank} · composite grade "
+                f"<b>{prec['grade']}</b>" if rank else
+                ("Graded in the professional pool but outside its Top 50"
+                 if not prec.get("veto") else "Vetoed out of the professional list"))
+    metrics = []
+    if prec["fscore"] is not None:
+        metrics.append(f"Piotroski F-score <b>{prec['fscore']}/9</b>")
+    if prec["fcf_y"] is not None:
+        metrics.append(f"FCF yield <b>{prec['fcf_y']:.1f}%</b>")
+    if prec["nd_ebitda"] is not None:
+        metrics.append(f"net debt/EBITDA <b>{prec['nd_ebitda']:.1f}×</b>")
+    if prec["surp_mean"] is not None:
+        metrics.append(f"avg EPS surprise (last {prec['surp_n']}) <b>{prec['surp_mean']:+.1f}%</b>")
+    kills = "".join(f"<li>{x}</li>" for x in kill_criteria(prec, k))
+    return (f"<section><h2>🏦 Professional lens</h2>"
+            f"<p>{rankline}</p><p>{fchips}</p>"
+            f"<p>{' · '.join(metrics)}</p>{veto}"
+            f"<p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p>"
+            f"<ul class='kill'>{kills}</ul>"
+            f"<p class='muted'>Factor grades follow the professional composite style "
+            f"(profitability, revision momentum, value, safety, growth, momentum — "
+            f"percentile-ranked across the screened pool). Revisions use reported "
+            f"EPS-surprise history, the free proxy for analyst revision momentum.</p></section>")
+
+
+def build_site(rows, prev_ranks, meta, pro=None, pro_ranks=None):
     cons = load_consensus()
     fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
     notes = json.load(open(os.path.join(DATA, "research_notes.json")))
     asof = meta["asof"]
+    pro = pro or {}
+    pro_ranks = pro_ranks or {}
     body = []
     for r in rows:
         t = r["ticker"]
@@ -603,6 +1014,7 @@ def build_site(rows, prev_ranks, meta):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Quality-Dip Watchlist — Top 50</title><style>{CSS}</style></head><body>
 <div class="wrap">
+{TABS_DIP}
 <h1>📉 Quality-Dip Watchlist — Top 50</h1>
 <div class="sub">Famous, fundamentally strong brands that have dipped significantly for <b>situational</b>
 reasons — the kind of names expected to recover when conditions normalize. Screened from the
@@ -684,6 +1096,9 @@ rows.forEach(r=>tb.appendChild(r));}});}});
             secs.append("<section><h2>Research depth</h2><p class='muted'>This name entered via the "
                         "quantitative screen and carries aggregator consensus data. The ★ names on the "
                         "list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>")
+        psec = pro_section(t, pro.get(t), r, pro_ranks.get(t))
+        if psec:
+            secs.append(psec)
         ys = yahoo_symbol(t)
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -722,11 +1137,135 @@ analyst consensus (curated). Research and education only — not investment advi
         with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
             fh.write(page)
     # prune stale detail pages
-    keep = {r["ticker"] for r in rows}
+    keep = {r["ticker"] for r in rows} | set(meta.get("keep_extra") or [])
     sdir = os.path.join(ROOT, "stock")
     for fn in os.listdir(sdir):
         if fn.endswith(".html") and fn[:-5] not in keep:
             os.remove(os.path.join(sdir, fn))
+
+
+def build_pro_page(pro_rows, prev_pro_ranks, meta, n_pool, n_vetoed):
+    cons = load_consensus()
+    asof = meta["asof"]
+    body = []
+    for r in pro_rows:
+        t = r["ticker"]
+        prev = prev_pro_ranks.get(t)
+        if prev is None:
+            mv = '<span class="chip b">NEW</span>'
+        else:
+            d = prev - r["rank"]
+            mv = (f'<span class="up">▲ {d}</span>' if d > 0 else
+                  f'<span class="dn">▼ {-d}</span>' if d < 0 else '<span class="muted">—</span>')
+        fchips = " ".join(
+            f'<span class="fgrade chip {_grade_cls(_grade(p))}" title="{fn}">{fn[:4]} {_grade(p)}</span>'
+            for fn, p in r["factors"].items() if p is not None)
+        surp = (f"{r['surp_mean']:+.1f}% · {r['surp_beat']:.0f}% beats" if r["surp_mean"] is not None
+                else '<span class="muted">—</span>')
+        body.append(f"""<tr data-ind="{INDUSTRY.get(t, '')}">
+  <td>{r['rank']}</td>
+  <td><a class="sym" href="stock/{t}.html">{t}</a><span class="nm">{clean_company_name(r['company'])}</span></td>
+  <td class="ind">{INDUSTRY.get(t, '')}</td>
+  <td><span class="biggrade chip {_grade_cls(r['grade'])}">{r['grade']}</span></td>
+  <td>{fchips}</td>
+  <td class="num">{r['fscore'] if r['fscore'] is not None else '—'}/9</td>
+  <td class="num">{('%.1f%%' % r['fcf_y']) if r['fcf_y'] is not None else '—'}</td>
+  <td class="num">{('%.1f×' % r['nd_ebitda']) if r['nd_ebitda'] is not None else '—'}</td>
+  <td class="num">{surp}</td>
+  <td class="num {'up' if (r['mom12_1'] or 0) >= 0 else 'dn'}">{('%+.1f%%' % r['mom12_1']) if r['mom12_1'] is not None else '—'}</td>
+  <td class="num">{r['pe'] if r['pe'] else '—'}</td>
+  <td class="num">${r['last']:,.2f}</td>
+  <td class="num">{mv}</td>
+  <td class="num">{r['earnings'] or '<span class="muted">—</span>'}</td>
+</tr>""")
+    html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Professional Top 50 — Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="wrap">
+{TABS_PRO}
+<h1>🏦 Professional Top 50</h1>
+<div class="sub">The professionals' lens, applied to the same {meta['universe_n']} most-traded US stocks:
+<b>cash-flow quality and balance-sheet survivability first, price last</b> — a factor composite in the
+spirit of Seeking Alpha Quant and the Zacks Rank. Six factors, percentile-ranked across
+{n_pool} names with full SEC filing data: Profitability (22%), Revisions (20%), Value (20%),
+Safety (15%), Growth (13%), Momentum (10%). Veto grades remove names outright
+({n_vetoed} vetoed today: Piotroski F-score ≤ 3, extreme leverage with thin coverage,
+persistent EPS misses, or cash-burn with dilution). Prices as of the <b>{asof}</b> close.
+Click any symbol for its factor breakdown and pre-written exit rules.</div>
+<table id="t"><thead><tr>
+<th>#</th><th>Symbol</th><th>Industry</th><th>Grade</th><th>Factors (Prof · Rev · Val · Safe · Grow · Mom)</th>
+<th class="num">F-score</th><th class="num">FCF yield</th><th class="num">Net debt/EBITDA</th>
+<th class="num">EPS surprise (last 4)</th><th class="num">Momentum 12-1</th><th class="num">P/E</th>
+<th class="num">Last</th><th class="num">vs Prev</th><th class="num">Earnings</th>
+</tr></thead><tbody>
+{chr(10).join(body)}
+</tbody></table>
+<p class="foot"><b>How to read this:</b> the composite grade is a percentile blend, not a recommendation.
+<b>Revisions</b> uses reported EPS-surprise history (mean surprise and beat rate over the last four
+quarters) — the free proxy for analyst revision momentum; clean revision-breadth history is paid data,
+and it is the first upgrade this lens would buy. <b>Safety</b> blends the Piotroski F-score (9 filing
+signals: profitability, leverage, liquidity, dilution, margins, turnover), net debt/EBITDA, interest
+coverage, current ratio and accrual quality. <b>Value</b> blends FCF yield, earnings yield, EV/EBITDA
+and price/sales. Balance-sheet factors use industrial-company definitions — read them cautiously for
+banks, insurers and REITs, whose filings structure debt differently; the F-score veto therefore
+applies only to companies that report a cost-of-sales line. Fundamentals are the latest
+reported fiscal year from SEC EDGAR. <b>Research and education only — not investment advice.</b></p>
+</div></body></html>"""
+    with open(os.path.join(ROOT, "pro.html"), "w") as fh:
+        fh.write(html)
+
+
+def build_pro_details(pro_rows, dip_tickers, meta):
+    """Detail pages for Professional-50 names that are not on the dip list
+    (dip-list names already got pages, with the pro section embedded)."""
+    cons = load_consensus()
+    fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
+    asof = meta["asof"]
+    for r in pro_rows:
+        t = r["ticker"]
+        if t in dip_tickers:
+            continue
+        k = r["_kpi"]
+        secs = [pro_section(t, r, k, r["rank"])]
+        c = cons.get(t, {})
+        if c.get("label") or c.get("note"):
+            secs.append(
+                f"<section><h2>Analyst consensus</h2><p>{chip_for(c.get('label', ''))}"
+                f"{f' · average target ${c['target']:,.0f}' if c.get('target') else ''}</p>"
+                f"<p>{c.get('note', '')}</p></section>")
+        ys = yahoo_symbol(t)
+        page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{t} — {clean_company_name(r['company'])} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="wrap">
+{TABS_PRO}
+<p><a href="../pro.html">← Back to the Professional Top 50</a></p>
+<h1>{t} — {clean_company_name(r['company'])}</h1>
+<div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
+· Professional rank #{r['rank']} · composite grade {r['grade']}</div>
+<div><span class="price">${k['last']:,.2f}</span>
+<span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
+<span class="muted"> · as of {asof} close</span></div>
+<div class="kpis">
+  <div class="kpi"><div class="v">{k['off_high_pct']:.1f}%</div><div class="l">Below 52w high (${k['high52']:,.2f})</div></div>
+  <div class="kpi"><div class="v">{k['rsi14']:.0f}</div><div class="l">RSI (14)</div></div>
+  <div class="kpi"><div class="v {'up' if k['perf1y_pct'] >= 0 else 'dn'}">{k['perf1y_pct']:+.1f}%</div><div class="l">1-year performance</div></div>
+  <div class="kpi"><div class="v">{k['vol30']:.1f}%</div><div class="l">Volatility (30d, ann.)</div></div>
+  <div class="kpi"><div class="v">{r['pe'] if r['pe'] else '—'}</div><div class="l">P/E</div></div>
+  <div class="kpi"><div class="v">{r['earnings'] or '—'}</div><div class="l">Next earnings</div></div>
+</div>
+<div class="bigchart">{chart_svg(k['chart'], k['high52'], k['low52'])}
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+{chr(10).join(secs)}
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
+<a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a> ·
+<a href="https://www.google.com/finance/quote/{t}:NASDAQ" target="_blank" rel="noopener">Google Finance — {t}</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR.
+Research and education only — not investment advice.</p></section>
+</div></body></html>"""
+        with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
+            fh.write(page)
 
 
 # ---------------------------------------------------------------------------
@@ -762,9 +1301,11 @@ def main():
 
     earn = earnings_dates()
     spy_mom20 = 0.0
+    spy_closes = []
     try:
-        spy = fetch_bars_retry("SPY")
-        spy_mom20 = (spy[-1].close / spy[-21].close - 1) * 100
+        spy_bars = fetch_bars_retry("SPY")
+        spy_closes = [b.close for b in spy_bars]
+        spy_mom20 = (spy_bars[-1].close / spy_bars[-21].close - 1) * 100
     except Exception:
         pass
     selected = [t for t in PINNED if t in cands]
@@ -813,7 +1354,39 @@ def main():
             "universe_n": len(tickers), "screened": len(results),
             "candidates": len(cands)}
     json.dump({"meta": meta, "rows": rows}, open(prev_path, "w"), indent=1)
-    build_site(rows, prev_ranks, meta)
+
+    print("Building the professional lens (EDGAR frames + surprise history)…", flush=True)
+    pro_top, pro_recs = build_professional(results, spy_closes)
+    prev_pro_ranks = {}
+    pro_path = os.path.join(DATA, "professional.json")
+    if os.path.exists(pro_path):
+        try:
+            for row in json.load(open(pro_path))["rows"]:
+                prev_pro_ranks[row["ticker"]] = row["rank"]
+        except Exception:
+            pass
+    pro_rows = []
+    for i, rec in enumerate(pro_top, 1):
+        t = rec["ticker"]
+        k = results[t]
+        pro_rows.append({**rec, "rank": i, "company": universe.get(t, t),
+                         "last": k["last"], "day_pct": k["day_pct"],
+                         "earnings": earn.get(t, ""),
+                         "pe": (round(100 / rec["earn_y"], 1)
+                                if rec["earn_y"] and rec["earn_y"] > 0 else None),
+                         "_kpi": {kk: k[kk] for kk in ("last", "day_pct", "high52",
+                                                       "low52", "off_high_pct", "rsi14",
+                                                       "perf1y_pct", "vol30", "chart")}})
+    n_vetoed = sum(1 for r in pro_recs.values() if r.get("veto"))
+    n_pool = sum(1 for r in pro_recs.values() if r.get("composite") is not None)
+    json.dump({"meta": meta,
+               "rows": [{kk: v for kk, v in r.items() if kk != "_kpi"} for r in pro_rows]},
+              open(pro_path, "w"), indent=1)
+    meta["keep_extra"] = [r["ticker"] for r in pro_rows]
+    build_site(rows, prev_ranks, meta, pro=pro_recs,
+               pro_ranks={r["ticker"]: r["rank"] for r in pro_rows})
+    build_pro_page(pro_rows, prev_pro_ranks, meta, n_pool, n_vetoed)
+    build_pro_details(pro_rows, {r["ticker"] for r in rows}, meta)
 
     new_set = {r["ticker"] for r in rows}
     old_set = set(prev_ranks)
@@ -828,6 +1401,12 @@ def main():
     wk = [f"{r['ticker']} {r['earnings']}" for r in rows if r["earnings"] and
           abs((datetime.strptime(r["earnings"], "%Y-%m-%d").date() - date.today()).days) <= 7]
     print("REPORTING ±7D:", ", ".join(wk) or "none")
+    print(f"PRO POOL: {n_pool} graded, {n_vetoed} vetoed")
+    print("PRO TOP5:", ", ".join(f"{r['ticker']}({r['grade']})" for r in pro_rows[:5]))
+    pnew = {r["ticker"] for r in pro_rows}
+    pold = set(prev_pro_ranks)
+    print("PRO ENTRANTS:", ", ".join(sorted(pnew - pold)) or "none")
+    print("PRO EXITS:", ", ".join(sorted(pold - pnew)) or "none")
     print(f"Done in {time.time() - t0:.0f}s")
 
 
