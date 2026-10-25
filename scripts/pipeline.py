@@ -43,6 +43,7 @@ UA = "Mozilla/5.0 (compatible; quality-dip-watchlist/1.0)"
 EDGAR_UA = "Personal Research Contact research-2026@example.com"
 
 EXCLUDE = {"NKE", "TSLA"}
+UNIVERSE_NAME = {}
 PINNED = ["AVGO", "NVDA", "META", "GOOGL", "CAT", "BKNG", "ASML", "AMZN",
           "GE", "TMUS", "NFLX", "MCD"]
 
@@ -918,9 +919,21 @@ def rationale(t, k, notes):
 
 
 TABS_DIP = ('<div class="tabs"><a class="tab active" href="index.html">📉 Quality-Dip Top 50</a>'
-            '<a class="tab" href="pro.html">🏦 Professional Top 50</a></div>')
+            '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
+            '<a class="tab" href="sectors.html">🌍 Sectors</a>'
+            '<a class="tab" href="validated.html">🏆 Validated Top 50</a></div>')
 TABS_PRO = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
-            '<a class="tab active" href="pro.html">🏦 Professional Top 50</a></div>')
+            '<a class="tab active" href="pro.html">🏦 Professional Top 50</a>'
+            '<a class="tab" href="sectors.html">🌍 Sectors</a>'
+            '<a class="tab" href="validated.html">🏆 Validated Top 50</a></div>')
+TABS_SECTORS = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
+                '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
+                '<a class="tab active" href="sectors.html">🌍 Sectors</a>'
+                '<a class="tab" href="validated.html">🏆 Validated Top 50</a></div>')
+TABS_VALIDATED = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
+                  '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
+                  '<a class="tab" href="sectors.html">🌍 Sectors</a>'
+                  '<a class="tab active" href="validated.html">🏆 Validated Top 50</a></div>')
 
 
 def pro_section(t, prec, k, rank=None):
@@ -956,7 +969,46 @@ def pro_section(t, prec, k, rank=None):
             f"EPS-surprise history, the free proxy for analyst revision momentum.</p></section>")
 
 
+def load_verdicts():
+    p = os.path.join(DATA, "research_verdicts.json")
+    if os.path.exists(p):
+        try:
+            return json.load(open(p))
+        except Exception:
+            pass
+    return {"meta": {}, "verdicts": {}, "final50": []}
+
+
+def verdict_section(t, verdicts):
+    v = (verdicts.get("verdicts") or {}).get(t)
+    if not v:
+        return ""
+    flag = v.get("flag", "")
+    cls = {"BUY": "sb", "HOLD": "h", "SELL": "r"}.get(flag, "na")
+    legs = v.get("legs") or {}
+    leg_rows = "".join(
+        f"<tr><td style='text-transform:capitalize'>{ln}</td>"
+        f"<td><span class='chip {'sb' if lv.get('v') == 'pass' else 'h' if lv.get('v') == 'mixed' else 'r'}'>"
+        f"{lv.get('v', '')}</span></td><td>{lv.get('note', '')}</td></tr>"
+        for ln, lv in legs.items())
+    risks = "".join(f"<li>{x}</li>" for x in (v.get("risks") or []))
+    srcs = " · ".join(f"<a href='{s.get('url', '')}' target='_blank' rel='noopener'>{s.get('title', 'source')}</a>"
+                       for s in (v.get("sources") or []))
+    return (f"<section><h2>🔬 Research-agent verdict</h2>"
+            f"<p><span class='chip {cls}' style='font-size:15px'>{flag}</span>"
+            f" <span class='muted'>deep-researched {v.get('date', '')} · {v.get('origin', '')}</span></p>"
+            f"<p>{v.get('summary', '')}</p>"
+            f"<table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead>"
+            f"<tbody>{leg_rows}</tbody></table>"
+            f"<p style='margin-top:10px'><b>Key risks:</b></p><ul>{risks}</ul>"
+            f"<p><b>What would change this verdict:</b> {v.get('what_changes', '')}</p>"
+            f"<p class='muted'>Sources: {srcs}</p>"
+            f"<p class='muted'>A structured research verdict from public sources, "
+            f"not a trade instruction.</p></section>")
+
+
 def build_site(rows, prev_ranks, meta, pro=None, pro_ranks=None):
+    verdicts = load_verdicts()
     cons = load_consensus()
     fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
     notes = json.load(open(os.path.join(DATA, "research_notes.json")))
@@ -1099,6 +1151,9 @@ rows.forEach(r=>tb.appendChild(r));}});}});
         psec = pro_section(t, pro.get(t), r, pro_ranks.get(t))
         if psec:
             secs.append(psec)
+        vsec = verdict_section(t, verdicts)
+        if vsec:
+            secs.append(vsec)
         ys = yahoo_symbol(t)
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1219,6 +1274,7 @@ def build_pro_details(pro_rows, dip_tickers, meta):
     """Detail pages for Professional-50 names that are not on the dip list
     (dip-list names already got pages, with the pro section embedded)."""
     cons = load_consensus()
+    verdicts = load_verdicts()
     fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
     asof = meta["asof"]
     for r in pro_rows:
@@ -1227,6 +1283,9 @@ def build_pro_details(pro_rows, dip_tickers, meta):
             continue
         k = r["_kpi"]
         secs = [pro_section(t, r, k, r["rank"])]
+        vsec = verdict_section(t, verdicts)
+        if vsec:
+            secs.append(vsec)
         c = cons.get(t, {})
         if c.get("label") or c.get("note"):
             secs.append(
@@ -1272,6 +1331,165 @@ Research and education only — not investment advice.</p></section>
 # Main
 # ---------------------------------------------------------------------------
 
+def build_sectors_page(meta):
+    p = os.path.join(DATA, "sectors.json")
+    if not os.path.exists(p):
+        return
+    d = json.load(open(p))
+    dir_cls = {"Positive": "sb", "Negative": "r", "Mixed": "h"}
+    forces = "".join(
+        f"<div class='kpi' style='text-align:left'><div style='font-weight:700'>{f['title']}</div>"
+        f"<div class='muted' style='font-size:13px'>{f['detail']}</div></div>"
+        for f in d.get("forces", []))
+    cards = []
+    for s in d.get("sectors", []):
+        ev = "".join(f"<li>{x}</li>" for x in s.get("evidence", []))
+        tags = " ".join(f"<span class='chip na'>{x}</span>" for x in s.get("drivers", []))
+        arts = "".join(
+            f"<li><a href='{a['url']}' target='_blank' rel='noopener'>{a['title']}</a>"
+            f" <span class='muted'>— {a.get('source', '')}, {a.get('date', '')}</span></li>"
+            for a in s.get("articles", []))
+        cards.append(
+            f"<section><h2>#{s['rank']} · {s['name']} "
+            f"<span class='chip {dir_cls.get(s.get('direction'), 'na')}'>{s.get('direction', '')}</span> "
+            f"<span class='chip na'>{s.get('severity', '')}</span></h2>"
+            f"<p>{s.get('summary', '')}</p><p>{tags}</p>"
+            f"<p><b>Evidence:</b></p><ul>{ev}</ul>"
+            f"<p><b>Watch next:</b> {s.get('watch', '')}</p>"
+            f"<p><b>Read:</b></p><ul>{arts}</ul></section>")
+    nm = "".join(f"<tr><td>{x['name']}</td><td>{x['note']}</td></tr>"
+                 for x in d.get("near_misses", []))
+    html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sectors — Top 10 most impacted · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="wrap">
+<h1>🌍 Top 10 areas most impacted right now</h1>
+<div class="sub">Ranked by magnitude of impact from the current economic, market, trade, inflation,
+jobs, political and geopolitical environment · research snapshot as of {d.get('asof', meta['asof'])}</div>
+{TABS_SECTORS}
+<section><h2>The six cross-cutting forces</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px">{forces}</div></section>
+{chr(10).join(cards)}
+<section><h2>Near misses</h2>
+<table><thead><tr><th>Area</th><th>Why it missed the Top 10</th></tr></thead><tbody>{nm}</tbody></table>
+<p class="muted">Compiled from wire and major-press reporting (Reuters, Bloomberg, AP and others,
+linked per sector). A snapshot, refreshed by research rather than by the daily screener.
+Research and education only — not investment advice.</p></section>
+</div></body></html>"""
+    with open(os.path.join(ROOT, "sectors.html"), "w") as fh:
+        fh.write(html)
+
+
+def build_validated_page(meta, verdicts):
+    vs = verdicts.get("verdicts") or {}
+    final = verdicts.get("final50") or []
+    pools_p = os.path.join(DATA, "pools.json")
+    pools = json.load(open(pools_p)) if os.path.exists(pools_p) else {"dip": [], "pro": []}
+    dip_ix = {r["ticker"]: r for r in pools.get("dip", [])}
+    pro_ix = {r["ticker"]: r for r in pools.get("pro", [])}
+    counts = {"BUY": 0, "HOLD": 0, "SELL": 0}
+    for v in vs.values():
+        if v.get("flag") in counts:
+            counts[v["flag"]] += 1
+    rows = []
+    for i, t in enumerate(final, 1):
+        v = vs.get(t, {})
+        d, pr = dip_ix.get(t), pro_ix.get(t)
+        origin = []
+        if d:
+            origin.append(f"Dip #{d['rank']}")
+        if pr:
+            origin.append(f"Pro #{pr['rank']} ({pr.get('grade', '')})")
+        src = d or pr or {}
+        rows.append(
+            f"<tr><td>{i}</td><td><a href='stock/{t}.html'><b>{t}</b></a></td>"
+            f"<td>{clean_company_name(UNIVERSE_NAME.get(t, t))}</td>"
+            f"<td><span class='chip sb'>BUY</span></td>"
+            f"<td>{' · '.join(origin)}</td>"
+            f"<td class='num'>${src.get('last', 0):,.2f}</td>"
+            f"<td class='num'>{src.get('off_high_pct', 0):.1f}%</td>"
+            f"<td>{v.get('summary', '')}</td></tr>")
+    status = (f"<p>Research complete: {len(final)} names passed the research rubric as BUY. "
+              f"Researched in total: {len(vs)} ({counts['BUY']} buy · {counts['HOLD']} hold · "
+              f"{counts['SELL']} sell/not-justified).</p>" if len(final) >= 50 else
+              f"<p>Research in progress: {len(vs)} names researched so far "
+              f"({counts['BUY']} buy · {counts['HOLD']} hold · {counts['SELL']} sell/not-justified); "
+              f"{len(final)} buys validated. The list below grows as the research loop works "
+              f"through the merged candidate queue.</p>")
+    html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Validated Top 50 · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="wrap">
+<h1>🏆 Research-Validated Top 50</h1>
+<div class="sub">One merged list from both screens (Quality-Dip + Professional), where every name
+also passed a dedicated deep-research pass · prices as of {meta['asof']} close</div>
+{TABS_VALIDATED}
+<section>{status}
+<table id="t"><thead><tr><th>#</th><th>Stock</th><th>Company</th><th>Verdict</th><th>Origin</th>
+<th class="num">Price</th><th class="num">vs 52w high</th><th>Research summary</th></tr></thead>
+<tbody>{chr(10).join(rows)}</tbody></table>
+<p class="muted" style="margin-top:12px">Method: candidates from both Top 50 lists first, then the
+merged bench in rank order, were deep-researched one by one against a five-leg rubric — business
+quality intact, valuation/dip justified, sector wind (see the Sectors tab), risk survivability, and a
+visible catalyst path. A name is BUY only with no leg failing and at least four passing; HOLD and
+SELL verdicts drop out and the next bench name is researched, until 50 BUY names stand. Every stock
+page carries the full verdict with evidence, risks, and what would change it. Verdicts are a dated
+research snapshot (not refreshed by the daily screener) from public sources — structured research
+opinion, not investment advice or a trade instruction.</p></section>
+</div></body></html>"""
+    with open(os.path.join(ROOT, "validated.html"), "w") as fh:
+        fh.write(html)
+
+
+def build_validated_details(meta, verdicts, covered, results, pro_recs, earn):
+    """Detail pages for validated names covered by neither list builder."""
+    fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
+    asof = meta["asof"]
+    for t in verdicts.get("final50") or []:
+        if t in covered:
+            continue
+        k = results.get(t)
+        if not k:
+            continue
+        secs = []
+        prec = pro_recs.get(t)
+        psec = pro_section(t, prec, k, None)
+        if psec:
+            secs.append(psec)
+        vsec = verdict_section(t, verdicts)
+        if vsec:
+            secs.append(vsec)
+        ys = yahoo_symbol(t)
+        page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="wrap">
+<p><a href="../validated.html">← Back to the Validated Top 50</a></p>
+<h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
+<div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
+· Research-validated Top 50</div>
+<div><span class="price">${k['last']:,.2f}</span>
+<span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
+<span class="muted"> · as of {asof} close</span></div>
+<div class="kpis">
+  <div class="kpi"><div class="v">{k['off_high_pct']:.1f}%</div><div class="l">Below 52w high (${k['high52']:,.2f})</div></div>
+  <div class="kpi"><div class="v">{k['rsi14']:.0f}</div><div class="l">RSI (14)</div></div>
+  <div class="kpi"><div class="v {'up' if k['perf1y_pct'] >= 0 else 'dn'}">{k['perf1y_pct']:+.1f}%</div><div class="l">1-year performance</div></div>
+  <div class="kpi"><div class="v">{k['vol30']:.1f}%</div><div class="l">Volatility (30d, ann.)</div></div>
+  <div class="kpi"><div class="v">{earn.get(t) or '—'}</div><div class="l">Next earnings</div></div>
+</div>
+<div class="bigchart">{chart_svg(k['chart'], k['high52'], k['low52'])}
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+{chr(10).join(secs)}
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
+<a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</div></body></html>"""
+        with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
+            fh.write(page)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=8)
@@ -1279,6 +1497,8 @@ def main():
     args = ap.parse_args()
     t0 = time.time()
     universe = load_universe()
+    global UNIVERSE_NAME
+    UNIVERSE_NAME = universe
     tickers = sorted(universe)
     print(f"Universe: {len(tickers)} most-traded common stocks", flush=True)
 
@@ -1382,11 +1602,34 @@ def main():
     json.dump({"meta": meta,
                "rows": [{kk: v for kk, v in r.items() if kk != "_kpi"} for r in pro_rows]},
               open(pro_path, "w"), indent=1)
-    meta["keep_extra"] = [r["ticker"] for r in pro_rows]
+    # Persist the full candidate pools: the research-validation bench.
+    dip_pool = [{"ticker": t, "rank": i + 1, "score": round(k["score"], 1),
+                 "last": k["last"], "off_high_pct": k["off_high_pct"]}
+                for i, (t, k) in enumerate(sorted(
+                    cands.items(), key=lambda kv: kv[1]["score"], reverse=True))]
+    pro_pool = [{"ticker": r["ticker"], "rank": i + 1,
+                 "composite": round(r["composite"], 1), "grade": r["grade"],
+                 "last": results[r["ticker"]]["last"],
+                 "off_high_pct": results[r["ticker"]]["off_high_pct"]}
+                for i, r in enumerate(sorted(
+                    (r for r in pro_recs.values()
+                     if r.get("composite") is not None and not r.get("veto")),
+                    key=lambda r: r["composite"], reverse=True))]
+    json.dump({"meta": meta, "dip": dip_pool, "pro": pro_pool,
+               "vetoed": sorted(t for t, r in pro_recs.items() if r.get("veto"))},
+              open(os.path.join(DATA, "pools.json"), "w"), indent=1)
+    verdicts = load_verdicts()
+    meta["keep_extra"] = ([r["ticker"] for r in pro_rows]
+                          + list(verdicts.get("final50") or []))
     build_site(rows, prev_ranks, meta, pro=pro_recs,
                pro_ranks={r["ticker"]: r["rank"] for r in pro_rows})
     build_pro_page(pro_rows, prev_pro_ranks, meta, n_pool, n_vetoed)
     build_pro_details(pro_rows, {r["ticker"] for r in rows}, meta)
+    build_sectors_page(meta)
+    build_validated_page(meta, verdicts)
+    build_validated_details(meta, verdicts,
+                            {r["ticker"] for r in rows} | {r["ticker"] for r in pro_rows},
+                            results, pro_recs, earn)
 
     new_set = {r["ticker"] for r in rows}
     old_set = set(prev_ranks)

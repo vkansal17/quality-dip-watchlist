@@ -1,0 +1,467 @@
+{
+ "asof": "2026-10-23",
+ "forces": [
+  {
+   "detail": "WTI settled at $103.51/bbl and Brent at $117.02 on Friday 23 Oct, Brent's highest since April and up more than 85% in 2026 after Houthi strikes on Saudi Red Sea infrastructure (Yanbu) and Saudi Aramco's emergency evacuation of its Dhahran HQ. Diesel is the acute pain point: US on-highway diesel averaged $6.20/gal on 5 Oct (+67% year-on-year), and regular gasoline was $4.29/gal on 23 Oct.",
+   "title": "Geopolitics / oil shock \u2014 US\u2013Israeli war with Iran, ~9th month"
+  },
+  {
+   "detail": "September CPI rose 3.7% y/y (core 2.6%) with gasoline contributing more than half the monthly rise, and PPI rose 6.3% y/y; the Fed raised rates 25bp on 16 September to 3.75\u20134.00%, its first hike since 2023. The 10-year Treasury touched 5.35% on 7 Oct (highest since 2002) and closed 23 Oct at 5.00%; 94 of 100 economists in a Reuters survey expect a hold at the 28 Oct FOMC, with a further hike widely priced for December.",
+   "title": "Inflation re-acceleration + interest rates"
+  },
+  {
+   "detail": "S&P Global flash composite PMI was 57.6 in October (down from September's five-year high of 58.4), with new orders at 58.2 \u2014 highest since March 2022 \u2014 but output prices at 59.8, the fastest rise since August 2022. Consensus Q3 GDP is ~3.0% annualised, mainly driven by consumer spending and business investment in AI, with a warning that oil-driven inflation is likely to slow consumer spending in Q4.",
+   "title": "A strong-but-two-speed economy"
+  },
+  {
+   "detail": "September nonfarm payrolls rose just +29,000 (vs. 84\u201390k expected), unemployment ticked up to 4.2%, July was revised to \u221210,000, and average hourly earnings growth slowed to +3.0% y/y. Financial activities employment is down 129,000 since May 2025, including 90,000 at insurance carriers \u2014 even as PMI factory employment hit its highest since March 2012.",
+   "title": "A cooling labour market underneath the boom"
+  },
+  {
+   "detail": "The US imposed 50% tariffs on ~$20bn of Canadian goods over the summer under Section 338 (on top of Section 232 duties) after the USMCA/CUSMA extension failed, and Canada retaliated dollar-for-dollar (15\u201350%). On 23 Oct, days before the midterms, the White House exempted some products (plywood, some paper, machinery, refrigeration equipment, packing crates \u2014 effective 30 Oct) while adding others (carpets, paints, shampoos, cocoa powder, air-conditioning, valves, waste products).",
+   "title": "Tariffs and trade-policy whiplash"
+  },
+  {
+   "detail": "Prediction markets on 20 Oct put Democratic control of the House at 0.915 and the Senate at 0.645 (Polymarket); deVere put a Democratic sweep at close to two-in-three and a Republican sweep at barely one-in-ten. Markets are already trading it \u2014 defence stocks and banks/AI are being sold on expected Democratic scrutiny \u2014 while housing affordability, farm diesel costs and gasoline prices have become central campaign issues.",
+   "title": "Midterm politics \u2014 3 November, Democratic sweep priced in"
+  }
+ ],
+ "near_misses": [
+  {
+   "name": "Gold & miners",
+   "note": "Gold broke below $4,000 on 23 Oct for the first time since mid-July (\u22124% on the week), but gold ETFs took in a record $31bn in Q3 and Newmont posted record earnings with a ~$2,500/oz margin at $4,000 \u2014 a large price move with little change to miner economics."
+  },
+  {
+   "name": "Autos & EVs",
+   "note": "Heavily hit but more idiosyncratic/tariff-distorted than macro-driven: Tesla Q3 net income \u221243% with a $786m one-off tariff refund flattering margins after the Supreme Court struck down certain tariffs; GM was still +26% over one year to 1 Oct."
+  },
+  {
+   "name": "Healthcare / biotech",
+   "note": "A beneficiary of rotation (+6.55% in Q3, strongest S&P sector in recent sessions) whose biggest moves are clinical, not macro \u2014 e.g. Moderna +620% in 2026 on cancer-vaccine data; the defensive bid changes positioning more than sector economics."
+  },
+  {
+   "name": "Crypto",
+   "note": "Trades as a levered rate/risk proxy with no separate fundamental shock: Bitcoin hovered ~$80\u201382k with ~$322m of US spot Bitcoin ETF outflows on 22 Oct \u2014 high-beta pass-through of the oil/rate drivers, not a distinct sector story."
+  },
+  {
+   "name": "Telecom carriers",
+   "note": "No material sector-specific shock was found in October 2026 coverage searched; carriers appear mainly as rate-sensitive dividend stocks \u2014 excluded for lack of evidence, not lack of importance."
+  }
+ ],
+ "sectors": [
+  {
+   "articles": [
+    {
+     "title": "SpaceX, Meta and other hyperscalers are dropping clues you should not ignore",
+     "source": "Yahoo Finance",
+     "date": "2026-10-25",
+     "url": "https://finance.yahoo.com/markets/article/spacex-meta-and-other-hyperscalers-are-dropping-clues-you-should-not-ignore-100000992.html"
+    },
+    {
+     "date": "2026-10-24",
+     "source": "The Motley Fool",
+     "title": "Should Investors Buy the Meta Platforms Dip?",
+     "url": "https://www.fool.com/investing/2026/10/24/should-investors-buy-the-meta-platforms-dip/"
+    },
+    {
+     "date": "2026-10",
+     "source": "The Evergreen Edit",
+     "title": "AI Stocks Tumble as Investors Question How the Boom Is Being Paid For",
+     "url": "https://theevergreenedit.money/investing/ai-stock-selloff-coreweave-oracle-dell-october-2026"
+    },
+    {
+     "date": "2026-10-23",
+     "source": "Adalytica",
+     "title": "AI Data Center Stocks Face Higher Financing Costs",
+     "url": "https://adalytica.com/news/ai-data-center-financing-costs-8d3c0020"
+    }
+   ],
+   "direction": "Negative",
+   "drivers": [
+    "Market",
+    "Inflation & rates",
+    "Economy",
+    "Politics",
+    "AI capex"
+   ],
+   "evidence": [
+    "Meta (22 Oct earnings): Q3 revenue $64.6bn, +26% y/y, beating estimates \u2014 yet shares fell ~7% on the day, ~9.4% over five sessions; capex was ~$34.9bn in the quarter, full-year guidance was raised to $135\u2013145bn, and free cash flow swung to \u2212$2.1bn, its first negative quarter since the 2012 IPO.",
+    "CoreWeave fell ~25% in one week (with ~$50bn+ debt; a July 2026 bond issued at 9.75% was trading at a ~16% yield by 14 Oct); on 22 Oct the Nasdaq fell 2.60% to 26,008.86 \u2014 its worst session since June \u2014 despite earnings beats.",
+    "Utilities were the worst S&P 500 sector in Q3, \u221212.38% (Q3 sector returns from a single syndicated series citing S&P data), even as data-centre electricity demand is projected to grow ~24% a year to 2030.",
+    "Bloom Energy raised 2026 revenue guidance a third time (to $4.4\u20134.6bn; Q3 revenue +138% to $1.24bn) and still closed \u221211.24% on 23 Oct; Meta also announced a new non-voting Class C share class (effective 19 Jan 2027) to help finance the build-out, and its 5-year credit-default swaps hit record highs.",
+    "Bank of America research cited in coverage put AI return on incremental invested capital below its cost of capital."
+   ],
+   "name": "AI hyperscalers, data-centre builders & the power chain serving them",
+   "rank": 1,
+   "severity": "Severe",
+   "summary": "Demand for AI compute is still booming, but the financing model is what broke: hyperscaler capex is outrunning cash flow at 5% interest rates, forcing debt issuance and new share classes, and the market is repricing the whole chain \u2014 from Meta and CoreWeave to the utilities meant to power the build-out.",
+   "watch": "Alphabet/Microsoft earnings 28 Oct and Amazon 29 Oct \u2014 cloud growth vs. capex and any FCF/AI-debt guidance \u2014 plus the 28 Oct Fed decision's effect on AI borrowing costs."
+  },
+  {
+   "articles": [
+    {
+     "date": "2026-10-23",
+     "source": "DTN",
+     "title": "Oil Hits Multi-Month Highs on Middle East Tensions",
+     "url": "https://www.dtnpf.com/agriculture/web/ag/news/world-policy/article/2026/10/23/oil-hits-multi-month-highs-middle"
+    },
+    {
+     "date": "2026-10",
+     "source": "TIKR",
+     "title": "ExxonMobil Just Gained 12% in a Month and Chevron 11%: Take Profits, or Buy More?",
+     "url": "https://www.tikr.com/blog/exxonmobil-just-gained-12-in-a-month-and-chevron-11-take-profits-or-buy-more"
+    },
+    {
+     "date": "2026-10-17",
+     "source": "The Motley Fool",
+     "title": "What High Diesel Prices Mean for These 5 Energy Stocks",
+     "url": "http://www.fool.com/investing/2026/10/17/what-high-diesel-prices-mean-for-energy-stocks/"
+    }
+   ],
+   "direction": "Positive",
+   "drivers": [
+    "Geopolitics / oil",
+    "Economy",
+    "Inflation & rates",
+    "Politics"
+   ],
+   "evidence": [
+    "WTI settled at $103.51 and Brent at $117.02 on 23 Oct, Brent's highest since April; Energy (XLE) rose +2.60% on 23 Oct alone, leading the S&P 500, with oil & gas drilling +5.80% and field services +4.96% that day.",
+    "Energy returned +16.48% in Q3 \u2014 by far the best sector (Q3 sector returns from a single syndicated series citing S&P data).",
+    "ExxonMobil is +52% YTD and Chevron +53% YTD (23 Oct closes of $183.21 / $233.21); Chevron Q3 EPS is expected at ~$4.73, +156% y/y (Zacks, earnings due 30 Oct).",
+    "Diesel at ~$5/gal futures / $6.20 retail means refiners with diesel/jet output capture the widest crack spreads \u2014 Marathon Petroleum traded near $455.",
+    "Caveat: Exxon itself flagged earlier in the war that disrupted cargoes and derivative timing effects can cut reported profit in a given quarter, and a ceasefire headline could reverse $5\u20138/bbl in a session."
+   ],
+   "name": "Oil & gas, refiners & energy services",
+   "rank": 2,
+   "severity": "Severe",
+   "summary": "The clearest beneficiary of the current environment: war-driven oil prices (Brent up more than 85% in 2026) and wide diesel crack spreads are delivering windfall earnings and the best sector performance of the year \u2014 though the report cautions the gains are headline-driven and volatile.",
+   "watch": "Exxon and Chevron Q3 results on 30 Oct, the 28 Oct EIA petroleum report, and any US/Israel decision on renewed strikes on Iran after the midterms."
+  },
+  {
+   "articles": [
+    {
+     "date": "2026-10-13",
+     "source": "Reuters (via 97.9 WEVE)",
+     "title": "US chip stocks extend slide as China memory report, AI spending jitters hit sector",
+     "url": "https://979weve.com/2026/10/13/us-chip-stocks-extend-slide-as-china-memory-report-ai-spending-jitters-hit-sector/"
+    },
+    {
+     "date": "2026-10-13",
+     "source": "AP (via DTN)",
+     "title": "Global Semiconductor Stocks Sell-Off Over AI Boom Worries Pulls Asian Shares Lower",
+     "url": "https://www.dtnpf.com/agriculture/web/ag/news/world-policy/article/2026/10/13/global-semiconductor-stocks-sell-ai"
+    },
+    {
+     "date": "2026-10-16",
+     "source": "Demokratis (citing CNBC)",
+     "title": "AI Chip Stocks Lose $1 Trillion in Four Days",
+     "url": "https://demokratis.co.id/en/ai-chip-stocks-lose-trillion"
+    }
+   ],
+   "direction": "Negative",
+   "drivers": [
+    "Market",
+    "Inflation & rates",
+    "Trade / tariffs",
+    "Geopolitics / oil",
+    "Economy"
+   ],
+   "evidence": [
+    "The Philadelphia Semiconductor Index fell for eight straight sessions to 16 Oct \u2014 its longest losing streak since 2008 \u2014 down 11.4% that week (another count had it at six straight by 14 Oct, the longest in ~2 years).",
+    "Global AI/chip stocks lost ~$1 trillion in market value in four sessions, 12\u201315 Oct (CNBC via Seoul Economic Daily), including Nvidia \u2212$291bn (\u22125.3%); six memory/storage names lost $1.09 trillion since 2 Oct.",
+    "Trigger: reports that China's CXMT made 'key progress' on a new memory cell architecture \u2014 Micron \u22124.5% on 13 Oct to a low since 16 Sept; SanDisk \u22124.3%, Seagate \u22125.9%, Western Digital \u22125.8%; in Seoul, SK Hynix \u221210.1% and Samsung \u22127.4% in a day, Kospi \u22125.5%.",
+    "Broadcom CEO Hock Tan compared AI investment to 'casino gambling'; memory prices themselves are now inflating hyperscaler capex."
+   ],
+   "name": "Semiconductors & memory",
+   "rank": 3,
+   "severity": "Severe",
+   "summary": "A valuation/financing correction, not (yet) a demand collapse: a Chinese memory breakthrough, hyperscaler spending jitters and 5% yields hit a sector still up >70% YTD and priced for perfection, erasing roughly $1 trillion of market value in four sessions.",
+   "watch": "Whether TSMC/Nvidia-order commentary confirms demand, CXMT follow-through, and memory pricing \u2014 plus hyperscaler capex guidance on 28\u201329 Oct, which is now the sector's demand signal."
+  },
+  {
+   "articles": [
+    {
+     "date": "2026-10-19",
+     "source": "Reuters",
+     "title": "US homebuilder sentiment tumbles to near 14-1/2-year low in October",
+     "url": "https://www.reuters.com/business/us-homebuilder-sentiment-tumbles-near-14-12-year-low-october-2026-10-19/"
+    },
+    {
+     "date": "2026-10",
+     "source": "Wall Street Journal",
+     "title": "The Surge in Rates Is Blowing Up Commercial Real-Estate Deals",
+     "url": "https://www.wsj.com/real-estate/commercial-real-estate-interest-rates-22d04b1b"
+    },
+    {
+     "date": "2026-10-13",
+     "source": "The Motley Fool",
+     "title": "Down 12.5% in 2 Months, Is the Sell-Off in Realty Income a Buying Opportunity?",
+     "url": "https://www.fool.com/investing/2026/10/13/down-125-in-2-months-is-the-sell-off-in-realty-inc/"
+    }
+   ],
+   "direction": "Negative",
+   "drivers": [
+    "Inflation & rates",
+    "Geopolitics / oil",
+    "Trade / tariffs",
+    "Jobs",
+    "Politics"
+   ],
+   "evidence": [
+    "NAHB/Wells Fargo homebuilder sentiment fell to 29 in October \u2014 lowest since June 2012 \u2014 with buyer traffic at 18 (lowest since April 2012 outside the pandemic), 43% of builders cutting prices (a 2020\u201326 high) and 65% using incentives. [Reuters, verified live]",
+    "The 30-year mortgage averaged 7.40% \u2014 highest in nearly three years (7.28% on 1 Oct, from 6.34% a year earlier); more than one-third of builders reported immigration enforcement activity in their market in the past month, causing delays.",
+    "The FTSE Nareit All Equity REITs Index fell 5.7% in September and >8% from late August to mid-October while the S&P 500 gained ~1%; Real Estate was \u22126.30% in Q3.",
+    "CMBS special servicing hit 11.42% in August \u2014 highest since February 2013 \u2014 on >$5 trillion of outstanding CRE/multifamily mortgages, as maturing low-rate loans cannot be refinanced at 5%+ Treasury yields.",
+    "Even high-occupancy Realty Income fell 12.5% in two months to 9 Oct."
+   ],
+   "name": "Housing, homebuilders, mortgage & commercial real estate / REITs",
+   "rank": 4,
+   "severity": "Severe",
+   "summary": "The most rate-crushed part of the real economy: a 7.40% mortgage rate has pushed builder sentiment to its lowest since June 2012, while maturing commercial real estate loans cannot be refinanced at 5%+ Treasury yields, driving CMBS distress to its highest since February 2013.",
+   "watch": "Freddie Mac's weekly mortgage rate and whether the 10-year falls sustainably below 5% \u2014 builders rallied intraday on 23\u201324 Oct on a dip to 7.32%, showing how binary this sector now is on yields."
+  },
+  {
+   "articles": [
+    {
+     "date": "2026-10-09",
+     "source": "The Conviction and the Caution",
+     "title": "Delta's Fuel Bill Jumped 62% to $4.1 Billion, and the Airline Just Cut Its 2026 Profit Outlook",
+     "url": "https://convictioncaution.com/2026/10/09/deltas-fuel-bill-jumped-62-to-4-1-billion-and-the-airline-just-cut-its-2026-profit-outlook/"
+    },
+    {
+     "date": "2026-10",
+     "source": "Startup Fortune (citing Fortune)",
+     "title": "United Airlines warns oil could cost more than its best profit year ever",
+     "url": "https://startupfortune.com/united-airlines-warns-oil-could-cost-more-than-its-best-profit-year-ever/"
+    },
+    {
+     "date": "2026-10-23",
+     "source": "Invezz",
+     "title": "These airline stocks remain worth owning despite $100 oil",
+     "url": "https://invezz.com/news/2026/10/23/these-airline-stock-remain-worth-owning-despite-100-oil/"
+    }
+   ],
+   "direction": "Negative",
+   "drivers": [
+    "Geopolitics / oil",
+    "Economy",
+    "Inflation & rates"
+   ],
+   "evidence": [
+    "Delta (9 Oct): Q3 fuel bill $4.1bn, +62% y/y; full-year fuel expense guided +$6bn; 2026 EPS guidance cut from $6.50\u20137.50 to $5.10\u20135.60 and free cash flow from up to $4bn to $2.5bn; first earnings miss in two years despite revenue +15.7%.",
+    "United (20 Oct): record Q3 revenue $17.9bn (+17%) and adjusted EPS $2.54 \u2014 but fuel $4.84bn, +61.6%, and Q4 EPS guidance of $0.50\u20131.50 vs. $1.88 expected.",
+    "United CEO Scott Kirby has modelled $175 oil, staying above $100 through end-2027 \u2014 a ~$11bn annual fuel increase, more than United's best-ever annual profit \u2014 and already cut ~5% of planned capacity.",
+    "American Airlines fell ~4% on 22 Oct after cutting its outlook on fuel; scheduled air transportation fell \u22123.20% on 23 Oct, among the day's worst industries."
+   ],
+   "name": "Airlines, travel & fuel-exposed transport",
+   "rank": 5,
+   "severity": "Severe",
+   "summary": "Record revenue, collapsing forward profit: fuel bills are up roughly 62% year-on-year at the big carriers, earnings guidance is being cut even as demand holds, and United is already modelling oil staying above $100 through end-2027.",
+   "watch": "Jet-fuel crack spreads vs. fare pass-through into the holiday season, and whether capacity cuts spread from United to peers."
+  },
+  {
+   "articles": [
+    {
+     "date": "2026-10-20",
+     "source": "Morningstar / Dow Jones Newswires",
+     "title": "Defense Stocks Gain on Rising Demand Amid War in Iran",
+     "url": "https://www.morningstar.com/news/dow-jones/202610205940/defense-stocks-gain-on-rising-demand-amid-war-in-iran"
+    },
+    {
+     "date": "2026-10-19",
+     "source": "The Financial News 247 (citing FT)",
+     "title": "Defense stocks plummet as investors worry possible Dem midterms win could thwart Trump's spending plans",
+     "url": "https://thefinancialnews247.com/defense-stocks-plummet-as-investors-worry-possible-dem-midterms-win-could-thwart-trumps-spending-plans/"
+    },
+    {
+     "date": "2026-10-21",
+     "source": "Daily Caller via Liberty Unyielding",
+     "title": "Defense Giants Post Record Backlogs As Iran War Drains America's Missile Stockpiles",
+     "url": "https://libertyunyielding.com/2026/10/21/defense-giants-post-record-backlogs-as-iran-war-drains-americas-missile-stockpiles/"
+    }
+   ],
+   "direction": "Mixed",
+   "drivers": [
+    "Geopolitics / oil",
+    "Politics",
+    "Inflation & rates",
+    "Economy"
+   ],
+   "evidence": [
+    "On 20 Oct Northrop Grumman rose ~7% (its best day in over a year) on a record $109.6bn backlog ($16.4bn of Q3 awards); RTX reported a record $340bn backlog on >$81bn of awards. [Morningstar/Dow Jones, verified live]",
+    "The CBO estimated US operations against Iran cost ~$38bn through 1 Aug, including $21.7bn to replace expended munitions ($13.1bn of missile-defence interceptors); CSIS estimated Patriot inventories below 1,000 interceptors.",
+    "Yet the equal-weight SPDR Aerospace & Defense ETF is down ~21% since the start of the Iran war (iShares ITA \u221215% over the same span; ITA \u221217.86% from its 14 Aug close by 19 Oct); Lockheed Martin is \u221220%+ from its March peak, Northrop ~\u221235% and L3Harris ~\u221236% on one FT-cited count (before Northrop's 20 Oct bounce).",
+    "Analysts also cite a flood of small-defence IPOs (6 US + 5 European this year), doubts about expensive interceptors vs. cheap drones, and a >6%-of-GDP deficit at 5% rates; munitions replenishment has bipartisan support even if the budget increase does not."
+   ],
+   "name": "Defence (primes vs. smaller contractors)",
+   "rank": 6,
+   "severity": "Severe",
+   "summary": "Record fundamentals, falling valuations: backlogs and war demand have never been stronger, but the stocks have de-rated hard on IPO supply, drone-vs-interceptor doubts, and above all midterm risk \u2014 the proposed $1.5 trillion FY27 defence budget (+~42%) needs Congress, and a Democratic Congress could trim the increase.",
+   "watch": "Lockheed Martin results, the 3 Nov midterm result, and whether replenishment appropriations survive \u2014 the gap between backlog and share price is the trade."
+  },
+  {
+   "articles": [
+    {
+     "date": "2026-10-08",
+     "source": "Reuters (via Kitco)",
+     "title": "US bank investors to focus on impact of higher rates, deals outlook in Q3 earnings",
+     "url": "http://www.kitco.com/news/off-the-wire/2026-10-08/us-bank-investors-focus-impact-higher-rates-deals-outlook-q3-earnings"
+    },
+    {
+     "date": "2026-10-15",
+     "source": "Catenaa",
+     "title": "Big Four US Banks Earn $33.4 Billion in Q3 2026",
+     "url": "https://catenaa.com/markets/global-markets/big-four-us-banks-q3-2026-earnings/"
+    },
+    {
+     "date": "2026-10-23",
+     "source": "Strategitz",
+     "title": "Global Markets Close \u2014 October 23, 2026",
+     "url": "https://strategitz.substack.com/p/global-markets-close-october-23-2026"
+    }
+   ],
+   "direction": "Mixed",
+   "drivers": [
+    "Inflation & rates",
+    "Market",
+    "Economy",
+    "Jobs",
+    "Politics"
+   ],
+   "evidence": [
+    "The big four (JPMorgan, Bank of America, Citi, Wells Fargo) earned a combined $33.4bn in Q3 on $125.9bn revenue (Catenaa's tally of the releases): JPMorgan revenue $50.17bn, net income $15.31bn, net interest income +13%; Citi net income +40% to $5.25bn.",
+    "Offsets: Bank of America's profit fell on a $1.2bn regulatory settlement charge, and Wells Fargo raised its credit provision 51% (JPMorgan cut its own 19%).",
+    "The KBW Bank Index fell ~13% from its August peak and \u22126% in Q3 (Reuters); Financials were flat in Q3 (\u22120.04%) and XLF fell \u22121.32% on 23 Oct, with life insurance \u22123.38% that day; American Express fell \u22123.7% on 23 Oct after announcing it will cut ~5% of its workforce.",
+    "Financial activities employment is down 129,000 since May 2025, 90,000 of them at insurance carriers (BLS September report) \u2014 and a Democratic sweep is expected to add regulatory pressure on banks."
+   ],
+   "name": "Banks, broader financials & insurers",
+   "rank": 7,
+   "severity": "High",
+   "summary": "Earnings up, stocks de-rated, employment shrinking: the big banks posted strong Q3 profits, but investors fear 5%+ yields will curb dealmaking and lending, raise funding costs and eventually crack credit \u2014 while financial activities has shed 129,000 jobs since May 2025.",
+   "watch": "Q4 guidance on deposit costs, loan growth and provisions at the 28 Oct Fed hold \u2014 and any sign that higher-for-longer turns into actual credit losses."
+  },
+  {
+   "articles": [
+    {
+     "date": "2026-10-23",
+     "source": "Morningstar / Dow Jones Newswires",
+     "title": "Consumer Cos Down on Oil Price Fears \u2014 Consumer Roundup",
+     "url": "https://www.morningstar.com/news/dow-jones/202610239563/consumer-cos-down-on-oil-price-fears-consumer-roundup"
+    },
+    {
+     "date": "2026-10-20",
+     "source": "Zacks",
+     "title": "2 Mutual Funds to Boost Your Portfolio on Solid Jump in Retail Sales",
+     "url": "https://www.zacks.com/stock/news/3011315/2-mutual-funds-to-boost-your-portfolio-on-solid-jump-in-retail-sales"
+    },
+    {
+     "date": "2026-10",
+     "source": "Consumer Edge",
+     "title": "Consumer Spending Trends Q3 2026",
+     "url": "https://www.consumeredge.com/resources/insight-flash/consumer-spending-trends-heading-into-the-holiday-season/"
+    }
+   ],
+   "direction": "Negative",
+   "drivers": [
+    "Economy",
+    "Geopolitics / oil",
+    "Inflation & rates",
+    "Jobs",
+    "Politics"
+   ],
+   "evidence": [
+    "September retail sales rose +0.8% (vs. +0.3% expected), +6.3% y/y \u2014 but gas-station sales rose +6.4% in the month / +28.1% y/y at ~$4.33/gal, and the Census figures are not inflation-adjusted.",
+    "University of Michigan sentiment is hovering near record lows with gasoline at $4.29/gal; Kering (Gucci) fell \u221210%+ on 23 Oct and \u221240%+ YTD, and Deckers missed revenue targets.",
+    "Consumer Discretionary fell \u22126.99% in Q3; on 23 Oct Staples (XLP) \u22121.92% and Discretionary (XLY) \u22121.66% were two of the three worst sectors.",
+    "Consumer Edge's Q3 read: shoppers are trading toward resale, off-price and discount channels, luxury single-brand retailers softened after H1 price rises, and rising diesel threatens grocery/apparel prices into the holidays; Reuters/PMI economists warn the oil-inflation fallout is 'likely to slow consumer spending this quarter.'"
+   ],
+   "name": "Consumer discretionary, retail & staples",
+   "rank": 8,
+   "severity": "High",
+   "summary": "Spending is still growing in dollars but shrinking in real, discretionary terms: gasoline is doing much of the work in the retail-sales numbers, sentiment hovers near record lows, and shoppers are trading toward resale, off-price and discount channels into the holidays.",
+   "watch": "October consumer confidence (27 Oct), Visa/Coca-Cola earnings the same day, and holiday-season discounting \u2014 whether retailers absorb diesel/freight costs or pass them on."
+  },
+  {
+   "articles": [
+    {
+     "date": "2026-10-12",
+     "source": "Investigate Midwest",
+     "title": "Diesel prices add pressure on farmers during harvest",
+     "url": "https://www.investigatemidwest.org/diesel-prices-add-pressure-on-farmers-during-harvest/"
+    },
+    {
+     "date": "2026-10-21",
+     "source": "The Fiscal Times",
+     "title": "Trump Announces $8 Billion Aid Package for Farmers Hurt by Diesel Prices",
+     "url": "https://www.thefiscaltimes.com/2026/10/21/Trump-Announces-8-Billion-Aid-Package-Farmers-Hurt-Diesel-Prices"
+    },
+    {
+     "date": "2026-10-06",
+     "source": "Feedstuffs / Farm Progress",
+     "title": "Trump provides temporary diesel price relief",
+     "url": "https://www.feedstuffs.com/policy/trump-provides-temporary-diesel-price-relief"
+    }
+   ],
+   "direction": "Negative",
+   "drivers": [
+    "Geopolitics / oil",
+    "Trade / tariffs",
+    "Inflation & rates",
+    "Politics",
+    "Economy"
+   ],
+   "evidence": [
+    "National on-highway diesel was $6.20/gal on 5 Oct, +67% y/y (+71% in the Midwest), after an all-time high $6.53 in September (+88% since the start of the year) (EIA data via USDA).",
+    "Fertiliser is the second hit: the Middle East war has disrupted about one-third of world fertiliser supply, lifting prices sharply.",
+    "On 6 Oct an executive order let farmers use dyed (off-road) diesel on highways and deferred the 24.4c/gal federal excise tax through 31 Dec; several governors (NC, Kentucky) matched it.",
+    "On 21 Oct the administration announced an $8bn 'Harvest Fuel Relief' programme via USDA/Commodity Credit Corporation \u2014 on top of a $12bn package last December for tariff-related farm losses; Canada's 50%-tariff fight also directly hits farm machinery, packaging and border-state agriculture."
+   ],
+   "name": "Agriculture & food",
+   "rank": 9,
+   "severity": "High",
+   "summary": "A cost shock large enough to trigger emergency federal intervention: diesel at $6.20/gal (+67% y/y) lands at the most fuel-intensive moment of the farm year, fertiliser supply is disrupted, and the policy response \u2014 an excise-tax deferral plus an $8bn aid programme \u2014 itself proves the magnitude.",
+   "watch": "Whether diesel relief is extended past 31 Dec, fertiliser availability for spring planting, and how much of the cost reaches supermarket food prices."
+  },
+  {
+   "articles": [
+    {
+     "date": "2026-10",
+     "source": "MarketWatch",
+     "title": "Rising yields are quietly crashing the stock market's earlier winners of 2026",
+     "url": "https://www.marketwatch.com/story/rising-yields-are-quietly-crashing-the-stock-markets-earlier-winners-of-2026-a29f2863"
+    },
+    {
+     "date": "2026-10",
+     "source": "Oninvest",
+     "title": "Russell 2000 nears correction, down ~9% from August peak. What should investors do?",
+     "url": "https://en.oninvest.com/article/russell-2000-nears-correction-down-9-from-august-peak-what-should-investors-do"
+    },
+    {
+     "date": "2026-10-24",
+     "source": "JBizNews",
+     "title": "Wall Street Review: Small Caps Outperform as Bond Yields Ease",
+     "url": "https://jbiznews.com/wall-street-review-small-caps-outperform-as-bond-yields-ease/"
+    }
+   ],
+   "direction": "Negative",
+   "drivers": [
+    "Inflation & rates",
+    "Market",
+    "Economy",
+    "Jobs"
+   ],
+   "evidence": [
+    "The Russell 2000 set a record close of 3,068.42 on 14 Aug, then slid ~9% by early October and entered a technical correction (>11% from peak) on 14 Oct, surrendering its year-to-date lead over the S&P 500.",
+    "Bloomberg Intelligence data cited in coverage puts the median Russell 2000 stock ~25% below its 52-week high \u2014 far worse than the index.",
+    "Truist CIO Keith Lerner, quoted by MarketWatch: 'The first, and most important factor\u2026 has been rising long-term Treasury yields. The higher interest rates are biting \u2014 it's just that the technology sector has masked that.'",
+    "In the week to 23 Oct the Russell 2000 rose +2.0%, leading all major indexes, as yields eased below 5% and money rotated out of AI \u2014 confirming small caps are now trading as a levered play on the 10-year."
+   ],
+   "name": "Small-cap stocks (Russell 2000)",
+   "rank": 10,
+   "severity": "High",
+   "summary": "The purest listed proxy for the cost of money: small caps carry more floating-rate and bank debt and lack mega-cap free cash flow, so a 5%+ 10-year directly reprices their refinancing \u2014 driving a technical correction from the August record, and sharp relief rallies whenever yields ease.",
+   "watch": "The 10-year around 5% and regional-bank credit conditions \u2014 a sustained break below 5% is the bull case; a December Fed hike likely re-opens the correction."
+  }
+ ]
+}
