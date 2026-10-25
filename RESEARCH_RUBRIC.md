@@ -34,10 +34,15 @@ verdicts, not trade instructions.
 ## Verdict rule
 
 - **BUY** — no leg fails AND at least 4 legs pass.
-- **HOLD** — exactly one leg fails, or only 3 legs pass with no fatal
-  failure (quality or risk).
-- **SELL** (not justified) — two or more legs fail, or a fatal quality /
-  risk failure.
+- **HOLD** — exactly one leg fails, or only 3 legs pass with no leg
+  failing.
+- **SELL** (not justified) — two or more legs fail, or quality AND risk
+  both fail (the existential combination). A lone quality or risk fail
+  with the other hard leg passing is serious but survivable — HOLD.
+
+The flag is computed from the legs by `scripts/merge_verdicts.py`
+(`rubric_flag`); the researching agent proposes, the rubric decides, and
+any override is recorded on the verdict (`rule_override`).
 
 ## Output per stock
 

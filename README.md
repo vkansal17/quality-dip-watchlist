@@ -54,6 +54,34 @@ of published composites like Seeking Alpha Quant and the Zacks Rank:
   cost-of-sales line, since bank/insurer balance sheets break its
   leverage and liquidity signals.
 
+## The Sectors tab
+
+The third tab (`sectors.html`) maps the current environment: the six
+cross-cutting forces at work (an oil shock, inflation and rates, a
+strong-but-pricey economy, cooling jobs, tariffs, and the midterms) and
+the ten sectors they are hitting hardest — direction, severity, drivers,
+evidence and what to watch next for each, with source articles. The
+research-validation rubric below scores every candidate against this map.
+
+## The Validated Top 50 tab
+
+The fourth tab (`validated.html`) is the research-validated list. A
+dedicated research loop worked through a merged queue of both pools
+(the two Top 50s first, then the bench in pool-percentile order) and
+scored each name on five legs — Quality, Valuation, Sector, Risk and
+Catalyst — under `RESEARCH_RUBRIC.md`. The flag is computed from the
+legs, not asserted: **BUY** = no leg fails and at least four pass;
+**SELL** = two or more legs fail, or quality and risk both fail;
+otherwise **HOLD**. Only BUY names enter the list, in queue order.
+
+First edition (researched 2026-10-25, prices as of the Fri 2026-10-23
+close): 180 names researched — 52 BUY, 125 HOLD, 3 SELL — filling all
+50 slots, with two further BUY names (TRMB, BKR) as first reserves.
+Every validated name's detail page carries its full verdict card:
+per-leg evidence, key risks, what would change the verdict, and
+sources. These are dated research verdicts with evidence, not trade
+instructions, entries or targets.
+
 ## Run it yourself
 
 ```bash
