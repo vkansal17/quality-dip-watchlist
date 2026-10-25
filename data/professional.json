@@ -1,10 +1,11 @@
 {
  "meta": {
   "asof": "2026-10-23",
-  "generated": "2026-10-25 16:58",
+  "generated": "2026-10-25 17:26",
   "universe_n": 800,
   "screened": 800,
-  "candidates": 337
+  "candidates": 337,
+  "spy_mom20": -1.4753361305505863
  },
  "rows": [
   {
@@ -38,13 +39,13 @@
    "rs12": null,
    "factors": {
     "Profitability": 88.24046942682403,
-    "Revisions": 85.26170798898072,
+    "Revisions": 85.3305785123967,
     "Value": 67.80281788266076,
     "Safety": 78.63370884025473,
     "Growth": 75.78275496893698,
     "Momentum": null
    },
-   "composite": 79.636247689144,
+   "composite": 79.6515522499031,
    "veto": null,
    "grade": "A+",
    "rank": 1,
@@ -85,13 +86,13 @@
    "rs12": null,
    "factors": {
     "Profitability": 69.42047291148867,
-    "Revisions": 82.09366391184574,
+    "Revisions": 82.1625344352617,
     "Value": 86.0272484891757,
     "Safety": 75.56674619584665,
     "Growth": 78.37575370698892,
     "Momentum": null
    },
-   "composite": 78.24505159113038,
+   "composite": 78.26035615188948,
    "veto": null,
    "grade": "A+",
    "rank": 2,
@@ -649,13 +650,13 @@
    "rs12": null,
    "factors": {
     "Profitability": 79.16459316854926,
-    "Revisions": 93.31955922865015,
+    "Revisions": 93.38842975206612,
     "Value": 24.85638291634241,
     "Safety": 80.51449420156985,
     "Growth": 81.3368610709822,
     "Momentum": null
    },
-   "composite": 70.7804055506028,
+   "composite": 70.79571011136188,
    "veto": null,
    "grade": "A",
    "rank": 14,
@@ -1730,13 +1731,13 @@
    "rs12": null,
    "factors": {
     "Profitability": 60.118380584770904,
-    "Revisions": 90.22038567493112,
+    "Revisions": 90.2892561983471,
     "Value": 39.835518018340366,
     "Safety": 76.73516391267212,
     "Growth": 74.71030709898609,
     "Momentum": null
    },
-   "composite": 67.17759886341433,
+   "composite": 67.19290342417345,
    "veto": null,
    "grade": "B+",
    "rank": 37,
@@ -1871,13 +1872,13 @@
    "rs12": null,
    "factors": {
     "Profitability": 70.1704491436798,
-    "Revisions": 72.58953168044079,
+    "Revisions": 72.65840220385675,
     "Value": 94.29565355960965,
     "Safety": 20.79444744822398,
     "Growth": 64.05006321612989,
     "Momentum": null
    },
-   "composite": 66.95579021661125,
+   "composite": 66.97109477737035,
    "veto": null,
    "grade": "B+",
    "rank": 40,
@@ -2341,13 +2342,13 @@
    "rs12": null,
    "factors": {
     "Profitability": 36.46537363564422,
-    "Revisions": 95.3168044077135,
+    "Revisions": 95.38567493112947,
     "Value": null,
     "Safety": 46.652581552614464,
     "Growth": 93.49776949741322,
     "Momentum": null
    },
-   "composite": 66.0547719270576,
+   "composite": 66.07444921946217,
    "veto": null,
    "grade": "B+",
    "rank": 50,

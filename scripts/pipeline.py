@@ -799,21 +799,30 @@ def kill_criteria(r, k):
 # ---------------------------------------------------------------------------
 
 CSS = """
-:root{--bg:#0b1220;--card:#111a2e;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171}
-*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt)}
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
 a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
-.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 60px}
-h1{font-size:26px;margin:0 0 4px} .sub{color:var(--mut);font-size:13.5px;margin-bottom:18px;line-height:1.55}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
 .card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
-.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
-th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:#0e1730}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
 th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
 tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
 .sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
 .ind{color:var(--mut)} .muted{color:var(--mut)}
 .up{color:var(--up)} .dn{color:var(--dn)}
@@ -823,21 +832,39 @@ tr:hover td{background:#14213d}
 .range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
 .flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
 .star{color:#fbbf24}
-.tabs{display:flex;gap:8px;margin:0 0 16px}
-.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card)}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
 .tab:hover{text-decoration:none;color:var(--txt)}
 .tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
 .fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
 .biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
 ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
-.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
-.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
-section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
 section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
-.bigchart{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
 .price{font-size:30px;font-weight:800}
-@media(max-width:900px){.nm{max-width:110px}}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
 """
 
 
@@ -918,32 +945,31 @@ def rationale(t, k, notes):
     return " ".join(bits)
 
 
-TABS_DIP = ('<div class="tabs"><a class="tab active" href="index.html">📉 Quality-Dip Top 50</a>'
-            '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
-            '<a class="tab" href="sectors.html">🌍 Sectors</a>'
-            '<a class="tab" href="validated.html">🏆 Validated Top 50</a>'
-            '<a class="tab" href="macro.html">🌐 Macro & Themes</a></div>')
-TABS_PRO = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
-            '<a class="tab active" href="pro.html">🏦 Professional Top 50</a>'
-            '<a class="tab" href="sectors.html">🌍 Sectors</a>'
-            '<a class="tab" href="validated.html">🏆 Validated Top 50</a>'
-            '<a class="tab" href="macro.html">🌐 Macro & Themes</a></div>')
-TABS_SECTORS = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
-                '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
-                '<a class="tab active" href="sectors.html">🌍 Sectors</a>'
-                '<a class="tab" href="validated.html">🏆 Validated Top 50</a>'
-            '<a class="tab" href="macro.html">🌐 Macro & Themes</a></div>')
-TABS_VALIDATED = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
-                  '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
-                  '<a class="tab" href="sectors.html">🌍 Sectors</a>'
-                  '<a class="tab active" href="validated.html">🏆 Validated Top 50</a>'
-                  '<a class="tab" href="macro.html">🌐 Macro & Themes</a></div>')
+TAB_DEFS = [("dip", "index.html", "📉 Quality-Dip Top 50"),
+            ("pro", "pro.html", "🏦 Professional Top 50"),
+            ("sectors", "sectors.html", "🌍 Sectors"),
+            ("validated", "validated.html", "🏆 Validated Top 50"),
+            ("macro", "macro.html", "🌐 Macro & Themes")]
 
-TABS_MACRO = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
-              '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
-              '<a class="tab" href="sectors.html">🌍 Sectors</a>'
-              '<a class="tab" href="validated.html">🏆 Validated Top 50</a>'
-              '<a class="tab active" href="macro.html">🌐 Macro & Themes</a></div>')
+
+def tabs_html(active, prefix=""):
+    """Shared shell: brand topbar + sticky tab nav, identical on every page.
+    Detail pages live under stock/ and pass prefix='../'."""
+    tabs = "".join(
+        f'<a class="tab{" active" if key == active else ""}" '
+        f'href="{prefix}{href}">{label}</a>'
+        for key, href, label in TAB_DEFS)
+    return (f'<div class="topbar"><a class="brand" href="{prefix}index.html">'
+            f'◆ Quality-Dip Watchlist</a>'
+            f'<span class="brandsub">Five lenses · one universe of the most-traded US stocks</span></div>'
+            f'<div class="navwrap"><div class="tabs">{tabs}</div></div>')
+
+
+TABS_DIP = tabs_html("dip")
+TABS_PRO = tabs_html("pro")
+TABS_SECTORS = tabs_html("sectors")
+TABS_VALIDATED = tabs_html("validated")
+TABS_MACRO = tabs_html("macro")
 
 
 def pro_section(t, prec, k, rank=None):
@@ -1022,19 +1048,160 @@ def verdict_section(t, verdicts):
         f"{lv.get('v', '')}</span></td><td>{lv.get('note', '')}</td></tr>"
         for ln, lv in legs.items())
     risks = "".join(f"<li>{x}</li>" for x in (v.get("risks") or []))
-    srcs = " · ".join(f"<a href='{s.get('url', '')}' target='_blank' rel='noopener'>{s.get('title', 'source')}</a>"
-                       for s in (v.get("sources") or []))
-    return (f"<section><h2>🔬 Research-agent verdict</h2>"
+    def _dom(u):
+        m = re.search(r"://([^/]+)", u or "")
+        return m.group(1).replace("www.", "") if m else ""
+    srcs = "".join(
+        f"<li><a href='{s.get('url', '')}' target='_blank' rel='noopener'>"
+        f"{s.get('title', 'source')}</a> "
+        f"<span class='dom'>{_dom(s.get('url', ''))}</span></li>"
+        for s in (v.get("sources") or []))
+    return (f"<section><h2>🔬 Research verdict</h2>"
             f"<p><span class='chip {cls}' style='font-size:15px'>{flag}</span>"
+            f"{audit_badge(t)}"
             f" <span class='muted'>deep-researched {v.get('date', '')} · {v.get('origin', '')}</span></p>"
             f"<p>{v.get('summary', '')}</p>"
-            f"<table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead>"
-            f"<tbody>{leg_rows}</tbody></table>"
+            f"<div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead>"
+            f"<tbody>{leg_rows}</tbody></table></div>"
             f"<p style='margin-top:10px'><b>Key risks:</b></p><ul>{risks}</ul>"
             f"<p><b>What would change this verdict:</b> {v.get('what_changes', '')}</p>"
-            f"<p class='muted'>Sources: {srcs}</p>"
+            f"<p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p>"
+            f"<ul class='srcs'>{srcs}</ul>"
             f"<p class='muted'>A structured research verdict from public sources, "
             f"not a trade instruction.</p></section>")
+
+
+# ---------------------------------------------------------------------------
+# Shared UI helpers (design system v2): canonical KPI tiles, evidence bits
+# ---------------------------------------------------------------------------
+
+_CROSSCHECK = None
+
+
+def load_crosscheck():
+    """Web/Gemini evidence-audit results, keyed 'store:ticker' → entry."""
+    global _CROSSCHECK
+    if _CROSSCHECK is None:
+        _CROSSCHECK = {}
+        for fn in ("web_crosscheck.json", "gemini_crosscheck.json"):
+            p = os.path.join(DATA, fn)
+            if os.path.exists(p):
+                try:
+                    raw = json.load(open(p))
+                except Exception:
+                    continue
+                items = raw.items() if isinstance(raw, dict) else (
+                    (f"{e.get('store')}:{e.get('ticker')}", e)
+                    for e in raw if isinstance(e, dict))
+                for key, e in items:
+                    if isinstance(e, dict) and e.get("overall"):
+                        _CROSSCHECK.setdefault(key, e)
+    return _CROSSCHECK
+
+
+def audit_badge(t):
+    """Cross-check badge for a verdict card, if it was evidence-audited."""
+    cc = load_crosscheck()
+    for store in ("validated", "theme"):
+        e = cc.get(f"{store}:{t}")
+        if e:
+            overall = e.get("overall", "")
+            return (f' <span class="audit" title="Every load-bearing figure on this '
+                    f'card was checked against its cited sources in the 2026-10-25 '
+                    f'evidence audit (data/web_crosscheck.json). Overall: {overall}.">'
+                    f'✓ evidence cross-checked · {overall}</span>')
+    return ""
+
+
+def legs_mini(v):
+    """Five rubric legs as dots: pass / mixed / fail, in canonical order."""
+    legs = (v or {}).get("legs") or {}
+    order = ["quality", "valuation", "sector", "risk", "catalyst"]
+    dots = "".join(
+        f'<span class="legdot {legs.get(ln, {}).get("v", "na")}" '
+        f'title="{ln}: {legs.get(ln, {}).get("v", "—")}"></span>'
+        for ln in order)
+    return f'<span class="legs">{dots}</span>'
+
+
+def _tile(v, l, cls=""):
+    return f'<div class="kpi"><div class="v {cls}">{v}</div><div class="l">{l}</div></div>'
+
+
+def kpi_tiles(k, rs20=None, pe=None, earn=None, extra=""):
+    """The canonical KPI band used on EVERY stock detail page, in the same
+    order: position vs 52w range, RSI, momentum, relative strength, 1Y,
+    volatility, P/E, next earnings — then lens-specific tiles (extra)."""
+    t = []
+    t.append(_tile(f"{k['off_high_pct']:.1f}%",
+                   f"vs 52w high (${k['high52']:,.2f})",
+                   "dn" if k["off_high_pct"] < 0 else "up"))
+    t.append(_tile(f"{k['range_pos']:.0f}%",
+                   f"of 52w range (low ${k['low52']:,.2f})"))
+    t.append(_tile(f"{k['rsi14']:.0f}", "RSI (14)"))
+    t.append(_tile(f"{k['mom20_pct']:+.1f}%", "Momentum (20d)",
+                   "up" if k["mom20_pct"] >= 0 else "dn"))
+    if rs20 is not None:
+        t.append(_tile(f"{rs20:+.1f}%", "Rel. strength vs S&amp;P 500 (20d)",
+                       "up" if rs20 >= 0 else "dn"))
+    t.append(_tile(f"{k['perf1y_pct']:+.1f}%", "Performance (1y)",
+                   "up" if k["perf1y_pct"] >= 0 else "dn"))
+    t.append(_tile(f"{k['vol30']:.1f}%", "Volatility (30d, ann.)"))
+    t.append(_tile(f"{pe}" if pe else "—", "P/E"))
+    t.append(_tile(f"{earn or '—'}", "Next earnings"))
+    return '<div class="kpis">' + "".join(t) + extra + "</div>"
+
+
+def glossary_html():
+    return """<details class="gloss"><summary>How to read the KPIs — the same definitions on every tab</summary>
+<ul>
+<li><b>vs 52w high / 52w range</b> — how far the price sits below its 52-week high, and where it sits between its 52-week low (0%) and high (100%).</li>
+<li><b>RSI (14)</b> — 14-day Wilder relative strength index. Below ~30 reads washed-out, above ~70 extended; this screen wants neither freefall nor euphoria.</li>
+<li><b>Momentum (20d)</b> — the stock's own 20-day price change. <b>Rel. strength (20d)</b> — that minus the S&amp;P 500's 20-day change: positive means it is beating the market short-term.</li>
+<li><b>VPT (20d)</b> — change in the Volume-Price Trend line over 20 days, normalized: positive means volume has been flowing in on up days (accumulation).</li>
+<li><b>P/E</b> — price ÷ SEC-reported diluted EPS (TTM) where computable; blank where earnings are negative or filings don't map cleanly. <b>ROIC</b> — after-tax operating income ÷ (debt + equity − cash) from SEC filings; less meaningful for banks/insurers.</li>
+<li><b>Professional factors</b> — percentile ranks (0–100) across the graded pool, blended into a letter grade: Profitability 22%, Revisions 20% (reported EPS-surprise history — the free proxy for analyst revision momentum), Value 20%, Safety 15% (incl. Piotroski F-score), Growth 13%, Momentum 10%. <b>F-score</b> — Piotroski's 9 filing signals. <b>Net debt/EBITDA</b> and <b>FCF yield</b> use industrial-company definitions — read cautiously for financials.</li>
+<li><b>Research verdict legs</b> — every researched card is scored on five legs (Quality · Valuation · Sector · Risk · Catalyst), each pass / mixed / fail with cited evidence. BUY requires no leg failing and at least four passing. The dots next to a verdict show the five legs in that order.</li>
+<li><b>Analyst consensus / targets</b> — aggregator figures (TipRanks / MarketBeat / StockAnalysis), curated: the crowd's opinion, not a forecast. ⚠ marks a name whose consensus or target contradicts the thesis.</li>
+</ul>
+<p>Research and education only — not investment advice.</p></details>"""
+
+
+def dip_comment(r, c, n):
+    """One-line evidence comment for a Quality-Dip row, from its own data."""
+    bits = [f"{abs(r['off_high_pct']):.0f}% below its 52w high"]
+    if r["mom20_pct"] >= 0:
+        bits.append(f"fall has stabilized (20d {r['mom20_pct']:+.1f}%)")
+    else:
+        bits.append(f"still easing (20d {r['mom20_pct']:+.1f}%), inside the not-in-freefall limit")
+    bits.append(f"RSI {r['rsi14']:.0f}")
+    if n:
+        d = (n.get("dip") or "").strip()
+        if d:
+            bits.append(d.split(". ")[0].rstrip(".") + ".")
+    elif c.get("label"):
+        bits.append(f"consensus {c['label']}"
+                    + (f", avg target ${c['target']:,.0f}" if c.get("target") else ""))
+    return " · ".join(bits)
+
+
+def pro_comment(r):
+    """One-line evidence comment for a Professional row: strongest/weakest
+    factor, F-score, and the headline balance-sheet read."""
+    facs = [(fn, p) for fn, p in (r.get("factors") or {}).items() if p is not None]
+    bits = []
+    if facs:
+        hi = max(facs, key=lambda x: x[1])
+        lo = min(facs, key=lambda x: x[1])
+        bits.append(f"strongest: {hi[0]} ({_grade(hi[1])})")
+        bits.append(f"weakest: {lo[0]} ({_grade(lo[1])})")
+    if r.get("fscore") is not None:
+        bits.append(f"F-score {r['fscore']}/9")
+    if r.get("nd_ebitda") is not None:
+        bits.append(f"net debt {r['nd_ebitda']:.1f}× EBITDA")
+    if r.get("surp_mean") is not None:
+        bits.append(f"EPS surprises avg {r['surp_mean']:+.1f}% over the last {r.get('surp_n', 4)}")
+    return " · ".join(bits)
 
 
 def build_site(rows, prev_ranks, meta, pro=None, pro_ranks=None):
@@ -1068,7 +1235,7 @@ def build_site(rows, prev_ranks, meta, pro=None, pro_ranks=None):
   <td>{r['rank']}</td>
   <td><a class="sym" href="stock/{t}.html">{t}</a>{star}<span class="nm">{clean_company_name(r['company'])}</span></td>
   <td class="ind">{INDUSTRY.get(t, '')}</td>
-  <td class="num">{fr}</td>
+  <td class="num hide-m">{fr}</td>
   <td class="num">${r['last']:,.2f}</td>
   <td class="num {'up' if r['day_pct'] >= 0 else 'dn'}">{r['day_pct']:+.2f}%</td>
   <td class="num">{r['rsi14']:.0f}</td>
@@ -1078,12 +1245,13 @@ def build_site(rows, prev_ranks, meta, pro=None, pro_ranks=None):
   <td><span class="range"><span class="fill" style="width:{r['range_pos']}%"></span></span>
       <span class="dn">{r['off_high_pct']:.1f}%</span></td>
   <td>{spark_svg(r['spark'])}</td>
-  <td class="num">{r['vol10']:.1f}% / {r['vol30']:.1f}%</td>
+  <td class="num hide-m">{r['vol10']:.1f}% / {r['vol30']:.1f}%</td>
   <td>{chip_for(label)}{flag}{f"<br><span class='muted'>avg ${tgt:,.0f}</span>" if tgt else ""}</td>
   <td class="num">{r['earnings'] or '<span class="muted">—</span>'}</td>
   <td class="num">{r['pe'] if r['pe'] else '<span class="muted">—</span>'}</td>
   <td class="num">{('%.1f%%' % r['roic']) if r['roic'] is not None else '<span class="muted">—</span>'}</td>
   <td class="num {'up' if r['perf1y_pct'] >= 0 else 'dn'}">{r['perf1y_pct']:+.1f}%</td>
+  <td class="take">{dip_comment(r, c, notes.get(t))}</td>
 </tr>""")
     inds = sorted({INDUSTRY.get(r["ticker"], "") for r in rows} - {""})
     options = "".join(f'<option value="{i}">{i}</option>' for i in inds)
@@ -1113,15 +1281,16 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <input id="q" type="text" placeholder="Search symbol or company…" size="28">
   <select id="ind"><option value="">All industries</option>{options}</select>
 </div>
-<table id="t"><thead><tr>
-<th>#</th><th>Symbol</th><th>Industry</th><th class="num">Fortune 500</th><th class="num">Last</th>
+<div class="tablewrap"><table id="t"><thead><tr>
+<th>#</th><th>Symbol</th><th>Industry</th><th class="num hide-m">Fortune 500</th><th class="num">Last</th>
 <th class="num">% Change</th><th class="num">RSI</th><th class="num">VPT 20d</th><th class="num">Rel Str 20d</th>
 <th class="num">vs Prev</th><th>52-week position / off high</th>
-<th>Last 3 months</th><th class="num">Vol 10d / 30d</th><th>Analyst consensus</th>
+<th>Last 3 months</th><th class="num hide-m">Vol 10d / 30d</th><th>Analyst consensus</th>
 <th class="num">Earnings</th><th class="num">P/E</th><th class="num">ROIC</th><th class="num">1Y perf</th>
+<th>Commentary — why it's here</th>
 </tr></thead><tbody>
 {chr(10).join(body)}
-</tbody></table>
+</tbody></table></div>
 <p class="foot"><b>How to read this:</b> the 52-week bar shows where the price sits between its low and high;
 "off high" is the size of the dip. Volatility is annualized from daily closes. P/E uses SEC-reported
 diluted EPS (TTM) where computable — blank where earnings are negative or filings don't map cleanly.
@@ -1137,6 +1306,7 @@ Fortune 500 ranks are Fortune's official 2026 list (by revenue); "—" = not on 
 below the revenue cutoff, or unclassified). Researched exclusions: NKE and TSLA are deliberately kept
 off — their dips trace to deteriorating or polarized business stories, not situations.
 <b>Research and education only — not investment advice.</b></p>
+{glossary_html()}
 </div>
 <script>
 const q=document.getElementById('q'),ind=document.getElementById('ind');
@@ -1184,31 +1354,26 @@ rows.forEach(r=>tb.appendChild(r));}});}});
         vsec = verdict_section(t, verdicts) or verdict_section(t, load_theme_verdicts())
         if vsec:
             secs.append(vsec)
+        tiles = kpi_tiles(r, rs20=r["rs20"], pe=r["pe"], earn=r["earnings"], extra=(
+            _tile(f"{r['vpt20']:+.0f}%", "VPT trend (20d)",
+                  "up" if r["vpt20"] >= 0 else "dn")
+            + _tile(f"{('%.1f%%' % r['roic']) if r['roic'] is not None else '—'}",
+                    "ROIC (SEC filings)")
+            + _tile(f"${r['adv_m']:,.0f}M", "Avg daily $ volume (20d)")))
         ys = yahoo_symbol(t)
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{t} — {clean_company_name(r['company'])} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
 <div class="wrap">
-<p><a href="../index.html">← Back to the Top 50</a></p>
+{tabs_html("dip", "../")}
+<p class="crumb"><a href="../index.html">← Back to the Quality-Dip Top 50</a></p>
 <h1>{t} — {clean_company_name(r['company'])}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
 · Rank #{r['rank']} on today's list</div>
 <div><span class="price">${r['last']:,.2f}</span>
 <span class="{'up' if r['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{r['day_pct']:+.2f}% today</span>
 <span class="muted"> · as of {asof} close</span></div>
-<div class="kpis">
-  <div class="kpi"><div class="v">{r['off_high_pct']:.1f}%</div><div class="l">Below 52w high (${r['high52']:,.2f})</div></div>
-  <div class="kpi"><div class="v">{r['range_pos']:.0f}%</div><div class="l">Of 52w range (low ${r['low52']:,.2f})</div></div>
-  <div class="kpi"><div class="v">{r['rsi14']:.0f}</div><div class="l">RSI (14)</div></div>
-  <div class="kpi"><div class="v">{r['mom20_pct']:+.1f}%</div><div class="l">20-day momentum</div></div>
-  <div class="kpi"><div class="v {'up' if r['perf1y_pct'] >= 0 else 'dn'}">{r['perf1y_pct']:+.1f}%</div><div class="l">1-year performance</div></div>
-  <div class="kpi"><div class="v">{r['vol30']:.1f}%</div><div class="l">Volatility (30d, ann.)</div></div>
-  <div class="kpi"><div class="v">{r['pe'] if r['pe'] else '—'}</div><div class="l">P/E (SEC TTM EPS)</div></div>
-  <div class="kpi"><div class="v">{('%.1f%%' % r['roic']) if r['roic'] is not None else '—'}</div><div class="l">ROIC (SEC filings)</div></div>
-  <div class="kpi"><div class="v {'up' if r['vpt20'] >= 0 else 'dn'}">{r['vpt20']:+.0f}%</div><div class="l">VPT trend (20d)</div></div>
-  <div class="kpi"><div class="v {'up' if r['rs20'] >= 0 else 'dn'}">{r['rs20']:+.1f}%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div>
-  <div class="kpi"><div class="v">{r['earnings'] or '—'}</div><div class="l">Next earnings</div></div>
-</div>
+{tiles}
 <div class="bigchart">{chart_svg(r['chart'], r['high52'], r['low52'])}
 <div class="muted" style="font-size:12px">One year of daily closes.</div></div>
 {chr(10).join(secs)}
@@ -1262,6 +1427,7 @@ def build_pro_page(pro_rows, prev_pro_ranks, meta, n_pool, n_vetoed):
   <td class="num">${r['last']:,.2f}</td>
   <td class="num">{mv}</td>
   <td class="num">{r['earnings'] or '<span class="muted">—</span>'}</td>
+  <td class="take">{pro_comment(r)}</td>
 </tr>""")
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1277,14 +1443,14 @@ Safety (15%), Growth (13%), Momentum (10%). Veto grades remove names outright
 ({n_vetoed} vetoed today: Piotroski F-score ≤ 3, extreme leverage with thin coverage,
 persistent EPS misses, or cash-burn with dilution). Prices as of the <b>{asof}</b> close.
 Click any symbol for its factor breakdown and pre-written exit rules.</div>
-<table id="t"><thead><tr>
+<div class="tablewrap"><table id="t"><thead><tr>
 <th>#</th><th>Symbol</th><th>Industry</th><th>Grade</th><th>Factors (Prof · Rev · Val · Safe · Grow · Mom)</th>
 <th class="num">F-score</th><th class="num">FCF yield</th><th class="num">Net debt/EBITDA</th>
 <th class="num">EPS surprise (last 4)</th><th class="num">Momentum 12-1</th><th class="num">P/E</th>
-<th class="num">Last</th><th class="num">vs Prev</th><th class="num">Earnings</th>
+<th class="num">Last</th><th class="num">vs Prev</th><th class="num">Earnings</th><th>Commentary — the read</th>
 </tr></thead><tbody>
 {chr(10).join(body)}
-</tbody></table>
+</tbody></table></div>
 <p class="foot"><b>How to read this:</b> the composite grade is a percentile blend, not a recommendation.
 <b>Revisions</b> uses reported EPS-surprise history (mean surprise and beat rate over the last four
 quarters) — the free proxy for analyst revision momentum; clean revision-breadth history is paid data,
@@ -1295,6 +1461,7 @@ and price/sales. Balance-sheet factors use industrial-company definitions — re
 banks, insurers and REITs, whose filings structure debt differently; the F-score veto therefore
 applies only to companies that report a cost-of-sales line. Fundamentals are the latest
 reported fiscal year from SEC EDGAR. <b>Research and education only — not investment advice.</b></p>
+{glossary_html()}
 </div></body></html>"""
     with open(os.path.join(ROOT, "pro.html"), "w") as fh:
         fh.write(html)
@@ -1322,27 +1489,27 @@ def build_pro_details(pro_rows, dip_tickers, meta):
                 f"<section><h2>Analyst consensus</h2><p>{chip_for(c.get('label', ''))}"
                 f"{f' · average target ${c['target']:,.0f}' if c.get('target') else ''}</p>"
                 f"<p>{c.get('note', '')}</p></section>")
+        tiles = kpi_tiles(k, rs20=k["mom20_pct"] - meta.get("spy_mom20", 0.0),
+                          pe=r["pe"], earn=r["earnings"], extra=(
+            _tile(r["grade"], "Professional composite grade")
+            + _tile(f"{r['fscore']}/9" if r["fscore"] is not None else "—",
+                    "Piotroski F-score")
+            + _tile(f"{k['vpt20']:+.0f}%", "VPT trend (20d)",
+                    "up" if k["vpt20"] >= 0 else "dn")))
         ys = yahoo_symbol(t)
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{t} — {clean_company_name(r['company'])} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
 <div class="wrap">
-{TABS_PRO}
-<p><a href="../pro.html">← Back to the Professional Top 50</a></p>
+{tabs_html("pro", "../")}
+<p class="crumb"><a href="../pro.html">← Back to the Professional Top 50</a></p>
 <h1>{t} — {clean_company_name(r['company'])}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
 · Professional rank #{r['rank']} · composite grade {r['grade']}</div>
 <div><span class="price">${k['last']:,.2f}</span>
 <span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
 <span class="muted"> · as of {asof} close</span></div>
-<div class="kpis">
-  <div class="kpi"><div class="v">{k['off_high_pct']:.1f}%</div><div class="l">Below 52w high (${k['high52']:,.2f})</div></div>
-  <div class="kpi"><div class="v">{k['rsi14']:.0f}</div><div class="l">RSI (14)</div></div>
-  <div class="kpi"><div class="v {'up' if k['perf1y_pct'] >= 0 else 'dn'}">{k['perf1y_pct']:+.1f}%</div><div class="l">1-year performance</div></div>
-  <div class="kpi"><div class="v">{k['vol30']:.1f}%</div><div class="l">Volatility (30d, ann.)</div></div>
-  <div class="kpi"><div class="v">{r['pe'] if r['pe'] else '—'}</div><div class="l">P/E</div></div>
-  <div class="kpi"><div class="v">{r['earnings'] or '—'}</div><div class="l">Next earnings</div></div>
-</div>
+{tiles}
 <div class="bigchart">{chart_svg(k['chart'], k['high52'], k['low52'])}
 <div class="muted" style="font-size:12px">One year of daily closes.</div></div>
 {chr(10).join(secs)}
@@ -1393,15 +1560,22 @@ def build_sectors_page(meta):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sectors — Top 10 most impacted · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
 <div class="wrap">
+{TABS_SECTORS}
 <h1>🌍 Top 10 areas most impacted right now</h1>
 <div class="sub">Ranked by magnitude of impact from the current economic, market, trade, inflation,
 jobs, political and geopolitical environment · research snapshot as of {d.get('asof', meta['asof'])}</div>
-{TABS_SECTORS}
+<div class="cards">
+  <div class="card"><div class="n">{len(d.get('forces', []))}</div><div class="l">Cross-cutting forces</div></div>
+  <div class="card"><div class="n">{len(d.get('sectors', []))}</div><div class="l">Areas ranked by impact</div></div>
+  <div class="card"><div class="n">{sum(1 for s in d.get('sectors', []) if s.get('direction') == 'Negative')}</div><div class="l">Facing headwinds</div></div>
+  <div class="card"><div class="n">{sum(1 for s in d.get('sectors', []) if s.get('direction') == 'Positive')}</div><div class="l">Getting tailwinds</div></div>
+  <div class="card"><div class="n">{len(d.get('near_misses', []))}</div><div class="l">Near misses</div></div>
+</div>
 <section><h2>The six cross-cutting forces</h2>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px">{forces}</div></section>
 {chr(10).join(cards)}
 <section><h2>Near misses</h2>
-<table><thead><tr><th>Area</th><th>Why it missed the Top 10</th></tr></thead><tbody>{nm}</tbody></table>
+<div class="tablewrap"><table><thead><tr><th>Area</th><th>Why it missed the Top 10</th></tr></thead><tbody>{nm}</tbody></table></div>
 <p class="muted">Compiled from wire and major-press reporting (Reuters, Bloomberg, AP and others,
 linked per sector). A snapshot, refreshed by research rather than by the daily screener.
 Research and education only — not investment advice.</p></section>
@@ -1410,17 +1584,20 @@ Research and education only — not investment advice.</p></section>
         fh.write(html)
 
 
-def build_validated_page(meta, verdicts):
+def build_validated_page(meta, verdicts, kpi_ix=None):
     vs = verdicts.get("verdicts") or {}
     final = verdicts.get("final50") or []
     pools_p = os.path.join(DATA, "pools.json")
     pools = json.load(open(pools_p)) if os.path.exists(pools_p) else {"dip": [], "pro": []}
     dip_ix = {r["ticker"]: r for r in pools.get("dip", [])}
     pro_ix = {r["ticker"]: r for r in pools.get("pro", [])}
+    kpi_ix = kpi_ix or {}
+    cc = load_crosscheck()
     counts = {"BUY": 0, "HOLD": 0, "SELL": 0}
     for v in vs.values():
         if v.get("flag") in counts:
             counts[v["flag"]] += 1
+    n_checked = sum(1 for t in final if f"validated:{t}" in cc or f"theme:{t}" in cc)
     rows = []
     for i, t in enumerate(final, 1):
         v = vs.get(t, {})
@@ -1431,33 +1608,64 @@ def build_validated_page(meta, verdicts):
         if pr:
             origin.append(f"Pro #{pr['rank']} ({pr.get('grade', '')})")
         src = d or pr or {}
+        k = kpi_ix.get(t, {})
+        last = k.get("last", src.get("last", 0))
+        off = k.get("off_high_pct", src.get("off_high_pct", 0))
+        rp = k.get("range_pos")
+        range_html = (f"<span class='range'><span class='fill' style='width:{rp}%'></span></span> "
+                      if rp is not None else "")
+        day = k.get("day_pct")
+        day_html = (f"<span class='{'up' if day >= 0 else 'dn'}'>{day:+.2f}%</span>"
+                    if day is not None else '<span class="muted">—</span>')
+        rsi = k.get("rsi14")
+        rs = k.get("rs20")
+        ev = (f"<div class='evline'>{len(v.get('sources') or [])} sources cited · "
+              f"researched {v.get('date', '')}{audit_badge(t)}</div>")
+        rsi_html = f"{rsi:.0f}" if rsi is not None else "—"
+        rs_html = (f"<span class='{'up' if rs >= 0 else 'dn'}'>{rs:+.1f}%</span>"
+                   if rs is not None else "—")
+        earn_html = k.get("earnings") or '<span class="muted">—</span>'
         rows.append(
-            f"<tr><td>{i}</td><td><a href='stock/{t}.html'><b>{t}</b></a></td>"
-            f"<td>{clean_company_name(UNIVERSE_NAME.get(t, t))}</td>"
-            f"<td><span class='chip sb'>BUY</span></td>"
+            f"<tr><td>{i}</td>"
+            f"<td><a class='sym' href='stock/{t}.html'>{t}</a>"
+            f"<span class='nm'>{clean_company_name(UNIVERSE_NAME.get(t, t))}</span></td>"
+            f"<td><span class='chip sb'>BUY</span> {legs_mini(v)}</td>"
             f"<td>{' · '.join(origin)}</td>"
-            f"<td class='num'>${src.get('last', 0):,.2f}</td>"
-            f"<td class='num'>{src.get('off_high_pct', 0):.1f}%</td>"
-            f"<td>{v.get('summary', '')}</td></tr>")
-    status = (f"<p>Research complete: {len(final)} names passed the research rubric as BUY. "
+            f"<td class='num'>${last:,.2f}</td>"
+            f"<td class='num'>{day_html}</td>"
+            f"<td>{range_html}<span class='dn'>{off:.1f}%</span></td>"
+            f"<td class='num'>{rsi_html}</td>"
+            f"<td class='num'>{rs_html}</td>"
+            f"<td class='num'>{earn_html}</td>"
+            f"<td class='sum'>{v.get('summary', '')}{ev}</td></tr>")
+    status = (f"Research complete: {len(final)} names passed the research rubric as BUY. "
               f"Researched in total: {len(vs)} ({counts['BUY']} buy · {counts['HOLD']} hold · "
-              f"{counts['SELL']} sell/not-justified).</p>" if len(final) >= 50 else
-              f"<p>Research in progress: {len(vs)} names researched so far "
+              f"{counts['SELL']} sell/not-justified)." if len(final) >= 50 else
+              f"Research in progress: {len(vs)} names researched so far "
               f"({counts['BUY']} buy · {counts['HOLD']} hold · {counts['SELL']} sell/not-justified); "
               f"{len(final)} buys validated. The list below grows as the research loop works "
-              f"through the merged candidate queue.</p>")
+              f"through the merged candidate queue.")
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Validated Top 50 · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
 <div class="wrap">
+{TABS_VALIDATED}
 <h1>🏆 Research-Validated Top 50</h1>
 <div class="sub">One merged list from both screens (Quality-Dip + Professional), where every name
-also passed a dedicated deep-research pass · prices as of {meta['asof']} close</div>
-{TABS_VALIDATED}
+also passed a dedicated deep-research pass · prices as of {meta['asof']} close · the dots beside
+each verdict are its five rubric legs (Quality · Valuation · Sector · Risk · Catalyst)</div>
+<div class="cards">
+  <div class="card"><div class="n">{len(final)}</div><div class="l">Validated BUY names</div></div>
+  <div class="card"><div class="n">{len(vs)}</div><div class="l">Names researched</div></div>
+  <div class="card"><div class="n">{counts['BUY']} · {counts['HOLD']} · {counts['SELL']}</div><div class="l">Buy · Hold · Sell verdicts</div></div>
+  <div class="card"><div class="n">{n_checked}</div><div class="l">Cards evidence cross-checked</div></div>
+</div>
 <section>{status}
-<table id="t"><thead><tr><th>#</th><th>Stock</th><th>Company</th><th>Verdict</th><th>Origin</th>
-<th class="num">Price</th><th class="num">vs 52w high</th><th>Research summary</th></tr></thead>
-<tbody>{chr(10).join(rows)}</tbody></table>
+<div class="tablewrap"><table id="t"><thead><tr><th>#</th><th>Stock</th><th>Verdict · legs</th><th>Origin</th>
+<th class="num">Price</th><th class="num">Day</th><th>vs 52w high</th>
+<th class="num">RSI</th><th class="num">Rel Str 20d</th><th class="num">Earnings</th>
+<th>Research summary &amp; evidence</th></tr></thead>
+<tbody>{chr(10).join(rows)}</tbody></table></div>
 <p class="muted" style="margin-top:12px">Method: candidates from both Top 50 lists first, then the
 merged bench in rank order, were deep-researched one by one against a five-leg rubric — business
 quality intact, valuation/dip justified, sector wind (see the Sectors tab), risk survivability, and a
@@ -1466,6 +1674,7 @@ SELL verdicts drop out and the next bench name is researched, until 50 BUY names
 page carries the full verdict with evidence, risks, and what would change it. Verdicts are a dated
 research snapshot (not refreshed by the daily screener) from public sources — structured research
 opinion, not investment advice or a trade instruction.</p></section>
+{glossary_html()}
 </div></body></html>"""
     with open(os.path.join(ROOT, "validated.html"), "w") as fh:
         fh.write(html)
@@ -1489,25 +1698,26 @@ def build_validated_details(meta, verdicts, covered, results, pro_recs, earn):
         vsec = verdict_section(t, verdicts) or verdict_section(t, load_theme_verdicts())
         if vsec:
             secs.append(vsec)
+        pe = (round(100 / prec["earn_y"], 1)
+              if prec and prec.get("earn_y") and prec["earn_y"] > 0 else None)
+        tiles = kpi_tiles(k, rs20=k["mom20_pct"] - meta.get("spy_mom20", 0.0),
+                          pe=pe, earn=earn.get(t), extra=(
+            _tile(f"{k['vpt20']:+.0f}%", "VPT trend (20d)",
+                  "up" if k["vpt20"] >= 0 else "dn")))
         ys = yahoo_symbol(t)
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
 <div class="wrap">
-<p><a href="../validated.html">← Back to the Validated Top 50</a></p>
+{tabs_html("validated", "../")}
+<p class="crumb"><a href="../validated.html">← Back to the Validated Top 50</a></p>
 <h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
 · Research-validated Top 50</div>
 <div><span class="price">${k['last']:,.2f}</span>
 <span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
 <span class="muted"> · as of {asof} close</span></div>
-<div class="kpis">
-  <div class="kpi"><div class="v">{k['off_high_pct']:.1f}%</div><div class="l">Below 52w high (${k['high52']:,.2f})</div></div>
-  <div class="kpi"><div class="v">{k['rsi14']:.0f}</div><div class="l">RSI (14)</div></div>
-  <div class="kpi"><div class="v {'up' if k['perf1y_pct'] >= 0 else 'dn'}">{k['perf1y_pct']:+.1f}%</div><div class="l">1-year performance</div></div>
-  <div class="kpi"><div class="v">{k['vol30']:.1f}%</div><div class="l">Volatility (30d, ann.)</div></div>
-  <div class="kpi"><div class="v">{earn.get(t) or '—'}</div><div class="l">Next earnings</div></div>
-</div>
+{tiles}
 <div class="bigchart">{chart_svg(k['chart'], k['high52'], k['low52'])}
 <div class="muted" style="font-size:12px">One year of daily closes.</div></div>
 {chr(10).join(secs)}
@@ -1520,7 +1730,7 @@ def build_validated_details(meta, verdicts, covered, results, pro_recs, earn):
             fh.write(page)
 
 
-def build_macro_page(meta, tverdicts, themes):
+def build_macro_page(meta, tverdicts, themes, kpi_ix=None):
     vs = tverdicts.get("verdicts") or {}
     lst = tverdicts.get("list") or []
     pools_p = os.path.join(DATA, "pools.json")
@@ -1530,6 +1740,7 @@ def build_macro_page(meta, tverdicts, themes):
         src_ix.setdefault(r["ticker"], r)
     for r in pools.get("pro", []):
         src_ix.setdefault(r["ticker"], r)
+    kpi_ix = kpi_ix or {}
     counts = {"BUY": 0, "HOLD": 0, "SELL": 0}
     for v in vs.values():
         if v.get("flag") in counts:
@@ -1537,47 +1748,81 @@ def build_macro_page(meta, tverdicts, themes):
     by_theme = {}
     for t in lst:
         by_theme.setdefault((vs.get(t) or {}).get("theme_id", ""), []).append(t)
+
+    def mrow(t):
+        v = vs.get(t, {})
+        s = src_ix.get(t, {})
+        k = kpi_ix.get(t, {})
+        last = k.get("last", s.get("last", 0))
+        off = k.get("off_high_pct", s.get("off_high_pct", 0))
+        rp = k.get("range_pos")
+        range_html = (f"<span class='range'><span class='fill' style='width:{rp}%'></span></span> "
+                      if rp is not None else "")
+        day = k.get("day_pct")
+        day_html = (f"<span class='{'up' if day >= 0 else 'dn'}'>{day:+.2f}%</span>"
+                    if day is not None else '<span class="muted">—</span>')
+        rsi = k.get("rsi14")
+        rsi_html = f"{rsi:.0f}" if rsi is not None else "—"
+        rs = k.get("rs20")
+        rs_html = (f"<span class='{'up' if rs >= 0 else 'dn'}'>{rs:+.1f}%</span>"
+                   if rs is not None else "—")
+        earn_html = k.get("earnings") or '<span class="muted">—</span>'
+        ev = (f"<div class='evline'>{len(v.get('sources') or [])} sources cited · "
+              f"researched {v.get('date', '')}{audit_badge(t)}</div>")
+        return (f"<tr><td><a class='sym' href='stock/{t}.html'>{t}</a>"
+                f"<span class='nm'>{clean_company_name(UNIVERSE_NAME.get(t, t))}</span></td>"
+                f"<td><span class='chip sb'>BUY</span> {legs_mini(v)}</td>"
+                f"<td class='num'>${last:,.2f}</td>"
+                f"<td class='num'>{day_html}</td>"
+                f"<td>{range_html}<span class='dn'>{off:.1f}%</span></td>"
+                f"<td class='num'>{rsi_html}</td>"
+                f"<td class='num'>{rs_html}</td>"
+                f"<td class='num'>{earn_html}</td>"
+                f"<td class='sum'>{v.get('summary', '')}{ev}</td></tr>")
+
     sections = []
     for th in themes.get("themes", []):
         tid = th["id"]
         names = by_theme.get(tid, [])
-        rows = []
-        for t in names:
-            v = vs.get(t, {})
-            s = src_ix.get(t, {})
-            rows.append(
-                f"<tr><td><a href='stock/{t}.html'><b>{t}</b></a></td>"
-                f"<td>{clean_company_name(UNIVERSE_NAME.get(t, t))}</td>"
-                f"<td><span class='chip sb'>BUY</span></td>"
-                f"<td class='num'>${s.get('last', 0):,.2f}</td>"
-                f"<td class='num'>{s.get('off_high_pct', 0):.1f}%</td>"
-                f"<td>{v.get('summary', '')}</td></tr>")
-        table = ("<table><thead><tr><th>Stock</th><th>Company</th><th>Verdict</th>"
-                 "<th class=\"num\">Price</th><th class=\"num\">vs 52w high</th>"
-                 "<th>Research summary</th></tr></thead><tbody>"
-                 + chr(10).join(rows) + "</tbody></table>") if rows else \
+        table = ("<div class='tablewrap'><table><thead><tr><th>Stock</th><th>Verdict · legs</th>"
+                 "<th class=\"num\">Price</th><th class=\"num\">Day</th><th>vs 52w high</th>"
+                 "<th class=\"num\">RSI</th><th class=\"num\">Rel Str 20d</th>"
+                 "<th class=\"num\">Earnings</th><th>Research summary &amp; evidence</th></tr></thead>"
+                 "<tbody>" + chr(10).join(mrow(t) for t in names) + "</tbody></table></div>"
+                 ) if names else \
             "<p class='muted'>No name from this theme has passed the rubric as BUY yet.</p>"
         sections.append(
-            f"<section><h2>{th.get('icon', '')} {th.get('name', '')}</h2>"
+            f"<section><h2>{th.get('icon', '')} {th.get('name', '')} "
+            f"<span class='chip na'>{len(names)} BUY</span></h2>"
             f"<p>{th.get('thesis', '')}</p>"
             f"<p class='muted'><b>Watch:</b> {th.get('watch', '')}</p>{table}</section>")
     res = tverdicts.get("reserves") or []
-    status = (f"<p>Macro sweep: {len(vs)} names carry a macro verdict so far "
+    status = (f"Macro sweep: {len(vs)} names carry a macro verdict so far "
               f"({counts['BUY']} buy · {counts['HOLD']} hold · {counts['SELL']} sell/not-justified); "
               f"{len(lst)} stand on the Top 50 list below, grouped by primary theme"
               + (f", with {len(res)} further BUY names as reserves ({', '.join(res)})" if res else "")
-              + ".</p>")
+              + ".")
+    theme_counts = " · ".join(
+        f"{th.get('name', th['id'])} {len(by_theme.get(th['id'], []))}"
+        for th in themes.get("themes", []))
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Macro & Themes · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
 <div class="wrap">
+{TABS_MACRO}
 <h1>🌐 Macro & Themes — Top 50</h1>
 <div class="sub">A separate list whose ORIGIN is the macro map — geopolitics, inflation & rates,
 the economy, employment, innovation and politics — not the dip or professional screens ·
-prices as of {meta['asof']} close</div>
-{TABS_MACRO}
+prices as of {meta['asof']} close · the dots beside each verdict are its five rubric legs
+(Quality · Valuation · Sector · Risk · Catalyst)</div>
+<div class="cards">
+  <div class="card"><div class="n">{len(lst)}</div><div class="l">Macro Top 50 names</div></div>
+  <div class="card"><div class="n">{len(vs)}</div><div class="l">Names with a macro verdict</div></div>
+  <div class="card"><div class="n">{counts['BUY']} · {counts['HOLD']} · {counts['SELL']}</div><div class="l">Buy · Hold · Sell verdicts</div></div>
+  <div class="card"><div class="n">{len(res)}</div><div class="l">BUY reserves beyond the 50</div></div>
+</div>
 <section>{status}
-<p class="muted">Method: the full 682-name merged candidate pool was swept by theme fit — every
+<p class="muted"><b>By theme:</b> {theme_counts}. Method: the full 682-name merged candidate pool was swept by theme fit — every
 name tagged with the macro theme that genuinely drives its case (geopolitics &amp; energy security,
 inflation &amp; rates, economics &amp; growth, employment &amp; labor, innovation, politics &amp;
 policy) — and researched against the same five-leg rubric as the Validated Top 50 (quality,
@@ -1588,6 +1833,7 @@ per theme — counts are whatever the sweep produced. This list sits alongside t
 and does not change it. Verdicts are a dated research snapshot from public sources — structured
 research opinion, not investment advice.</p></section>
 {chr(10).join(sections)}
+{glossary_html()}
 </div></body></html>"""
     with open(os.path.join(ROOT, "macro.html"), "w") as fh:
         fh.write(html)
@@ -1611,25 +1857,26 @@ def build_theme_details(meta, tverdicts, covered, results, pro_recs, earn):
         vsec = verdict_section(t, tverdicts)
         if vsec:
             secs.append(vsec)
+        pe = (round(100 / prec["earn_y"], 1)
+              if prec and prec.get("earn_y") and prec["earn_y"] > 0 else None)
+        tiles = kpi_tiles(k, rs20=k["mom20_pct"] - meta.get("spy_mom20", 0.0),
+                          pe=pe, earn=earn.get(t), extra=(
+            _tile(f"{k['vpt20']:+.0f}%", "VPT trend (20d)",
+                  "up" if k["vpt20"] >= 0 else "dn")))
         ys = yahoo_symbol(t)
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
 <div class="wrap">
-<p><a href="../macro.html">← Back to Macro & Themes</a></p>
+{tabs_html("macro", "../")}
+<p class="crumb"><a href="../macro.html">← Back to Macro & Themes</a></p>
 <h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
 · Macro & Themes validated list</div>
 <div><span class="price">${k['last']:,.2f}</span>
 <span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
 <span class="muted"> · as of {asof} close</span></div>
-<div class="kpis">
-  <div class="kpi"><div class="v">{k['off_high_pct']:.1f}%</div><div class="l">Below 52w high (${k['high52']:,.2f})</div></div>
-  <div class="kpi"><div class="v">{k['rsi14']:.0f}</div><div class="l">RSI (14)</div></div>
-  <div class="kpi"><div class="v {'up' if k['perf1y_pct'] >= 0 else 'dn'}">{k['perf1y_pct']:+.1f}%</div><div class="l">1-year performance</div></div>
-  <div class="kpi"><div class="v">{k['vol30']:.1f}%</div><div class="l">Volatility (30d, ann.)</div></div>
-  <div class="kpi"><div class="v">{earn.get(t) or '—'}</div><div class="l">Next earnings</div></div>
-</div>
+{tiles}
 <div class="bigchart">{chart_svg(k['chart'], k['high52'], k['low52'])}
 <div class="muted" style="font-size:12px">One year of daily closes.</div></div>
 {chr(10).join(secs)}
@@ -1724,7 +1971,7 @@ def main():
     asof = max(r["asof"] for r in rows)
     meta = {"asof": asof, "generated": datetime.now().strftime("%Y-%m-%d %H:%M"),
             "universe_n": len(tickers), "screened": len(results),
-            "candidates": len(cands)}
+            "candidates": len(cands), "spy_mom20": spy_mom20}
     json.dump({"meta": meta, "rows": rows}, open(prev_path, "w"), indent=1)
 
     print("Building the professional lens (EDGAR frames + surprise history)…", flush=True)
@@ -1747,8 +1994,11 @@ def main():
                          "pe": (round(100 / rec["earn_y"], 1)
                                 if rec["earn_y"] and rec["earn_y"] > 0 else None),
                          "_kpi": {kk: k[kk] for kk in ("last", "day_pct", "high52",
-                                                       "low52", "off_high_pct", "rsi14",
-                                                       "perf1y_pct", "vol30", "chart")}})
+                                                       "low52", "off_high_pct",
+                                                       "range_pos", "rsi14",
+                                                       "mom20_pct", "vpt20",
+                                                       "perf1y_pct", "vol30",
+                                                       "chart")}})
     n_vetoed = sum(1 for r in pro_recs.values() if r.get("veto"))
     n_pool = sum(1 for r in pro_recs.values() if r.get("composite") is not None)
     json.dump({"meta": meta,
@@ -1781,11 +2031,26 @@ def main():
     build_pro_page(pro_rows, prev_pro_ranks, meta, n_pool, n_vetoed)
     build_pro_details(pro_rows, {r["ticker"] for r in rows}, meta)
     build_sectors_page(meta)
-    build_validated_page(meta, verdicts)
+    # Canonical KPI lookup for the research pages (Validated / Macro), so
+    # every tab shows the same KPIs for the same stock on the same day.
+    kpi_ix = {}
+    for t, k in results.items():
+        rec = pro_recs.get(t) or {}
+        pe = (round(100 / rec["earn_y"], 1)
+              if rec.get("earn_y") and rec["earn_y"] > 0 else None)
+        kpi_ix[t] = {"last": k["last"], "day_pct": k["day_pct"],
+                     "off_high_pct": k["off_high_pct"],
+                     "range_pos": k["range_pos"], "rsi14": k["rsi14"],
+                     "rs20": round(k["mom20_pct"] - spy_mom20, 1),
+                     "earnings": earn.get(t, ""), "pe": pe}
+    for r in rows:
+        if r["ticker"] in kpi_ix and r.get("pe"):
+            kpi_ix[r["ticker"]]["pe"] = r["pe"]
+    build_validated_page(meta, verdicts, kpi_ix)
     build_validated_details(meta, verdicts,
                             {r["ticker"] for r in rows} | {r["ticker"] for r in pro_rows},
                             results, pro_recs, earn)
-    build_macro_page(meta, tverdicts, themes)
+    build_macro_page(meta, tverdicts, themes, kpi_ix)
     build_theme_details(meta, tverdicts,
                         {r["ticker"] for r in rows} | {r["ticker"] for r in pro_rows},
                         results, pro_recs, earn)

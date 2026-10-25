@@ -1,21 +1,30 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Professional Top 50 — Quality-Dip Watchlist</title><style>
-:root{--bg:#0b1220;--card:#111a2e;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171}
-*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt)}
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
 a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
-.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 60px}
-h1{font-size:26px;margin:0 0 4px} .sub{color:var(--mut);font-size:13.5px;margin-bottom:18px;line-height:1.55}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
 .card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
-.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
-th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:#0e1730}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
 th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
 tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
 .sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
 .ind{color:var(--mut)} .muted{color:var(--mut)}
 .up{color:var(--up)} .dn{color:var(--dn)}
@@ -25,24 +34,42 @@ tr:hover td{background:#14213d}
 .range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
 .flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
 .star{color:#fbbf24}
-.tabs{display:flex;gap:8px;margin:0 0 16px}
-.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card)}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
 .tab:hover{text-decoration:none;color:var(--txt)}
 .tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
 .fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
 .biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
 ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
-.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
-.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
-section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
 section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
-.bigchart{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
 .price{font-size:30px;font-weight:800}
-@media(max-width:900px){.nm{max-width:110px}}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
 </style></head><body>
 <div class="wrap">
-<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a><a class="tab active" href="pro.html">🏦 Professional Top 50</a><a class="tab" href="sectors.html">🌍 Sectors</a><a class="tab" href="validated.html">🏆 Validated Top 50</a><a class="tab" href="macro.html">🌐 Macro & Themes</a></div>
+<div class="topbar"><a class="brand" href="index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Five lenses · one universe of the most-traded US stocks</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a><a class="tab active" href="pro.html">🏦 Professional Top 50</a><a class="tab" href="sectors.html">🌍 Sectors</a><a class="tab" href="validated.html">🏆 Validated Top 50</a><a class="tab" href="macro.html">🌐 Macro & Themes</a></div></div>
 <h1>🏦 Professional Top 50</h1>
 <div class="sub">The professionals' lens, applied to the same 800 most-traded US stocks:
 <b>cash-flow quality and balance-sheet survivability first, price last</b> — a factor composite in the
@@ -52,11 +79,11 @@ Safety (15%), Growth (13%), Momentum (10%). Veto grades remove names outright
 (96 vetoed today: Piotroski F-score ≤ 3, extreme leverage with thin coverage,
 persistent EPS misses, or cash-burn with dilution). Prices as of the <b>2026-10-23</b> close.
 Click any symbol for its factor breakdown and pre-written exit rules.</div>
-<table id="t"><thead><tr>
+<div class="tablewrap"><table id="t"><thead><tr>
 <th>#</th><th>Symbol</th><th>Industry</th><th>Grade</th><th>Factors (Prof · Rev · Val · Safe · Grow · Mom)</th>
 <th class="num">F-score</th><th class="num">FCF yield</th><th class="num">Net debt/EBITDA</th>
 <th class="num">EPS surprise (last 4)</th><th class="num">Momentum 12-1</th><th class="num">P/E</th>
-<th class="num">Last</th><th class="num">vs Prev</th><th class="num">Earnings</th>
+<th class="num">Last</th><th class="num">vs Prev</th><th class="num">Earnings</th><th>Commentary — the read</th>
 </tr></thead><tbody>
 <tr data-ind="">
   <td>1</td>
@@ -73,6 +100,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$115.71</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-29</td>
+  <td class="take">strongest: Profitability (A) · weakest: Value (C+) · F-score 7/9 · net debt -2.5× EBITDA · EPS surprises avg +38.7% over the last 3</td>
 </tr>
 <tr data-ind="">
   <td>2</td>
@@ -89,6 +117,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$66.60</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-02</td>
+  <td class="take">strongest: Value (A) · weakest: Profitability (B) · F-score 7/9 · EPS surprises avg +35.7% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>3</td>
@@ -105,6 +134,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$352.60</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-27</td>
+  <td class="take">strongest: Revisions (A) · weakest: Safety (D+) · F-score 6/9 · EPS surprises avg +25.8% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>4</td>
@@ -121,6 +151,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$108.87</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
+  <td class="take">strongest: Growth (A) · weakest: Value (C+) · F-score 8/9 · EPS surprises avg +22.1% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>5</td>
@@ -137,6 +168,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$51.90</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-04</td>
+  <td class="take">strongest: Value (A+) · weakest: Safety (C) · F-score 5/9 · net debt -0.1× EBITDA · EPS surprises avg +26.1% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>6</td>
@@ -153,6 +185,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$263.94</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-05</td>
+  <td class="take">strongest: Value (A) · weakest: Safety (D+) · F-score 6/9 · EPS surprises avg +22.8% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>7</td>
@@ -169,6 +202,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$45.52</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-27</td>
+  <td class="take">strongest: Revisions (A) · weakest: Safety (C) · F-score 8/9 · EPS surprises avg +21.6% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>8</td>
@@ -185,6 +219,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$228.07</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
+  <td class="take">strongest: Value (A) · weakest: Revisions (C+) · F-score 6/9 · EPS surprises avg +3.5% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>9</td>
@@ -201,6 +236,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$81.09</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
+  <td class="take">strongest: Value (A) · weakest: Growth (D+) · F-score 6/9 · EPS surprises avg +14.3% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>10</td>
@@ -217,6 +253,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$216.70</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-03</td>
+  <td class="take">strongest: Profitability (A) · weakest: Value (D) · F-score 8/9 · net debt -1.1× EBITDA · EPS surprises avg +18.0% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>11</td>
@@ -233,6 +270,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$377.40</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-05</td>
+  <td class="take">strongest: Profitability (B+) · weakest: Value (C+) · F-score 8/9 · net debt -0.3× EBITDA · EPS surprises avg +8.7% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>12</td>
@@ -249,6 +287,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$260.25</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-04</td>
+  <td class="take">strongest: Profitability (A+) · weakest: Value (D+) · F-score 9/9 · net debt 0.1× EBITDA · EPS surprises avg +5.3% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>13</td>
@@ -265,6 +304,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$343.39</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-19</td>
+  <td class="take">strongest: Profitability (B+) · weakest: Value (C+) · F-score 7/9 · EPS surprises avg +11.8% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>14</td>
@@ -281,6 +321,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$144.25</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-29</td>
+  <td class="take">strongest: Revisions (A+) · weakest: Value (D-) · F-score 6/9 · net debt -3.2× EBITDA · EPS surprises avg +33.9% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>15</td>
@@ -297,6 +338,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$120.68</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-04</td>
+  <td class="take">strongest: Value (A) · weakest: Revisions (D+) · F-score 9/9 · net debt 1.0× EBITDA · EPS surprises avg +7.1% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>16</td>
@@ -313,6 +355,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$251.88</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-28</td>
+  <td class="take">strongest: Growth (A) · weakest: Revisions (C) · F-score 5/9 · EPS surprises avg +20.3% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>17</td>
@@ -329,6 +372,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$9.36</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-29</td>
+  <td class="take">strongest: Value (B+) · weakest: Safety (C) · F-score 4/9 · EPS surprises avg +9.1% over the last 1</td>
 </tr>
 <tr data-ind="">
   <td>18</td>
@@ -345,6 +389,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$171.05</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-29</td>
+  <td class="take">strongest: Growth (B+) · weakest: Safety (D+) · F-score 6/9 · EPS surprises avg +14.0% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>19</td>
@@ -361,6 +406,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$64.53</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-29</td>
+  <td class="take">strongest: Profitability (A+) · weakest: Value (C) · F-score 6/9 · net debt -0.3× EBITDA · EPS surprises avg +13.6% over the last 3</td>
 </tr>
 <tr data-ind="Telecommunications">
   <td>20</td>
@@ -377,6 +423,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$146.54</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-28</td>
+  <td class="take">strongest: Revisions (A) · weakest: Growth (D+) · F-score 5/9 · net debt 2.5× EBITDA · EPS surprises avg +17.3% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>21</td>
@@ -393,6 +440,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$196.75</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-02</td>
+  <td class="take">strongest: Growth (A) · weakest: Value (F) · F-score 6/9 · net debt -1.4× EBITDA · EPS surprises avg +26.1% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>22</td>
@@ -409,6 +457,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$15.10</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-29</td>
+  <td class="take">strongest: Revisions (B+) · weakest: Safety (D+) · F-score 5/9 · net debt -0.1× EBITDA · EPS surprises avg +18.9% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>23</td>
@@ -425,6 +474,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$136.08</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-03</td>
+  <td class="take">strongest: Value (A) · weakest: Growth (C) · F-score 7/9 · net debt -0.3× EBITDA · EPS surprises avg +12.7% over the last 3</td>
 </tr>
 <tr data-ind="">
   <td>24</td>
@@ -441,6 +491,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$162.55</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-03</td>
+  <td class="take">strongest: Revisions (B+) · weakest: Value (C) · F-score 7/9 · EPS surprises avg +17.3% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>25</td>
@@ -457,6 +508,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$70.58</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-24</td>
+  <td class="take">strongest: Revisions (A) · weakest: Value (D-) · F-score 5/9 · net debt -3.2× EBITDA · EPS surprises avg +40.0% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>26</td>
@@ -473,6 +525,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$61.48</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-29</td>
+  <td class="take">strongest: Profitability (B+) · weakest: Growth (D) · F-score 7/9 · EPS surprises avg +14.4% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>27</td>
@@ -489,6 +542,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$145.92</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-28</td>
+  <td class="take">strongest: Value (B+) · weakest: Safety (C) · F-score 7/9 · EPS surprises avg +32.5% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>28</td>
@@ -505,6 +559,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$159.03</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-02</td>
+  <td class="take">strongest: Profitability (A) · weakest: Growth (D+) · net debt -2.1× EBITDA · EPS surprises avg +15.6% over the last 3</td>
 </tr>
 <tr data-ind="">
   <td>29</td>
@@ -521,6 +576,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$182.70</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-28</td>
+  <td class="take">strongest: Value (B+) · weakest: Revisions (C) · F-score 7/9 · EPS surprises avg +8.3% over the last 3</td>
 </tr>
 <tr data-ind="">
   <td>30</td>
@@ -537,6 +593,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$252.86</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-29</td>
+  <td class="take">strongest: Profitability (B+) · weakest: Value (C) · F-score 8/9 · net debt -0.6× EBITDA · EPS surprises avg +2.8% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>31</td>
@@ -553,6 +610,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$74.09</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-28</td>
+  <td class="take">strongest: Growth (A) · weakest: Revisions (C) · F-score 5/9 · net debt -0.7× EBITDA · EPS surprises avg +11.8% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>32</td>
@@ -569,6 +627,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$66.26</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-28</td>
+  <td class="take">strongest: Value (A) · weakest: Profitability (C) · F-score 7/9 · net debt -0.3× EBITDA · EPS surprises avg +2.7% over the last 3</td>
 </tr>
 <tr data-ind="">
   <td>33</td>
@@ -585,6 +644,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$46.19</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-05</td>
+  <td class="take">strongest: Profitability (B) · weakest: Value (C) · F-score 6/9 · net debt -0.8× EBITDA · EPS surprises avg +8.0% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>34</td>
@@ -601,6 +661,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$14.13</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-12-02</td>
+  <td class="take">strongest: Revisions (A+) · weakest: Profitability (C) · F-score 7/9 · EPS surprises avg +40.0% over the last 3</td>
 </tr>
 <tr data-ind="">
   <td>35</td>
@@ -617,6 +678,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$149.01</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-04</td>
+  <td class="take">strongest: Revisions (B+) · weakest: Value (D+) · F-score 7/9 · net debt 0.0× EBITDA · EPS surprises avg +13.6% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>36</td>
@@ -633,6 +695,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$156.04</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-29</td>
+  <td class="take">strongest: Profitability (A) · weakest: Value (C) · F-score 7/9 · EPS surprises avg +8.9% over the last 3</td>
 </tr>
 <tr data-ind="">
   <td>37</td>
@@ -649,6 +712,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$106.53</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-09</td>
+  <td class="take">strongest: Revisions (A) · weakest: Value (D) · F-score 5/9 · net debt -124.7× EBITDA · EPS surprises avg +40.0% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>38</td>
@@ -665,6 +729,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$132.69</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-12-03</td>
+  <td class="take">strongest: Value (A) · weakest: Profitability (C) · F-score 7/9 · net debt -0.5× EBITDA · EPS surprises avg +19.1% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>39</td>
@@ -681,6 +746,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$12.45</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-11</td>
+  <td class="take">strongest: Value (A+) · weakest: Profitability (D+) · F-score 7/9 · EPS surprises avg +18.6% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>40</td>
@@ -697,6 +763,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$253.19</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-04</td>
+  <td class="take">strongest: Value (A+) · weakest: Safety (D-) · F-score 5/9 · EPS surprises avg +39.1% over the last 4</td>
 </tr>
 <tr data-ind="Interactive Media">
   <td>41</td>
@@ -713,6 +780,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$320.21</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-28</td>
+  <td class="take">strongest: Revisions (B+) · weakest: Value (D) · F-score 6/9 · EPS surprises avg +29.2% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>42</td>
@@ -729,6 +797,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$118.04</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
+  <td class="take">strongest: Profitability (A) · weakest: Revisions (C) · F-score 7/9 · net debt 1.2× EBITDA · EPS surprises avg +1.2% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>43</td>
@@ -745,6 +814,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$93.23</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-27</td>
+  <td class="take">strongest: Value (A) · weakest: Profitability (C) · F-score 7/9 · net debt 0.6× EBITDA · EPS surprises avg +7.7% over the last 3</td>
 </tr>
 <tr data-ind="">
   <td>44</td>
@@ -761,6 +831,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$125.31</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-12-02</td>
+  <td class="take">strongest: Value (B+) · weakest: Profitability (C+) · F-score 8/9 · net debt 0.8× EBITDA · EPS surprises avg +12.2% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>45</td>
@@ -777,6 +848,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$1,273.46</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-29</td>
+  <td class="take">strongest: Profitability (A) · weakest: Value (D-) · F-score 8/9 · EPS surprises avg +21.3% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>46</td>
@@ -793,6 +865,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$81.41</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-05</td>
+  <td class="take">strongest: Revisions (B+) · weakest: Profitability (C) · F-score 7/9 · net debt -0.7× EBITDA · EPS surprises avg +25.5% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>47</td>
@@ -809,6 +882,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$300.30</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-10-28</td>
+  <td class="take">strongest: Value (A) · weakest: Profitability (D+) · F-score 7/9 · EPS surprises avg +16.2% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>48</td>
@@ -825,6 +899,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$24.10</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-12-02</td>
+  <td class="take">strongest: Value (A+) · weakest: Growth (D) · F-score 7/9 · net debt 0.6× EBITDA · EPS surprises avg +24.3% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>49</td>
@@ -841,6 +916,7 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$143.04</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-03</td>
+  <td class="take">strongest: Profitability (B+) · weakest: Safety (C) · F-score 4/9 · net debt -7.9× EBITDA · EPS surprises avg +17.9% over the last 4</td>
 </tr>
 <tr data-ind="">
   <td>50</td>
@@ -857,8 +933,9 @@ Click any symbol for its factor breakdown and pre-written exit rules.</div>
   <td class="num">$58.74</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">2026-11-04</td>
+  <td class="take">strongest: Revisions (A+) · weakest: Profitability (D) · F-score 4/9 · net debt 3.5× EBITDA · EPS surprises avg +34.8% over the last 4</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <p class="foot"><b>How to read this:</b> the composite grade is a percentile blend, not a recommendation.
 <b>Revisions</b> uses reported EPS-surprise history (mean surprise and beat rate over the last four
 quarters) — the free proxy for analyst revision momentum; clean revision-breadth history is paid data,
@@ -869,4 +946,16 @@ and price/sales. Balance-sheet factors use industrial-company definitions — re
 banks, insurers and REITs, whose filings structure debt differently; the F-score veto therefore
 applies only to companies that report a cost-of-sales line. Fundamentals are the latest
 reported fiscal year from SEC EDGAR. <b>Research and education only — not investment advice.</b></p>
+<details class="gloss"><summary>How to read the KPIs — the same definitions on every tab</summary>
+<ul>
+<li><b>vs 52w high / 52w range</b> — how far the price sits below its 52-week high, and where it sits between its 52-week low (0%) and high (100%).</li>
+<li><b>RSI (14)</b> — 14-day Wilder relative strength index. Below ~30 reads washed-out, above ~70 extended; this screen wants neither freefall nor euphoria.</li>
+<li><b>Momentum (20d)</b> — the stock's own 20-day price change. <b>Rel. strength (20d)</b> — that minus the S&amp;P 500's 20-day change: positive means it is beating the market short-term.</li>
+<li><b>VPT (20d)</b> — change in the Volume-Price Trend line over 20 days, normalized: positive means volume has been flowing in on up days (accumulation).</li>
+<li><b>P/E</b> — price ÷ SEC-reported diluted EPS (TTM) where computable; blank where earnings are negative or filings don't map cleanly. <b>ROIC</b> — after-tax operating income ÷ (debt + equity − cash) from SEC filings; less meaningful for banks/insurers.</li>
+<li><b>Professional factors</b> — percentile ranks (0–100) across the graded pool, blended into a letter grade: Profitability 22%, Revisions 20% (reported EPS-surprise history — the free proxy for analyst revision momentum), Value 20%, Safety 15% (incl. Piotroski F-score), Growth 13%, Momentum 10%. <b>F-score</b> — Piotroski's 9 filing signals. <b>Net debt/EBITDA</b> and <b>FCF yield</b> use industrial-company definitions — read cautiously for financials.</li>
+<li><b>Research verdict legs</b> — every researched card is scored on five legs (Quality · Valuation · Sector · Risk · Catalyst), each pass / mixed / fail with cited evidence. BUY requires no leg failing and at least four passing. The dots next to a verdict show the five legs in that order.</li>
+<li><b>Analyst consensus / targets</b> — aggregator figures (TipRanks / MarketBeat / StockAnalysis), curated: the crowd's opinion, not a forecast. ⚠ marks a name whose consensus or target contradicts the thesis.</li>
+</ul>
+<p>Research and education only — not investment advice.</p></details>
 </div></body></html>

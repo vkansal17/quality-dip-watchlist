@@ -1,21 +1,30 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Quality-Dip Watchlist — Top 50</title><style>
-:root{--bg:#0b1220;--card:#111a2e;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171}
-*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt)}
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
 a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
-.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 60px}
-h1{font-size:26px;margin:0 0 4px} .sub{color:var(--mut);font-size:13.5px;margin-bottom:18px;line-height:1.55}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
 .card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
-.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
-th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:#0e1730}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
 th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
 tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
 .sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
 .ind{color:var(--mut)} .muted{color:var(--mut)}
 .up{color:var(--up)} .dn{color:var(--dn)}
@@ -25,24 +34,42 @@ tr:hover td{background:#14213d}
 .range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
 .flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
 .star{color:#fbbf24}
-.tabs{display:flex;gap:8px;margin:0 0 16px}
-.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card)}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
 .tab:hover{text-decoration:none;color:var(--txt)}
 .tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
 .fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
 .biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
 ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
-.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
-.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
-section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
 section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
-.bigchart{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
 .price{font-size:30px;font-weight:800}
-@media(max-width:900px){.nm{max-width:110px}}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
 </style></head><body>
 <div class="wrap">
-<div class="tabs"><a class="tab active" href="index.html">📉 Quality-Dip Top 50</a><a class="tab" href="pro.html">🏦 Professional Top 50</a><a class="tab" href="sectors.html">🌍 Sectors</a><a class="tab" href="validated.html">🏆 Validated Top 50</a><a class="tab" href="macro.html">🌐 Macro & Themes</a></div>
+<div class="topbar"><a class="brand" href="index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Five lenses · one universe of the most-traded US stocks</span></div><div class="navwrap"><div class="tabs"><a class="tab active" href="index.html">📉 Quality-Dip Top 50</a><a class="tab" href="pro.html">🏦 Professional Top 50</a><a class="tab" href="sectors.html">🌍 Sectors</a><a class="tab" href="validated.html">🏆 Validated Top 50</a><a class="tab" href="macro.html">🌐 Macro & Themes</a></div></div>
 <h1>📉 Quality-Dip Watchlist — Top 50</h1>
 <div class="sub">Famous, fundamentally strong brands that have dipped significantly for <b>situational</b>
 reasons — the kind of names expected to recover when conditions normalize. Screened from the
@@ -59,18 +86,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <input id="q" type="text" placeholder="Search symbol or company…" size="28">
   <select id="ind"><option value="">All industries</option><option value="Aerospace & Defense">Aerospace & Defense</option><option value="Asset Management">Asset Management</option><option value="Banking / Financials">Banking / Financials</option><option value="Beverages / Food">Beverages / Food</option><option value="Cloud Data Software">Cloud Data Software</option><option value="E-commerce">E-commerce</option><option value="E-commerce / Cloud">E-commerce / Cloud</option><option value="Health Care">Health Care</option><option value="Interactive Media">Interactive Media</option><option value="Investment Banking">Investment Banking</option><option value="Machinery">Machinery</option><option value="Networking Equipment">Networking Equipment</option><option value="Payments / Financials">Payments / Financials</option><option value="Restaurants">Restaurants</option><option value="Semiconductor Equipment">Semiconductor Equipment</option><option value="Semiconductors">Semiconductors</option><option value="Software — EDA">Software — EDA</option><option value="Space / Aerospace">Space / Aerospace</option><option value="Streaming / Entertainment">Streaming / Entertainment</option><option value="Telecommunications">Telecommunications</option><option value="Travel Booking">Travel Booking</option><option value="Video Games">Video Games</option></select>
 </div>
-<table id="t"><thead><tr>
-<th>#</th><th>Symbol</th><th>Industry</th><th class="num">Fortune 500</th><th class="num">Last</th>
+<div class="tablewrap"><table id="t"><thead><tr>
+<th>#</th><th>Symbol</th><th>Industry</th><th class="num hide-m">Fortune 500</th><th class="num">Last</th>
 <th class="num">% Change</th><th class="num">RSI</th><th class="num">VPT 20d</th><th class="num">Rel Str 20d</th>
 <th class="num">vs Prev</th><th>52-week position / off high</th>
-<th>Last 3 months</th><th class="num">Vol 10d / 30d</th><th>Analyst consensus</th>
+<th>Last 3 months</th><th class="num hide-m">Vol 10d / 30d</th><th>Analyst consensus</th>
 <th class="num">Earnings</th><th class="num">P/E</th><th class="num">ROIC</th><th class="num">1Y perf</th>
+<th>Commentary — why it's here</th>
 </tr></thead><tbody>
 <tr data-ind="Semiconductors">
   <td>1</td>
   <td><a class="sym" href="stock/AVGO.html">AVGO</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">Broadcom</span></td>
   <td class="ind">Semiconductors</td>
-  <td class="num">#70</td>
+  <td class="num hide-m">#70</td>
   <td class="num">$321.68</td>
   <td class="num dn">-0.48%</td>
   <td class="num">34</td>
@@ -80,18 +108,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:15%"></span></span>
       <span class="dn">-33.2%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,13.6 1.8,16.0 3.5,12.0 5.3,11.7 7.1,11.0 8.9,5.2 10.6,5.1 12.4,4.6 14.2,3.0 16.0,4.2 17.7,5.6 19.5,5.6 21.3,5.2 23.1,10.9 24.8,11.0 26.6,13.8 28.4,17.8 30.2,17.4 31.9,16.4 33.7,18.6 35.5,19.1 37.3,19.3 39.0,15.7 40.8,16.3 42.6,16.0 44.4,16.1 46.1,16.7 47.9,19.0 49.7,18.8 51.5,16.4 53.2,17.3 55.0,18.1 56.8,17.9 58.5,21.8 60.3,23.0 62.1,23.0 63.9,21.2 65.6,18.9 67.4,17.7 69.2,17.3 71.0,19.5 72.7,20.5 74.5,20.0 76.3,20.7 78.1,19.4 79.8,20.3 81.6,22.0 83.4,19.4 85.2,17.8 86.9,14.8 88.7,14.6 90.5,18.3 92.3,18.0 94.0,19.5 95.8,18.9 97.6,21.4 99.4,21.9 101.1,25.4 102.9,24.1 104.7,24.1 106.5,23.4 108.2,26.6 110.0,27.0" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-15.5%</span></td>
-  <td class="num">35.9% / 37.7%</td>
+  <td class="num hide-m">35.9% / 37.7%</td>
   <td><span class="chip sb">Strong Buy</span><br><span class='muted'>avg $512</span></td>
   <td class="num">2026-12-10</td>
   <td class="num">46.4</td>
   <td class="num">42.2%</td>
   <td class="num dn">-9.2%</td>
+  <td class="take">33% below its 52w high · still easing (20d -8.8%), inside the not-in-freefall limit · RSI 34 · Two-stage fall: a September print where Q4 revenue guidance of $34.8B landed a hair under the $35.03B expected (-4-6% on a 0.7% 'miss'), then the October AI-chip rout compounded it (-4.3% on Oct 22 alone, peers averaged -6.1% that week).</td>
 </tr>
 <tr data-ind="Semiconductors">
   <td>2</td>
   <td><a class="sym" href="stock/NVDA.html">NVDA</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">NVIDIA</span></td>
   <td class="ind">Semiconductors</td>
-  <td class="num">#16</td>
+  <td class="num hide-m">#16</td>
   <td class="num">$210.96</td>
   <td class="num dn">-0.59%</td>
   <td class="num">38</td>
@@ -101,18 +130,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:62%"></span></span>
       <span class="dn">-11.8%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,23.6 1.8,27.0 3.5,24.5 5.3,21.8 7.1,18.9 8.9,16.3 10.6,12.8 12.4,12.9 14.2,10.4 16.0,13.6 17.7,13.6 19.5,10.4 21.3,9.8 23.1,9.9 24.8,9.9 26.6,12.5 28.4,13.6 30.2,13.9 31.9,15.0 33.7,18.0 35.5,15.8 37.3,17.4 39.0,8.5 40.8,13.6 42.6,12.0 44.4,13.6 46.1,10.2 47.9,8.3 49.7,7.3 51.5,9.6 53.2,10.6 55.0,13.2 56.8,13.2 58.5,16.8 60.3,16.2 62.1,15.4 63.9,12.7 65.6,11.3 67.4,8.8 69.2,8.1 71.0,9.7 72.7,10.1 74.5,9.9 76.3,8.1 78.1,8.9 79.8,8.3 81.6,7.1 83.4,5.6 85.2,3.2 86.9,3.0 88.7,3.9 90.5,7.3 92.3,7.9 94.0,9.3 95.8,8.2 97.6,11.7 99.4,13.7 101.1,15.2 102.9,13.8 104.7,14.1 106.5,11.4 108.2,16.2 110.0,16.8" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+7.1%</span></td>
-  <td class="num">33.6% / 28.9%</td>
+  <td class="num hide-m">33.6% / 28.9%</td>
   <td><span class="chip sb">Strong Buy</span><br><span class='muted'>avg $327</span></td>
   <td class="num">2026-11-18</td>
   <td class="num">29.2</td>
   <td class="num">46.1%</td>
   <td class="num up">+13.3%</td>
+  <td class="take">12% below its 52w high · still easing (20d -6.3%), inside the not-in-freefall limit · RSI 38 · Sector/market-driven, not company-specific: an October AI-wide reassessment — chips fell eight straight sessions on AI-financing and circular-debt fears, reports OpenAI revenue came in below leaked figures, and hot inflation/rate worries (-4%+ on Thu Oct 22 as the SOX fell >6%).</td>
 </tr>
 <tr data-ind="Interactive Media">
   <td>3</td>
   <td><a class="sym" href="stock/META.html">META</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">Meta Platforms</span></td>
   <td class="ind">Interactive Media</td>
-  <td class="num">#17</td>
+  <td class="num hide-m">#17</td>
   <td class="num">$642.62</td>
   <td class="num dn">-0.96%</td>
   <td class="num">36</td>
@@ -122,18 +152,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:46%"></span></span>
       <span class="dn">-17.4%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,21.5 1.8,22.3 3.5,27.0 5.3,25.2 7.1,21.8 8.9,22.1 10.6,22.0 12.4,21.9 14.2,21.7 16.0,21.4 17.7,21.0 19.5,23.0 21.3,21.4 23.1,21.9 24.8,24.0 26.6,26.5 28.4,26.3 30.2,26.3 31.9,25.9 33.7,25.0 35.5,23.9 37.3,23.3 39.0,23.8 40.8,23.1 42.6,23.6 44.4,23.0 46.1,21.6 47.9,19.8 49.7,19.2 51.5,19.5 53.2,15.5 55.0,16.4 56.8,16.0 58.5,14.3 60.3,13.8 62.1,13.5 63.9,12.6 65.6,14.3 67.4,6.7 69.2,7.1 71.0,6.4 72.7,3.0 74.5,5.6 76.3,9.2 78.1,6.9 79.8,8.3 81.6,8.2 83.4,8.0 85.2,6.6 86.9,6.9 88.7,8.7 90.5,8.7 92.3,8.9 94.0,6.5 95.8,4.5 97.6,7.0 99.4,7.1 101.1,9.9 102.9,10.3 104.7,11.4 106.5,11.1 108.2,16.0 110.0,16.6" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+8.3%</span></td>
-  <td class="num">49.4% / 51.9%</td>
+  <td class="num hide-m">49.4% / 51.9%</td>
   <td><span class="chip sb">Strong Buy</span><br><span class='muted'>avg $828</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">29.9</td>
   <td class="num">17.1%</td>
   <td class="num dn">-13.0%</td>
+  <td class="take">17% below its 52w high · still easing (20d -14.5%), inside the not-in-freefall limit · RSI 36 · Spending/margin shock, twice.</td>
 </tr>
 <tr data-ind="Interactive Media">
   <td>4</td>
   <td><a class="sym" href="stock/GOOGL.html">GOOGL</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">Alphabet</span></td>
   <td class="ind">Interactive Media</td>
-  <td class="num">#5</td>
+  <td class="num hide-m">#5</td>
   <td class="num">$320.21</td>
   <td class="num dn">-1.24%</td>
   <td class="num">31</td>
@@ -143,18 +174,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:42%"></span></span>
       <span class="dn">-20.5%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,21.4 1.8,20.1 3.5,21.4 5.3,12.0 7.1,4.7 8.9,3.0 10.6,9.4 12.4,11.3 14.2,12.8 16.0,11.4 17.7,17.1 19.5,17.3 21.3,16.1 23.1,16.3 24.8,17.1 26.6,17.0 28.4,16.8 30.2,18.5 31.9,16.7 33.7,15.4 35.5,15.8 37.3,17.9 39.0,18.5 40.8,16.0 42.6,19.0 44.4,20.8 46.1,19.9 47.9,17.7 49.7,19.4 51.5,19.4 53.2,22.6 55.0,21.8 56.8,19.4 58.5,14.8 60.3,16.7 62.1,17.5 63.9,15.7 65.6,14.7 67.4,12.5 69.2,14.1 71.0,19.6 72.7,17.7 74.5,17.1 76.3,17.6 78.1,18.3 79.8,17.0 81.6,19.5 83.4,17.3 85.2,16.0 86.9,15.5 88.7,14.3 90.5,15.3 92.3,13.9 94.0,13.4 95.8,13.0 97.6,15.5 99.4,14.9 101.1,18.5 102.9,17.0 104.7,18.6 106.5,20.9 108.2,25.3 110.0,27.0" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-4.0%</span></td>
-  <td class="num">22.3% / 24.6%</td>
+  <td class="num hide-m">22.3% / 24.6%</td>
   <td><span class="chip sb">Strong Buy</span><br><span class='muted'>avg $430</span></td>
   <td class="num">2026-10-28</td>
   <td class="num">16.5</td>
   <td class="num">15.7%</td>
   <td class="num up">+23.2%</td>
+  <td class="take">20% below its 52w high · still easing (20d -6.9%), inside the not-in-freefall limit · RSI 31 · Capex/FCF backlash plus AI-search fear, not weak results.</td>
 </tr>
 <tr data-ind="Machinery">
   <td>5</td>
   <td><a class="sym" href="stock/CAT.html">CAT</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">Caterpillar</span></td>
   <td class="ind">Machinery</td>
-  <td class="num">#65</td>
+  <td class="num hide-m">#65</td>
   <td class="num">$687.00</td>
   <td class="num dn">-2.42%</td>
   <td class="num">27</td>
@@ -164,18 +196,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:30%"></span></span>
       <span class="dn">-35.5%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,8.0 1.8,15.2 3.5,11.9 5.3,11.2 7.1,9.4 8.9,3.6 10.6,4.3 12.4,6.0 14.2,7.9 16.0,8.4 17.7,7.7 19.5,6.2 21.3,6.3 23.1,6.1 24.8,3.0 26.6,8.0 28.4,11.1 30.2,11.2 31.9,9.6 33.7,11.7 35.5,11.7 37.3,10.4 39.0,11.0 40.8,13.0 42.6,13.4 44.4,15.6 46.1,14.0 47.9,13.1 49.7,11.3 51.5,10.3 53.2,11.1 55.0,12.5 56.8,10.8 58.5,15.0 60.3,15.1 62.1,15.2 63.9,13.2 65.6,12.0 67.4,11.0 69.2,12.1 71.0,11.6 72.7,12.4 74.5,10.4 76.3,10.6 78.1,9.8 79.8,11.7 81.6,9.8 83.4,7.5 85.2,7.1 86.9,5.2 88.7,11.4 90.5,13.5 92.3,13.0 94.0,13.1 95.8,16.4 97.6,19.4 99.4,21.0 101.1,21.6 102.9,22.2 104.7,22.3 106.5,20.4 108.2,24.9 110.0,27.0" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-18.3%</span></td>
-  <td class="num">32.3% / 34.7%</td>
+  <td class="num hide-m">32.3% / 34.7%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $966</span></td>
   <td class="num">2026-10-29</td>
   <td class="num">30.2</td>
   <td class="num">20.3%</td>
   <td class="num up">+31.4%</td>
+  <td class="take">36% below its 52w high · still easing (20d -16.4%), inside the not-in-freefall limit · RSI 27 · Unwind from a late-June record high ($1,064.90): profit-taking and repricing of its AI/data-center power premium amid an AI-industrials selloff, surging yields (10-year ~5.35%, September Fed hike) and inflation fears — plus a string of analyst target cuts and a ~$600M Q3 tariff burden.</td>
 </tr>
 <tr data-ind="Travel Booking">
   <td>6</td>
   <td><a class="sym" href="stock/BKNG.html">BKNG</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">Booking Holdings</span></td>
   <td class="ind">Travel Booking</td>
-  <td class="num">#169</td>
+  <td class="num hide-m">#169</td>
   <td class="num">$155.83</td>
   <td class="num dn">-3.27%</td>
   <td class="num">38</td>
@@ -185,18 +218,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:3%"></span></span>
       <span class="dn">-29.1%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,9.2 1.8,8.4 3.5,11.7 5.3,11.8 7.1,11.9 8.9,11.3 10.6,6.0 12.4,5.9 14.2,3.0 16.0,3.6 17.7,3.6 19.5,3.9 21.3,3.4 23.1,4.0 24.8,7.0 26.6,5.5 28.4,3.6 30.2,4.9 31.9,5.0 33.7,3.4 35.5,3.3 37.3,5.3 39.0,7.9 40.8,6.6 42.6,9.3 44.4,10.7 46.1,9.1 47.9,10.9 49.7,11.7 51.5,17.0 53.2,19.8 55.0,19.4 56.8,19.6 58.5,19.0 60.3,20.7 62.1,20.6 63.9,21.0 65.6,22.1 67.4,21.8 69.2,23.6 71.0,27.0 72.7,26.4 74.5,23.7 76.3,23.7 78.1,24.3 79.8,24.1 81.6,25.2 83.4,25.7 85.2,26.0 86.9,26.3 88.7,27.0 90.5,25.3 92.3,25.2 94.0,25.9 95.8,26.3 97.6,25.0 99.4,22.9 101.1,23.9 102.9,24.2 104.7,23.7 106.5,26.0 108.2,24.8 110.0,27.0" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-21.8%</span></td>
-  <td class="num">34.9% / 31.4%</td>
+  <td class="num hide-m">34.9% / 31.4%</td>
   <td><span class="chip sb">Strong Buy</span><br><span class='muted'>avg $233</span></td>
   <td class="num">2026-11-03</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-24.3%</td>
+  <td class="take">29% below its 52w high · still easing (20d -5.0%), inside the not-in-freefall limit · RSI 38 · A year-long de-rating (-26/27% YTD): Q2 beat followed by soft Q3 guidance (growth of just 4-6%), Middle East conflict hitting long-haul travel and FX, an FTC fees probe into Priceline with a possible ~$500M bill, and the agentic-AI bypass fear — one study found AI tools send 71% of travelers to book direct.</td>
 </tr>
 <tr data-ind="Semiconductor Equipment">
   <td>7</td>
   <td><a class="sym" href="stock/ASML.html">ASML</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">ASML Holding N.V.</span></td>
   <td class="ind">Semiconductor Equipment</td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$1,571.80</td>
   <td class="num up">+0.72%</td>
   <td class="num">35</td>
@@ -206,18 +240,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:59%"></span></span>
       <span class="dn">-21.0%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,24.7 1.8,27.0 3.5,19.7 5.3,21.3 7.1,20.4 8.9,15.4 10.6,17.8 12.4,15.9 14.2,13.3 16.0,13.8 17.7,9.0 19.5,8.3 21.3,5.5 23.1,5.8 24.8,3.0 26.6,8.8 28.4,12.5 30.2,12.6 31.9,11.6 33.7,13.3 35.5,13.0 37.3,12.9 39.0,13.7 40.8,16.5 42.6,16.5 44.4,18.7 46.1,17.5 47.9,20.1 49.7,15.1 51.5,11.5 53.2,14.1 55.0,17.1 56.8,16.3 58.5,25.2 60.3,24.1 62.1,23.3 63.9,21.3 65.6,17.7 67.4,15.4 69.2,12.8 71.0,13.0 72.7,14.6 74.5,13.0 76.3,11.1 78.1,6.5 79.8,8.2 81.6,8.4 83.4,4.1 85.2,4.7 86.9,6.5 88.7,8.6 90.5,11.2 92.3,10.4 94.0,12.6 95.8,14.9 97.6,19.8 99.4,19.3 101.1,20.4 102.9,20.0 104.7,21.2 106.5,17.9 108.2,26.3 110.0,25.5" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-0.7%</span></td>
-  <td class="num">44.0% / 41.6%</td>
+  <td class="num hide-m">44.0% / 41.6%</td>
   <td><span class="chip b">Buy</span><br><span class='muted'>avg $2,079</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num up">+52.1%</td>
+  <td class="take">21% below its 52w high · still easing (20d -9.9%), inside the not-in-freefall limit · RSI 35 · Oct 14 Q3: record results but revenue narrowly missed the consensus figure, shares -3% overnight and ~14% below the June high; investors also focused on the rising cost of ASML's capacity-expansion plans, plus the broader AI-unwind/rate backdrop (-7.8% that week).</td>
 </tr>
 <tr data-ind="E-commerce / Cloud">
   <td>8</td>
   <td><a class="sym" href="stock/AMZN.html">AMZN</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">Amazon.com</span></td>
   <td class="ind">E-commerce / Cloud</td>
-  <td class="num">#1</td>
+  <td class="num hide-m">#1</td>
   <td class="num">$248.00</td>
   <td class="num dn">-0.95%</td>
   <td class="num">43</td>
@@ -227,18 +262,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:58%"></span></span>
       <span class="dn">-12.7%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,25.2 1.8,27.0 3.5,23.3 5.3,8.2 7.1,3.0 8.9,5.8 10.6,7.8 12.4,7.9 14.2,7.0 16.0,5.5 17.7,7.9 19.5,10.0 21.3,10.9 23.1,11.9 24.8,12.5 26.6,13.3 28.4,10.6 30.2,13.0 31.9,13.6 33.7,12.2 35.5,12.6 37.3,12.9 39.0,14.6 40.8,10.4 42.6,13.1 44.4,15.2 46.1,15.1 47.9,13.5 49.7,13.7 51.5,14.3 53.2,16.2 55.0,16.4 56.8,14.4 58.5,15.8 60.3,17.9 62.1,18.9 63.9,16.7 65.6,15.7 67.4,13.7 69.2,15.1 71.0,17.5 72.7,17.5 74.5,17.4 76.3,18.8 78.1,18.6 79.8,17.6 81.6,18.0 83.4,16.6 85.2,16.6 86.9,14.6 88.7,13.1 90.5,15.5 92.3,12.0 94.0,13.2 95.8,13.6 97.6,15.5 99.4,15.2 101.1,17.2 102.9,12.0 104.7,11.9 106.5,12.1 108.2,17.1 110.0,18.1" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+7.4%</span></td>
-  <td class="num">37.9% / 29.9%</td>
+  <td class="num hide-m">37.9% / 29.9%</td>
   <td><span class="chip b">Buy</span><br><span class='muted'>avg $327</span></td>
   <td class="num">2026-10-29</td>
   <td class="num">20.4</td>
   <td class="num">10.5%</td>
   <td class="num up">+10.6%</td>
+  <td class="take">13% below its 52w high · still easing (20d -0.7%), inside the not-in-freefall limit · RSI 43 · The shallowest dip of the group (-13.6% from high; only -0.7% over one month) — mostly sector-level AI-capex/FCF anxiety, including the Oct 22 Nasdaq drop as investors questioned AI data-center financing costs, rather than any Amazon-specific bad news.</td>
 </tr>
 <tr data-ind="Aerospace & Defense">
   <td>9</td>
   <td><a class="sym" href="stock/GE.html">GE</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">GE Aerospace</span></td>
   <td class="ind">Aerospace & Defense</td>
-  <td class="num">#101</td>
+  <td class="num hide-m">#101</td>
   <td class="num">$285.64</td>
   <td class="num dn">-2.69%</td>
   <td class="num">26</td>
@@ -248,18 +284,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:11%"></span></span>
       <span class="dn">-25.1%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,7.4 1.8,10.7 3.5,9.6 5.3,8.3 7.1,6.1 8.9,4.0 10.6,3.0 12.4,4.7 14.2,5.8 16.0,6.6 17.7,6.3 19.5,7.0 21.3,8.2 23.1,6.2 24.8,6.0 26.6,4.5 28.4,9.3 30.2,12.2 31.9,11.2 33.7,12.9 35.5,11.0 37.3,9.7 39.0,12.7 40.8,12.7 42.6,14.4 44.4,15.6 46.1,16.0 47.9,15.0 49.7,14.1 51.5,14.6 53.2,17.0 55.0,17.3 56.8,17.5 58.5,19.0 60.3,21.6 62.1,20.2 63.9,20.0 65.6,19.8 67.4,18.6 69.2,18.6 71.0,18.4 72.7,18.4 74.5,16.6 76.3,18.8 78.1,18.9 79.8,20.3 81.6,20.3 83.4,21.0 85.2,21.8 86.9,21.0 88.7,22.5 90.5,22.0 92.3,21.3 94.0,21.2 95.8,21.5 97.6,21.6 99.4,20.4 101.1,19.9 102.9,20.6 104.7,23.4 106.5,24.4 108.2,25.0 110.0,27.0" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-21.4%</span></td>
-  <td class="num">24.7% / 24.1%</td>
+  <td class="num hide-m">24.7% / 24.1%</td>
   <td><span class="chip sb">Strong Buy</span><br><span class='muted'>avg $394</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">34.5</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-6.0%</td>
+  <td class="take">25% below its 52w high · still easing (20d -12.7%), inside the not-in-freefall limit · RSI 26 · Sell-the-news.</td>
 </tr>
 <tr data-ind="Telecommunications">
   <td>10</td>
   <td><a class="sym" href="stock/TMUS.html">TMUS</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">T-Mobile US</span></td>
   <td class="ind">Telecommunications</td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$146.54</td>
   <td class="num dn">-7.71%</td>
   <td class="num">36</td>
@@ -269,18 +306,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:0%"></span></span>
       <span class="dn">-34.0%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,6.3 1.8,6.8 3.5,11.5 5.3,11.9 7.1,9.3 8.9,9.3 10.6,11.4 12.4,7.7 14.2,9.3 16.0,8.7 17.7,8.5 19.5,9.3 21.3,5.7 23.1,6.1 24.8,7.6 26.6,6.0 28.4,6.3 30.2,6.9 31.9,5.9 33.7,6.1 35.5,6.7 37.3,7.9 39.0,8.9 40.8,6.8 42.6,7.4 44.4,6.4 46.1,3.4 47.9,3.0 49.7,6.8 51.5,6.7 53.2,9.2 55.0,9.3 56.8,6.3 58.5,6.0 60.3,7.4 62.1,9.8 63.9,15.5 65.6,14.5 67.4,16.2 69.2,17.8 71.0,15.9 72.7,16.1 74.5,16.1 76.3,15.5 78.1,17.5 79.8,17.4 81.6,18.2 83.4,17.1 85.2,16.5 86.9,15.8 88.7,14.8 90.5,12.7 92.3,25.8 94.0,23.9 95.8,22.8 97.6,20.5 99.4,20.9 101.1,19.7 102.9,21.5 104.7,20.5 106.5,22.8 108.2,19.9 110.0,27.0" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-19.7%</span></td>
-  <td class="num">53.2% / 55.4%</td>
+  <td class="num hide-m">53.2% / 55.4%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $245</span></td>
   <td class="num">2026-10-28</td>
   <td class="num">13.9</td>
   <td class="num">10.4%</td>
   <td class="num dn">-32.7%</td>
+  <td class="take">34% below its 52w high · still easing (20d -11.4%), inside the not-in-freefall limit · RSI 36 · Two company/sector shocks: (1) a sharp drop around Q2 (Jul 23) despite raised FCF guidance, as postpaid net account adds fell 13% YoY with 0.99% churn; (2) SpaceX — the stock fell 13.2% on Oct 9, its worst day since 2013, on SpaceX's ~$8B acquisition of nationwide 800 MHz spectrum, then -7.7% on Oct 23 on reports SpaceX is seeking ~80,000 U.S.</td>
 </tr>
 <tr data-ind="Streaming / Entertainment">
   <td>11</td>
   <td><a class="sym" href="stock/NFLX.html">NFLX</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">Netflix</span></td>
   <td class="ind">Streaming / Entertainment</td>
-  <td class="num">#105</td>
+  <td class="num hide-m">#105</td>
   <td class="num">$65.85</td>
   <td class="num dn">-1.79%</td>
   <td class="num">37</td>
@@ -290,18 +328,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:2%"></span></span>
       <span class="dn">-43.1%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,17.0 1.8,15.3 3.5,16.0 5.3,18.0 7.1,15.8 8.9,15.4 10.6,14.6 12.4,15.3 14.2,14.7 16.0,11.7 17.7,13.8 19.5,14.6 21.3,9.1 23.1,9.2 24.8,12.1 26.6,9.7 28.4,6.4 30.2,6.5 31.9,7.3 33.7,6.7 35.5,3.7 37.3,4.7 39.0,6.9 40.8,4.4 42.6,5.3 44.4,5.6 46.1,3.0 47.9,3.1 49.7,9.1 51.5,11.1 53.2,12.1 55.0,12.1 56.8,10.2 58.5,6.3 60.3,9.6 62.1,11.6 63.9,13.1 65.6,17.8 67.4,15.7 69.2,17.3 71.0,18.4 72.7,17.9 74.5,18.7 76.3,21.3 78.1,19.9 79.8,20.8 81.6,23.2 83.4,24.3 85.2,23.7 86.9,22.0 88.7,20.7 90.5,18.1 92.3,19.9 94.0,19.4 95.8,19.6 97.6,19.5 99.4,16.7 101.1,19.6 102.9,20.5 104.7,22.0 106.5,27.0 108.2,24.3 110.0,25.9" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-9.0%</span></td>
-  <td class="num">40.5% / 36.1%</td>
+  <td class="num hide-m">40.5% / 36.1%</td>
   <td><span class="chip na">Mixed — cautious</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">18.9</td>
   <td class="num">34.1%</td>
   <td class="num dn">-39.8%</td>
+  <td class="take">43% below its 52w high · still easing (20d -7.4%), inside the not-in-freefall limit · RSI 37 · Guidance, not the quarter — the second guidance-led drop of the season (shares had already fallen ~11% on Jul 17 on weak Q3 guidance).</td>
 </tr>
 <tr data-ind="Restaurants">
   <td>12</td>
   <td><a class="sym" href="stock/MCD.html">MCD</a> <span class="star" title="Hand-researched brief">★</span><span class="nm">McDonald's</span></td>
   <td class="ind">Restaurants</td>
-  <td class="num">#170</td>
+  <td class="num hide-m">#170</td>
   <td class="num">$248.46</td>
   <td class="num dn">-1.65%</td>
   <td class="num">58</td>
@@ -311,18 +350,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:16%"></span></span>
       <span class="dn">-27.2%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,4.7 1.8,5.5 3.5,7.1 5.3,6.0 7.1,8.8 8.9,7.2 10.6,4.2 12.4,3.0 14.2,3.9 16.0,4.3 17.7,4.1 19.5,3.3 21.3,5.1 23.1,4.8 24.8,8.7 26.6,7.9 28.4,7.7 30.2,6.8 31.9,5.8 33.7,5.0 35.5,7.3 37.3,7.9 39.0,11.6 40.8,9.0 42.6,9.7 44.4,11.0 46.1,11.1 47.9,11.8 49.7,13.9 51.5,13.8 53.2,15.0 55.0,15.3 56.8,15.6 58.5,12.9 60.3,15.4 62.1,17.6 63.9,17.7 65.6,17.8 67.4,18.0 69.2,16.7 71.0,23.1 72.7,23.8 74.5,24.0 76.3,25.6 78.1,25.4 79.8,27.0 81.6,26.5 83.4,26.5 85.2,25.9 86.9,26.2 88.7,27.0 90.5,23.8 92.3,24.7 94.0,24.5 95.8,24.4 97.6,23.1 99.4,20.9 101.1,20.6 102.9,20.8 104.7,18.7 106.5,18.9 108.2,15.5 110.0,17.7" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-9.0%</span></td>
-  <td class="num">19.1% / 23.4%</td>
+  <td class="num hide-m">19.1% / 23.4%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $296</span></td>
   <td class="num">2026-11-04</td>
   <td class="num">20.0</td>
   <td class="num">25.8%</td>
   <td class="num dn">-18.7%</td>
+  <td class="take">27% below its 52w high · fall has stabilized (20d +5.1%) · RSI 58 · Company-specific U.S.</td>
 </tr>
 <tr data-ind="">
   <td>13</td>
   <td><a class="sym" href="stock/VRNS.html">VRNS</a><span class="nm">Varonis Systems</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$48.88</td>
   <td class="num dn">-0.02%</td>
   <td class="num">56</td>
@@ -332,18 +372,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:67%"></span></span>
       <span class="dn">-22.4%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,15.8 1.8,25.3 3.5,27.0 5.3,27.0 7.1,24.1 8.9,19.0 10.6,18.8 12.4,21.1 14.2,18.5 16.0,21.1 17.7,21.9 19.5,22.3 21.3,13.1 23.1,15.1 24.8,19.4 26.6,18.1 28.4,21.5 30.2,24.8 31.9,23.9 33.7,24.4 35.5,24.9 37.3,23.5 39.0,15.6 40.8,17.6 42.6,18.0 44.4,21.3 46.1,10.9 47.9,11.5 49.7,12.5 51.5,14.0 53.2,12.5 55.0,13.9 56.8,14.8 58.5,9.2 60.3,9.2 62.1,10.9 63.9,8.4 65.6,9.0 67.4,6.9 69.2,9.7 71.0,7.2 72.7,8.1 74.5,12.1 76.3,8.2 78.1,10.1 79.8,9.3 81.6,9.3 83.4,9.0 85.2,7.6 86.9,5.4 88.7,5.7 90.5,5.9 92.3,3.0 94.0,11.8 95.8,6.3 97.6,10.2 99.4,9.5 101.1,6.3 102.9,6.3 104.7,6.4 106.5,6.4 108.2,5.9 110.0,5.9" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+9.4%</span></td>
-  <td class="num">54.2% / 40.9%</td>
+  <td class="num hide-m">54.2% / 40.9%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-11-03</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-21.5%</td>
+  <td class="take">22% below its 52w high · fall has stabilized (20d +5.7%) · RSI 56</td>
 </tr>
 <tr data-ind="">
   <td>14</td>
   <td><a class="sym" href="stock/DELL.html">DELL</a><span class="nm">Dell Technologies Inc. Class C</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$456.44</td>
   <td class="num up">+0.77%</td>
   <td class="num">38</td>
@@ -353,18 +394,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:72%"></span></span>
       <span class="dn">-22.4%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,24.5 1.8,27.0 3.5,23.1 5.3,23.1 7.1,20.5 8.9,16.3 10.6,16.8 12.4,19.5 14.2,17.8 16.0,17.3 17.7,19.2 19.5,14.4 21.3,13.3 23.1,13.7 24.8,14.9 26.6,16.1 28.4,19.5 30.2,19.9 31.9,19.1 33.7,20.0 35.5,18.0 37.3,16.7 39.0,15.7 40.8,17.5 42.6,17.5 44.4,20.9 46.1,13.6 47.9,10.9 49.7,10.0 51.5,9.0 53.2,8.8 55.0,12.0 56.8,5.3 58.5,8.9 60.3,7.9 62.1,5.8 63.9,3.0 65.6,5.2 67.4,4.4 69.2,7.3 71.0,7.2 72.7,8.7 74.5,5.8 76.3,7.9 78.1,8.4 79.8,8.5 81.6,8.1 83.4,5.8 85.2,7.0 86.9,4.6 88.7,4.0 90.5,4.5 92.3,3.3 94.0,4.3 95.8,4.7 97.6,11.8 99.4,15.6 101.1,18.0 102.9,17.6 104.7,16.9 106.5,14.2 108.2,17.9 110.0,17.5" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+16.4%</span></td>
-  <td class="num">80.9% / 63.8%</td>
+  <td class="num hide-m">80.9% / 63.8%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-11-24</td>
   <td class="num">29.3</td>
   <td class="num">31.0%</td>
   <td class="num up">+187.7%</td>
+  <td class="take">22% below its 52w high · still easing (20d -18.9%), inside the not-in-freefall limit · RSI 38</td>
 </tr>
 <tr data-ind="">
   <td>15</td>
   <td><a class="sym" href="stock/PYPL.html">PYPL</a><span class="nm">PayPal Holdings</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$57.02</td>
   <td class="num dn">-0.90%</td>
   <td class="num">59</td>
@@ -374,18 +416,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:53%"></span></span>
       <span class="dn">-21.9%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,12.4 1.8,12.4 3.5,14.0 5.3,15.1 7.1,13.5 8.9,11.9 10.6,13.4 12.4,9.0 14.2,10.7 16.0,10.7 17.7,10.8 19.5,10.3 21.3,7.1 23.1,4.5 24.8,7.3 26.6,7.4 28.4,5.5 30.2,3.0 31.9,4.8 33.7,4.5 35.5,3.1 37.3,4.2 39.0,5.0 40.8,23.5 42.6,25.8 44.4,26.5 46.1,21.1 47.9,16.0 49.7,20.4 51.5,24.6 53.2,27.0 55.0,24.3 56.8,23.3 58.5,22.6 60.3,23.1 62.1,25.7 63.9,25.2 65.6,26.4 67.4,25.9 69.2,25.3 71.0,26.2 72.7,26.0 74.5,20.2 76.3,22.0 78.1,22.9 79.8,26.1 81.6,24.9 83.4,25.5 85.2,21.7 86.9,21.2 88.7,20.4 90.5,20.2 92.3,19.0 94.0,17.8 95.8,17.5 97.6,17.7 99.4,15.2 101.1,16.3 102.9,16.7 104.7,15.2 106.5,15.1 108.2,14.3 110.0,15.5" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-2.2%</span></td>
-  <td class="num">13.9% / 21.8%</td>
+  <td class="num hide-m">13.9% / 21.8%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-10-27</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-18.3%</td>
+  <td class="take">22% below its 52w high · fall has stabilized (20d +3.6%) · RSI 59</td>
 </tr>
 <tr data-ind="Cloud Data Software">
   <td>16</td>
   <td><a class="sym" href="stock/SNOW.html">SNOW</a><span class="nm">Snowflake</span></td>
   <td class="ind">Cloud Data Software</td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$325.43</td>
   <td class="num up">+3.65%</td>
   <td class="num">48</td>
@@ -395,18 +438,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:82%"></span></span>
       <span class="dn">-11.8%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,27.0 1.8,23.9 3.5,20.2 5.3,21.4 7.1,17.9 8.9,15.7 10.6,15.7 12.4,15.4 14.2,12.4 16.0,11.3 17.7,11.5 19.5,11.9 21.3,10.7 23.1,12.7 24.8,12.4 26.6,13.6 28.4,13.7 30.2,14.6 31.9,11.8 33.7,14.2 35.5,15.6 37.3,16.0 39.0,12.7 40.8,13.0 42.6,12.1 44.4,15.0 46.1,18.4 47.9,6.0 49.7,10.7 51.5,11.1 53.2,12.1 55.0,12.5 56.8,12.7 58.5,11.9 60.3,14.2 62.1,12.2 63.9,10.4 65.6,11.9 67.4,10.2 69.2,10.9 71.0,11.3 72.7,11.5 74.5,11.0 76.3,12.9 78.1,12.4 79.8,10.1 81.6,9.6 83.4,9.8 85.2,10.3 86.9,11.0 88.7,11.8 90.5,9.2 92.3,3.0 94.0,5.1 95.8,5.7 97.6,11.2 99.4,11.2 101.1,18.1 102.9,16.0 104.7,15.0 106.5,14.2 108.2,16.4 110.0,13.6" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+20.4%</span></td>
-  <td class="num">62.9% / 47.8%</td>
+  <td class="num hide-m">62.9% / 47.8%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $414</span></td>
   <td class="num">2026-12-02</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num up">+26.2%</td>
+  <td class="take">12% below its 52w high · still easing (20d -3.1%), inside the not-in-freefall limit · RSI 48 · consensus Moderate Buy, avg target $414</td>
 </tr>
 <tr data-ind="">
   <td>17</td>
   <td><a class="sym" href="stock/PBF.html">PBF</a><span class="nm">PBF Energy Inc. Class A</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$76.17</td>
   <td class="num dn">-3.89%</td>
   <td class="num">43</td>
@@ -416,18 +460,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:77%"></span></span>
       <span class="dn">-16.5%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,27.0 1.8,25.1 3.5,17.4 5.3,18.0 7.1,21.5 8.9,23.1 10.6,26.9 12.4,26.8 14.2,26.4 16.0,22.8 17.7,20.4 19.5,19.6 21.3,16.4 23.1,18.4 24.8,15.8 26.6,15.7 28.4,16.7 30.2,20.2 31.9,17.0 33.7,20.2 35.5,22.6 37.3,20.1 39.0,21.0 40.8,18.8 42.6,17.5 44.4,15.9 46.1,15.5 47.9,15.6 49.7,16.4 51.5,14.5 53.2,14.7 55.0,14.2 56.8,13.2 58.5,19.5 60.3,16.1 62.1,15.1 63.9,14.1 65.6,14.1 67.4,17.9 69.2,18.7 71.0,19.5 72.7,18.3 74.5,16.9 76.3,16.3 78.1,15.7 79.8,14.3 81.6,10.0 83.4,11.3 85.2,8.6 86.9,9.6 88.7,9.0 90.5,4.5 92.3,8.5 94.0,7.9 95.8,3.0 97.6,4.3 99.4,6.3 101.1,8.3 102.9,10.9 104.7,9.5 106.5,10.7 108.2,12.5 110.0,14.9" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+24.9%</span></td>
-  <td class="num">54.5% / 64.4%</td>
+  <td class="num hide-m">54.5% / 64.4%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-10-29</td>
   <td class="num">7.2</td>
   <td class="num">-0.6%</td>
   <td class="num up">+125.3%</td>
+  <td class="take">16% below its 52w high · fall has stabilized (20d +3.4%) · RSI 43</td>
 </tr>
 <tr data-ind="Banking / Financials">
   <td>18</td>
   <td><a class="sym" href="stock/COF.html">COF</a><span class="nm">Capital One Financial</span></td>
   <td class="ind">Banking / Financials</td>
-  <td class="num">#63</td>
+  <td class="num hide-m">#63</td>
   <td class="num">$201.34</td>
   <td class="num dn">-1.03%</td>
   <td class="num">50</td>
@@ -437,18 +482,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:31%"></span></span>
       <span class="dn">-21.9%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,13.5 1.8,16.0 3.5,15.0 5.3,15.8 7.1,9.8 8.9,6.8 10.6,7.0 12.4,8.1 14.2,9.7 16.0,8.9 17.7,8.7 19.5,6.4 21.3,5.5 23.1,3.0 24.8,7.1 26.6,7.1 28.4,7.6 30.2,13.4 31.9,9.6 33.7,10.8 35.5,10.8 37.3,10.1 39.0,10.5 40.8,11.2 42.6,12.0 44.4,14.2 46.1,10.5 47.9,7.8 49.7,8.4 51.5,12.4 53.2,14.5 55.0,17.2 56.8,16.3 58.5,17.5 60.3,17.3 62.1,19.9 63.9,20.7 65.6,20.4 67.4,18.7 69.2,21.8 71.0,24.9 72.7,24.5 74.5,22.0 76.3,24.6 78.1,24.6 79.8,27.0 81.6,26.0 83.4,25.8 85.2,25.6 86.9,25.1 88.7,25.0 90.5,22.6 92.3,22.7 94.0,21.3 95.8,23.5 97.6,26.1 99.4,22.9 101.1,20.9 102.9,22.3 104.7,21.1 106.5,17.5 108.2,19.7 110.0,21.2" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-5.2%</span></td>
-  <td class="num">26.7% / 21.7%</td>
+  <td class="num hide-m">26.7% / 21.7%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $256</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">46.6</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-10.5%</td>
+  <td class="take">22% below its 52w high · fall has stabilized (20d +0.6%) · RSI 50 · consensus Moderate Buy, avg target $256</td>
 </tr>
 <tr data-ind="Networking Equipment">
   <td>19</td>
   <td><a class="sym" href="stock/CSCO.html">CSCO</a><span class="nm">Cisco Systems</span></td>
   <td class="ind">Networking Equipment</td>
-  <td class="num">#83</td>
+  <td class="num hide-m">#83</td>
   <td class="num">$106.50</td>
   <td class="num up">+1.53%</td>
   <td class="num">42</td>
@@ -458,18 +504,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:60%"></span></span>
       <span class="dn">-18.1%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,13.5 1.8,17.4 3.5,16.0 5.3,13.0 7.1,13.1 8.9,5.7 10.6,6.0 12.4,6.8 14.2,6.1 16.0,4.7 17.7,7.4 19.5,3.0 21.3,16.2 23.1,18.4 24.8,16.9 26.6,18.5 28.4,19.8 30.2,21.1 31.9,19.2 33.7,20.3 35.5,19.1 37.3,17.6 39.0,17.8 40.8,20.6 42.6,19.9 44.4,20.9 46.1,21.2 47.9,22.3 49.7,21.6 51.5,21.6 53.2,21.3 55.0,23.8 56.8,17.8 58.5,20.5 60.3,20.5 62.1,23.4 63.9,20.2 65.6,21.2 67.4,18.7 69.2,25.0 71.0,25.1 72.7,24.4 74.5,24.7 76.3,24.7 78.1,24.4 79.8,23.5 81.6,22.1 83.4,17.8 85.2,17.0 86.9,10.5 88.7,11.2 90.5,14.4 92.3,9.9 94.0,13.8 95.8,14.1 97.6,15.9 99.4,20.7 101.1,23.8 102.9,25.0 104.7,24.7 106.5,24.0 108.2,27.0 110.0,25.0" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-7.9%</span></td>
-  <td class="num">24.9% / 31.8%</td>
+  <td class="num hide-m">24.9% / 31.8%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $129</span></td>
   <td class="num">2026-11-11</td>
   <td class="num">35.6</td>
   <td class="num">17.5%</td>
   <td class="num up">+50.8%</td>
+  <td class="take">18% below its 52w high · still easing (20d -0.2%), inside the not-in-freefall limit · RSI 42 · consensus Moderate Buy, avg target $129</td>
 </tr>
 <tr data-ind="Health Care">
   <td>20</td>
   <td><a class="sym" href="stock/ABT.html">ABT</a><span class="nm">Abbott Laboratories</span></td>
   <td class="ind">Health Care</td>
-  <td class="num">#107</td>
+  <td class="num hide-m">#107</td>
   <td class="num">$103.70</td>
   <td class="num up">+1.16%</td>
   <td class="num">54</td>
@@ -479,18 +526,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:44%"></span></span>
       <span class="dn">-20.6%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,14.3 1.8,13.4 3.5,16.3 5.3,16.2 7.1,14.5 8.9,16.5 10.6,16.2 12.4,13.5 14.2,13.6 16.0,12.7 17.7,11.3 19.5,9.9 21.3,9.5 23.1,9.5 24.8,10.6 26.6,7.8 28.4,5.7 30.2,6.0 31.9,3.0 33.7,3.0 35.5,3.6 37.3,6.1 39.0,9.1 40.8,8.0 42.6,10.6 44.4,12.3 46.1,10.4 47.9,12.5 49.7,13.0 51.5,16.4 53.2,16.7 55.0,19.0 56.8,20.7 58.5,19.3 60.3,20.6 62.1,20.2 63.9,20.3 65.6,19.9 67.4,19.4 69.2,18.6 71.0,18.8 72.7,21.7 74.5,21.5 76.3,21.8 78.1,21.9 79.8,24.4 81.6,27.0 83.4,26.0 85.2,22.9 86.9,25.2 88.7,24.5 90.5,24.8 92.3,23.5 94.0,20.8 95.8,19.9 97.6,19.5 99.4,17.4 101.1,17.2 102.9,18.1 104.7,20.1 106.5,22.4 108.2,20.0 110.0,18.6" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-3.3%</span></td>
-  <td class="num">22.8% / 21.2%</td>
+  <td class="num hide-m">22.8% / 21.2%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $118</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-18.2%</td>
+  <td class="take">21% below its 52w high · fall has stabilized (20d +2.4%) · RSI 54 · consensus Moderate Buy, avg target $118</td>
 </tr>
 <tr data-ind="E-commerce">
   <td>21</td>
   <td><a class="sym" href="stock/MELI.html">MELI</a><span class="nm">MercadoLibre</span></td>
   <td class="ind">E-commerce</td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$1,810.15</td>
   <td class="num dn">-0.81%</td>
   <td class="num">46</td>
@@ -500,18 +548,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:32%"></span></span>
       <span class="dn">-23.3%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,13.8 1.8,13.7 3.5,12.0 5.3,12.6 7.1,11.0 8.9,11.8 10.6,9.3 12.4,16.2 14.2,16.9 16.0,16.6 17.7,8.0 19.5,16.3 21.3,16.3 23.1,15.1 24.8,19.4 26.6,20.0 28.4,10.3 30.2,9.3 31.9,9.3 33.7,7.4 35.5,3.7 37.3,7.2 39.0,8.7 40.8,6.0 42.6,8.3 44.4,6.2 46.1,3.0 47.9,4.2 49.7,5.1 51.5,9.0 53.2,12.7 55.0,10.5 56.8,11.2 58.5,10.9 60.3,16.3 62.1,15.5 63.9,16.5 65.6,19.4 67.4,16.9 69.2,16.4 71.0,18.5 72.7,21.8 74.5,22.0 76.3,25.0 78.1,24.0 79.8,23.8 81.6,27.0 83.4,26.1 85.2,13.9 86.9,14.1 88.7,13.0 90.5,14.2 92.3,11.7 94.0,11.5 95.8,12.7 97.6,15.5 99.4,14.2 101.1,15.9 102.9,15.5 104.7,12.5 106.5,14.3 108.2,16.6 110.0,17.7" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-2.8%</span></td>
-  <td class="num">20.5% / 36.2%</td>
+  <td class="num hide-m">20.5% / 36.2%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $2,252</span></td>
   <td class="num">2026-11-04</td>
   <td class="num">50.2</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-16.2%</td>
+  <td class="take">23% below its 52w high · fall has stabilized (20d +3.3%) · RSI 46 · consensus Moderate Buy, avg target $2,252</td>
 </tr>
 <tr data-ind="Software — EDA">
   <td>22</td>
   <td><a class="sym" href="stock/CDNS.html">CDNS</a><span class="nm">Cadence Design Systems</span></td>
   <td class="ind">Software — EDA</td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$316.49</td>
   <td class="num up">+2.21%</td>
   <td class="num">45</td>
@@ -521,18 +570,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:34%"></span></span>
       <span class="dn">-24.0%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,7.2 1.8,10.5 3.5,10.5 5.3,8.5 7.1,9.6 8.9,8.3 10.6,9.3 12.4,8.9 14.2,8.7 16.0,10.8 17.7,12.0 19.5,13.2 21.3,13.0 23.1,12.7 24.8,13.1 26.6,15.1 28.4,15.5 30.2,15.9 31.9,14.4 33.7,15.2 35.5,10.8 37.3,10.0 39.0,6.4 40.8,8.4 42.6,8.8 44.4,16.0 46.1,17.8 47.9,18.3 49.7,21.7 51.5,24.2 53.2,24.0 55.0,23.9 56.8,22.7 58.5,25.6 60.3,27.0 62.1,25.3 63.9,25.1 65.6,24.5 67.4,21.1 69.2,18.9 71.0,17.1 72.7,13.5 74.5,12.4 76.3,12.2 78.1,12.9 79.8,11.2 81.6,5.5 83.4,5.3 85.2,4.7 86.9,3.0 88.7,4.0 90.5,6.0 92.3,4.9 94.0,6.1 95.8,10.1 97.6,11.4 99.4,12.9 101.1,14.2 102.9,12.4 104.7,14.1 106.5,12.4 108.2,17.0 110.0,15.1" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-8.2%</span></td>
-  <td class="num">39.7% / 40.0%</td>
+  <td class="num hide-m">39.7% / 40.0%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $404</span></td>
   <td class="num">2026-10-26</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-8.3%</td>
+  <td class="take">24% below its 52w high · still easing (20d -3.0%), inside the not-in-freefall limit · RSI 45 · consensus Moderate Buy, avg target $404</td>
 </tr>
 <tr data-ind="">
   <td>23</td>
   <td><a class="sym" href="stock/AMD.html">AMD</a><span class="nm">Advanced Micro Devices</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$516.79</td>
   <td class="num up">+1.74%</td>
   <td class="num">39</td>
@@ -542,18 +592,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:71%"></span></span>
       <span class="dn">-20.4%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,24.3 1.8,27.0 3.5,20.9 5.3,21.9 7.1,21.0 8.9,17.3 10.6,21.3 12.4,20.5 14.2,21.1 16.0,22.6 17.7,22.1 19.5,21.2 21.3,21.2 23.1,17.7 24.8,18.7 26.6,21.0 28.4,23.0 30.2,22.6 31.9,22.2 33.7,24.0 35.5,21.6 37.3,21.4 39.0,21.9 40.8,23.1 42.6,22.5 44.4,23.7 46.1,24.0 47.9,24.1 49.7,21.8 51.5,18.7 53.2,17.0 55.0,18.9 56.8,17.5 58.5,20.0 60.3,18.9 62.1,17.9 63.9,14.4 65.6,12.8 67.4,6.7 69.2,5.8 71.0,6.8 72.7,5.2 74.5,5.1 76.3,7.5 78.1,7.6 79.8,7.1 81.6,6.7 83.4,4.7 85.2,4.9 86.9,3.0 88.7,3.4 90.5,6.1 92.3,7.5 94.0,9.0 95.8,7.8 97.6,11.6 99.4,12.5 101.1,16.2 102.9,15.2 104.7,15.5 106.5,13.6 108.2,18.4 110.0,17.5" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+13.7%</span></td>
-  <td class="num">63.9% / 58.6%</td>
+  <td class="num hide-m">63.9% / 58.6%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-11-03</td>
   <td class="num">147.2</td>
   <td class="num">5.7%</td>
   <td class="num up">+104.3%</td>
+  <td class="take">20% below its 52w high · still easing (20d -18.1%), inside the not-in-freefall limit · RSI 39</td>
 </tr>
 <tr data-ind="">
   <td>24</td>
   <td><a class="sym" href="stock/MRVL.html">MRVL</a><span class="nm">Marvell Technology</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$228.51</td>
   <td class="num up">+2.26%</td>
   <td class="num">41</td>
@@ -563,18 +614,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:64%"></span></span>
       <span class="dn">-27.8%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,24.9 1.8,27.0 3.5,23.1 5.3,22.3 7.1,21.1 8.9,16.3 10.6,17.8 12.4,17.8 14.2,16.3 16.0,18.2 17.7,17.5 19.5,16.6 21.3,15.6 23.1,15.6 24.8,13.2 26.6,16.8 28.4,12.7 30.2,10.0 31.9,12.7 33.7,14.2 35.5,12.1 37.3,11.1 39.0,11.8 40.8,16.7 42.6,17.6 44.4,17.9 46.1,18.6 47.9,18.2 49.7,15.3 51.5,15.0 53.2,13.1 55.0,14.7 56.8,12.9 58.5,16.2 60.3,15.7 62.1,14.1 63.9,12.0 65.6,11.3 67.4,8.8 69.2,7.8 71.0,8.1 72.7,8.4 74.5,7.9 76.3,9.8 78.1,7.6 79.8,7.4 81.6,6.7 83.4,5.9 85.2,6.1 86.9,3.0 88.7,3.5 90.5,5.4 92.3,5.3 94.0,7.1 95.8,6.5 97.6,11.1 99.4,11.9 101.1,14.5 102.9,12.7 104.7,12.0 106.5,11.2 108.2,15.3 110.0,14.4" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+31.0%</span></td>
-  <td class="num">76.0% / 62.9%</td>
+  <td class="num hide-m">76.0% / 62.9%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-12-01</td>
   <td class="num">81.9</td>
   <td class="num">5.9%</td>
   <td class="num up">+171.6%</td>
+  <td class="take">28% below its 52w high · still easing (20d -12.8%), inside the not-in-freefall limit · RSI 41</td>
 </tr>
 <tr data-ind="Investment Banking">
   <td>25</td>
   <td><a class="sym" href="stock/GS.html">GS</a><span class="nm">Goldman Sachs Group, Inc. (The)</span></td>
   <td class="ind">Investment Banking</td>
-  <td class="num">#36</td>
+  <td class="num hide-m">#36</td>
   <td class="num">$875.68</td>
   <td class="num dn">-1.75%</td>
   <td class="num">37</td>
@@ -584,18 +636,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:27%"></span></span>
       <span class="dn">-24.0%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,6.5 1.8,13.3 3.5,7.6 5.3,8.5 7.1,7.3 8.9,4.0 10.6,3.0 12.4,6.6 14.2,5.7 16.0,6.4 17.7,6.4 19.5,6.0 21.3,5.3 23.1,5.7 24.8,4.2 26.6,5.6 28.4,8.0 30.2,10.6 31.9,5.7 33.7,6.1 35.5,3.2 37.3,5.6 39.0,5.5 40.8,6.4 42.6,7.5 44.4,10.5 46.1,10.3 47.9,5.9 49.7,5.8 51.5,6.1 53.2,7.1 55.0,8.3 56.8,7.1 58.5,12.3 60.3,13.9 62.1,18.9 63.9,17.2 65.6,18.4 67.4,16.1 69.2,17.4 71.0,19.1 72.7,20.8 74.5,19.2 76.3,21.7 78.1,21.7 79.8,23.8 81.6,24.3 83.4,23.5 85.2,24.7 86.9,24.2 88.7,25.5 90.5,26.1 92.3,24.4 94.0,24.6 95.8,24.9 97.6,26.6 99.4,25.0 101.1,26.3 102.9,27.0 104.7,25.8 106.5,23.2 108.2,25.0 110.0,27.0" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-15.3%</span></td>
-  <td class="num">21.7% / 24.4%</td>
+  <td class="num hide-m">21.7% / 24.4%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $1,052</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">14.2</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num up">+11.7%</td>
+  <td class="take">24% below its 52w high · still easing (20d -6.4%), inside the not-in-freefall limit · RSI 37 · consensus Moderate Buy, avg target $1,052</td>
 </tr>
 <tr data-ind="">
   <td>26</td>
   <td><a class="sym" href="stock/TXN.html">TXN</a><span class="nm">Texas Instruments Incorporated</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$284.69</td>
   <td class="num up">+1.86%</td>
   <td class="num">55</td>
@@ -605,18 +658,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:73%"></span></span>
       <span class="dn">-14.3%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,14.0 1.8,17.2 3.5,13.1 5.3,14.8 7.1,18.4 8.9,10.4 10.6,13.7 12.4,13.3 14.2,9.1 16.0,12.2 17.7,11.7 19.5,14.3 21.3,16.0 23.1,12.7 24.8,10.8 26.6,16.7 28.4,19.3 30.2,20.3 31.9,21.0 33.7,23.9 35.5,23.3 37.3,22.4 39.0,19.8 40.8,24.1 42.6,22.9 44.4,27.0 46.1,26.2 47.9,26.7 49.7,24.2 51.5,23.9 53.2,22.5 55.0,24.0 56.8,18.6 58.5,21.5 60.3,21.5 62.1,23.0 63.9,24.4 65.6,19.7 67.4,17.4 69.2,17.1 71.0,16.5 72.7,17.5 74.5,13.5 76.3,13.3 78.1,11.5 79.8,12.4 81.6,11.7 83.4,4.9 85.2,4.3 86.9,3.0 88.7,7.5 90.5,7.9 92.3,10.4 94.0,11.5 95.8,8.1 97.6,12.1 99.4,12.9 101.1,14.3 102.9,14.5 104.7,13.6 106.5,9.9 108.2,12.7 110.0,9.9" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+2.8%</span></td>
-  <td class="num">26.9% / 27.0%</td>
+  <td class="num hide-m">26.9% / 27.0%</td>
   <td><span class="chip na">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">35.9</td>
   <td class="num">17.9%</td>
   <td class="num up">+68.3%</td>
+  <td class="take">14% below its 52w high · fall has stabilized (20d +2.4%) · RSI 55</td>
 </tr>
 <tr data-ind="Payments / Financials">
   <td>27</td>
   <td><a class="sym" href="stock/AXP.html">AXP</a><span class="nm">American Express Company</span></td>
   <td class="ind">Payments / Financials</td>
-  <td class="num">#56</td>
+  <td class="num hide-m">#56</td>
   <td class="num">$313.22</td>
   <td class="num dn">-3.68%</td>
   <td class="num">48</td>
@@ -626,18 +680,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:23%"></span></span>
       <span class="dn">-18.6%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,9.3 1.8,11.9 3.5,8.9 5.3,9.5 7.1,5.2 8.9,4.2 10.6,3.0 12.4,6.3 14.2,7.1 16.0,8.2 17.7,7.2 19.5,5.5 21.3,5.7 23.1,6.3 24.8,9.5 26.6,8.3 28.4,7.6 30.2,12.1 31.9,9.6 33.7,9.0 35.5,9.7 37.3,9.6 39.0,10.6 40.8,11.1 42.6,12.6 44.4,15.7 46.1,12.7 47.9,12.8 49.7,14.7 51.5,14.7 53.2,16.9 55.0,17.4 56.8,15.4 58.5,13.8 60.3,15.5 62.1,21.7 63.9,22.3 65.6,22.1 67.4,21.1 69.2,25.4 71.0,27.0 72.7,25.1 74.5,23.5 76.3,24.8 78.1,25.2 79.8,25.9 81.6,26.9 83.4,26.6 85.2,25.9 86.9,25.7 88.7,25.8 90.5,23.9 92.3,23.8 94.0,22.1 95.8,23.0 97.6,24.5 99.4,20.9 101.1,21.1 102.9,19.6 104.7,18.6 106.5,16.0 108.2,15.2 110.0,21.3" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-7.0%</span></td>
-  <td class="num">26.6% / 22.1%</td>
+  <td class="num hide-m">26.6% / 22.1%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $365</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">17.1</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-12.4%</td>
+  <td class="take">19% below its 52w high · fall has stabilized (20d +1.4%) · RSI 48 · consensus Moderate Buy, avg target $365</td>
 </tr>
 <tr data-ind="">
   <td>28</td>
   <td><a class="sym" href="stock/LUV.html">LUV</a><span class="nm">Southwest Airlines Company</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$41.75</td>
   <td class="num dn">-0.67%</td>
   <td class="num">54</td>
@@ -647,18 +702,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:48%"></span></span>
       <span class="dn">-23.8%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,8.4 1.8,12.5 3.5,9.9 5.3,11.3 7.1,6.7 8.9,3.2 10.6,3.0 12.4,7.0 14.2,6.8 16.0,11.4 17.7,10.1 19.5,11.2 21.3,11.5 23.1,12.8 24.8,14.8 26.6,16.6 28.4,18.9 30.2,22.2 31.9,21.2 33.7,20.5 35.5,20.2 37.3,20.5 39.0,22.5 40.8,22.8 42.6,25.2 44.4,27.0 46.1,25.0 47.9,24.7 49.7,22.8 51.5,24.9 53.2,24.8 55.0,24.8 56.8,23.6 58.5,23.0 60.3,23.5 62.1,23.8 63.9,21.3 65.6,19.9 67.4,18.2 69.2,17.5 71.0,19.7 72.7,18.6 74.5,16.2 76.3,17.1 78.1,17.5 79.8,18.4 81.6,18.0 83.4,16.7 85.2,18.0 86.9,16.7 88.7,18.3 90.5,19.1 92.3,18.4 94.0,20.3 95.8,20.6 97.6,23.4 99.4,20.2 101.1,23.1 102.9,24.6 104.7,22.7 106.5,22.2 108.2,17.6 110.0,18.2" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-9.8%</span></td>
-  <td class="num">46.3% / 32.3%</td>
+  <td class="num hide-m">46.3% / 32.3%</td>
   <td><span class="chip na">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">26.6</td>
   <td class="num">5.3%</td>
   <td class="num up">+29.7%</td>
+  <td class="take">24% below its 52w high · still easing (20d -2.2%), inside the not-in-freefall limit · RSI 54</td>
 </tr>
 <tr data-ind="Software — EDA">
   <td>29</td>
   <td><a class="sym" href="stock/SNPS.html">SNPS</a><span class="nm">Synopsys</span></td>
   <td class="ind">Software — EDA</td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$430.14</td>
   <td class="num up">+1.81%</td>
   <td class="num">42</td>
@@ -668,18 +724,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:37%"></span></span>
       <span class="dn">-19.5%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,24.3 1.8,26.0 3.5,26.2 5.3,23.4 7.1,22.9 8.9,20.9 10.6,21.4 12.4,20.5 14.2,18.9 16.0,19.6 17.7,19.7 19.5,19.5 21.3,19.6 23.1,17.9 24.8,19.3 26.6,20.8 28.4,21.3 30.2,21.9 31.9,21.9 33.7,22.5 35.5,20.1 37.3,19.9 39.0,10.6 40.8,14.4 42.6,14.9 44.4,19.1 46.1,18.9 47.9,18.8 49.7,22.6 51.5,22.9 53.2,22.7 55.0,22.0 56.8,22.0 58.5,24.7 60.3,27.0 62.1,25.2 63.9,24.7 65.6,24.1 67.4,21.2 69.2,20.0 71.0,19.3 72.7,17.4 74.5,17.2 76.3,18.6 78.1,19.0 79.8,15.7 81.6,6.3 83.4,6.4 85.2,6.6 86.9,3.8 88.7,4.2 90.5,5.1 92.3,3.0 94.0,4.3 95.8,5.6 97.6,8.1 99.4,10.1 101.1,12.3 102.9,12.3 104.7,13.5 106.5,12.9 108.2,17.8 110.0,16.5" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+12.1%</span></td>
-  <td class="num">37.0% / 54.0%</td>
+  <td class="num hide-m">37.0% / 54.0%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $575</span></td>
   <td class="num">2026-12-09</td>
   <td class="num">90.2</td>
   <td class="num">2.4%</td>
   <td class="num dn">-7.3%</td>
+  <td class="take">20% below its 52w high · fall has stabilized (20d +1.0%) · RSI 42 · consensus Moderate Buy, avg target $575</td>
 </tr>
 <tr data-ind="Asset Management">
   <td>30</td>
   <td><a class="sym" href="stock/BX.html">BX</a><span class="nm">Blackstone</span></td>
   <td class="ind">Asset Management</td>
-  <td class="num">#310</td>
+  <td class="num hide-m">#310</td>
   <td class="num">$117.97</td>
   <td class="num dn">-0.66%</td>
   <td class="num">54</td>
@@ -689,18 +746,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:26%"></span></span>
       <span class="dn">-27.8%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,11.6 1.8,14.1 3.5,14.8 5.3,15.0 7.1,11.2 8.9,9.7 10.6,10.4 12.4,11.8 14.2,9.8 16.0,7.3 17.7,4.2 19.5,4.6 21.3,3.0 23.1,6.0 24.8,7.9 26.6,7.9 28.4,5.4 30.2,7.4 31.9,6.3 33.7,6.2 35.5,6.3 37.3,6.4 39.0,6.2 40.8,6.9 42.6,6.4 44.4,10.0 46.1,10.0 47.9,9.5 49.7,10.3 51.5,11.5 53.2,14.3 55.0,16.3 56.8,14.6 58.5,14.7 60.3,15.6 62.1,17.4 63.9,16.3 65.6,16.6 67.4,15.8 69.2,17.1 71.0,19.7 72.7,20.9 74.5,20.2 76.3,22.4 78.1,22.7 79.8,23.7 81.6,23.6 83.4,23.9 85.2,24.0 86.9,23.0 88.7,23.9 90.5,23.4 92.3,22.5 94.0,22.2 95.8,24.9 97.6,27.0 99.4,25.3 101.1,26.8 102.9,26.5 104.7,24.7 106.5,25.1 108.2,20.0 110.0,20.5" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-11.9%</span></td>
-  <td class="num">57.4% / 38.7%</td>
+  <td class="num hide-m">57.4% / 38.7%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $145</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">28.4</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-23.7%</td>
+  <td class="take">28% below its 52w high · still easing (20d -0.4%), inside the not-in-freefall limit · RSI 54 · consensus Moderate Buy, avg target $145</td>
 </tr>
 <tr data-ind="">
   <td>31</td>
   <td><a class="sym" href="stock/MU.html">MU</a><span class="nm">Micron Technology</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$877.55</td>
   <td class="num up">+2.46%</td>
   <td class="num">38</td>
@@ -710,18 +768,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:67%"></span></span>
       <span class="dn">-27.7%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,21.5 1.8,27.0 3.5,17.9 5.3,21.4 7.1,20.9 8.9,16.7 10.6,16.7 12.4,17.5 14.2,17.7 16.0,18.8 17.7,18.3 19.5,15.5 21.3,12.9 23.1,11.4 24.8,8.7 26.6,13.5 28.4,13.7 30.2,11.2 31.9,11.7 33.7,15.5 35.5,14.0 37.3,13.6 39.0,13.8 40.8,14.0 42.6,12.3 44.4,14.0 46.1,12.5 47.9,12.3 49.7,8.4 51.5,9.5 53.2,7.7 55.0,11.0 56.8,11.2 58.5,14.6 60.3,14.4 62.1,14.4 63.9,11.0 65.6,8.5 67.4,6.6 69.2,3.1 71.0,4.7 72.7,4.1 74.5,4.0 76.3,5.9 78.1,5.2 79.8,5.2 81.6,3.0 83.4,4.5 85.2,5.2 86.9,6.5 88.7,3.6 90.5,7.1 92.3,7.6 94.0,10.3 95.8,12.7 97.6,15.3 99.4,14.1 101.1,17.6 102.9,15.9 104.7,16.5 106.5,15.3 108.2,19.1 110.0,17.7" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+6.9%</span></td>
-  <td class="num">57.8% / 52.4%</td>
+  <td class="num hide-m">57.8% / 52.4%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-12-16</td>
   <td class="num">20.4</td>
   <td class="num">75.6%</td>
   <td class="num up">+300.7%</td>
+  <td class="take">28% below its 52w high · still easing (20d -18.9%), inside the not-in-freefall limit · RSI 38</td>
 </tr>
 <tr data-ind="">
   <td>32</td>
   <td><a class="sym" href="stock/MMED.html">MMED</a><span class="nm">MiniMed Group</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$18.34</td>
   <td class="num up">+0.27%</td>
   <td class="num">44</td>
@@ -731,18 +790,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:58%"></span></span>
       <span class="dn">-23.1%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,24.2 1.8,21.6 3.5,22.4 5.3,22.8 7.1,19.2 8.9,19.6 10.6,21.0 12.4,21.5 14.2,17.5 16.0,17.8 17.7,16.9 19.5,13.7 21.3,16.0 23.1,15.6 24.8,17.7 26.6,18.3 28.4,15.4 30.2,15.5 31.9,14.6 33.7,16.3 35.5,19.8 37.3,17.9 39.0,17.8 40.8,15.8 42.6,15.2 44.4,7.8 46.1,3.3 47.9,3.0 49.7,4.9 51.5,4.8 53.2,6.7 55.0,7.8 56.8,7.6 58.5,9.4 60.3,9.2 62.1,7.9 63.9,9.2 65.6,10.0 67.4,12.3 69.2,12.0 71.0,14.3 72.7,14.6 74.5,16.2 76.3,14.4 78.1,16.0 79.8,17.9 81.6,17.5 83.4,17.1 85.2,15.6 86.9,17.3 88.7,19.1 90.5,16.8 92.3,17.1 94.0,20.2 95.8,21.6 97.6,27.0 99.4,22.9 101.1,24.7 102.9,23.7 104.7,24.7 106.5,23.6 108.2,21.9 110.0,21.8" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+4.0%</span></td>
-  <td class="num">70.0% / 47.2%</td>
+  <td class="num hide-m">70.0% / 47.2%</td>
   <td><span class="chip na">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-0.8%</td>
+  <td class="take">23% below its 52w high · still easing (20d -8.2%), inside the not-in-freefall limit · RSI 44</td>
 </tr>
 <tr data-ind="Space / Aerospace">
   <td>33</td>
   <td><a class="sym" href="stock/SPCX.html">SPCX</a><span class="nm">Space Exploration Technologies Corp.</span></td>
   <td class="ind">Space / Aerospace</td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$147.49</td>
   <td class="num up">+1.89%</td>
   <td class="num">46</td>
@@ -752,18 +812,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:38%"></span></span>
       <span class="dn">-30.2%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,23.9 1.8,25.4 3.5,25.5 5.3,27.0 7.1,24.6 8.9,20.6 10.6,27.0 12.4,24.5 14.2,17.6 16.0,15.5 17.7,17.6 19.5,12.7 21.3,14.5 23.1,15.0 24.8,12.7 26.6,13.8 28.4,15.2 30.2,17.3 31.9,16.2 33.7,16.9 35.5,15.8 37.3,15.2 39.0,14.7 40.8,14.5 42.6,13.6 44.4,14.2 46.1,14.8 47.9,11.4 49.7,12.0 51.5,10.0 53.2,12.2 55.0,12.0 56.8,10.8 58.5,12.0 60.3,13.7 62.1,10.9 63.9,9.5 65.6,10.2 67.4,10.6 69.2,9.5 71.0,11.9 72.7,12.0 74.5,11.8 76.3,13.0 78.1,11.6 79.8,10.9 81.6,12.0 83.4,7.9 85.2,3.3 86.9,3.0 88.7,4.6 90.5,7.3 92.3,6.5 94.0,6.2 95.8,8.8 97.6,10.5 99.4,11.8 101.1,12.8 102.9,12.0 104.7,12.1 106.5,7.8 108.2,13.2 110.0,12.2" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+26.7%</span></td>
-  <td class="num">70.9% / 59.4%</td>
+  <td class="num hide-m">70.9% / 59.4%</td>
   <td><span class="chip sb">Strong Buy</span><br><span class='muted'>avg $250</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-8.4%</td>
+  <td class="take">30% below its 52w high · still easing (20d -0.8%), inside the not-in-freefall limit · RSI 46 · consensus Strong Buy, avg target $250</td>
 </tr>
 <tr data-ind="Aerospace & Defense">
   <td>34</td>
   <td><a class="sym" href="stock/BA.html">BA</a><span class="nm">Boeing Company (The)</span></td>
   <td class="ind">Aerospace & Defense</td>
-  <td class="num">#47</td>
+  <td class="num hide-m">#47</td>
   <td class="num">$188.35</td>
   <td class="num up">+0.43%</td>
   <td class="num">42</td>
@@ -773,18 +834,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:13%"></span></span>
       <span class="dn">-25.3%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,11.0 1.8,14.3 3.5,11.3 5.3,13.3 7.1,5.9 8.9,4.3 10.6,3.0 12.4,6.4 14.2,5.5 16.0,6.2 17.7,6.0 19.5,6.9 21.3,7.2 23.1,6.7 24.8,9.1 26.6,10.4 28.4,10.7 30.2,13.8 31.9,14.2 33.7,15.8 35.5,15.5 37.3,15.1 39.0,16.0 40.8,16.1 42.6,16.9 44.4,17.9 46.1,16.5 47.9,15.8 49.7,15.0 51.5,15.7 53.2,17.5 55.0,18.2 56.8,15.8 58.5,15.9 60.3,16.1 62.1,19.4 63.9,21.6 65.6,21.1 67.4,19.8 69.2,21.3 71.0,20.3 72.7,21.7 74.5,21.1 76.3,27.0 78.1,25.6 79.8,26.3 81.6,23.6 83.4,23.1 85.2,23.4 86.9,24.7 88.7,25.3 90.5,25.6 92.3,24.4 94.0,24.8 95.8,26.1 97.6,26.9 99.4,25.1 101.1,24.5 102.9,24.0 104.7,24.4 106.5,23.6 108.2,25.6 110.0,25.3" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-15.0%</span></td>
-  <td class="num">21.8% / 31.5%</td>
+  <td class="num hide-m">21.8% / 31.5%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $267</span></td>
   <td class="num">2026-10-27</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">106.1%</td>
   <td class="num dn">-14.9%</td>
+  <td class="take">25% below its 52w high · still easing (20d -4.9%), inside the not-in-freefall limit · RSI 42 · consensus Moderate Buy, avg target $267</td>
 </tr>
 <tr data-ind="Beverages / Food">
   <td>35</td>
   <td><a class="sym" href="stock/PEP.html">PEP</a><span class="nm">PepsiCo</span></td>
   <td class="ind">Beverages / Food</td>
-  <td class="num">#46</td>
+  <td class="num hide-m">#46</td>
   <td class="num">$135.77</td>
   <td class="num dn">-2.20%</td>
   <td class="num">60</td>
@@ -794,18 +856,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:26%"></span></span>
       <span class="dn">-20.4%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,5.1 1.8,4.3 3.5,8.1 5.3,8.9 7.1,8.8 8.9,9.4 10.6,9.8 12.4,10.1 14.2,9.5 16.0,11.0 17.7,10.2 19.5,9.8 21.3,7.6 23.1,7.4 24.8,10.4 26.6,8.2 28.4,5.4 30.2,6.0 31.9,4.4 33.7,3.0 35.5,5.8 37.3,5.8 39.0,8.7 40.8,7.1 42.6,8.0 44.4,8.6 46.1,7.8 47.9,8.3 49.7,11.1 51.5,10.1 53.2,12.1 55.0,12.2 56.8,12.6 58.5,12.5 60.3,13.5 62.1,14.8 63.9,15.6 65.6,20.1 67.4,20.3 69.2,18.4 71.0,19.6 72.7,21.9 74.5,21.4 76.3,21.5 78.1,21.3 79.8,23.6 81.6,24.9 83.4,24.5 85.2,24.8 86.9,24.7 88.7,27.0 90.5,21.7 92.3,24.4 94.0,23.6 95.8,22.9 97.6,20.7 99.4,21.7 101.1,18.1 102.9,15.7 104.7,15.2 106.5,14.4 108.2,9.7 110.0,13.2" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-5.0%</span></td>
-  <td class="num">23.9% / 23.5%</td>
+  <td class="num hide-m">23.9% / 23.5%</td>
   <td><span class="chip h">Hold</span> <span class="flag" title="October target-cut wave (Piper, Barclays, Citi, JPMorgan)">⚠</span><br><span class='muted'>avg $143</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">17.0</td>
   <td class="num">15.3%</td>
   <td class="num dn">-10.4%</td>
+  <td class="take">20% below its 52w high · fall has stabilized (20d +5.6%) · RSI 60 · consensus Hold, avg target $143</td>
 </tr>
 <tr data-ind="Video Games">
   <td>36</td>
   <td><a class="sym" href="stock/TTWO.html">TTWO</a><span class="nm">Take-Two Interactive Software</span></td>
   <td class="ind">Video Games</td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$203.69</td>
   <td class="num dn">-1.98%</td>
   <td class="num">44</td>
@@ -815,18 +878,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:20%"></span></span>
       <span class="dn">-21.2%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,5.7 1.8,6.2 3.5,5.8 5.3,7.8 7.1,6.8 8.9,9.0 10.6,11.4 12.4,12.5 14.2,6.2 16.0,3.0 17.7,4.4 19.5,7.8 21.3,8.3 23.1,6.0 24.8,8.4 26.6,8.0 28.4,10.5 30.2,9.0 31.9,9.3 33.7,12.0 35.5,12.3 37.3,12.1 39.0,12.3 40.8,11.2 42.6,18.3 44.4,19.6 46.1,19.9 47.9,20.8 49.7,20.5 51.5,21.2 53.2,22.1 55.0,19.5 56.8,20.2 58.5,16.8 60.3,21.8 62.1,21.8 63.9,22.4 65.6,24.7 67.4,22.7 69.2,24.7 71.0,24.3 72.7,25.8 74.5,26.5 76.3,26.1 78.1,25.9 79.8,23.8 81.6,25.5 83.4,25.9 85.2,25.6 86.9,26.0 88.7,25.3 90.5,22.9 92.3,21.1 94.0,23.2 95.8,27.0 97.6,26.6 99.4,22.9 101.1,24.8 102.9,24.9 104.7,24.1 106.5,24.4 108.2,23.6 110.0,25.5" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-17.7%</span></td>
-  <td class="num">35.6% / 32.7%</td>
+  <td class="num hide-m">35.6% / 32.7%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $292</span></td>
   <td class="num">2026-11-09</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">-2.0%</td>
   <td class="num dn">-20.2%</td>
+  <td class="take">21% below its 52w high · fall has stabilized (20d +1.1%) · RSI 44 · consensus Moderate Buy, avg target $292</td>
 </tr>
 <tr data-ind="">
   <td>37</td>
   <td><a class="sym" href="stock/DVA.html">DVA</a><span class="nm">DaVita</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$183.64</td>
   <td class="num dn">-1.32%</td>
   <td class="num">52</td>
@@ -836,18 +900,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:58%"></span></span>
       <span class="dn">-23.8%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,3.5 1.8,3.0 3.5,3.8 5.3,3.3 7.1,5.6 8.9,7.6 10.6,21.7 12.4,24.6 14.2,23.4 16.0,23.5 17.7,25.4 19.5,24.3 21.3,25.1 23.1,24.8 24.8,26.0 26.6,25.5 28.4,25.8 30.2,26.5 31.9,27.0 33.7,26.0 35.5,25.6 37.3,24.8 39.0,25.2 40.8,24.5 42.6,26.2 44.4,26.2 46.1,25.0 47.9,24.2 49.7,23.4 51.5,24.8 53.2,23.7 55.0,24.3 56.8,24.2 58.5,21.5 60.3,20.9 62.1,19.8 63.9,23.7 65.6,23.4 67.4,24.0 69.2,23.5 71.0,23.7 72.7,26.7 74.5,25.3 76.3,25.5 78.1,26.5 79.8,26.6 81.6,26.1 83.4,25.3 85.2,25.2 86.9,24.6 88.7,25.9 90.5,25.9 92.3,25.1 94.0,24.2 95.8,24.0 97.6,24.5 99.4,21.5 101.1,22.2 102.9,22.3 104.7,26.5 106.5,25.9 108.2,22.6 110.0,23.5" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-23.3%</span></td>
-  <td class="num">51.3% / 40.4%</td>
+  <td class="num hide-m">51.3% / 40.4%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-10-29</td>
   <td class="num">16.0</td>
   <td class="num">38.2%</td>
   <td class="num up">+42.1%</td>
+  <td class="take">24% below its 52w high · fall has stabilized (20d +2.9%) · RSI 52</td>
 </tr>
 <tr data-ind="Semiconductors">
   <td>38</td>
   <td><a class="sym" href="stock/NXPI.html">NXPI</a><span class="nm">NXP Semiconductors N.V.</span></td>
   <td class="ind">Semiconductors</td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$234.92</td>
   <td class="num dn">-1.21%</td>
   <td class="num">51</td>
@@ -857,18 +922,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:34%"></span></span>
       <span class="dn">-29.4%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,3.0 1.8,13.8 3.5,11.3 5.3,20.9 7.1,23.9 8.9,15.9 10.6,19.7 12.4,19.3 14.2,14.6 16.0,18.4 17.7,16.6 19.5,18.4 21.3,19.3 23.1,17.6 24.8,18.8 26.6,21.3 28.4,22.8 30.2,24.6 31.9,23.1 33.7,24.9 35.5,23.6 37.3,24.5 39.0,22.9 40.8,24.2 42.6,23.6 44.4,25.0 46.1,21.3 47.9,23.4 49.7,21.7 51.5,24.1 53.2,24.4 55.0,22.5 56.8,16.5 58.5,23.9 60.3,22.6 62.1,27.0 63.9,21.6 65.6,21.6 67.4,19.0 69.2,15.9 71.0,17.2 72.7,20.3 74.5,15.6 76.3,16.6 78.1,16.5 79.8,15.9 81.6,14.9 83.4,12.2 85.2,13.3 86.9,11.8 88.7,17.3 90.5,19.8 92.3,21.9 94.0,23.3 95.8,22.6 97.6,25.9 99.4,19.8 101.1,20.8 102.9,20.3 104.7,15.9 106.5,13.0 108.2,15.8 110.0,17.5" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-9.3%</span></td>
-  <td class="num">36.2% / 36.9%</td>
+  <td class="num hide-m">36.2% / 36.9%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $302</span></td>
   <td class="num">2026-10-27</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num up">+7.2%</td>
+  <td class="take">29% below its 52w high · still easing (20d -1.3%), inside the not-in-freefall limit · RSI 51 · consensus Moderate Buy, avg target $302</td>
 </tr>
 <tr data-ind="">
   <td>39</td>
   <td><a class="sym" href="stock/CARR.html">CARR</a><span class="nm">Carrier Global</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$56.24</td>
   <td class="num dn">-0.42%</td>
   <td class="num">52</td>
@@ -878,18 +944,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:23%"></span></span>
       <span class="dn">-26.0%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,8.1 1.8,14.7 3.5,11.7 5.3,10.9 7.1,8.1 8.9,3.0 10.6,3.5 12.4,6.5 14.2,6.4 16.0,7.6 17.7,7.2 19.5,8.3 21.3,7.8 23.1,8.9 24.8,9.4 26.6,11.7 28.4,12.1 30.2,14.3 31.9,13.8 33.7,14.6 35.5,17.6 37.3,17.1 39.0,16.9 40.8,17.0 42.6,18.2 44.4,20.2 46.1,19.5 47.9,16.4 49.7,15.2 51.5,16.4 53.2,18.7 55.0,21.4 56.8,19.7 58.5,20.1 60.3,23.6 62.1,26.2 63.9,26.0 65.6,27.0 67.4,25.5 69.2,24.2 71.0,24.5 72.7,25.0 74.5,21.9 76.3,23.0 78.1,24.0 79.8,25.0 81.6,24.3 83.4,24.5 85.2,23.2 86.9,22.5 88.7,24.7 90.5,23.0 92.3,23.6 94.0,23.9 95.8,24.7 97.6,26.3 99.4,24.8 101.1,24.7 102.9,24.3 104.7,22.3 106.5,21.7 108.2,21.7 110.0,22.2" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-11.0%</span></td>
-  <td class="num">14.8% / 19.9%</td>
+  <td class="num hide-m">14.8% / 19.9%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-10-29</td>
   <td class="num">29.1</td>
   <td class="num">14.0%</td>
   <td class="num dn">-2.8%</td>
+  <td class="take">26% below its 52w high · still easing (20d -0.2%), inside the not-in-freefall limit · RSI 52</td>
 </tr>
 <tr data-ind="Semiconductors">
   <td>40</td>
   <td><a class="sym" href="stock/ADI.html">ADI</a><span class="nm">Analog Devices</span></td>
   <td class="ind">Semiconductors</td>
-  <td class="num">#396</td>
+  <td class="num hide-m">#396</td>
   <td class="num">$391.07</td>
   <td class="num up">+1.38%</td>
   <td class="num">47</td>
@@ -899,18 +966,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:75%"></span></span>
       <span class="dn">-12.2%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,22.5 1.8,27.0 3.5,22.2 5.3,22.0 7.1,24.0 8.9,17.4 10.6,18.3 12.4,18.4 14.2,13.9 16.0,16.1 17.7,15.6 19.5,15.9 21.3,17.1 23.1,14.1 24.8,13.8 26.6,18.7 28.4,19.9 30.2,21.0 31.9,20.0 33.7,20.6 35.5,19.8 37.3,20.4 39.0,19.4 40.8,24.0 42.6,23.9 44.4,26.6 46.1,26.2 47.9,25.9 49.7,23.8 51.5,23.5 53.2,22.8 55.0,24.2 56.8,17.9 58.5,24.3 60.3,24.1 62.1,23.9 63.9,23.7 65.6,19.0 67.4,16.4 69.2,13.8 71.0,15.6 72.7,16.6 74.5,12.6 76.3,12.0 78.1,11.0 79.8,11.5 81.6,8.7 83.4,4.2 85.2,3.5 86.9,3.0 88.7,6.7 90.5,8.2 92.3,8.1 94.0,8.1 95.8,5.1 97.6,9.1 99.4,8.9 101.1,12.0 102.9,12.4 104.7,11.4 106.5,8.2 108.2,15.4 110.0,13.5" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+6.9%</span></td>
-  <td class="num">36.7% / 32.9%</td>
+  <td class="num hide-m">36.7% / 32.9%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $461</span></td>
   <td class="num">2026-11-24</td>
   <td class="num">49.7</td>
   <td class="num">6.4%</td>
   <td class="num up">+64.3%</td>
+  <td class="take">12% below its 52w high · still easing (20d -0.6%), inside the not-in-freefall limit · RSI 47 · consensus Moderate Buy, avg target $461</td>
 </tr>
 <tr data-ind="Interactive Media">
   <td>41</td>
   <td><a class="sym" href="stock/GOOG.html">GOOG</a><span class="nm">Alphabet Inc.</span></td>
   <td class="ind">Interactive Media</td>
-  <td class="num">#5</td>
+  <td class="num hide-m">#5</td>
   <td class="num">$317.28</td>
   <td class="num dn">-1.08%</td>
   <td class="num">31</td>
@@ -920,18 +988,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:41%"></span></span>
       <span class="dn">-20.5%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,20.7 1.8,19.4 3.5,20.2 5.3,10.7 7.1,4.2 8.9,3.0 10.6,9.3 12.4,10.7 14.2,12.0 16.0,11.1 17.7,16.4 19.5,16.6 21.3,16.0 23.1,16.1 24.8,17.0 26.6,17.1 28.4,16.9 30.2,18.4 31.9,16.9 33.7,15.7 35.5,16.2 37.3,18.0 39.0,18.6 40.8,16.4 42.6,19.5 44.4,20.9 46.1,20.2 47.9,18.0 49.7,19.5 51.5,19.5 53.2,22.4 55.0,21.6 56.8,19.5 58.5,15.3 60.3,17.0 62.1,17.9 63.9,16.1 65.6,15.8 67.4,13.1 69.2,14.5 71.0,19.7 72.7,18.0 74.5,17.2 76.3,18.0 78.1,18.7 79.8,17.3 81.6,19.7 83.4,17.5 85.2,16.0 86.9,15.7 88.7,14.6 90.5,15.6 92.3,14.4 94.0,13.9 95.8,13.7 97.6,16.1 99.4,15.6 101.1,18.9 102.9,17.5 104.7,19.1 106.5,21.4 108.2,25.6 110.0,27.0" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-4.6%</span></td>
-  <td class="num">21.1% / 23.9%</td>
+  <td class="num hide-m">21.1% / 23.9%</td>
   <td><span class="chip sb">Strong Buy</span><br><span class='muted'>avg $430</span></td>
   <td class="num">2026-10-28</td>
   <td class="num">16.4</td>
   <td class="num">15.7%</td>
   <td class="num up">+21.8%</td>
+  <td class="take">20% below its 52w high · still easing (20d -7.0%), inside the not-in-freefall limit · RSI 31 · consensus Strong Buy, avg target $430</td>
 </tr>
 <tr data-ind="">
   <td>42</td>
   <td><a class="sym" href="stock/NBIX.html">NBIX</a><span class="nm">Neurocrine Biosciences</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$142.70</td>
   <td class="num dn">-0.41%</td>
   <td class="num">50</td>
@@ -941,18 +1010,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:31%"></span></span>
       <span class="dn">-23.1%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,4.3 1.8,5.2 3.5,3.0 5.3,11.9 7.1,12.2 8.9,12.3 10.6,14.4 12.4,15.2 14.2,13.5 16.0,12.8 17.7,14.2 19.5,16.8 21.3,19.5 23.1,18.6 24.8,17.8 26.6,17.9 28.4,17.3 30.2,18.5 31.9,18.7 33.7,18.5 35.5,18.3 37.3,16.8 39.0,17.1 40.8,18.0 42.6,18.0 44.4,16.7 46.1,16.2 47.9,15.9 49.7,17.2 51.5,17.5 53.2,17.5 55.0,16.8 56.8,17.0 58.5,16.5 60.3,19.9 62.1,20.2 63.9,19.0 65.6,21.7 67.4,22.8 69.2,23.6 71.0,24.9 72.7,25.2 74.5,25.4 76.3,24.5 78.1,25.5 79.8,23.8 81.6,24.3 83.4,23.2 85.2,22.7 86.9,22.1 88.7,23.0 90.5,24.1 92.3,23.5 94.0,24.0 95.8,27.0 97.6,26.6 99.4,26.1 101.1,26.7 102.9,26.1 104.7,23.7 106.5,24.1 108.2,23.1 110.0,23.4" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-21.9%</span></td>
-  <td class="num">33.0% / 30.0%</td>
+  <td class="num hide-m">33.0% / 30.0%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-11-02</td>
   <td class="num">22.3</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-0.9%</td>
+  <td class="take">23% below its 52w high · fall has stabilized (20d +3.1%) · RSI 50</td>
 </tr>
 <tr data-ind="Aerospace & Defense">
   <td>43</td>
   <td><a class="sym" href="stock/RTX.html">RTX</a><span class="nm">RTX</span></td>
   <td class="ind">Aerospace & Defense</td>
-  <td class="num">#49</td>
+  <td class="num hide-m">#49</td>
   <td class="num">$191.01</td>
   <td class="num dn">-1.90%</td>
   <td class="num">50</td>
@@ -962,18 +1032,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:40%"></span></span>
       <span class="dn">-15.3%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,6.7 1.8,8.4 3.5,8.9 5.3,8.4 7.1,7.7 8.9,7.0 10.6,4.7 12.4,4.2 14.2,4.3 16.0,3.7 17.7,3.9 19.5,4.4 21.3,5.7 23.1,4.3 24.8,5.0 26.6,3.0 28.4,5.7 30.2,10.0 31.9,11.3 33.7,11.6 35.5,11.1 37.3,10.2 39.0,10.1 40.8,10.3 42.6,12.4 44.4,13.8 46.1,16.1 47.9,15.4 49.7,16.1 51.5,17.2 53.2,17.8 55.0,17.5 56.8,17.8 58.5,19.0 60.3,18.9 62.1,18.2 63.9,20.0 65.6,19.7 67.4,19.5 69.2,21.3 71.0,20.7 72.7,22.6 74.5,22.2 76.3,23.1 78.1,23.5 79.8,24.1 81.6,24.5 83.4,24.7 85.2,24.8 86.9,25.4 88.7,27.0 90.5,24.8 92.3,24.0 94.0,23.6 95.8,25.5 97.6,23.7 99.4,23.5 101.1,19.8 102.9,20.7 104.7,20.1 106.5,21.0 108.2,19.3 110.0,21.3" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-12.6%</span></td>
-  <td class="num">28.3% / 21.1%</td>
+  <td class="num hide-m">28.3% / 21.1%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $227</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">29.9</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num up">+6.9%</td>
+  <td class="take">15% below its 52w high · fall has stabilized (20d +0.9%) · RSI 50 · consensus Moderate Buy, avg target $227</td>
 </tr>
 <tr data-ind="">
   <td>44</td>
   <td><a class="sym" href="stock/ADBE.html">ADBE</a><span class="nm">Adobe</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$263.82</td>
   <td class="num dn">-2.49%</td>
   <td class="num">60</td>
@@ -983,18 +1054,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:42%"></span></span>
       <span class="dn">-26.7%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,19.9 1.8,14.4 3.5,20.4 5.3,19.5 7.1,19.1 8.9,16.7 10.6,16.0 12.4,15.6 14.2,13.7 16.0,10.7 17.7,14.3 19.5,16.2 21.3,11.7 23.1,14.2 24.8,18.1 26.6,14.5 28.4,10.9 30.2,11.0 31.9,9.8 33.7,9.4 35.5,10.3 37.3,10.5 39.0,4.4 40.8,3.5 42.6,3.0 44.4,5.6 46.1,8.1 47.9,5.7 49.7,13.2 51.5,16.8 53.2,17.7 55.0,20.1 56.8,18.8 58.5,13.6 60.3,16.6 62.1,19.4 63.9,18.6 65.6,20.0 67.4,19.8 69.2,24.2 71.0,23.2 72.7,23.9 74.5,25.3 76.3,27.0 78.1,26.2 79.8,23.5 81.6,23.0 83.4,24.4 85.2,24.0 86.9,24.2 88.7,26.3 90.5,23.1 92.3,22.6 94.0,24.2 95.8,25.0 97.6,23.2 99.4,19.0 101.1,21.5 102.9,20.8 104.7,17.0 106.5,17.7 108.2,11.6 110.0,14.3" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+5.9%</span></td>
-  <td class="num">48.3% / 41.2%</td>
+  <td class="num hide-m">48.3% / 41.2%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-12-09</td>
   <td class="num">14.9</td>
   <td class="num">65.2%</td>
   <td class="num dn">-25.4%</td>
+  <td class="take">27% below its 52w high · fall has stabilized (20d +12.0%) · RSI 60</td>
 </tr>
 <tr data-ind="Investment Banking">
   <td>45</td>
   <td><a class="sym" href="stock/MS.html">MS</a><span class="nm">Morgan Stanley</span></td>
   <td class="ind">Investment Banking</td>
-  <td class="num">#39</td>
+  <td class="num hide-m">#39</td>
   <td class="num">$179.49</td>
   <td class="num dn">-2.44%</td>
   <td class="num">34</td>
@@ -1004,18 +1076,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:34%"></span></span>
       <span class="dn">-21.5%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,7.1 1.8,12.2 3.5,8.0 5.3,7.8 7.1,7.3 8.9,3.8 10.6,3.1 12.4,5.8 14.2,4.2 16.0,4.8 17.7,5.0 19.5,3.4 21.3,3.0 23.1,3.6 24.8,3.1 26.6,3.5 28.4,5.5 30.2,9.6 31.9,5.5 33.7,5.6 35.5,4.0 37.3,5.6 39.0,5.1 40.8,5.2 42.6,6.0 44.4,7.4 46.1,6.9 47.9,3.7 49.7,3.4 51.5,4.3 53.2,4.8 55.0,6.4 56.8,5.4 58.5,10.1 60.3,10.3 62.1,12.6 63.9,11.9 65.6,12.5 67.4,10.4 69.2,13.9 71.0,15.0 72.7,16.3 74.5,16.3 76.3,17.9 78.1,18.4 79.8,21.2 81.6,21.3 83.4,19.9 85.2,20.0 86.9,19.5 88.7,20.2 90.5,21.6 92.3,20.1 94.0,20.1 95.8,22.1 97.6,25.2 99.4,24.8 101.1,25.7 102.9,27.0 104.7,25.8 106.5,21.9 108.2,23.7 110.0,26.4" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-15.2%</span></td>
-  <td class="num">30.3% / 24.7%</td>
+  <td class="num hide-m">30.3% / 24.7%</td>
   <td><span class="chip b">Moderate Buy</span><br><span class='muted'>avg $215</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">15.2</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num up">+9.5%</td>
+  <td class="take">22% below its 52w high · still easing (20d -8.6%), inside the not-in-freefall limit · RSI 34 · consensus Moderate Buy, avg target $215</td>
 </tr>
 <tr data-ind="">
   <td>46</td>
   <td><a class="sym" href="stock/CVS.html">CVS</a><span class="nm">CVS Health</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$93.47</td>
   <td class="num dn">-1.07%</td>
   <td class="num">58</td>
@@ -1025,18 +1098,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:58%"></span></span>
       <span class="dn">-15.5%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,3.0 1.8,6.4 3.5,7.1 5.3,7.9 7.1,6.9 8.9,7.9 10.6,13.1 12.4,16.0 14.2,16.5 16.0,16.5 17.7,18.7 19.5,17.4 21.3,17.2 23.1,15.0 24.8,18.1 26.6,17.3 28.4,18.5 30.2,18.5 31.9,19.1 33.7,18.0 35.5,19.2 37.3,17.8 39.0,19.2 40.8,19.1 42.6,18.2 44.4,14.6 46.1,15.0 47.9,15.0 49.7,15.4 51.5,16.1 53.2,16.8 55.0,16.9 56.8,17.5 58.5,16.6 60.3,17.7 62.1,20.4 63.9,21.8 65.6,23.3 67.4,24.5 69.2,25.0 71.0,26.2 72.7,27.0 74.5,23.0 76.3,24.2 78.1,25.0 79.8,26.4 81.6,26.9 83.4,25.6 85.2,25.1 86.9,25.6 88.7,24.1 90.5,24.3 92.3,25.9 94.0,24.3 95.8,24.5 97.6,21.7 99.4,19.6 101.1,19.8 102.9,19.5 104.7,17.4 106.5,18.7 108.2,17.7 110.0,18.7" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-14.5%</span></td>
-  <td class="num">24.8% / 27.5%</td>
+  <td class="num hide-m">24.8% / 27.5%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-11-04</td>
   <td class="num">41.0</td>
   <td class="num">2.9%</td>
   <td class="num up">+14.1%</td>
+  <td class="take">16% below its 52w high · fall has stabilized (20d +4.9%) · RSI 58</td>
 </tr>
 <tr data-ind="">
   <td>47</td>
   <td><a class="sym" href="stock/JBHT.html">JBHT</a><span class="nm">J.B. Hunt Transport Services</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$226.03</td>
   <td class="num dn">-1.98%</td>
   <td class="num">42</td>
@@ -1046,18 +1120,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:48%"></span></span>
       <span class="dn">-24.3%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,5.3 1.8,5.9 3.5,8.6 5.3,7.6 7.1,9.5 8.9,6.5 10.6,7.2 12.4,9.4 14.2,8.9 16.0,9.8 17.7,10.1 19.5,5.9 21.3,3.4 23.1,4.4 24.8,3.0 26.6,6.6 28.4,7.3 30.2,6.5 31.9,6.1 33.7,12.3 35.5,11.4 37.3,10.8 39.0,10.9 40.8,11.8 42.6,10.1 44.4,13.6 46.1,12.1 47.9,9.8 49.7,6.8 51.5,6.4 53.2,9.2 55.0,9.1 56.8,8.1 58.5,6.3 60.3,7.1 62.1,21.4 63.9,21.4 65.6,22.4 67.4,21.7 69.2,21.2 71.0,22.3 72.7,24.4 74.5,25.9 76.3,25.6 78.1,24.4 79.8,26.4 81.6,25.2 83.4,22.4 85.2,24.2 86.9,25.7 88.7,27.0 90.5,24.7 92.3,24.4 94.0,24.8 95.8,24.5 97.6,23.2 99.4,22.0 101.1,24.6 102.9,26.8 104.7,25.5 106.5,24.6 108.2,23.9 110.0,25.7" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-18.6%</span></td>
-  <td class="num">26.6% / 48.2%</td>
+  <td class="num hide-m">26.6% / 48.2%</td>
   <td><span class="chip na">—</span></td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num">32.4</td>
   <td class="num">13.0%</td>
   <td class="num up">+36.9%</td>
+  <td class="take">24% below its 52w high · fall has stabilized (20d +0.3%) · RSI 42</td>
 </tr>
 <tr data-ind="">
   <td>48</td>
   <td><a class="sym" href="stock/EXE.html">EXE</a><span class="nm">Expand Energy</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$93.23</td>
   <td class="num up">+0.29%</td>
   <td class="num">60</td>
@@ -1067,18 +1142,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:24%"></span></span>
       <span class="dn">-24.1%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,20.3 1.8,14.4 3.5,14.4 5.3,12.0 7.1,11.0 8.9,13.4 10.6,16.8 12.4,15.1 14.2,13.8 16.0,6.7 17.7,5.6 19.5,8.6 21.3,11.0 23.1,10.9 24.8,11.8 26.6,9.8 28.4,9.0 30.2,8.9 31.9,8.9 33.7,8.5 35.5,11.0 37.3,8.2 39.0,6.0 40.8,5.7 42.6,5.7 44.4,3.0 46.1,4.0 47.9,4.4 49.7,6.1 51.5,5.7 53.2,8.1 55.0,7.7 56.8,10.8 58.5,12.9 60.3,11.7 62.1,20.0 63.9,20.6 65.6,21.9 67.4,21.6 69.2,22.6 71.0,22.5 72.7,20.2 74.5,22.8 76.3,25.2 78.1,26.9 79.8,27.0 81.6,24.2 83.4,24.8 85.2,23.5 86.9,20.7 88.7,20.9 90.5,19.8 92.3,20.8 94.0,19.9 95.8,14.5 97.6,16.4 99.4,16.9 101.1,12.9 102.9,13.7 104.7,14.0 106.5,13.8 108.2,13.6 110.0,13.2" fill="none" stroke="#34d399" stroke-width="1.6"/></svg> <span class="up">+5.3%</span></td>
-  <td class="num">25.6% / 28.1%</td>
+  <td class="num hide-m">25.6% / 28.1%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-10-27</td>
   <td class="num">7.0</td>
   <td class="num">8.8%</td>
   <td class="num dn">-10.2%</td>
+  <td class="take">24% below its 52w high · fall has stabilized (20d +7.4%) · RSI 60</td>
 </tr>
 <tr data-ind="">
   <td>49</td>
   <td><a class="sym" href="stock/IR.html">IR</a><span class="nm">Ingersoll Rand</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$73.48</td>
   <td class="num dn">-0.85%</td>
   <td class="num">37</td>
@@ -1088,18 +1164,19 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:16%"></span></span>
       <span class="dn">-25.6%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,7.5 1.8,10.0 3.5,10.3 5.3,11.6 7.1,5.9 8.9,3.7 10.6,3.0 12.4,5.3 14.2,6.9 16.0,7.4 17.7,9.4 19.5,9.8 21.3,10.4 23.1,11.6 24.8,12.9 26.6,14.9 28.4,14.5 30.2,16.8 31.9,15.3 33.7,15.9 35.5,17.8 37.3,16.0 39.0,17.3 40.8,17.8 42.6,19.7 44.4,22.9 46.1,22.4 47.9,21.9 49.7,20.6 51.5,22.3 53.2,24.2 55.0,24.9 56.8,25.1 58.5,26.1 60.3,26.4 62.1,27.0 63.9,25.4 65.6,26.5 67.4,25.9 69.2,23.9 71.0,20.8 72.7,22.7 74.5,21.0 76.3,20.6 78.1,20.5 79.8,22.3 81.6,22.1 83.4,21.0 85.2,17.8 86.9,17.0 88.7,19.5 90.5,18.5 92.3,17.5 94.0,17.1 95.8,17.3 97.6,18.6 99.4,18.7 101.1,18.8 102.9,18.8 104.7,17.8 106.5,17.1 108.2,23.5 110.0,24.4" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-15.1%</span></td>
-  <td class="num">33.9% / 29.0%</td>
+  <td class="num hide-m">33.9% / 29.0%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-10-29</td>
   <td class="num">50.0</td>
   <td class="num">7.1%</td>
   <td class="num dn">-7.9%</td>
+  <td class="take">26% below its 52w high · still easing (20d -3.4%), inside the not-in-freefall limit · RSI 37</td>
 </tr>
 <tr data-ind="">
   <td>50</td>
   <td><a class="sym" href="stock/LPLA.html">LPLA</a><span class="nm">LPL Financial Holdings</span></td>
   <td class="ind"></td>
-  <td class="num"><span class="muted">—</span></td>
+  <td class="num hide-m"><span class="muted">—</span></td>
   <td class="num">$315.61</td>
   <td class="num dn">-1.02%</td>
   <td class="num">42</td>
@@ -1109,14 +1186,15 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <td><span class="range"><span class="fill" style="width:39%"></span></span>
       <span class="dn">-19.7%</span></td>
   <td><svg width="110" height="30"><polyline points="0.0,14.1 1.8,15.6 3.5,15.1 5.3,10.4 7.1,8.3 8.9,10.3 10.6,8.4 12.4,8.7 14.2,7.5 16.0,4.5 17.7,4.8 19.5,3.0 21.3,3.6 23.1,4.9 24.8,5.7 26.6,5.6 28.4,8.6 30.2,10.3 31.9,8.0 33.7,7.0 35.5,7.8 37.3,8.3 39.0,8.0 40.8,4.9 42.6,5.1 44.4,9.2 46.1,10.0 47.9,8.2 49.7,8.6 51.5,11.6 53.2,11.8 55.0,12.5 56.8,10.4 58.5,13.0 60.3,14.3 62.1,17.1 63.9,18.1 65.6,18.7 67.4,17.4 69.2,25.4 71.0,27.0 72.7,26.9 74.5,23.2 76.3,23.7 78.1,25.2 79.8,25.9 81.6,23.9 83.4,22.5 85.2,17.5 86.9,17.3 88.7,19.8 90.5,18.7 92.3,17.8 94.0,18.1 95.8,19.5 97.6,20.2 99.4,18.9 101.1,21.0 102.9,22.6 104.7,20.7 106.5,21.0 108.2,21.7 110.0,22.8" fill="none" stroke="#f87171" stroke-width="1.6"/></svg> <span class="dn">-7.8%</span></td>
-  <td class="num">19.0% / 35.2%</td>
+  <td class="num hide-m">19.0% / 35.2%</td>
   <td><span class="chip na">—</span></td>
   <td class="num">2026-10-27</td>
   <td class="num">25.9</td>
   <td class="num"><span class="muted">—</span></td>
   <td class="num dn">-7.2%</td>
+  <td class="take">20% below its 52w high · fall has stabilized (20d +0.4%) · RSI 42</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <p class="foot"><b>How to read this:</b> the 52-week bar shows where the price sits between its low and high;
 "off high" is the size of the dip. Volatility is annualized from daily closes. P/E uses SEC-reported
 diluted EPS (TTM) where computable — blank where earnings are negative or filings don't map cleanly.
@@ -1132,6 +1210,18 @@ Fortune 500 ranks are Fortune's official 2026 list (by revenue); "—" = not on 
 below the revenue cutoff, or unclassified). Researched exclusions: NKE and TSLA are deliberately kept
 off — their dips trace to deteriorating or polarized business stories, not situations.
 <b>Research and education only — not investment advice.</b></p>
+<details class="gloss"><summary>How to read the KPIs — the same definitions on every tab</summary>
+<ul>
+<li><b>vs 52w high / 52w range</b> — how far the price sits below its 52-week high, and where it sits between its 52-week low (0%) and high (100%).</li>
+<li><b>RSI (14)</b> — 14-day Wilder relative strength index. Below ~30 reads washed-out, above ~70 extended; this screen wants neither freefall nor euphoria.</li>
+<li><b>Momentum (20d)</b> — the stock's own 20-day price change. <b>Rel. strength (20d)</b> — that minus the S&amp;P 500's 20-day change: positive means it is beating the market short-term.</li>
+<li><b>VPT (20d)</b> — change in the Volume-Price Trend line over 20 days, normalized: positive means volume has been flowing in on up days (accumulation).</li>
+<li><b>P/E</b> — price ÷ SEC-reported diluted EPS (TTM) where computable; blank where earnings are negative or filings don't map cleanly. <b>ROIC</b> — after-tax operating income ÷ (debt + equity − cash) from SEC filings; less meaningful for banks/insurers.</li>
+<li><b>Professional factors</b> — percentile ranks (0–100) across the graded pool, blended into a letter grade: Profitability 22%, Revisions 20% (reported EPS-surprise history — the free proxy for analyst revision momentum), Value 20%, Safety 15% (incl. Piotroski F-score), Growth 13%, Momentum 10%. <b>F-score</b> — Piotroski's 9 filing signals. <b>Net debt/EBITDA</b> and <b>FCF yield</b> use industrial-company definitions — read cautiously for financials.</li>
+<li><b>Research verdict legs</b> — every researched card is scored on five legs (Quality · Valuation · Sector · Risk · Catalyst), each pass / mixed / fail with cited evidence. BUY requires no leg failing and at least four passing. The dots next to a verdict show the five legs in that order.</li>
+<li><b>Analyst consensus / targets</b> — aggregator figures (TipRanks / MarketBeat / StockAnalysis), curated: the crowd's opinion, not a forecast. ⚠ marks a name whose consensus or target contradicts the thesis.</li>
+</ul>
+<p>Research and education only — not investment advice.</p></details>
 </div>
 <script>
 const q=document.getElementById('q'),ind=document.getElementById('ind');
