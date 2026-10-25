@@ -14,11 +14,11 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Q2 EPS $0.79 vs $0.66 consensus, net margin 25%, and July 8-K improved FY26 gas/NGL differential guidance; Q1 2026 was a record quarter",
+     "note": "Q2 EPS $0.79 vs $0.66 consensus, net margin 25%, and July 8-K improved FY26 gas/NGL differential guidance; Q1 2026 EPS of $1.52 beat the $1.32 forecast",
      "v": "pass"
     },
     "risk": {
-     "note": "Debt/equity 0.18, >25% of remaining-2026 gas hedged, sustained FCF and capital returns; commodity-price exposure is inherent but mitigated",
+     "note": "Debt/equity 0.18, sustained FCF and capital returns; commodity-price exposure is inherent but mitigated",
      "v": "pass"
     },
     "sector": {
@@ -32,7 +32,7 @@
    },
    "risks": [
     "Natural gas/NGL price reversal would hit realizations despite partial hedging",
-    "Appalachian basis differentials can widen; basis hedges showed a $10.6M net loss at Jun 30, 2026"
+    "Appalachian basis differentials can widen"
    ],
    "sources": [
     {
@@ -56,7 +56,7 @@
      "url": "https://www.themarketsdaily.com/2026/10/08/truist-financial-cuts-range-resources-nyserrc-price-target-to-43-00.html"
     }
    ],
-   "summary": "Appalachian gas/NGL producer executing well inside the map's only Positive/Severe sector: Q2 2026 EPS of $0.79 beat the $0.66 consensus, July guidance improved realized-price differentials, and production is guided to grow from 2.35\u20132.40 Bcfe/d toward 2.6 Bcfe/d in 2027 with $1.7B+ cumulative 2026\u201327 FCF expected. At ~12x earnings with a 0.18 debt/equity ratio, valuation is not stretched despite a +29% YTD run; Q3 results on Oct 27 are the immediate test.",
+   "summary": "Appalachian gas/NGL producer executing well inside the map's only Positive/Severe sector: Q2 2026 EPS of $0.79 beat the $0.66 consensus, July guidance improved realized-price differentials, and production is guided to grow from 2.35\u20132.40 Bcfe/d toward 2.6 Bcfe/d in 2027. At ~12x earnings with a 0.18 debt/equity ratio, valuation is not stretched despite a +29% YTD run; Q3 results on Oct 27 are the immediate test.",
    "ticker": "RRC",
    "what_changes": "A weak winter gas price tape or a guidance cut on Oct 27 would move this to HOLD; sustained sub-$3 Henry Hub would threaten the FCF plan.",
    "origin": "Pro Top 50 #7 (A+)",
@@ -114,11 +114,11 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 earnings Oct 29 (consensus EPS $1.96, revenue ~$202B) with AWS growth expected at 30\u201335% and possible Q4 acceleration per Wells Fargo",
+     "note": "Q3 earnings Oct 29 (consensus EPS $1.96, revenue ~$200B) with AWS growth expected at 30\u201335% and possible Q4 acceleration per Wells Fargo",
      "v": "pass"
     },
     "quality": {
-     "note": "Q2 sales +20% to $200.6B, operating income +43% to $27.5B, AWS +37% with ~39% margin; Q3 guide softness is a Prime Day calendar shift (~4 pts), not demand",
+     "note": "Q2 sales +20% to $200.6B, operating income +43% to $27.5B, AWS +37% with ~39% margin; Q3 guide softness is a Prime Day calendar shift, not demand",
      "v": "pass"
     },
     "risk": {
@@ -130,13 +130,13 @@
      "v": "mixed"
     },
     "valuation": {
-     "note": "$248 close vs Morningstar fair value $300 and average analyst target ~$322\u2013336; Morgan Stanley raised its target to $350 (Top Pick) on Oct 19",
+     "note": "$248 close vs average analyst target ~$322\u2013336; Morgan Stanley raised its target to $350 (Top Pick) on Oct 19",
      "v": "pass"
     }
    },
    "risks": [
     "Another capex raise (2026 guide already lifted to ~$220B on memory prices) without matching AWS revenue would break the ROI narrative",
-    "AWS margin compression as depreciation rises (depreciation +67% in Q2) if growth slows into the low 20s"
+    "AWS margin compression as depreciation rises if growth slows into the low 20s"
    ],
    "sources": [
     {
@@ -156,7 +156,7 @@
      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262225068-amazon-stock-forecast-morgan-stanley-top-pick-aws-triangle-263-october-20-2026-tradingkey"
     }
    ],
-   "summary": "The business is strengthening into the Oct 29 print: AWS grew 37% in Q2 \u2014 its fastest in 18 quarters at a ~39% margin \u2014 with a $496B backlog, and operating income has beaten the top of guidance for eight straight quarters. The stock is ~13% below its high and under Morningstar's $300 fair value while self-funded capex distinguishes Amazon from levered AI builders selling off; the offset evidence outweighs the sector's capex-repricing headwind, though negative trailing FCF is the live debate.",
+   "summary": "The business is strengthening into the Oct 29 print: AWS grew 37% in Q2 \u2014 its fastest in 18 quarters at a ~39% margin \u2014 with a $496B backlog. The stock is ~13% below its high while self-funded capex distinguishes Amazon from levered AI builders selling off; the offset evidence outweighs the sector's capex-repricing headwind, though negative trailing FCF is the live debate.",
    "ticker": "AMZN",
    "what_changes": "An AWS growth miss below ~30% or a further capex raise framed as cost-only on Oct 29 would downgrade this to HOLD.",
    "origin": "Dip Top 50 #8",
@@ -400,7 +400,7 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "~8.0x trailing P/E, ~12x forward, 2.47% dividend yield, stock \u221224% vs 52w high; analyst target $123.37 (+32%) is crowd context (StockAnalysis, Finnhub).",
+     "note": "~8.0x trailing P/E, ~12x forward, 2.47% dividend yield, stock \u221226.4% vs 52w high; analyst target $123.37 (+32%) is crowd context (StockAnalysis, Finnhub).",
      "v": "pass"
     }
    },
@@ -563,7 +563,7 @@
      "v": "pass"
     },
     "sector": {
-     "note": "Cybersecurity rallied Oct 22\u201323 on the NSA/FBI PHP-vulnerability warning (HACK +3.2%, CRWD +8.25% on Oct 23); Deutsche Bank sees security spend rising with AI-driven flaw discovery",
+     "note": "Cybersecurity rallied Oct 22\u201323 on the Reuters-reported PHP vulnerability (CRWD +6.00% on Oct 23); Deutsche Bank sees security spend rising with AI-driven flaw discovery",
      "v": "pass"
     },
     "valuation": {
@@ -1077,7 +1077,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 earnings Nov 4 with consensus EPS +36.6% YoY; 10.5M shares repurchased in Q3; Zacks Research raised estimates and rates it Strong Buy.",
+     "note": "Q3 results call Nov 5; 10.5M shares repurchased in Q3; Zacks Research raised estimates and rates it Strong Buy.",
      "v": "pass"
     },
     "quality": {
@@ -1093,13 +1093,13 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "~8.7x FY26 EPS consensus (~$6) at $51.90, with $738M FCF in Q2 alone \u2014 undemanding for the sector even at a 52-week high.",
+     "note": "~8.9x FY26 EPS consensus (~$5.80) at $51.90, with $738M FCF in Q2 alone \u2014 undemanding for the sector even at a 52-week high.",
      "v": "pass"
     }
    },
    "risks": [
     "Q3 results include a ~$190M pretax one-off gain on oil & gas purchase/sale contracts, flattering reported vs underlying performance",
-    "Four straight beats have compressed the surprise margin to ~1.1% and short interest is 9.6% of float \u2014 little cushion if Nov 4 disappoints (Basis Report)",
+    "Four straight beats leave little cushion if Nov 4 disappoints",
     "Earnings remain a leveraged play on crude prices; Egypt and North Sea assets add geopolitical and operational exposure"
    ],
    "sources": [
@@ -1124,7 +1124,7 @@
      "url": "https://www.marketbeat.com/instant-alerts/estimates-zacks-research-predicts-apas-q3-earnings-nasdaq-apa-2026-10-07/"
     }
    ],
-   "summary": "APA is the cleanest BUY of this group: a repaired balance sheet, rising US oil output on a flat capex budget, and strong estimate momentum (+17.9% FY EPS revision in 60 days) inside the sector map's only Positive/Severe area. At ~8.7x forward earnings the multiple does not price perfection, though the run to a 52-week high and a one-off ~$190M Q3 gain argue for reading the Nov 4 print carefully.",
+   "summary": "APA is the cleanest BUY of this group: a repaired balance sheet, rising US oil output on a flat capex budget, and strong estimate momentum (+17.9% FY EPS revision in 60 days) inside the sector map's only Positive/Severe area. At ~8.9x forward earnings the multiple does not price perfection, though the run to a 52-week high and a one-off ~$190M Q3 gain argue for reading the Nov 4 print carefully.",
    "ticker": "APA",
    "what_changes": "A Nov 4 miss or a cut to the 123k bpd US oil guide \u2014 or a sharp crude reversal \u2014 would break the setup.",
    "origin": "Pro Top 50 #5 (A+)",
@@ -1252,7 +1252,7 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Q2 2026 EPS $8.89 vs $6.50 consensus, revenue $6.64B (+18.5% YoY), ROE 14.78%; four consecutive beats (American Banking News/Zacks).",
+     "note": "Q2 2026 EPS $8.89 vs $6.50 consensus, revenue $6.64B (+18.5% YoY), ROE 14.78%; three consecutive beats (American Banking News/Zacks).",
      "v": "pass"
     },
     "risk": {
@@ -1295,7 +1295,7 @@
      "url": "https://www.tickerreport.com/banking-finance/13621844/dowling-partn-issues-optimistic-forecast-for-rga-earnings.html"
     }
    ],
-   "summary": "RGA pairs the group's best estimate momentum \u2014 four straight beats, FY26 consensus EPS revised +10.5% within a quarter, and a string of upgrades (Morgan Stanley to Overweight, UBS to Strong Buy) \u2014 with a single-digit forward multiple and a defensive 0.42 beta. Sector winds are mixed rather than hostile and no leg fails: BUY, with the caveat that FY27 earnings are expected to flatten, making this a revisions story more than a growth story.",
+   "summary": "RGA pairs the group's best estimate momentum \u2014 three straight beats and a string of upgrades (Morgan Stanley to Overweight, UBS to Strong Buy) \u2014 with a single-digit forward multiple and a defensive 0.42 beta. Sector winds are mixed rather than hostile and no leg fails: BUY, with the caveat that FY27 earnings are expected to flatten, making this a revisions story more than a growth story.",
    "ticker": "RGA",
    "what_changes": "A Q3 miss driven by adverse mortality or a reserve charge \u2014 or FY27 estimates rolling over \u2014 would end the revision-led setup.",
    "origin": "Pro Top 50 #6 (A+)",
@@ -2209,7 +2209,7 @@
      "v": "pass"
     },
     "risk": {
-     "note": "Strongly FCF-positive with no leverage or cliff issue evident; main exposures are operational \u2014 server-component shortages and elevated hardware prices delaying customer projects (management commentary).",
+     "note": "Strongly FCF-positive with no leverage or cliff issue evident; main exposures are operational \u2014 server-component shortages and elevated hardware prices delaying customer projects (management commentary). One watch item the numbers don't show: CEO Rajiv Ramaswami sold roughly $29.5M of stock on Oct 6\u20137, 2026, reducing his holdings by ~40%.",
      "v": "pass"
     },
     "sector": {
@@ -2224,7 +2224,8 @@
    "risks": [
     "Growth decelerates to the ~12% FY27 guide after Q4's 16% print; hardware bottlenecks could push more revenue out",
     "Stock priced near highs with consensus target only ~4% above price \u2014 little margin of safety if FY27 guide slips",
-    "Restructuring of ~5% of workforce adds execution risk during the AI/cloud-native reinvestment push"
+    "Restructuring of ~5% of workforce adds execution risk during the AI/cloud-native reinvestment push",
+    "CEO insider selling: Rajiv Ramaswami sold ~$29.5M of stock on Oct 6\u20137, 2026, cutting his holdings by ~40%"
    ],
    "sources": [
     {
@@ -2315,7 +2316,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 results on Oct 28 (consensus $4.52), a fresh $1B buyback running through Jun 2027, a raised dividend, and continued gains-on-sale from fleet trading (MarketBeat/ad-hoc news).",
+     "note": "Q3 results on Oct 28 (consensus $4.52), a fresh $1B buyback running through Jun 2027, and continued gains-on-sale from fleet trading (MarketBeat/ad-hoc news).",
      "v": "pass"
     },
     "quality": {
@@ -2323,7 +2324,7 @@
      "v": "pass"
     },
     "risk": {
-     "note": "Structurally levered (adjusted debt/equity 2.05x) with airline-credit exposure while carrier customers face a fuel shock; mitigated by investment-grade profile, portfolio diversification and $1.8B cash.",
+     "note": "Structurally levered (adjusted debt/equity 2.05x) with airline-credit exposure while carrier customers face a fuel shock; mitigated by investment-grade profile, portfolio diversification and ~$1.7B cash.",
      "v": "mixed"
     },
     "sector": {
@@ -2331,13 +2332,13 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "At $145.92: ~7.2x trailing EPS, ~8.7x the raised $16.80 FY26 guide, and ~1.2x the $119.21 Jun-30 book value per share; consensus target ~$173 implies ~19% upside (MarketBeat/Finnhub).",
+     "note": "At $145.92: ~6.9x trailing EPS, ~8.7x the raised $16.80 FY26 guide, and ~1.2x the $119.21 Jun-30 book value per share.",
      "v": "pass"
     }
    },
    "risks": [
     "Airline defaults or lease restructurings if high fuel prices persist and weaker carriers fail",
-    "Higher funding costs on a $42.8B debt stack if rates stay elevated",
+    "Higher funding costs on its large debt stack if rates stay elevated",
     "Q3 consensus ($4.52) is below last year's $4.97, which included outsized gains \u2014 headline YoY optics may look soft"
    ],
    "sources": [
@@ -2362,7 +2363,7 @@
      "url": "https://www.marketbeat.com/stocks/NYSE/AER/"
     }
    ],
-   "summary": "AerCap is compounding book value at a mid-teens rate while trading at only ~7x trailing earnings: Q2 2026 adjusted EPS of $5.14 beat the $4.14 consensus, FY26 adjusted EPS guidance was raised to $16.80, book value per share reached $119.21 (+16% YoY), and asset sales are clearing at 1.7x book value amid structurally short aircraft supply. Capital returns are heavy \u2014 over $1.4B of buybacks in H1 2026 plus a new $1B program \u2014 against a $145.92 price and a ~$173 consensus target.",
+   "summary": "AerCap is compounding book value at a mid-teens rate while trading at only ~7x trailing earnings: Q2 2026 adjusted EPS of $5.14 beat the $4.14 consensus, FY26 adjusted EPS guidance was raised to $16.80, book value per share reached $119.21 (+16% YoY), and asset sales are clearing at 1.7x book value amid structurally short aircraft supply. Capital returns are heavy \u2014 over $1.4B of buybacks in H1 2026 plus a new $1B program \u2014 against a $145.92 price.",
    "ticker": "AER",
    "what_changes": "A Q3 miss with guidance lowered, or evidence of airline credit deterioration in the portfolio, would move this to HOLD; continued mid-teens book-value compounding supports the BUY.",
    "origin": "Pro Top 50 #27 (A)",
@@ -2372,15 +2373,15 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Guidance raise just delivered, value-proposition expense growth guided to moderate sharply in Q4 as the Platinum refresh laps, and restructuring savings plus buybacks ahead of the Jan 29 Q4 print.",
+     "note": "Guidance raise just delivered \u2014 though only the low end of the adjusted range moved, with the larger GAAP raise to $18.30\u2013$18.60 driven by a $982M pretax GBTG sale gain \u2014 value-proposition expense growth guided to moderate sharply in Q4 as the Platinum refresh laps, and restructuring savings plus buybacks ahead of the Jan 29 Q4 print.",
      "v": "pass"
     },
     "quality": {
-     "note": "Q3 adj. EPS $4.68 vs $4.49 est., record revenue $20.06B (+9%), billed business +8% to $454B, provisions down to $1.0B from $1.3B, and FY26 EPS guidance raised (StockStory/BigGo recaps).",
+     "note": "Q3 adj. EPS $4.68 vs $4.49 est., record revenue $20.06B (+9%), billed business +8% to $454B, provisions down to $1.0B from $1.3B, and FY26 adj. EPS guidance raised at the low end to $17.60\u201317.90 (StockStory/BigGo recaps); revenue of $20.06B slightly missed the ~$20.12B consensus.",
      "v": "pass"
     },
     "risk": {
-     "note": "CET1 of 10.9%, excellent credit quality and ~35% ROE; watch items are a reported ~$350M AML fine and 9% expense growth \u2014 compliance/execution issues, not survivability risks (earnings call reports).",
+     "note": "Excellent credit quality and ~35% ROE; watch items are a reported ~$350M AML fine and 9% expense growth \u2014 compliance/execution issues, not survivability risks (earnings call reports).",
      "v": "pass"
     },
     "sector": {
@@ -2388,7 +2389,7 @@
      "v": "mixed"
     },
     "valuation": {
-     "note": "$313.22 is \u221219% vs the $387.49 high and ~17.6x the raised $17.60\u201317.90 adj. EPS guide; consensus targets ~$366\u2013372 sit ~17\u201319% above price (Finnhub/TipRanks).",
+     "note": "$313.22 is \u221219% vs the $387.49 high and ~17.6x the raised $17.60\u201317.90 adj. EPS guide.",
      "v": "pass"
     }
    },
@@ -2415,7 +2416,7 @@
      "url": "https://seekingalpha.com/article/4957050-american-express-why-the-street-has-wrongly-thrown-in-the-towel-rating-upgrade"
     }
    ],
-   "summary": "American Express just delivered a strong Q3 2026 \u2014 record revenue of $20.06B (+9%), adjusted EPS of $4.68 (+13%) beating the $4.49 consensus, billed business +8%, and credit provisions falling \u2014 and raised FY26 adjusted EPS guidance to $17.60\u201317.90, yet the stock fell ~3.7% on Oct 23 to $313.22 over a 5% workforce reduction and a $336M restructuring charge. At ~17\u201319x earnings, ~19% below its 52-week high, with ~35% ROE and a ~$366\u2013372 consensus target, the dip prices a premium franchise at a non-premium multiple.",
+   "summary": "American Express just delivered a strong Q3 2026 \u2014 record revenue of $20.06B (+9%), adjusted EPS of $4.68 (+13%) beating the $4.49 consensus, billed business +8%, and credit provisions falling \u2014 and raised the low end of FY26 adjusted EPS guidance to $17.60\u201317.90, yet the stock fell ~3.7% on Oct 23 to $313.22 over a 5% workforce reduction and a $336M restructuring charge. At ~17\u201319x earnings, ~19% below its 52-week high, with ~35% ROE, the dip prices a premium franchise at a non-premium multiple.",
    "ticker": "AXP",
    "what_changes": "A Q4 miss with billed-business growth decelerating below ~7%, or a materially larger regulatory penalty, would move this to HOLD; delivery on the raised guide confirms the BUY.",
    "origin": "Dip Top 50 #27",
@@ -2602,7 +2603,7 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Record FY26 revenue $63.3B (+12%); Q4 FY26 revenue $17.25B (+17.6% YoY), non-GAAP EPS $1.22 vs $1.17 expected, product orders +35% (ex-hyperscaler +25%); FY27 guidance raised above consensus",
+     "note": "Record FY26 revenue $63.3B (+12%); Q4 FY26 revenue $17.25B (+17.6% YoY), non-GAAP EPS $1.22 vs $1.17 expected, product orders +35% (ex-hyperscaler +25%); FY27 guidance issued above consensus",
      "v": "pass"
     },
     "risk": {
@@ -2774,11 +2775,11 @@
      "v": "pass"
     },
     "risk": {
-     "note": "Eliquis faces a guided $1.5\u20132.0B revenue step-down in 2027 and loses exclusivity in April 2028, Opdivo faces biosimilars ~2028; growth portfolio (~58% of sales) and Qvantig conversion are evidenced mitigation, but the cliff is large and dated",
+     "note": "Eliquis faces a guided $1.5\u20132.0B revenue step-down in 2027 and loses exclusivity in April 2028, Opdivo faces biosimilar competition ahead; growth portfolio (~58% of sales) and Qvantig conversion are evidenced mitigation, but the cliff is large and dated",
      "v": "mixed"
     },
     "sector": {
-     "note": "Pharma is outside the negative map areas; Morningstar notes healthcare had a strong Q3 2026 on defensive rotation and improving drug-pricing policy clarity",
+     "note": "Pharma is outside the negative map areas; Morningstar notes healthcare had a strong Q3 2026 on defensive rotation and improving drug-pricing policy clarity. A contrary signal exists: Leerink downgraded the stock to Market Perform on Oct 5, 2026, cutting its target from $73 to $59 on pipeline doubts",
      "v": "pass"
     },
     "valuation": {
@@ -2788,8 +2789,9 @@
    },
    "risks": [
     "Eliquis concentration: it added more sales in Q2 than the entire company's growth, so any slowdown hits total revenue immediately",
-    "Gross-margin compression from product mix (Q1 non-GAAP gross margin fell ~280bp YoY) as legacy products shrink",
-    "Milvexian atrial-fibrillation readout slipped to Q1 2027, delaying a key post-Eliquis replacement asset"
+    "Gross-margin compression from product mix as legacy products shrink",
+    "Milvexian atrial-fibrillation readout slipped to Q1 2027, delaying a key post-Eliquis replacement asset",
+    "Leerink downgraded BMY to Market Perform on Oct 5, 2026 (target cut $73\u2192$59) on pipeline doubts"
    ],
    "sources": [
     {
@@ -2827,26 +2829,26 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Q4 FY26 revenue beat with Chili's multiyear SSS growth; FY27 guide implies ~20% EPS growth; CFO said Jul\u2013Aug 2026 traffic accelerated vs Q4 levels, widening the lead over casual dining",
+     "note": "Q4 FY26 revenue beat with Chili's multiyear SSS growth; Q4 non-GAAP EPS of $3.07 was a slight miss vs the $3.09 consensus; FY27 guide implies ~20% EPS growth including a 53rd week worth ~$0.70 EPS (~14% growth ex-53rd week); CFO said Jul\u2013Aug 2026 traffic accelerated vs Q4 levels, widening the lead over casual dining",
      "v": "pass"
     },
     "risk": {
-     "note": "FY26 operating cash flow rose 16% to $789M, $400M of buybacks executed, $350M of 8.25% notes redeemed post-year-end and buyback authorization raised to $750M \u2014 no survivability or cliff issue; beef-cost inflation and Maggiano's weakness are earnings risks, not existential ones",
+     "note": "$400M of buybacks executed, $350M of 8.25% notes redeemed post-year-end and buyback authorization raised to $750M \u2014 no survivability or cliff issue; beef-cost inflation and Maggiano's weakness are earnings risks, not existential ones",
      "v": "pass"
     },
     "sector": {
-     "note": "Map #8 consumer is Negative/High and TD Cowen cited September casual-dining softness tied to surging gas prices; Chili's traffic/SSS outperformance and value positioning are a real but partial company offset",
+     "note": "Map #8 consumer is Negative/High, with September casual-dining softness tied to surging gas prices; Chili's traffic/SSS outperformance and value positioning are a real but partial company offset",
      "v": "mixed"
     },
     "valuation": {
-     "note": "$182.70 is ~16x trailing and ~14x FY27 guided EPS after a ~28% pullback from the 52-week high; consensus target $248.29 is crowd context only",
+     "note": "$182.70 is ~16x trailing and ~14x FY27 guided EPS after a ~28% pullback from the 52-week high; the consensus target is crowd context only",
      "v": "pass"
     }
    },
    "risks": [
-    "September casual-dining softness (per TD Cowen) could show up in the Oct 28 print and extend the target-cut cycle",
-    "Beef/commodity inflation ran 4.4% in Q4 FY26 and Maggiano's traffic remains negative with closures",
-    "High-beta, volatile name (beta ~1.39) \u2014 sharp drawdowns on any SSS disappointment"
+    "September casual-dining softness could show up in the Oct 28 print and extend the target-cut cycle",
+    "Beef/commodity inflation pressures margins and Maggiano's traffic remains negative with closures",
+    "High-beta, volatile name (beta ~1.25) \u2014 sharp drawdowns on any SSS disappointment"
    ],
    "sources": [
     {
@@ -3048,7 +3050,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q4 U.S. launches (Libre Duo, Amulet 360, TactiFlex Duo PFA, IVL) plus the January Q4 print delivering first 2027 guidance",
+     "note": "Q4 U.S. launches (Libre Duo, TactiFlex Duo PFA, IVL) plus the January Q4 print delivering first 2027 guidance; Amulet 360 holds only a CE Mark so far, with U.S. launch timing not yet confirmed",
      "v": "pass"
     },
     "quality": {
@@ -3064,7 +3066,7 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "~$103.70 is ~18.8x forward EPS and ~22% below the $132\u2013133 high; consensus targets ~$118\u2013125 (crowd context) imply mid-teens-plus upside",
+     "note": "~$103.70 is ~18.8x forward EPS and ~22% below the $132\u2013133 high; consensus targets ~$118\u2013130 (crowd context) imply mid-teens-plus upside",
      "v": "pass"
     }
    },
@@ -3280,11 +3282,11 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Q2 EPS $2.55 beat $2.45 consensus and guidance was maintained (Q3 $2.43\u20132.53; FY26 $10.05\u201310.85), but revenue grew just +1.3% YoY and missed slightly ($673.6M vs $675.5M) \u2014 top-line stagnation is the open quality question",
+     "note": "Q2 EPS $2.55 beat $2.45 consensus and new guidance was issued (Q3 EPS $2.43\u20132.53; FY26 $10.05\u201310.85), but revenue grew just +1.3% YoY and missed slightly ($673.6M vs $675.5M), and Q3 revenue guidance of $665-685M was set below the $696.5M consensus \u2014 top-line stagnation is the open quality question",
      "v": "mixed"
     },
     "risk": {
-     "note": "Fortress profile: current ratio 1.67, debt/equity 0.72, RPO $2.6B and $333M/quarter subscription revenue; no leverage, liquidity or cliff risk identified",
+     "note": "Fortress profile: current ratio 1.67, debt/equity 0.72, RPO ~$2.6B and $333M/quarter subscription revenue; the balance sheet is net-cash even after $2B of convertible senior notes issued in Q1 2026 (~$1.8B net proceeds, which lifted cash balances to ~$4.38B) \u2014 no liquidity or cliff risk identified",
      "v": "pass"
     },
     "sector": {
@@ -3299,7 +3301,8 @@
    "risks": [
     "Revenue growth near 1% leaves no cushion if firewall refresh demand or subscription conversion slows further",
     "Faster-growing platform rivals (e.g., PANW, FTNT) could take share in AI-era security budgets despite Check Point's AI-security push",
-    "Much of the recent move is sector rotation (+21% in a month); a soft Nov 2 print could unwind it quickly"
+    "Much of the recent move is sector rotation (+21% in a month); a soft Nov 2 print could unwind it quickly",
+    "The $2B of convertible senior notes issued in Q1 2026 is future refinancing/dilution overhang, though the balance sheet remains net-cash"
    ],
    "sources": [
     {
@@ -3323,7 +3326,7 @@
      "url": "https://www.marketbeat.com/instant-alerts/filing-robinson-value-management-ltd-purchases-21091-shares-of-check-point-software-technologies-ltd-chkp-2026-10-21/"
     }
    ],
-   "summary": "Check Point is the cheap, cash-generative end of cybersecurity: Q2 2026 EPS beat at $2.55 with a 37.9% net margin and $2.6B of remaining performance obligations, even though revenue growth was only +1.3% and slightly missed consensus. After the Oct 22\u201323 vulnerability-driven sector rally the stock closed Oct 23 at $159.03 \u2014 still ~24% below its $210.66 high at only ~15\u201316x trailing earnings \u2014 with Q3 results on Nov 2 as the immediate catalyst.",
+   "summary": "Check Point is the cheap, cash-generative end of cybersecurity: Q2 2026 EPS beat at $2.55 with a 37.9% net margin and ~$2.6B of remaining performance obligations, even though revenue growth was only +1.3% and slightly missed consensus. After the Oct 22\u201323 vulnerability-driven sector rally the stock closed Oct 23 at $159.03 \u2014 still ~24% below its $210.66 high at only ~15\u201316x trailing earnings \u2014 with Q3 results on Nov 2 as the immediate catalyst.",
    "ticker": "CHKP",
    "what_changes": "A Nov 2 print showing revenue growth reaccelerating toward mid-single digits would strengthen the BUY; a guidance cut or another revenue miss would move it to HOLD.",
    "origin": "Pro Top 50 #23 (A)",
@@ -3941,7 +3944,7 @@
      "url": "https://finnhub.io/?q=%22DG%22"
     }
    ],
-   "summary": "Dollar General's turnaround is confirmed by numbers: fiscal Q2 (ended Jul 31) EPS of $2.48 crushed the $2.01 consensus on +5.2% sales and +3.5% comps, and management raised FY26 EPS guidance to $7.80\u20138.00. At $132.69 the stock is ~16% below its $158.23 high at ~17x trailing earnings, with buybacks resuming and trade-down traffic providing a company-level offset to the weak consumer map.",
+   "summary": "Dollar General's turnaround is confirmed by numbers: fiscal Q2 (ended Jul 31) EPS of $2.48 crushed the $2.01 consensus on +5.2% sales and +3.5% comps, and management raised FY26 EPS guidance to $7.80\u20138.00. At $132.69 the stock is ~16% below its $158.23 high at ~16.8x the $7.90 FY26 guide midpoint, with buybacks resuming and trade-down traffic providing a company-level offset to the weak consumer map.",
    "ticker": "DG",
    "what_changes": "A Q3 guidance cut or comp deceleration below ~2% would break the quality leg and move this to HOLD.",
    "origin": "Pro Top 50 #38 (B+)",
@@ -4175,7 +4178,7 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Q3 FY26 record revenue $6.76B (+13%), non-GAAP EPS $6.13 beat, FY26 guidance raised; ARR $27.5B (+11.2%), though net new ARR fell ~36% YoY (Tickeron/TradingKey)",
+     "note": "Q3 FY26 record revenue $6.76B (+13%), non-GAAP EPS $6.13 beat, FY26 guidance raised; ARR $27.5B (+11.2%), though net new ARR fell sharply YoY \u2014 ~36% per Tickeron/TradingKey, with Wells Fargo estimating the organic decline at more than 40%",
      "v": "pass"
     },
     "risk": {
@@ -4193,7 +4196,7 @@
    },
    "risks": [
     "AI-native tools (Canva, Figma, Midjourney, Gemini) eroding Creative Cloud seats faster than Firefly monetizes",
-    "Net new ARR down ~36\u201337% YoY and RPO growth at 8% signal deceleration the raised headline guidance masks",
+    "Net new ARR down sharply YoY (~36\u201337% per Tickeron/TradingKey; Wells Fargo estimated the organic decline at more than 40%) and RPO growth at 8% signal deceleration the raised headline guidance masks",
     "CEO transition (Narayen to Executive Chair, Chakravarthy from Dec 1) adds strategy-execution uncertainty"
    ],
    "sources": [
@@ -4218,7 +4221,7 @@
      "url": "https://finnhub.io/?q=%22ADBE%22"
     }
    ],
-   "summary": "Adobe's reported numbers contradict the disruption narrative so far: Q3 FY26 revenue hit a record $6.76B (+13% YoY), non-GAAP EPS rose 15% to $6.13, and management raised FY26 guidance (revenue ~$26.6B, non-GAAP EPS $24.45\u201324.50), with AI-first ARR up >150% to >$650M. At $263.82 the stock is ~27% below its 52-week high and trades at roughly 11x FY26 guided non-GAAP EPS \u2014 a historically low multiple for a ~45% operating-margin franchise. The honest caveats are decelerating net new ARR (down ~36\u201337% YoY) and RPO growth slowing to 8%, plus a CEO transition on Dec 1.",
+   "summary": "Adobe's reported numbers contradict the disruption narrative so far: Q3 FY26 revenue hit a record $6.76B (+13% YoY), non-GAAP EPS rose 15% to $6.13, and management raised FY26 guidance (revenue ~$26.6B, non-GAAP EPS $24.45\u201324.50), with AI-first ARR up >150% to >$650M. At $263.82 the stock is ~27% below its 52-week high and trades at roughly 11x FY26 guided non-GAAP EPS \u2014 a historically low multiple for a ~45% operating-margin franchise. The honest caveats are decelerating net new ARR (down sharply YoY on third-party estimates) and RPO growth slowing to 8%, plus a CEO transition on Dec 1.",
    "ticker": "ADBE",
    "what_changes": "A Q4 print showing net new ARR re-accelerating would strengthen the BUY; ARR growth slipping below ~10% or a FY27 guide cut would move it to HOLD/SELL.",
    "origin": "Dip Top 50 #44",
@@ -4342,7 +4345,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 2026 earnings on Nov 5, 2026, gross-margin path to low-70s by year-end (mid-70s targeted for 2027) and continued share repurchases provide near-term proof points",
+     "note": "Q3 2026 earnings on Nov 5, 2026, gross-margin path to 69\u201370% exiting 2026 (mid-70s targeted a year or two later) and continued share repurchases provide near-term proof points",
      "v": "pass"
     },
     "quality": {
@@ -4358,7 +4361,7 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "$81.41 is ~20% below the $101.40 52-week high; ~20.5x trailing and ~15x forward P/E vs a ~17.4x historical forward average; consensus target $99.46 is crowd context only (Finnhub/MarketBeat)",
+     "note": "$81.41 is ~20% below the $101.40 52-week high; ~20.5x trailing and ~16.3x forward P/E vs a ~17.4x historical forward average; consensus target $99.46 is crowd context only (Finnhub/MarketBeat)",
      "v": "pass"
     }
    },
@@ -4508,7 +4511,7 @@
      "v": "pass"
     },
     "quality": {
-     "note": "FY26 product-sales guidance raised to $30.0\u201330.4B (from $29.6\u201330.0B) with base-business sales +10% YoY in Q2; HIV franchise growing and Yeztugo ramping",
+     "note": "FY26 product-sales guidance raised to $30.1\u201330.4B with base-business sales +10% YoY in Q2; HIV franchise growing and Yeztugo ramping",
      "v": "pass"
     },
     "risk": {
@@ -4516,7 +4519,7 @@
      "v": "pass"
     },
     "sector": {
-     "note": "Large-cap biopharma is outside the map's negative areas and has behaved defensively; October saw a wave of target hikes (BofA to $172, JPMorgan to $170, Jefferies Buy $185 reiterated)",
+     "note": "Large-cap biopharma is outside the map's negative areas and has behaved defensively; October saw a wave of bullish target hikes (including BofA to $172)",
      "v": "pass"
     },
     "valuation": {
@@ -4550,7 +4553,7 @@
      "url": "https://cdn.prod.nntech.io/company-events/reports/843e6a60-d972-3eb9-ab3f-fc0732e9700d/report.pdf"
     }
    ],
-   "summary": "Gilead's base business is compounding: management raised FY26 product-sales guidance to $30.0\u201330.4B after base-business sales grew ~10% YoY in Q2, the HIV franchise is durable (Biktarvy exclusivity extended to 2036 via patent settlement), and twice-yearly Yeztugo (lenacapavir) gives a visible second growth driver in the ~$20B PrEP market. Reported 2026 EPS is distorted by ~$11.5B of non-cash IPR&D charges from the Arcellx/Ouro/Tubulis deals, but underlying operations are solidly profitable with a ~2.2% dividend yield. Valuation is the one non-pass: at $156.04 the stock sits near its $160.51 high after a +27% YTD run, so the case is quality-and-catalyst rather than dip-driven.",
+   "summary": "Gilead's base business is compounding: management raised FY26 product-sales guidance to $30.1\u201330.4B after base-business sales grew ~10% YoY in Q2, the HIV franchise is durable (Biktarvy exclusivity extended to 2036 via patent settlement), and twice-yearly Yeztugo (lenacapavir) gives a visible second growth driver in the ~$20B PrEP market. Reported 2026 EPS is distorted by ~$11.2B of acquired IPR&D charges from the Arcellx/Ouro/Tubulis deals plus a separate $1.75B impairment, but underlying operations are solidly profitable with a ~2.2% dividend yield. Valuation is the one non-pass: at $156.04 the stock sits near its $160.51 high after a +27% YTD run, so the case is quality-and-catalyst rather than dip-driven.",
    "ticker": "GILD",
    "what_changes": "A Q3 miss on HIV sales or a negative anito-cel outcome would move this to HOLD; continued Yeztugo acceleration with raised guidance would strengthen the BUY.",
    "origin": "Pro Top 50 #36 (B+)",
@@ -4672,7 +4675,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 2026 earnings Oct 27, 2026 against a $3.65\u20133.85B revenue guide, with estimate revisions trending up and institutional buying noted into the print",
+     "note": "Q3 2026 earnings Oct 27, 2026 against a $3.65\u20133.85B revenue guide, with estimate revisions essentially flat (up a penny in the past week)",
      "v": "pass"
     },
     "quality": {
@@ -4714,7 +4717,7 @@
      "url": "https://www.themarketsdaily.com/2026/10/20/wells-fargo-company-has-lowered-expectations-for-nxp-semiconductors-nasdaqnxpi-stock-price.html"
     }
    ],
-   "summary": "NXP is inflecting through the semi downturn: Q2 2026 revenue rose 19% to $3.50B with growth in every end market (auto +12%, industrial & IoT +38%, comms infrastructure +41%), and Q3 is guided to $3.65\u20133.85B (+15\u201321% YoY) with consensus EPS of $4.14 (+33% YoY) ahead of the Oct 27 report. The offset to the map's Negative/Severe semi rating is company-specific: NXP's cycle is auto/industrial content (software-defined vehicles, edge AI), not the memory/datacenter complex that drove the correction. At $234.92 \u2014 ~31% below the $339.95 high and ~20x trailing earnings with net leverage of just 1.5x \u2014 the dip is priced against demonstrated, broadening growth.",
+   "summary": "NXP is inflecting through the semi downturn: Q2 2026 revenue rose 19% to $3.50B with growth in every end market (auto +12%, industrial & IoT +38%, comms infrastructure +41%), and Q3 is guided to $3.65\u20133.85B (+15\u201321% YoY) with Zacks consensus EPS of $4.14 (+33% YoY; company-guided non-GAAP range $3.89\u20134.32) ahead of the Oct 27 report. The offset to the map's Negative/Severe semi rating is company-specific: NXP's cycle is auto/industrial content (software-defined vehicles, edge AI), not the memory/datacenter complex that drove the correction. At $234.92 \u2014 ~31% below the $339.95 high and ~20x trailing earnings with net leverage of just 1.5x \u2014 the dip is priced against demonstrated, broadening growth.",
    "ticker": "NXPI",
    "what_changes": "A Q3 miss or a Q4 guide implying auto/industrial growth rolling over would break the quality leg toward HOLD; a beat-and-raise with China stability would firm up the BUY.",
    "origin": "Dip Top 50 #38",
@@ -5274,11 +5277,11 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Q2 2026 revenue $8.06B (+53% y/y), adj. EPS $2.40 vs $1.83 consensus; capex cut 10% for 2026, ~$7B FCF expected, cost program targeting $4B+ added annual cash flow by 2030",
+     "note": "Q2 2026 revenue $8.06B (+53% y/y), adj. EPS $2.40 vs $1.83 consensus; cost program targeting $4B+ added annual cash flow by 2030",
      "v": "pass"
     },
     "risk": {
-     "note": "Deleveraging is real (debt below $15B, heading to $10B) but the post-OxyChem company is now a purer, less diversified oil-price bet, Berkshire's ~27% stake and $10B preferred (redeemable Aug 2029) cap buybacks, and CEO Vicki Hollub's retirement/succession adds transition risk",
+     "note": "Deleveraging is real (principal debt already ~$11.8B post-OxyChem, heading to $10B) but the post-OxyChem company is now a purer, less diversified oil-price bet, Berkshire's stake and $10B preferred (redeemable Aug 2029) cap buybacks, and CEO succession has already taken effect \u2014 Richard Jackson succeeded Vicki Hollub on June 1, 2026, so the risk is execution under new leadership",
      "v": "mixed"
     },
     "sector": {
@@ -5293,7 +5296,7 @@
    "risks": [
     "Earnings and FCF are now almost entirely oil-price beta \u2014 a crude reversal toward oversupply would hit the equity fast",
     "Buybacks deferred until the Berkshire preferred is redeemed in Aug 2029, limiting per-share compounding",
-    "CEO succession from Vicki Hollub to COO Richard Jackson is an execution/continuity risk"
+    "Execution/continuity risk under CEO Richard Jackson, who succeeded Vicki Hollub on June 1, 2026"
    ],
    "sources": [
     {
@@ -5317,7 +5320,7 @@
      "url": "https://finnhub.io/?q=%22OXY%22"
     }
    ],
-   "summary": "Occidental has transformed its balance sheet: the $9.7B OxyChem sale to Berkshire Hathaway closed Jan 2, 2026, proceeds cut principal debt below $15B with a path toward $10B, and Q3 2026 realizations are strong (realized oil $85.91/bbl, +32.6% y/y) with WTI above $100 against a ~$51 breakeven. It sits in the map's only Positive/Severe sector and trades at ~14x ex-one-time-gain earnings despite being only ~3% off its 52-week high of $67.45 (verified at $64.17 on Oct 23).",
+   "summary": "Occidental has transformed its balance sheet: the $9.7B OxyChem sale to Berkshire Hathaway closed Jan 2, 2026, proceeds cut principal debt to ~$11.8B with a path toward $10B, and Q3 2026 realizations are strong (realized oil $85.91/bbl, +32.6% y/y) with WTI above $100 against a ~$51 breakeven. It sits in the map's only Positive/Severe sector and trades at ~14x ex-one-time-gain earnings despite being only ~4.9% off its 52-week high of $67.45 (verified at $64.17 on Oct 23).",
    "ticker": "OXY",
    "what_changes": "A sustained WTI break below ~$70 or a halt to the debt-paydown trajectory toward $10B principal would move this to HOLD.",
    "origin": "Pro pool #69 (B)",
@@ -5563,7 +5566,7 @@
      "v": "pass"
     },
     "risk": {
-     "note": "D/E 1.30, current ratio 2.39, recurring fee revenue and a new $2.5B buyback \u2014 no leverage, liquidity or cliff concern",
+     "note": "Recurring fee revenue and a new $2.5B buyback \u2014 no leverage, liquidity or cliff concern",
      "v": "pass"
     },
     "sector": {
@@ -5571,12 +5574,12 @@
      "v": "mixed"
     },
     "valuation": {
-     "note": "~13x FY26E adj. EPS ($23.83) and PEG 0.54 at $315.61, ~20% below the 52-wk high \u2014 dip is sentiment, not fundamentals",
+     "note": "~13x FY26E adj. EPS ($23.83) at $315.61, ~20% below the 52-wk high \u2014 dip is sentiment, not fundamentals",
      "v": "pass"
     }
    },
    "risks": [
-    "Commonwealth advisor retention running mid-80% vs the 90% target could trim the ~$435M run-rate EBITDA contribution",
+    "Commonwealth asset retention running mid-80% vs the 90% target could trim the ~$435M run-rate EBITDA contribution",
     "Client cash balances drifting down ($59B in Q1 to ~$54B) and payout-rate creep (87.4%) pressure sweep economics and margins"
    ],
    "sources": [
@@ -5597,7 +5600,7 @@
      "url": "https://finnhub.io/?q=%22LPLA%22"
     }
    ],
-   "summary": "LPL's dip is multiple compression, not business decay: Q2 2026 adjusted EPS hit a record $5.84 (vs $5.39 consensus) on revenue up 35.2% YoY, recruited assets of $25B were the strongest in nearly two years, retention is 97%, and August organic net new assets ran at a 6.4% annualized rate on $2.6T of client assets. At $315.61 (\u221219.7% from the $400.16 high) the stock trades at roughly 13x consensus FY26 adjusted EPS of $23.83 (PEG ~0.54), with Q3 earnings on Oct 27 and a cash-tiering change set to lift ICA sweep yield ~20bp on a run-rate basis.",
+   "summary": "LPL's dip is multiple compression, not business decay: Q2 2026 adjusted EPS hit a record $5.84 (vs $5.39 consensus) on revenue up 35.2% YoY, recruited assets of $25B were the strongest in nearly two years, retention is 97%, and August organic net new assets ran at a 6.4% annualized rate on $2.6T of client assets. At $315.61 (\u221219.7% from the $400.16 high) the stock trades at roughly 13x consensus FY26 adjusted EPS of $23.83, with Q3 earnings on Oct 27 and a cash-tiering change set to lift ICA sweep yield ~20bp on a run-rate basis.",
    "ticker": "LPLA",
    "what_changes": "A Q3 miss on organic growth or Commonwealth retention falling further below target would move this to HOLD.",
    "origin": "Dip Top 50 #50",
@@ -5715,7 +5718,7 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Q2 revenue +23.5% YoY, world's largest US liquefaction platform (~56 mtpa) plus ~5 mtpa under construction, new long-term SPAs signed",
+     "note": "Q2 revenue +23.5% YoY, world's largest US liquefaction platform (~56 mtpa) plus over 6 mtpa under construction or in commissioning, new long-term SPAs signed; Q2 EPS of $3.02 missed the $3.11 consensus",
      "v": "pass"
     },
     "risk": {
@@ -5753,7 +5756,7 @@
      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/jefferies-raises-target-for-cheniere-energy-stock-to-usd-336/70300123"
     }
    ],
-   "summary": "Cheniere sits in the map's only Positive/Severe sector and keeps converting that into contracted cash flow: Q2 revenue rose 23.5% YoY to $5.73B, and October brought a 4 mtpa QatarEnergy supply deal (through 2054) on top of a 22-year Petrobras SPA, with ~56 mtpa operating and ~5 mtpa under construction. There is no dip \u2014 $298.67 is essentially at the $300.89 high \u2014 but roughly 15x FY27 consensus EPS ($19.56) for the dominant, contract-backed US LNG exporter is fairly priced for its quality rather than stretched.",
+   "summary": "Cheniere sits in the map's only Positive/Severe sector and keeps converting that into contracted cash flow: Q2 revenue rose 23.5% YoY to $5.73B, and October brought a 4 mtpa QatarEnergy supply deal (through 2054) on top of a 22-year Petrobras SPA, with ~56 mtpa operating and over 6 mtpa under construction or in commissioning. There is no dip \u2014 $298.67 is essentially at the $300.89 high \u2014 but roughly 15x FY27 consensus EPS ($19.56) for the dominant, contract-backed US LNG exporter is fairly priced for its quality rather than stretched.",
    "ticker": "LNG",
    "what_changes": "A Q3 miss on liquefaction volumes or a collapse in Brent/gas spreads would move this to HOLD.",
    "origin": "Pro pool #52 (B+)",
@@ -5819,7 +5822,7 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Q2 2026 revenue +11.2% YoY, digital subscription revenue +16.4%, ~280k net digital adds to ~13.35M subs, adjusted EPS $0.69 beat; Q3 guided digital subs +12\u201315%.",
+     "note": "Q2 2026 revenue +11.2% YoY, digital subscription revenue +16.4%, ~280k net digital adds to ~13.35M subs, adjusted EPS $0.69 beat; Q3 guided digital-only subscription revenue growth +12\u201315%.",
      "v": "pass"
     },
     "risk": {
@@ -5831,7 +5834,7 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "~28.5x earnings (Finnhub) at $69.58, ~19% below the $87.10 52-week high \u2014 a quality compounder, but the pullback only partly offsets a full multiple.",
+     "note": "~28.5x earnings (Finnhub) at $69.58, ~20% below the $87.10 52-week high \u2014 a quality compounder, but the pullback only partly offsets a full multiple.",
      "v": "mixed"
     }
    },
@@ -5861,7 +5864,7 @@
      "url": "https://www.stockmoguls.com/2026/09/06/which-media-companies-profit-when-ai-pays-for-archives/"
     }
    ],
-   "summary": "The bundle engine is still compounding: Q2 2026 revenue rose 11.2% to $762.5M with digital-only subscription revenue +16.4%, digital ads +20.7%, ~280k net adds to ~13.35M subscribers and digital ARPU up ~3.1%, and Q3 guidance (digital subs +12\u201315%) implies no break in trajectory. At $69.58 the stock is ~19% below its $87.10 high after a sharp run, so the multiple (~28.5x) is full rather than cheap \u2014 the one leg that keeps this from a clean sweep.",
+   "summary": "The bundle engine is still compounding: Q2 2026 revenue rose 11.2% to $762.5M with digital-only subscription revenue +16.4%, digital ads +20.7%, ~280k net adds to ~13.35M subscribers and digital ARPU up ~3.1%, and Q3 guidance (digital-only subscription revenue +12\u201315%) implies no break in trajectory. At $69.58 the stock is ~20% below its $87.10 high after a sharp run, so the multiple (~28.5x) is full rather than cheap \u2014 the one leg that keeps this from a clean sweep.",
    "ticker": "NYT",
    "what_changes": "A Q3 miss on digital subscriber adds or a guidance cut to the 2027 medium-term targets would break the quality leg and move this to HOLD.",
    "origin": "Dip pool #225 \u00b7 Pro pool #64 (B)",
@@ -5879,7 +5882,7 @@
      "v": "pass"
     },
     "risk": {
-     "note": "$1.95B cash and marketable securities at Q2-end, revolver undrawn, D/E ~0.47, >$600M H1 free cash flow funding ~$600M of buybacks; Abbott competition is a share fight, not a cliff.",
+     "note": "$1.95B cash and equivalents at Q2-end, revolver undrawn, D/E ~0.47, >$600M H1 free cash flow funding ~$600M of buybacks; Abbott competition is a share fight, not a cliff.",
      "v": "pass"
     },
     "sector": {
@@ -5987,11 +5990,11 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Operational execution is strong (production guidance raised, record drilling, FCF at $2.89 gas) but earnings trajectory is down: Q2 EPS missed ($0.39 vs $0.41) and Q3 estimates saw five downward revisions on lower Henry Hub prices.",
+     "note": "Operational execution is strong (production guidance raised, record drilling, FCF at $2.89 gas) but earnings trajectory is down: Q2 EPS missed ($0.39 vs $0.41) and Q3 estimates saw downward revisions on lower Henry Hub prices.",
      "v": "mixed"
     },
     "risk": {
-     "note": "Net debt reduced to $5.7B from $7.7B at YE2025 toward the ~$5B target, D/E ~0.19, Fitch upgraded to BBB, dividend raised to $0.17/quarter; residual risk is gas-price cyclicality, not solvency.",
+     "note": "Net debt reduced from $7.7B at YE2025 to $5.5B by Jun 30, 2026 toward the ~$5B target, D/E ~0.19, Fitch upgraded to BBB in Q1 2026, dividend raised to $0.17/quarter; residual risk is gas-price cyclicality, not solvency.",
      "v": "pass"
     },
     "sector": {
@@ -6099,7 +6102,7 @@
      "v": "pass"
     },
     "risk": {
-     "note": "Net cash: $2.06B cash vs zero debt at Q2 2026; liabilities are mainly the $317M tax receivable agreement and leases; buybacks and a raised dividend ongoing",
+     "note": "Net cash: $2.06B cash vs zero debt at Q2 2026; liabilities are mainly the $317M tax receivable agreement and leases; buybacks and a raised dividend ongoing. On Oct 19, 2026 Tradeweb agreed to acquire Trumid for ~$1.97B (~$1.89B in cash, funded primarily from cash on hand, closing H1 2027), which will consume most of that cash.",
      "v": "pass"
     },
     "sector": {
@@ -6107,13 +6110,14 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "~31.8x trailing P/E at $122.57, only ~3% below the $127.69 high \u2014 full price for a premium platform, no dip cushion",
+     "note": "~31.8x trailing P/E at $122.57, only ~4.0% below the $127.69 high \u2014 full price for a premium platform, no dip cushion",
      "v": "mixed"
     }
    },
    "risks": [
     "Expense growth running near the top of guidance (tech/data spend) could squeeze margins if volume growth normalizes",
-    "Volumes are volatility-linked \u2014 a calm, falling-rate tape would slow ADV growth and expose the premium multiple"
+    "Volumes are volatility-linked \u2014 a calm, falling-rate tape would slow ADV growth and expose the premium multiple",
+    "The Trumid acquisition (~$1.97B, ~$1.89B in cash, closing H1 2027) will consume most of the $2.06B Q2 cash balance"
    ],
    "sources": [
     {
@@ -6271,7 +6275,7 @@
      "v": "mixed"
     },
     "valuation": {
-     "note": "~17.5x trailing P/E and ~9.2% FCF yield at $289.01, ~15% below the $342 high; mid-teens forward multiple against double-digit EPS growth",
+     "note": "~17.5x trailing P/E at $289.01, ~15% below the $342 high, with ~$4.5B of TTM FCF; mid-teens forward multiple against double-digit EPS growth",
      "v": "pass"
     }
    },
@@ -6297,7 +6301,7 @@
      "url": "https://simplywall.st/stocks/us/consumer-services/nasdaq-expe/expedia-group/news/missed-expedia-groups-run-what-holders-had-to-believe"
     }
    ],
-   "summary": "Expedia is executing above its own bar: Q2 2026 revenue +14%, B2B gross bookings +21%, adjusted EBITDA +23%, five straight quarters above the top of guidance, and FY26 revenue guidance raised to $16.05\u201316.22B. The map's travel sector is Negative/Severe, but the severe driver is jet fuel, which Expedia does not buy \u2014 demand has proven resilient, and at ~17.5x trailing earnings with a ~9% FCF yield the dip is price, not fundamentals.",
+   "summary": "Expedia is executing above its own bar: Q2 2026 revenue +14%, B2B gross bookings +21%, adjusted EBITDA +23%, and FY26 revenue guidance raised to $16.05\u201316.22B. The map's travel sector is Negative/Severe, but the severe driver is jet fuel, which Expedia does not buy \u2014 demand has proven resilient, and at ~17.5x trailing earnings with ~$4.5B of trailing FCF the dip is price, not fundamentals.",
    "ticker": "EXPE",
    "what_changes": "A November 5 miss with bookings guidance cut would break the quality streak and move this to HOLD; another raise would firm the BUY.",
    "origin": "Dip pool #118 \u00b7 Pro pool #62 (B)",
@@ -6307,7 +6311,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q4 2026 guided to ~$5.7B revenue and EPS $0.62\u2013$0.64 with margin +70bp, plus the formal 2027 outlook at January 20, 2027 earnings",
+     "note": "Q4 2026 guided to ~$5.7B revenue and EPS $0.62\u2013$0.64 with margin +70bp, plus an early 2027 view of mid-single-digit revenue growth and ~15% operating margin",
      "v": "pass"
     },
     "quality": {
@@ -6315,7 +6319,7 @@
      "v": "mixed"
     },
     "risk": {
-     "note": "Debt/equity ~0.63, current ratio 2.02, interest coverage ~7x, dividend payout under ~30% of earnings; Q3 FCF was soft ($156M) but full-year ~$1.6B is guided",
+     "note": "Debt/equity ~0.63, current ratio 2.02, interest coverage ~6.3\u20138.1x per published estimates, dividend payout under ~30% of earnings; Q3 FCF was soft ($156M) but full-year ~$1.6B is guided",
      "v": "pass"
     },
     "sector": {
@@ -6323,7 +6327,7 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "~13.5x trailing / ~11.8x forward P/E at $34.92, ~5.7% FCF yield and ~5.4% shareholder yield, ~20% below the $43.59 high",
+     "note": "~13.5\u201314.6x trailing / ~11.8x forward P/E at $34.92, ~5.7% FCF yield and ~5.4% shareholder yield, ~20% below the $43.59 high",
      "v": "pass"
     }
    },
@@ -6415,7 +6419,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 2026 results due in early November (consensus ~$5.78) with analyst FY26\u2013FY28 estimates recently revised up, plus targeted mid-teens capital markets revenue growth for the year",
+     "note": "Q3 2026 results on Oct 28, 2026 (consensus ~$6.15 on one earnings calendar), with analyst FY26\u2013FY28 estimates recently revised up, plus targeted mid-teens capital markets revenue growth for the year",
      "v": "pass"
     },
     "quality": {
@@ -6519,11 +6523,11 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 2026 earnings on Oct 29, 2026 (consensus ~$0.90 on ~$2.05B revenue), with H2 margin recovery guided and an active acquisition pipeline (Lone Star Blowers closed, Fai Filtri signed)",
+     "note": "Q3 2026 earnings on Oct 29, 2026 (consensus ~$0.86 on ~$2.04B revenue), with H2 margin recovery guided and an active acquisition pipeline (Lone Star Blowers closed, Fai Filtri signed)",
      "v": "pass"
     },
     "quality": {
-     "note": "Broad-based Q2 beat, organic orders +2% and revenue +4%, aftermarket is 36% of revenue, FY revenue guidance raised and EPS tracking the high end; long-cycle projects reaccelerating into 2027 backlog",
+     "note": "Broad-based Q2 beat, organic orders +2% and revenue +4%, aftermarket is 36% of revenue, FY revenue guidance raised and EPS tracking the high end; Q2 book-to-bill was 1.00 with long-cycle projects still delayed in previews",
      "v": "pass"
     },
     "risk": {
@@ -6561,7 +6565,7 @@
      "url": "https://www.ainvest.com/news/ingersoll-rand-claims-top-trading-volume-spot-margin-worries-weigh-shares-2608/"
     }
    ],
-   "summary": "Ingersoll Rand's dip is a multiple story, not a fundamentals story: Q2 2026 revenue rose ~9% to $2.05B, adjusted EPS grew 7% to $0.86, orders were up 5%, and management raised FY26 revenue growth guidance to 4.5\u20136.5% while pointing EPS to the high end of $3.45\u2013$3.57. The stock has de-rated ~26\u201327% from its high to $73.48 \u2014 roughly 21x adjusted forward earnings versus a historical 25\u201330x \u2014 while leverage sits at ~1.7x and July orders accelerated to double-digit organic growth.",
+   "summary": "Ingersoll Rand's dip is a multiple story, not a fundamentals story: Q2 2026 revenue rose ~9% to $2.05B, adjusted EPS grew 7% to $0.86, orders were up 5%, and management raised FY26 revenue growth guidance to 4.5\u20136.5% while pointing EPS to the high end of $3.45\u2013$3.57. The stock has de-rated ~26\u201327% from its high to $73.48 \u2014 roughly 21x adjusted forward earnings \u2014 while leverage sits at ~1.7x and July orders accelerated to double-digit organic growth.",
    "ticker": "IR",
    "what_changes": "A Q3 miss on margins with orders turning negative would move this to HOLD; conversely, delivered H2 margin recovery would reinforce the BUY.",
    "origin": "Dip Top 50 #49",
@@ -6650,7 +6654,7 @@
    "risks": [
     "Propel requires ~$625M of investment spend before savings land; execution slippage would pressure margins near term",
     "Softening insurance pricing (notably property) could slow the Risk & Broking organic growth that led Q2",
-    "Newfront integration and elevated interest expense already cut GAAP net income ~31% YoY in Q2"
+    "Newfront integration and elevated interest expense already cut GAAP net income ~30% YoY in Q2"
    ],
    "sources": [
     {
@@ -6908,11 +6912,11 @@
      "v": "pass"
     },
     "risk": {
-     "note": "Modest leverage against ~$1.8B FCF, diluted share count down 11% YoY to 127M on buybacks, no concentration cliff",
+     "note": "Modest leverage against ~$1.8B FCF, diluted share count down 11% YoY to 127M on buybacks, no concentration cliff; plaintiff-firm securities-lawsuit notices over alleged undisclosed $4.99 domain promotions circulated in October 2026, still at the investigation stage",
      "v": "pass"
     },
     "sector": {
-     "note": "Internet services are not on the negative sector map; recurring subscription/ARR model (+5.7%) behaves defensively despite SMB end-customers",
+     "note": "Internet services are not on the negative sector map; recurring subscription/ARR model (~+6%) behaves defensively despite SMB end-customers",
      "v": "pass"
     },
     "valuation": {
@@ -6922,7 +6926,8 @@
    },
    "risks": [
     "SMB customer churn if the consumer/small-business downturn (map #8/#10) deepens",
-    "Domain aftermarket revenue is transactional and macro-sensitive"
+    "Domain aftermarket revenue is transactional and macro-sensitive",
+    "Plaintiff-firm securities-lawsuit notices over alleged undisclosed $4.99 domain promotions (October 2026, investigation stage)"
    ],
    "sources": [
     {
@@ -6968,7 +6973,7 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "~25.6x trailing but ~15x forward earnings at $171.49, ~19% off the $212.71 high \u2014 fair for low-double-digit EPS growth, not outright cheap",
+     "note": "~25.6x trailing but ~16.5x forward earnings at $171.49, ~19% off the $212.71 high \u2014 fair for low-double-digit EPS growth, not outright cheap",
      "v": "mixed"
     }
    },
@@ -6994,7 +6999,7 @@
      "url": "https://www.defenseworld.net/2026/10/25/astrazeneca-plc-azn-stock-crossmark-global-holdings-inc-cuts-stake.html"
     }
    ],
-   "summary": "AstraZeneca beat Q2 2026 expectations with core EPS up 18% at constant currency to $2.63 on revenue of $15.38B, powered by Oncology (+16%, Tagrisso/Imfinzi/Enhertu) and Rare Disease, and reaffirmed FY26 guidance for mid-to-high single-digit revenue growth and low double-digit core EPS growth toward its $80B 2030 ambition. The dip drivers are known and modeled: Farxiga's US loss of exclusivity (CVRM \u221215%) and China volume-based procurement, plus a couple of pipeline misses. At $171.49 (verified Oct 23 close), ~19% below the $212.71 high and ~15x forward earnings, the price fairly compensates for those headwinds.",
+   "summary": "AstraZeneca beat Q2 2026 expectations with core EPS up 18% at constant currency to $2.63 on revenue of $15.38B, powered by Oncology (+16%, Tagrisso/Imfinzi/Enhertu) and Rare Disease, and reaffirmed FY26 guidance for mid-to-high single-digit revenue growth and low double-digit core EPS growth toward its $80B 2030 ambition. The dip drivers are known and modeled: Farxiga's US loss of exclusivity and China volume-based procurement, plus a couple of pipeline misses. At $171.49 (verified Oct 23 close), ~19% below the $212.71 high and ~16.5x forward earnings, the price fairly compensates for those headwinds.",
    "ticker": "AZN",
    "what_changes": "A guidance cut at the Oct 30 print or another major oncology readout failure would move this to HOLD.",
    "origin": "Dip pool #49",
@@ -7046,7 +7051,7 @@
      "url": "https://www.marketbeat.com/instant-alerts/upcoming-the-hartford-insurance-group-hig-expected-to-announce-quarterly-earnings-on-monday-2026-10-19/"
     }
    ],
-   "summary": "Hartford is executing well: Q2 2026 core EPS of $3.42 beat consensus, the consolidated combined ratio was 91.2% (89.3 underlying in Business Insurance), written premiums grew 5%, trailing core ROE is 18.7%, and the board authorized a new $4.2B buyback through 2028. At $136.76 (verified Oct 23 close) the stock trades at only ~8.5x trailing earnings \u2014 well below the insurance sector median \u2014 despite the strong underwriting and capital return. The main debate is a softening commercial pricing cycle and catastrophe exposure, not company deterioration.",
+   "summary": "Hartford is executing well: Q2 2026 core EPS of $3.42 beat consensus, the consolidated combined ratio was 91.2% (89.3 underlying in Business Insurance), total P&C written premiums grew 3% (Business Insurance +5%), trailing core ROE is 18.7%, and the board authorized a new $4.2B buyback through 2028. At $136.76 (verified Oct 23 close) the stock trades at only ~8.5x trailing earnings \u2014 well below the insurance sector median \u2014 despite the strong underwriting and capital return. The main debate is a softening commercial pricing cycle and catastrophe exposure, not company deterioration.",
    "ticker": "HIG",
    "what_changes": "An underlying combined ratio deteriorating above ~95% or a sharp pricing downturn would move this to HOLD.",
    "origin": "Pro pool #88 (B)",
@@ -7380,7 +7385,7 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "~17x FY26 consensus EPS and ~15x FY27 ($52.91) at $805.02 for a double-digit grower \u2014 cheaper than large-cap biotech peers growing at similar rates (crowd context: TD Cowen target $980)",
+     "note": "~17x FY26 consensus EPS and ~15x FY27 ($52.91) at $808.77 for a double-digit grower \u2014 cheaper than large-cap biotech peers growing at similar rates (crowd context: TD Cowen target $980)",
      "v": "pass"
     }
    },
@@ -7406,7 +7411,7 @@
      "url": "https://www.zacks.com/stock/news/3013962/regeneron-regn-earnings-expected-to-grow-what-to-know-ahead-of-next-weeks-release"
     }
    ],
-   "summary": "The earnings base is not shrinking \u2014 it is rotating: Q2 2026 total revenue grew 16.7% to $4.29B with non-GAAP EPS of $14.29, because Dupixent ($6B global in Q2, +38% at constant currency) and EYLEA HD (+52% US) are outgrowing the legacy EYLEA decline (\u221245% US) that management openly guides to continue at a low- to mid-teens pace per quarter. From Q3 the repaid Sanofi development balance steps collaboration revenue up further, and at $805.02 the stock trades at roughly 17x FY26 consensus EPS (~$47.93, +35% YoY) \u2014 a reasonable price for double-digit growth with a ~50-program pipeline.",
+   "summary": "The earnings base is not shrinking \u2014 it is rotating: Q2 2026 total revenue grew 16.7% to $4.29B with non-GAAP EPS of $14.29, because Dupixent ($6B global in Q2, +38% at constant currency) and EYLEA HD (+52% US) are outgrowing the legacy EYLEA decline (\u221245% US) that management openly guides to continue at a low- to mid-teens pace per quarter. From Q3 the repaid Sanofi development balance steps collaboration revenue up further, and at $808.77 the stock trades at roughly 17x FY26 consensus EPS (~$47.93) \u2014 a reasonable price for double-digit growth with a ~50-program pipeline.",
    "ticker": "REGN",
    "what_changes": "A Q3 miss showing combined Eylea-franchise decline overwhelming Dupixent growth would break the quality leg toward HOLD; continued double-digit revenue growth with the collaboration step-up delivered firms up the BUY.",
    "origin": "Pro pool #97 (C+)",
@@ -7472,7 +7477,7 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Q3 2026 EPS $3.40 beat consensus by ~20%, revenue +13% YoY, AUC/A ~$19.9T and AUM ~$2.0T, with revenue ex-items +11% vs expenses +5% \u2014 broad-based fee growth, not deterioration.",
+     "note": "Q3 2026 GAAP EPS $3.40 beat the ~$2.87 consensus, though the print includes ~$48.7M of pre-tax notable gains (guardianship-business sale and Visa exchange) \u2014 adjusted EPS ex-notables was $3.20, a ~11\u201312% beat; revenue +13% YoY, AUC/A ~$19.9T and AUM ~$2.0T, with revenue ex-items +11% vs expenses +5% \u2014 broad-based fee growth, not deterioration.",
      "v": "pass"
     },
     "risk": {
@@ -7514,7 +7519,7 @@
      "url": "https://www.morningstar.com/company-reports/1503645-northern-trust-earnings-mostly-in-line-with-our-expectations?listing=0P000003YK"
     }
    ],
-   "summary": "Northern Trust beat Q3 2026 cleanly (GAAP EPS $3.40 vs $2.84 consensus, revenue +13% YoY to $2.29B, ROE 20.1%) on trust fees +8% and net interest income +14%, and capital returns are accelerating \u2014 dividend raised to $0.88, $514M returned in the quarter, a fresh $3.5B buyback authorization. At $167.92, ~14% below the $195.78 high with 600bp+ of positive operating leverage, this is a fee-based compounder at a fair price; no activist campaign surfaced in current reporting, and none is needed for the thesis.",
+   "summary": "Northern Trust beat Q3 2026 cleanly (GAAP EPS $3.40 vs ~$2.87 consensus \u2014 adjusted EPS ex-notables was $3.20 after ~$48.7M of pre-tax one-time gains \u2014 revenue +13% YoY to $2.29B, ROE 20.1%) on trust fees +8% and net interest income +14%, and capital returns are accelerating \u2014 dividend raised to $0.88, $514M returned in the quarter, a fresh $3.5B buyback authorization. At $167.92, ~14% below the $195.78 high with 600bp+ of positive operating leverage, this is a fee-based compounder at a fair price; no activist campaign surfaced in current reporting, and none is needed for the thesis.",
    "ticker": "NTRS",
    "what_changes": "A fee-revenue miss driven by market declines, or expense growth re-accelerating above revenue growth, would move this to HOLD.",
    "origin": "Dip pool #194 \u00b7 Pro pool #83 (B)",
@@ -7688,7 +7693,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 2026 results Oct 28 with consensus EPS up ~377% y/y; dividend raised (1.88% yield, 14 years of growth), buybacks ongoing, and the Elliott accommodation (two new directors) removes the proxy-fight overhang.",
+     "note": "Q3 2026 results Oct 28 with consensus EPS up ~377% y/y; dividend raised, buybacks ongoing; Elliott won two of four contested seats in the May 2025 proxy vote.",
      "v": "pass"
     },
     "quality": {
@@ -7696,7 +7701,7 @@
      "v": "pass"
     },
     "risk": {
-     "note": "Deleveraging is fast and funded by earnings: total debt $27.1B (Q1) to $20.6B (Q2), net debt $16.5B, D/E ~0.63, interest coverage ~6.6x, with a ~$17B debt target for year-end 2026.",
+     "note": "Deleveraging is fast and funded by earnings: total debt $27.1B (Q1) to $20.6B (Q2), net debt $16.5B, D/E ~0.63.",
      "v": "pass"
     },
     "sector": {
@@ -7704,13 +7709,13 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "$283.18 is ~16x trailing earnings and only ~5% below the $299.39 high after +119% YTD; EV/EBITDA ~12.5\u201313x is roughly double the industry average and consensus target ($269.88, crowd context) sits below the price \u2014 peak-cycle earnings are not priced cheaply.",
+     "note": "$283.18 is ~16x trailing earnings and only ~5% below the $299.39 high after +119% YTD; EV/EBITDA ~12.5\u201313x is roughly double the industry average and consensus target (crowd context) sits below the price \u2014 peak-cycle earnings are not priced cheaply.",
      "v": "mixed"
     }
    },
    "risks": [
     "Crack spreads are 'abnormal' by historical standards \u2014 a ceasefire or returning disrupted capacity could normalize margins and compress the multiple simultaneously",
-    "Bayway refinery union has authorized a strike, a near-term operational/cost risk",
+    "Bayway refinery dispute has escalated \u2014 Phillips 66 locked out the 385 Teamsters after the Oct 1 contract expiry, a live operational/cost risk",
     "Premium EV/EBITDA versus peers leaves little room if Q3 refining capture disappoints"
    ],
    "sources": [
@@ -7851,7 +7856,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 2026 earnings Oct 30 (consensus EPS $3.42 vs $2.67 a year ago) with near-record Q3 volumes already reported, plus new products (Cboe Predicts event contracts, clearing expansion, 23x5 equities).",
+     "note": "Q3 2026 earnings Oct 30 with near-record Q3 volumes already reported, plus new products (Cboe Predicts event contracts, clearing expansion, 24x5 equities).",
      "v": "pass"
     },
     "quality": {
@@ -7859,7 +7864,7 @@
      "v": "pass"
     },
     "risk": {
-     "note": "Leverage just 0.7x, ~$2.3B adjusted cash, D/E 0.28 and ~34x interest coverage; the $650M tranche due Q1 2027 is expected to be repaid from cash on hand \u2014 no cliff or concentration that threatens survivability.",
+     "note": "Leverage just 0.7x, ~$2.3B adjusted cash and D/E 0.28; the $650M tranche due Q1 2027 is expected to be repaid from cash on hand \u2014 no cliff or concentration that threatens survivability.",
      "v": "pass"
     },
     "sector": {
@@ -7867,7 +7872,7 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "$340.42 is ~26.5x trailing / ~22\u201324x forward earnings, only ~8% below the $371.18 high and above the ~$319.50 consensus target (crowd context); forward P/E is below its 3- and 5-year averages, so full rather than stretched.",
+     "note": "$340.42 is ~26.5x trailing / ~22\u201324x forward earnings, only ~8% below the $371.18 high and above the consensus target (crowd context); forward P/E is below its 3- and 5-year averages, so full rather than stretched.",
      "v": "mixed"
     }
    },
@@ -8073,7 +8078,7 @@
      "v": "pass"
     },
     "risk": {
-     "note": "Credit is normalizing, not deteriorating \u2014 net charge-offs 0.31% of loans (from 0.25%), disciplined pullback from unattractive CRE/auto/mortgage production, ~$460M of YTD buybacks; dual-deal integration is the execution watch item, currently ahead of plan",
+     "note": "Credit is normalizing, not deteriorating \u2014 net charge-offs 0.31% of loans (from 0.25%), disciplined pullback from unattractive CRE/auto/mortgage production, $409M of buybacks through Sep 30 (~$460M including early-Q4 repurchases); dual-deal integration is the execution watch item, currently ahead of plan",
      "v": "pass"
     },
     "sector": {
@@ -8169,7 +8174,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Management guides a return to operating leverage in Q4 with sequential NII improvement, and the Jan 2027 print will be the first test of the raised 8%+ 2027 NII target",
+     "note": "Management guides a return to operating leverage in Q4 with sequential NII improvement, and the Jan 2027 print will be the first test of the 8%+ 2027 NII target",
      "v": "pass"
     },
     "quality": {
@@ -8207,7 +8212,7 @@
      "url": "https://momoview.com/blog/en/posts/bank-of-america-bac-q3-2026-earnings-eps-0-91-aml-settlement-nii-guidance-2027/"
     }
    ],
-   "summary": "Q3 2026 was optically messy \u2014 a $1.2B non-deductible AML regulatory settlement cut GAAP EPS to $0.91 (adjusted ~$1.08) \u2014 but the core engine accelerated: NII rose 8% YoY to $16.6B with yield up to 2.16%, loans grew for a tenth straight quarter to $1.25T against >$2T of deposits, credit improved, and management raised 2027 NII growth guidance to 8%+, above its original 5\u20137% target. At $50.56 (\u221222% off the high, ~11.7x trailing earnings) the settlement is priced while the NII compounding is not.",
+   "summary": "Q3 2026 was optically messy \u2014 a $1.2B non-deductible AML regulatory settlement cut GAAP EPS to $0.91 (adjusted ~$1.08) \u2014 but the core engine accelerated: NII rose 8% YoY to $16.6B with yield up to 2.16%, loans grew for a tenth straight quarter to $1.25T against >$2T of deposits, credit improved, and management set 2027 NII growth guidance at 8%+ \u2014 new guidance, not a raise: the original 5\u20137% range was the FY2026 guide, since raised to ~8%. At $50.56 (\u221222% off the high, ~11.7x trailing earnings) the settlement is priced while the NII compounding is not.",
    "ticker": "BAC",
    "what_changes": "A Q4 print without operating leverage, or 2027 NII guidance walked back below the original 5\u20137% range, would move this to HOLD; delivery of 8%+ NII growth at this multiple firms the BUY.",
    "origin": "Dip pool #44 \u00b7 Pro pool #466 (D-)",
@@ -8281,7 +8286,7 @@
      "v": "pass"
     },
     "sector": {
-     "note": "Construction (map #4, Negative/Severe) and agriculture (map #9, Negative/High) are real exposures, but the offset is evidenced: AECO ARR has grown mid-teens for 28 straight quarters and demand is tied to data-center, utility and energy infrastructure as much as housing",
+     "note": "Construction (map #4, Negative/Severe) and agriculture (map #9, Negative/High) are real exposures, but the offset is evidenced: AECO ARR has grown 14\u201319% organically over the ~14 quarters documented in Trimble's published as-adjusted series since Q1 2023 and demand is tied to data-center, utility and energy infrastructure as much as housing",
      "v": "mixed"
     },
     "valuation": {
@@ -8841,11 +8846,11 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Four consecutive EPS beats (avg ~17.4% surprise), Q2 EPS $0.64 vs $0.51 consensus, record order momentum and firm IET margins; Q3 revenue expected +11% YoY to ~$7.75B",
+     "note": "Four consecutive EPS beats (avg ~17.4% surprise), Q2 EPS $0.64 vs $0.51 consensus, record order momentum and firm IET margins; Q3 revenue expected +11% YoY to ~$7.75B. The completed Chart Industries acquisition (closed with Q2) adds a third reporting segment and is the main driver of that +11% Q3 revenue estimate, with $325M of targeted annual cost synergies",
      "v": "pass"
     },
     "risk": {
-     "note": "Debt-to-equity 0.77, current ratio 2.09, net margin ~11% \u2014 balanced leverage with no cliff or dilution concern",
+     "note": "Debt-to-equity 0.77, current ratio 2.09, net margin ~11% \u2014 balanced leverage with no cliff or dilution concern. Post-Chart leverage is guided to rise temporarily, with management expecting net debt/EBITDA back to 1.0\u20131.5x within 24 months",
      "v": "pass"
     },
     "sector": {
@@ -8853,13 +8858,14 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "~18\u201321x forward earnings at $55.86, ~21% below the $70.41 high \u2014 reasonable for the sector leader but not a clear discount given Q2 revenue grew only 2.4% YoY (crowd context: consensus target ~$70.6)",
+     "note": "~18\u201321x forward earnings at $55.86, ~21% below the $70.41 high \u2014 reasonable for the sector leader but not a clear discount given Q2 revenue declined ~2.4% YoY ($6.74B vs ~$6.91B in Q2 2025) (crowd context: consensus target ~$71.41\u201372.10)",
      "v": "mixed"
     }
    },
    "risks": [
     "Middle East/geopolitical disruption could delay projects and add costs even in a strong oil tape (flagged in Q3 previews)",
-    "Oilfield services activity softness in North America could offset IET strength if crude rolls over"
+    "Oilfield services activity softness in North America could offset IET strength if crude rolls over",
+    "Post-Chart leverage rises temporarily before net debt/EBITDA returns to the guided 1.0\u20131.5x range within 24 months"
    ],
    "sources": [
     {
@@ -9117,7 +9123,7 @@
      "v": "pass"
     },
     "valuation": {
-     "note": "At $69.89 (~$25.9B market cap, net cash) the stock is ~11\u201312x the raised FY26 EBITDA guide \u2014 defensible against 1.7x revenue backlog coverage, but the ~90% one-year run leaves less margin of safety",
+     "note": "At $69.89 (~$25.9B market cap, net cash) the stock is ~11.6x the raised FY26 EBITDA guide \u2014 defensible against 1.7x revenue backlog coverage, but the ~77% one-year run leaves less margin of safety",
      "v": "mixed"
     }
    },
@@ -9143,7 +9149,7 @@
      "url": "https://www.ainvest.com/news/technipfmc-leads-market-trading-volume-strong-q2-earnings-2608/"
     }
    ],
-   "summary": "TechnipFMC is executing at cycle-best levels inside the map's only Positive/Severe sector: Q2 2026 revenue rose 9% to $2.76B, adjusted EPS of $0.91 beat, Subsea posted record 23.2% operating margins, and management raised FY26 adjusted EBITDA guidance to $2.19B against a $16.4B backlog ($15.8B Subsea) with ~80% of subsea work directly awarded. The balance sheet is net cash ($590M) and 90% of Q2 free cash flow ($488M) went to shareholders. Valuation is full after a ~57% YTD run, which is the only non-pass leg.",
+   "summary": "TechnipFMC is executing at cycle-best levels inside the map's only Positive/Severe sector: Q2 2026 revenue rose 9% to $2.76B, adjusted EPS of $0.91 beat, Subsea posted a record 23.2% adjusted EBITDA margin, and management raised FY26 adjusted EBITDA guidance to $2.19B against a $16.4B backlog ($15.8B Subsea) with ~80% of subsea work directly awarded. The balance sheet is net cash ($590M) and 90% of Q2 free cash flow ($488M) went to shareholders. Valuation is full after a ~57% YTD run, which is the only non-pass leg.",
    "ticker": "FTI",
    "what_changes": "A Q3 miss on subsea margins or inbound orders tracking well below the $10B target would move this to HOLD; order step-up evidence for 2027 would firm the BUY.",
    "origin": "Dip pool #164 \u00b7 Pro pool #99 (C+)",
@@ -9209,7 +9215,7 @@
      "v": "pass"
     },
     "quality": {
-     "note": "Record Q2 revenue and EBITDA, guidance raised on stronger NA on-highway, China construction and power generation; truck markets improving, with a phased EPA 2027 engine rollout reducing transition risk",
+     "note": "Record Q2 revenue and EBITDA, guidance raised on stronger NA on-highway, China construction and power generation; truck markets improving, with a phased EPA 2027 engine rollout reducing transition risk. Q2 GAAP EPS of $6.73 missed the ~$7.21 consensus despite the record revenue and EBITDA.",
      "v": "pass"
     },
     "risk": {
@@ -9461,11 +9467,11 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 2026 results on Nov 3, 2026 (consensus ~$5.77 EPS on ~$10.05B revenue), plus MariTide Phase 3 clinical-outcomes studies initiating in December 2026",
+     "note": "Q3 2026 results on Nov 3, 2026 (consensus ~$5.72 EPS on ~$10.05B revenue), plus MariTide Phase 3 clinical-outcomes studies initiating in December 2026",
      "v": "pass"
     },
     "quality": {
-     "note": "Q2 2026 revenue +10% YoY, adj. EPS $6.29 beat, FY26 revenue and EPS guidance raised; 16 products with double-digit growth offsetting modeled biosimilar declines in Prolia/XGEVA",
+     "note": "Q2 2026 revenue +10% YoY, adj. EPS $6.29 beat, FY26 revenue and EPS guidance raised; 22 products with double-digit growth offsetting modeled biosimilar declines in Prolia/XGEVA",
      "v": "pass"
     },
     "risk": {
@@ -9521,7 +9527,7 @@
      "v": "pass"
     },
     "risk": {
-     "note": "Several billion dollars of cash, no debt, and value spread across multiple semi-independent 'vants' \u2014 a failed readout hurts but is not a survivability or single-asset cliff",
+     "note": "Several billion dollars of cash and marketable securities, no debt, and value spread across multiple semi-independent 'vants' \u2014 a failed readout hurts but is not a survivability or single-asset cliff",
      "v": "pass"
     },
     "sector": {
@@ -9559,7 +9565,7 @@
      "url": "https://finnhub.io/?q=%22ROIV%22"
     }
    ],
-   "summary": "Roivant has crossed from platform story to commercial company: Priovant's brepocitinib (Lisraya) won FDA approval on Aug 27, 2026 as the first oral therapy for dermatomyositis and launched at ~$35,000/month, and on Oct 21 the two Phase 3 CLARITY trials in non-infectious uveitis hit the primary and all key secondary endpoints (median time to treatment failure >48 weeks vs ~12 on placebo), setting up a 1H 2027 sNDA. Setbacks are real but contained (IMVT-1402's CLE proof-of-concept failed in September and was discontinued; Immunovant's TED program flunked), while the balance sheet \u2014 roughly $4\u20135B of cash and no debt \u2014 funds the Immunovant (IMVT-1402), Pulmovant and Genevant LNP-litigation optionality. At $36.49 (~$27B market cap, ~14% below the $42.50 high after a +100% one-year run) the price already capitalizes meaningful pipeline success, which keeps valuation mixed, but execution, breadth and cash carry the other legs.",
+   "summary": "Roivant has crossed from platform story to commercial company: Priovant's brepocitinib (Lisraya) won FDA approval on Aug 27, 2026 as the first oral therapy for dermatomyositis and launched at ~$35,000/month, and on Oct 21 the two Phase 3 CLARITY trials in non-infectious uveitis hit the primary and all key secondary endpoints (median time to treatment failure >48 weeks vs ~12 on placebo), setting up a 1H 2027 sNDA. Setbacks are real but contained (IMVT-1402's CLE proof-of-concept failed in September and was discontinued; Immunovant's TED program flunked), while the balance sheet \u2014 $1.25B of cash & equivalents plus $2.59B of marketable securities at Jun 30, 2026, plus a $950M Moderna settlement payment received in July 2026, and no debt \u2014 funds the Immunovant (IMVT-1402), Pulmovant and Genevant LNP-litigation optionality. At $36.49 (~$27B market cap, ~14% below the $42.50 high after a +100% one-year run) the price already capitalizes meaningful pipeline success, which keeps valuation mixed, but execution, breadth and cash carry the other legs.",
    "ticker": "ROIV",
    "what_changes": "A failed IMVT-1402 registrational readout or a weak Lisraya launch trajectory would cut quality to mixed and move this to HOLD.",
    "origin": "Dip pool #58 \u00b7 Pro pool #609 (F)",
@@ -9733,7 +9739,7 @@
    "flag": "BUY",
    "legs": {
     "catalyst": {
-     "note": "Q3 2026 results in early November, the German Merck appeal hearing on Nov 19, 2026, a possible US Merck settlement/license (unmodeled $500M+ royalty potential per H.C. Wainwright), and argenx collaboration expansion",
+     "note": "Q3 2026 results in early November, the German Merck appeal hearing on Nov 19, 2026, a possible US Merck settlement/license (unmodeled royalty potential), and argenx collaboration expansion",
      "v": "pass"
     },
     "quality": {
@@ -9741,11 +9747,11 @@
      "v": "pass"
     },
     "risk": {
-     "note": "Core ENHANZE patent expires Sep 2027 and ~70% of royalties sit under patents expiring 2027\u20132035, plus a PTAB loss on one US MDASE patent \u2014 offset by co-formulation patents to 2032+, the October EU injunction win vs Merck, and Hypercon diversification",
+     "note": "Core ENHANZE patent expiries begin in the late 2020s (September 2027 per AInvest; 2029 per IBD), plus a PTAB loss on one US MDASE patent \u2014 offset by co-formulation patents to 2032+, the October EU injunction win vs Merck, and Hypercon diversification",
      "v": "mixed"
     },
     "sector": {
-     "note": "Biotech/drug delivery is not on the negative sector map; royalty income is tied to partner drug sales (Darzalex SC, Vyvgart Hytrulo, Ocrevus, Phesgo), not consumer or rate cycles, and CMS confirmed zero-to-minimal negotiation impact through 2035",
+     "note": "Biotech/drug delivery is not on the negative sector map; royalty income is tied to partner drug sales (Darzalex SC, Vyvgart Hytrulo, Ocrevus, Phesgo), not consumer or rate cycles",
      "v": "pass"
     },
     "valuation": {
@@ -9783,7 +9789,7 @@
      "url": "https://finnhub.io/?q=%22HALO%22"
     }
    ],
-   "summary": "Halozyme's royalty engine is inflecting: Q2 2026 revenue rose ~48% YoY to $481M with EPS of $2.28 (vs $1.79 consensus), and management raised FY26 guidance to $1.835\u20131.91B of revenue with royalties of $1.22\u20131.245B (+41\u201343%) and non-GAAP EPS of $8.65\u20139.00 \u2014 putting the stock, at its $125.63 high after an +87% YTD run, on only ~14x forward non-GAAP earnings. The patent debate is more nuanced than the headline cliff: the original rHuPH20 patent expires in September 2027, but co-formulation/MDASE patents run far longer (the European patent just enforced against Merck expires December 2032), a Dutch court in October 2026 enjoined Merck's Keytruda SC across eight European markets, and no analyst models Keytruda royalties \u2014 making the US litigation (where a PTAB ruling did invalidate claims of one patent) upside optionality rather than a thesis dependency. The cliff is real enough to keep risk at mixed, not fail: contracts, later-expiring patents and the Hypercon acquisitions (Elektrofi, Surf Bio) bridge it.",
+   "summary": "Halozyme's royalty engine is inflecting: Q2 2026 revenue rose ~48% YoY to $481M with EPS of $2.28 (vs $1.79 consensus), and management raised FY26 guidance to $1.835\u20131.91B of revenue with royalties of $1.22\u20131.245B (+41\u201343%) and non-GAAP EPS of $8.65\u20139.00 \u2014 putting the stock, at its $125.63 high after an +87% YTD run, on only ~14x forward non-GAAP earnings. The patent debate is more nuanced than the headline cliff: the original rHuPH20 patent expires in the late 2020s (September 2027 per AInvest; IBD references 2029), but co-formulation/MDASE patents run far longer (the European patent just enforced against Merck expires December 2032), a Dutch court in October 2026 enjoined Merck's Keytruda SC across eight European markets, and no analyst models Keytruda royalties \u2014 making the US litigation (where a PTAB ruling did invalidate claims of one patent) upside optionality rather than a thesis dependency. The cliff is real enough to keep risk at mixed, not fail: contracts, later-expiring patents and the Hypercon acquisitions (Elektrofi, Surf Bio) bridge it.",
    "ticker": "HALO",
    "what_changes": "A US ruling voiding the core MDASE claims or a partner announcing an ENHANZE workaround would break the risk leg toward HOLD/SELL; a Merck license settlement would add unmodeled upside.",
    "origin": "Pro pool #108 (C+)",

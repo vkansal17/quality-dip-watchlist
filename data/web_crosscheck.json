@@ -1,0 +1,2295 @@
+{
+ "validated:NXPI": {
+  "issues": [
+   "Catalyst note's 'institutional buying noted into the print' is weakly supported: coverage shows one small new institutional position (~$652K) but also reports ETFs as net sellers of NXPI into the report",
+   "Summary's Q3 'consensus EPS of $4.14 (+33% YoY)' is Zacks consensus, not company guidance (guided non-GAAP range $3.89-4.32, midpoint $4.11) \u2014 accurate but unlabeled as such"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 report date Oct 27, 2026 confirmed; Zacks consensus EPS $4.14 (+33.1% YoY) and the $3.65-3.85B guide match the summary; the estimate was revised up only a penny in 7 days, so 'revisions trending up' is technically true but thin",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 revenue $3.50B (+19% YoY, +10% QoQ), non-GAAP EPS $3.61 (+33%), segment growth auto +12% / Industrial & IoT +38% / comms +41% / mobile +6%, and four straight Zacks consensus beats all confirmed in the Q2 release coverage and the cited Zacks preview",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Net financial leverage 1.5x improved from 1.8x, Q2 FCF $791M (22.6% of revenue), $750M notes repaid and $360M capital returned all confirmed verbatim in Q2 results coverage",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Wells Fargo target cut $280 to $235 (Oct 20-21) and TD Cowen cut $290 to $275 confirmed; Zacks Q3 segment expectations (auto +11.9%, Industrial & IoT +38.5%) match the cited preview exactly",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$234.92 confirmed as the Oct 23, 2026 close; consensus target $302.30 confirmed (MarketBeat via the cited DefenseWorld piece); ~31% below the $339.95 high is arithmetically consistent",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "NXPI",
+  "date": "2026-10-25"
+ },
+ "validated:DG": {
+  "issues": [
+   "Summary calls the multiple '~17x trailing earnings,' but the ~16.8x figure is on the FY26 guidance midpoint (forward), not trailing EPS \u2014 a labeling imprecision, figure itself is right"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 earnings date Dec 3, 2026 confirmed (Zacks calendar); buyback resumption in Q3/H2 and the raised guidance are documented catalysts",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 EPS $2.48 vs $2.01 consensus, sales +5.2%, comps +3.5% with traffic +2.0%, gross margin 32.6% (+127bp), and FY26 EPS guidance raised to $7.80-8.00 from $7.20-7.45 all confirmed across multiple reports of the Aug 27 release",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "~$0.25 Q2 EPS tariff-refund benefit confirmed in the release and call ('results exceeded expectations even before considering the benefit from tariff refunds'); buyback resumption up to $700M in H2 confirmed verbatim on the call; $0.59 dividend declared",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Trade-down offset is evidenced in the print itself: traffic-led +3.5% comps while the consumer backdrop stayed weak; fifth straight quarter of positive comps reported",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "52-week high $158.23 confirmed (range $95.11-158.23) and ~16% below it at $132.69 is arithmetically right; ~16.8x the $7.90 guide midpoint checks out; HSBC upgrade to Buy/$160 on Sep 24 confirmed",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "DG",
+  "date": "2026-10-25"
+ },
+ "validated:ADBE": {
+  "issues": [
+   "The net-new-ARR decline figure varies by source and definition: the card cites ~36% (Tickeron/TradingKey) while Wells Fargo estimated organic NNARR fell more than 40% in Q3 \u2014 the card's number is an attributed third-party estimate, not a reported figure",
+   "Secondary coverage disagrees on whether Wells Fargo's prior rating was Overweight (Barron's/TheStreet) or Equal Weight (Invezz/Stocktwits); the card's 'double-downgraded' matches the Barron's account"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q4 guidance of $6.80-6.85B revenue and $6.30-6.35 non-GAAP EPS confirmed; Q4 earnings fall in December (Dec 9 per Yahoo Finance); Chakravarthy start date Dec 1 confirmed",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q3 FY26 record revenue $6.76B (+13%), non-GAAP EPS $6.13 (+15%), ARR $27.5B (+11.2%), AI-first ARR >$650M (+150%) and raised FY26 guidance (revenue $26.576-26.626B, EPS $24.45-24.50) all confirmed in the earnings release coverage",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Q3 operating cash flow $2.52B (a Q3 record) and ~9.5M shares repurchased confirmed in the release; CEO transition Dec 1 confirmed. The deceleration caveats are disclosed in the card itself",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Wells Fargo double downgrade to Underweight with a $225 target on Oct 12 confirmed by Barron's, TheStreet and Morningstar; Morgan Stanley Underweight at $240 confirmed (cut from $365 in July, reiterated since)",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Finnhub data confirms price $263.82 at the Oct 23 close, 52-week high $363.70 (-27.5%) and trailing P/E of 14.46 vs the card's ~14.5x; ~11x the $24.45-24.50 guided non-GAAP EPS is arithmetically right",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "ADBE",
+  "date": "2026-10-25"
+ },
+ "validated:GMED": {
+  "issues": [
+   "Valuation leg's ~15x forward P/E is imprecise \u2014 ~16.3x on the raised FY26 EPS guide midpoint",
+   "Catalyst leg compresses the gross-margin timeline versus the CFO's stated path (69-70% exiting 2026, mid-70s a year or two later)",
+   "Consensus target $99.46 (card, American Banking News Oct 24) differs from MarketBeat's $101.77 average of Sep 29 \u2014 date/source dependent, and flagged in the card as crowd context only"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 earnings Nov 5, 2026 confirmed, but the gross-margin path is slightly ahead of management's own words: the CFO guided to finish 2026 at 69-70% ('very, very low in the 70s') with mid-70s 'in the year or two after that,' whereas the card states low-70s by year-end and mid-70s targeted for 2027",
+    "status": "questionable"
+   },
+   "quality": {
+    "note": "Q2 revenue $789.6M (+6%, +9% ex-Nevro), non-GAAP EPS $1.34 (+56%) vs $1.10 consensus, EBITDA margin 35.4% vs 28.0%, FY26 EPS guidance raised to $4.95-5.05 with revenue $3.18-3.22B reaffirmed \u2014 all confirmed in Zacks/StockStory/call coverage",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Nevro -14.3% and Enabling Technologies -25.8% in Q2, RBC target cut $115 to $85 (Oct 1) citing H2 caution and spine volatility, 22.4% Q2 FCF margin and $136M Q2 buybacks all confirmed",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "U.S. Spine +7% (fifth straight above-market quarter, per the CFO) and International Spine +14% confirmed; no contradicting procedure-backdrop evidence found",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $81.41, 52-week high $101.40 (-19.7%) and trailing P/E 20.48 all confirmed via Finnhub, but '~15x forward P/E' overstates the cheapness: on the raised FY26 guide midpoint ($5.00) the multiple is ~16.3x (the summary's own '~15-16x' is closer); the ~17.4x historical forward average is unverified",
+    "status": "questionable"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "GMED",
+  "date": "2026-10-25"
+ },
+ "validated:JLL": {
+  "issues": [
+   "Catalyst leg misstates the Q3 reporting timing ('early November' vs the actual Oct 28, 2026 date) and its ~$5.78 consensus figure is unverified against other calendars showing ~$6.15",
+   "Quality note rounds adjusted EPS growth to +59% and revenue to +11% \u2014 both match USD-reported figures (local-currency EPS growth was +61%); no issue beyond rounding"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 results are scheduled for Oct 28, 2026 (9 a.m. ET call, per JLL's IR release and multiple reports), not 'early November' as the card states; the cited ~$5.78 consensus could not be verified \u2014 one earnings calendar lists the Q3 EPS estimate at $6.15",
+    "status": "questionable"
+   },
+   "quality": {
+    "note": "Record Q2 confirmed exactly: revenue $6.93B (+11%), adjusted EPS $5.26 (+59%), Leasing Advisory +24% and Capital Markets +19% in local currency, FY26 adjusted EPS guidance raised to $24.60-25.90 (+34% at midpoint, from $21.80-23.50)",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Every figure matches the Q2 release: net debt $1,190.3M, net leverage 0.7x (from 1.2x a year earlier), corporate liquidity $3,413.2M, H1 buybacks $410M and $2.6B still authorized",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The share-gain offset is in JLL's reported numbers: U.S. investment sales +53% and debt advisory +44% per management on the Q2 call, with JLL an asset-light fee platform rather than a CMBS holder",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "~11.9x the $25.25 guidance midpoint at $300.30 is arithmetically exact; the ~24% discount to the $393.84 high is internally consistent",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "JLL",
+  "date": "2026-10-25"
+ },
+ "validated:QLYS": {
+  "issues": [
+   "Sector leg's specific figures are not established by its cited source: TradingKey shows CRWD +6.00% intraday on Oct 23 vs the card's +8.25%, and contains no HACK +3.2% figure",
+   "Sector leg's 'NSA/FBI PHP-vulnerability warning' attribution appears in neither the cited TradingKey article nor other coverage found (Reuters-reported PHP flaw disrupting European government sites)"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 guidance of $185.5-187.5M revenue and $1.91-1.98 EPS verified in the Q2 release; earnings date appears as Nov 3 (StockInvest calendar) and Nov 4 after the close (Longbridge), so the card's 'Nov 3-4' hedge is accurate.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 revenue $182.2M (+11.1%), non-GAAP EPS $1.98 vs $1.78 consensus, FY26 revenue guide raised to $732-738M and EPS guide to $7.74-7.88 all verified against the earnings call transcript, Zacks and Motley Fool recaps.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "$703.5M cash and marketable securities at Jun 30 2026 confirmed in the 10-Q; the $76.8M Q2 buyback and the normalized ~42% H1 FCF margin were both stated by the CFO on the Q2 call; no debt on the balance sheet.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The Oct 22-23 PHP-flaw-driven cybersecurity rally and the Deutsche Bank AI-token comment are real per the cited TradingKey article, but that article shows CrowdStrike up 6.00% on Oct 23 (not the card's +8.25%), never mentions HACK +3.2%, and attributes the flaw to Reuters reporting on a PHP vulnerability - no NSA/FBI warning appears in the cited source.",
+    "status": "questionable"
+   },
+   "valuation": {
+    "note": "Cited Longbridge recap confirms the $216.70 close, +19.69% week, consensus Hold and $181.03 average target (~16% below spot); cited DefenseWorld piece confirms P/E 37.49 and a $183.62 target figure, so the card's $181-184 range fairly spans its sources.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "QLYS",
+  "date": "2026-10-25"
+ },
+ "validated:CSCO": {
+  "issues": [
+   "Quality note says FY27 guidance was 'raised above consensus' - it was in fact newly issued above consensus (no prior FY27 guide existed to raise); the summary's 'set above consensus' phrasing is the accurate one. Minor wording imprecision only"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Mid-November Q1 FY27 print is the standard Cisco cadence, Q1 guidance ($18.0-18.2B / $1.32-1.34) was set above consensus, and the AI revenue guide of ~$7.5B for FY27 vs ~$4B recognized in FY26 is confirmed by company commentary.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Record FY26 revenue $63.33B (+12%), Q4 revenue $17.25B (+17.6%), non-GAAP EPS $1.22 vs $1.17 expected, product orders +35% with ex-hyperscaler orders +25%, and FY27 guidance ($72.2-73.4B / $5.05-5.11) above the $69.12B / $4.83 consensus - all verified across Dow Jones/Morningstar and earnings recaps.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Q4 operating cash flow of $5.4B (+27% YoY) and $3.2B returned in the quarter ($1.7B dividends + $1.5B buybacks) verified in multiple recaps of the Q4 release.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "$9.3B of FY26 hyperscaler AI orders at ~4.5x FY25's $2B verified; the campus/Wi-Fi 7 refresh offset is corroborated by the cited Tickeron analysis (record campus orders +20%, Wi-Fi 7 over half of wireless bookings).",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$107.39 close (Oct 16) sits ~18% below the $130.37 high, ~21x the $5.05-5.11 FY27 EPS guide, $0.42 quarterly dividend declared, and the ~$128 average target ($128.52 in coverage) all check out.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "CSCO",
+  "date": "2026-10-25"
+ },
+ "validated:ABT": {
+  "issues": [
+   "Catalyst leg lists Amulet 360 among 'Q4 U.S. launches', but as of the Q3 call it held only a CE Mark - management said it looks forward to bringing it to the US, with no Q4 US launch confirmed in the primary source (the claim traces to the cited Tickeron piece, which overstates it)",
+   "Valuation note's consensus target range of ~$118-125 slightly understates the top end: Jefferies held a $130 target after Q3 (TD Cowen $118, RBC $125)"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Libre Duo (FDA-approved August, US launch expected December) and TactiFlex Duo (FDA-approved September, broad US launch starting Q4) are confirmed on the Q3 call, as is the January Q4 print cadence. Caveat on Amulet 360 below.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q3 (Oct 21) reported sales +14.5% to $13.013B, comparable sales +7.0%, adjusted EPS $1.42 in line per FactSet/LSEG, FY EPS range tightened to $5.50-5.55 with midpoint held, and comparable sales-growth guide cut to ~6% from 6.5-7.5% - all verified. The call confirms the drivers the card cites: EP Q4 growth expectation trimmed to ~20% from ~25% on LAA ordering patterns and diabetes-care pricing/T2 penetration pressure.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "The 54-consecutive-year dividend increase streak is confirmed verbatim in Abbott's own Q3 release; four diversified segments and the Nutrition separation targeted by end-2027 are confirmed. The D/E 0.57 and current ratio 1.38 are standard vendor figures, not independently re-verified but uncontradicted.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Defensive diversified-healthcare framing is consistent with the Q3 tape, and the claimed segment offset is confirmed in coverage: Nutrition ($2.26B) and Diagnostics ($3.31B) beat expectations while Medical Devices ($5.83B) slightly missed.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price near $104 is ~18.8x the $5.525 guide midpoint and ~22% below the ~$132-133 high; the cited Wells Fargo target raise to $119 is real, and post-Q3 targets cluster at $118-130 (Tickeron consensus ~$120).",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "ABT",
+  "date": "2026-10-25"
+ },
+ "validated:CHKP": {
+  "issues": [
+   "Risk leg claims 'no leverage, liquidity or cliff risk identified' while omitting the $2B convertible senior notes issued in Q1 2026 - the balance sheet is net-cash, but the flat 'no leverage' characterization is imprecise",
+   "Quality note omits that Q3 revenue guidance ($665-685M) was set below the $696.5M consensus at the Q2 print, and describes EPS guidance as 'maintained' when the Q3 guide was newly issued",
+   "RPO is quoted as $2.6B (release headline) vs $2.55B stated on the earnings call - immaterial rounding, but the two figures differ"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 results date of Nov 2, 2026 is confirmed by the cited PR Newswire release and MarketBeat's earnings calendar; consensus EPS of ~$2.48 sits at the midpoint of the $2.43-2.53 guide.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 non-GAAP EPS $2.55 vs $2.45 consensus and revenue $673.6M (+1.3%) vs $675.45M consensus verified against MarketBeat and the company release; Q3 EPS guide $2.43-2.53 and FY26 guide $10.05-10.85 confirmed. See issues for a material omission in how guidance is characterized.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "The cited figures verify (current ratio 1.67, debt/equity 0.72, RPO $2.6B per the release headline, subscription revenue $333M +12%), but 'no leverage... identified' is overstated: Check Point issued $2B of convertible senior notes in Q1 2026 (~$1.8B net proceeds per its own 6-K), which is what lifted cash balances to ~$4.38B - the card never mentions this debt.",
+    "status": "questionable"
+   },
+   "sector": {
+    "note": "The Oct 22-23 vulnerability-driven group rally is corroborated (Quiver: CHKP +3.8% on Oct 23 amid PHP flaw disclosures and a stronger spending outlook); the +15.4% five-session and +21% one-month figures are Finnhub-cited and arithmetically consistent with the observed price path from ~$138 to $159.03, though not independently reproducible from fetched sources.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$159.03 at the Oct 23 close, 52-week high $210.66 (-24.5%), P/E 16.28 (within the card's 14.6-16.3x range), net margin 37.93% and ROE 38.80% all verified in MarketBeat/DefenseWorld data.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "CHKP",
+  "date": "2026-10-25"
+ },
+ "validated:NTNX": {
+  "issues": [
+   "Card omits heavy insider selling directly relevant to the risk leg: CEO Rajiv Ramaswami sold roughly $29.5M of stock on Oct 6-7, 2026, reducing his holdings by ~40% (MarketBeat/DefenseWorld insider coverage) - absent from both the risk note and the risks list"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q1 FY27 revenue guide of $755-765M confirmed in the 8-K; Needham's Buy initiation with a $90 target on Sep 28, 2026 and multiple post-Q4 target raises (RBC $90, Piper $75, Barclays $75) are confirmed.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q4 FY26 revenue $757.1M (+16%) vs $725-745M guidance, non-GAAP EPS $0.60 vs ~$0.49 consensus, ARR +16% to $2.55B, 26.2% non-GAAP operating margin, FY26 FCF $840.7M and net retention of 106% all verified against 8-K recaps and the cited Sharewise/InsiderMonkey coverage.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Stated claims check out: strongly FCF-positive ($840.7M FY26), no leverage issue, and the server-component shortage / elevated hardware price caution is management's own stated commentary, also reflected in the ~5% workforce restructuring the card discloses. See issues for an omission.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "External-storage (Dell/NetApp/Pure) and NC2 demand plus agentic-AI seven-figure deals are all corroborated in Q4 call coverage; the business sits outside the card map's severe-negative areas as claimed.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Cited Finnhub data confirms the $70.58 Oct 23 close, $75.98 52-week high and +74.01% six-month return; market cap of $18.92B works out to ~6.6x FY26 sales and ~22.5x FY26 FCF as claimed, and the $73.07 average analyst target is confirmed.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "NTNX",
+  "date": "2026-10-25"
+ },
+ "validated:AER": {
+  "issues": [
+   "'~7.2x trailing EPS' is imprecise: Finnhub P/E is 6.58 and trailing EPS $21.30 implies ~6.9x at $145.92",
+   "'Raised dividend' presented as a current catalyst, but the dividend increase was announced in February 2026",
+   "Card cites $1.8B cash; the Q2 call cited ~$1.7B cash",
+   "Consensus target ~$173 and the $42.8B debt figure were not independently verified"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 on Oct 28 (consensus $4.52; Q3 2025 EPS $4.97) and the $1B buyback through Jun 30, 2027 (announced Sep 16, 2026) confirmed, but the 'raised dividend' is stale as a catalyst: the increase to $0.40/share was announced Feb 6, 2026 with FY25 results.",
+    "status": "questionable"
+   },
+   "quality": {
+    "note": "Core Q2 2026 claims verified: adj. EPS $5.14 vs $4.14 consensus, revenue $2.17B (+14.9%), GAAP ROE 16% / adj. 18%, FY26 guide raised to ~$16.80, BV/share $119.21 (+16% YoY).",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Leverage 2.05x confirmed on the Q2 call, but the card's '$1.8B cash' sits above the ~$1.7B cash cited on the call (total liquidity ~$22B), and the $42.8B debt-stack figure in the risks list was not independently verified.",
+    "status": "questionable"
+   },
+   "sector": {
+    "note": "Q2 asset sales of $1.4B at a 20% unlevered gain-on-sale margin / 1.7x book confirmed in company materials and call coverage.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $145.92, 52w high $158.81 and ~8.7x the $16.80 guide check out, but '~7.2x trailing EPS' is imprecise \u2014 Finnhub shows P/E 6.58 and trailing EPS $21.30 (~6.9x); consensus target ~$173 not independently verified.",
+    "status": "questionable"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "AER",
+  "date": "2026-10-25"
+ },
+ "validated:AXP": {
+  "issues": [
+   "Card omits that Q3 revenue of $20.06B slightly missed the ~$20.12B consensus",
+   "'Raised FY26 adjusted EPS guidance' overstates slightly: the adjusted range's top end was unchanged; the bigger GAAP raise was driven by the one-time GBTG sale gain",
+   "CET1 of 10.9% not independently verified",
+   "Consensus target range ~$366\u2013372 not independently verified"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "A guidance raise was delivered, but the framing is generous: the headline GAAP raise to $18.30\u2013$18.60 was driven by a $982M pretax GBTG sale gain, while the adjusted range $17.60\u2013$17.90 was only a low-end raise from $17.30\u2013$17.90.",
+    "status": "questionable"
+   },
+   "quality": {
+    "note": "Q3 figures verified: adj. EPS $4.68 (+13%; consensus cited $4.48\u2013$4.50 across sources vs card's $4.49), record revenue $20.06B (+9%), billed business +8% to $454B, provisions $1.0B vs $1.3B. Note the card omits that revenue slightly missed the ~$20.12B consensus.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "The ~$350M AML penalty, $336M restructuring charge and ~5% workforce cut (~3,500 jobs) are confirmed, and ~35% ROE is consistent with reported 34.12% \u2014 but the CET1 of 10.9% claim was not independently verified.",
+    "status": "questionable"
+   },
+   "sector": {
+    "note": "Premium-spending offset verified: T&E +10% and restaurants +9% in Q3; the card correctly characterizes the financials map rating as mixed rather than a tailwind.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $313.22, Oct 23 close \u22123.7%, prev close $325.17 and 52w high $387.49 all verified, and ~17.6x the adj. guide is arithmetically sound \u2014 but the ~$366\u2013372 consensus target range was not independently verified.",
+    "status": "questionable"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "AXP",
+  "date": "2026-10-25"
+ },
+ "validated:BMY": {
+  "issues": [
+   "Opdivo biosimilar timing of ~2028 is plausible but unconfirmed",
+   "Q1 non-GAAP gross margin decline of ~280bp YoY (risks list) not independently verified",
+   "Card does not mention Leerink's Oct 5, 2026 downgrade to Market Perform (target cut $73\u2192$59) on pipeline doubts \u2014 a contrary analyst signal, though not a factual contradiction"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 earnings on Oct 29, 2026 confirmed; buyback/dividend cadence is factual. Pipeline readout timing is broadly stated but not load-bearing to the leg.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Verified against company releases and coverage: Q2 revenue $12.973B (+5.7%), non-GAAP EPS $2.04 vs $1.60 consensus, Growth Portfolio +15% to $7.56B (~58% of sales), FY26 EPS guide $6.75\u20137.00 raised from the initial $6.05\u20136.35.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "The Eliquis 2027 step-down of $1.5\u20132.0B, April 2028 exclusivity loss, and milvexian AF readout slipping to Q1 2027 are all confirmed; however the Opdivo biosimilar timing of ~2028 and the Q1 non-GAAP gross margin \u2212280bp claim (in the risks list) were not independently verified.",
+    "status": "questionable"
+   },
+   "sector": {
+    "note": "Healthcare's defensive Q3 strength is consistent with the cited Morningstar coverage; pharma sits outside the map's negative areas. A contrary signal exists (Leerink's Oct 5 downgrade, target $73\u2192$59, on pipeline doubts) but it does not contradict the sector claim.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Trefis trailing P/E ~13.6x and S&P 500 ~23x match the card; $61.48 is ~9x the FY26 guided EPS range as stated.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "BMY",
+  "date": "2026-10-25"
+ },
+ "validated:EAT": {
+  "issues": [
+   "FY27 guide's '~20% EPS growth' includes a 53rd week worth ~$0.70 EPS; underlying growth is ~14% \u2014 the card omits this",
+   "Q4 FY26 non-GAAP EPS of $3.07 was a slight miss vs $3.09 consensus; the card's summary framing highlights only the revenue beat",
+   "Minor date mismatch: Q4 FY26 was reported Aug 12, 2026, while the cited Fool transcript is dated Aug 19",
+   "FY26 operating cash flow $789M (+16%), beef inflation 4.4%, beta ~1.39, and consensus target $248.29 not independently verified (MarketBeat shows beta 1.25)",
+   "TD Cowen September-softness citation not directly verified"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q1 FY27 earnings on Oct 28, 2026 confirmed via company announcement (Oct 14), and the $750M repurchase authorization is confirmed.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Chili's comps +5.6% in Q4 / +9.2% FY, 21st consecutive SSS growth quarter, Q4 revenue $1.54B and the FY27 guide are confirmed \u2014 but Q4 non-GAAP EPS of $3.07 actually missed the $3.09 consensus by $0.02 (the card stresses only the revenue beat), and the '~20% EPS growth' guide includes a 53rd week worth ~$0.70 EPS / ~2% revenue, i.e. ~14% growth ex-53rd week, which the card omits.",
+    "status": "questionable"
+   },
+   "risk": {
+    "note": "~$400M of FY26 buybacks, the $750M authorization and the $350M 8.25% notes redemption (Jul 16, 2026) are confirmed, but FY26 operating cash flow of $789M (+16%), Q4 beef inflation of 4.4%, and beta ~1.39 (MarketBeat shows 1.25) were not verified.",
+    "status": "questionable"
+   },
+   "sector": {
+    "note": "Chili's outperformance versus casual dining is corroborated, but the specific TD Cowen September-softness citation underpinning the sector note was not directly fetched or verified.",
+    "status": "questionable"
+   },
+   "valuation": {
+    "note": "Price $182.70 (Oct 23 close), 52w high $254.99 and ~28% pullback verified; ~16x trailing / ~14x FY27 guided EPS are consistent with the confirmed guide. The $248.29 consensus target was not verified but is explicitly labeled crowd context.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "EAT",
+  "date": "2026-10-25"
+ },
+ "validated:GILD": {
+  "issues": [
+   "Guidance framing is stale/conflated: the $29.6\u201330.0B \u2192 $30.0\u201330.4B raise was Q1's; Q2 raised guidance to $30.1\u201330.4B",
+   "IPR&D charges stated as ~$11.5B; sources put acquired IPR&D at ~$11.2B plus a separate $1.75B impairment (Q2 GAAP net loss was $10.5B)",
+   "JPMorgan $170 and Jefferies $185 target figures not individually verified (BofA $172 confirmed)"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 results on Oct 29, 2026 confirmed on the company calendar, and the anito-cel PDUFA date of Dec 23, 2026 is confirmed via Gilead IR.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Base-business (ex-Veklury) sales +10% YoY in Q2 is confirmed, but the guidance claim is stale/conflated: '$30.0\u201330.4B (from $29.6\u201330.0B)' was the Q1 (May) raise; the Q2 raise took product-sales guidance to $30.1\u201330.4B (ex-Veklury $29.8\u201330.1B). The summary's ~$11.5B IPR&D figure is also imprecise \u2014 acquired IPR&D was ~$11.2B (Arcellx $7.0B + Tubulis $3.1B + Ouro $1.0B) plus a separate $1.75B impairment.",
+    "status": "questionable"
+   },
+   "risk": {
+    "note": "Biktarvy no-generic-entry until Apr 1, 2036 under patent settlements is confirmed; no near-term exclusivity cliff contradicts the card.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "BofA's target raise to $172 (Oct 20 note) is confirmed; the JPMorgan $170 and Jefferies $185 figures were not individually verified, but the October wave of bullish target hikes is corroborated.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $156.04 at the Oct 23 close, 52w high $160.51 and +27.13% YTD all verified; consensus ~$159 is consistent with MarketBeat's $158.78, and the ~2.2% dividend yield is consistent with the $0.82/quarter dividend.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "GILD",
+  "date": "2026-10-25"
+ },
+ "validated:EXE": {
+  "ticker": "EXE",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Q2 adj. EPS $1.33 vs Zacks consensus $1.22 (+9% as card states; other vendors peg consensus lower at $1.13-1.22), production ~7.48 Bcfe/d and reaffirmed FY26 guidance of 7.4-7.6 Bcfe/d all confirmed in the cited release coverage; four straight Zacks beats consistent with surprise history."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "Oct 23 close $93.23; trailing P/E 8.04-8.05 (card ~8.0x), forward P/E 12.05 (card ~12x), dividend yield 2.47% exactly as card states, analyst target $123.37 matches StockAnalysis ($123.11 at MarketBeat). Only blemish: card says -24% vs 52w high, actual is -26.4% ($126.62 high)."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "Twin Eagle acquisition (~$1.25B, announced Jul 24-27, 2026) confirmed; 'creating North America's leading integrated natural gas company' is the companies' own wording, matching the card. LNG/data-center gas demand framing consistent with the watchlist sectors map."
+   },
+   "risk": {
+    "status": "supported",
+    "note": "Net debt $3.1B at ~0.5x leverage, total debt $3.7B down ~$1.3B from year-end after Apr 2026 senior-note redemption, ~$850M YTD buybacks (~4% of shares) plus ~$1B added authorization all confirmed. Q2 revenue miss ($1.8B vs $2B on lower realized prices) also confirmed, so the risk note is not one-sided."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "Q3 earnings Oct 27 confirmed; Zacks consensus EPS $1.28 (+32% y/y) and the -8.9% y/y Q3 gas-price headwind both match the cited Zacks preview."
+   }
+  },
+  "issues": [
+   "Valuation note says stock is -24% vs its 52-week high; actual drawdown from the $126.62 high to the $93.23 Oct 23 close is -26.4% (understates the dip slightly).",
+   "Q2 EPS beat magnitude is vendor-dependent: +9% vs Zacks' $1.22 consensus as cited, but +17.9% vs the $1.13 consensus used by MarketBeat/StockEvents; card's figure is faithful to its cited source."
+  ],
+  "overall": "supported",
+  "date": "2026-10-25"
+ },
+ "validated:APA": {
+  "ticker": "APA",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Q2 2026 adj. EPS $1.89 vs Zacks $1.85, US oil 123,500 bpd beating guide by 2,500 bpd, FY US oil guidance raised 120k to 123k bpd, US capex held at $1.3B (total upstream $2.07B), Q2 FCF $738M - all confirmed."
+   },
+   "valuation": {
+    "status": "questionable",
+    "note": "Price $51.90 at Oct 23 close and the run to a 52-week high are confirmed. But the '~$6 FY26 EPS consensus' overstates the card's own cited Zacks source, which puts the revised FY26 consensus at $5.80 (raised from $4.92, +17.9% over 60 days); at $5.80 the multiple is ~8.9-9.0x, not 8.7x. Zacks Research's own FY26 estimate is lower still at $4.53."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "Energy tailwind framing consistent with verified market context (Brent ~$117 on Oct 23, sector the strongest Q3 performer in the watchlist's sectors research); Q3 estimated realized US oil price of $87.50/bbl confirmed."
+   },
+   "risk": {
+    "status": "supported",
+    "note": "Net debt ~$3.3B near the $3B target, liquidity ~$4.4B, no debt maturities until Dec 2029 (~$590M due in next 5 years), and the >=60%-of-FCF shareholder-return framework all confirmed in the cited Zacks coverage. The ~$190M pretax gain on oil & gas purchase/sale contracts in Q2 is also real, supporting the one-off-gain caution."
+   },
+   "catalyst": {
+    "status": "questionable",
+    "note": "Zacks Hold-to-Strong-Buy upgrade with raised estimates and the 10.5M-share Q3 buyback at avg $42.78 are confirmed. However the '+36.6% YoY consensus EPS' figure for Q3 could not be verified (Zacks' Q3 estimate is $0.68 with no sourced growth rate found), and 'Q3 earnings Nov 4' is imprecise - the results call is Nov 5, 10:00 AM CT (a Nov 4 after-close release is plausible but not confirmed)."
+   }
+  },
+  "issues": [
+   "Valuation leg: '~$6 FY26 EPS consensus' vs $5.80 in the card's own cited Zacks article; the 8.7x multiple follows from the overstated EPS figure (true figure ~8.9-9.0x).",
+   "Catalyst leg: '+36.6% YoY' Q3 consensus EPS growth is unverified against any located source.",
+   "Catalyst leg: earnings date given as Nov 4; the confirmed results call is Nov 5 - release timing not independently pinned.",
+   "Risk-section specifics attributed to Basis Report (surprise margin compressed to ~1.1%, short interest 9.6% of float) could not be independently confirmed."
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:RGA": {
+  "ticker": "RGA",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "questionable",
+    "note": "Q2 2026 EPS $8.89 vs $6.50 consensus, revenue $6.64B (+18.5% y/y), ROE 14.78% and net margin 5.81% all confirmed. But the 'four consecutive beats' claim is wrong on the located surprise history: Q3 2025 missed by -19.2%, followed by beats in Q4 2025 (+34.8%), Q1 2026 (+16.0%) and Q2 2026 (+36.6%) - three consecutive beats, not four."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "Oct 23 close $263.94 matches the card; FY26 consensus ~$29.71-29.75 gives ~8.9x as stated; Dowling & Partners FY26 estimate raised to $29.70 (Oct 13) and Wells Fargo $292 / Barclays $292 targets match; crowd consensus target ~$268 ($267.89-268.33) supports the 'street targets sit near the price' caution."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "Characterization consistent with the watchlist's own sectors map (financials/insurers mixed-to-high impact) and the verified rate backdrop (10-yr at 5.00%); no load-bearing sector figure found to be wrong."
+   },
+   "risk": {
+    "status": "supported",
+    "note": "Beta 0.42 confirmed (Finnhub 0.417); the FY27 consensus ~$29.55 being flat-to-down vs FY26 is confirmed, supporting the card's own caution. No leverage red flag located."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "Q3 earnings Nov 5 confirmed; the cited estimate/target momentum is real - Morgan Stanley to Overweight $295 (Sep 28), UBS to Strong Buy (Jul 24), Dowling FY26/FY27 raises (Oct 13), Wells Fargo and Barclays target raises in October."
+   }
+  },
+  "issues": [
+   "Quality leg and summary overstate the beat streak: 'four consecutive beats' - surprise history shows a Q3 2025 miss (-19.2%), so the streak is three (Q4 2025, Q1 2026, Q2 2026).",
+   "Summary's 'FY26 consensus EPS revised +10.5% within a quarter' was not directly verified, though the direction is consistent with the documented October estimate raises.",
+   "Minor: Q2 revenue of $6.64B actually slightly missed the $6.67B consensus; the card claims no revenue beat, so this is context rather than a card error."
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:RRC": {
+  "ticker": "RRC",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Q2 EPS $0.79 vs $0.66 consensus per MarketBeat/TipRanks as cited (note Zacks used a $0.56 consensus, +41% surprise - vendor variance, card matches its sources); TTM net margin 25.04% confirmed; production path toward 2.6 Bcfe/d in 2027 confirmed (2.3 to 2.5 Bcfe/d by year-end per Seeking Alpha)."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "P/E ~12.4-12.6x, 52-week high $48.31 and Oct 23 close $45.52 both match the card exactly; YTD +29.1% confirmed; MarketBeat consensus target $44.22 with a Hold consensus supports the card's tempered valuation stance."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "Gas-levered E&P framing consistent with the watchlist sectors map (energy positive/severe in the current oil-shock environment); no contradictory sector evidence found."
+   },
+   "risk": {
+    "status": "questionable",
+    "note": "Load-bearing leverage claim checks out (debt/equity 0.18 per MarketBeat; Simply Wall St shows total debt of only ~$867M vs ~$4.7B equity). But two supporting specifics could not be verified: '>25% of remaining-2026 gas hedged' and the '$10.6M basis-hedge net loss at Jun 30, 2026'."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "Q3 results Oct 27 after close confirmed, with MarketBeat consensus of $0.7660 EPS / $799.36M revenue matching the card's ~$0.77 / ~$799M; the cited July Form 8-K exists (filed 07/22/2026), though its differential-guidance content was not re-read."
+   }
+  },
+  "issues": [
+   "Risk leg: the >25% hedge coverage figure and the $10.6M basis-hedge loss at Jun 30, 2026 are unverified 10-Q-level specifics.",
+   "Quality/summary: '$1.7B+ cumulative 2026-27 FCF' figure not independently verified.",
+   "Quality note's 'Q1 2026 was a record quarter' is imprecise as stated - Q1 EPS of $1.52 did beat the $1.32 forecast, but the 'record' characterization was not confirmed.",
+   "EPS beat sizes are consensus-vendor dependent ($0.66 MarketBeat vs $0.56 Zacks for Q2); the card follows its cited sources."
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:AMZN": {
+  "ticker": "AMZN",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Q2 figures all confirmed: net sales +20% to $200.6B, operating income +43% to $27.5B, AWS sales +37% to $42.2B with $16.6B operating income (~39% margin as card states), AWS growth fastest in 18 quarters, AWS backlog $496B per Jassy on the call. Two supporting details unverified: the ~4-pt Prime Day calendar drag and the 'OI beaten top of guidance eight straight quarters' streak."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "Oct 23 close of $248.00 exactly as card states; ~13.6% below the $287.20 52-week high (card ~13%); MarketBeat average target $322.53 supports the card's ~$322-336 range; Morgan Stanley's $350 target confirmed. Morningstar $300 fair value not independently verified but plausible and not load-bearing alone."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "AI-capex epicenter framing matches the watchlist sectors research (sector #1, negative/severe: hyperscaler capex backlash, Meta's FCF going negative on the same dynamic); the Oct 22 sector-wide selloff in AMZN (-4.6%) corroborates the situational-dip framing."
+   },
+   "risk": {
+    "status": "supported",
+    "note": "TTM FCF of -$7.6B (from +$18.2B a year ago) and the 2026 capex guide raised from $200B to ~$220B on memory costs both confirmed - the card's central risk is real and current. The 'depreciation +67% in Q2' detail was not independently verified."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "Q3 earnings Oct 29 confirmed; Morgan Stanley raised its target $335 to $350 and named AMZN Top Pick on Oct 19, exactly as the card states; Wells Fargo's AWS-acceleration view (while trimming its target to $329) corroborates the cited Stocktwits/The Fly item. Q3 consensus EPS $1.96 plausible; revenue consensus ~$202B sits at the very top of the $197-202B guide range, a slight stretch."
+   }
+  },
+  "issues": [
+   "Quality leg: Prime Day calendar shift costing ~4 pts of Q3 guide softness not independently verified.",
+   "Quality leg: 'operating income has beaten the top of guidance for eight straight quarters' - streak count unverified.",
+   "Risk note: 'depreciation +67% in Q2' figure unverified.",
+   "Valuation leg: Morningstar $300 fair value not independently confirmed (average-target range itself is verified via MarketBeat $322.53).",
+   "Catalyst leg: Q3 revenue consensus of ~$202B equals the top of guidance; most consensus snapshots cluster nearer ~$200B."
+  ],
+  "overall": "supported",
+  "date": "2026-10-25"
+ },
+ "validated:IR": {
+  "ticker": "IR",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Q2 2026 figures all confirmed: revenue $2.05B +8.5%, adj. EPS $0.86 (+7.5% YoY, beat $0.83 consensus), orders $2.04B +5.3% (organic +2%), organic revenue +4%, aftermarket 36% of revenue, adj. EBITDA margin 25.4% (-160bp), FCF $269M +27.8%; FY revenue guidance raised to +4.5-6.5% with EPS guidance held at $3.45-$3.57; Lone Star Blower close and Fai Filtri signing confirmed. The 'long-cycle reacceleration into 2027' line is forward color only - Q2 book-to-bill was 1.00 and previews cite delayed long-cycle projects."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "$73.48 is ~20.9x the $3.51 guidance midpoint (card's ~21x checks out) and 27.2% below the $100.96 52-week high (card's ~27% checks out). The 'historical 25-30x' range was not independently verified."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "The 'strong July order inflow' claim is corroborated - company commentary and earnings previews cite double-digit organic order growth entering July 2026. The PMI backdrop is generic macro framing, not contradicted."
+   },
+   "risk": {
+    "status": "questionable",
+    "note": "Liquidity ~$3.8B, net leverage 1.7x, and the June 2026 Moody's upgrade to Baa1 are all verified. However, the '~2% dividend yield funding a hold' claim is wrong: IR pays $0.02/share quarterly ($0.08/yr), a ~0.11% yield."
+   },
+   "catalyst": {
+    "status": "questionable",
+    "note": "The Oct 29, 2026 report date is confirmed, but the card's consensus of '~$0.90 EPS on ~$2.05B revenue' conflicts with the published Tickeron earnings preview of ~$0.86 EPS on ~$2.04B revenue - imprecise at best."
+   }
+  },
+  "issues": [
+   "Risk leg's dividend yield is contradicted by evidence: IR's dividend is $0.02/quarter ($0.08 annualized), ~0.11% yield, not ~2%",
+   "Catalyst consensus (~$0.90 EPS) conflicts with a published preview consensus of ~$0.86 EPS / ~$2.04B revenue for the Oct 29 report",
+   "Valuation leg's 'historical 25-30x' multiple range is unverified",
+   "Quality leg's 'long-cycle projects reaccelerating into 2027' is not directly evidenced (book-to-bill 1.00; delayed long-cycle projects noted in previews)"
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:LPLA": {
+  "ticker": "LPLA",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Q2 2026 confirmed: record adj. EPS $5.84 vs ~$5.38 consensus, revenue $5.19B +35.2% YoY, recruited assets $25B (strongest in nearly two years), retention 97%, total client assets $2.60T; August 2026 organic net new assets $13.5B (6.4% annualized) and client cash $54.4B also confirmed."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "$315.61 is ~13.2x the cited FY26E adj. EPS of $23.83 and ~21% below the $400.16 high - arithmetic is consistent. The PEG of 0.54 was not independently verified."
+   },
+   "sector": {
+    "status": "questionable",
+    "note": "The sector call is a reference to the internal sectors map (Banks/financials Mixed/High) rather than externally cited evidence, and the '~0.85 beta' figure was not verified."
+   },
+   "risk": {
+    "status": "questionable",
+    "note": "Substance largely checks out - buybacks accelerated to $309M in Q2 with a new $2.5B authorization, and Commonwealth retention in the mid-80% range vs the 90% target is confirmed. But the card labels it 'advisor retention' while company/call sources describe mid-80% ASSET retention, and the D/E 1.30 / current ratio 2.39 figures were not verified (LPL's reported leverage ratio is 1.91x, a different metric)."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "Q3 earnings Oct 27, 2026 after close confirmed. The ICA cash-tiering uplift of ~20bp on a run-rate basis is confirmed verbatim on the Q2 call (about half in Q3, half in Q4). Commonwealth conversion in Q4 2026 with run-rate EBITDA raised to $435M also confirmed."
+   }
+  },
+  "issues": [
+   "Risk leg mislabels Commonwealth retention: sources support mid-80% ASSET retention vs the 90% target, not 'advisor retention'",
+   "Risk leg's D/E 1.30 and current ratio 2.39 are unverified; the company-reported leverage ratio is 1.91x",
+   "Valuation leg's PEG 0.54 is unverified",
+   "Sector leg rests on the internal sector map and an unverified beta rather than cited external evidence"
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:LNG": {
+  "ticker": "LNG",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Q2 2026 revenue $5.73B +23.5% YoY and the FY26 adj. EBITDA guidance raise to $7.9-8.4B are confirmed in Cheniere's Aug 6, 2026 release; ~56 mtpa operating capacity after CCL Stage 3 completion (Aug 2026) also confirmed. Note the card omits that Q2 EPS of $3.02 missed the $3.11 consensus."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "$298.67 is ~0.7% below the $300.89 52-week high and ~17.8x FY26E EPS (~$16.8), consistent with analyst estimates; beta 0.06 and D/E 1.97 match published MarketBeat data."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "Consistent with the sectors map (Oil & gas/refiners Positive/Severe); no contradicting evidence found."
+   },
+   "risk": {
+    "status": "supported",
+    "note": "D/E 1.97 verified. Minor imprecision: the card calls the August 2026 dividend 'raised' - $0.555/share was declared Jul 28, 2026 (paid Aug 18) at an unchanged rate; the last actual increase was Oct 2025."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "QatarEnergy SPAs confirmed via the Oct 22, 2026 Business Wire/Cheniere release: 4 mtpa total (2 mtpa Sabine Pass + 2 mtpa Corpus Christi) through 2054, FOB Henry Hub-linked, deliveries from the early 2030s, with 1 mtpa of the SPL SPA subject to a positive FID on SPL Expansion Phase 1 - exactly as the card states. The Petrobras 22-year, 0.8 mtpa SPA (Sep 29, 2026) is also confirmed."
+   }
+  },
+  "issues": [
+   "Card omits the Q2 2026 EPS miss ($3.02 vs $3.11 consensus) while citing the revenue beat and guidance raise",
+   "Risk leg describes the Aug 2026 dividend as 'raised' - the $0.555 rate was unchanged (declared Jul 28, 2026); the last increase was Oct 2025",
+   "'~5 mtpa under construction' is approximate - company materials cite 'over 6 mtpa under construction or in commissioning'"
+  ],
+  "overall": "supported",
+  "date": "2026-10-25"
+ },
+ "validated:TW": {
+  "ticker": "TW",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Confirmed from Tradeweb's September 2026 volume release: Q3 ADV $3.2tn +22.4% YoY, September ADV $3.7tn +29.0%, Q3 total volume $210.3tn, Q3 buybacks $210M (YTD $449M, 4.4M shares). Q2 revenue $558.9M +9.0% with adj. EPS $0.97 and a small revenue miss vs ~$559.2M estimates also check out."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "Price and high are real, but the arithmetic is slightly off: $122.57 is ~4.0% below the $127.69 high, not 'only ~3% below'. The ~48x trailing multiple is plausible but was not independently verified."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "Rests on the internal sectors map (Banks/financials Mixed/High); the claim that TW sits outside the severe-negative AI-capex epicenter is consistent with its volume-driven model. No contradiction found."
+   },
+   "risk": {
+    "status": "questionable",
+    "note": "Material omission: on Oct 19, 2026 Tradeweb agreed to acquire Trumid for ~$1.97B (~$1.89B in cash, funded primarily from cash on hand, closing H1 2027). The card, dated Oct 25, still rests the risk leg on the stale Q2 balance sheet ('$2.06B cash vs zero debt') and never mentions the deal that will consume ~92% of that cash. The cash figure itself is accurate as of Jun 30, 2026 (~$2.1B)."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "The cited Zacks preview was fetched and confirms an Oct 29, 2026 report with consensus EPS of $1.01, +16.1% YoY - exactly as the card states."
+   }
+  },
+  "issues": [
+   "Material omission in the risk leg: the Oct 19, 2026 Trumid acquisition (~$1.97B, ~$1.89B cash from cash on hand, H1 2027 close) is not mentioned, making the 'net cash: $2.06B vs zero debt' framing stale as of the card's Oct 25 date",
+   "Valuation leg understates the discount to the high: ~4.0% below $127.69 at $122.57, not ~3%"
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:EXPE": {
+  "ticker": "EXPE",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Q2 2026 verified against the primary Business Wire/IR release: revenue $4,315M +14%, gross bookings $33,928M +12%, B2B gross bookings $10.7B +21%, GAAP net income $878M +166%, adj. EBITDA $1,119M +23%, FCF $1,279M +39%, B2C bookings +8% (fastest US consumer growth in 15 quarters), FY26 revenue guidance raised to $16.05-16.22B. The summary's 'five straight quarters above the top of guidance' streak was not verified."
+   },
+   "valuation": {
+    "status": "questionable",
+    "note": "Price $289.01, P/E ~17.5x, and ~15% below the $342 high are all verified. But the '~9.2% FCF yield' could not be verified and is inconsistent with the ~$4.5B TTM FCF cited in Q2 earnings-call summaries, which implies ~12.6% on the ~$35.6B market cap - the basis for 9.2% is unclear."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "The headwind framing matches the sectors map (Airlines/travel Negative/Severe), and the company-specific offset - asset-light model with B2B gross bookings +21% - is evidenced in the Q2 release."
+   },
+   "risk": {
+    "status": "supported",
+    "note": "Dividend raised 20% to $0.48 (declared Feb 12, 2026) and ~9M shares repurchased for $1.7B during 2025 are both confirmed in Expedia's Q4/FY2025 release; Q2 FCF of $1,279M confirmed."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "Q3 2026 earnings date of Nov 5, 2026 is confirmed."
+   }
+  },
+  "issues": [
+   "Valuation leg's ~9.2% FCF yield is unverified and inconsistent with the ~$4.5B TTM FCF figure cited in Q2 call summaries (implies ~12.6%)",
+   "Summary claim of 'five straight quarters above the top of guidance' was not verified in available sources"
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:HAL": {
+  "ticker": "HAL",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Q3 2026 verified: adj. EPS $0.60, revenue $5.7B, international $3.5B +9% YoY, North America $2.2B -9% YoY, total +1.8%; a second source confirms EPS beats 4 quarters in a row and forward P/E/FCF-yield figures matching the card."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "$34.92 is 19.9% below the $43.59 high; forward P/E ~11.8x, FCF yield ~5.73% and shareholder yield ~5.44% match the card's ~11.8x / ~5.7% / ~5.4%. Trailing P/E varies by source (Finnhub ~13.5x, MarketBeat 14.62x), which the summary's 13.5-14.6x range acknowledges."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "No contradicting evidence found; the Positive/Severe oil & gas placement is the internal sector map's call and the Brent ~$117 Iran-shock backdrop matches the map research."
+   },
+   "risk": {
+    "status": "questionable",
+    "note": "D/E ~0.63, current ratio ~2.02 and payout 28.45% check out, and FY26 FCF ~$1.6B was confirmed on the Q3 call (incl. ~$1B Q4 operating cash flow). Interest coverage ~7x was not confirmed in the cited sources; other sources put it at ~6.3x (2025) to ~8.1x (projected), so the figure is plausible but weakly sourced."
+   },
+   "catalyst": {
+    "status": "questionable",
+    "note": "Q4 guide verified verbatim on the call: ~$5.7B revenue, margin +~70bp, EPS $0.62-$0.64, plus early 2027 view of mid-single-digit growth and ~15% margin. The specific claim of a formal 2027 outlook at a January 20, 2027 earnings date was not established by any cited source."
+   }
+  },
+  "issues": [
+   "Catalyst leg asserts a January 20, 2027 earnings/formal-outlook date that no cited source establishes",
+   "Interest coverage ~7x is not supported by the cited sources (nearby published values range ~6.3-8.1x depending on period)",
+   "Trailing P/E is source-dependent (13.5x Finnhub vs 14.62x MarketBeat); card presents 13.5x in the leg and a range only in the summary"
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:NYT": {
+  "ticker": "NYT",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "questionable",
+    "note": "Core Q2 figures verified: revenue $762.5M +11.2%, digital-only subscription revenue $407.9M +16.4%, digital ads +20.7%, ~280k net digital-only adds, 13.35M total / 12.80M digital-only subscribers, digital ARPU $9.94 +3.1%, adj. EPS $0.69 vs $0.67. But the guidance claim is misstated (see issues)."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "Finnhub P/E ~28.5x at $69.58 verified; $69.58 vs $87.10 high is -20.1%, so the leg's '~19% below' is a slight rounding understatement, not material."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "Media is not in the negative sector map and no contradicting evidence found as of 2026-10-25; the defensive, subscription-led characterization is consistent with the verified revenue mix."
+   },
+   "risk": {
+    "status": "supported",
+    "note": "~$1.17B cash + marketable securities at YE2025 with nothing drawn on the credit facility is supported by the cited 2025 10-K; ~$28M cumulative AI litigation spend and the DOJ brief backing OpenAI/Microsoft fair-use arguments appear in the cited StockMoguls source; Q2 adj. operating costs +10.0% vs 8-9% guided range confirmed."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "Q3 results on Nov 4, 2026 confirmed by BusinessWire announcement; Amazon multiyear AI licensing deal confirmed (announced May 29, 2025)."
+   }
+  },
+  "issues": [
+   "Quality leg and summary misstate Q3 guidance as 'digital subs +12-15%': guidance was for digital-only subscription REVENUE growth of 12-15%, not subscriber growth",
+   "Valuation leg says ~19% below the 52-week high; actual is 20.1% ($69.58 vs $87.10)"
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:DXCM": {
+  "ticker": "DXCM",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "supported",
+    "note": "Q2 2026 verified: revenue $1.308B +13%, non-GAAP EPS $0.70 vs $0.61 consensus, non-GAAP gross margin 64.1% (from 60.1%), FY26 guidance raised to revenue $5.18-5.25B / operating margin 23.5-24% / EBITDA margin 31.5-32%; four straight EPS beats confirmed (Barchart: exceeded estimates in each of last four quarters)."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "Finnhub P/E 29.694 at $77.94 verified; $77.94 vs $92.59 high is -15.8%, matching '~16% off the high'."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "Diabetes devices are not on the negative sector map; no contradicting evidence found. CGM demand/reimbursement framing is consistent with the CONNECT and coverage reporting."
+   },
+   "risk": {
+    "status": "questionable",
+    "note": ">$600M H1 FCF and ~$600M Q2 buybacks verified (GuruFocus); D/E ~0.47 not contradicted. Wording imprecision: the card says '$1.95B cash and marketable securities at Q2-end' while sources describe ~$1.95B as cash and equivalents with the revolver undrawn, conflating the two categories."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "Q3 results Oct 29, 2026 confirmed by company scheduling release; management expectation of a CMS decision on CONNECT non-insulin type 2 coverage before year-end and G7 15-day conversion reaching nearly 50% of US customers by year-end both supported in Q2 reporting."
+   }
+  },
+  "issues": [
+   "Risk leg conflates 'cash and marketable securities' with sources' 'cash and equivalents ~$1.95B' wording"
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:EQT": {
+  "ticker": "EQT",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "questionable",
+    "note": "Verified: Q2 adj. EPS $0.39 vs $0.41 consensus (some sources cite $0.40), FCF attributable $330M at $2.89 gas, FY26 production guidance raised ~90 Bcfe, capex trimmed. The 'five downward revisions' to Q3 estimates was not verified in any cited or searched source, and Q3 consensus is cited elsewhere at ~$0.38-0.40 vs $0.52 a year ago."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "Finnhub P/E 12.29 at $55.63 verified, 52-week high $68.24 (-18.5%); positive FCF at sub-$3 gas is evidenced by the $330M Q2 FCF at $2.89."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "Demand deals verified: 10-year PJM-linked CPV Shay gas supply (325,000 Dth/d), 5-year LNG offtake (0.5 mtpa from 2028), and the Appalachian power/data-center demand pipeline; oil & gas Positive/Severe is the internal map's placement."
+   },
+   "risk": {
+    "status": "questionable",
+    "note": "D/E ~0.19 verified and dividend raise to $0.17/quarter (Oct 14, +3%) verified, and Fitch's BBB upgrade did occur - but it was a Q1 2026 event. The net-debt figure is stale as presented (see issues)."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "Q3 results Oct 27, 2026 after close confirmed; buybacks framed as unlocked as the ~$5B debt target is approached, consistent with Q1/Q2 reporting on the target."
+   }
+  },
+  "issues": [
+   "Risk leg presents net debt 'reduced to $5.7B from $7.7B at YE2025' as current: $5.7B (just under) was the Q1 exit; by Jun 30, 2026 net debt was $5.5B (total debt $5.7B). The summary's 'by Q1' qualifier is missing from the leg",
+   "Quality leg's 'five downward revisions' to Q3 estimates is unverifiable from cited sources",
+   "Fitch BBB upgrade is presented without its Q1 2026 timing, reading as more recent than it is"
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:OXY": {
+  "ticker": "OXY",
+  "store": "validated",
+  "legs": {
+   "quality": {
+    "status": "questionable",
+    "note": "Headline Q2 verified: revenue $8.06B +53.4% YoY, adj. EPS $2.40 vs $1.83 consensus (some sources report revenue $8.07-8.33B on different bases). The $4B+ cash-flow-by-2030 program is verified via the Goldman upgrade note, but '~$7B FCF expected' and the 10% capex cut were not verified in the cited/searched sources."
+   },
+   "valuation": {
+    "status": "supported",
+    "note": "Finnhub headline P/E 8.49 at $64.17 verified; MarketBeat P/E ~14.2 is consistent with the card's ~14x ex-OxyChem-gain framing. The multiple claims in the leg itself check out - the error is in the summary (see issues)."
+   },
+   "sector": {
+    "status": "supported",
+    "note": "Q3 realized oil $85.91/bbl, +32.6% YoY, from the Oct 13 8-K preview is verified; Positive/Severe oil & gas placement is the internal map's call and matches the $100+ oil tape."
+   },
+   "risk": {
+    "status": "questionable",
+    "note": "Deleveraging direction is real and the Berkshire $10B preferred not being redeemable before Aug 2029 is supported, but the leg is stale: principal debt was already reported at ~$11.8B (from ~$20.4B) after the OxyChem sale, not merely 'below $15B heading to $10B', and the CEO succession is misframed as a forward risk (see issues). Berkshire ~27% stake was not verified in the searched sources."
+   },
+   "catalyst": {
+    "status": "supported",
+    "note": "Q3 results Nov 9, 2026 confirmed; Goldman Sachs upgrade Oct 1, 2026 (Buy, $69 target) and Roth Capital upgrade Oct 19, 2026 (Buy, $70 target) both verified."
+   }
+  },
+  "issues": [
+   "Summary math error: 'only ~3% off its 52-week high' - $64.17 vs $67.45 is -4.9%, not ~3%",
+   "Stale risk framing: the Hollub-to-Jackson CEO succession already took effect June 1, 2026 (announced May 1, 2026; Richard Jackson became CEO from COO), yet the risk leg and risks list present it as a pending transition ~5 months later",
+   "Quality leg's '~$7B FCF expected' and 'capex cut 10% for 2026' are unverified in cited/searched sources",
+   "Risk leg understates completed deleveraging: principal debt already ~$11.8B post-OxyChem close (Jan 2, 2026), versus the vaguer 'below $15B, heading to $10B'"
+  ],
+  "overall": "mixed",
+  "date": "2026-10-25"
+ },
+ "validated:TRMB": {
+  "issues": [
+   "Sector leg's 'AECO ARR has grown mid-teens for 28 straight quarters' is unverifiable: Trimble's published as-adjusted AECO ARR history covers only Q1 2023\u2013Q2 2026 (~14 quarters, 14\u201319% organic growth)"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 guidance of revenue $953\u2013978M and non-GAAP EPS $0.83\u20130.88 is confirmed verbatim in the Q2 release, and Q3 results are due Nov 4, 2026, inside the window; the T&L strategic review is under way and the $1B buyback is authorized, as the card states.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "All load-bearing figures verified against Trimble's Aug 12, 2026 Q2 release: revenue $972.0M, +11% YoY (+10% organic); ARR record $2.51B, +14% YoY / +12% organic; non-GAAP EPS $0.86 vs $0.71 a year earlier = +21% as claimed; FY26 guidance raised twice in 2026 (Q1 midpoint to $3.875B/$3.55, Q2 to $3.925B/$3.65; ranges $3.90\u20133.95B / $3.60\u20133.70); CFO confirmed the 30% EBITDA margin target was set for 2027 at Investor Day and is now expected in 2026, i.e. pulled forward a year.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Total debt $1.46B confirmed (StockAnalysis balance sheet); H1 free cash flow $501.8M confirms the card's $502M; the new $1.0B buyback authorization was approved alongside Q2 results; the $562.0M T&L goodwill impairment is confirmed in the release as the driver of the $(471.7)M GAAP net loss and is non-cash; the T&L strategic review is real (begun after inbound interest, no predetermined outcome). Minor omission: an undrawn $500M delayed-draw term loan facility added Oct 2, 2026 is not mentioned, but it is capacity, not drawn debt.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The offset is directionally evidenced \u2014 AECO ARR +14% in Q2, and Field Systems demand was led by data centers, utilities and energy infrastructure (Zacks) \u2014 but the specific claim that 'AECO ARR has grown mid-teens for 28 straight quarters' is unverifiable and likely overstated: Trimble's own as-adjusted AECO ARR series only documents Q1 2023 onward (~14 quarters at 14\u201319% organic growth); AECO in its current segment form does not have a published 28-quarter history.",
+    "status": "questionable"
+   },
+   "valuation": {
+    "note": "$63.49 is the Oct 23, 2026 close (Finnhub); 52-week high is $84.42, so the stock is 24.8% below the high vs the card's ~24%; $63.49 / $3.65 guide midpoint = ~17.4x, matching the card's ~17x FY26 non-GAAP EPS guidance.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "TRMB",
+  "date": "2026-10-25"
+ },
+ "validated:BKR": {
+  "issues": [
+   "Valuation leg states 'Q2 revenue grew only 2.4% YoY' \u2014 the sign is wrong: Q2 2026 revenue of $6.74B was DOWN ~2.4% vs ~$6.91B in Q2 2025 (Zacks and LevelFields both report a decline)",
+   "Card omits the completed Chart Industries acquisition entirely \u2014 a third reporting segment and the main driver of the +11% Q3 revenue estimate \u2014 from the quality and risk legs",
+   "Consensus target cited as ~$70.6 vs MarketBeat's current $71.41\u2013$72.10 average (minor, vendor variance)"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results on Oct 27, 2026 after market close confirmed (Zacks); Venture Global expects to place its first power-island purchase order by the end of 2026 (Reuters, Oct 15), matching the card's 'first purchase orders expected by year-end 2026' under the framework.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Zacks (Oct 23 preview) confirms earnings topped consensus in each of the trailing four quarters with an average surprise of 17.4%, and Q2 adjusted EPS of $0.64 vs the $0.51 consensus; record IET orders of $7.1B confirmed in Q2 coverage; Q3 revenue consensus is $7.78B, +11% YoY, matching the card's ~$7.75B. Material omission: the card never mentions the completed Chart Industries acquisition (closed with Q2, adds a third segment, $325M targeted annual cost synergies), though the card's stated figures themselves check out.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "All three ratios match published data exactly: debt-to-equity 0.77, current ratio 2.09, net margin 11.17% (MarketBeat). Caveat the card omits: post-Chart leverage is guided to rise temporarily, with management expecting net debt/EBITDA back to 1.0\u20131.5x within 24 months (Q2 call coverage) \u2014 no cliff or dilution is evidenced, but the balance-sheet path is less static than the card implies.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Consistent with the map's Positive/Severe oil & gas rating and the cited backdrop (Zacks notes sharply higher YoY crude prices benefiting BKR); the second demand leg is real \u2014 the Oct 15, 2026 Power Frame Agreement with Venture Global and GE Vernova covers turbines/equipment for up to 16 power islands aimed at LNG expansion and potential LNG-adjacent data centers (Baker Hughes release, Reuters).",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price and multiple verify: $55.86 is the Oct 23, 2026 close (Finnhub), 52-week high $70.41 makes it 20.7% below the high (~21% as claimed), FY26 EPS consensus $2.58\u20132.59 gives ~21x, and consensus targets of $71.41\u2013$72.10 (MarketBeat) are close to the card's ~$70.6. But the claim 'Q2 revenue grew only 2.4% YoY' has the sign wrong: Q2 revenue was $6.74B vs ~$6.91B in Q2 2025, a ~2.4% DECLINE (Zacks: revenues 'declined 2%'; LevelFields: 'revenue declined 2.4%'). The '+2.4%' phrasing appears only in MarketBeat boilerplate summaries and contradicts the primary earnings coverage and the arithmetic.",
+    "status": "questionable"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "BKR",
+  "date": "2026-10-25"
+ },
+ "theme:LMT": {
+  "issues": [
+   "Catalyst framing omits that the 850-jet F-35 framework is not yet a finalized contract \u2014 it requires congressional approval and appropriations, and F-35 deliveries are lagging (94 jets in 9M 2026 vs 143 a year earlier, with Lot 20 costs exceeding contract authorization per the filing)"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "The 10-year F-35 framework covering 850 U.S. aircraft was announced with Q3 (Reuters/PRNewswire), and management confirmed formal 2027 guidance lands in January with high-single-digit 2027 growth expected. Caveat the card does not state: the framework is a prearranged commitment still requiring congressional approval/appropriations, not a finalized order.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q3 2026 verified across Zacks/SEC release coverage: sales +11% to $20.7B, EPS $7.97 vs $7.52 consensus, all four segments grew, MFC sales +24% to $4.5B, FY26 guidance raised a second straight quarter (EPS $30.35\u201330.75, sales $80\u201382B).",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "FCF guide $7.8\u20138.0B and $3.0B Q3 FCF confirmed; dividend raised for the 24th straight year per CEO statement; $292B backlog = 3.6x the ~$81B guided sales midpoint, as stated.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "MFC backlog of $142.5B confirmed exactly in the Q3 release segment table ($142,517M of the $291,984M total), so the claimed company-specific offset to the Mixed/Severe defense designation is real.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $604.18 confirmed as the Oct 23 close (StockAnalysis); 604.18/30.55 guide mid = ~19.8x as stated; StockAnalysis forward P/E 18.90 matches the card's ~18.9x; dividend $14.40 = 2.38% yield vs card's 2.4%.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "LMT",
+  "date": "2026-10-25"
+ },
+ "theme:RGLD": {
+  "issues": [
+   "Quality leg omits that Q2 adjusted EPS of $2.56 actually missed the Zacks consensus of $2.62 (the card claims no beat, so no contradiction, but the miss is undisclosed)",
+   "The '~18-year average reserve life' figure could not be verified in the sources checked"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 reporting in early November, ongoing buybacks (147k shares repurchased in Q2) and the raised annual dividend rate ($1.90/share, +6%) are all confirmed; Hod Maden restructuring progress confirmed in the Q2 release.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 verified in the Business Wire release: revenue $450.5M (+115% YoY), net income $236.4M (+79%), record operating cash flow $335.2M (+119%); 2026 gold sales guidance of 290\u2013320k oz (midpoint +32% YoY) and the 430\u2013480k GEO five-year outlook both confirmed in the March 2026 guidance release.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Total available liquidity of $1.2B confirmed on the Q2 call; 'no one asset contributing more than 13% of revenue' is a direct management statement; $200M of revolver repaid in Q2, consistent with the stated path to a fully repaid revolver.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Gold did break below $4,000 on Oct 23, closing at $3,995.52 (Refinitiv via multiple outlets), exactly as the card states; the no-AISC pass-through characterization is accurate for a royalty/streaming model.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $227.42 and 52-week high $306.25 confirmed (Finnhub, Oct 23 close) \u2014 a ~26% drawdown vs the card's -25%; trailing P/E 26.7 matches '~27x'; adjusted EBITDA margin of 83% confirmed, supporting the royalty-model framing.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "RGLD",
+  "date": "2026-10-25"
+ },
+ "theme:CB": {
+  "issues": [
+   "Quality leg's 'ex-cat combined ratio steady at 82.6%' is wrong: reported Global P&C ex-cat combined ratio was 81.8%",
+   "Risk leg's $562M favorable reserve development is the gross active-company figure; net favorable prior-period development including the run-off book was $511M"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "The mechanical tailwind claim rests on the verified 6.2% new-money yield vs 5.2% portfolio yield spread; January renewals and Q4 results timing are unremarkable and accurate.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Headline figures verify: record Q3 core EPS $7.66, nine-month core EPS +24.5% to $21.94, consolidated premiums +1.9%. But the claimed ex-cat combined ratio of 82.6% is contradicted by the reported figure \u2014 Global P&C ex-catastrophe combined ratio was 81.8%, essentially flat YoY (earnings call transcript, AlphaSense, TradingKey). No source supports 82.6%.",
+    "status": "questionable"
+   },
+   "risk": {
+    "note": "Record Q3 operating cash flow of $6.07B confirmed (Zacks); invested assets of $175.5B confirmed (call transcript); Q3 pretax catastrophe losses of $705M confirmed. Minor nuance: the $562M favorable reserve development is the gross active-company pre-tax figure; net of $51M adverse corporate run-off development, total favorable prior-period development was $511M. Debt/equity ~0.22\u20130.27 not independently verified but consistent with Chubb's balance sheet.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Adjusted net investment income of a record $1.89B (+6.3%) confirmed, as are the 6.2% new-money rate and 5.2% portfolio yield (call transcript), so the evidenced rates offset to the Mixed/High financials designation is accurate.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $355.11 and P/E 12.43 match the cited StockAnalysis statistics; the 21.6% annualized return on tangible equity is confirmed in the call transcript. The ~13.5x 10-year median P/E comparison is plausible but was not independently verified.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "theme",
+  "ticker": "CB",
+  "date": "2026-10-25"
+ },
+ "theme:CME": {
+  "issues": [
+   "Valuation leg's '6.4% pullback from the $329.16 high' does not reconcile with the card's own $305.71 price, which is ~7.1% below that high",
+   "Risk leg's cash/debt figures ($2.4B cash, $3.4B debt, D/E ~0.13) differ from StockAnalysis TTM figures ($2.33B cash, $3.85B total debt, D/E 0.15), though the low-leverage conclusion is unaffected"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Record open interest of 128.2M contracts at quarter-end confirmed; the FOMC decision falls on Oct 28 within the Oct 27\u201328 meeting, inside the stated window.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q3 2026 verified: record revenue $1.74B (+13%), adjusted EPS $3.02 (+12.7% vs $2.68), record ADV 29.4M (+16.3%) with double-digit growth in all six asset classes and record non-U.S. ADV of 9.0M (CME volume release, Morningstar/Dow Jones).",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Q3 net income $1.04B confirmed; ~$1B returned ($465M dividends + $524M buybacks) confirmed; rate per contract fell 3.3% ($0.702 to $0.679) and crypto ADV fell 46%, both as stated. Balance-sheet color is source-dependent: StockAnalysis TTM shows cash $2.33B and total debt $3.85B (D/E 0.15) vs the card's $2.4B/$3.4B/~0.13 \u2014 immaterial to the low-leverage conclusion.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Interest-rate ADV +13% to 15.1M contracts confirmed in CME's own Q3 volume release, and management's attribution of record volumes to intensified uncertainty is a direct CEO quote from the release.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $305.71 confirmed as Oct 23 close (StockAnalysis); trailing P/E 25.07 there vs card's ~24.8x (Finnhub) and forward P/E 23.62 vs card's ~23\u201325x; average analyst target $316 vs card's ~$313 \u2014 all within source variance. Minor slip: the stated 6.4% pullback from the $329.16 high computes to ~7.1% at $305.71.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "CME",
+  "date": "2026-10-25"
+ },
+ "theme:WMT": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 FY27 results on Nov 19, 2026 confirmed as the next report date (Yahoo Finance earnings calendar).",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 FY27 verified against the earnings release: revenue $187.9B (+5.9%), adjusted EPS $0.81 vs $0.74 consensus (+19% YoY), FY27 guidance raised (net sales +4\u20135% cc, EPS $2.80\u20132.87), e-commerce +23%, advertising +38%, membership fee revenue +17%, and the U.S. comp softness (+2.6% vs ~3.8% expected) is accurately disclosed.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "The >$2B of incremental FY27 fuel costs beyond plan was stated by CFO Rainey on the Aug 20 call; the ~$2.9B tariff refund flattery (worth ~750bp of operating income growth) and traffic deceleration (+1.5% vs +3% a year ago) both check out.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The trade-down offset is evidenced: Walmart rolled out over 11,000 price rollbacks in the quarter (up from ~7,200 in Q1), funded by tariff refunds, while gaining share \u2014 confirmed in earnings coverage.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $119.89 confirmed as the Oct 23 close (Motley Fool quote); $119.89 / $2.835 guided EPS midpoint = ~42x, exactly as stated, and the card itself flags the lack of margin of safety.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "WMT",
+  "date": "2026-10-25"
+ },
+ "validated:FTNT": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 earnings confirmed for Oct 28, 2026; FortiSASE billings more than doubled and Unified SASE billings rose 35% in Q2 per Zacks.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "SEC 8-K exhibit confirms every figure: Q2 billings +33% to $2.37B, revenue +26% to $2.05B, product revenue +52% to $773M, FY26 guidance raised to revenue $8.02-8.18B, billings $9.35-9.55B, non-GAAP EPS $3.41-3.47; Zacks confirms SASE Firewall business +34% to >$2B.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "8-K cash-flow statement confirms Q2 FCF $965.6M (47.2% margin) and H1 share repurchases of $972.8M (~$973M as card states); GAAP gross margin of 80.2% in the risks list matches the release reconciliation exactly.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Judgment claim consistent with sources: Zacks/TIKR coverage ties demand to AI data-center security wins (eight-figure neocloud deal, NVIDIA Open Secure AI Alliance per the 8-K), not to the negative capex-repricing map.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$179.99 is the verified Oct 23, 2026 close (Finnhub/MarketBeat); $179.99 / $3.44 guide midpoint = ~52x as stated.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "FTNT",
+  "date": "2026-10-25"
+ },
+ "validated:HBAN": {
+  "issues": [
+   "Risk leg's '~$460M of YTD buybacks' is only reached by including ~$50M of early-Q4 repurchases; the Q3 press release reports $409M repurchased through September 30."
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q4 print in January against reaffirmed 2027 guidance, plus a guided $1.8-1.9B repurchase program across 2026-2027, are identifiable near-term drivers as stated.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Company release confirms adjusted EPS $0.38 (Transcript Daily: met estimates), GAAP EPS $0.33, NII $2,069M = +37.4% YoY, NIM 3.25%; noninterest income $722M vs $628M = +15% YoY, and call guidance implies ~31% full-year fee growth; revenue synergies tracking ahead per call coverage.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Release key metrics confirm NCO ratio 0.31% vs 0.25% in Q2; buyback figure of ~$460M YTD matches call commentary that includes $50M of early-Q4 repurchases (the Q3 release alone shows $409M through Sep 30).",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Card itself marks this mixed; the load-bearing claim (deposit betas guided ~50-60%, toward the upper end of peers) is confirmed in Q3 call coverage.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$15.73 is the verified Oct 23, 2026 close; 2027 EPS guidance of $1.75-1.83 and 17-18% ROTCE target reaffirmed on the Q3 call, so ~9x the 2027 guide is accurate.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "HBAN",
+  "date": "2026-10-25"
+ },
+ "validated:BAC": {
+  "issues": [
+   "Summary says 2027 NII guidance was 'raised to 8%+, above its original 5-7% target' - the 5-7% range was the original FY2026 guide (since raised to ~8%); 8%+ for 2027 is new guidance, not a raise above a prior 2027 target. Substance is right, framing conflates the two years."
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Management guided to a return to operating leverage in Q4 and sequential NII improvement, with 2027 NII growth of 8%+; those are real, dated drivers.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Multiple sources confirm GAAP EPS $0.91, adjusted ~$1.08, $1.2B non-deductible AML settlement, NII $16.6B +8% YoY, yield 2.16%, loans +$34B QoQ to $1.25T (10th straight growth quarter), deposits >$2T, wealth flows ~$41B.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "CET1 10.9%, net charge-off ratio 44bp, falling criticized assets, and $8.3B returned to shareholders in Q3 all confirmed; remediation costs embedded in the ~$18.5B adjusted expense base per call coverage.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Card itself marks this mixed; FICC revenue -17% in Q3 confirmed by multiple sources, consistent with the stated offset.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$50.56 is the verified Oct 23, 2026 close, -22.5% vs the $65.22 52-week high (card says -22%); trailing P/E ~11.7x per the cited Momoview analysis; tangible book $29.14/share confirmed.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "BAC",
+  "date": "2026-10-25"
+ },
+ "validated:WTW": {
+  "issues": [
+   "Risks list says Newfront/interest costs cut GAAP net income '~31% YoY' in Q2; the release table shows net income $231M vs $332M, i.e. -30% - trivial rounding difference."
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results confirmed for Oct 29, 2026; the Q2 release headline confirms share repurchase authority was increased by $1.5B.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 release confirms revenue $2,466M +9%, organic +5%, adjusted EPS $3.35 +17%, and R&B organic +7% (Zacks); full-year guidance reaffirmed ('confident in delivering on our full-year 2026 guidance').",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "H1 FCF $360M vs $217M (+66%) per the release; $1B+ of 2026 buybacks planned (Quartr/Zacks); Newfront consideration totals $1.3B ($1.05B upfront) per Reuters and the deal release; Propel is a ~$625M investment targeting ~$400M gross run-rate savings and 30% adjusted operating margin by 2028.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Fee-based broker with no underwriting balance sheet; consistent with segment reporting, and the cited sources frame property-pricing softness as the offset, as the card's risks do.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Cited Zacks article (Oct 15, 2026) confirms forward P/E 13.47X vs industry 14.28X and S&P 500 composite 19.81X, and consensus 2026 EPS growth of +15.9%; $325.01 is the verified Oct 23, 2026 close.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "WTW",
+  "date": "2026-10-25"
+ },
+ "validated:NTRS": {
+  "issues": [
+   "Quality leg overstates the earnings beat: card claims EPS $3.40 vs $2.84 consensus (~20% beat), but consensus was ~$2.87 per Zacks/MarketBeat and the $3.40 includes ~$48.7M of pre-tax notable gains; adjusted EPS ex-notables was $3.20, a ~11-12% beat."
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "New $3.5B repurchase authorization confirmed in the Oct 20, 2026 dividend/buyback release; Q4 results due in January as stated.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Headline figures verify (EPS $3.40, net income $642.9M, FTE revenue $2,302M +13%, AUC/A $19.9T, AUM $2.0T, ex-items revenue +11% vs expenses +4.9%), but the claimed ~20% consensus beat is flattered: sources put consensus at ~$2.87 (card says $2.84), adjusted EPS ex-notables was $3.20, and the $3.40 GAAP print includes $48.7M of pre-tax one-time gains (guardianship-business sale and Visa exchange) that the card never mentions.",
+    "status": "questionable"
+   },
+   "risk": {
+    "note": "$514.2M returned to shareholders in Q3 confirmed; capital is stronger than the card states (CET1 12.4%); dividend raised to $0.88 from $0.80 confirmed.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Card itself marks this mixed; trust fees of $1.373B in Q3 (+8% YoY) confirmed in the release, supporting the fee-dominant characterization.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$167.92 is the verified Oct 23, 2026 close and the 52-week high is $195.78, i.e. -14.2% as stated; market P/E ~13.2x sits inside the card's 13-15x range; ROE 20.1% and the cited Simply Wall St ~10% undervaluation both check out.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "NTRS",
+  "date": "2026-10-25"
+ },
+ "theme:CI": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results on Nov 5, 2026 confirmed by multiple sources; 2027 Signature rollout and ACA exit confirmed as dated drivers.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 revenue $71.7B (+7% YoY) and adjusted EPS $7.78 vs $7.60 consensus confirmed (MarketBeat call transcript, Fortune via ad-hoc-news); FY26 adj. EPS guide raised to at least $30.45 and reaffirmed at the Sep 30 Investor Day; Evernorth Specialty & Care pretax +22% to $1.1B and Cigna Healthcare pretax +17% both confirmed; MCR guide 83.7-84.7% confirmed.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Debt-to-capital of 42.8% vs the 40% year-end goal confirmed (Kalkine); ~$9B 2026 operating cash flow expectation confirmed; PBM rebate regulation and IDR claims flagged as live risks in coverage, consistent with the card.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Policy-alignment claims verified: rebate-free Signature model rolling to fully insured plans in 2027 and planned exit of ACA exchange business after 2026 both confirmed in Q2 call coverage.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price ~$306.95 confirmed (MarketBeat shows $306.93); Finnhub trailing P/E 12.63 as cited (other aggregators ~13.6x, same ballpark); ~10x the $30.45 guide is arithmetically correct; consensus target $338.24 confirmed by MarketBeat/Kalkine.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "CI",
+  "date": "2026-10-25"
+ },
+ "theme:DINO": {
+  "issues": [
+   "Catalyst leg: spin-off '~$300-350M LTM EBITDA' is unverified and appears inconsistent with the segment's $207M adjusted EBITDA in Q2 2026 alone",
+   "Valuation leg: '-5.1% off the high' is imprecise; $121.66 vs the $129.37 52-week high is ~-6.0%"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 results Oct 28 vs Zacks consensus $7.99 confirmed, and the Lubricants & Specialties separation within 12-18 months (targeted H2 2027) is confirmed. However, the card's '~$300-350M LTM EBITDA' for the spin-off could not be verified in any source and looks inconsistent: the segment's Q2 2026 adjusted EBITDA alone was $207M (including a $46M FIFO gain), implying an LTM figure well above $350M on any normal run-rate. Go West Phase 1 FID timing 'expected this year' also not specifically confirmed (only the Go-West initiative adding ~35k bpd into Nevada).",
+    "status": "questionable"
+   },
+   "quality": {
+    "note": "Q2 2026 adj. EPS $5.31 vs $1.70 a year ago, adj. EBITDA $1.48-1.5B with Refining ~$1.02B, refinery gross margin $25.95/bbl (+57%) all confirmed (company 8-K, Zacks, Reuters); four straight beats with ~194.9% average surprise confirmed by Zacks; dividend raised 5% to $0.525 confirmed.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Balance-sheet claims verified: debt $2.77B less cash $2.26B = ~$0.5B net debt (Blackspear snapshot from filings), consistent with ~4% net debt/capital; ~$5.2B returned since Mar 2022 and >68M shares repurchased confirmed on the Q2 call; $4.26B liquidity is consistent with cash plus the $2.0B revolver.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Refining upcycle corroborated: Reuters notes US refiners are the biggest beneficiaries of the Iran-war supply shock, with fuel exports at record highs and margins above 2022 records; tight capacity/low inventories confirmed by Zacks.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $121.66 at Oct 23 close, Finnhub P/E 11.36, +164% YTD all confirmed via Finnhub. Minor imprecision: card says -5.1% off the high, but $121.66 vs the $129.37 52-week high is ~-6.0%. Analyst target ranges vary by source ($116.8-122 consensus, highs to $145-160) but broadly straddle the price as stated.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "theme",
+  "ticker": "DINO",
+  "date": "2026-10-25"
+ },
+ "theme:MET": {
+  "issues": [
+   "Valuation leg: the '+25% YTD' run figure was not precisely verified, though the stock did close at a 52-week high on Oct 22, 2026, so the direction is consistent"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results on Nov 4, 2026 (after close) confirmed by company announcement; quarterly dividend of $0.5925/share confirmed (~2% yield).",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 adjusted earnings $1.6B (+15% YoY), adj. EPS $2.43 (+20%), adjusted ROE 17% at the top of the 15-17% target range all confirmed (Tickeron recap, Yahoo Finance via ad-hoc-news); Q3 variable investment income pre-guided to at least $600M pre-tax (Sep 24 filing) vs ~$1.6B FY guidance confirmed.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Capital return claims verified: ~$700M Q2 buybacks, >$2.4B returned YTD, new $3B repurchase authorization, holding-company liquidity $3.4B within the $3-4B target; VII volatility correctly framed as earnings variance.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Leg is 'mixed' by design and its evidence checks out: the >=$600M Q3 variable-income guide shows reinvestment/variable income working, while Q2 VII of only $231M pretax (weak PE marks, one-quarter lag) confirms the market sensitivity the card cites as the cap.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $98.82 at Oct 23 close confirmed (stockinvest); ~10.2x the annualized Q2 adj. EPS run-rate ($2.43 x 4) as claimed; Finnhub trailing P/E 17.87 as cited; JPMorgan target raised $108 to $110 on Oct 15, 2026 confirmed (MarketBeat/Benzinga) and labeled crowd context.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "MET",
+  "date": "2026-10-25"
+ },
+ "theme:ENB": {
+  "issues": [
+   "Risk leg: leverage figure is stale - latest reported debt/EBITDA is 5.1x at Q2 2026 (above the 4.5-5.0x target), not 4.8x 'on the way down' as framed",
+   "Risk leg omits Oct 2026 Line 5 reroute complications (state-cited permit violations over an aquifer breach; arson attacks on drill rigs), though the core legal-overhang claim is accurate"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results Nov 6, 2026 confirmed by company scheduling; Line 5 Wisconsin relocation (US$1.0B, 41-mile reroute) sanctioned and targeted for early 2027 in-service per the Q2 MD&A; Blackcomb Pipeline commissioning/Dec 2026 in-service consistent with company commentary and the cited source.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "2026 guidance of $20.2-20.8B adj. EBITDA and $5.70-6.10 DCF/share confirmed in the company release and reaffirmed at Q2 2026; ~$8B of new projects entering service in 2026 under low-risk frameworks confirmed; 2025 record results (adj. EBITDA $20.0B) per the cited StockTitan coverage; secured backlog ~C$41B confirmed in the Q2 2026 release.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Stale leverage anchor: the card's 4.8x debt/EBITDA is the end-2025 figure, but Enbridge's Q2 2026 release (Jul 31, 2026) reported rolling debt-to-EBITDA of 5.1x - above the 4.5-5.0x target range - so the card's 'nearer 5.3x on the way down' framing is wrong in direction; leverage rose in 2026 (partly FX translation at 1.42 CAD/USD), not fell. Line 5 relocation facts themselves check out (US$1.0B, early 2027 in-service, permits secured), though Oct 2026 coverage of aquifer-breach violations shows the overhang is more active than the card suggests.",
+    "status": "questionable"
+   },
+   "sector": {
+    "note": "Contracted/regulated toll-road characterization is consistent with company disclosures (take-or-pay LNG-related pipelines, rate settlements driving 2026 growth); no source contradicts the energy-infrastructure framing.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$48.15 is ~8.2x the $5.90 DCF guide midpoint (arithmetic correct); dividend yield ~5.7-5.8% confirmed (Longbridge shows 5.79%); ~17% below the $58.45 52-week high confirmed; dividend +3% to C$0.97/quarter, 31st consecutive annual increase, confirmed in the PR Newswire release.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "theme",
+  "ticker": "ENB",
+  "date": "2026-10-25"
+ },
+ "theme:LHX": {
+  "issues": [
+   "Risk leg: 'CEO transition' glosses over the fact that Kubasik was removed after a board investigation found code-of-conduct violations (Aug 17, 2026) - a material governance omission",
+   "Card omits the planned Missile Solutions spin-off/IPO with a $1B Pentagon stake, a major pending corporate event"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results Oct 29, 2026 confirmed; consensus ~$3.05-3.06 EPS confirmed (Tickeron cites ~$3.06; Barchart average $3.02).",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 orders $7.3B, book-to-bill 1.2x, record $42B backlog, FY26 guidance raised to $23.2-23.7B revenue and $11.80-12.00 EPS all confirmed (Business Wire release, Morningstar/PR Newswire); EPS beats in each of the last eight quarters confirmed (Tickeron); $876M Navy NGJ-LB award confirmed (Oct 19, 2026 company release); new Arkansas solid rocket motor facility doubling capacity confirmed.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Material omission in framing: the card calls it 'a recent CEO transition' and 'an execution watch item,' but CEO Christopher Kubasik was forced out effective Aug 17, 2026 after a board investigation found code-of-conduct violations, with Sam Mehta named CEO the same day (Reuters, Via Satellite) - a governance event materially more serious than the neutral wording implies. The card also omits the planned Missile Solutions spin-off/IPO (with a $1B Pentagon stake) entirely. Balance-sheet claims themselves (~$3B FCF guide reaffirmed, low beta) check out.",
+    "status": "questionable"
+   },
+   "sector": {
+    "note": "Leg is 'mixed' by design; the company-specific offset is evidenced (record backlog, NGJ award, raised guidance) and the defense-complex budget/midterm caution is a judgment call no source contradicts.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$253.97 is ~21.3x the $11.90 guide midpoint as claimed and ~33% below the $379.23 high (arithmetic consistent); beta ~0.49 matches Barchart's 60-month 0.50; trailing P/E ~25 sits within the range of sources (Barchart TTM 23.3x).",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "theme",
+  "ticker": "LHX",
+  "date": "2026-10-25"
+ },
+ "theme:ELV": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "Dated drivers check out: 2027 guide of at least 12% adj. EPS growth off the raised $26.75 baseline was formally issued with Q3 results, and Q4 will be reported against the new at-least-$29 floor.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "All figures verified against Reuters (Oct 21) and the earnings call: Q3 adj. EPS $6.99 vs $4.68 consensus (Reuters; card's ~$4.70 is rounding), BER improved exactly 70bp to 90.6% (from 91.3%), FY26 guide raised to at least $29 from at least $27, Carelon operating gain +17% to $0.9B.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "The $1.85/share net non-operating benefit inside Q3 is confirmed verbatim by CFO Mark Kaye on the call (only ~$0.50 was operating outperformance); membership fell exactly 487k YoY to 44.9M (Reuters/8-K).",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Defensive-beneficiary behavior corroborated: health services sector +9.54% over the past month and ELV +10\u201311% (Kalkine/Finnhub); ELV's MA/Medicaid/ACA books all reported favorable to outlook in Q3 per the call.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $439.95 confirmed as the Oct 23 close (Finnhub); math checks: 439.95/29 = 15.2x the raised guide and 439.95/26.75 = 16.4x the recurring baseline, and the \u226512% 2027 growth guide off the $26.75 baseline is confirmed by Reuters and the CFO on the call.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "ELV",
+  "date": "2026-10-25"
+ },
+ "theme:EOG": {
+  "issues": [
+   "Summary claims FY27 EPS estimates are 'already fading toward ~$13.50' \u2014 no source found verifies this figure",
+   "Risk leg's 'interest coverage >45x' and 'D/E ~0.25' are not independently verifiable in current sources (only the \u226570% FCF return commitment checks out)",
+   "Forward P/E ~9.2x is single-sourced to a MarketBeat snapshot; Finnhub trailing P/E is 11.88x"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 results early November with call Nov 6, 2026 and consensus ~$4.00 (range $3.98\u20134.09) confirmed by Tickeron, including Zacks' cut to $4.08 from $4.42 cited in the card's risks; the $1.02 dividend pays Oct 30, and the 8-K confirms Brent-linked gas contract deliveries begin January 2027.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 adj. EPS $5.07 confirmed (MarketBeat), and Tickeron confirms FY26 targets reiterated: 5% oil growth, 14% total production growth, ~$8.0B FCF at strip, capex $6.5B; the Oct 8 8-K raised only Q3 tax expense ($545\u2013645M to $835\u2013935M) explicitly on higher realized crude tied to the Middle East conflict.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "The \u226570%-of-FCF shareholder-return commitment is verified (Tickeron), but the specific 'interest coverage >45x' and 'debt/equity ~0.25' figures could not be independently re-verified in current sources; MarketBeat's live page no longer displays the cited snapshot values.",
+    "status": "questionable"
+   },
+   "sector": {
+    "note": "Direct-beneficiary claim is documented in EOG's own Oct 8 8-K, which attributes higher realized and expected crude prices to 'the ongoing conflict in the Middle East' (SEC filing via Minichart/Transcript Daily).",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $163.03 (Oct 23 close, Finnhub), trailing P/E 11.88, +55.25% YTD and the new all-time high ($165.11 intraday Oct 23) all verify, as does MarketBeat's $161.24 average target. But the summary's claim that FY27 EPS estimates are 'already fading toward ~$13.50' could not be verified in any source found, and the ~9.2x forward P/E rests on a single vendor snapshot (MarketBeat).",
+    "status": "questionable"
+   }
+  },
+  "overall": "mixed",
+  "store": "theme",
+  "ticker": "EOG",
+  "date": "2026-10-25"
+ },
+ "theme:BURL": {
+  "issues": [
+   "Discount figure imprecise: card says 33.5% below the high in two places; $247.63 vs the actual $378.33 52-week high is a 34.5% discount"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Fiscal Q3 guide of 9\u201311% sales growth confirmed (MarketBeat/release), 45 net new stores opened in Q2 (51 gross, 1,287 total), and management reiterated it is 'on track to surpass 1,500 stores by the end of 2028' (Q1 call via Sharewise).",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Fiscal Q2 verified from the company release (via StockTitan/Quartr): sales +11% to $2.998B, comps +2% on top of +5%, adjusted EPS +38% to $2.37 ex-tariff-refund, adjusted EBIT margin +100bp, 15th consecutive quarter of double-digit EPS growth, and FY26 guidance raised (sales +10\u201311%, comps +3\u20134%, adj. EPS $11.77\u201311.97).",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Balance-sheet figures verified from the Q2 release: total debt $1.914B, liquidity $1.646B, $87M of Q2 buybacks (270,279 shares); the $55M tariff refund and its planned H2 reinvestment into sharper prices, plus management's caution on low/moderate-income spending pressure, are confirmed by the release and Zacks.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Off-price offset is evidenced: Goldman Sachs added BURL to its October US Conviction List ($382 target) citing store growth and margin expansion while discretionary peers face pressure, and management raised guidance into the consumer squeeze (Zacks/Globe and Mail).",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $247.63 (Oct 23 close, Finnhub) and ~21x the raised guide midpoint (247.63/11.87 = 20.9x) verify, and consensus targets ~$365\u2013371 check out (Investing.com $364.75; MarketBeat $370.75). However the stated '33.5% below the $378 high' is imprecise: against the actual 52-week high of $378.33 (Finnhub), $247.63 is 34.5% below \u2014 the card understates the discount by ~1pt in both the summary and this leg.",
+    "status": "questionable"
+   }
+  },
+  "overall": "mixed",
+  "store": "theme",
+  "ticker": "BURL",
+  "date": "2026-10-25"
+ },
+ "theme:WDAY": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "Fiscal Q3 FY27 earnings date of Nov 24, 2026 is confirmed (StockAnalysis lists Nov 24, 2026 after market close), and buyback execution is live ($1.3B repurchased in Q2 alone).",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Fiscal Q2 FY27 verified across the release/call coverage: subscription revenue $2.471B (+13.9%), cRPO +14.2% to $9.034B, FY27 subscription guidance raised to $9.94\u20139.95B with non-GAAP margin target lifted to 31% (from 30.5%), AI ARR nearly $600M up >200%, AI >25% of new ACV, 5,500+ agent customers.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Deceleration figures verified: FY28 baseline of ~11% subscription growth (BigGo/call) and total subscription backlog +8.0% to $27.403B (8-K data); mitigants verified \u2014 cash/cash equivalents and marketable securities $3.403B, the $5B repurchase program was completed ahead of schedule and a new open-ended $4B authorization was approved Aug 27, 2026 (8-K/InTickers).",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The evidenced AI effect is positive as claimed: CEO stated AI products drove >$100M of new ACV (>25% of total) and are 'starting to lift our core business too, including our win rates' (Q2 call via BigGo/MarketBeat).",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Every load-bearing figure matches the cited StockAnalysis page at the Oct 23 close: price $209.99, forward P/E 17.40, P/FCF 17.79, PEG 0.92. The parenthetical that trailing P/E averaged ~56\u201361x over the last year is consistent with a 62.09x print in Aug 2026 coverage (current trailing is 43.25x after the de-rating).",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "WDAY",
+  "date": "2026-10-25"
+ },
+ "theme:OVV": {
+  "issues": [
+   "Risk leg's 'total debt ~$5.0B' is not reconcilable with reported figures: long-term debt was $3.7B at Jun 30, 2026 (Zacks) and net debt fell to $2.995B post-Anadarko (StockTitan); D/E ~0.44 itself is corroborated"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 results due Nov 4, 2026 with FactSet consensus of $1.99 (+94% YoY) confirmed by the cited IBD article; the renewed buyback is real \u2014 TSX approved an NCIB renewal on Oct 1, 2026 for up to 26,973,037 shares (~27M), and Quartr confirms increased buyback activity guided for H2 under the >60%-of-FCF 2026 return commitment.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "FY26 production guidance raise to 630\u2013645 MBOE/d with oil/condensate 210\u2013212 Mbbls/d and capex held at $2.25\u20132.35B is confirmed by the Q2 release, 10-Q and Zacks; estimate-revision claim checks out \u2014 IBD reports full-year estimates raised to $8.18 and Zacks Research lifted estimates across periods.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Hedges of 51 Mbbls/d of oil for the rest of 2026 are confirmed (Quartr), and the D/E ~0.44 is corroborated (MarketBeat TSE data shows 43.73). But the 'total debt ~$5.0B' figure could not be reconciled: Zacks reported long-term debt of $3.7B as of June 30, 2026, and StockTitan reported net debt reduced to $2.995B (0.6x EBITDA) after the Anadarko sale \u2014 the gross ~$5.0B figure is loosely sourced even though the 'manageable leverage' conclusion holds.",
+    "status": "questionable"
+   },
+   "sector": {
+    "note": "Realized Permian oil of $99.49/bbl in Q2 confirmed (Quartr earnings summary; company reported $97.50/bbl ex-hedges for oil & condensate and $91.22 including hedges), consistent with direct oil-shock beneficiary status.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $72.27 at the Oct 23 close and trailing P/E 20.76 both match Finnhub (the card's cited source); the ~8.8x multiple is correct arithmetic on IBD's FactSet-based FY26 consensus of $8.18 (+63% YoY): 72.27/8.18 = 8.84x. YTD +84.41% (Finnhub) also matches the summary's ~84%.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "theme",
+  "ticker": "OVV",
+  "date": "2026-10-25"
+ },
+ "theme:AEM": {
+  "issues": [
+   "Summary calls the $197M 'long-term debt' \u2014 sources describe $197M as total debt outstanding at Q2-end (minor wording imprecision, figure itself correct)",
+   "Adjusted EPS of $3.05 is Zacks' figure; the company release reports adjusted net income of $3.07/share (source variance, not material)",
+   "The '31% below the 52-week high' figure could not be independently confirmed \u2014 Finnhub's 52-week range data for AEM is internally inconsistent, though the implied ~$252 high is plausible"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results date of Oct 28, 2026 confirmed by the company's own notice of release (after market close, call Oct 29); the record $625M Q2 shareholder return (dividends plus buybacks under the upsized $2B program) is confirmed.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 verified against the company release and Zacks: payable production 855,816 oz, AISC $1,459/oz, realized price $4,483/oz, record FCF $1,335M, adjusted EPS $3.05 beat the $2.89 Zacks consensus, and 2026 production guidance of 3.3\u20133.5 Moz maintained with output guided to the low end after the Barnat rock movement.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Net cash ~$3.27B and total debt of just $197M at Q2-end confirmed in company coverage (debt/equity 0.01 per StockAnalysis); the Barnat impact is real \u2014 ~370,000 oz no longer recoverable (60\u201380k oz in 2026, ~150k oz in each of 2027 and 2028, per Canadian Mining Journal/analyst coverage); 2026 capex guidance was indeed raised to $2.6\u20132.8B.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Backdrop claims check out: gold did break below $4,000 to a 3-month low in late October (per the cited Seeking Alpha report), and gold miners are a hedge asset in this tape rather than a flagged negative sector; no source contradicts the framing.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $173.94 is the exact Oct 23, 2026 close (StockAnalysis/Finnhub); ~15x is consistent with forward P/E of 15.66 and expected FY26 EPS near $11.56 (TTM EPS $11.68); the ~$2,500/oz margin claim at $4,000 gold reconciles with Q2 AISC of $1,459/oz ($4,000 \u2212 $1,459 = $2,541).",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "AEM",
+  "date": "2026-10-25"
+ },
+ "theme:ARGX": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "All three dated catalysts confirmed in the Q3 release coverage: empasiprubart Phase 3 MMN topline due December 2026, IMNM sBLA filing on track by end-2026, and FDA priority review for Vyvgart Hytrulo in pediatric gMG with a February 2027 PDUFA target date.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q3 2026 figures verified exactly across multiple reports of the Oct 22 release: Vyvgart product net sales $1,721M (+54% YoY, +13% QoQ), operating profit $486M, net profit $506M, diluted EPS $7.80, nine-month product sales $4,534M (+58%).",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Concentration and cost claims verified: revenue is essentially all Vyvgart; combined R&D+SG&A guided to ~$4B for 2026 including Forte transaction costs; Q3 operating expenses rose 57.3% YoY to $1,266M; cash of $3.7B after paying ~$2.1B net for Forte Biosciences \u2014 all confirmed.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "No source contradicts the claim: Vyvgart demand is reimbursement-driven across gMG and CIDP, and the Q3 print confirms continued patient growth rather than cyclical exposure.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Multiples reconcile: ~28x annualized Q3 EPS ($873.71 / ($7.80\u00d74) = 28.0) and ~8x annualized sales at a ~$55B market cap (Kalkine cites $55.07B); the growth rate used to justify the multiple (+54% sales) is confirmed.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "ARGX",
+  "date": "2026-10-25"
+ },
+ "theme:NUE": {
+  "issues": [
+   "Valuation arithmetic error: $258.11 is \u22127.85% below the stated $280.11 52-week high, not \u22126.1% as claimed (repeated in the summary)",
+   "Sector leg's ~35% sheet-import decline is a Q3 2025 statistic from the cited year-old Construction Dive article, presented as current YTD; 2026 data show a smaller ~13.5% finished-import decline",
+   "Catalyst note conflates capital returns: the $1.36B YTD figure covers buybacks plus dividends per Nucor's release, not buybacks alone",
+   "Omission: Q3 guidance midpoint ($5.60) was below the ~$5.89 consensus, and Q2 results benefited from $130M in one-time raw-material procurement refunds \u2014 neither is mentioned"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 results date of Oct 26, 2026 confirmed, and the West Virginia sheet mill completion by end-2026 is confirmed (Argus) \u2014 but the '$1.36B returned YTD' is misattributed: Nucor's release states the $1.36B is share repurchases AND dividend payments combined, not buybacks alone as the note implies. The card also omits that the Q3 guide midpoint of $5.60 sat below the ~$5.89 consensus and that Q2 steel-mills earnings included $130M of one-time raw-material refunds.",
+    "status": "questionable"
+   },
+   "quality": {
+    "note": "Q2 2026 verified: adjusted EPS $4.84 beat the $4.46 consensus (MarketBeat), revenue $10.40B up 23% YoY, and Q3 guidance of $5.55\u2013$5.65 vs $2.63 in Q3 2025 is confirmed in Nucor's own Sept 17, 2026 guidance release.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Balance-sheet claims verified on the cited StockAnalysis page: debt/equity 0.31, current ratio 2.51, 53 years of dividend growth; debt-to-capital computes to ~23% ($7.10B debt / ($7.10B + $23.27B equity)); beta ~1.87 matches Finnhub (1.8704).",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The load-bearing statistic is stale: the '~35% YTD' cut in sheet imports comes from Nucor's Q3 2025 presentation as reported by the cited Construction Dive article (~361 days old), presented in the card as a current figure. The direction still holds in 2026 \u2014 AISI data show finished steel imports down 13.5% YoY Jan\u2013Sep 2026 with 50% Section 232 tariffs still in force \u2014 but no current source supports the specific ~35% number.",
+    "status": "questionable"
+   },
+   "valuation": {
+    "note": "Price $258.11 (Oct 23 close, exact), forward P/E 11.39 (within the claimed ~11.4\u201313x), and the +86% one-year gain (Finnhub: +86.09%) all check out \u2014 BUT the claim that $258.11 is 'just \u22126.1% off the $280.11 high' is arithmetically wrong: $258.11 / $280.11 = \u22127.85% below the high (a \u22126.1% figure would imply a ~$274.9 high).",
+    "status": "questionable"
+   }
+  },
+  "overall": "mixed",
+  "store": "theme",
+  "ticker": "NUE",
+  "date": "2026-10-25"
+ },
+ "theme:ADM": {
+  "issues": [
+   "Valuation arithmetic imprecision: at the card's own $80.14 price and $88.75 high, the stock is \u22129.7% off the high, not \u22129.0% as stated"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 earnings on Nov 3, 2026 confirmed (StockAnalysis lists Nov 3, before market open); the CFO stated on the Q2 call that the second half is expected to contribute more than half of full-year operating profit, matching the card's claim.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 verified against ADM's own release: net earnings $908M, adjusted EPS $1.84 vs Zacks consensus of $1.42 (MarketBeat cites $1.49 \u2014 both inside the card's range), total segment operating profit $1,450M (+75%), with Ag Services & Oilseeds $867M (+129%), Carbohydrate Solutions $411M (+22%) and Nutrition $172M (+51%) \u2014 the segment table matches the card exactly.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Verified: debt/equity 0.39, current ratio 1.39 and 53 years of dividend growth (StockAnalysis), beta 0.62 (Finnhub 0.6211). The risks-list details also check out \u2014 Q2 included ~$100M of positive net mark-to-market/timing effects led by crushing, and management stated North American crush was ~90% covered for Q3 but only ~30% for Q4.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The company-specific offset is confirmed: EPA finalized the RFS 'Set 2' rule on March 27, 2026 setting record Renewable Volume Obligations for 2026 and 2027, and ADM's release explicitly credits the finalized RVOs and elevated energy prices for the AS&O margin expansion.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Mostly verified: price $80.14 is the exact Oct 23 close, 52-week high $88.75 confirmed (Finnhub), forward P/E 13.53 and P/S 0.47 and 2.60% yield all match the cited StockAnalysis page, and ~15x the guide midpoint computes correctly ($80.14 / $5.375 = 14.9x). However the stated '\u22129.0% off the $88.75 high' does not reconcile with the card's own figures: $80.14 / $88.75 = \u22129.7% below the high.",
+    "status": "questionable"
+   }
+  },
+  "overall": "mixed",
+  "store": "theme",
+  "ticker": "ADM",
+  "date": "2026-10-25"
+ },
+ "theme:ROST": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 results date of ~Nov 19, 2026 matches StockAnalysis's estimated earnings date (Nov 19, after close); the guided tests are accurate \u2014 Q3 comps +6\u20137% with EPS $1.75\u2013$1.83 and Q4 comps +4\u20135%, per the Q2 release coverage.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Fiscal Q2 2026 verified across multiple reports: comps +10% driven by traffic, sales +13% to $6.26B, reported EPS $2.66 including ~$0.60 from IEEPA tariff refunds, ex-refund EPS ~$2.06 beat the $1.85\u2013$1.93 guide, FY26 EPS guidance raised to $8.61\u2013$8.77, and 2026 openings lifted to 115 stores.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Buyback claims verified: $319M repurchased in Q2 (1.4M shares) under the $2.55B two-year authorization, on track for $1.275B in fiscal 2026; leverage is light (total debt $4.74B vs $4.29B cash, interest coverage ~98x per StockAnalysis).",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The trade-down offset is evidenced by the print itself: traffic-led +10% comps while TJX flagged a slowdown at TJ Maxx/Marshalls in the same week, corroborating off-price's relative strength inside a weak discretionary backdrop.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $229.30 is the exact Oct 23, 2026 close (StockAnalysis); ~26x the raised guide midpoint computes correctly ($229.30 / $8.69 = 26.4x); the ~$264 consensus target matches MarketBeat's $263.76 average, and the card itself flags that ~$0.60 of the guide is the one-time refund.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "theme",
+  "ticker": "ROST",
+  "date": "2026-10-25"
+ },
+ "validated:GDDY": {
+  "issues": [
+   "Minor omission: plaintiff-firm securities-lawsuit notices over alleged undisclosed $4.99 domain promotions circulated in October 2026 and are not mentioned on the card, though still at the investigation stage",
+   "Sector note's ARR growth of +5.7% vs ~+6% in earnings-call summaries is a trivial discrepancy"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 earnings on Oct 29, 2026 confirmed (MarketBeat); Airo annualized bookings run rate rising fivefold from $10M to $50M in one quarter confirmed by TipRanks and earnings-call summaries.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 verified against company deck and coverage: revenue $1,298M (+6.6% YoY), EPS $1.83 vs $1.69 consensus, normalized EBITDA margin 33.4% (from 31.3%), FY26 revenue guidance narrowed to $5.215-5.255B and ~$1.8B FCF reaffirmed.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Company deck confirms fully diluted shares of 127M vs 142M a year ago (-11%) and net leverage of 1.4x at Q2 2026, backing the modest-leverage/no-cliff claim against ~$1.8B FCF.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "ARR of $4.4B growing ~6% (card says +5.7%, an immaterial source/rounding difference) supports the recurring-revenue defensiveness claim; internet services are indeed absent from the negative sector map.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $112.79 at Oct 23 close and 52-week high $137.93 confirmed (Finnhub); trailing P/E 15.79 matches the card's ~15.8x; forward multiple ~12.5-12.8x on next-year EPS ~$8.83 is consistent with the card's ~12.5x.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "GDDY",
+  "date": "2026-10-25"
+ },
+ "validated:AZN": {
+  "issues": [
+   "Valuation leg's '~15x forward earnings' understates the forward multiple by roughly 1-1.5 turns versus the ~16.3-16.5x shown by forward non-GAAP P/E and FY27 consensus EPS",
+   "Summary's specific 'CVRM -15%' figure tied to Farxiga LOE was not independently verified in the sources checked, though the LOE/VBP headwinds themselves are confirmed"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3/9M results date of Oct 30, 2026 confirmed in AstraZeneca's reporting calendar; oral weight-loss program is real (elecoglipron daily pill among three candidates targeting the market, per MedWatch coverage).",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Official H1/Q2 2026 release confirms core EPS of $2.63 (+18% CER, vs ~$2.48-2.50 consensus) on total revenue of $15,384M (+5% CER), with FY26 guidance reaffirmed at mid-to-high single-digit revenue growth and low double-digit core EPS growth at CER; double-digit Oncology growth is consistent with coverage (Q2 oncology +15%).",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Debt-to-equity of 0.47 verified verbatim (American Banking News); the cited pipeline misses are real - Ultomiris TMA-313 in HSCT-TMA and Wainua's CARDIO-TTRansform both show 'primary endpoint not met' in AstraZeneca's own H1 release; Farxiga US LOE and China VBP headwinds are confirmed in company commentary.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Beta of 0.27 confirmed by MarketBeat/American Banking News (Finnhub's 1.28 is an outlier, likely LSE-based); large-cap pharma's defensive behavior and absence from the negative sector map are consistent with sources.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $171.49, 52-week high $212.71 (-19.4%) and trailing P/E ~25.6x all verified (Finnhub 25.05, MarketBeat 25.64), but the '~15x forward earnings' figure is light: forward non-GAAP P/E was ~16.5x (Insider Monkey, Oct 19) and the price is ~16.3x FY27 consensus EPS of $10.54 and ~18.3x FY26 consensus of $9.38. The card's own 'fair, not outright cheap' framing still holds.",
+    "status": "questionable"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "AZN",
+  "date": "2026-10-25"
+ },
+ "validated:HIG": {
+  "issues": [
+   "Summary wording 'written premiums grew 5%' is slightly imprecise: total P&C written premiums grew 3% in Q2; the 5% figure is Business Insurance only (the quality leg note itself states this correctly)"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 earnings after the close on Monday Oct 26, 2026 confirmed (Tickeron preview and MarketBeat); the new $4.2B repurchase authorization effective Aug 1, 2026 through Dec 2028 is confirmed in the Q2 press release and the 10-Q.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 verified: core EPS $3.42 vs $3.14 consensus, consolidated combined ratio 91.2%, Business Insurance underlying combined ratio 89.3% with written premium growth of 5%, and trailing core ROE of 18.7% confirmed in the CFO's call remarks and the company release.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Capital position claims are consistent with the record: $615M returned in Q2 alone and strong capital generation cited by the board; the ~0.23 debt-to-equity figure is plausible against Hartford's debt/equity scale though not re-verified line-by-line. Catastrophe exposure framing is standard and accurate.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The claimed offset checks out: Q2 net investment income was $800M, up 22% YoY (CFO transcript and Zacks), and commercial P&C pricing softening is widely corroborated; the card's own mixed grade for the financials/insurers map is fairly stated.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $136.76 at Oct 23 close and trailing P/E of 8.47 (Finnhub) match the card's ~8.5x; ~10.6x FY26 earnings is consistent with Zacks FY26 consensus of $12.80 (card uses ~$12.88) and Zacks' forward P/E of 10.28.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "HIG",
+  "date": "2026-10-25"
+ },
+ "validated:PSX": {
+  "issues": [
+   "Catalyst leg mischaracterizes the Elliott board outcome as an 'accommodation'; it was a contested May 2025 proxy fight in which Elliott won two of four contested seats, and presenting it as a current catalyst is stale",
+   "Risks list understates Bayway: beyond the Sept 28 strike authorization (92% vote, verified), Phillips 66 locked out the 385 Teamsters after the Oct 1 contract expiry, per late-October reporting",
+   "Risk leg's ~$17B year-end 2026 debt target and ~6.6x interest coverage do not appear in the Q2 8-K and were not independently verified",
+   "Consensus target of $269.88 and dividend yield of 1.88% / 14 years of growth were not verified to the exact figures, though both are directionally consistent with sources"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 results on Oct 28 with Zacks consensus of $12.02, up ~377% y/y, verified. However, the 'Elliott accommodation (two new directors)' framing is imprecise and stale: Elliott's two nominees won seats in a contested May 2025 proxy vote, not a negotiated accommodation, and the event is ~17 months old as a 'catalyst'. The dividend details (raise, 1.88% yield, 14 years of growth) were not independently verified.",
+    "status": "questionable"
+   },
+   "quality": {
+    "note": "SEC 8-K exhibit confirms Q2 2026 adjusted EPS of $9.41 (vs $0.49 in Q1), realized refining margin of $24.08/bbl, 96% crude utilization and record NGL fractionation volumes; Zacks confirms four straight beats with an average surprise of 62.6%. H1 reported EPS sums to $10.06 vs the card's $10.05 (rounding).",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Deleveraging verified exactly in the 8-K: total debt fell from $27,124M (Q1) to $20,565M (Q2) and net debt to $16,466M; the stated D/E of ~0.63 matches the reported 39% debt-to-capital ratio. The ~$17B year-end debt target and ~6.6x interest coverage were not in the Q2 release and were not independently verified. Note the Bayway dispute has escalated since the card's 'strike authorized' framing - Phillips 66 locked out the 385 Teamsters in late October - so the operational risk is live, not hypothetical.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Refiners' Positive/Severe backdrop is corroborated: Zacks and Seeking Alpha coverage attribute the rally to disrupted Russian/Middle East capacity and wide crack/diesel spreads; the ~52% Q3 gain is as cited from OilPrice and is consistent with Finnhub's +73.9% six-month return.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $283.18, 52-week high $299.39 (-5.4%), YTD return +119.45% and trailing P/E of 16.01 all verified via Finnhub; EV/EBITDA of 12.52x vs the 6.36x industry average confirmed by Zacks, matching the card's '~12.5-13x, roughly double the industry'. The $269.88 consensus target was not verified to the cent but is consistent with recent analyst targets ($275-282).",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "PSX",
+  "date": "2026-10-25"
+ },
+ "validated:CBOE": {
+  "issues": [
+   "Catalyst note's '23x5 equities' appears wrong: Zacks and company commentary describe expansion toward 24-hour/around-the-clock (24x5) trading, not 23x5",
+   "Q3 consensus EPS of $3.42 vs $2.67 a year ago was not independently verified",
+   "Consensus target of ~$319.50 and ~34x interest coverage were not verified to the exact figures, though both are plausible and neither is load-bearing"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 earnings on Oct 30, 2026 confirmed, and Cboe Predicts event contracts plus the clearing build-out are real (Q2 call). Two imprecisions: the product listed as '23x5 equities' appears to be a mislabel - sources describe around-the-clock/24-hour (24x5) trading expansion, not 23x5; and the Q3 consensus EPS of $3.42 (vs $2.67 a year ago) could not be verified against a source in this pass.",
+    "status": "questionable"
+   },
+   "quality": {
+    "note": "Q2 2026 verified across Zacks, MarketBeat and StockInvest: record net revenue of $731.6M (+25% y/y), adjusted diluted EPS of $3.56 (+45%, beating the $3.45 Zacks consensus), options net revenue +30%, cash/spot +22%, Data Vantage +15%, and FY26 organic growth guidance raised to the mid-to-high teens.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Balance-sheet claims verified in the Q2 call summary: adjusted cash of $2.3B, leverage of 0.7x, and the $650M tranche due Q1 2027 expected to be repaid from cash on hand; D/E of 0.28 matches the cited StockAnalysis statistics. The ~34x interest coverage figure was not independently verified but is not load-bearing.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Cboe's own September 2026 volume release confirms the claims: Q3 multi-list ADV of 15.3M contracts was the second-best quarter ever, quarterly SPX ADV of 4.9M, and a record quarterly SPX 0DTE ADV of 3.2M - exchanges are indeed benefiting from this volatility tape.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $340.42 at Oct 23 close, trailing P/E ~26.5x and 52-week high $371.18 (-8.3%) all verified; forward P/E of ~22-24x is consistent with FY26/27 EPS estimates. The ~$319.50 consensus target was not verified exactly (BofA cut its target to $329 on Oct 15) but is plausible as an average and is labeled crowd context on the card.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "CBOE",
+  "date": "2026-10-25"
+ },
+ "validated:AMGN": {
+  "issues": [
+   "Quality leg states '16 products with double-digit growth'; Amgen's Q2 2026 release says 22 products delivered at least double-digit sales growth",
+   "Catalyst note cites Q3 consensus EPS of ~$5.77; the card's cited Barchart article reports $5.72"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results on Nov 3, 2026 confirmed (Barchart); MariTide Phase 3 clinical-outcomes studies (ASCVD, HF, OSA) initiating in December 2026 confirmed. Minor imprecision: the card cites Q3 consensus of ~$5.77 EPS, while its own cited Barchart source says $5.72 \u2014 immaterial vendor variance.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Core figures verified: Q2 2026 revenue +10% to $10.1B, non-GAAP EPS $6.29 vs ~$5.60-5.62 consensus, FY26 guidance raised to revenue $38.2-39.4B and EPS $22.30-23.50 (Reuters, Amgen release), Repatha +37%, Evenity +38%, Uplizna +90% all confirmed. BUT the leg's '16 products with double-digit growth' is wrong: Amgen's own Q2 release states 'Twenty-two products delivered at least double-digit sales growth' \u2014 the error understates breadth but the cited figure is incorrect.",
+    "status": "questionable"
+   },
+   "risk": {
+    "note": "Q2 FCF of $3.5B confirmed in Amgen's release; dividend yield 2.29% (MarketBeat) matches ~2.3%; the Tavneos FDA standoff is real \u2014 FDA issued a formal notice in April 2026 proposing withdrawal of approval and Amgen is contesting it via a hearing request (Amgen FAQ, Healio); Prolia/Xgeva biosimilar erosion is occurring as guided (Prolia -32%, Xgeva -34% in Q2).",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Beta ~0.44 confirmed by Finnhub (0.4412); large-cap biotech defensive characterization is consistent with sources; no contradicting evidence found.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$439.26 close and 52-week high $447.03 match Finnhub (the card's cited source); ~2% off the high and ~19x the $22.90 guided EPS midpoint (19.2x) check out; average analyst target ~$403 is consistent with TipRanks $405.42 (other aggregators $390-405); the ~50% one-year run matches Finnhub's +50.56% 1-year return.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "AMGN",
+  "date": "2026-10-25"
+ },
+ "validated:ROIV": {
+  "issues": [
+   "Summary's 'roughly $4-5B of cash' is imprecise without qualification: cash & equivalents alone were $1.25B at Jun 30, 2026; the $4-5B range requires adding $2.59B of marketable securities and the $950M July 2026 Moderna settlement receipt"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Next earnings Nov 9, 2026 confirmed by multiple calendars; mosliciguat PHocus Phase 2 in PH-ILD completed enrollment Feb 2026 with topline data expected 2H 2026 (Roivant release); NIU sNDA filing planned 1H 2027 confirmed in the Oct 21 press release.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Lisraya (brepocitinib) FDA approval on Aug 27, 2026 as first targeted oral therapy for dermatomyositis confirmed (Reuters, FDA coverage); Oct 21, 2026 CLARITY-1/-2 Phase 3 NIU results hit the primary and all key secondary endpoints with median time to treatment failure >48 weeks vs ~12 weeks on placebo (GlobeNewswire release); IMVT-1402 CLE proof-of-concept failed and was discontinued Sep 23, 2026, and the batoclimab TED Phase 3s missed their primary endpoint in April 2026 with the program discontinued \u2014 the card's setback characterizations are accurate.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "No debt confirmed (total liabilities only ~$385M at Jun 30, 2026; D/E ~0.03-0.09). Cash claim needs composition context: at Jun 30, 2026 Roivant held $1.25B cash & equivalents plus $2.59B marketable securities (~$3.84B combined; $4.3B at Mar 31, 2026), plus a $950M Moderna settlement payment received July 2026 \u2014 so the summary's 'roughly $4-5B of cash' holds only on a cash-plus-securities, pro-forma basis; strict cash alone was $1.25B.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "No falsifiable figures in this leg; the reimbursement-driven, non-cyclical characterization of rare-disease immunology is consistent with the Lisraya launch profile (orphan drug, specialty pharmacy) in sources.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$36.49 close, ~$27B market cap ($27.05B Finnhub), 52-week high $42.50 (~14% below), +100% one-year return (+100.27% Finnhub) and negligible current revenue (TTM ~$7.5M) all verified; the 'prices in substantial pipeline success' framing follows from those figures.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "ROIV",
+  "date": "2026-10-25"
+ },
+ "validated:SCHW": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "Bank loans +35% YoY to $72.3B and Pledged Asset Line balances +59% to $37.3B confirmed in the release; management commentary confirms an expected seasonal Q4 cash build from mid-November; buybacks continued ($0.5B in Q3, $3.9B YTD).",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Every figure verified against Schwab's Q3 2026 release (Oct 15, 2026): record revenue $7.171B (+17%), adjusted EPS $1.69 (+29%), record core net new assets $190.4B, 1.2M new brokerage accounts, total client assets $13.33T (+15%). No deterioration evident; Morningstar's cited take likewise found 'no signs of intensifying competitive pressure.'",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "ROTCE of 44% confirmed in the Q3 release; sweep cash rose $7.1B sequentially to $492.8B (release); Morningstar (cited source) confirms Schwab 'add roughly $5.5 billion in more expensive short-term borrowing and long-term debt' as a prudent, slightly NIM-dilutive move against unrealized-loss concerns; preliminary Tier 1 leverage 8.9%.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The mixed characterization is borne out by the cited Morningstar coverage: NIM expanded modestly to 3.04% (release-confirmed) while higher long-term rates pressure sweep economics and securities marks; asset-gathering strength confirmed.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$90.58 close and $114.53 52-week high confirmed (Finnhub); ~21% off the high is exact (20.9%). FullRatio (cited source) shows P/E of 16.41, a 10-year average of 23.05 and the current multiple 29% below that average, with a 5-year average of 23.13 \u2014 matching the card's '~29% below 10-year average' and summary's 'five-year average near 23x'; Finnhub's P/E of 14.94 brackets the card's ~15-16x claim from the other side.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "SCHW",
+  "date": "2026-10-25"
+ },
+ "validated:HALO": {
+  "issues": [
+   "Sector leg claim 'CMS confirmed zero-to-minimal negotiation impact through 2035' is unverifiable \u2014 no such CMS confirmation located",
+   "Risk leg's '~70% of royalties sit under patents expiring 2027-2035' figure could not be verified in any source",
+   "Core ENHANZE patent expiry dating is ambiguous: card says Sep 2027 (per cited AInvest), while IBD coverage references a 2029 patent expiration",
+   "Catalyst's H.C. Wainwright '$500M+ royalty potential' figure not independently verified (attributed analyst speculation)"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results due early November (Nov 5) confirmed; the German Merck appeal hearing on Nov 19, 2026 confirmed by multiple litigation sources; the argenx collaboration expansion was announced in October 2026. The 'unmodeled $500M+ royalty potential per H.C. Wainwright' figure is explicitly attributed analyst speculation and was not independently verified.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 revenue $481M (+47.7%) and non-GAAP EPS $2.28 vs $1.79 consensus confirmed (Halozyme release; StockInvest estimate history shows the $1.79 estimate); FY26 guidance raised to revenue $1.835-1.91B, royalties $1.22-1.245B (+41-43%) and non-GAAP EPS $8.65-9.00; five new ENHANZE/Hypercon collaborations signed through July 2026 (Vertex, Oruka, GSK, Incyte, one undisclosed) and 'ten commercialized products' both confirmed in company materials.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Key litigation facts verified: PTAB on May 12, 2026 held claims of US patent 11,952,600 unpatentable in post-grant review (a genuine PTAB loss on one US MDASE patent); the Oct 7, 2026 Dutch injunction against Merck's Keytruda SC across eight European markets and the EP622 patent (expiring Dec 2032 per the cited JUVE source) are confirmed. However, the quantified claim that '~70% of royalties sit under patents expiring 2027-2035' could not be verified in any source found, and the Sep 2027 'core ENHANZE patent' expiry rests only on the cited AInvest piece while IBD references a 2029 ENHANZE patent expiration \u2014 the exact expiry stack is less settled than the note implies.",
+    "status": "questionable"
+   },
+   "sector": {
+    "note": "The partner-royalty linkage (Darzalex SC, Vyvgart Hytrulo, Ocrevus, Phesgo) is accurate, but the specific claim that 'CMS confirmed zero-to-minimal negotiation impact through 2035' could not be verified in any source located \u2014 no CMS statement or company disclosure with that scope/date was found.",
+    "status": "questionable"
+   },
+   "valuation": {
+    "note": "$125.63 close on Oct 23, 2026 at its high (Finnhub/companiesmarketcap), +86.67% YTD (~87% as card states), trailing GAAP P/E of 34.26x (~34x as card states), and ~14x the raised FY26 non-GAAP EPS guide midpoint ($8.825) all check out.",
+    "status": "supported"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "HALO",
+  "date": "2026-10-25"
+ },
+ "validated:IDXX": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results on Nov 2, 2026 confirmed (company/Zacks); consensus ~$3.70 EPS confirmed (Zacks $3.71, Tickeron ~$3.70); CoVetAI acquisition announced Sep 16, 2026 confirmed (MarketScreener/Barchart); guidance embeds ~1.5% U.S. clinical-visit decline for 2H (actual Q2 decline was 1.3%).",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Zacks confirms IDEXX 'beat estimates in each of the trailing four quarters'; Q2 2026 EPS $4.27 vs $3.94 consensus on revenue +9.7% to $1.22B confirmed (MarketBeat); FY26 EPS guidance $14.69-14.94 confirmed, a ~13% rise vs FY25's $13.08, with revenue guidance set at $4.70-4.745B.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Net margin 25.03% and ROE 71.96% confirmed (MarketBeat); modest leverage confirmed (debt/equity 0.19); buybacks ongoing ($332M repurchased in Q2); CEO Michael Erickson is in place and led the Q2 call, consistent with the 2026 transition watch item.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "No falsifiable figures; recurring, consumables-led diagnostics demand characterization is consistent with Q2 evidence (CAG Diagnostics recurring revenue +10.3% organic despite U.S. visit softness).",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "$560.38 close (Oct 23) confirmed; ~27% drawdown from the $769.98 high is exact (-27.2%); trailing P/E 39.41x (MarketBeat) matches '~39x trailing' and price is ~37.8x the $14.815 guided EPS midpoint ('~38x'); consensus target ~$744 sits within the vendor range found ($717.92 Barchart to $747 MarketBeat).",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "IDXX",
+  "date": "2026-10-25"
+ },
+ "validated:REGN": {
+  "issues": [
+   "FY26 consensus EPS differs by source: card uses ~$47.93 while MarketBeat shows $48.87; the '+35% YoY' growth qualifier on that figure was not independently verifiable (multiples are unaffected at the stated precision)",
+   "Card price $805.02 is ~0.5% below the Oct 23 close of $808.77 shown by stockinvest.us \u2014 immaterial but not an exact close match"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results on Friday, October 30, 2026 confirmed by company GlobeNewswire release (Sep 24, 2026). Sanofi Development Balance fully repaid in Q2, with CFO stating the repayment 'will drive a meaningful step-up in collaboration profits beginning in the third quarter.' ~50 clinical programs confirmed in the Q2 release.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "All load-bearing figures verified: Q2 2026 revenue +16.7% YoY to $4.29B (MarketBeat/Reuters/Zacks), non-GAAP EPS $14.29 vs ~$10.16 consensus, Dupixent global sales ~$6B +38% at constant currency (Reuters), EYLEA HD US sales +52% to $596M and legacy EYLEA US sales -45% (company release via Quartr/Fool transcript).",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Concentration and biosimilar-erosion risks are real and correctly framed: management guides legacy EYLEA US demand to decline sequentially in the low-to-mid-teens through H2 2026 (Tickeron/company guidance), while the balance sheet supports the 'no survivability concern' claim (~$15.1B cash and marketable securities net of debt, ~$2.0B of H1 2026 buybacks).",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Qualitative characterization; large-cap biotech is reimbursement-driven and not part of the negative sector complex described in the parent research; nothing in sources contradicts it.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Multiples check out: at ~$805 the stock is ~16.5-17x FY26 consensus and ~15x FY27. Card's FY27 consensus $52.91 matches MarketBeat's $52.95; its FY26 figure $47.93 is ~2% below MarketBeat's $48.87 (consensus varies by vendor). TD Cowen target $980 confirmed (raised from $960 on Oct 21, 2026). The '+35% YoY' EPS growth qualifier could not be independently verified.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "REGN",
+  "date": "2026-10-25"
+ },
+ "validated:FTI": {
+  "issues": [
+   "Valuation leg claims a '~90% one-year run'; Finnhub data shows the 1-year price return is +76.98% (YTD +56.84%) \u2014 the one-year figure is overstated by roughly 13 points",
+   "EV/EBITDA multiple is source-sensitive: ~11.6x using Finnhub's $25.9B market cap, ~12.6x using StockAnalysis enterprise value of $27.66B; share count differs between vendors (370M implied vs 392.16M)",
+   "Summary calls the 23.2% Subsea figure 'operating margins'; it is an adjusted EBITDA margin per the company release (minor imprecision, quality leg itself says only 'record Subsea margins')"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results confirmed for Thursday, October 29, 2026 (within days of the card date), and management reiterated confidence in $10B of Subsea inbound in 2026 followed by a 2027 order step-up from larger greenfield projects.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 verified against the company release: revenue $2,763.1M (+9.0% YoY), net income $362.7M (+34.6%, card says +35%), adjusted EPS $0.91 vs $0.80 consensus, Subsea adjusted EBITDA margin 23.2% (strongest since the demerger). FY26 adjusted EBITDA guidance raised to ~$2.19B and the $10B Subsea inbound target for 2026 reaffirmed with a 2027 step-up, per CEO/CFO call remarks.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Net cash position of $590M confirmed by the CFO on the Q2 call (cash $992M); Q2 FCF $488M with $440M distributed = 90% of FCF, both confirmed in the release and call transcript. Backlog $16.44B total / $15.8B Subsea confirmed.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Energy tailwind is consistent with the parent sector map (Brent ~$117 on Oct 23) and company commentary of a resilient, expanding offshore market; Q2 awards (PETRONAS Limbayong iEPCI, Equinor, Eni Baleine) corroborate direct offshore demand.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $69.89 (Oct 23 close) and Finnhub market cap ~$25.9B check out, and EV/EBITDA is ~11.6x the $2.19B guide on Finnhub's share count \u2014 but StockAnalysis shows 392.16M shares, a $27.41B market cap and $27.66B EV, which implies ~12.6x, above the card's stated ~11-12x range. More importantly, the leg's '~90% one-year run' is overstated: Finnhub shows a 1-year price return of +76.98% (YTD +56.84%, matching the summary's ~57% YTD figure).",
+    "status": "questionable"
+   }
+  },
+  "overall": "mixed",
+  "store": "validated",
+  "ticker": "FTI",
+  "date": "2026-10-25"
+ },
+ "validated:MANH": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results scheduled for October 27, 2026 (company/Quiver). Active Agents touching >10% of the Active installed base, 100% pilot-to-subscription conversion so far, and the new Editions packaging (Essentials/Enterprise/Enterprise Premier) all confirmed in Q2 call coverage.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 verified across MarketBeat/AlphaSpread/stockinvest: revenue $298M (+9%), cloud revenue $127M (+26%), RPO $2.47B (+23% YoY), third consecutive quarter of record bookings, win rate >70%, adjusted EPS $1.39. FY26 guidance raised to revenue $1.160-1.166B and adjusted EPS $5.44-5.50 with RPO toward the high end of $2.62-2.68B \u2014 all as the card states.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Zero debt and $186M cash confirmed in Q2 reporting; Q2 free cash flow margin was 30.1% (card: ~30%); $275M of YTD buybacks ($125M in Q2) confirmed.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Management commentary corroborates the card: on the Q2 call the company said the macro backdrop remains volatile but it has not seen a slowdown in customer demand/investment.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $238.19 confirmed as the Oct 23, 2026 close. ~44x the FY26 adjusted EPS guide verifies arithmetically (238.19 / $5.47 midpoint = ~43.5x). The ~65x GAAP multiple and 'at the 52-week high' phrasing were not independently confirmed to the decimal but are consistent with Q2 GAAP EPS of $0.85 vs $1.39 adjusted and the card itself already marks this leg mixed rather than a pass.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "MANH",
+  "date": "2026-10-25"
+ },
+ "validated:CMI": {
+  "issues": [
+   "Card does not mention that Q2 GAAP EPS of $6.73 actually missed the ~$7.21 consensus estimate (-6.7%) despite the record revenue/EBITDA \u2014 an omission in framing, though the card makes no EPS-beat claim"
+  ],
+  "legs": {
+   "catalyst": {
+    "note": "Q3 2026 results on November 5, 2026 with consensus EPS of $8.18 confirmed via earnings calendars; H2-weighted delivery against the raised guide matches management's statement that the second half will be stronger than the first.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Q2 2026 verified against the company release (Aug 4, 2026): record revenue $9.5B (+9%), net income $932M / EPS $6.73, record EBITDA dollars of $1.7B, FY26 guidance raised to revenue +10-13% and EBITDA margin 18.0-18.5%. Power Systems revenue +19% to $2.3B at a 24.5% EBITDA margin, and CEO cited improving North American truck markets and stronger China construction \u2014 all as stated.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Q2 operating cash flow of $1.5B (a Q2 record), a 10% dividend increase and $501M returned to shareholders in the quarter all confirmed in the company release/coverage. Accelera losses are real (a ~$346M EBITDA loss and fuel-cell exit charges were reported), consistent with the card's 'watch item' framing.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "The company-specific offset is evidenced: Cummins' own Q2 presentation guides power generation up 15-25%; a multiyear hyperscaler supply agreement covering several gigawatts of backup gensets and the West Texas HPC natural-gas genset work are corroborated by call coverage and third-party analysis; QSK95 order visibility extends through H2 2028 (Morgan Stanley conference commentary).",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $517.40 is ~29-30% below the 52-week high of $737.76 (517.40 is 29.9% below), and UBS cutting its target to $741 from $835 while keeping Buy is confirmed (Markets Insider, Sep 30, 2026). A high-teens multiple on FY26 earnings power is consistent with consensus estimates (Q3 alone is estimated at $8.18).",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "CMI",
+  "date": "2026-10-25"
+ },
+ "validated:BR": {
+  "issues": [],
+  "legs": {
+   "catalyst": {
+    "note": "Closed-sales backlog of $470M, up $40M YoY, confirmed (Zacks, Oct 14, 2026, and the company's Q4 presentation); FY27 guidance of closed sales $290-330M supports the conversion story, and fiscal Q1 2027 results are due in early November per the normal reporting cadence (Q1 expectations already published by Zacks). The FY27 event-driven revenue moderation to $250-300M cited in the card's risks is also confirmed in call coverage.",
+    "status": "supported"
+   },
+   "quality": {
+    "note": "Fiscal 2026 verified against the PR Newswire release: recurring revenues $4,878M (+8% reported and constant currency), adjusted EPS $9.60 (+12%), closed sales a record $305M, client retention 98%, and the CEO statement that three-year objectives were achieved for the fifth consecutive cycle.",
+    "status": "supported"
+   },
+   "risk": {
+    "note": "Leverage of 1.9x versus a 2.5x target confirmed in Q4 call coverage (StockCircle); FCF of $1,233M at 110% conversion and the new $1.5B repurchase authorization (board-approved Aug 3, 2026) confirmed in the release and TipRanks coverage.",
+    "status": "supported"
+   },
+   "sector": {
+    "note": "Qualitative offset claim is consistent with the evidence: fee-based recurring model with 98% retention and a $470M backlog; nothing in sources contradicts the positioning versus the broader financials complex.",
+    "status": "supported"
+   },
+   "valuation": {
+    "note": "Price $183.28 confirmed as the Oct 23, 2026 close (Finnhub); 52-week high $235.27 confirmed (MarketBeat data), putting the price ~22% below the high. Multiples verify: 183.28/9.60 = ~19x FY26 adjusted EPS and 183.28/~$10.56 = ~17x the FY27 guided midpoint.",
+    "status": "supported"
+   }
+  },
+  "overall": "supported",
+  "store": "validated",
+  "ticker": "BR",
+  "date": "2026-10-25"
+ }
+}

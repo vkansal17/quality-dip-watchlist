@@ -1,0 +1,841 @@
+{
+ "validated:TMUS": {
+  "ticker": "TMUS",
+  "store": "validated",
+  "our_flag": "HOLD",
+  "regrade_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 (",
+  "audit_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 ("
+ },
+ "validated:APA": {
+  "ticker": "APA",
+  "store": "validated",
+  "our_flag": "BUY",
+  "regrade_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 (",
+  "audit_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 (",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "FY capex of $1.3B appears unrealistically low for APA post-Callon integration, and Q2 EPS/guidance cannot be verified."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "Implied P/E math (~8.7x at $51.90 / $6.00) is mathematically consistent, but consensus EPS ($6) and Q2 FCF ($738M) inputs are unverified."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Relies on unverified Q3 realized oil price estimates ($87.50/bbl) and proprietary internal sector descriptors."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Net debt of ~$3.3B and zero maturities through Dec 2029 cannot be confirmed without primary SEC filings."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Unverified +36.6% YoY consensus EPS growth and 10.5M Q3 share buyback claims rely on secondary aggregator sources."
+    }
+   },
+   "issues": [
+    "Full-year capex guidance of $1.3B is implausibly low for APA Corporation's post-Callon acquisition capital intensity.",
+    "Evidence relies significantly on low-credibility aggregator feeds (ad-hoc-news, MarketBeat instant alerts) rather than primary SEC filings or press releases.",
+    "Specific quantitative claims (10.5M Q3 share buybacks, $738M Q2 FCF, +36.6% consensus EPS growth) cannot be verified independently without live access.",
+    "Claimed net debt of ~$3.3B appears potentially understated given recent transaction debt loads."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:LUV": {
+  "ticker": "LUV",
+  "store": "validated",
+  "our_flag": "SELL",
+  "regrade_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 (",
+  "audit_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 ("
+ },
+ "macro:APA": {
+  "ticker": "APA",
+  "store": "macro",
+  "our_flag": "BUY",
+  "regrade_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 (",
+  "audit_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 ("
+ },
+ "macro:NVR": {
+  "ticker": "NVR",
+  "store": "macro",
+  "our_flag": "SELL",
+  "regrade_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 (",
+  "audit_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 ("
+ },
+ "macro:ELV": {
+  "ticker": "ELV",
+  "store": "macro",
+  "our_flag": "BUY",
+  "regrade_error": "all models failed; last: gemini-3.8-flash RemoteDisconnected: Remote end closed connection without response",
+  "audit_error": "all models failed; last: gemini-3.8-flash RemoteDisconnected: Remote end closed connection without response"
+ },
+ "macro:CLS": {
+  "ticker": "CLS",
+  "store": "macro",
+  "our_flag": "HOLD",
+  "regrade_error": "all models failed; last: gemini-3.8-flash RemoteDisconnected: Remote end closed connection without response",
+  "audit_error": "all models failed; last: gemini-3.8-flash HTTP 400: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 400 ("
+ },
+ "validated:RRC": {
+  "ticker": "RRC",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Reported Q2 2026 EPS ($0.79) and Q1 'record' status cannot be verified; production growth to 2.6 Bcfe/d deviates significantly from historical maintenance-level strategy (~2.1 Bcfe/d)."
+    },
+    "valuation": {
+     "status": "supported",
+     "note": "Internal logic is sound: correctly identifies the stock is trading above the cited Truist price target ($45.52 vs $43.00), justifying the 'mixed' verdict for this leg."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "References a proprietary 'Sector map' and 'Positive/Severe' classification that cannot be audited via external or historical benchmarks."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "A debt/equity ratio of 0.18 is exceptionally low compared to RRC's historical leverage profiles; hedge loss figures for June 2026 are unverifiable."
+    },
+    "catalyst": {
+     "status": "supported",
+     "note": "Oct 27, 2026, is a Tuesday, which aligns with standard Q3 earnings release patterns for the company; consensus figures are internally consistent with a 12x P/E."
+    }
+   },
+   "issues": [
+    "Future-dated data (2026) cannot be verified against historical reality (cutoff 2023/24).",
+    "Production guidance of 2.6 Bcfe/d by 2027 represents a roughly 20% increase from historical norms, which contradicts RRC's long-term strategy of prioritizing free cash flow over volume growth.",
+    "The 'BUY' flag conflicts with the 'Valuation' leg which shows the stock trading ~6% above the cited Truist price target of $43.",
+    "Debt/Equity of 0.18 suggests a near-total elimination of long-term debt that is inconsistent with the capital structure of similar E&P peers in recent history.",
+    "The link between NGL realizations and the 'Severe' sector rating is not explained, as NGL prices are often correlated to oil rather than the 'Power demand' cited."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3-flash-preview"
+  }
+ },
+ "validated:AMZN": {
+  "ticker": "AMZN",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "AWS growth of 37% and 39% margins in 2026 are extreme outliers compared to historical decelerating trends (12-17% in 2023-24)."
+    },
+    "valuation": {
+     "status": "supported",
+     "note": "Price targets ($300-$350) and current price ($248) are internally consistent and reflect plausible 2026 appreciation from 2024 levels."
+    },
+    "sector": {
+     "status": "unsupported",
+     "note": "Claims hyperscale peers are 'indebted' (Microsoft/Alphabet are net-cash positive) and that capex is 'self-funded' despite negative FCF."
+    },
+    "risk": {
+     "status": "unsupported",
+     "note": "$220B capex claim is highly improbable (roughly 4-5x current hyperscaler annual spend) and contradicts the 'fortress balance sheet' narrative if FCF is negative."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Expected AWS growth of 30\u201335% for Q3 is inconsistent with the reported Q2 'acceleration' to 37% if the trend is supposed to be strengthening."
+    }
+   },
+   "issues": [
+    "Factually incorrect description of peers (Microsoft/Alphabet) as 'indebted' vs Amazon.",
+    "Internal contradiction: The note claims AWS is 'self-funded' while simultaneously stating TTM FCF is -$7.6B.",
+    "The $220B capex figure appears to be a massive overstatement or typo (total 2023/24 industry-wide AI spend was significantly lower).",
+    "Operating income of $27.5B on $200.6B sales (13.7% margin) is high, but the claim that AWS margins hit 39% while depreciation rose 67% is mathematically aggressive.",
+    "AWS growth of 37% being the 'fastest in 18 quarters' would imply a massive 2025/2026 re-acceleration that exceeds current market trajectories for cloud maturity."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3-flash-preview"
+  }
+ },
+ "validated:EXE": {
+  "ticker": "EXE",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Specific Q2 adj. EPS ($1.33), beat history, and guidance numbers cannot be verified without live web access."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "Internal logic flaw: forward P/E (12x) exceeding trailing P/E (8x) implies earnings contraction, contradicting claimed +32% EPS growth."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Misattributes Expand Energy's creation to a 'Twin Eagle deal' rather than the Chesapeake Energy and Southwestern Energy merger."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Balance sheet figures ($3.1B net debt, 0.5x leverage) and Q3 gas price projection (-8.9%) cannot be verified without live web access."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Claims +32% y/y Q3 EPS growth despite lower projected gas prices, and relies on an unverified/mischaracterized Twin Eagle integration."
+    }
+   },
+   "issues": [
+    "Valuation contradiction: Trailing P/E (~8x) vs forward P/E (~12x) indicates falling future earnings, directly contradicting claims of +32% EPS growth.",
+    "Corporate transaction error: Cites a 'Twin Eagle deal' as forming the company, whereas Expand Energy was formed by the merger of Chesapeake Energy and Southwestern Energy.",
+    "Unverified quarterly data: Q3 consensus EPS ($1.28), Q2 EPS ($1.33), and 2026 debt reduction ($1.3B) cannot be verified without external search access.",
+    "Inconsistent narrative: Assumes +32% y/y EPS expansion while noting Q3 realized gas prices are projected down 8.9% y/y without detailing hedging or margin offsets."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:QLYS": {
+  "ticker": "QLYS",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Q2 earnings figures match secondary recap headlines, but Zacks source headline notes stock fell 6.8% post-earnings, creating an unaddressed timeline conflict."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "P/E (37.5x) and price target ($181\u2013184) match cited aggregator headlines, but FCF yield (~3.9%) and P/FCF (~25x) lack source backing and cannot be verified without live data."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Relies on a low-quality content aggregator (TradingKey) for NSA/FBI warnings and single-day stock moves; unverified without primary news access."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "$703.5M cash, $76.8M Q2 buyback, and 10b5-1 insider trading details are completely unsourced in the card's reference list."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Q3 guidance range ($185.5\u2013187.5M rev, $1.91\u20131.98 EPS) and 4-quarter beat streak are detailed but lack explicit citation in the provided sources."
+    }
+   },
+   "issues": [
+    "Balance sheet and cash flow details ($703.5M cash, $76.8M Q2 buyback, 10b5-1 plans) in the Risk leg are completely unsourced.",
+    "Q3 guidance numbers ($185.5\u2013187.5M rev, $1.91\u20131.98 EPS) cited in the Catalyst leg are not provided in any listed source.",
+    "Heavy reliance on low-quality or automated sources, such as Wall Street Zen (an automated screening tool, not a sell-side firm) and TradingKey.",
+    "Contradictory source context: Zacks headline cites QLYS down 6.8% post-earnings, whereas the card presents a seamless positive rally to record highs.",
+    "Without live web access, real-time market stats ($216.70 spot, 52-week high status, single-day sector moves) cannot be independently verified."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:RGA": {
+  "ticker": "RGA",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "A Q2 EPS of $8.89 vs $6.50 is a massive 36% surprise; while four beats are cited, such a large deviation suggests extreme volatility or one-offs rather than stable quality."
+    },
+    "valuation": {
+     "status": "supported",
+     "note": "Calculation of 8.9x P/E is mathematically accurate based on the provided $263.94 price and $29.70 EPS estimate."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Relies on a macro projection of 5% 10-year yields in 2026 and 'Map #7' terminology which is specific to a proprietary framework, not general market data."
+    },
+    "risk": {
+     "status": "unsupported",
+     "note": "RGA's historical 5-year beta is typically near 1.0; a beta of 0.42 is more characteristic of a utility and likely understates the stock's sensitivity to credit and equity markets."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Specific analyst actions from Dowling & Partners and Barclays for Oct 2026 cannot be verified and the summary mentions MS/UBS upgrades not listed in the sources."
+    }
+   },
+   "issues": [
+    "Internal Inconsistency: A Q2 EPS of $8.89 implies an annualized rate ($35.56) far exceeding the FY26 consensus of $29.70, suggesting the 'beat' was driven by non-recurring items.",
+    "Risk Understatement: A beta of 0.42 is inconsistent with RGA's historical profile as a life-reinsurer with significant market exposure.",
+    "Citation Gaps: The summary cites Morgan Stanley and UBS upgrades, but the source list only provides links to Dowling, Zacks, and aggregator sites (MarketBeat/Ticker Report).",
+    "Source Quality: The provided URLs are from news aggregators rather than primary research reports from the mentioned investment banks (Wells Fargo, Barclays)."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3-flash-preview"
+  }
+ },
+ "validated:NTNX": {
+  "ticker": "NTNX",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "FY26 Q4 revenue ($757.1M), ARR ($2.55B), and FCF ($841M) cannot be verified without web access; note cites 'Webull', which is missing from the source list."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "Internal math is consistent, but the $70.58 price, $75.98 52-week high, and $73.07 consensus target cannot be independently verified without web access."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Claims regarding agentic-AI products driving seven-figure contracts and broad-based NC2 momentum cannot be verified without web access."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Management commentary regarding server-component shortages and hardware project delays cannot be verified without web access."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Needham's Sep 28 initiation ($90 target) and Q1 FY27 guidance ($755\u2013765M) cannot be verified without web access, and no direct Needham source is listed."
+    }
+   },
+   "issues": [
+    "Without web access, specific 2026 financial metrics, guidance ranges, stock price ($70.58), 52-week high ($75.98), and consensus target ($73.07) cannot be independently verified.",
+    "The quality leg cites 'Webull call recaps', but Webull is not included in the provided sources list.",
+    "The risks section lists a '~5% workforce restructuring', which is not mentioned or established in any of the leg notes or cited sources.",
+    "The catalyst note attributes a Sep 28 $90 price target to Needham, but no Needham research note or direct source is linked in the sources section."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:AER": {
+  "ticker": "AER",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "supported",
+     "note": "Q2 performance figures, beat margins, ROE metrics, and raised guidance are internally consistent and backed by the Q2 earnings PR source."
+    },
+    "valuation": {
+     "status": "supported",
+     "note": "Valuation multiples and implied upside math ($145.92 price vs $16.80 guide = 8.69x, vs $119.21 BVPS = 1.22x, vs $173 target = +18.6%) are mathematically accurate."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Mathematical contradiction: '20% unlevered gain-on-sale margin' is inconsistent with '1.7x book' (1.7x book implies a 70% gain over book value, not 20%)."
+    },
+    "risk": {
+     "status": "supported",
+     "note": "Leverage (2.05x adjusted debt/equity), cash buffer ($1.8B), and airline credit risk factors present a balanced assessment."
+    },
+    "catalyst": {
+     "status": "supported",
+     "note": "Catalysts (Q3 earnings date, $1B buyback through Jun 2027, dividend increase) align with listed PR and alert sources."
+    }
+   },
+   "issues": [
+    "Mathematical mismatch in Sector note and Summary: A '20% unlevered gain-on-sale margin' directly contradicts '1.7x book value' (1.7x book equates to a 70% markup over book).",
+    "Finnhub is cited inline in the Valuation note but is absent from the sources array.",
+    "Minor precision mismatch: Summary cites '~7x trailing earnings' whereas Valuation note specifies '~7.2x trailing EPS'."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:AXP": {
+  "ticker": "AXP",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "All financial figures (revenue, EPS, billed business) pertain to a future date (Q3 2026) and cannot be verified."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "Uses unverified 2026 price and guidance data; calculates P/E based on a guidance range that contradicts one of the cited sources."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Specific spending growth metrics (T&E +10%, restaurants +9%) are tied to unverified 2026 performance data."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Claims regarding a $350M AML fine and 35% ROE are specific and unconfirmable; CET1 of 10.9% is plausible but unverified."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Internal contradiction: The note cites a guidance raise, but the guidance figures in the summary differ significantly from the title of Source #3."
+    }
+   },
+   "issues": [
+    "Internal Data Conflict: The summary and valuation legs cite FY26 EPS guidance of $17.60\u2013$17.90, but Source #3 explicitly lists guidance of $18.30\u2013$18.60.",
+    "Temporal Verification: All Q3 2026 performance data, including the record $20.06B revenue and $4.68 EPS, occurs in the future relative to available records and cannot be authenticated.",
+    "Unverifiable Regulatory Claim: The reported $350M AML fine mentioned in the risk leg is not supported by known historical regulatory actions through late 2024.",
+    "Math Discrepancy: If the stock is at $313.22 and the 52-week high is $387.49, the decline is ~19.1%. While consistent, the valuation leg uses these unverified figures as a primary basis for the 'buy' signal."
+   ],
+   "overall": "questionable",
+   "model": "gemini-3-flash-preview"
+  }
+ },
+ "validated:CSCO": {
+  "ticker": "CSCO",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Financial metrics (FY26 revenue $63.3B, Q4 revenue $17.25B, $1.22 EPS) rely entirely on low-credibility aggregator sites rather than primary IR/SEC filings."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "Stock trading near $107 with a $130 high and $5.05-$5.11 FY27 EPS reflects unverified or significantly inflated pricing and guidance figures."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Qualitative framing of Cisco as a hyperscaler supplier is plausible, but the $9.3B FY26 AI order claim cannot be verified without primary sources."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Gross margin risk narrative is logical, but specific balance sheet/cash flow figures ($5.4B Q4 OCF) lack tier-1 source verification."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Mid-November timing aligns with Cisco's fiscal calendar, but the $7.5B AI revenue guidance target is weakly sourced."
+    }
+   },
+   "issues": [
+    "All cited sources (Tickeron, TradingKey, TS2.tech, Orbital Affairs, Business News Today) are low-authority blogs/aggregators rather than official SEC filings, press releases, or tier-1 financial media.",
+    "Financial claims (FY26 $63.3B revenue, FY27 $72.2-$73.4B revenue, $5.05-$5.11 EPS) represent extreme, unverified deviations from Cisco's historical baseline trajectory.",
+    "Stock price assertions ($107 price, $130 peak) are questionable and lack primary market verification.",
+    "Massive AI order ($9.3B) and revenue target ($7.5B) figures lack primary IR confirmation."
+   ],
+   "overall": "unsupported",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:BMY": {
+  "ticker": "BMY",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Q2 2026 revenue ($12.97B), EPS ($2.04), and FY26 guidance raise cannot be verified without web access, and Source 1 is a mismatched DefenseWorld share-ownership article."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "Multiples are internally mathematically consistent, but rest on unverified stock price ($61.48) and unverified guidance inputs."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Claims regarding Q3 2026 healthcare defensive rotation and Morningstar commentary cannot be independently verified without web access."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Refers to 'Qvantig conversion' as an evidenced mitigation, but 'Qvantig' is not a recognized BMY drug asset; 2027 Eliquis step-down figures are unverified."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Q3 2026 earnings date (Oct 29, 2026) and specific pipeline readout timing cannot be verified without web access."
+    }
+   },
+   "issues": [
+    "Source 1 URL (defenseworld.net/.../bmy-shares-acquired-by-brookstone-capital-management.html) is mismatched with its cited title regarding Q2 2026 results and FY26 guidance.",
+    "The risk leg cites 'Qvantig conversion', referencing a non-existent or hallucinated drug name in BMY's portfolio.",
+    "Q2 2026 financial figures ($12.97B revenue, $2.04 adj. EPS) and guidance revision ($6.05\u20136.35 to $6.75\u20137.00) cannot be verified without live web access.",
+    "The specific $1.5\u20132.0B revenue step-down figure for Eliquis in 2027 is unverified by cited source material."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:EAT": {
+  "ticker": "EAT",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Claim of '20+ straight quarters of same-store sales growth' appears overstated/unverified for Chili's, and FY27 EPS guidance ($12.60\u201313.40) cannot be verified without primary sources."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "Internal math is consistent (~14x FY27 guided EPS, ~28% drawdown from $254.99 high), but base guidance and price targets are unverified."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Cites secondary TD Cowen commentary on September gas prices and casual dining softness which cannot be independently verified."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Detailed balance sheet claims ($789M OCF, $350M 8.25% note redemption) lack direct SEC filing citations."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Specific operational targets (60\u201380 reimages, $750M authorization) and Oct 28 event date are unverified secondary claims."
+    }
+   },
+   "issues": [
+    "Claim of '20+ straight quarters of same-store sales growth' for Chili's is questionable and unsupported by provided sources.",
+    "Financial figures (FY27 guided EPS $12.60\u201313.40, FY26 OCF $789M, 8.25% note redemption) lack verification against primary SEC filings.",
+    "Sources rely on aggregators and secondary blogs (AInvest, StockStory via WSIL, American Banking News) rather than official earnings releases or SEC 10-K/10-Q filings."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:ABT": {
+  "ticker": "ABT",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "supported",
+     "note": "Q3 revenue/EPS results, FY EPS guidance midpoint, and organic growth forecast trim match cited earnings summaries and internal figures."
+    },
+    "valuation": {
+     "status": "supported",
+     "note": "P/E of ~18.8x forward EPS, ~22% drawdown from the ~$132\u2013133 peak, and implied mid-teens upside to target prices are mathematically sound."
+    },
+    "sector": {
+     "status": "supported",
+     "note": "Reflects Abbott's diversified four-segment model providing defensive positioning despite electrophysiology and diabetes softness."
+    },
+    "risk": {
+     "status": "supported",
+     "note": "Financial leverage, current ratio, four-segment structure, and 54-year dividend-growth history (accurate for 2026) are well-supported."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Specific Q4 pipeline device launches (e.g., Libre Duo, Amulet 360, TactiFlex Duo PFA) are unverified and missing from cited sources."
+    }
+   },
+   "issues": [
+    "Specific product launch names in the catalyst leg (Libre Duo, Amulet 360, TactiFlex Duo PFA) are not established by the cited references.",
+    "Inclusion of fringe/aggregator content sites (GMT Eight Press, Tickeron) weakens overall source citations."
+   ],
+   "overall": "supported",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:CHKP": {
+  "ticker": "CHKP",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "supported",
+     "note": "Revenue and EPS figures are consistent with Check Point's historical low-growth, high-margin financial profile."
+    },
+    "valuation": {
+     "status": "supported",
+     "note": "The trailing P/E of ~15-16x aligns with the provided price ($159) and FY EPS guidance (~$10), matching CHKP's historical trading range."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "A 15.4% gain in 5 sessions and 21% in a month is highly uncharacteristic for CHKP, which typically exhibits low beta and low volatility."
+    },
+    "risk": {
+     "status": "unsupported",
+     "note": "The claim of 'no leverage' is directly contradicted by the cited Debt/Equity ratio of 0.72; furthermore, CHKP historically carries zero debt."
+    },
+    "catalyst": {
+     "status": "supported",
+     "note": "November 2 is a plausible date for Q3 results, though typically Check Point reports in the final week of October."
+    }
+   },
+   "issues": [
+    "Internal contradiction: The risk note claims 'no leverage' while simultaneously citing a Debt/Equity ratio of 0.72.",
+    "Historical Inconsistency: Check Point is known for a zero-debt balance sheet; a 0.72 D/E ratio would represent a fundamental shift in capital structure not addressed in the text.",
+    "Implausible Volatility: A 21% monthly rally into Oct 23 on 1.3% revenue growth is inconsistent with the stock's 'cheap value' profile and sector behavior.",
+    "Mathematical anomaly: If the stock is at $159 after a 21% monthly gain, the prior price (~$131) would represent a significant valuation disconnect (approx. 12x P/E) for a high-margin security leader."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3-flash-preview"
+  }
+ },
+ "validated:DG": {
+  "ticker": "DG",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Q2 EPS ($2.48 vs $2.01 est.) and raised guidance ($7.80\u20138.00) cannot be verified against primary earnings filings."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "Mathematical calculations (16.8x midpoint, ~16% below high) are correct, but underlying earnings figures and HSBC upgrade are unverifiable."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Trade-down thesis is logically consistent, but comparative claims regarding mid-market retailers lack cited backing."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Claims of ~$700M H2 buybacks and a ~$0.25 Q2 EPS tariff refund benefit are highly specific and unverified."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Dec 3 earnings timing aligns with DG's fiscal schedule, but assertions of multiple prior guidance raises cannot be verified."
+    }
+   },
+   "issues": [
+    "Citations rely on low-tier aggregators and crypto/niche sites (Blockonomi, ad-hoc-news) rather than primary SEC filings (10-Q) or primary company PR.",
+    "Specific non-standard impacts\u2014such as $0.25 of EPS derived from tariff refunds and $700M in H2 buybacks\u2014are unverified by the cited sources.",
+    "Without direct web verification, Q2 financial metrics ($2.48 EPS, +5.2% sales, +3.5% comps) and raised FY26 guidance cannot be independently confirmed."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:ADBE": {
+  "ticker": "ADBE",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Q3 FY26 figures ($6.76B revenue, $6.13 non-GAAP EPS, $27.5B ARR) cannot be verified without live web access."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "Math is internally consistent (~10.8x forward non-GAAP P/E), but forward guidance and historical 25\u201340x range cannot be verified."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Claims specific analyst actions (Wells Fargo double-downgrade to $225, Morgan Stanley to $240) that are not established by any provided source."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Cash flow ($2.52B OCF) and share repurchase figures (~9.5M shares) cannot be verified without live web access."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Q4 FY26 guidance figures ($6.80\u20136.85B rev) and the Dec 1 CEO transition details cannot be verified without web access."
+    }
+   },
+   "issues": [
+    "Sector leg claims specific rating actions and price targets from Wells Fargo ($225) and Morgan Stanley ($240) that are not cited or supported by any URL in the sources list.",
+    "Source #4 (DefenseWorld consensus price target of $283.90) is listed in sources but never referenced or integrated into the body of the card.",
+    "All 2026 financial results, guidance figures, and CEO transition claims cannot be independently verified due to lack of web access."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:GMED": {
+  "ticker": "GMED",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Q2 2026 reported figures ($789.6M revenue, $1.34 non-GAAP EPS) and Nevro revenue breakdown cannot be independently verified without web access."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "Forward P/E math is inconsistent: $81.41 relative to the $5.00 guidance midpoint yields ~16.3x, not ~15x as stated in the note."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "U.S. Spine (+7%) and International Spine (+14%) growth figures cannot be independently verified."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Nevro segment performance (-14.3%), Enabling Tech decline (-25.8%), and Q2 buyback total ($136M) cannot be verified; Nevro's status as a GMED segment is questionable."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Q3 2026 earnings date (Nov 5) and multi-year gross margin targets (low-70s to mid-70s) are unsourced and unverified."
+    }
+   },
+   "issues": [
+    "Forward P/E math error: $81.41 price divided by $5.00 midpoint EPS guidance equals ~16.3x forward P/E, contradicting the leg's ~15x claim.",
+    "Nevro attribution issue: Nevro (NVRO) is an independent company, whereas GMED acquired NuVasive; treating Nevro as an internal GMED segment is unverified/questionable.",
+    "Q2 2026 financials, updated guidance ($4.95\u20135.05 EPS), and FCF/buyback metrics ($136M) cannot be verified without external search access.",
+    "Gross margin trajectory targets (low-70s by year-end, mid-70s by 2027) lack supporting source citations."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:GILD": {
+  "ticker": "GILD",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit_error": "all models failed; last: gemini-3.8-flash RemoteDisconnected: Remote end closed connection without response"
+ },
+ "validated:NXPI": {
+  "ticker": "NXPI",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Q2 2026 revenue ($3.50B, +19% YoY) and non-GAAP EPS ($3.61) cannot be independently verified without primary source access."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "52-week high drawdown calculation (~31%) is mathematically accurate, but 20x trailing P/E and 30%+ EPS compounding are unverified."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Offsetting semi downturn with specific Q3 segment growth rates (auto +11.9%, industrial +38.5%) relies on unverified estimates."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Financial leverage (1.5x) and Q2 FCF ($791M / 22.6% margin) lack verification from official company filings."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Q3 revenue guidance ($3.65\u20133.85B) and qualitative claims like 'institutional buying' cannot be verified from the cited sources."
+    }
+   },
+   "issues": [
+    "Financial figures for Q2/Q3 2026 (revenue, EPS, FCF margin, leverage) cannot be verified without access to primary SEC filings or official company press releases.",
+    "Qualitative market claims such as 'institutional buying noted into the print' and 'estimate revisions trending up' are unevidenced by cited sources.",
+    "Sources heavily rely on secondary news aggregators (europesays.com, defenseworld.net, themarketsdaily.com) rather than primary financial filings or reputable direct reporting.",
+    "Extremely high segment growth rates (Industrial & IoT +38%, Comms Infrastructure +41%) appear aggressive for NXP's core markets and lack primary verification."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:OXY": {
+  "ticker": "OXY",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Q2 2026 metrics (+53% y/y revenue growth, $7B FCF, $4B+ cost savings target) cannot be verified and lack supporting primary filings in citations."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "The 14x ex-gain valuation multiple relies on unverified OxyChem transaction gains and unconfirmed oil price assumptions."
+    },
+    "sector": {
+     "status": "questionable",
+     "note": "Assumes an unverified macro event ('Iran-war oil shock' and $117 Brent) not substantiated by the provided sources."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "CEO Vicki Hollub's retirement and succession by COO Richard Jackson, as well as specific debt paydown milestones, are unverified."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "Upgrades from Goldman Sachs (Oct 1) and Roth Capital (Oct 19) are specific claims unsupported by the cited source list."
+    }
+   },
+   "issues": [
+    "Analyst upgrades from Goldman Sachs and Roth Capital lack direct citation in the sources list.",
+    "Macroeconomic assertions regarding an 'Iran-war oil shock' and Brent at ~$117 are unverified.",
+    "Q2 2026 financial claims (+53% y/y revenue growth, $7B FCF, $4B+ savings program by 2030) are uncited and unverified.",
+    "CEO Vicki Hollub's retirement/succession to Richard Jackson is unverified.",
+    "The $9.7B OxyChem sale citation relies on a third-party blog aggregator (i3investor) rather than official SEC filings or press releases."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:LPLA": {
+  "ticker": "LPLA",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "Specific Q2 2026 figures (EPS $5.84, revenue +35.2%, $25B recruited assets, 6.4% Aug NNA) cannot be verified without web access."
+    },
+    "valuation": {
+     "status": "questionable",
+     "note": "FY26 consensus EPS ($23.83) and 52-wk high ($400.16) are unverified; claiming dip is purely sentiment contradicts listed operational risks."
+    },
+    "sector": {
+     "status": "supported",
+     "note": "Accurately describes the wealth management model's fee stability alongside interest-rate sensitivity from cash-sweep revenues."
+    },
+    "risk": {
+     "status": "questionable",
+     "note": "Current ratio is a mismatched metric for broker-dealers, and a 1.30 D/E ratio does not automatically rule out leverage risk."
+    },
+    "catalyst": {
+     "status": "questionable",
+     "note": "The ~20bp ICA cash-tiering yield uplift and specific integration timeline cannot be verified without primary sources."
+    }
+   },
+   "issues": [
+    "Unverifiable quarter/annual operational figures (Q2 EPS $5.84, +35.2% revenue, $25B recruited assets, 6.4% August organic NNA) without live access.",
+    "Unverifiable valuation inputs (FY26 consensus EPS $23.83, PEG 0.54, 52-week high $400.16).",
+    "Current ratio (2.39) is an inappropriate liquidity metric for a broker-dealer financial institution.",
+    "Summary asserts the dip is strictly 'sentiment, not fundamentals', which directly contradicts internal risk points regarding declining client cash balances, payout-rate creep, and below-target Commonwealth retention.",
+    "Unverified catalyst claims regarding a ~20bp run-rate yield uplift from ICA cash-tiering.",
+    "Citations rely on third-party aggregators (DefenseWorld, StockStory, TipRanks) rather than primary SEC filings or company releases."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3.5-flash"
+  }
+ },
+ "validated:LNG": {
+  "ticker": "LNG",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit_error": "all models failed; last: gemini-3.8-flash RemoteDisconnected: Remote end closed connection without response"
+ },
+ "validated:NYT": {
+  "ticker": "NYT",
+  "store": "validated",
+  "our_flag": "BUY",
+  "audit": {
+   "legs": {
+    "quality": {
+     "status": "questionable",
+     "note": "All Q2 2026 financial metrics and subscriber counts are future-dated relative to verified data and cannot be confirmed."
+    },
+    "valuation": {
+     "note": "Stock price of $69.58 and the 28.5x multiple are unverifiable; the 52-week high of $87.10 is speculative.",
+     "status": "questionable"
+    },
+    "sector": {
+     "note": "The characterization of NYT as a subscription-led, defensive media model is consistent with established business trends.",
+     "status": "supported"
+    },
+    "risk": {
+     "note": "The $1.17B cash balance for YE2025 and $28M litigation spend figure are specific future projections that cannot be verified.",
+     "status": "questionable"
+    },
+    "catalyst": {
+     "note": "The 'Amazon AI licensing deal' and DOJ legal stance are not supported by current public records and appear speculative.",
+     "status": "unsupported"
+    }
+   },
+   "issues": [
+    "The 'Amazon AI licensing deal' is a major claim with no current evidence; NYT is currently known for litigation against AI firms (OpenAI/Microsoft), not licensing deals with Amazon.",
+    "The claim that a DOJ brief backed OpenAI/Microsoft fair-use arguments is not supported by current legal filings in the ongoing NYT vs. OpenAI lawsuit.",
+    "Financial data for Q2 2026 and year-end 2025 are future-dated and unverifiable as of the current knowledge cutoff.",
+    "The source URL for the 2025 Form 10-K contains '2026-10K' in the string, which is chronologically inconsistent for a YE2025 filing.",
+    "The Pelcro blog source for Q2 2026 results appears to be a placeholder or speculative link, as those results have not occurred."
+   ],
+   "overall": "mixed",
+   "model": "gemini-3-flash-preview"
+  }
+ },
+ "validated:DXCM": {
+  "ticker": "DXCM",
+  "store": "validated",
+  "our_flag": "BUY"
+ }
+}
