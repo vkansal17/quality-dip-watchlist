@@ -1,0 +1,1672 @@
+{
+ "bench": {
+  "EOG": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Oil & gas producer \u2014 price set by the energy-security shock"
+  },
+  "ACGL": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Insurer/reinsurer \u2014 float income reprices upward with rates, disciplined underwriting"
+  },
+  "DVN": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Oil producer leveraged to the energy-security tape"
+  },
+  "KMX": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Used-auto retail \u2014 volumes and credit read the consumer/auto cycle and rate backdrop"
+  },
+  "TLN": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Nuclear-heavy power producer \u2014 energy security and data-center power demand"
+  },
+  "KMB": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Staples with demonstrated consumer pricing power"
+  },
+  "FERG": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Plumbing/HVAC distribution \u2014 housing- and construction-adjacent volumes"
+  },
+  "NVT": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Electrical infrastructure riding the AI data-center buildout"
+  },
+  "ACN": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "IT services \u2014 enterprise AI adoption spend is its demand story"
+  },
+  "OKE": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Natural-gas midstream \u2014 energy infrastructure and security"
+  },
+  "FITB": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Regional bank \u2014 loan volumes and credit read the real economy"
+  },
+  "FISV": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Payments volumes are a direct consumer-spending bellwether"
+  },
+  "EQIX": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Data-center REIT \u2014 AI capacity demand drives the story"
+  },
+  "AEIS": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Power conversion for semiconductor fabs \u2014 semi capex cycle"
+  },
+  "MSCI": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Index/data licensing with contractual escalators, akin to the exchanges complex"
+  },
+  "RSG": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Waste services with CPI-linked contracts and proven pricing power"
+  },
+  "MKL": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Insurer \u2014 float income repricing upward as rates stay high"
+  },
+  "EFX": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Verification income tracks mortgage origination and hiring volumes"
+  },
+  "CACI": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Defense/government IT contractor \u2014 budgets are the demand story"
+  },
+  "BJ": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Warehouse club \u2014 trade-down traffic when budgets squeeze"
+  },
+  "TSEM": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Semiconductor foundry in the chip-supply cycle"
+  },
+  "MAS": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Home-improvement products \u2014 housing-adjacent demand"
+  },
+  "ERIC": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Telecom equipment \u2014 Western supply-chain security vs Chinese vendors is its opening"
+  },
+  "LITE": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Optical components for AI data-center networking"
+  },
+  "TSCO": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Rural retail bellwether for the non-metro consumer"
+  },
+  "MPWR": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Power semiconductors riding AI data-center demand"
+  },
+  "CEG": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Largest US nuclear fleet \u2014 energy security and AI power contracts"
+  },
+  "SNDK": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Memory chips \u2014 AI-driven NAND cycle"
+  },
+  "JBL": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Electronics manufacturer levered to AI hardware supply chains"
+  },
+  "EG": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Reinsurer \u2014 float income and pricing discipline in a high-rate tape"
+  },
+  "ALB": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Lithium \u2014 critical-mineral supply security is the thesis"
+  },
+  "MOS": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Fertilizer producer \u2014 food and fertilizer supply security"
+  },
+  "HOOD": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Trading-activity toll-taker \u2014 volumes read market and consumer risk appetite"
+  },
+  "AMRZ": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Cement/building materials \u2014 construction and infrastructure cycle"
+  },
+  "NOW": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Enterprise AI workflow platform"
+  },
+  "ON": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Auto/industrial semiconductors \u2014 electrification demand cycle"
+  },
+  "GNRC": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Backup power \u2014 grid reliability and energy resilience demand"
+  },
+  "BABA": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Price substantially set by Chinese regulation and US-China policy"
+  },
+  "KGC": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Gold miner \u2014 geopolitical hedge demand"
+  },
+  "NXT": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Solar trackers \u2014 clean-energy tax credits are the demand curve"
+  },
+  "ROST": {
+   "theme": "inflation",
+   "fit": "strong",
+   "why": "Off-price retail is a direct trade-down beneficiary when consumer budgets squeeze"
+  },
+  "RBRK": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Data-security platform riding enterprise cyber and cloud-migration spend"
+  },
+  "AMT": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Tower REIT whose valuation and funding costs are set by the rate curve"
+  },
+  "BNY": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Custody and markets volumes read institutional financial activity"
+  },
+  "ONC": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Commercial-stage oncology biotech with a global hematology franchise"
+  },
+  "IT": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Advisory spend tracks the enterprise technology-investment cycle"
+  },
+  "AMP": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Wealth-management fees and flows compound with markets and the economy"
+  },
+  "FDS": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Subscription financial data with contractual pricing escalators"
+  },
+  "NEE": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Largest renewables fleet; clean-energy tax credits and utility regulation set returns"
+  },
+  "CTSH": {
+   "theme": "employment",
+   "fit": "moderate",
+   "why": "IT-services model is labor arbitrage \u2014 wage inflation and visa policy are its cost curve"
+  },
+  "GWRE": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Cloud platform modernizing P&C insurance core systems"
+  },
+  "TROW": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Asset-manager revenue is a levered read on markets and investor flows"
+  },
+  "ALLY": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Consumer auto lender whose credit quality reads the household cycle"
+  },
+  "CI": {
+   "theme": "politics",
+   "fit": "strong",
+   "why": "Health insurer whose pricing and margins are set by healthcare policy and reimbursement"
+  },
+  "SITM": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "MEMS timing chips riding AI data-center and precision-hardware demand"
+  },
+  "IEX": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Diversified industrial components whose orders track industrial production"
+  },
+  "DLR": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Data-center REIT whose demand is the AI buildout"
+  },
+  "ILMN": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Genomic-sequencing platform at the center of precision medicine"
+  },
+  "MET": {
+   "theme": "inflation",
+   "fit": "strong",
+   "why": "Insurer float income repricing upward as rates stay high"
+  },
+  "SYNA": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Interface and edge-AI semiconductors for devices and autos"
+  },
+  "MOD": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Thermal management riding data-center cooling demand"
+  },
+  "NTSK": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Cloud security platform in the SASE consolidation wave"
+  },
+  "ATI": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Specialty alloys supplier into defense and aerospace production ramps"
+  },
+  "GPN": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Payment volumes are a direct read on consumer and merchant activity"
+  },
+  "CVX": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Integrated oil major \u2014 energy security and the oil price are the thesis"
+  },
+  "CHD": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Consumer staples with demonstrated pricing power through inflation"
+  },
+  "MKC": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Branded food staples; pricing versus input-cost inflation is the story"
+  },
+  "RBC": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Precision bearings concentrated in aerospace and defense programs"
+  },
+  "DOV": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Diversified industrial portfolio tracking capex and industrial demand"
+  },
+  "NLY": {
+   "theme": "inflation",
+   "fit": "strong",
+   "why": "Mortgage REIT \u2014 book value and spreads are a pure play on the rate curve"
+  },
+  "RIO": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Global miner anchored in copper and critical minerals for electrification and supply security"
+  },
+  "AME": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Electronic instruments tied to industrial and process capex cycles"
+  },
+  "OC": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "Roofing and insulation volumes are a direct housing-cycle read"
+  },
+  "AKAM": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Edge cloud and security platform shifting toward compute"
+  },
+  "IQV": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Clinical-research and life-sciences data tied to pharma R&D spending"
+  },
+  "CYTK": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Muscle-biology biotech with late-stage cardiovascular readouts"
+  },
+  "LIN": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Industrial-gas oligopoly famous for price-over-cost discipline"
+  },
+  "DK": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Independent refiner levered to energy prices and crack spreads"
+  },
+  "HSBC": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Global bank earnings read world trade, rates and Asian growth"
+  },
+  "F": {
+   "theme": "politics",
+   "fit": "strong",
+   "why": "Tariffs and EV policy are first-order cost and demand drivers for US autos"
+  },
+  "RVTY": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Life-sciences diagnostics and lab tools tied to research funding"
+  },
+  "DUK": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Regulated utility whose allowed returns and valuation reset with rates"
+  },
+  "ZS": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "Zero-trust security leader; AI-era threat demand is the growth engine"
+  },
+  "EPD": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Core US energy infrastructure \u2014 pipelines and export capacity for energy security"
+  },
+  "BE": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Fuel-cell power for data centers amid grid scarcity and energy-security demand"
+  },
+  "AU": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Gold miner \u2014 the geopolitical hedge asset with operating leverage"
+  },
+  "FDXF": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "LTL freight volumes are a classic real-economy bellwether"
+  },
+  "OSCR": {
+   "theme": "politics",
+   "fit": "strong",
+   "why": "ACA marketplace insurer \u2014 subsidies and exchange policy set its market"
+  },
+  "LSCC": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "FPGA maker leveraged to industrial, auto and data-center silicon demand"
+  },
+  "IREN": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Power and data-center capacity pivoting to AI compute demand"
+  },
+  "EQH": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Retirement insurer earning more on float and spreads as rates stay high"
+  },
+  "NTRA": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Genetic-testing platform expanding across oncology and transplant care"
+  },
+  "HIMS": {
+   "theme": "politics",
+   "fit": "strong",
+   "why": "Telehealth and GLP-1 compounding exposure is set by FDA and regulatory decisions"
+  },
+  "ESS": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "West Coast apartments \u2014 rents and valuation hinge on housing supply and rates"
+  },
+  "PCOR": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Construction-management SaaS digitizing a labor-short industry"
+  },
+  "NVR": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "Pure-play homebuilder; volumes and pricing read the housing cycle directly"
+  },
+  "ARES": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Private-credit and fundraising cycles track the real-economy credit cycle"
+  },
+  "HSY": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Cocoa input-cost inflation vs. confectionery pricing power is the central debate"
+  },
+  "HEI": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Aerospace/defense electronics and aftermarket parts tied to defense and fleet spending"
+  },
+  "JCI": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Building automation and energy-efficiency platform, incl. data-center cooling demand"
+  },
+  "WDAY": {
+   "theme": "employment",
+   "fit": "strong",
+   "why": "Payroll/HCM software \u2014 sells directly into employer labor management"
+  },
+  "PENG": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "AI/HPC infrastructure and advanced memory solutions riding the AI buildout"
+  },
+  "MCO": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Ratings revenue is driven by debt-issuance volumes, which are set by the rate path"
+  },
+  "O": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Net-lease real assets; valuation and rent escalators are a rates/inflation story"
+  },
+  "SHW": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Paint demand tracks housing turnover and remodeling activity"
+  },
+  "MLM": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Aggregates volumes read construction and infrastructure activity"
+  },
+  "CHRW": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "Freight brokerage \u2014 truckload volumes and pricing are a real-economy bellwether"
+  },
+  "NTR": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Potash/fertilizer supply security \u2014 Russia/Belarus supply risk is its price driver"
+  },
+  "GPC": {
+   "theme": "employment",
+   "fit": "moderate",
+   "why": "Major industrial (Motion) and auto-parts distributor into workplaces and fleets"
+  },
+  "PLD": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Logistics real estate rents read trade and goods-movement volumes"
+  },
+  "MDT": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Diversified medtech platform \u2014 devices and procedure technology"
+  },
+  "DINO": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Refiner \u2014 crack spreads and fuel supply are energy-security economics"
+  },
+  "TENB": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "Cybersecurity (exposure management) is a core innovation-theme category"
+  },
+  "BMRN": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Commercial rare-disease biotech franchise"
+  },
+  "EW": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Structural-heart medtech platform with recurring procedure growth"
+  },
+  "ENB": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "North American oil/gas pipeline network \u2014 energy transport and security"
+  },
+  "AMKR": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Semiconductor packaging/test \u2014 part of the chip supply chain"
+  },
+  "TXG": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Single-cell/spatial genomics tools platform for life-science research"
+  },
+  "LII": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "HVAC demand is housing- and replacement-cycle driven"
+  },
+  "BWXT": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Naval nuclear propulsion components and nuclear fuel \u2014 defense/uranium pure play"
+  },
+  "MAA": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Apartment rents are an inflation pass-through; valuation is rate-sensitive"
+  },
+  "TECH": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Life-science reagents/instruments platform feeding biotech research"
+  },
+  "MOH": {
+   "theme": "politics",
+   "fit": "strong",
+   "why": "Medicaid managed care \u2014 government reimbursement and eligibility policy set its price"
+  },
+  "TPG": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Alternative-asset fundraising/deployment tracks capital-markets and credit cycles"
+  },
+  "CPB": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Packaged-food pricing power vs. input-cost inflation is the story"
+  },
+  "CRGY": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Oil & gas E&P \u2014 commodity price set by the energy-security shock"
+  },
+  "ZBRA": {
+   "theme": "employment",
+   "fit": "strong",
+   "why": "Warehouse/enterprise automation \u2014 sells labor-substitution technology"
+  },
+  "KKR": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Alt-asset giant whose realizations and fundraising read the credit cycle"
+  },
+  "AVT": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Electronics/components distributor levered to the semiconductor cycle"
+  },
+  "BWA": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Auto supplier \u2014 volumes track the vehicle production cycle"
+  },
+  "PCG": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Price is set by California regulation and wildfire-liability policy"
+  },
+  "J": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Engineering/consulting backlog leans on government infrastructure programs"
+  },
+  "ESTC": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Search/AI data platform software"
+  },
+  "LAD": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Auto retail \u2014 sales and F&I income track the consumer/auto cycle"
+  },
+  "PDD": {
+   "theme": "politics",
+   "fit": "strong",
+   "why": "Temu model is directly hit by tariff and de-minimis policy changes"
+  },
+  "DHR": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Life-sciences and diagnostics platform conglomerate"
+  },
+  "PAG": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Auto dealership group levered to vehicle demand cycle"
+  },
+  "FANG": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Permian E&P \u2014 pure energy-price/security exposure"
+  },
+  "BLDR": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "Building-products distribution is a direct housing-cycle read"
+  },
+  "PSA": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Self-storage real assets with demonstrated rent pricing power; rate-sensitive"
+  },
+  "FER": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Toll-road/airport concessions whose traffic volumes read economic activity"
+  },
+  "INFY": {
+   "theme": "employment",
+   "fit": "moderate",
+   "why": "IT-services labor model \u2014 wage, visa and automation economics drive margins"
+  },
+  "COIN": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Crypto exchange whose addressable market is set by US regulation"
+  },
+  "EXR": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Self-storage real assets with rent pricing power; rate-sensitive valuation"
+  },
+  "STM": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Diversified semiconductor maker (auto/industrial/consumer chips)"
+  },
+  "PL": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Satellite imagery sold heavily to defense/intelligence customers"
+  },
+  "ELV": {
+   "theme": "politics",
+   "fit": "strong",
+   "why": "Health insurer whose earnings are set by Medicare Advantage rates and Medicaid policy"
+  },
+  "BSX": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Medtech platform growth driven by device innovation pipeline"
+  },
+  "GEHC": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Medical imaging/diagnostics technology platform"
+  },
+  "AON": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Insurance broker benefiting from insurance pricing cycle and float income"
+  },
+  "PH": {
+   "theme": "employment",
+   "fit": "moderate",
+   "why": "Motion and control components tied to factory automation capex"
+  },
+  "HUBB": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Electrical/grid products riding utility and electrification capex cycle"
+  },
+  "PRU": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Life insurer float income reprices upward with higher rates"
+  },
+  "OVV": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Oil and gas producer directly leveraged to energy prices and security premium"
+  },
+  "GEN": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Cybersecurity/identity platform in the innovation complex"
+  },
+  "CFG": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Regional bank whose credit and loan volumes read the real economy"
+  },
+  "ALGN": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Medtech growth driven by clear-aligner technology adoption"
+  },
+  "MKSI": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "Semiconductor equipment supplier leveraged to chip capex and AI buildout"
+  },
+  "WWD": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Aerospace and defense component supplier tied to defense spending"
+  },
+  "CRS": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Specialty alloys for defense/aerospace \u2014 critical materials supply chain"
+  },
+  "FE": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Regulated utility whose returns and demand are rate-driven"
+  },
+  "DT": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "AI observability software platform"
+  },
+  "IOT": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Connected-operations IoT platform riding digitalization of physical operations"
+  },
+  "SRE": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Energy infrastructure and LNG exposure within the energy-security complex"
+  },
+  "PWR": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Grid infrastructure contractor central to power buildout and energy security"
+  },
+  "GGG": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Industrial equipment maker whose volumes track the industrial cycle"
+  },
+  "LHX": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Defense prime \u2014 earnings driven by defense budgets and geopolitical tension"
+  },
+  "SMTC": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Semiconductor maker leveraged to AI/data-center chip demand"
+  },
+  "RF": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Regional bank reading consumer and commercial credit conditions"
+  },
+  "STE": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Medtech sterilization/infection-prevention platform"
+  },
+  "CRH": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Building materials volumes driven by infrastructure and construction spending"
+  },
+  "BRO": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Insurance broker benefiting from premium pricing and float"
+  },
+  "CLX": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Household staples maker whose case rests on pricing power"
+  },
+  "DAR": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Renewable diesel economics set by biofuel mandates and credit policy"
+  },
+  "CL": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Global staples franchise built on sustained pricing power"
+  },
+  "HUBS": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "AI-era CRM software platform for SMBs"
+  },
+  "KRMN": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Defense and space systems contractor driven by missile/space budgets"
+  },
+  "PR": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Permian oil producer directly leveraged to crude prices"
+  },
+  "KHC": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Packaged-food staples name whose story is price/mix vs volume elasticity"
+  },
+  "COO": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Medtech (vision/surgical) technology platform"
+  },
+  "TEAM": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Collaboration software platform in the AI software complex"
+  },
+  "ECL": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Demonstrated pricing-power compounder in water/hygiene services"
+  },
+  "VRSN": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Registry pricing is set by government/ICANN contract terms"
+  },
+  "FND": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Housing-adjacent retailer leveraged to housing turnover and rates"
+  },
+  "TTMI": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "PCB supplier concentrated in defense and AI data-center programs"
+  },
+  "HWM": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Aerospace/defense structural components tied to defense and aero build rates"
+  },
+  "AHR": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Healthcare REIT rents depend on provider reimbursement policy"
+  },
+  "GEV": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Power generation and grid equipment at the center of energy security buildout"
+  },
+  "ABNB": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Travel volumes are a direct read on consumer/economic cycle"
+  },
+  "FORM": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Semiconductor probe/test supplier leveraged to chip capex"
+  },
+  "AAL": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Airline earnings swing with travel demand and fuel costs"
+  },
+  "MAR": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Hotel RevPAR tracks travel and business-cycle demand"
+  },
+  "BRKR": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Life-science instruments platform tied to research/biotech activity"
+  },
+  "VSAT": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Satellite communications with significant defense/government exposure"
+  },
+  "MDB": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Database platform positioned for AI application workloads"
+  },
+  "FIS": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Payments/banking volumes read consumer and bank spending activity"
+  },
+  "KR": {
+   "theme": "inflation",
+   "fit": "strong",
+   "why": "Grocery trade-down winner gaining share as budgets squeeze"
+  },
+  "WYNN": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Macau gaming revenue set by Chinese gaming policy and licensing"
+  },
+  "NBIS": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "AI cloud infrastructure pure play on GPU compute buildout"
+  },
+  "AES": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Power generator with renewables/energy-transition exposure"
+  },
+  "ALK": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Airline leveraged to travel demand cycle and fuel"
+  },
+  "PRAX": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Biotech platform \u2014 CNS pipeline drives the equity story"
+  },
+  "MTSI": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "RF/optical semiconductors for AI data centers and defense"
+  },
+  "GH": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Liquid-biopsy diagnostics platform in precision oncology"
+  },
+  "LYV": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "DOJ antitrust case is a first-order driver of the equity story"
+  },
+  "CRL": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Preclinical research services leveraged to biotech R&D activity"
+  },
+  "APD": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Industrial gases and hydrogen projects tied to energy policy and security"
+  },
+  "MANE": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Biotech \u2014 dermatology pipeline is the investment case"
+  },
+  "HII": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Naval shipbuilder \u2014 carrier/submarine demand is set by defense budgets and sea-power rivalry"
+  },
+  "KMI": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Largest US gas pipeline network; volumes ride LNG exports and North American energy security"
+  },
+  "BBY": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Consumer-electronics replacement cycle reads discretionary spending and the AI-PC refresh"
+  },
+  "BURL": {
+   "theme": "inflation",
+   "fit": "strong",
+   "why": "Off-price retail is the classic trade-down winner when household budgets squeeze"
+  },
+  "PNC": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Super-regional bank whose loan growth and credit quality read the real economy"
+  },
+  "QCOM": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "Chip/IP platform at the center of handset, auto and edge-AI silicon"
+  },
+  "JD": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "China e-commerce ADR whose price is set by Beijing stimulus, regulation and consumer policy"
+  },
+  "CRDO": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "AI connectivity silicon (AEC/SerDes) riding rack-scale data-center buildouts"
+  },
+  "AYI": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Lighting and building controls levered to non-residential construction activity"
+  },
+  "IRM": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Records-storage base pivoting to data centers \u2014 AI data infrastructure demand"
+  },
+  "FHN": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Regional bank; lending volumes and credit read the Southeast/Midwest economy"
+  },
+  "PHM": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "Top-3 homebuilder \u2014 orders are a direct read on housing and mortgage rates"
+  },
+  "FCNCA": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Large regional bank whose growth and credit book track the economic cycle"
+  },
+  "PFGC": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Foodservice distributor passing food-cost inflation through while volumes read restaurant demand"
+  },
+  "CSL": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Roofing/building products tied to construction and re-roofing cycles"
+  },
+  "MTB": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Regional bank; loan growth and credit quality are economy readings"
+  },
+  "COMP": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Residential brokerage platform whose volumes are existing-home sales"
+  },
+  "CBRE": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "CRE services bellwether \u2014 leasing, sales and financing volumes read rates and the cycle"
+  },
+  "ETN": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "Electrical/power-management backbone for data centers and grid electrification"
+  },
+  "CLS": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "EMS manufacturer building AI servers and hyperscaler hardware"
+  },
+  "P": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "All-flash data storage platform levered to AI/enterprise data growth"
+  },
+  "AGNC": {
+   "theme": "inflation",
+   "fit": "strong",
+   "why": "Agency mREIT \u2014 book value and dividend are a near-pure play on rates and MBS spreads"
+  },
+  "INVH": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Single-family rental REIT levered to housing scarcity and rent growth"
+  },
+  "CAI": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "AI-driven precision oncology platform (molecular profiling + data)"
+  },
+  "CNH": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Ag/construction equipment maker riding the farm-income and capex cycle"
+  },
+  "SO": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Regulated utility \u2014 earnings set by rate cases and state energy policy"
+  },
+  "ONTO": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "Semiconductor process-control/inspection for advanced packaging and AI chips"
+  },
+  "ES": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Regulated New England utility; returns determined by regulators and energy policy"
+  },
+  "MHK": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Flooring maker whose demand is housing turnover and remodel activity"
+  },
+  "VIAV": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Network test and optical tech levered to AI datacom and 5G spending"
+  },
+  "HL": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Silver/gold miner \u2014 precious-metals hedge demand with operating leverage"
+  },
+  "CIEN": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "Optical networking supplier to hyperscaler AI backbones"
+  },
+  "BEN": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Asset manager whose AUM and flows read capital-markets conditions"
+  },
+  "RIG": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Offshore driller \u2014 dayrates are set by the global oil/energy-security cycle"
+  },
+  "FNV": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Gold royalty/streaming \u2014 hedge exposure to the metal without mine operations"
+  },
+  "H": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Hotel RevPAR reads business and leisure travel demand"
+  },
+  "IP": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Packaging volumes are a classic coincident read on goods demand"
+  },
+  "SHOP": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Commerce software platform compounding with digital retail adoption"
+  },
+  "AEE": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Regulated utility \u2014 rate-base growth and returns set by state regulators"
+  },
+  "NVO": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "GLP-1 franchise defines the obesity/diabetes treatment platform race"
+  },
+  "FROG": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "DevOps/software-supply-chain platform riding enterprise automation"
+  },
+  "CSX": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "Eastern railroad \u2014 carloads are a direct read on industrial and consumer freight"
+  },
+  "MDLZ": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Global snacking staple with demonstrated pricing power through cocoa/input inflation"
+  },
+  "MXL": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Broadband/optical semiconductors levered to data-center and access-network capex"
+  },
+  "AZO": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Auto-parts retail driven by fleet age and miles driven \u2014 counter-cyclical staple of the car economy"
+  },
+  "ETR": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Regulated Gulf utility; earnings path set by rate cases and energy policy"
+  },
+  "ITGR": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Medtech component OEM levered to device innovation and procedure volumes"
+  },
+  "ENTG": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "Semiconductor materials/purity supplier \u2014 picks-and-shovels for fab capex"
+  },
+  "COHR": {
+   "theme": "innovation",
+   "fit": "strong",
+   "why": "Photonics/lasers at the center of AI optical interconnect"
+  },
+  "MGM": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Casino/resort operator whose volumes read consumer and travel spending"
+  },
+  "FSLY": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Edge cloud/CDN platform levered to streaming and web performance demand"
+  },
+  "CG": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Alternative asset manager whose fundraising and exits read credit/market cycles"
+  },
+  "RH": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Furniture importer's margins are directly hit by tariff policy on Asian sourcing"
+  },
+  "RKT": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "Mortgage originator \u2014 volumes are a levered play on rates and housing/refi activity"
+  },
+  "PAAS": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Silver/gold miner riding precious-metals hedge demand"
+  },
+  "CRBG": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Annuity/life insurer whose spread income reprices upward with higher rates"
+  },
+  "APO": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Private-credit spreads and Athene float income make the earnings story substantially a rates story"
+  },
+  "EPAM": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Eastern European delivery footprint made the Ukraine war and regional supply security a first-order driver"
+  },
+  "MRSH": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Insurance brokerage with demonstrated pricing power riding the commercial insurance pricing cycle"
+  },
+  "DAL": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Airline margins are set by jet-fuel prices out of the oil shock, partly offset by travel demand"
+  },
+  "SLB": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Oilfield services major \u2014 upstream capex follows the energy-security cycle directly"
+  },
+  "MSI": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Public-safety communications demand is set by government and municipal budgets"
+  },
+  "RJF": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Capital-markets and wealth volumes read the real economy and rate backdrop"
+  },
+  "VICR": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Power-delivery modules for AI data centers \u2014 demand is the AI buildout"
+  },
+  "UAL": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Fully exposed to fuel costs from the oil shock against a consumer-travel backdrop"
+  },
+  "BHP": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Copper and iron ore giant \u2014 critical-mineral security and China demand drive the case"
+  },
+  "GIS": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Packaged-food pricing power is the offset being tested against volume elasticity"
+  },
+  "DGX": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Lab-testing volumes and pricing run through Medicare and payer reimbursement policy"
+  },
+  "FICO": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Mortgage credit-score pricing is directly in the FHFA policy crosshairs (score-model competition)"
+  },
+  "Z": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "Housing portal \u2014 traffic and ads are a pure read on housing turnover and mortgage rates"
+  },
+  "SIMO": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "NAND-flash controllers ride the memory cycle inside the semi complex"
+  },
+  "MKTX": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Bond-trading volumes and credit activity are driven by the rate path and issuance cycle"
+  },
+  "BG": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Global grain/oilseed flows are repriced by war, trade routes and food security"
+  },
+  "ATO": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Regulated gas utility \u2014 allowed returns and rate cases are its pricing mechanism in a high-rate tape"
+  },
+  "GLW": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Optical fiber demand has inflected on AI data-center buildouts"
+  },
+  "HRL": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Branded protein pricing power versus input-cost inflation is the investment question"
+  },
+  "FLEX": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Contract manufacturer whose bookings follow supply-chain reshoring and tariff avoidance"
+  },
+  "KEY": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Regional bank \u2014 net interest income and credit quality read the economy and rate curve"
+  },
+  "KEYS": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Electronic test demand tracks semi, defense-electronics and communications R&D cycles"
+  },
+  "OPCH": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Home infusion economics are set by payer and Medicare reimbursement policy"
+  },
+  "DHI": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "Largest US homebuilder \u2014 orders are a direct function of mortgage rates and housing demand"
+  },
+  "SPG": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Premium mall REIT rents read consumer spending, and the equity is rate-sensitive"
+  },
+  "RBA": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Used equipment and truck auction volumes are a clean read on the industrial/freight cycle"
+  },
+  "CMS": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Regulated utility \u2014 rate-base growth and allowed returns in a 5% rate world"
+  },
+  "JAZZ": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Biotech franchise (sleep/oncology) driven by pipeline and label expansion"
+  },
+  "RRX": {
+   "theme": "employment",
+   "fit": "moderate",
+   "why": "Motion-control and power-transmission components sell into factory automation capex"
+  },
+  "FN": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Optical component manufacturing leveraged to AI/telecom transceiver demand"
+  },
+  "HST": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Lodging REIT \u2014 RevPAR reads business and leisure travel demand directly"
+  },
+  "MO": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "The canonical pricing-power name \u2014 cigarette price increases carry the earnings model"
+  },
+  "COP": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Pure-play oil major \u2014 cash flow is the oil price out of the energy shock"
+  },
+  "EMR": {
+   "theme": "employment",
+   "fit": "moderate",
+   "why": "Automation portfolio is the capex answer to scarce industrial labor"
+  },
+  "RGEN": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Bioprocessing tools ride biologics manufacturing and pipeline demand"
+  },
+  "NI": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Regulated gas/electric utility priced off allowed returns and rate cases"
+  },
+  "ABBV": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Immunology franchise growth (Skyrizi/Rinvoq) is a pipeline-execution story"
+  },
+  "LEN": {
+   "theme": "economics",
+   "fit": "strong",
+   "why": "Top homebuilder whose orders and incentives move one-for-one with mortgage rates"
+  },
+  "DTE": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Regulated utility \u2014 rate-base compounding under a high-rate regime"
+  },
+  "ESI": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Specialty chemicals for semiconductor fabrication ride the chip capex cycle"
+  },
+  "CDW": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "IT distribution volumes read enterprise technology spending, now AI-PC/server driven"
+  },
+  "CCC": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "AI claims-workflow software platform for insurers \u2014 digitization adoption story"
+  },
+  "ACI": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Grocery chain at the center of food inflation pass-through and trade-down traffic"
+  },
+  "ASND": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Biotech platform value rests on TransCon pipeline readouts and launches"
+  },
+  "AEP": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Regulated utility with data-center load growth priced through rate cases"
+  },
+  "HONA": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Aerospace and defense supplier exposed to defense budgets and military demand"
+  },
+  "A": {
+   "theme": "innovation",
+   "fit": "moderate",
+   "why": "Life-science instruments ride research and biopharma lab spending"
+  },
+  "DKNG": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Sports-betting market size is set state by state by legalization and gaming tax policy"
+  },
+  "CRCL": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Stablecoin economics were created by US stablecoin legislation and reserve-yield rules"
+  },
+  "ED": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Regulated NYC utility \u2014 the equity trades on allowed returns versus the rate backdrop"
+  },
+  "AXON": {
+   "theme": "politics",
+   "fit": "moderate",
+   "why": "Law-enforcement technology demand is funded by public budgets and policing policy"
+  },
+  "NRG": {
+   "theme": "geopolitics",
+   "fit": "moderate",
+   "why": "Merchant power cash flow is set by energy prices and grid scarcity pricing"
+  },
+  "PFG": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Insurer/retirement provider whose float and spread income reprices with rates"
+  },
+  "EVRG": {
+   "theme": "inflation",
+   "fit": "moderate",
+   "why": "Regulated utility compounding rate base under high-for-longer rates"
+  },
+  "QXO": {
+   "theme": "economics",
+   "fit": "moderate",
+   "why": "Building-products distribution roll-up is a leveraged play on housing and construction activity"
+  },
+  "GFI": {
+   "theme": "geopolitics",
+   "fit": "strong",
+   "why": "Gold producer \u2014 the geopolitical hedge asset with operating leverage to the metal"
+  }
+ },
+ "buy_tags": {
+  "RRC": "geopolitics",
+  "AMZN": null,
+  "EXE": "geopolitics",
+  "QLYS": "innovation",
+  "APA": "geopolitics",
+  "RGA": "inflation",
+  "NTNX": "innovation",
+  "AER": null,
+  "AXP": "economics",
+  "CSCO": "innovation",
+  "BMY": null,
+  "EAT": null,
+  "ABT": null,
+  "CHKP": "innovation",
+  "DG": "inflation",
+  "ADBE": "innovation",
+  "GMED": "innovation",
+  "GILD": "innovation",
+  "NXPI": "innovation",
+  "OXY": "geopolitics",
+  "LPLA": "economics",
+  "LNG": "geopolitics",
+  "NYT": null,
+  "DXCM": "innovation",
+  "EQT": "geopolitics",
+  "TW": "inflation",
+  "EXPE": null,
+  "HAL": "geopolitics",
+  "JLL": "economics",
+  "IR": null,
+  "WTW": null,
+  "GDDY": null,
+  "AZN": "innovation",
+  "HIG": "inflation",
+  "REGN": "innovation",
+  "NTRS": "economics",
+  "PSX": "geopolitics",
+  "CBOE": "inflation",
+  "FTNT": "innovation",
+  "HBAN": "economics",
+  "BAC": "economics",
+  "TRMB": null,
+  "IDXX": null,
+  "BKR": "geopolitics",
+  "FTI": "geopolitics",
+  "MANH": "innovation",
+  "CMI": "economics",
+  "BR": null,
+  "AMGN": "innovation",
+  "ROIV": "innovation",
+  "SCHW": "economics",
+  "HALO": "innovation",
+  "LMT": "geopolitics",
+  "RGLD": "geopolitics",
+  "CB": "inflation",
+  "CME": "inflation",
+  "WMT": "inflation",
+  "AEM": "geopolitics",
+  "ARGX": "innovation",
+  "NUE": "politics",
+  "ADM": "politics"
+ }
+}

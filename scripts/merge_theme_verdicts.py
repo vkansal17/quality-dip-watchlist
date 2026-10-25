@@ -16,7 +16,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 VPATH = os.path.join(DATA, "theme_verdicts.json")
 
-tqueue = json.load(open(os.path.join(DATA, "theme_queue.json")))
+_qp = os.path.join(DATA, "macro_sweep_queue.json")
+if not os.path.exists(_qp):
+    _qp = os.path.join(DATA, "theme_queue.json")
+tqueue = json.load(open(_qp))
 qix = {q["ticker"]: q for q in tqueue}
 order = {q["ticker"]: q["order"] for q in tqueue}
 
@@ -63,7 +66,9 @@ for v in batch:
 
 buys = sorted((t for t, v in store["verdicts"].items() if v["flag"] == "BUY"),
               key=lambda t: order.get(t, 10 ** 9))
-store["list"] = buys
+store["all_buys"] = buys
+store["list"] = buys[:50]
+store["reserves"] = buys[50:]
 store["meta"]["updated"] = today
 json.dump(store, open(VPATH, "w"), indent=1)
 
@@ -71,5 +76,5 @@ counts = {"BUY": 0, "HOLD": 0, "SELL": 0}
 for v in store["verdicts"].values():
     counts[v["flag"]] = counts.get(v["flag"], 0) + 1
 print(f"theme researched: {len(store['verdicts'])} | BUY {counts['BUY']} · "
-      f"HOLD {counts['HOLD']} · SELL {counts['SELL']} | list size: {len(store['list'])}")
+      f"HOLD {counts['HOLD']} · SELL {counts['SELL']} | list50: {len(store['list'])} | reserves: {len(store['reserves'])}")
 print("this batch:", ", ".join(f"{v['ticker']}={v['flag']}" for v in batch))

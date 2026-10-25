@@ -1561,28 +1561,32 @@ def build_macro_page(meta, tverdicts, themes):
             f"<section><h2>{th.get('icon', '')} {th.get('name', '')}</h2>"
             f"<p>{th.get('thesis', '')}</p>"
             f"<p class='muted'><b>Watch:</b> {th.get('watch', '')}</p>{table}</section>")
-    status = (f"<p>Research in progress: {len(vs)} theme-origin names researched so far "
+    res = tverdicts.get("reserves") or []
+    status = (f"<p>Macro sweep: {len(vs)} names carry a macro verdict so far "
               f"({counts['BUY']} buy · {counts['HOLD']} hold · {counts['SELL']} sell/not-justified); "
-              f"{len(lst)} stand on the list below.</p>" if len(vs) < 60 else
-              f"<p>Research complete: 60 theme-origin names researched "
-              f"({counts['BUY']} buy · {counts['HOLD']} hold · {counts['SELL']} sell/not-justified); "
-              f"{len(lst)} passed the rubric as BUY and stand on the list below, grouped by theme.</p>")
+              f"{len(lst)} stand on the Top 50 list below, grouped by primary theme"
+              + (f", with {len(res)} further BUY names as reserves ({', '.join(res)})" if res else "")
+              + ".</p>")
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Macro & Themes · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
 <div class="wrap">
-<h1>🌐 Macro & Themes — Validated List</h1>
+<h1>🌐 Macro & Themes — Top 50</h1>
 <div class="sub">A separate list whose ORIGIN is the macro map — geopolitics, inflation & rates,
 the economy, employment, innovation and politics — not the dip or professional screens ·
 prices as of {meta['asof']} close</div>
 {TABS_MACRO}
 <section>{status}
-<p class="muted">Method: ten candidates per theme were drawn from the unresearched bench of the
-merged candidate pools on theme fit, then deep-researched one by one against the same five-leg
-rubric as the Validated Top 50 (quality, valuation, sector, risk, catalyst — BUY only with no leg
-failing and at least four passing). Names that did not pass stay off; there is no quota per theme.
-This list sits alongside the Validated Top 50 and does not change it. Verdicts are a dated research
-snapshot from public sources — structured research opinion, not investment advice.</p></section>
+<p class="muted">Method: the full 682-name merged candidate pool was swept by theme fit — every
+name tagged with the macro theme that genuinely drives its case (geopolitics &amp; energy security,
+inflation &amp; rates, economics &amp; growth, employment &amp; labor, innovation, politics &amp;
+policy) — and researched against the same five-leg rubric as the Validated Top 50 (quality,
+valuation, sector, risk, catalyst — BUY only with no leg failing and at least four passing).
+Verdicts already earned in the earlier research editions were carried in with their theme tag;
+the rest of the pool was researched in theme-fit order until 50 BUYs stood. There is no quota
+per theme — counts are whatever the sweep produced. This list sits alongside the Validated Top 50
+and does not change it. Verdicts are a dated research snapshot from public sources — structured
+research opinion, not investment advice.</p></section>
 {chr(10).join(sections)}
 </div></body></html>"""
     with open(os.path.join(ROOT, "macro.html"), "w") as fh:

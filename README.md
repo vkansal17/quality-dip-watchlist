@@ -82,25 +82,34 @@ per-leg evidence, key risks, what would change the verdict, and
 sources. These are dated research verdicts with evidence, not trade
 instructions, entries or targets.
 
-## The Macro & Themes tab
+## The Macro & Themes tab — Top 50
 
-The fifth tab (`macro.html`) is the companion list whose origin is
-macro and thematic rather than either ranking. Six themes — Geopolitics
-& Energy Security, Inflation & Rates, Economics & Growth, Employment &
-Labor, Innovation, and Politics & Policy — carried ten curated
-candidates each, all drawn from the unresearched bench of the
-validation queue. Every candidate was scored under the same five-leg
-rubric; there is no per-theme quota, so BUY names stand as researched
-and a theme can produce none.
+The fifth tab (`macro.html`) is the companion Top 50 whose origin is
+macro and thematic rather than either ranking. It was built by an
+independent sweep of the full 682-name merged candidate pool: every
+name was tagged with the one macro theme that genuinely drives its
+case — Geopolitics & Energy Security, Inflation & Rates, Economics &
+Growth, Employment & Labor, Innovation, or Politics & Policy — and
+researched under the same five-leg rubric until 50 BUYs stood. BUY
+verdicts already earned in the earlier research editions were carried
+in with their theme tag; the rest of the pool was worked in theme-fit
+order (strong fits first). There is no per-theme quota — theme counts
+are whatever the sweep produced, and BUYs past the 50 stand as named
+reserves.
 
-First edition (researched 2026-10-25, prices as of the Fri 2026-10-23
-close): all 60 candidates researched — 9 BUY, 51 HOLD, 0 SELL. The BUY
-list: LMT and RGLD (Geopolitics), CB, CME, WMT and AEM (Inflation &
-Rates), ARGX (Innovation), NUE and ADM (Politics & Policy).
-Employment & Labor produced no BUY — quality businesses at full-to-peak
-multiples, with TER failing the sector leg (84% semiconductor-test
-revenue). Each verdict carries the same dated evidence card on its
-detail page as the Validated Top 50.
+Sweep edition (researched 2026-10-25, prices as of the Fri 2026-10-23
+close): 48 of the 61 existing BUYs carried a genuine theme tag (13
+were company stories with no macro driver and stay off this list);
+the first research wave over the strongest bench fits added 30 more
+verdicts. Final tally across the macro store: 59 BUY, 68 HOLD, 2 SELL.
+The Top 50 by theme: Innovation 17, Geopolitics & Energy Security 13,
+Inflation & Rates 9, Economics & Growth 8, Politics & Policy 3 —
+Employment & Labor's only BUY (WDAY) landed just past the cap and
+stands as a reserve, alongside EOG, BURL, OVV, CI, DINO, MET, ENB
+and LHX. The sweep's two SELLs are both homebuilders (NVR, PHM —
+quality and sector legs failed in the map's worst sector).
+Each verdict carries the same dated evidence card on its detail page
+as the Validated Top 50.
 
 ## Run it yourself
 
