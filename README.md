@@ -82,6 +82,26 @@ per-leg evidence, key risks, what would change the verdict, and
 sources. These are dated research verdicts with evidence, not trade
 instructions, entries or targets.
 
+## The Macro & Themes tab
+
+The fifth tab (`macro.html`) is the companion list whose origin is
+macro and thematic rather than either ranking. Six themes — Geopolitics
+& Energy Security, Inflation & Rates, Economics & Growth, Employment &
+Labor, Innovation, and Politics & Policy — carried ten curated
+candidates each, all drawn from the unresearched bench of the
+validation queue. Every candidate was scored under the same five-leg
+rubric; there is no per-theme quota, so BUY names stand as researched
+and a theme can produce none.
+
+First edition (researched 2026-10-25, prices as of the Fri 2026-10-23
+close): all 60 candidates researched — 9 BUY, 51 HOLD, 0 SELL. The BUY
+list: LMT and RGLD (Geopolitics), CB, CME, WMT and AEM (Inflation &
+Rates), ARGX (Innovation), NUE and ADM (Politics & Policy).
+Employment & Labor produced no BUY — quality businesses at full-to-peak
+multiples, with TER failing the sector leg (84% semiconductor-test
+revenue). Each verdict carries the same dated evidence card on its
+detail page as the Validated Top 50.
+
 ## Run it yourself
 
 ```bash

@@ -1,7 +1,7 @@
 {
  "meta": {
   "asof": "2026-10-23",
-  "generated": "2026-10-25 13:55",
+  "generated": "2026-10-25 14:41",
   "universe_n": 800,
   "screened": 800,
   "candidates": 337
@@ -764,18 +764,18 @@
    "off_high_pct": -20.6
   },
   {
-   "ticker": "CFG",
-   "rank": 109,
-   "score": 63.6,
-   "last": 65.14,
-   "off_high_pct": -12.8
-  },
-  {
    "ticker": "CCL",
-   "rank": 110,
+   "rank": 109,
    "score": 63.6,
    "last": 26.11,
    "off_high_pct": -23.2
+  },
+  {
+   "ticker": "CFG",
+   "rank": 110,
+   "score": 63.6,
+   "last": 65.14,
+   "off_high_pct": -12.8
   },
   {
    "ticker": "HCA",

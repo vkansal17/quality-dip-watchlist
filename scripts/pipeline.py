@@ -921,19 +921,29 @@ def rationale(t, k, notes):
 TABS_DIP = ('<div class="tabs"><a class="tab active" href="index.html">📉 Quality-Dip Top 50</a>'
             '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
             '<a class="tab" href="sectors.html">🌍 Sectors</a>'
-            '<a class="tab" href="validated.html">🏆 Validated Top 50</a></div>')
+            '<a class="tab" href="validated.html">🏆 Validated Top 50</a>'
+            '<a class="tab" href="macro.html">🌐 Macro & Themes</a></div>')
 TABS_PRO = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
             '<a class="tab active" href="pro.html">🏦 Professional Top 50</a>'
             '<a class="tab" href="sectors.html">🌍 Sectors</a>'
-            '<a class="tab" href="validated.html">🏆 Validated Top 50</a></div>')
+            '<a class="tab" href="validated.html">🏆 Validated Top 50</a>'
+            '<a class="tab" href="macro.html">🌐 Macro & Themes</a></div>')
 TABS_SECTORS = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
                 '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
                 '<a class="tab active" href="sectors.html">🌍 Sectors</a>'
-                '<a class="tab" href="validated.html">🏆 Validated Top 50</a></div>')
+                '<a class="tab" href="validated.html">🏆 Validated Top 50</a>'
+            '<a class="tab" href="macro.html">🌐 Macro & Themes</a></div>')
 TABS_VALIDATED = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
                   '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
                   '<a class="tab" href="sectors.html">🌍 Sectors</a>'
-                  '<a class="tab active" href="validated.html">🏆 Validated Top 50</a></div>')
+                  '<a class="tab active" href="validated.html">🏆 Validated Top 50</a>'
+                  '<a class="tab" href="macro.html">🌐 Macro & Themes</a></div>')
+
+TABS_MACRO = ('<div class="tabs"><a class="tab" href="index.html">📉 Quality-Dip Top 50</a>'
+              '<a class="tab" href="pro.html">🏦 Professional Top 50</a>'
+              '<a class="tab" href="sectors.html">🌍 Sectors</a>'
+              '<a class="tab" href="validated.html">🏆 Validated Top 50</a>'
+              '<a class="tab active" href="macro.html">🌐 Macro & Themes</a></div>')
 
 
 def pro_section(t, prec, k, rank=None):
@@ -977,6 +987,26 @@ def load_verdicts():
         except Exception:
             pass
     return {"meta": {}, "verdicts": {}, "final50": []}
+
+
+def load_theme_verdicts():
+    p = os.path.join(DATA, "theme_verdicts.json")
+    if os.path.exists(p):
+        try:
+            return json.load(open(p))
+        except Exception:
+            pass
+    return {"meta": {}, "verdicts": {}, "list": []}
+
+
+def load_themes():
+    p = os.path.join(DATA, "themes.json")
+    if os.path.exists(p):
+        try:
+            return json.load(open(p))
+        except Exception:
+            pass
+    return {"themes": []}
 
 
 def verdict_section(t, verdicts):
@@ -1151,7 +1181,7 @@ rows.forEach(r=>tb.appendChild(r));}});}});
         psec = pro_section(t, pro.get(t), r, pro_ranks.get(t))
         if psec:
             secs.append(psec)
-        vsec = verdict_section(t, verdicts)
+        vsec = verdict_section(t, verdicts) or verdict_section(t, load_theme_verdicts())
         if vsec:
             secs.append(vsec)
         ys = yahoo_symbol(t)
@@ -1283,7 +1313,7 @@ def build_pro_details(pro_rows, dip_tickers, meta):
             continue
         k = r["_kpi"]
         secs = [pro_section(t, r, k, r["rank"])]
-        vsec = verdict_section(t, verdicts)
+        vsec = verdict_section(t, verdicts) or verdict_section(t, load_theme_verdicts())
         if vsec:
             secs.append(vsec)
         c = cons.get(t, {})
@@ -1456,7 +1486,7 @@ def build_validated_details(meta, verdicts, covered, results, pro_recs, earn):
         psec = pro_section(t, prec, k, None)
         if psec:
             secs.append(psec)
-        vsec = verdict_section(t, verdicts)
+        vsec = verdict_section(t, verdicts) or verdict_section(t, load_theme_verdicts())
         if vsec:
             secs.append(vsec)
         ys = yahoo_symbol(t)
@@ -1468,6 +1498,124 @@ def build_validated_details(meta, verdicts, covered, results, pro_recs, earn):
 <h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
 · Research-validated Top 50</div>
+<div><span class="price">${k['last']:,.2f}</span>
+<span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
+<span class="muted"> · as of {asof} close</span></div>
+<div class="kpis">
+  <div class="kpi"><div class="v">{k['off_high_pct']:.1f}%</div><div class="l">Below 52w high (${k['high52']:,.2f})</div></div>
+  <div class="kpi"><div class="v">{k['rsi14']:.0f}</div><div class="l">RSI (14)</div></div>
+  <div class="kpi"><div class="v {'up' if k['perf1y_pct'] >= 0 else 'dn'}">{k['perf1y_pct']:+.1f}%</div><div class="l">1-year performance</div></div>
+  <div class="kpi"><div class="v">{k['vol30']:.1f}%</div><div class="l">Volatility (30d, ann.)</div></div>
+  <div class="kpi"><div class="v">{earn.get(t) or '—'}</div><div class="l">Next earnings</div></div>
+</div>
+<div class="bigchart">{chart_svg(k['chart'], k['high52'], k['low52'])}
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+{chr(10).join(secs)}
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
+<a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</div></body></html>"""
+        with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
+            fh.write(page)
+
+
+def build_macro_page(meta, tverdicts, themes):
+    vs = tverdicts.get("verdicts") or {}
+    lst = tverdicts.get("list") or []
+    pools_p = os.path.join(DATA, "pools.json")
+    pools = json.load(open(pools_p)) if os.path.exists(pools_p) else {"dip": [], "pro": []}
+    src_ix = {}
+    for r in pools.get("dip", []):
+        src_ix.setdefault(r["ticker"], r)
+    for r in pools.get("pro", []):
+        src_ix.setdefault(r["ticker"], r)
+    counts = {"BUY": 0, "HOLD": 0, "SELL": 0}
+    for v in vs.values():
+        if v.get("flag") in counts:
+            counts[v["flag"]] += 1
+    by_theme = {}
+    for t in lst:
+        by_theme.setdefault((vs.get(t) or {}).get("theme_id", ""), []).append(t)
+    sections = []
+    for th in themes.get("themes", []):
+        tid = th["id"]
+        names = by_theme.get(tid, [])
+        rows = []
+        for t in names:
+            v = vs.get(t, {})
+            s = src_ix.get(t, {})
+            rows.append(
+                f"<tr><td><a href='stock/{t}.html'><b>{t}</b></a></td>"
+                f"<td>{clean_company_name(UNIVERSE_NAME.get(t, t))}</td>"
+                f"<td><span class='chip sb'>BUY</span></td>"
+                f"<td class='num'>${s.get('last', 0):,.2f}</td>"
+                f"<td class='num'>{s.get('off_high_pct', 0):.1f}%</td>"
+                f"<td>{v.get('summary', '')}</td></tr>")
+        table = ("<table><thead><tr><th>Stock</th><th>Company</th><th>Verdict</th>"
+                 "<th class=\"num\">Price</th><th class=\"num\">vs 52w high</th>"
+                 "<th>Research summary</th></tr></thead><tbody>"
+                 + chr(10).join(rows) + "</tbody></table>") if rows else \
+            "<p class='muted'>No name from this theme has passed the rubric as BUY yet.</p>"
+        sections.append(
+            f"<section><h2>{th.get('icon', '')} {th.get('name', '')}</h2>"
+            f"<p>{th.get('thesis', '')}</p>"
+            f"<p class='muted'><b>Watch:</b> {th.get('watch', '')}</p>{table}</section>")
+    status = (f"<p>Research in progress: {len(vs)} theme-origin names researched so far "
+              f"({counts['BUY']} buy · {counts['HOLD']} hold · {counts['SELL']} sell/not-justified); "
+              f"{len(lst)} stand on the list below.</p>" if len(vs) < 60 else
+              f"<p>Research complete: 60 theme-origin names researched "
+              f"({counts['BUY']} buy · {counts['HOLD']} hold · {counts['SELL']} sell/not-justified); "
+              f"{len(lst)} passed the rubric as BUY and stand on the list below, grouped by theme.</p>")
+    html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Macro & Themes · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="wrap">
+<h1>🌐 Macro & Themes — Validated List</h1>
+<div class="sub">A separate list whose ORIGIN is the macro map — geopolitics, inflation & rates,
+the economy, employment, innovation and politics — not the dip or professional screens ·
+prices as of {meta['asof']} close</div>
+{TABS_MACRO}
+<section>{status}
+<p class="muted">Method: ten candidates per theme were drawn from the unresearched bench of the
+merged candidate pools on theme fit, then deep-researched one by one against the same five-leg
+rubric as the Validated Top 50 (quality, valuation, sector, risk, catalyst — BUY only with no leg
+failing and at least four passing). Names that did not pass stay off; there is no quota per theme.
+This list sits alongside the Validated Top 50 and does not change it. Verdicts are a dated research
+snapshot from public sources — structured research opinion, not investment advice.</p></section>
+{chr(10).join(sections)}
+</div></body></html>"""
+    with open(os.path.join(ROOT, "macro.html"), "w") as fh:
+        fh.write(html)
+
+
+def build_theme_details(meta, tverdicts, covered, results, pro_recs, earn):
+    """Detail pages for Macro & Themes names covered by neither list builder."""
+    fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
+    asof = meta["asof"]
+    for t in tverdicts.get("list") or []:
+        if t in covered:
+            continue
+        k = results.get(t)
+        if not k:
+            continue
+        secs = []
+        prec = pro_recs.get(t)
+        psec = pro_section(t, prec, k, None)
+        if psec:
+            secs.append(psec)
+        vsec = verdict_section(t, tverdicts)
+        if vsec:
+            secs.append(vsec)
+        ys = yahoo_symbol(t)
+        page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="wrap">
+<p><a href="../macro.html">← Back to Macro & Themes</a></p>
+<h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
+<div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
+· Macro & Themes validated list</div>
 <div><span class="price">${k['last']:,.2f}</span>
 <span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
 <span class="muted"> · as of {asof} close</span></div>
@@ -1619,8 +1767,11 @@ def main():
                "vetoed": sorted(t for t, r in pro_recs.items() if r.get("veto"))},
               open(os.path.join(DATA, "pools.json"), "w"), indent=1)
     verdicts = load_verdicts()
+    tverdicts = load_theme_verdicts()
+    themes = load_themes()
     meta["keep_extra"] = ([r["ticker"] for r in pro_rows]
-                          + list(verdicts.get("final50") or []))
+                          + list(verdicts.get("final50") or [])
+                          + list(tverdicts.get("list") or []))
     build_site(rows, prev_ranks, meta, pro=pro_recs,
                pro_ranks={r["ticker"]: r["rank"] for r in pro_rows})
     build_pro_page(pro_rows, prev_pro_ranks, meta, n_pool, n_vetoed)
@@ -1630,6 +1781,10 @@ def main():
     build_validated_details(meta, verdicts,
                             {r["ticker"] for r in rows} | {r["ticker"] for r in pro_rows},
                             results, pro_recs, earn)
+    build_macro_page(meta, tverdicts, themes)
+    build_theme_details(meta, tverdicts,
+                        {r["ticker"] for r in rows} | {r["ticker"] for r in pro_rows},
+                        results, pro_recs, earn)
 
     new_set = {r["ticker"] for r in rows}
     old_set = set(prev_ranks)
