@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RRR — Red Rock Resorts · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Five lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab active" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a></div></div>
+<p class="crumb"><a href="../pro.html">← Back to the Professional Top 50</a></p>
+<h1>RRR — Red Rock Resorts</h1>
+<div class="sub">
+· Professional rank #45 · composite grade A</div>
+<div><span class="price">$49.61</span>
+<span class="dn" style="font-size:17px">-1.63% today</span>
+<span class="muted"> · as of 2026-10-23 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-26.2%</div><div class="l">vs 52w high ($67.26)</div></div><div class="kpi"><div class="v ">5%</div><div class="l">of 52w range (low $48.76)</div></div><div class="kpi"><div class="v ">43</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-2.3%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-0.8%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-16.0%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">32.3%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">14.3</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-03</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v ">A</div><div class="l">Professional composite grade</div></div><div class="kpi"><div class="v ">6/9</div><div class="l">Piotroski F-score</div></div><div class="kpi"><div class="v up">+4%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $67.26</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $48.76</text><polyline points="0.0,116.7 3.4,124.0 6.9,114.8 10.3,195.2 13.8,177.8 17.2,183.4 20.6,174.6 24.1,174.9 27.5,170.4 31.0,161.2 34.4,131.1 37.8,116.7 41.3,120.8 44.7,126.5 48.2,118.1 51.6,136.5 55.0,175.5 58.5,160.6 61.9,167.2 65.4,171.6 68.8,154.7 72.2,159.2 75.7,129.3 79.1,119.5 82.6,122.5 86.0,120.6 89.4,115.1 92.9,126.5 96.3,148.4 99.8,149.6 103.2,149.8 106.6,147.4 110.1,135.6 113.5,92.8 117.0,94.8 120.4,81.7 123.8,75.1 127.3,70.4 130.7,74.6 134.2,69.8 137.6,64.6 141.0,76.9 144.5,82.3 147.9,74.3 151.4,74.1 154.8,70.9 158.2,83.4 161.7,71.6 165.1,84.3 168.6,81.8 172.0,91.3 175.4,63.8 178.9,75.3 182.3,84.3 185.8,78.4 189.2,84.3 192.6,64.8 196.1,70.9 199.5,89.7 203.0,80.9 206.4,88.6 209.8,91.3 213.3,87.8 216.7,101.4 220.2,91.6 223.6,77.6 227.0,69.8 230.5,67.3 233.9,66.0 237.4,60.2 240.8,76.3 244.2,42.9 247.7,42.2 251.1,27.4 254.6,49.6 258.0,81.8 261.4,87.5 264.9,69.2 268.3,41.4 271.8,35.6 275.2,59.5 278.6,99.8 282.1,85.4 285.5,88.4 289.0,76.8 292.4,99.6 295.8,99.6 299.3,98.0 302.7,106.2 306.2,108.3 309.6,132.6 313.0,128.1 316.5,127.4 319.9,117.5 323.4,132.5 326.8,131.0 330.2,131.8 333.7,117.7 337.1,127.4 340.6,107.6 344.0,134.7 347.4,128.2 350.9,120.6 354.3,120.4 357.8,155.3 361.2,176.7 364.6,196.3 368.1,182.8 371.5,164.3 375.0,163.4 378.4,155.3 381.8,155.8 385.3,139.9 388.7,147.6 392.2,149.9 395.6,146.0 399.0,133.7 402.5,145.5 405.9,145.9 409.4,141.7 412.8,148.9 416.2,154.1 419.7,156.2 423.1,157.0 426.6,174.5 430.0,170.4 433.4,157.7 436.9,151.6 440.3,175.8 443.8,189.5 447.2,202.2 450.6,187.9 454.1,187.8 457.5,178.4 461.0,169.8 464.4,192.0 467.8,186.6 471.3,209.6 474.7,203.6 478.2,205.0 481.6,197.1 485.0,203.3 488.5,193.3 491.9,182.7 495.4,159.4 498.8,138.1 502.2,134.8 505.7,131.7 509.1,124.7 512.6,120.1 516.0,136.5 519.4,141.7 522.9,143.8 526.3,136.2 529.8,128.1 533.2,108.6 536.6,81.9 540.1,79.1 543.5,70.0 547.0,92.9 550.4,95.3 553.8,116.0 557.3,90.6 560.7,100.8 564.2,94.2 567.6,77.1 571.0,64.7 574.5,22.0 577.9,37.8 581.4,47.4 584.8,57.5 588.2,41.2 591.7,47.7 595.1,34.7 598.6,67.6 602.0,65.6 605.4,57.3 608.9,55.0 612.3,59.7 615.8,42.2 619.2,28.1 622.6,51.0 626.1,48.8 629.5,57.2 633.0,61.0 636.4,73.8 639.8,60.6 643.3,47.3 646.7,35.1 650.2,41.1 653.6,49.0 657.0,54.6 660.5,41.1 663.9,56.6 667.4,94.8 670.8,72.3 674.2,84.2 677.7,91.1 681.1,70.8 684.6,70.2 688.0,82.4 691.4,63.6 694.9,68.8 698.3,88.5 701.8,91.5 705.2,93.4 708.6,93.4 712.1,97.0 715.5,109.2 719.0,109.8 722.4,124.5 725.8,141.0 729.3,150.4 732.7,151.1 736.2,142.5 739.6,139.6 743.0,138.9 746.5,150.9 749.9,163.6 753.4,167.4 756.8,153.4 760.2,166.7 763.7,177.6 767.1,183.7 770.6,189.4 774.0,211.1 777.4,218.2 780.9,236.0 784.3,211.2 787.8,202.8 791.2,212.9 794.6,216.5 798.1,235.0 801.5,227.0 805.0,234.0 808.4,218.1 811.8,209.4 815.3,197.9 818.7,213.6 822.2,217.4 825.6,227.3 829.0,219.6 832.5,212.1 835.9,224.3 839.4,216.1 842.8,230.0 846.2,222.9 849.7,218.4 853.1,230.2 856.6,216.7 860.0,226.2" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Professional rank #45 · composite grade <b>A</b></p><p><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip sb" title="Revisions">Revi A+</span> <span class="fgrade chip b" title="Value">Valu B</span> <span class="fgrade chip r" title="Safety">Safe D</span> <span class="fgrade chip h" title="Growth">Grow C</span></p><p>Piotroski F-score <b>6/9</b> · net debt/EBITDA <b>4.3×</b> · avg EPS surprise (last 3) <b>+38.4%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 4 (now 6/9).</li><li>Balance sheet: net debt/EBITDA rises above 5.8× (now 4.3×).</li><li>Price structure: a weekly close below the 52-week low of $48.76 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/RRR" target="_blank" rel="noopener">Yahoo Finance — RRR</a> ·
+<a href="https://stockanalysis.com/stocks/rrr/" target="_blank" rel="noopener">StockAnalysis — RRR</a> ·
+<a href="https://www.google.com/finance/quote/RRR:NASDAQ" target="_blank" rel="noopener">Google Finance — RRR</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR.
+Research and education only — not investment advice.</p></section>
+</div></body></html>

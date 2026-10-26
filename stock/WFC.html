@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WFC — Wells Fargo & Company · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Five lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab active" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a></div></div>
+<p class="crumb"><a href="../index.html">← Back to the Quality-Dip Top 50</a></p>
+<h1>WFC — Wells Fargo & Company</h1>
+<div class="sub">
+· Rank #44 on today's list</div>
+<div><span class="price">$82.39</span>
+<span class="dn" style="font-size:17px">-0.75% today</span>
+<span class="muted"> · as of 2026-10-23 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-14.5%</div><div class="l">vs 52w high ($96.39)</div></div><div class="kpi"><div class="v ">39%</div><div class="l">of 52w range (low $73.42)</div></div><div class="kpi"><div class="v ">48</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-0.7%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+0.8%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-4.7%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">25.6%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">12.0</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+3%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">—</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$1,342M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $96.39</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $73.42</text><polyline points="0.0,115.0 3.4,109.4 6.9,110.4 10.3,118.8 13.8,118.9 17.2,109.8 20.6,106.7 24.1,108.3 27.5,109.9 31.0,118.4 34.4,118.4 37.8,117.9 41.3,117.0 44.7,116.4 48.2,130.9 51.6,127.6 55.0,142.8 58.5,138.7 61.9,135.9 65.4,152.3 68.8,145.7 72.2,131.3 75.7,127.2 79.1,122.9 82.6,120.2 86.0,124.4 89.4,115.8 92.9,87.6 96.3,79.6 99.8,83.1 103.2,81.0 106.6,91.9 110.1,75.1 113.5,57.4 117.0,55.8 120.4,54.5 123.8,61.1 127.3,57.4 130.7,67.7 134.2,53.5 137.6,41.7 141.0,39.9 144.5,32.2 147.9,32.5 151.4,39.4 154.8,41.4 158.2,51.7 161.7,33.1 165.1,22.1 168.6,22.0 172.0,41.6 175.4,29.4 178.9,26.1 182.3,35.3 185.8,48.4 189.2,88.5 192.6,91.2 196.1,96.6 199.5,112.6 203.0,117.7 206.4,99.8 209.8,109.9 213.3,99.7 216.7,93.6 220.2,99.9 223.6,75.6 227.0,77.0 230.5,60.4 233.9,60.0 237.4,52.3 240.8,62.8 244.2,44.5 247.7,38.6 251.1,63.7 254.6,91.3 258.0,116.1 261.4,109.7 264.9,105.8 268.3,94.9 271.8,104.2 275.2,93.6 278.6,126.7 282.1,132.1 285.5,111.7 289.0,116.0 292.4,161.2 295.8,150.7 299.3,151.1 302.7,138.1 306.2,155.0 309.6,170.8 313.0,185.6 316.5,190.5 319.9,203.8 323.4,219.0 326.8,229.7 330.2,214.3 333.7,209.8 337.1,210.2 340.6,208.3 344.0,197.1 347.4,190.7 350.9,178.3 354.3,172.3 357.8,183.8 361.2,200.9 364.6,204.5 368.1,178.3 371.5,169.4 375.0,169.1 378.4,157.5 381.8,158.4 385.3,131.3 388.7,118.6 392.2,124.4 395.6,112.8 399.0,158.9 402.5,172.0 405.9,163.1 409.4,161.6 412.8,156.3 416.2,160.3 419.7,169.3 423.1,169.9 426.6,180.1 430.0,169.5 433.4,160.7 436.9,160.6 440.3,153.9 443.8,167.2 447.2,182.3 450.6,175.7 454.1,170.8 457.5,182.5 461.0,215.3 464.4,234.5 467.8,219.6 471.3,235.0 474.7,232.6 478.2,236.0 481.6,227.1 485.0,225.5 488.5,213.7 491.9,212.7 495.4,208.2 498.8,197.8 502.2,210.9 505.7,205.9 509.1,197.6 512.6,201.1 516.0,179.9 519.4,187.0 522.9,159.6 526.3,156.6 529.8,165.8 533.2,156.1 536.6,156.3 540.1,152.3 543.5,139.9 547.0,145.4 550.4,127.6 553.8,139.2 557.3,154.2 560.7,138.9 564.2,136.2 567.6,134.6 571.0,130.5 574.5,138.7 577.9,142.0 581.4,150.1 584.8,119.4 588.2,123.4 591.7,105.3 595.1,107.8 598.6,122.9 602.0,110.3 605.4,108.0 608.9,103.2 612.3,125.4 615.8,104.7 619.2,99.5 622.6,104.7 626.1,115.7 629.5,102.6 633.0,114.9 636.4,117.0 639.8,115.9 643.3,107.0 646.7,110.7 650.2,138.6 653.6,124.1 657.0,114.6 660.5,101.2 663.9,96.5 667.4,89.3 670.8,104.0 674.2,107.2 677.7,104.6 681.1,105.3 684.6,91.5 688.0,99.1 691.4,92.5 694.9,104.5 698.3,105.8 701.8,119.4 705.2,140.2 708.6,138.9 712.1,130.7 715.5,130.1 719.0,126.0 722.4,128.4 725.8,112.4 729.3,115.2 732.7,109.1 736.2,88.3 739.6,89.1 743.0,81.8 746.5,100.5 749.9,84.6 753.4,86.7 756.8,78.8 760.2,93.6 763.7,84.1 767.1,109.0 770.6,110.5 774.0,117.7 777.4,113.8 780.9,145.4 784.3,157.0 787.8,154.4 791.2,147.0 794.6,167.2 798.1,170.2 801.5,174.2 805.0,172.4 808.4,170.5 811.8,161.3 815.3,160.6 818.7,172.3 822.2,155.8 825.6,141.6 829.0,143.8 832.5,167.8 835.9,166.3 839.4,149.1 842.8,138.6 846.2,157.9 849.7,154.2 853.1,152.2 856.6,146.7 860.0,152.4" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 14% from its 52-week high of $96.39, trading at 39% of its 52-week range. 20-day momentum is -0.7% — easing, inside the screen's not-in-freefall limit. RSI 48 says washed out rather than euphoric, and $1,342M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Revisions">Revi D+</span> <span class="fgrade chip r" title="Safety">Safe F</span></p><p>Piotroski F-score <b>3/9</b> · avg EPS surprise (last 4) <b>+4.8%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 3/9).</li><li>Price structure: a weekly close below the 52-week low of $73.42 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/WFC" target="_blank" rel="noopener">Yahoo Finance — WFC</a> ·
+<a href="https://stockanalysis.com/stocks/wfc/" target="_blank" rel="noopener">StockAnalysis — WFC</a> ·
+<a href="https://www.google.com/finance/quote/WFC:NASDAQ" target="_blank" rel="noopener">Google Finance — WFC</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</div></body></html>

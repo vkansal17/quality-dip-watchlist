@@ -6,8 +6,11 @@ companies that have dipped significantly for situational reasons, computes
 watchlist KPIs, and builds a static site (index + one detail page per stock)
 for GitHub Pages.
 
-Method in one paragraph: universe = 800 most-traded common stocks by average
-daily dollar volume; candidates are 10-50% below their 52-week high, not in
+Method in one paragraph: universe = the 800 most-traded common stocks by
+average daily dollar volume UNION every S&P 1000 constituent (MidCap 400 +
+SmallCap 600), rebuilt monthly by scripts/build_universe.py (about 1,600
+names; the index leg admits committee-vetted mid/small caps like DORM that
+trade under the volume bar); candidates are 10-50% below their 52-week high, not in
 freefall (20d momentum > -20%), RSI <= 65, price >= $5, 30d volatility <= 65%.
 A composite score rewards dip depth in the 15-35% sweet spot, liquidity
 (weighted heavily — the brief is famous brands), stabilization and limited
@@ -168,36 +171,18 @@ def clean_company_name(name):
 
 
 def load_universe(limit=800):
-    """Most-traded common stocks by trailing dollar volume needs prices, so the
-    liquidity ranking reuses the previous run's watchlist universe cache when
-    present; on a cold start it ranks by the directory order after a quick
-    spark pass is overkill — instead we screen the 800 largest-ADV names from
-    the cached stage file if available, else the first 800 directory names.
-    In practice the daily job always has yesterday's data/cache."""
+    """The universe lives in data/universe_cache.json, (re)built by
+    scripts/build_universe.py: the top 800 common stocks by trailing
+    dollar volume (ranked fresh, with fetch failures logged — the first
+    cache silently lost UNH/V/TRV to failed fetches) UNION all S&P 1000
+    constituents. Rebuilt monthly or on demand; the daily run only reads
+    the cache."""
     cache = os.path.join(DATA, "universe_cache.json")
     if os.path.exists(cache):
         return json.load(open(cache))
-    universe = {}
-    for fname in ("nasdaqlisted.txt", "otherlisted.txt"):
-        text = http_get(f"https://www.nasdaqtrader.com/dynamic/symdir/{fname}",
-                        timeout=30).decode("utf-8", "replace")
-        for row in csv.DictReader(io.StringIO(text), delimiter="|"):
-            sym = (row.get("Symbol") or row.get("ACT Symbol") or "").strip()
-            name = (row.get("Security Name") or "").strip()
-            if not sym or not name or sym == "Symbol":
-                continue
-            if (row.get("Test Issue") or "N") == "Y":
-                continue
-            if (row.get("ETF") or "N") == "Y":
-                continue
-            low = name.lower()
-            if any(h in low for h in ("warrant", "unit", "right", "preferred",
-                                     "note due", "%", "etf", "fund")):
-                continue
-            if "%" in name:
-                continue
-            universe[sym] = name
-    return universe
+    raise SystemExit("data/universe_cache.json is missing — build it with "
+                     "scripts/build_universe.py (a silent directory-order "
+                     "fallback is how the first cache lost UNH/V/TRV)")
 
 
 # ---------------------------------------------------------------------------
@@ -266,7 +251,7 @@ def dip_score(k):
 def is_candidate(k):
     off = -k["off_high_pct"]
     return (10 <= off <= 50 and k["mom20_pct"] > -20 and k["rsi14"] <= 65
-            and k["last"] >= 5 and k["adv_m"] >= 50 and k["vol30"] <= 65)
+            and k["last"] >= 5 and k["adv_m"] >= 25 and k["vol30"] <= 65)
 
 
 def earnings_dates(days=120):
@@ -961,7 +946,7 @@ def tabs_html(active, prefix=""):
         for key, href, label in TAB_DEFS)
     return (f'<div class="topbar"><a class="brand" href="{prefix}index.html">'
             f'◆ Quality-Dip Watchlist</a>'
-            f'<span class="brandsub">Five lenses · one universe of the most-traded US stocks</span></div>'
+            f'<span class="brandsub">Five lenses · one universe: top-800 by volume + the S&P 1000</span></div>'
             f'<div class="navwrap"><div class="tabs">{tabs}</div></div>')
 
 
@@ -1268,7 +1253,8 @@ def build_site(rows, prev_ranks, meta, pro=None, pro_ranks=None):
 <h1>📉 Quality-Dip Watchlist — Top 50</h1>
 <div class="sub">Famous, fundamentally strong brands that have dipped significantly for <b>situational</b>
 reasons — the kind of names expected to recover when conditions normalize. Screened from the
-{meta['universe_n']} most-traded US common stocks ({meta['screened']} with usable data,
+{meta['universe_n']} US common stocks — the 800 most-traded by dollar volume, plus every
+S&P 1000 member ({meta['screened']} with usable data,
 {meta['candidates']} passing the dip screen). Prices as of the <b>{asof}</b> close · refreshed daily at 7:00 AM CT.
 Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
 <div class="cards">
@@ -1435,7 +1421,8 @@ def build_pro_page(pro_rows, prev_pro_ranks, meta, n_pool, n_vetoed):
 <div class="wrap">
 {TABS_PRO}
 <h1>🏦 Professional Top 50</h1>
-<div class="sub">The professionals' lens, applied to the same {meta['universe_n']} most-traded US stocks:
+<div class="sub">The professionals' lens, applied to the same {meta['universe_n']} US stocks
+(top 800 by trading volume, plus the full S&P 1000):
 <b>cash-flow quality and balance-sheet survivability first, price last</b> — a factor composite in the
 spirit of Seeking Alpha Quant and the Zacks Rank. Six factors, percentile-ranked across
 {n_pool} names with full SEC filing data: Profitability (22%), Revisions (20%), Value (20%),
@@ -1899,7 +1886,7 @@ def main():
     global UNIVERSE_NAME
     UNIVERSE_NAME = universe
     tickers = sorted(universe)
-    print(f"Universe: {len(tickers)} most-traded common stocks", flush=True)
+    print(f"Universe: {len(tickers)} common stocks (top-800 volume ∪ S&P 1000)", flush=True)
 
     results = {}
     fails = 0

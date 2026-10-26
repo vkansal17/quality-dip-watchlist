@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ANIP — ANI Pharmaceuticals · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Five lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab active" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a></div></div>
+<p class="crumb"><a href="../pro.html">← Back to the Professional Top 50</a></p>
+<h1>ANIP — ANI Pharmaceuticals</h1>
+<div class="sub">
+· Professional rank #37 · composite grade A</div>
+<div><span class="price">$72.61</span>
+<span class="dn" style="font-size:17px">-1.55% today</span>
+<span class="muted"> · as of 2026-10-23 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-23.1%</div><div class="l">vs 52w high ($94.48)</div></div><div class="kpi"><div class="v ">10%</div><div class="l">of 52w range (low $70.16)</div></div><div class="kpi"><div class="v ">49</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-1.9%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-0.4%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-23.0%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">30.1%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">19.8</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-06</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v ">A</div><div class="l">Professional composite grade</div></div><div class="kpi"><div class="v ">7/9</div><div class="l">Piotroski F-score</div></div><div class="kpi"><div class="v up">+4%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $94.48</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $70.16</text><polyline points="0.0,24.1 3.4,36.3 6.9,32.5 10.3,41.8 13.8,44.4 17.2,56.1 20.6,25.7 24.1,22.0 27.5,38.4 31.0,59.4 34.4,57.6 37.8,70.8 41.3,74.3 44.7,85.4 48.2,109.4 51.6,114.0 55.0,132.1 58.5,140.0 61.9,146.5 65.4,162.4 68.8,151.9 72.2,140.8 75.7,121.1 79.1,111.0 82.6,106.7 86.0,110.1 89.4,130.8 92.9,125.9 96.3,125.3 99.8,133.8 103.2,137.6 106.6,134.7 110.1,131.6 113.5,130.7 117.0,146.0 120.4,136.1 123.8,139.7 127.3,128.7 130.7,124.5 134.2,124.3 137.6,143.1 141.0,143.0 144.5,130.2 147.9,128.2 151.4,137.3 154.8,154.5 158.2,158.7 161.7,163.2 165.1,161.2 168.6,171.6 172.0,154.1 175.4,140.3 178.9,182.1 182.3,111.1 185.8,129.4 189.2,105.2 192.6,102.9 196.1,106.9 199.5,98.6 203.0,100.8 206.4,102.0 209.8,123.1 213.3,137.7 216.7,145.5 220.2,153.7 223.6,131.8 227.0,133.1 230.5,149.4 233.9,150.5 237.4,138.2 240.8,136.2 244.2,133.2 247.7,146.4 251.1,150.2 254.6,182.4 258.0,178.5 261.4,172.6 264.9,159.1 268.3,168.7 271.8,166.1 275.2,169.0 278.6,192.5 282.1,178.5 285.5,182.0 289.0,174.5 292.4,203.1 295.8,191.5 299.3,183.7 302.7,179.9 306.2,188.1 309.6,201.9 313.0,195.1 316.5,185.0 319.9,182.1 323.4,215.5 326.8,233.1 330.2,218.3 333.7,199.7 337.1,200.7 340.6,195.0 344.0,196.3 347.4,202.9 350.9,208.3 354.3,201.6 357.8,201.0 361.2,212.6 364.6,204.8 368.1,176.7 371.5,185.0 375.0,200.4 378.4,174.1 381.8,154.1 385.3,158.1 388.7,148.2 392.2,163.8 395.6,164.3 399.0,164.5 402.5,180.4 405.9,166.4 409.4,141.3 412.8,134.2 416.2,149.9 419.7,148.2 423.1,166.5 426.6,161.4 430.0,152.9 433.4,162.6 436.9,167.3 440.3,154.3 443.8,146.0 447.2,129.0 450.6,108.7 454.1,113.7 457.5,115.0 461.0,133.0 464.4,160.8 467.8,153.8 471.3,141.7 474.7,153.1 478.2,166.9 481.6,155.2 485.0,146.6 488.5,131.8 491.9,125.0 495.4,125.5 498.8,137.0 502.2,133.9 505.7,139.6 509.1,162.5 512.6,178.4 516.0,196.5 519.4,191.4 522.9,156.5 526.3,139.6 529.8,148.3 533.2,138.9 536.6,133.1 540.1,134.9 543.5,134.6 547.0,129.3 550.4,123.0 553.8,144.8 557.3,153.9 560.7,144.3 564.2,123.5 567.6,125.5 571.0,120.6 574.5,109.8 577.9,113.2 581.4,125.0 584.8,122.6 588.2,96.4 591.7,105.0 595.1,96.7 598.6,107.4 602.0,116.2 605.4,131.2 608.9,139.9 612.3,144.6 615.8,142.2 619.2,132.5 622.6,156.5 626.1,169.5 629.5,156.9 633.0,170.4 636.4,162.3 639.8,170.1 643.3,163.8 646.7,140.3 650.2,133.8 653.6,145.6 657.0,156.1 660.5,148.9 663.9,156.5 667.4,150.5 670.8,126.3 674.2,164.8 677.7,186.7 681.1,197.5 684.6,192.4 688.0,195.4 691.4,179.9 694.9,184.6 698.3,177.0 701.8,166.8 705.2,173.0 708.6,190.3 712.1,200.7 715.5,187.7 719.0,197.3 722.4,206.5 725.8,212.5 729.3,208.8 732.7,220.5 736.2,210.5 739.6,219.9 743.0,226.6 746.5,235.4 749.9,231.2 753.4,224.6 756.8,235.7 760.2,233.9 763.7,218.8 767.1,205.8 770.6,190.0 774.0,183.4 777.4,159.5 780.9,167.8 784.3,198.4 787.8,201.9 791.2,202.2 794.6,194.9 798.1,214.4 801.5,214.1 805.0,211.4 808.4,218.2 811.8,214.7 815.3,224.0 818.7,220.4 822.2,220.0 825.6,203.2 829.0,205.8 832.5,230.0 835.9,236.0 839.4,217.3 842.8,217.3 846.2,214.9 849.7,213.9 853.1,217.7 856.6,204.4 860.0,214.4" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Professional rank #37 · composite grade <b>A</b></p><p><span class="fgrade chip h" title="Profitability">Prof C+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip b" title="Value">Valu B</span> <span class="fgrade chip b" title="Safety">Safe B+</span></p><p>Piotroski F-score <b>7/9</b> · FCF yield <b>11.1%</b> · avg EPS surprise (last 4) <b>+22.7%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Price structure: a weekly close below the 52-week low of $70.16 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/ANIP" target="_blank" rel="noopener">Yahoo Finance — ANIP</a> ·
+<a href="https://stockanalysis.com/stocks/anip/" target="_blank" rel="noopener">StockAnalysis — ANIP</a> ·
+<a href="https://www.google.com/finance/quote/ANIP:NASDAQ" target="_blank" rel="noopener">Google Finance — ANIP</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR.
+Research and education only — not investment advice.</p></section>
+</div></body></html>

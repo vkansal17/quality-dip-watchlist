@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRDO — Perdoceo Education · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Five lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab active" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a></div></div>
+<p class="crumb"><a href="../pro.html">← Back to the Professional Top 50</a></p>
+<h1>PRDO — Perdoceo Education</h1>
+<div class="sub">
+· Professional rank #26 · composite grade A</div>
+<div><span class="price">$33.90</span>
+<span class="up" style="font-size:17px">+0.24% today</span>
+<span class="muted"> · as of 2026-10-23 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-10.7%</div><div class="l">vs 52w high ($37.95)</div></div><div class="kpi"><div class="v ">62%</div><div class="l">of 52w range (low $27.41)</div></div><div class="kpi"><div class="v ">60</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+11.2%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+12.7%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-8.1%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">27.1%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">14.0</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-03</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v ">A</div><div class="l">Professional composite grade</div></div><div class="kpi"><div class="v ">7/9</div><div class="l">Piotroski F-score</div></div><div class="kpi"><div class="v up">+58%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $37.95</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $27.41</text><polyline points="0.0,43.7 3.4,40.7 6.9,47.6 10.3,89.2 13.8,76.0 17.2,147.7 20.6,165.3 24.1,162.9 27.5,175.3 31.0,187.7 34.4,180.8 37.8,169.4 41.3,152.3 44.7,157.2 48.2,158.4 51.6,160.7 55.0,180.8 58.5,190.7 61.9,193.0 65.4,200.3 68.8,208.0 72.2,236.0 75.7,225.6 79.1,225.0 82.6,224.8 86.0,227.5 89.4,211.8 92.9,216.1 96.3,213.5 99.8,219.1 103.2,219.4 106.6,220.0 110.1,216.1 113.5,209.6 117.0,206.4 120.4,202.3 123.8,193.8 127.3,206.4 130.7,200.9 134.2,197.2 137.6,193.4 141.0,188.9 144.5,189.1 147.9,188.1 151.4,187.1 154.8,186.7 158.2,197.0 161.7,201.7 165.1,159.7 168.6,151.3 172.0,153.6 175.4,140.0 178.9,140.0 182.3,143.2 185.8,150.9 189.2,163.7 192.6,146.7 196.1,151.5 199.5,150.7 203.0,134.7 206.4,130.2 209.8,141.8 213.3,146.5 216.7,149.9 220.2,147.1 223.6,147.5 227.0,142.2 230.5,129.8 233.9,158.0 237.4,154.2 240.8,149.7 244.2,148.7 247.7,156.6 251.1,157.6 254.6,173.9 258.0,173.9 261.4,154.4 264.9,147.1 268.3,144.0 271.8,152.3 275.2,125.8 278.6,146.9 282.1,131.4 285.5,115.2 289.0,116.0 292.4,115.4 295.8,114.2 299.3,104.6 302.7,97.3 306.2,94.9 309.6,93.9 313.0,89.6 316.5,97.7 319.9,94.3 323.4,82.7 326.8,66.1 330.2,88.6 333.7,79.7 337.1,96.5 340.6,93.3 344.0,90.8 347.4,65.0 350.9,49.2 354.3,23.8 357.8,23.2 361.2,36.6 364.6,37.6 368.1,37.0 371.5,26.3 375.0,30.5 378.4,22.0 381.8,41.9 385.3,47.2 388.7,67.7 392.2,74.2 395.6,86.8 399.0,81.3 402.5,79.5 405.9,72.4 409.4,55.1 412.8,53.3 416.2,68.3 419.7,59.4 423.1,111.9 426.6,135.7 430.0,125.3 433.4,105.9 436.9,95.3 440.3,103.4 443.8,109.5 447.2,105.9 450.6,87.0 454.1,100.0 457.5,93.3 461.0,60.8 464.4,69.1 467.8,79.5 471.3,83.5 474.7,81.3 478.2,102.0 481.6,88.6 485.0,104.4 488.5,106.1 491.9,106.7 495.4,102.6 498.8,104.4 502.2,111.5 505.7,120.7 509.1,135.1 512.6,125.3 516.0,117.2 519.4,120.7 522.9,99.4 526.3,96.7 529.8,100.6 533.2,95.5 536.6,77.4 540.1,75.6 543.5,101.4 547.0,136.3 550.4,139.6 553.8,147.5 557.3,142.2 560.7,126.6 564.2,128.2 567.6,124.7 571.0,122.9 574.5,115.8 577.9,138.9 581.4,142.8 584.8,117.4 588.2,93.5 591.7,81.9 595.1,78.6 598.6,80.3 602.0,69.1 605.4,67.5 608.9,50.4 612.3,55.1 615.8,135.7 619.2,132.9 622.6,149.7 626.1,175.7 629.5,173.1 633.0,195.4 636.4,166.4 639.8,176.1 643.3,148.5 646.7,125.8 650.2,91.0 653.6,133.5 657.0,146.7 660.5,131.2 663.9,124.1 667.4,121.9 670.8,133.7 674.2,105.2 677.7,154.4 681.1,158.2 684.6,156.2 688.0,145.2 691.4,142.6 694.9,142.0 698.3,129.4 701.8,129.4 705.2,133.1 708.6,122.1 712.1,122.3 715.5,114.2 719.0,113.2 722.4,106.1 725.8,110.9 729.3,117.6 732.7,122.7 736.2,120.7 739.6,118.6 743.0,118.4 746.5,120.7 749.9,118.8 753.4,125.8 756.8,122.1 760.2,121.3 763.7,124.1 767.1,117.0 770.6,128.0 774.0,131.6 777.4,136.1 780.9,158.4 784.3,154.2 787.8,149.3 791.2,173.5 794.6,183.2 798.1,181.2 801.5,164.3 805.0,146.5 808.4,144.6 811.8,152.1 815.3,141.6 818.7,138.9 822.2,113.8 825.6,108.1 829.0,107.7 832.5,107.1 835.9,111.3 839.4,104.8 842.8,107.7 846.2,107.3 849.7,115.0 853.1,126.8 856.6,105.9 860.0,104.2" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Professional rank #26 · composite grade <b>A</b></p><p><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip b" title="Value">Valu B</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip b" title="Growth">Grow B</span></p><p>Piotroski F-score <b>7/9</b> · net debt/EBITDA <b>-0.7×</b> · avg EPS surprise (last 2) <b>+6.8%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Price structure: a weekly close below the 52-week low of $27.41 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/PRDO" target="_blank" rel="noopener">Yahoo Finance — PRDO</a> ·
+<a href="https://stockanalysis.com/stocks/prdo/" target="_blank" rel="noopener">StockAnalysis — PRDO</a> ·
+<a href="https://www.google.com/finance/quote/PRDO:NASDAQ" target="_blank" rel="noopener">Google Finance — PRDO</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR.
+Research and education only — not investment advice.</p></section>
+</div></body></html>

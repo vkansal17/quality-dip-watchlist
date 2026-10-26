@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TDG — Transdigm Group Incorporated · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Five lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab active" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a></div></div>
+<p class="crumb"><a href="../index.html">← Back to the Quality-Dip Top 50</a></p>
+<h1>TDG — Transdigm Group Incorporated</h1>
+<div class="sub">
+· Rank #30 on today's list</div>
+<div><span class="price">$1,104.84</span>
+<span class="dn" style="font-size:17px">-3.23% today</span>
+<span class="muted"> · as of 2026-10-23 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-23.8%</div><div class="l">vs 52w high ($1,450.00)</div></div><div class="kpi"><div class="v ">8%</div><div class="l">of 52w range (low $1,076.01)</div></div><div class="kpi"><div class="v ">44</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-1.0%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+0.5%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-18.7%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">20.8%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">32.8</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-11</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-12%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">48.2%</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$396M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $1,450.00</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $1,076.01</text><polyline points="0.0,73.9 3.4,76.7 6.9,87.7 10.3,98.7 13.8,104.3 17.2,103.0 20.6,107.8 24.1,112.4 27.5,127.1 31.0,124.1 34.4,116.6 37.8,114.2 41.3,111.3 44.7,103.3 48.2,93.5 51.6,84.6 55.0,87.4 58.5,78.6 61.9,84.3 65.4,91.9 68.8,80.8 72.2,87.4 75.7,77.8 79.1,76.4 82.6,73.4 86.0,76.4 89.4,82.9 92.9,86.5 96.3,73.4 99.8,81.0 103.2,80.8 106.6,97.5 110.1,106.2 113.5,97.8 117.0,110.9 120.4,112.4 123.8,124.7 127.3,129.8 130.7,129.1 134.2,121.1 137.6,106.8 141.0,99.5 144.5,100.1 147.9,102.5 151.4,98.7 154.8,98.4 158.2,90.8 161.7,74.3 165.1,69.0 168.6,59.5 172.0,59.1 175.4,63.5 178.9,55.1 182.3,58.6 185.8,60.9 189.2,37.0 192.6,31.4 196.1,22.0 199.5,22.8 203.0,22.0 206.4,38.9 209.8,39.6 213.3,30.0 216.7,35.1 220.2,43.7 223.6,38.0 227.0,34.9 230.5,30.3 233.9,106.7 237.4,128.0 240.8,128.9 244.2,116.1 247.7,107.8 251.1,101.0 254.6,92.8 258.0,110.1 261.4,115.5 264.9,106.6 268.3,99.1 271.8,90.6 275.2,85.5 278.6,110.0 282.1,111.3 285.5,110.6 289.0,99.7 292.4,106.2 295.8,98.5 299.3,92.8 302.7,99.2 306.2,110.7 309.6,111.0 313.0,120.5 316.5,126.0 319.9,131.7 323.4,150.2 326.8,156.7 330.2,137.7 333.7,146.4 337.1,165.1 340.6,169.7 344.0,178.0 347.4,192.0 350.9,186.3 354.3,189.9 357.8,192.6 361.2,199.4 364.6,203.5 368.1,188.5 371.5,180.3 375.0,183.9 378.4,171.0 381.8,182.5 385.3,153.7 388.7,150.4 392.2,160.9 395.6,146.1 399.0,109.8 402.5,122.3 405.9,148.9 409.4,127.4 412.8,122.4 416.2,161.8 419.7,172.1 423.1,184.6 426.6,194.7 430.0,188.9 433.4,191.3 436.9,197.8 440.3,188.0 443.8,191.1 447.2,193.8 450.6,170.0 454.1,146.0 457.5,141.0 461.0,156.4 464.4,165.8 467.8,170.1 471.3,164.3 474.7,177.2 478.2,194.3 481.6,175.2 485.0,177.0 488.5,166.1 491.9,159.7 495.4,157.3 498.8,150.2 502.2,141.6 505.7,127.8 509.1,131.7 512.6,143.1 516.0,138.2 519.4,158.4 522.9,149.0 526.3,142.9 529.8,161.5 533.2,132.3 536.6,158.0 540.1,132.1 543.5,133.0 547.0,120.8 550.4,107.1 553.8,98.2 557.3,91.6 560.7,110.2 564.2,109.2 567.6,94.9 571.0,89.2 574.5,93.8 577.9,94.4 581.4,89.5 584.8,102.6 588.2,80.1 591.7,81.4 595.1,90.9 598.6,109.9 602.0,110.3 605.4,112.8 608.9,145.0 612.3,156.3 615.8,146.6 619.2,147.3 622.6,156.8 626.1,162.3 629.5,161.9 633.0,168.1 636.4,157.1 639.8,144.0 643.3,115.7 646.7,103.3 650.2,128.1 653.6,136.5 657.0,133.9 660.5,116.1 663.9,122.1 667.4,133.7 670.8,129.5 674.2,150.6 677.7,151.6 681.1,141.0 684.6,144.8 688.0,138.6 691.4,132.5 694.9,143.4 698.3,145.7 701.8,151.9 705.2,176.3 708.6,164.9 712.1,165.6 715.5,169.3 719.0,161.0 722.4,172.8 725.8,173.1 729.3,181.2 732.7,190.4 736.2,191.5 739.6,189.2 743.0,186.8 746.5,196.4 749.9,207.6 753.4,206.9 756.8,199.2 760.2,215.9 763.7,230.9 767.1,233.7 770.6,236.0 774.0,230.3 777.4,216.8 780.9,215.2 784.3,219.3 787.8,219.3 791.2,213.0 794.6,217.0 798.1,222.4 801.5,232.2 805.0,223.9 808.4,227.8 811.8,226.5 815.3,220.4 818.7,224.4 822.2,228.4 825.6,217.7 829.0,210.9 832.5,215.2 835.9,216.7 839.4,202.7 842.8,199.8 846.2,198.0 849.7,197.6 853.1,205.5 856.6,198.4 860.0,219.5" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 24% from its 52-week high of $1,450.00, trading at 8% of its 52-week range. 20-day momentum is -1.0% — easing, inside the screen's not-in-freefall limit. RSI 44 says washed out rather than euphoric, and $396M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Vetoed out of the professional list</p><p><span class="fgrade chip h" title="Profitability">Prof C+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip r" title="Value">Valu D</span> <span class="fgrade chip r" title="Safety">Safe D</span> <span class="fgrade chip b" title="Growth">Grow B</span></p><p>Piotroski F-score <b>4/9</b> · FCF yield <b>2.8%</b> · net debt/EBITDA <b>6.6×</b> · avg EPS surprise (last 4) <b>+7.8%</b></p><p class='flag'>⛔ Professional veto: net debt/EBITDA 6.6× with thin coverage — balance-sheet veto</p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 4/9).</li><li>Balance sheet: net debt/EBITDA rises above 8.1× (now 6.6×).</li><li>Cash flow: free cash flow turns negative on a trailing-year basis.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/TDG" target="_blank" rel="noopener">Yahoo Finance — TDG</a> ·
+<a href="https://stockanalysis.com/stocks/tdg/" target="_blank" rel="noopener">StockAnalysis — TDG</a> ·
+<a href="https://www.google.com/finance/quote/TDG:NASDAQ" target="_blank" rel="noopener">Google Finance — TDG</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</div></body></html>
