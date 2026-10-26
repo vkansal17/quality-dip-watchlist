@@ -4,45 +4,70 @@
 :root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
 *{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
 a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
-.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
-.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
-.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
 .brand:hover{text-decoration:none;color:var(--acc)}
-.brandsub{color:var(--mut);font-size:12.5px}
-h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
 .sub b{color:var(--txt)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
-.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
-.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
-.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
 .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
 table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
-th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
-th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
 th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
 tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
 td.wrap,th.wrap{white-space:normal}
-td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
-td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
-.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ind{color:var(--mut)} .muted{color:var(--mut)}
 .up{color:var(--up)} .dn{color:var(--dn)}
-.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
 .sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
-.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
 .range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
 .flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
 .star{color:#fbbf24}
-.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
-.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
-.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
-.tab:hover{text-decoration:none;color:var(--txt)}
-.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
 .crumb{font-size:13px;margin:2px 0 10px}
-.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
-.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
-ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
 .kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
@@ -52,38 +77,54 @@ section table{margin:10px 0}
 .bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
 .price{font-size:30px;font-weight:800}
 .legs{display:inline-flex;gap:4px;vertical-align:middle}
-.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
 .legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
-.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
-.srcs .dom{color:var(--mut);font-size:12px}
-.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
 details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
 details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
 details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
 details.gloss ul{margin:6px 0;padding-left:20px}
-.evline{font-size:12px;color:var(--mut);margin-top:5px}
-@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
-@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
-@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
-.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
-.card .n{font-size:20px} section{padding:14px 14px}}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
 </style></head><body>
-<div class="wrap">
-<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Six lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab active" href="../macro.html">🌐 Macro & Themes</a><a class="tab" href="../holds.html">🟡 Top 50 Holds</a></div></div>
-<p class="crumb"><a href="../macro.html">← Back to Macro & Themes</a></p>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Seven lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab active" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../macro.html">← Back to Theme Buys</a></p>
 <h1>NTRS — Northern Trust</h1>
 <div class="sub">
 · Macro & Themes validated list</div>
-<div><span class="price">$170.59</span>
-<span class="up" style="font-size:17px">+1.59% today</span>
+<div><span class="price">$169.55</span>
+<span class="up" style="font-size:17px">+0.97% today</span>
 <span class="muted"> · as of 2026-10-26 close</span></div>
-<div class="kpis"><div class="kpi"><div class="v dn">-10.9%</div><div class="l">vs 52w high ($191.47)</div></div><div class="kpi"><div class="v ">70%</div><div class="l">of 52w range (low $122.72)</div></div><div class="kpi"><div class="v ">50</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-2.3%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-2.2%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+35.2%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">19.0%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">18.9</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-16%</div><div class="l">VPT trend (20d)</div></div></div>
-<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $191.47</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $122.72</text><polyline points="0.0,225.2 3.4,221.6 6.9,221.9 10.3,223.0 13.8,217.5 17.2,220.6 20.6,221.0 24.1,219.0 27.5,218.6 31.0,213.5 34.4,213.1 37.8,212.2 41.3,205.9 44.7,216.7 48.2,221.5 51.6,236.0 55.0,229.6 58.5,225.8 61.9,226.7 65.4,222.3 68.8,217.2 72.2,213.6 75.7,209.1 79.1,209.2 82.6,210.3 86.0,212.0 89.4,206.6 92.9,203.3 96.3,203.3 99.8,202.5 103.2,202.8 106.6,189.7 110.1,181.9 113.5,186.8 117.0,183.4 120.4,187.6 123.8,189.1 127.3,187.4 130.7,183.9 134.2,181.4 137.6,181.6 141.0,180.0 144.5,181.8 147.9,183.1 151.4,188.0 154.8,192.8 158.2,184.5 161.7,169.8 165.1,169.4 168.6,174.1 172.0,168.6 175.4,164.3 178.9,163.0 182.3,165.9 185.8,165.6 189.2,160.1 192.6,164.9 196.1,171.9 199.5,168.5 203.0,141.4 206.4,155.3 209.8,152.2 213.3,151.2 216.7,150.3 220.2,149.0 223.6,152.9 227.0,146.0 230.5,151.6 233.9,148.6 237.4,158.9 240.8,144.4 244.2,136.1 247.7,154.4 251.1,162.0 254.6,169.1 258.0,162.4 261.4,159.7 264.9,158.8 268.3,166.6 271.8,167.4 275.2,181.0 278.6,177.8 282.1,164.3 285.5,158.6 289.0,172.6 292.4,165.9 295.8,175.2 299.3,166.4 302.7,171.3 306.2,186.6 309.6,187.2 313.0,188.5 316.5,179.4 319.9,190.6 323.4,191.8 326.8,193.1 330.2,192.2 333.7,198.2 337.1,195.3 340.6,195.5 344.0,191.1 347.4,181.1 350.9,183.1 354.3,188.5 357.8,197.8 361.2,193.9 364.6,183.6 368.1,177.8 371.5,175.2 375.0,171.9 378.4,164.7 381.8,145.7 385.3,142.9 388.7,144.1 392.2,138.7 395.6,133.0 399.0,132.2 402.5,130.0 405.9,122.6 409.4,123.1 412.8,83.4 416.2,95.6 419.7,103.2 423.1,107.5 426.6,95.6 430.0,98.5 433.4,104.9 436.9,100.2 440.3,106.0 443.8,116.1 447.2,115.0 450.6,109.7 454.1,119.9 457.5,118.7 461.0,116.8 464.4,112.6 467.8,110.7 471.3,106.6 474.7,107.9 478.2,103.6 481.6,104.7 485.0,101.4 488.5,97.8 491.9,95.8 495.4,89.0 498.8,95.2 502.2,94.0 505.7,103.0 509.1,94.0 512.6,89.5 516.0,93.7 519.4,79.3 522.9,87.4 526.3,91.6 529.8,87.0 533.2,100.9 536.6,86.5 540.1,75.3 543.5,80.4 547.0,73.8 550.4,73.4 553.8,82.3 557.3,71.5 560.7,69.3 564.2,76.6 567.6,70.2 571.0,76.8 574.5,73.5 577.9,76.9 581.4,71.4 584.8,68.6 588.2,54.2 591.7,53.4 595.1,58.0 598.6,48.8 602.0,46.7 605.4,44.9 608.9,37.0 612.3,23.1 615.8,31.2 619.2,43.1 622.6,49.0 626.1,42.0 629.5,61.9 633.0,64.1 636.4,56.1 639.8,49.9 643.3,55.0 646.7,65.0 650.2,49.9 653.6,50.9 657.0,50.9 660.5,50.2 663.9,44.1 667.4,44.8 670.8,40.6 674.2,33.2 677.7,33.5 681.1,22.4 684.6,25.1 688.0,22.2 691.4,22.0 694.9,24.8 698.3,40.9 701.8,49.9 705.2,45.6 708.6,37.0 712.1,36.5 715.5,33.9 719.0,38.2 722.4,36.6 725.8,40.4 729.3,49.4 732.7,45.3 736.2,34.5 739.6,37.1 743.0,42.5 746.5,43.1 749.9,35.3 753.4,29.1 756.8,52.4 760.2,61.6 763.7,68.2 767.1,67.2 770.6,64.3 774.0,61.0 777.4,78.2 780.9,76.4 784.3,74.8 787.8,71.0 791.2,74.7 794.6,79.7 798.1,90.8 801.5,91.3 805.0,84.5 808.4,86.7 811.8,90.5 815.3,94.5 818.7,93.5 822.2,94.4 825.6,91.3 829.0,96.7 832.5,111.7 835.9,103.0 839.4,102.7 842.8,106.1 846.2,103.0 849.7,98.4 853.1,101.8 856.6,95.3 860.0,87.0" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="kpis"><div class="kpi"><div class="v dn">-11.4%</div><div class="l">vs 52w high ($191.47)</div></div><div class="kpi"><div class="v ">68%</div><div class="l">of 52w range (low $122.72)</div></div><div class="kpi"><div class="v ">48</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-2.9%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-2.9%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+34.4%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">18.6%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">18.8</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-12%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $191.47</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $122.72</text><polyline points="0.0,225.2 3.4,221.6 6.9,221.9 10.3,223.0 13.8,217.5 17.2,220.6 20.6,221.0 24.1,219.0 27.5,218.6 31.0,213.5 34.4,213.1 37.8,212.2 41.3,205.9 44.7,216.7 48.2,221.5 51.6,236.0 55.0,229.6 58.5,225.8 61.9,226.7 65.4,222.3 68.8,217.2 72.2,213.6 75.7,209.1 79.1,209.2 82.6,210.3 86.0,212.0 89.4,206.6 92.9,203.3 96.3,203.3 99.8,202.5 103.2,202.8 106.6,189.7 110.1,181.9 113.5,186.8 117.0,183.4 120.4,187.6 123.8,189.1 127.3,187.4 130.7,183.9 134.2,181.4 137.6,181.6 141.0,180.0 144.5,181.8 147.9,183.1 151.4,188.0 154.8,192.8 158.2,184.5 161.7,169.8 165.1,169.4 168.6,174.1 172.0,168.6 175.4,164.3 178.9,163.0 182.3,165.9 185.8,165.6 189.2,160.1 192.6,164.9 196.1,171.9 199.5,168.5 203.0,141.4 206.4,155.3 209.8,152.2 213.3,151.2 216.7,150.3 220.2,149.0 223.6,152.9 227.0,146.0 230.5,151.6 233.9,148.6 237.4,158.9 240.8,144.4 244.2,136.1 247.7,154.4 251.1,162.0 254.6,169.1 258.0,162.4 261.4,159.7 264.9,158.8 268.3,166.6 271.8,167.4 275.2,181.0 278.6,177.8 282.1,164.3 285.5,158.6 289.0,172.6 292.4,165.9 295.8,175.2 299.3,166.4 302.7,171.3 306.2,186.6 309.6,187.2 313.0,188.5 316.5,179.4 319.9,190.6 323.4,191.8 326.8,193.1 330.2,192.2 333.7,198.2 337.1,195.3 340.6,195.5 344.0,191.1 347.4,181.1 350.9,183.1 354.3,188.5 357.8,197.8 361.2,193.9 364.6,183.6 368.1,177.8 371.5,175.2 375.0,171.9 378.4,164.7 381.8,145.7 385.3,142.9 388.7,144.1 392.2,138.7 395.6,133.0 399.0,132.2 402.5,130.0 405.9,122.6 409.4,123.1 412.8,83.4 416.2,95.6 419.7,103.2 423.1,107.5 426.6,95.6 430.0,98.5 433.4,104.9 436.9,100.2 440.3,106.0 443.8,116.1 447.2,115.0 450.6,109.7 454.1,119.9 457.5,118.7 461.0,116.8 464.4,112.6 467.8,110.7 471.3,106.6 474.7,107.9 478.2,103.6 481.6,104.7 485.0,101.4 488.5,97.8 491.9,95.8 495.4,89.0 498.8,95.2 502.2,94.0 505.7,103.0 509.1,94.0 512.6,89.5 516.0,93.7 519.4,79.3 522.9,87.4 526.3,91.6 529.8,87.0 533.2,100.9 536.6,86.5 540.1,75.3 543.5,80.4 547.0,73.8 550.4,73.4 553.8,82.3 557.3,71.5 560.7,69.3 564.2,76.6 567.6,70.2 571.0,76.8 574.5,73.5 577.9,76.9 581.4,71.4 584.8,68.6 588.2,54.2 591.7,53.4 595.1,58.0 598.6,48.8 602.0,46.7 605.4,44.9 608.9,37.0 612.3,23.1 615.8,31.2 619.2,43.1 622.6,49.0 626.1,42.0 629.5,61.9 633.0,64.1 636.4,56.1 639.8,49.9 643.3,55.0 646.7,65.0 650.2,49.9 653.6,50.9 657.0,50.9 660.5,50.2 663.9,44.1 667.4,44.8 670.8,40.6 674.2,33.2 677.7,33.5 681.1,22.4 684.6,25.1 688.0,22.2 691.4,22.0 694.9,24.8 698.3,40.9 701.8,49.9 705.2,45.6 708.6,37.0 712.1,36.5 715.5,33.9 719.0,38.2 722.4,36.6 725.8,40.4 729.3,49.4 732.7,45.3 736.2,34.5 739.6,37.1 743.0,42.5 746.5,43.1 749.9,35.3 753.4,29.1 756.8,52.4 760.2,61.6 763.7,68.2 767.1,67.2 770.6,64.3 774.0,61.0 777.4,78.2 780.9,76.4 784.3,74.8 787.8,71.0 791.2,74.7 794.6,79.7 798.1,90.8 801.5,91.3 805.0,84.5 808.4,86.7 811.8,90.5 815.3,94.5 818.7,93.5 822.2,94.4 825.6,91.3 829.0,96.7 832.5,111.7 835.9,103.0 839.4,102.7 842.8,106.1 846.2,103.0 849.7,98.4 853.1,101.8 856.6,95.3 860.0,90.2" fill="none" stroke="#34d399" stroke-width="2"/></svg>
 <div class="muted" style="font-size:12px">One year of daily closes.</div></div>
-<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip r" title="Safety">Safe D</span> <span class="fgrade chip r" title="Growth">Grow D</span></p><p>Piotroski F-score <b>5/9</b> · FCF yield <b>16.6%</b> · avg EPS surprise (last 4) <b>+12.6%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 5/9).</li><li>Price structure: a weekly close below the 52-week low of $122.72 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip b" title="Value">Valu B</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip r" title="Growth">Grow D</span></p><p>Piotroski F-score <b>5/9</b> · FCF yield <b>16.7%</b> · net debt/EBITDA <b>0.0×</b> · avg EPS surprise (last 4) <b>+12.6%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 5/9).</li><li>Price structure: a weekly close below the 52-week low of $122.72 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
 <section><h2>🔬 Research verdict</h2><p><span class='chip sb' style='font-size:15px'>BUY</span> <span class="audit" title="Every load-bearing figure on this card was checked against its cited sources in the 2026-10-25 evidence audit (data/web_crosscheck.json). Overall: mixed.">✓ evidence cross-checked · mixed</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Economics & Growth · carried from Validated Top 50 research</span></p><p>Northern Trust beat Q3 2026 cleanly (GAAP EPS $3.40 vs ~$2.87 consensus — adjusted EPS ex-notables was $3.20 after ~$48.7M of pre-tax one-time gains — revenue +13% YoY to $2.29B, ROE 20.1%) on trust fees +8% and net interest income +14%, and capital returns are accelerating — dividend raised to $0.88, $514M returned in the quarter, a fresh $3.5B buyback authorization. At $167.92, ~14% below the $195.78 high with 600bp+ of positive operating leverage, this is a fee-based compounder at a fair price; no activist campaign surfaced in current reporting, and none is needed for the thesis.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Execution of the $3.5B buyback, Q4 results in January, and continued AI/productivity-driven margin expansion provide identifiable drivers within two quarters.</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 GAAP EPS $3.40 beat the ~$2.87 consensus, though the print includes ~$48.7M of pre-tax notable gains (guardianship-business sale and Visa exchange) — adjusted EPS ex-notables was $3.20, a ~11–12% beat; revenue +13% YoY, AUC/A ~$19.9T and AUM ~$2.0T, with revenue ex-items +11% vs expenses +5% — broad-based fee growth, not deterioration.</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip sb'>pass</span></td><td>Strong capital supported $514M of Q3 shareholder returns and a dividend raise; no leverage, liquidity or concentration cliff — the main watch item is comp/pricing pressure in wealth, not survivability.</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #7 banks/financials is Mixed/High; the company offset is a fee-dominant custody/wealth model (trust fees $1.37B in Q3) rather than credit-spread lending, but fee revenue still rides equity-market levels.</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip sb'>pass</span></td><td>$167.92 is ~14% off the 52-week high at roughly 13–15x earnings with a 20.1% ROE and a raised dividend — fairly priced to modestly cheap for this quality (independent estimates peg ~10% undervaluation).</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>A sharp equity-market drawdown would cut market-linked trust and wealth fees with a lag</li><li>Wealth-adviser poaching and compensation inflation could erode the operating-leverage story</li></ul><p><b>What would change this verdict:</b> A fee-revenue miss driven by market declines, or expense growth re-accelerating above revenue growth, would move this to HOLD.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://finnhub.io/?q=%22NTRS%22' target='_blank' rel='noopener'>Northern Trust Corp (NTRS): Financial Market Data — Finnhub</a> <span class='dom'>finnhub.io</span></li><li><a href='https://stockstory.org/us/stocks/nasdaq/ntrs/news/earnings/northern-trust-nasdaqntrs-beats-q3-2026-sales-expectations' target='_blank' rel='noopener'>Northern Trust (NASDAQ:NTRS) Beats Q3 2026 Sales Expectations — StockStory</a> <span class='dom'>stockstory.org</span></li><li><a href='https://simplywall.st/stocks/us/diversified-financials/nasdaq-ntrs/northern-trust/news/northern-trust-ntrs-could-be-10-undervalued-after-third-quar' target='_blank' rel='noopener'>Northern Trust (NTRS) Could Be 10% Undervalued After Third Quarter Earnings Beat — Simply Wall St</a> <span class='dom'>simplywall.st</span></li><li><a href='https://www.quiverquant.com/news/Northern+Trust+Reports+%24642.9+Million+Third+Quarter+Net+Income+and+%243.40+Diluted+EPS' target='_blank' rel='noopener'>Northern Trust Reports $642.9 Million Third Quarter Net Income and $3.40 Diluted EPS — Quiver Quantitative</a> <span class='dom'>quiverquant.com</span></li><li><a href='https://www.morningstar.com/company-reports/1503645-northern-trust-earnings-mostly-in-line-with-our-expectations?listing=0P000003YK' target='_blank' rel='noopener'>Northern Trust Earnings: Mostly in Line With Our Expectations — Morningstar</a> <span class='dom'>morningstar.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
 <section><h2>Dig deeper</h2><p>
 <a href="https://finance.yahoo.com/quote/NTRS" target="_blank" rel="noopener">Yahoo Finance — NTRS</a> ·
 <a href="https://stockanalysis.com/stocks/ntrs/" target="_blank" rel="noopener">StockAnalysis — NTRS</a></p>
 <p class="muted">Research and education only — not investment advice.</p></section>
-</div></body></html>
+</main></div></body></html>

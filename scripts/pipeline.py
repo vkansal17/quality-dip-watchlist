@@ -462,7 +462,10 @@ def fetch_fundamentals(tickers_wanted):
         "cfo": ["NetCashProvidedByUsedInOperatingActivities",
                 "NetCashProvidedByOperatingActivities"],
         "capex": ["PaymentsToAcquirePropertyPlantAndEquipment"],
-        "da": ["DepreciationDepletionAndAmortization"],
+        "da": ["DepreciationDepletionAndAmortization",
+               "DepreciationAmortizationAndAccretionNet",
+               "DepreciationAndAmortization", "Depreciation"],
+        "tax": ["IncomeTaxExpenseBenefit"],
         "int": ["InterestExpense", "InterestExpenseNonoperating"],
         "shares": ["WeightedAverageNumberOfDilutedSharesOutstanding"],
         "cogs": ["CostOfGoodsAndServicesSold", "CostOfRevenue"],
@@ -663,10 +666,37 @@ def build_professional(results, spy_closes):
                 shares_p = shares_p * 1000 if shares_p else None
         mktcap = price * shares if shares else None
         fcf = (f["cfo"] - f["capex"]) if (f["cfo"] is not None and f["capex"] is not None) else None
-        ebitda = (f["oi"] + f["da"]) if (f["oi"] is not None and f["da"] is not None) else None
+        def _ebitda(suf=""):
+            # Operating income + D&A where tagged; otherwise rebuild from
+            # net income (NI + interest + tax + D&A) — filers like Nike do
+            # not tag OperatingIncomeLoss in the frames years.
+            if f["oi" + suf] is not None and f["da" + suf] is not None:
+                return f["oi" + suf] + f["da" + suf]
+            if all(f[k + suf] is not None for k in ("ni", "tax", "da")):
+                # Interest defaults to 0: net-interest reporters (e.g. Nike)
+                # tag no gross interest expense at all.
+                return (f["ni" + suf] + (f["int" + suf] or 0)
+                        + f["tax" + suf] + f["da" + suf])
+            return None
+        ebitda = _ebitda()
         debt = (f["ltd"] or 0) + (f["debtcur"] or 0)
         net_debt = debt - (f["cash"] or 0)
         ev = (mktcap + net_debt) if mktcap else None
+        # Year-ago EV/EBITDA on a consistent basis (prior-year annual
+        # EBITDA, price 252 sessions ago, prior share count, prior balance
+        # sheet snapshot) — powers the Fallen & Cheap compression gate.
+        ebitda_p = _ebitda("_p")
+        debt_p = (f["ltd_p"] or 0) + (f["debtcur_p"] or 0)
+        net_debt_p = debt_p - (f["cash_p"] or 0)
+        _chart = k.get("chart") or []
+        # Bars are a 1y window (~252 sessions): the -252 close when the
+        # series is long enough, else the first bar (≈1 year ago by
+        # construction of the fetch window).
+        price_1y = (_chart[-252] if len(_chart) >= 252
+                    else _chart[0] if len(_chart) >= 200 else None)
+        ev_1y = (price_1y * shares_p + net_debt_p) if (price_1y and shares_p) else None
+        ev_ebitda_1y = (ev_1y / ebitda_p) if (ev_1y and ebitda_p
+                                              and ebitda_p > 0) else None
         s4 = [s for _, s in surp.get(t, [])[:4]]
         recs[t] = {
             "ticker": t, "fscore": piotroski(f),
@@ -685,6 +715,10 @@ def build_professional(results, spy_closes):
             "fcf_y": (fcf / mktcap * 100) if (fcf is not None and mktcap) else None,
             "earn_y": (f["ni"] / mktcap * 100) if (f["ni"] is not None and mktcap) else None,
             "ev_ebitda": (ev / ebitda) if (ev and ebitda and ebitda > 0) else None,
+            "ev_ebitda_1y": ev_ebitda_1y,
+            "ev_comp": (((ev / ebitda) / ev_ebitda_1y - 1) * 100
+                        if (ev and ebitda and ebitda > 0 and ev_ebitda_1y) else None),
+            "ebitda": ebitda,
             "ps": (mktcap / f["rev"]) if (mktcap and f["rev"]) else None,
             "nd_ebitda": (net_debt / ebitda) if (ebitda and ebitda > 0) else None,
             "cover": (f["oi"] / f["int"]) if (f["oi"] is not None and f["int"]) else None,
@@ -787,45 +821,70 @@ CSS = """
 :root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
 *{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
 a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
-.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
-.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
-.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
 .brand:hover{text-decoration:none;color:var(--acc)}
-.brandsub{color:var(--mut);font-size:12.5px}
-h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
 .sub b{color:var(--txt)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
-.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
-.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
-.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
 .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
 table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
-th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
-th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
 th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
 tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
 td.wrap,th.wrap{white-space:normal}
-td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
-td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
-.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ind{color:var(--mut)} .muted{color:var(--mut)}
 .up{color:var(--up)} .dn{color:var(--dn)}
-.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
 .sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
-.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
 .range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
 .flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
 .star{color:#fbbf24}
-.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
-.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
-.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
-.tab:hover{text-decoration:none;color:var(--txt)}
-.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
 .crumb{font-size:13px;margin:2px 0 10px}
-.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
-.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
-ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
 .kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
@@ -835,21 +894,36 @@ section table{margin:10px 0}
 .bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
 .price{font-size:30px;font-weight:800}
 .legs{display:inline-flex;gap:4px;vertical-align:middle}
-.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
 .legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
-.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
-.srcs .dom{color:var(--mut);font-size:12px}
-.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
 details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
 details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
 details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
 details.gloss ul{margin:6px 0;padding-left:20px}
-.evline{font-size:12px;color:var(--mut);margin-top:5px}
-@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
-@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
-@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
-.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
-.card .n{font-size:20px} section{padding:14px 14px}}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
 """
 
 
@@ -930,25 +1004,31 @@ def rationale(t, k, notes):
     return " ".join(bits)
 
 
-TAB_DEFS = [("dip", "index.html", "📉 Quality-Dip Top 50"),
-            ("pro", "pro.html", "🏦 Professional Top 50"),
-            ("sectors", "sectors.html", "🌍 Sectors"),
-            ("validated", "validated.html", "🏆 Validated Top 50"),
-            ("macro", "macro.html", "🌐 Macro & Themes"),
-            ("holds", "holds.html", "🟡 Top 50 Holds")]
+TAB_DEFS = [("dip", "index.html", "📉 Quality Dips"),
+            ("pro", "pro.html", "🏦 Factor Grades"),
+            ("sectors", "sectors.html", "🌍 Sector Impact"),
+            ("validated", "validated.html", "🏆 Vetted Buys"),
+            ("macro", "macro.html", "🌐 Theme Buys"),
+            ("holds", "holds.html", "🟡 The Bench"),
+            ("screener", "screener.html", "🔎 Fallen & Cheap")]
 
 
 def tabs_html(active, prefix=""):
-    """Shared shell: brand topbar + sticky tab nav, identical on every page.
-    Detail pages live under stock/ and pass prefix='../'."""
+    """Shared shell: left sidebar with brand + vertical tab nav, identical
+    on every page (collapses to a top strip on mobile). Detail pages live
+    under stock/ and pass prefix='../'."""
     tabs = "".join(
         f'<a class="tab{" active" if key == active else ""}" '
         f'href="{prefix}{href}">{label}</a>'
         for key, href, label in TAB_DEFS)
-    return (f'<div class="topbar"><a class="brand" href="{prefix}index.html">'
-            f'◆ Quality-Dip Watchlist</a>'
-            f'<span class="brandsub">Six lenses · one universe: top-800 by volume + the S&P 1000</span></div>'
-            f'<div class="navwrap"><div class="tabs">{tabs}</div></div>')
+    return (f'<aside class="sidebar">'
+            f'<a class="brand" href="{prefix}index.html">◆ Quality-Dip Watchlist</a>'
+            f'<div class="brandsub">Seven lenses on one universe — the 800 '
+            f'most-traded US stocks + every S&amp;P 1000 member.</div>'
+            f'<nav class="tabs">{tabs}</nav>'
+            f'<div class="sidefoot">Prices refresh daily at 7:00 AM CT. '
+            f'Research verdicts are dated editions.<br>Not investment advice.</div>'
+            f'</aside>')
 
 
 TABS_DIP = tabs_html("dip")
@@ -957,6 +1037,7 @@ TABS_SECTORS = tabs_html("sectors")
 TABS_VALIDATED = tabs_html("validated")
 TABS_MACRO = tabs_html("macro")
 TABS_HOLDS = tabs_html("holds")
+TABS_SCREENER = tabs_html("screener")
 
 
 def pro_section(t, prec, k, rank=None):
@@ -1111,6 +1192,118 @@ def legs_mini(v):
     return f'<span class="legs">{dots}</span>'
 
 
+# ---------------------------------------------------------------------------
+# UI v3: master-detail panel (list left, evidence box right; bottom sheet
+# on mobile). Each list row carries a hidden td.detail whose HTML the panel
+# shows on selection; the first row is selected by default.
+# ---------------------------------------------------------------------------
+
+def panel_html():
+    return ('<aside class="panel" id="panel"><div class="phead"><div>'
+            '<span class="pt" id="ptitle">Select a stock</span>'
+            '<span class="pn" id="pname"></span></div>'
+            '<button id="pclose" aria-label="Close">×</button></div>'
+            '<div id="pbody"><p class="muted">Pick a row to see its evidence '
+            'here.</p></div></aside>')
+
+
+PANEL_JS = """<script>
+(function(){
+var panel=document.getElementById('panel'),pbody=document.getElementById('pbody'),
+ptitle=document.getElementById('ptitle'),pname=document.getElementById('pname');
+var rows=[].slice.call(document.querySelectorAll('table.mlist tbody tr'));
+function visible(r){return r.style.display!=='none';}
+function select(r){if(!r)return;
+ rows.forEach(function(x){x.classList.toggle('sel',x===r);});
+ var sym=r.querySelector('.sym'),det=r.querySelector('td.detail'),nm=r.querySelector('.nm');
+ ptitle.textContent=sym?sym.textContent.trim():'';
+ pname.textContent=nm?nm.textContent.trim():'';
+ pbody.innerHTML=det?det.innerHTML:'<p class="muted">No detail available for this row.</p>';
+ pbody.scrollTop=0;
+ if(window.innerWidth<=900){panel.classList.add('open');}
+}
+rows.forEach(function(r){r.addEventListener('click',function(){select(r);});});
+var pc=document.getElementById('pclose');
+if(pc){pc.addEventListener('click',function(){panel.classList.remove('open');});}
+window.__selFirst=function(){var f=rows.filter(visible)[0];if(f)select(f);};
+document.addEventListener('keydown',function(e){
+ if(e.key==='Escape'){panel.classList.remove('open');return;}
+ if(e.key!=='ArrowDown'&&e.key!=='ArrowUp')return;
+ var tag=(document.activeElement||{}).tagName;
+ if(tag==='INPUT'||tag==='SELECT'||tag==='TEXTAREA')return;
+ var cur=rows.filter(visible),sel=document.querySelector('table.mlist tbody tr.sel');
+ var i=cur.indexOf(sel); if(i<0)i=0; else i+=(e.key==='ArrowDown'?1:-1);
+ i=Math.max(0,Math.min(cur.length-1,i));
+ if(cur[i]){select(cur[i]);cur[i].scrollIntoView({block:'nearest'});e.preventDefault();}
+});
+var q=document.getElementById('q');
+if(q&&!q.dataset.custom){q.addEventListener('input',function(){
+ var s=q.value.toLowerCase();
+ rows.forEach(function(r){r.style.display=(r.dataset.q||'').toLowerCase().indexOf(s)>=0?'':'none';});
+ var sel=document.querySelector('table.mlist tbody tr.sel');
+ if(!sel||!visible(sel)){window.__selFirst();}
+});}
+document.querySelectorAll('table.mlist th').forEach(function(th){
+ th.title='Click to sort';
+ th.addEventListener('click',function(){
+  var tbl=th.closest('table'),tb=tbl.querySelector('tbody'),rs=[].slice.call(tb.rows);
+  var i=[].slice.call(th.parentNode.children).indexOf(th);
+  var num=th.classList.contains('num'),dir=th.dataset.d==='a'?'d':'a';th.dataset.d=dir;
+  rs.sort(function(a,b){var x=a.cells[i],y=b.cells[i];
+   var xv=x?x.textContent.replace(/[^0-9.+-]/g,''):'',yv=y?y.textContent.replace(/[^0-9.+-]/g,''):'';
+   if(num&&xv!==''&&yv!==''){xv=parseFloat(xv);yv=parseFloat(yv);return dir==='a'?xv-yv:yv-xv;}
+   var xt=x?x.textContent:'',yt=y?y.textContent:'';
+   return dir==='a'?xt.localeCompare(yt):yt.localeCompare(xt);});
+  rs.forEach(function(r){tb.appendChild(r);});
+ });});
+window.__selFirst();
+})();
+</script>"""
+
+
+def pkpi_grid(pairs):
+    """Compact KPI tiles for the evidence panel: [(value, label), ...]."""
+    return ("<div class='pkpis'>" + "".join(
+        f"<div class='pkpi'><div class='v'>{v}</div><div class='l'>{l}</div></div>"
+        for v, l in pairs) + "</div>")
+
+
+def verdict_detail_html(v, t, page=None):
+    """Panel-sized evidence for a research verdict card: summary, the five
+    legs with their evidence notes, key risks, what changes the verdict,
+    and the cited sources."""
+    flag = v.get("flag", "")
+    cls = {"BUY": "sb", "HOLD": "h", "SELL": "r"}.get(flag, "na")
+    legs = v.get("legs") or {}
+    leg_rows = "".join(
+        f"<tr><td style='text-transform:capitalize'>{ln}</td>"
+        f"<td><span class='chip {'sb' if lv.get('v') == 'pass' else 'h' if lv.get('v') == 'mixed' else 'r'}'>"
+        f"{lv.get('v', '')}</span></td><td>{lv.get('note', '')}</td></tr>"
+        for ln, lv in legs.items())
+    risks = "".join(f"<li>{x}</li>" for x in (v.get("risks") or []))
+
+    def _dom(u):
+        m = re.search(r"://([^/]+)", u or "")
+        return m.group(1).replace("www.", "") if m else ""
+    srcs = "".join(
+        f"<li><a href='{s.get('url', '')}' target='_blank' rel='noopener'>"
+        f"{s.get('title', 'source')}</a> "
+        f"<span class='dom'>{_dom(s.get('url', ''))}</span></li>"
+        for s in (v.get("sources") or []))
+    link = (f"<a class='pfull' href='stock/{page}.html'>Full stock page →</a>"
+            if page else "")
+    return (f"<p><span class='chip {cls}' style='font-size:13px'>{flag}</span>"
+            f"{audit_badge(t)} <span class='muted'>researched "
+            f"{v.get('date', '')}</span></p>"
+            f"<p>{v.get('summary', '')}</p>"
+            f"<h3>The five legs — evidence</h3>"
+            f"<table><tbody>{leg_rows}</tbody></table>"
+            f"<h3>Key risks</h3><ul>{risks}</ul>"
+            f"<h3>What would change this verdict</h3>"
+            f"<p>{v.get('what_changes', '')}</p>"
+            f"<h3>Sources</h3><ul class='srcs'>{srcs}</ul>{link}")
+
+
 def _tile(v, l, cls=""):
     return f'<div class="kpi"><div class="v {cls}">{v}</div><div class="l">{l}</div></div>'
 
@@ -1218,27 +1411,42 @@ def build_site(rows, prev_ranks, meta, pro=None, pro_ranks=None):
                   f'<span class="dn">▼ {-d}</span>' if d < 0 else '<span class="muted">—</span>')
         star = ' <span class="star" title="Hand-researched brief">★</span>' if t in notes else ""
         fr = f"#{fortune[t]}" if fortune.get(t) else '<span class="muted">—</span>'
-        body.append(f"""<tr data-ind="{INDUSTRY.get(t, '')}">
+        n = notes.get(t)
+        brief = (f"<h3>What caused the dip</h3><p>{n.get('dip', '')}</p>"
+                 f"<h3>Business pulse</h3><p>{n.get('business', '')}</p>"
+                 if n else "")
+        det = (pkpi_grid([
+            (f"${r['last']:,.2f}", "Price"),
+            (f"{r['day_pct']:+.2f}%", "Day"),
+            (f"{r['off_high_pct']:.1f}%", "vs 52w high"),
+            (f"{r['rsi14']:.0f}", "RSI"),
+            (f"{r['vpt20']:+.0f}%", "VPT 20d"),
+            (f"{r['rs20']:+.1f}%", "Rel Str 20d"),
+            (f"{r['vol30']:.0f}%", "Volatility 30d"),
+            (str(r['pe']) if r['pe'] else "—", "P/E"),
+            (("%.1f%%" % r['roic']) if r['roic'] is not None else "—", "ROIC"),
+            (f"{r['perf1y_pct']:+.1f}%", "1Y perf"),
+            (f"${r['adv_m']:,.0f}M", "Avg $ volume"),
+            (str(r['earnings'] or "—"), "Earnings")])
+            + f"<p>{dip_comment(r, c, n)}</p>{brief}"
+            + f"<a class='pfull' href='stock/{t}.html'>Full stock page →</a>")
+        body.append(f"""<tr data-q="{t} {clean_company_name(r['company'])}" data-ind="{INDUSTRY.get(t, '')}">
   <td>{r['rank']}</td>
   <td><a class="sym" href="stock/{t}.html">{t}</a>{star}<span class="nm">{clean_company_name(r['company'])}</span></td>
-  <td class="ind">{INDUSTRY.get(t, '')}</td>
+  <td class="ind hide-m">{INDUSTRY.get(t, '')}</td>
   <td class="num hide-m">{fr}</td>
   <td class="num">${r['last']:,.2f}</td>
   <td class="num {'up' if r['day_pct'] >= 0 else 'dn'}">{r['day_pct']:+.2f}%</td>
   <td class="num">{r['rsi14']:.0f}</td>
-  <td class="num {'up' if r['vpt20'] >= 0 else 'dn'}">{r['vpt20']:+.0f}%</td>
+  <td class="num hide-m {'up' if r['vpt20'] >= 0 else 'dn'}">{r['vpt20']:+.0f}%</td>
   <td class="num {'up' if r['rs20'] >= 0 else 'dn'}">{r['rs20']:+.1f}%</td>
-  <td class="num">{mv}</td>
+  <td class="num hide-m">{mv}</td>
   <td><span class="range"><span class="fill" style="width:{r['range_pos']}%"></span></span>
       <span class="dn">{r['off_high_pct']:.1f}%</span></td>
-  <td>{spark_svg(r['spark'])}</td>
-  <td class="num hide-m">{r['vol10']:.1f}% / {r['vol30']:.1f}%</td>
+  <td class="hide-m">{spark_svg(r['spark'])}</td>
   <td>{chip_for(label)}{flag}{f"<br><span class='muted'>avg ${tgt:,.0f}</span>" if tgt else ""}</td>
-  <td class="num">{r['earnings'] or '<span class="muted">—</span>'}</td>
-  <td class="num">{r['pe'] if r['pe'] else '<span class="muted">—</span>'}</td>
-  <td class="num">{('%.1f%%' % r['roic']) if r['roic'] is not None else '<span class="muted">—</span>'}</td>
-  <td class="num {'up' if r['perf1y_pct'] >= 0 else 'dn'}">{r['perf1y_pct']:+.1f}%</td>
-  <td class="take">{dip_comment(r, c, notes.get(t))}</td>
+  <td class="num hide-m">{r['earnings'] or '<span class="muted">—</span>'}</td>
+  <td class="detail">{det}</td>
 </tr>""")
     inds = sorted({INDUSTRY.get(r["ticker"], "") for r in rows} - {""})
     options = "".join(f'<option value="{i}">{i}</option>' for i in inds)
@@ -1249,16 +1457,17 @@ def build_site(rows, prev_ranks, meta, pro=None, pro_ranks=None):
                       - date.today()).days) <= 7]
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quality-Dip Watchlist — Top 50</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<title>Quality Dips — Top 50 · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
 {TABS_DIP}
-<h1>📉 Quality-Dip Watchlist — Top 50</h1>
+<main class="main">
+<h1>📉 Quality Dips — Top 50</h1>
 <div class="sub">Famous, fundamentally strong brands that have dipped significantly for <b>situational</b>
 reasons — the kind of names expected to recover when conditions normalize. Screened from the
 {meta['universe_n']} US common stocks — the 800 most-traded by dollar volume, plus every
 S&P 1000 member ({meta['screened']} with usable data,
 {meta['candidates']} passing the dip screen). Prices as of the <b>{asof}</b> close · refreshed daily at 7:00 AM CT.
-Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
+<b>Select any row</b> — why it's here, its full KPI set and brief open in the panel. ★ = hand-researched brief.</div>
 <div class="cards">
   <div class="card"><div class="n">50</div><div class="l">Names on the list</div></div>
   <div class="card"><div class="n">{n_researched}</div><div class="l">Hand-researched briefs</div></div>
@@ -1266,19 +1475,21 @@ Click any symbol for its detailed analysis. ★ = hand-researched brief.</div>
   <div class="card"><div class="n">{len(this_week)}</div><div class="l">Reporting within ±7 days</div></div>
 </div>
 <div class="controls">
-  <input id="q" type="text" placeholder="Search symbol or company…" size="28">
+  <input id="q" data-custom="1" type="text" placeholder="Search symbol or company…">
   <select id="ind"><option value="">All industries</option>{options}</select>
 </div>
-<div class="tablewrap"><table id="t"><thead><tr>
-<th>#</th><th>Symbol</th><th>Industry</th><th class="num hide-m">Fortune 500</th><th class="num">Last</th>
-<th class="num">% Change</th><th class="num">RSI</th><th class="num">VPT 20d</th><th class="num">Rel Str 20d</th>
-<th class="num">vs Prev</th><th>52-week position / off high</th>
-<th>Last 3 months</th><th class="num hide-m">Vol 10d / 30d</th><th>Analyst consensus</th>
-<th class="num">Earnings</th><th class="num">P/E</th><th class="num">ROIC</th><th class="num">1Y perf</th>
-<th>Commentary — why it's here</th>
+<div class="master">
+<div class="tablewrap"><table id="t" class="mlist"><thead><tr>
+<th>#</th><th>Symbol</th><th class="hide-m">Industry</th><th class="num hide-m">Fortune 500</th><th class="num">Last</th>
+<th class="num">% Change</th><th class="num">RSI</th><th class="num hide-m">VPT 20d</th><th class="num">Rel Str 20d</th>
+<th class="num hide-m">vs Prev</th><th>52-week position / off high</th>
+<th class="hide-m">Last 3 months</th><th>Analyst consensus</th>
+<th class="num hide-m">Earnings</th>
 </tr></thead><tbody>
 {chr(10).join(body)}
 </tbody></table></div>
+{panel_html()}
+</div>
 <p class="foot"><b>How to read this:</b> the 52-week bar shows where the price sits between its low and high;
 "off high" is the size of the dip. Volatility is annualized from daily closes. P/E uses SEC-reported
 diluted EPS (TTM) where computable — blank where earnings are negative or filings don't map cleanly.
@@ -1295,22 +1506,16 @@ below the revenue cutoff, or unclassified). Researched exclusions: NKE and TSLA 
 off — their dips trace to deteriorating or polarized business stories, not situations.
 <b>Research and education only — not investment advice.</b></p>
 {glossary_html()}
-</div>
+</main></div>
+{PANEL_JS}
 <script>
-const q=document.getElementById('q'),ind=document.getElementById('ind');
-function filt(){{const s=q.value.toLowerCase(),f=ind.value;
+const qq=document.getElementById('q'),ind=document.getElementById('ind');
+function filt(){{const s=qq.value.toLowerCase(),f=ind.value;
 document.querySelectorAll('#t tbody tr').forEach(tr=>{{
-const okS=tr.textContent.toLowerCase().includes(s);
-const okI=!f||tr.dataset.ind===f; tr.style.display=(okS&&okI)?'':'none';}});}}
-q.addEventListener('input',filt);ind.addEventListener('change',filt);
-document.querySelectorAll('#t th').forEach((th,i)=>{{th.title='Click to sort';
-th.addEventListener('click',()=>{{const tb=document.querySelector('#t tbody');
-const rows=[...tb.rows];const num=th.classList.contains('num');
-const dir=th.dataset.d==='a'?'d':'a';th.dataset.d=dir;
-rows.sort((a,b)=>{{let x=a.cells[i].textContent.replace(/[^0-9.+-]/g,''),y=b.cells[i].textContent.replace(/[^0-9.+-]/g,'');
-if(num&&x!==''&&y!==''){{x=parseFloat(x);y=parseFloat(y);return dir==='a'?x-y:y-x;}}
-return dir==='a'?a.cells[i].textContent.localeCompare(b.cells[i].textContent):b.cells[i].textContent.localeCompare(a.cells[i].textContent);}});
-rows.forEach(r=>tb.appendChild(r));}});}});
+const okS=(tr.dataset.q||'').toLowerCase().includes(s);
+const okI=!f||tr.dataset.ind===f; tr.style.display=(okS&&okI)?'':'none';}});
+if(window.__selFirst)window.__selFirst();}}
+qq.addEventListener('input',filt);ind.addEventListener('change',filt);
 </script></body></html>"""
     with open(os.path.join(ROOT, "index.html"), "w") as fh:
         fh.write(html)
@@ -1352,9 +1557,10 @@ rows.forEach(r=>tb.appendChild(r));}});}});
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{t} — {clean_company_name(r['company'])} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<div class="shell">
 {tabs_html("dip", "../")}
-<p class="crumb"><a href="../index.html">← Back to the Quality-Dip Top 50</a></p>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
 <h1>{t} — {clean_company_name(r['company'])}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
 · Rank #{r['rank']} on today's list</div>
@@ -1371,7 +1577,7 @@ rows.forEach(r=>tb.appendChild(r));}});}});
 <a href="https://www.google.com/finance/quote/{t}:NASDAQ" target="_blank" rel="noopener">Google Finance — {t}</a></p>
 <p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
 analyst consensus (curated). Research and education only — not investment advice.</p></section>
-</div></body></html>"""
+</main></div></body></html>"""
         with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
             fh.write(page)
     # prune stale detail pages
@@ -1400,29 +1606,46 @@ def build_pro_page(pro_rows, prev_pro_ranks, meta, n_pool, n_vetoed):
             for fn, p in r["factors"].items() if p is not None)
         surp = (f"{r['surp_mean']:+.1f}% · {r['surp_beat']:.0f}% beats" if r["surp_mean"] is not None
                 else '<span class="muted">—</span>')
-        body.append(f"""<tr data-ind="{INDUSTRY.get(t, '')}">
+        fbars = "".join(
+            f"<div style='font-size:12px'>{fn} — <b>{_grade(p)}</b> "
+            f"<span class='muted'>({p:.0f}th pct)</span></div>"
+            f"<div class='fbar'><i style='width:{p:.0f}%'></i></div>"
+            for fn, p in r["factors"].items() if p is not None)
+        kills = "".join(f"<li>{x}</li>" for x in (r.get("kill") or [])[:4])
+        det = (pkpi_grid([
+            (f"{r['composite']:.0f}", "Composite /100"),
+            (f"{r['fscore']}/9" if r["fscore"] is not None else "—", "Piotroski F"),
+            (("%.1f%%" % r["fcf_y"]) if r["fcf_y"] is not None else "—", "FCF yield"),
+            (("%.1f×" % r["nd_ebitda"]) if r["nd_ebitda"] is not None else "—", "Net debt/EBITDA"),
+            (surp, "EPS surprise (last 4)"),
+            (str(r["earnings"] or "—"), "Earnings")])
+            + f"<p>{pro_comment(r)}</p>"
+            + f"<h3>Factor profile — percentile in the graded pool</h3>{fbars}"
+            + (f"<h3>Pre-written exit rules</h3><ul>{kills}</ul>" if kills else "")
+            + f"<a class='pfull' href='stock/{t}.html'>Full stock page →</a>")
+        body.append(f"""<tr data-q="{t} {clean_company_name(r['company'])}" data-ind="{INDUSTRY.get(t, '')}">
   <td>{r['rank']}</td>
   <td><a class="sym" href="stock/{t}.html">{t}</a><span class="nm">{clean_company_name(r['company'])}</span></td>
-  <td class="ind">{INDUSTRY.get(t, '')}</td>
+  <td class="ind hide-m">{INDUSTRY.get(t, '')}</td>
   <td><span class="biggrade chip {_grade_cls(r['grade'])}">{r['grade']}</span></td>
-  <td>{fchips}</td>
+  <td class="hide-m">{fchips}</td>
   <td class="num">{r['fscore'] if r['fscore'] is not None else '—'}/9</td>
   <td class="num">{('%.1f%%' % r['fcf_y']) if r['fcf_y'] is not None else '—'}</td>
-  <td class="num">{('%.1f×' % r['nd_ebitda']) if r['nd_ebitda'] is not None else '—'}</td>
-  <td class="num">{surp}</td>
-  <td class="num {'up' if (r['mom12_1'] or 0) >= 0 else 'dn'}">{('%+.1f%%' % r['mom12_1']) if r['mom12_1'] is not None else '—'}</td>
-  <td class="num">{r['pe'] if r['pe'] else '—'}</td>
+  <td class="num hide-m">{('%.1f×' % r['nd_ebitda']) if r['nd_ebitda'] is not None else '—'}</td>
+  <td class="num hide-m">{surp}</td>
+  <td class="num hide-m">{r['pe'] if r['pe'] else '—'}</td>
   <td class="num">${r['last']:,.2f}</td>
-  <td class="num">{mv}</td>
+  <td class="num hide-m">{mv}</td>
   <td class="num">{r['earnings'] or '<span class="muted">—</span>'}</td>
-  <td class="take">{pro_comment(r)}</td>
+  <td class="detail">{det}</td>
 </tr>""")
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Professional Top 50 — Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<title>Factor Grades — Professional Top 50 · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
 {TABS_PRO}
-<h1>🏦 Professional Top 50</h1>
+<main class="main">
+<h1>🏦 Factor Grades — Professional Top 50</h1>
 <div class="sub">The professionals' lens, applied to the same {meta['universe_n']} US stocks
 (top 800 by trading volume, plus the full S&P 1000):
 <b>cash-flow quality and balance-sheet survivability first, price last</b> — a factor composite in the
@@ -1431,15 +1654,19 @@ spirit of Seeking Alpha Quant and the Zacks Rank. Six factors, percentile-ranked
 Safety (15%), Growth (13%), Momentum (10%). Veto grades remove names outright
 ({n_vetoed} vetoed today: Piotroski F-score ≤ 3, extreme leverage with thin coverage,
 persistent EPS misses, or cash-burn with dilution). Prices as of the <b>{asof}</b> close.
-Click any symbol for its factor breakdown and pre-written exit rules.</div>
-<div class="tablewrap"><table id="t"><thead><tr>
-<th>#</th><th>Symbol</th><th>Industry</th><th>Grade</th><th>Factors (Prof · Rev · Val · Safe · Grow · Mom)</th>
-<th class="num">F-score</th><th class="num">FCF yield</th><th class="num">Net debt/EBITDA</th>
-<th class="num">EPS surprise (last 4)</th><th class="num">Momentum 12-1</th><th class="num">P/E</th>
-<th class="num">Last</th><th class="num">vs Prev</th><th class="num">Earnings</th><th>Commentary — the read</th>
+<b>Select any row</b> — its factor breakdown and pre-written exit rules open in the panel.</div>
+<div class="controls"><input id="q" type="text" placeholder="Search symbol or company…"></div>
+<div class="master">
+<div class="tablewrap"><table id="t" class="mlist"><thead><tr>
+<th>#</th><th>Symbol</th><th class="hide-m">Industry</th><th>Grade</th><th class="hide-m">Factors (Prof · Rev · Val · Safe · Grow · Mom)</th>
+<th class="num">F-score</th><th class="num">FCF yield</th><th class="num hide-m">Net debt/EBITDA</th>
+<th class="num hide-m">EPS surprise (last 4)</th><th class="num hide-m">P/E</th>
+<th class="num">Last</th><th class="num hide-m">vs Prev</th><th class="num">Earnings</th>
 </tr></thead><tbody>
 {chr(10).join(body)}
 </tbody></table></div>
+{panel_html()}
+</div>
 <p class="foot"><b>How to read this:</b> the composite grade is a percentile blend, not a recommendation.
 <b>Revisions</b> uses reported EPS-surprise history (mean surprise and beat rate over the last four
 quarters) — the free proxy for analyst revision momentum; clean revision-breadth history is paid data,
@@ -1451,7 +1678,8 @@ banks, insurers and REITs, whose filings structure debt differently; the F-score
 applies only to companies that report a cost-of-sales line. Fundamentals are the latest
 reported fiscal year from SEC EDGAR. <b>Research and education only — not investment advice.</b></p>
 {glossary_html()}
-</div></body></html>"""
+</main></div>
+{PANEL_JS}</body></html>"""
     with open(os.path.join(ROOT, "pro.html"), "w") as fh:
         fh.write(html)
 
@@ -1489,9 +1717,10 @@ def build_pro_details(pro_rows, dip_tickers, meta):
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{t} — {clean_company_name(r['company'])} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<div class="shell">
 {tabs_html("pro", "../")}
-<p class="crumb"><a href="../pro.html">← Back to the Professional Top 50</a></p>
+<main class="main">
+<p class="crumb"><a href="../pro.html">← Back to Factor Grades</a></p>
 <h1>{t} — {clean_company_name(r['company'])}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
 · Professional rank #{r['rank']} · composite grade {r['grade']}</div>
@@ -1508,7 +1737,7 @@ def build_pro_details(pro_rows, dip_tickers, meta):
 <a href="https://www.google.com/finance/quote/{t}:NASDAQ" target="_blank" rel="noopener">Google Finance — {t}</a></p>
 <p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR.
 Research and education only — not investment advice.</p></section>
-</div></body></html>"""
+</main></div></body></html>"""
         with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
             fh.write(page)
 
@@ -1547,10 +1776,11 @@ def build_sectors_page(meta):
                  for x in d.get("near_misses", []))
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sectors — Top 10 most impacted · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<title>Sector Impact — Top 10 Most Impacted · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
 {TABS_SECTORS}
-<h1>🌍 Top 10 areas most impacted right now</h1>
+<main class="main">
+<h1>🌍 Sector Impact — Top 10 Areas Most Impacted Right Now</h1>
 <div class="sub">Ranked by magnitude of impact from the current economic, market, trade, inflation,
 jobs, political and geopolitical environment · research snapshot as of {d.get('asof', meta['asof'])}</div>
 <div class="cards">
@@ -1568,7 +1798,7 @@ jobs, political and geopolitical environment · research snapshot as of {d.get('
 <p class="muted">Compiled from wire and major-press reporting (Reuters, Bloomberg, AP and others,
 linked per sector). A snapshot, refreshed by research rather than by the daily screener.
 Research and education only — not investment advice.</p></section>
-</div></body></html>"""
+</main></div></body></html>"""
     with open(os.path.join(ROOT, "sectors.html"), "w") as fh:
         fh.write(html)
 
@@ -1614,19 +1844,23 @@ def build_validated_page(meta, verdicts, kpi_ix=None):
         rs_html = (f"<span class='{'up' if rs >= 0 else 'dn'}'>{rs:+.1f}%</span>"
                    if rs is not None else "—")
         earn_html = k.get("earnings") or '<span class="muted">—</span>'
+        det = (pkpi_grid([
+            (f"${last:,.2f}", "Price"), (day_html, "Day"),
+            (f"{off:.1f}%", "vs 52w high"), (rsi_html, "RSI"),
+            (rs_html, "Rel Str 20d"), (str(earn_html), "Earnings")])
+            + verdict_detail_html(v, t, page=t))
         rows.append(
-            f"<tr><td>{i}</td>"
+            f"<tr data-q='{t} {clean_company_name(UNIVERSE_NAME.get(t, t))}'><td>{i}</td>"
             f"<td><a class='sym' href='stock/{t}.html'>{t}</a>"
             f"<span class='nm'>{clean_company_name(UNIVERSE_NAME.get(t, t))}</span></td>"
             f"<td><span class='chip sb'>BUY</span> {legs_mini(v)}</td>"
-            f"<td>{' · '.join(origin)}</td>"
+            f"<td class='hide-m'>{' · '.join(origin)}</td>"
             f"<td class='num'>${last:,.2f}</td>"
             f"<td class='num'>{day_html}</td>"
             f"<td>{range_html}<span class='dn'>{off:.1f}%</span></td>"
-            f"<td class='num'>{rsi_html}</td>"
-            f"<td class='num'>{rs_html}</td>"
+            f"<td class='num hide-m'>{rsi_html}</td>"
             f"<td class='num'>{earn_html}</td>"
-            f"<td class='sum'>{v.get('summary', '')}{ev}</td></tr>")
+            f"<td class='detail'>{det}</td></tr>")
     status = (f"Research complete: {len(final)} names passed the research rubric as BUY. "
               f"Researched in total: {len(vs)} ({counts['BUY']} buy · {counts['HOLD']} hold · "
               f"{counts['SELL']} sell/not-justified)." if len(final) >= 50 else
@@ -1636,35 +1870,41 @@ def build_validated_page(meta, verdicts, kpi_ix=None):
               f"through the merged candidate queue.")
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Validated Top 50 · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<title>Vetted Buys · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
 {TABS_VALIDATED}
-<h1>🏆 Research-Validated Top 50</h1>
-<div class="sub">One merged list from both screens (Quality-Dip + Professional), where every name
+<main class="main">
+<h1>🏆 Vetted Buys — Research-Validated Top 50</h1>
+<div class="sub">One merged list from both screens (Quality Dips + Factor Grades), where every name
 also passed a dedicated deep-research pass · prices as of {meta['asof']} close · the dots beside
-each verdict are its five rubric legs (Quality · Valuation · Sector · Risk · Catalyst)</div>
+each verdict are its five rubric legs (Quality · Valuation · Sector · Risk · Catalyst).
+<b>Select any row</b> — its full evidence opens in the panel.</div>
 <div class="cards">
   <div class="card"><div class="n">{len(final)}</div><div class="l">Validated BUY names</div></div>
   <div class="card"><div class="n">{len(vs)}</div><div class="l">Names researched</div></div>
   <div class="card"><div class="n">{counts['BUY']} · {counts['HOLD']} · {counts['SELL']}</div><div class="l">Buy · Hold · Sell verdicts</div></div>
   <div class="card"><div class="n">{n_checked}</div><div class="l">Cards evidence cross-checked</div></div>
 </div>
-<section>{status}
-<div class="tablewrap"><table id="t"><thead><tr><th>#</th><th>Stock</th><th>Verdict · legs</th><th>Origin</th>
+<p class="sub">{status}</p>
+<div class="controls"><input id="q" type="text" placeholder="Search symbol or company…"></div>
+<div class="master">
+<div class="tablewrap"><table id="t" class="mlist"><thead><tr><th>#</th><th>Stock</th><th>Verdict · legs</th><th class="hide-m">Origin</th>
 <th class="num">Price</th><th class="num">Day</th><th>vs 52w high</th>
-<th class="num">RSI</th><th class="num">Rel Str 20d</th><th class="num">Earnings</th>
-<th>Research summary &amp; evidence</th></tr></thead>
+<th class="num hide-m">RSI</th><th class="num">Earnings</th></tr></thead>
 <tbody>{chr(10).join(rows)}</tbody></table></div>
-<p class="muted" style="margin-top:12px">Method: candidates from both Top 50 lists first, then the
+{panel_html()}
+</div>
+<p class="foot">Method: candidates from both Top 50 lists first, then the
 merged bench in rank order, were deep-researched one by one against a five-leg rubric — business
-quality intact, valuation/dip justified, sector wind (see the Sectors tab), risk survivability, and a
+quality intact, valuation/dip justified, sector wind (see the Sector Impact tab), risk survivability, and a
 visible catalyst path. A name is BUY only with no leg failing and at least four passing; HOLD and
 SELL verdicts drop out and the next bench name is researched, until 50 BUY names stand. Every stock
 page carries the full verdict with evidence, risks, and what would change it. Verdicts are a dated
 research snapshot (not refreshed by the daily screener) from public sources — structured research
-opinion, not investment advice or a trade instruction.</p></section>
+opinion, not investment advice or a trade instruction.</p>
 {glossary_html()}
-</div></body></html>"""
+</main></div>
+{PANEL_JS}</body></html>"""
     with open(os.path.join(ROOT, "validated.html"), "w") as fh:
         fh.write(html)
 
@@ -1697,9 +1937,10 @@ def build_validated_details(meta, verdicts, covered, results, pro_recs, earn):
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<div class="shell">
 {tabs_html("validated", "../")}
-<p class="crumb"><a href="../validated.html">← Back to the Validated Top 50</a></p>
+<main class="main">
+<p class="crumb"><a href="../validated.html">← Back to Vetted Buys</a></p>
 <h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
 · Research-validated Top 50</div>
@@ -1714,7 +1955,7 @@ def build_validated_details(meta, verdicts, covered, results, pro_recs, earn):
 <a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
 <a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a></p>
 <p class="muted">Research and education only — not investment advice.</p></section>
-</div></body></html>"""
+</main></div></body></html>"""
         with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
             fh.write(page)
 
@@ -1756,27 +1997,30 @@ def build_macro_page(meta, tverdicts, themes, kpi_ix=None):
         rs_html = (f"<span class='{'up' if rs >= 0 else 'dn'}'>{rs:+.1f}%</span>"
                    if rs is not None else "—")
         earn_html = k.get("earnings") or '<span class="muted">—</span>'
-        ev = (f"<div class='evline'>{len(v.get('sources') or [])} sources cited · "
-              f"researched {v.get('date', '')}{audit_badge(t)}</div>")
-        return (f"<tr><td><a class='sym' href='stock/{t}.html'>{t}</a>"
+        det = (pkpi_grid([
+            (f"${last:,.2f}", "Price"), (day_html, "Day"),
+            (f"{off:.1f}%", "vs 52w high"), (rsi_html, "RSI"),
+            (rs_html, "Rel Str 20d"), (str(earn_html), "Earnings")])
+            + verdict_detail_html(v, t, page=t))
+        return (f"<tr data-q='{t} {clean_company_name(UNIVERSE_NAME.get(t, t))}'>"
+                f"<td><a class='sym' href='stock/{t}.html'>{t}</a>"
                 f"<span class='nm'>{clean_company_name(UNIVERSE_NAME.get(t, t))}</span></td>"
                 f"<td><span class='chip sb'>BUY</span> {legs_mini(v)}</td>"
                 f"<td class='num'>${last:,.2f}</td>"
                 f"<td class='num'>{day_html}</td>"
                 f"<td>{range_html}<span class='dn'>{off:.1f}%</span></td>"
-                f"<td class='num'>{rsi_html}</td>"
-                f"<td class='num'>{rs_html}</td>"
+                f"<td class='num hide-m'>{rsi_html}</td>"
                 f"<td class='num'>{earn_html}</td>"
-                f"<td class='sum'>{v.get('summary', '')}{ev}</td></tr>")
+                f"<td class='detail'>{det}</td></tr>")
 
     sections = []
     for th in themes.get("themes", []):
         tid = th["id"]
         names = by_theme.get(tid, [])
-        table = ("<div class='tablewrap'><table><thead><tr><th>Stock</th><th>Verdict · legs</th>"
+        table = ("<div class='tablewrap'><table class='mlist'><thead><tr><th>Stock</th><th>Verdict · legs</th>"
                  "<th class=\"num\">Price</th><th class=\"num\">Day</th><th>vs 52w high</th>"
-                 "<th class=\"num\">RSI</th><th class=\"num\">Rel Str 20d</th>"
-                 "<th class=\"num\">Earnings</th><th>Research summary &amp; evidence</th></tr></thead>"
+                 "<th class=\"num hide-m\">RSI</th>"
+                 "<th class=\"num\">Earnings</th></tr></thead>"
                  "<tbody>" + chr(10).join(mrow(t) for t in names) + "</tbody></table></div>"
                  ) if names else \
             "<p class='muted'>No name from this theme has passed the rubric as BUY yet.</p>"
@@ -1796,14 +2040,15 @@ def build_macro_page(meta, tverdicts, themes, kpi_ix=None):
         for th in themes.get("themes", []))
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Macro & Themes · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<title>Theme Buys · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
 {TABS_MACRO}
-<h1>🌐 Macro & Themes — Top 50</h1>
+<main class="main">
+<h1>🌐 Theme Buys — Macro &amp; Themes Top 50</h1>
 <div class="sub">A separate list whose ORIGIN is the macro map — geopolitics, inflation & rates,
-the economy, employment, innovation and politics — not the dip or professional screens ·
+the economy, employment, innovation and politics — not the dip or factor screens ·
 prices as of {meta['asof']} close · the dots beside each verdict are its five rubric legs
-(Quality · Valuation · Sector · Risk · Catalyst)</div>
+(Quality · Valuation · Sector · Risk · Catalyst). <b>Select any row</b> — its evidence opens in the panel.</div>
 <div class="cards">
   <div class="card"><div class="n">{len(lst)}</div><div class="l">Macro Top 50 names</div></div>
   <div class="card"><div class="n">{len(vs)}</div><div class="l">Names with a macro verdict</div></div>
@@ -1814,16 +2059,22 @@ prices as of {meta['asof']} close · the dots beside each verdict are its five r
 <p class="muted"><b>By theme:</b> {theme_counts}. Method: the full 682-name merged candidate pool was swept by theme fit — every
 name tagged with the macro theme that genuinely drives its case (geopolitics &amp; energy security,
 inflation &amp; rates, economics &amp; growth, employment &amp; labor, innovation, politics &amp;
-policy) — and researched against the same five-leg rubric as the Validated Top 50 (quality,
+policy) — and researched against the same five-leg rubric as the Vetted Buys (quality,
 valuation, sector, risk, catalyst — BUY only with no leg failing and at least four passing).
 Verdicts already earned in the earlier research editions were carried in with their theme tag;
 the rest of the pool was researched in theme-fit order until 50 BUYs stood. There is no quota
-per theme — counts are whatever the sweep produced. This list sits alongside the Validated Top 50
+per theme — counts are whatever the sweep produced. This list sits alongside the Vetted Buys
 and does not change it. Verdicts are a dated research snapshot from public sources — structured
 research opinion, not investment advice.</p></section>
+<div class="controls"><input id="q" type="text" placeholder="Search symbol or company across all themes…"></div>
+<div class="master"><div>
 {chr(10).join(sections)}
+</div>
+{panel_html()}
+</div>
 {glossary_html()}
-</div></body></html>"""
+</main></div>
+{PANEL_JS}</body></html>"""
     with open(os.path.join(ROOT, "macro.html"), "w") as fh:
         fh.write(html)
 
@@ -1856,9 +2107,10 @@ def build_theme_details(meta, tverdicts, covered, results, pro_recs, earn):
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<div class="shell">
 {tabs_html("macro", "../")}
-<p class="crumb"><a href="../macro.html">← Back to Macro & Themes</a></p>
+<main class="main">
+<p class="crumb"><a href="../macro.html">← Back to Theme Buys</a></p>
 <h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
 · Macro & Themes validated list</div>
@@ -1873,7 +2125,7 @@ def build_theme_details(meta, tverdicts, covered, results, pro_recs, earn):
 <a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
 <a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a></p>
 <p class="muted">Research and education only — not investment advice.</p></section>
-</div></body></html>"""
+</main></div></body></html>"""
         with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
             fh.write(page)
 
@@ -1961,52 +2213,63 @@ def build_holds_page(meta, verdicts, tverdicts, kpi_ix=None):
                 f"{v.get('what_changes', '')}</div>")
         sym = (f"<a class='sym' href='stock/{t}.html'>{t}</a>" if t in kpi_ix
                else f"<span class='sym'>{t}</span>")
+        det = (pkpi_grid([
+            (f"${last:,.2f}", "Price"), (day_html, "Day"),
+            (f"{off:.1f}%", "vs 52w high"), (rsi_html, "RSI"),
+            (rs_html, "Rel Str 20d"), (str(earn_html), "Earnings")])
+            + f"<p class='muted'>{profile} · blocked by: {blocked}</p>"
+            + verdict_detail_html(v, t,
+                                  page=t if t in kpi_ix else None))
         rows.append(
-            f"<tr><td>{i}</td>"
+            f"<tr data-q='{t} {clean_company_name(UNIVERSE_NAME.get(t, t))}'><td>{i}</td>"
             f"<td>{sym}<span class='nm'>{clean_company_name(UNIVERSE_NAME.get(t, t))}</span></td>"
             f"<td><span class='chip h'>HOLD</span> {legs_mini(v)}"
             f"<div class='evline'>{profile}</div></td>"
             f"<td>{blocked}</td>"
-            f"<td>{' · '.join(origin)}</td>"
+            f"<td class='hide-m'>{' · '.join(origin)}</td>"
             f"<td class='num'>${last:,.2f}</td>"
             f"<td class='num'>{day_html}</td>"
             f"<td>{range_html}<span class='dn'>{off:.1f}%</span></td>"
-            f"<td class='num'>{rsi_html}</td>"
-            f"<td class='num'>{rs_html}</td>"
+            f"<td class='num hide-m'>{rsi_html}</td>"
             f"<td class='num'>{earn_html}</td>"
-            f"<td class='sum'>{v.get('summary', '')}{flip}{ev}</td></tr>")
+            f"<td class='detail'>{det}</td></tr>")
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Top 50 Holds · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<title>The Bench — Top 50 Holds · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
 {TABS_HOLDS}
-<h1>🟡 Top 50 Holds — the research bench</h1>
+<main class="main">
+<h1>🟡 The Bench — Top 50 Holds</h1>
 <div class="sub">Every deep-researched name that landed on HOLD, ranked by distance to BUY ·
 prices as of {meta['asof']} close · the dots beside each verdict are its five rubric legs
-(Quality · Valuation · Sector · Risk · Catalyst)</div>
+(Quality · Valuation · Sector · Risk · Catalyst). <b>Select any row</b> — the leg that blocks it
+and the evidence that would flip it open in the panel.</div>
 <div class="cards">
   <div class="card"><div class="n">{len(top)}</div><div class="l">Holds shown</div></div>
   <div class="card"><div class="n">{len(ranked)}</div><div class="l">HOLD verdicts in total</div></div>
   <div class="card"><div class="n">{n_four}</div><div class="l">With 4 legs passing (one flip from BUY)</div></div>
   <div class="card"><div class="n">{len(ranked) - len(top)}</div><div class="l">Further holds below the cut</div></div>
 </div>
-<section>A HOLD is an unproven case, not a rejected one: exactly one rubric leg failing, or only
-three passing with none failing. This tab ranks all {len(ranked)} researched HOLDs by how close they
-stand to the BUY bar and shows, for each, the leg that blocks it and the evidence that would flip it.
-<div class="tablewrap"><table id="t"><thead><tr><th>#</th><th>Stock</th><th>Verdict · legs</th><th>Blocked by</th><th>Origin</th>
+<p class="sub">A HOLD is an unproven case, not a rejected one: exactly one rubric leg failing, or only
+three passing with none failing.</p>
+<div class="controls"><input id="q" type="text" placeholder="Search symbol or company…"></div>
+<div class="master">
+<div class="tablewrap"><table id="t" class="mlist"><thead><tr><th>#</th><th>Stock</th><th>Verdict · legs</th><th>Blocked by</th><th class="hide-m">Origin</th>
 <th class="num">Price</th><th class="num">Day</th><th>vs 52w high</th>
-<th class="num">RSI</th><th class="num">Rel Str 20d</th><th class="num">Earnings</th>
-<th>Research summary · what flips it · evidence</th></tr></thead>
+<th class="num hide-m">RSI</th><th class="num">Earnings</th></tr></thead>
 <tbody>{chr(10).join(rows)}</tbody></table></div>
-<p class="muted" style="margin-top:12px">Method: the population is every HOLD verdict in the two
-research stores (Validated bench and Macro bench); a name that is BUY in either store never appears
+{panel_html()}
+</div>
+<p class="foot">Method: the population is every HOLD verdict in the two
+research stores (Vetted bench and Theme bench); a name that is BUY in either store never appears
 here. Ranking is mechanical, computed from each card's own rubric legs — legs passing (descending),
-legs failing (ascending), then the Professional composite, then the Quality-Dip score. Verdicts are
+legs failing (ascending), then the Factor Grades composite, then the Quality Dips score. Verdicts are
 a dated research snapshot (researched 2026-10-25; not re-researched by the daily screener, which
 refreshes prices and KPIs only) from public sources — structured research opinion, not investment
-advice or a trade instruction.</p></section>
+advice or a trade instruction.</p>
 {glossary_html()}
-</div></body></html>"""
+</main></div>
+{PANEL_JS}</body></html>"""
     with open(os.path.join(ROOT, "holds.html"), "w") as fh:
         fh.write(html)
     return ranked
@@ -2043,9 +2306,10 @@ def build_holds_details(meta, ranked_top, verdicts, tverdicts, covered,
         page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
-<div class="wrap">
+<div class="shell">
 {tabs_html("holds", "../")}
-<p class="crumb"><a href="../holds.html">← Back to the Top 50 Holds</a></p>
+<main class="main">
+<p class="crumb"><a href="../holds.html">← Back to The Bench</a></p>
 <h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
 · Top 50 Holds — research bench</div>
@@ -2060,7 +2324,397 @@ def build_holds_details(meta, ranked_top, verdicts, tverdicts, covered,
 <a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
 <a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a></p>
 <p class="muted">Research and education only — not investment advice.</p></section>
-</div></body></html>"""
+</main></div></body></html>"""
+        with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
+            fh.write(page)
+
+
+def _edgar_insider_cluster(t, today):
+    """Open-market insider buys/sells for one ticker over the last 12 months,
+    parsed from the company's own Form 4 filings on SEC EDGAR (submissions
+    API + filing XML; transaction codes P = open-market purchase, S = sale).
+    Returns a summary dict or None on any failure (the badge then simply
+    doesn't render)."""
+    import xml.etree.ElementTree as ET
+    cik = _edgar_cik(t)
+    if not cik:
+        return None
+    try:
+        raw = http_get(f"https://data.sec.gov/submissions/CIK{cik}.json",
+                       timeout=25, ua=EDGAR_UA)
+        sub = json.loads(raw.decode("utf-8", "replace"))
+    except Exception:
+        return None
+    recent = (sub.get("filings") or {}).get("recent") or {}
+    forms = recent.get("form") or []
+    dates = recent.get("filingDate") or []
+    accs = recent.get("accessionNumber") or []
+    docs = recent.get("primaryDocument") or []
+    cutoff = today - timedelta(days=365)
+    targets = []
+    for form, fdate, acc, doc in zip(forms, dates, accs, docs):
+        if form != "4" or len(targets) >= 80:
+            continue
+        try:
+            fd = date.fromisoformat(fdate)
+        except (TypeError, ValueError):
+            continue
+        if fd < cutoff - timedelta(days=10) or fd > today + timedelta(days=2):
+            continue
+        # primaryDocument often points at the XSLT-rendered view
+        # (xslF345X06/<file>.xml), which returns HTML; the raw XML is the
+        # same file without that directory prefix.
+        doc = re.sub(r"^xslF345X0\d/", "", doc)
+        targets.append((f"https://www.sec.gov/Archives/edgar/data/{int(cik)}/"
+                        f"{acc.replace('-', '')}/{doc}"))
+
+    def parse_filing(url):
+        try:
+            root = ET.fromstring(http_get(url, timeout=20, ua=EDGAR_UA))
+        except Exception:
+            return []
+        owner = root.findtext(".//rptOwnerName") or "?"
+        txns = []
+        for txn in root.iter("nonDerivativeTransaction"):
+            code = txn.findtext(".//transactionCode") or ""
+            if code not in ("P", "S"):
+                continue
+            try:
+                d = date.fromisoformat(
+                    (txn.findtext(".//transactionDate/value") or "")[:10])
+                shares = float(txn.findtext(
+                    ".//transactionShares/value") or 0)
+                price = float(txn.findtext(
+                    ".//transactionPricePerShare/value") or 0)
+            except (TypeError, ValueError):
+                continue
+            if cutoff <= d <= today:
+                txns.append((code, owner, d, shares * price))
+        return txns
+
+    buyers, sellers = {}, {}
+    buy_val = sell_val = 0.0
+    last_buy = None
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        for txns in ex.map(parse_filing, targets):
+            for code, owner, d, val in txns:
+                if code == "P":
+                    buyers[owner] = buyers.get(owner, 0) + 1
+                    buy_val += val
+                    if last_buy is None or d > last_buy:
+                        last_buy = d
+                else:
+                    sellers[owner] = sellers.get(owner, 0) + 1
+                    sell_val += val
+    return {"asof": today.isoformat(), "buyers": len(buyers),
+            "buy_val": round(buy_val),
+            "last_buy": last_buy.isoformat() if last_buy else None,
+            "sellers": len(sellers), "sell_val": round(sell_val)}
+
+
+def fetch_insider_clusters(tickers, max_age_days=7):
+    """Weekly-cached insider-cluster summaries for the screener finalists."""
+    cache_p = os.path.join(DATA, "insider_cache.json")
+    cache = {}
+    if os.path.exists(cache_p):
+        try:
+            cache = json.load(open(cache_p))
+        except Exception:
+            cache = {}
+    today = date.today()
+    out, dirty = {}, False
+    for t in tickers:
+        e = cache.get(t)
+        fresh = False
+        if e and e.get("asof"):
+            try:
+                fresh = (today - date.fromisoformat(e["asof"])).days < max_age_days
+            except ValueError:
+                fresh = False
+        if fresh:
+            out[t] = e
+            continue
+        e = _edgar_insider_cluster(t, today)
+        if e:
+            cache[t] = e
+            out[t] = e
+            dirty = True
+    if dirty:
+        try:
+            json.dump(cache, open(cache_p, "w"), indent=1)
+        except Exception:
+            pass
+    return out
+
+
+def rank_screener(results, pro_recs):
+    """The Fallen & Cheap screen — a mechanical reconstruction of the
+    'fallen + cheap + compressing multiple' approach: deep drawdown,
+    EV/EBITDA <= 15 and compressing vs a year ago on a consistent EDGAR
+    basis, positive FCF, net debt/EBITDA <= 3. Ranked cheapest-multiple
+    first (the shared screener's apparent order), then deepest
+    compression, then deepest drawdown. Purely mechanical: the Dip tab's
+    research exclusions do NOT apply here; researched verdicts are shown
+    as badges instead."""
+    out = []
+    funnel = {"pool": 0, "drawdown": 0, "multiple": 0, "leverage": 0,
+              "fcf": 0, "tradable": 0}
+    watch = {}
+    for t, r in pro_recs.items():
+        k = results.get(t)
+        if not k:
+            continue
+        funnel["pool"] += 1
+        off = k["off_high_pct"]
+        evx, evx1 = r.get("ev_ebitda"), r.get("ev_ebitda_1y")
+        nd = r.get("nd_ebitda")
+        stage = None
+        if not (-65 <= off <= -20):
+            stage = "drawdown"
+        elif not evx or evx > 15 or not evx1 or evx >= evx1:
+            stage = "multiple"
+        elif nd is None or nd > 3:
+            stage = "leverage"
+        elif r.get("fcf") is None or r["fcf"] < 0:
+            stage = "fcf"
+        elif k["last"] < 3 or k.get("adv_m", 0) < 5:
+            stage = "tradable"
+        if t in ("NKE", "LULU", "ALG", "DORM"):
+            watch[t] = (f"off {off:.1f}%, EV/EBITDA {evx and round(evx, 1)} "
+                        f"vs 1y {evx1 and round(evx1, 1)}, ND/EBITDA "
+                        f"{nd and round(nd, 1)}, FCF "
+                        f"{r.get('fcf') and round(r['fcf'] / 1e6)}M -> "
+                        f"{stage or 'PASSES'}")
+        if stage:
+            funnel[stage] += 1
+            continue
+        out.append({"ticker": t, "ev_ebitda": evx, "ev_ebitda_1y": evx1,
+                    "ev_comp": r.get("ev_comp"), "nd_ebitda": nd,
+                    "fcf": r["fcf"], "grade": r.get("grade"),
+                    "off_high_pct": off, "last": k["last"]})
+    out.sort(key=lambda r: (r["ev_ebitda"],
+                            -(r["ev_comp"] if r["ev_comp"] is not None else 0),
+                            r["off_high_pct"], r["ticker"]))
+    print(f"SCREENER FUNNEL: pool {funnel['pool']} -> failed drawdown "
+          f"{funnel['drawdown']}, multiple {funnel['multiple']}, leverage "
+          f"{funnel['leverage']}, fcf {funnel['fcf']}, tradable "
+          f"{funnel['tradable']} -> passed {len(out)}")
+    for t, w in watch.items():
+        print(f"SCREENER WATCH {t}: {w}")
+    return out
+
+
+def _verdict_chip(t, verdicts, tverdicts):
+    for store in (verdicts, tverdicts):
+        v = (store.get("verdicts") or {}).get(t)
+        if v:
+            cls = {"BUY": "sb", "HOLD": "h", "SELL": "r"}.get(v.get("flag", ""), "na")
+            return (f" <span class='chip {cls}' title='Researched verdict "
+                    f"({v.get('date', '')}) — a separate lens; this screen is "
+                    f"purely mechanical'>{v.get('flag', '')}</span>")
+    return ""
+
+
+def _insider_html(ins):
+    if not ins:
+        return '<span class="muted">—</span>'
+    b = ins.get("buyers", 0)
+    if b >= 2:
+        return (f"<span class='chip sb' title='Open-market insider purchases, "
+                f"last 12 months (SEC Form 4 filings)'>◆ cluster: {b} buyers · "
+                f"${ins.get('buy_val', 0):,}</span>")
+    if b == 1:
+        return (f"<span class='chip h' title='One insider buying open-market, "
+                f"last 12 months (SEC Form 4 filings)'>1 buyer · "
+                f"${ins.get('buy_val', 0):,}</span>")
+    s = ins.get("sellers", 0)
+    if s:
+        return (f"<span class='muted' title='No open-market insider buys in the "
+                f"last 12 months; {s} insider(s) sold'>no buys · {s} seller(s)</span>")
+    return '<span class="muted">no insider trades 12mo</span>'
+
+
+def build_screener_page(meta, rows, insiders, verdicts, tverdicts, kpi_ix=None):
+    kpi_ix = kpi_ix or {}
+    top = rows[:50]
+    n_cluster = sum(1 for r in top
+                    if (insiders.get(r["ticker"]) or {}).get("buyers", 0) >= 2)
+    med = (sorted(r["ev_ebitda"] for r in top)[len(top) // 2] if top else 0)
+    trs = []
+    for i, r in enumerate(top, 1):
+        t = r["ticker"]
+        k = kpi_ix.get(t, {})
+        day = k.get("day_pct")
+        day_html = (f"<span class='{'up' if day >= 0 else 'dn'}'>{day:+.2f}%</span>"
+                    if day is not None else '<span class="muted">—</span>')
+        rp = k.get("range_pos")
+        range_html = (f"<span class='range'><span class='fill' style='width:{rp}%'></span></span> "
+                      if rp is not None else "")
+        comp = r.get("ev_comp")
+        comp_html = (f"<span class='up'>{comp:.0f}%</span>" if comp is not None
+                     else "—")
+        fcf_m = r["fcf"] / 1e6
+        why = (f"{abs(r['off_high_pct']):.0f}% off its high, EV/EBITDA compressed "
+               f"from {r['ev_ebitda_1y']:.1f}× to {r['ev_ebitda']:.1f}× in a year, "
+               f"FCF ${fcf_m:,.0f}M, leverage {r['nd_ebitda']:.1f}×")
+        sym = (f"<a class='sym' href='stock/{t}.html'>{t}</a>" if t in kpi_ix
+               else f"<span class='sym'>{t}</span>")
+        ins = insiders.get(t)
+        ins_det = ""
+        if ins:
+            ins_det = (f"<h3>Insider record — SEC Form 4, last 12 months</h3>"
+                       f"<p><b>{ins.get('buyers', 0)} open-market buyer(s), "
+                       f"${ins.get('buy_val', 0):,}</b>"
+                       + (f", most recent {ins.get('last_buy')}"
+                          if ins.get("last_buy") else "")
+                       + f"; {ins.get('sellers', 0)} seller(s), "
+                       f"${ins.get('sell_val', 0):,}.</p>")
+        v = (verdicts.get("verdicts") or {}).get(t) or \
+            (tverdicts.get("verdicts") or {}).get(t)
+        det = (pkpi_grid([
+            (f"${r['last']:,.2f}", "Price"), (day_html, "Day"),
+            (f"{r['off_high_pct']:.1f}%", "vs 52w high"),
+            (f"{r['ev_ebitda']:.1f}×", "EV/EBITDA now"),
+            (f"{r['ev_ebitda_1y']:.1f}×", "EV/EBITDA 1y ago"),
+            (f"{r['nd_ebitda']:.1f}×", "Net debt/EBITDA")])
+            + f"<h3>Why it's here</h3><p>{why}</p>{ins_det}"
+            + (verdict_detail_html(v, t, page=t if t in kpi_ix else None)
+               if v else
+               (f"<a class='pfull' href='stock/{t}.html'>Full stock page →</a>"
+                if t in kpi_ix else "")))
+        trs.append(
+            f"<tr data-q='{t} {clean_company_name(UNIVERSE_NAME.get(t, t))}'><td>{i}</td>"
+            f"<td>{sym}<span class='nm'>{clean_company_name(UNIVERSE_NAME.get(t, t))}</span>"
+            f"{_verdict_chip(t, verdicts, tverdicts)}</td>"
+            f"<td class='num'>${r['last']:,.2f}</td>"
+            f"<td class='num'>{day_html}</td>"
+            f"<td>{range_html}<span class='dn'>{r['off_high_pct']:.1f}%</span></td>"
+            f"<td class='num'><b>{r['ev_ebitda']:.1f}×</b></td>"
+            f"<td class='num hide-m'>{r['ev_ebitda_1y']:.1f}×</td>"
+            f"<td class='num'>{comp_html}</td>"
+            f"<td class='num hide-m'>{r['nd_ebitda']:.1f}×</td>"
+            f"<td>{_insider_html(ins)}</td>"
+            f"<td class='detail'>{det}</td></tr>")
+    html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fallen &amp; Cheap · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
+{TABS_SCREENER}
+<main class="main">
+<h1>🔎 Fallen &amp; Cheap — Screener Top 50</h1>
+<div class="sub">A mechanical value screen in the style of the classic fallen-names approach:
+deep drawdown, a low EV/EBITDA that is compressing against the company's own history, and a
+balance sheet that survives · prices as of {meta['asof']} close. <b>Select any row</b> — its
+numbers and insider record open in the panel.</div>
+<div class="cards">
+  <div class="card"><div class="n">{len(top)}</div><div class="l">Names shown</div></div>
+  <div class="card"><div class="n">{len(rows)}</div><div class="l">Passed every gate</div></div>
+  <div class="card"><div class="n">{n_cluster}</div><div class="l">With insider buying clusters (12mo)</div></div>
+  <div class="card"><div class="n">{med:.1f}×</div><div class="l">Median EV/EBITDA of the list</div></div>
+</div>
+<p class="sub">The gates, applied to the same 1,654-name universe: <b>20–65% below the 52-week high</b> ·
+<b>EV/EBITDA ≤ 15×</b> · <b>the multiple lower than a year ago</b> (SEC EDGAR basis: current price
+and balance sheet vs the year-ago price, prior-year EBITDA and balance sheet) ·
+<b>net debt/EBITDA ≤ 3×</b> · <b>positive free cash flow</b> · price ≥ $3, ADV ≥ $5M. Ranking is
+cheapest multiple first, then deepest compression — the order the classic screen produces.
+Insider clusters (≥2 distinct open-market buyers in 12 months, SEC Form 4) are shown as a
+signal, not a gate. This lens is purely mechanical — it does not apply the research exclusions of
+the other tabs; where a name carries a researched verdict, it is badged beside the ticker.</p>
+<div class="controls"><input id="q" type="text" placeholder="Search symbol or company…"></div>
+<div class="master">
+<div class="tablewrap"><table id="t" class="mlist"><thead><tr><th>#</th><th>Stock</th>
+<th class="num">Price</th><th class="num">Day</th><th>vs 52w high</th>
+<th class="num">EV/EBITDA</th><th class="num hide-m">1y ago</th><th class="num">Compression</th>
+<th class="num hide-m">Net debt/EBITDA</th><th>Insider buying (12mo)</th></tr></thead>
+<tbody>{chr(10).join(trs)}</tbody></table></div>
+{panel_html()}
+</div>
+<p class="foot">Method and limits: EV/EBITDA uses EDGAR annual filings
+(operating income + D&amp;A as the EBITDA proxy, rebuilt from net income + interest + tax + D&amp;A
+where operating income is not tagged) — a consistent basis for the now-vs-year-ago
+comparison, but not identical to vendor trailing-twelve-month figures. The screen cannot see
+guidance cuts, one-off items inside earnings, or off-balance-sheet obligations; the researched
+tabs exist for that. Micro-caps outside the universe (top-800 by volume ∪ S&amp;P 1000) cannot
+appear here at all. Structured research output, not investment advice or a trade instruction.</p>
+{glossary_html()}
+</main></div>
+{PANEL_JS}</body></html>"""
+    with open(os.path.join(ROOT, "screener.html"), "w") as fh:
+        fh.write(html)
+    return top
+
+
+def screener_section(t, row, ins):
+    if not row:
+        return ""
+    ins_line = ""
+    if ins:
+        ins_line = (f"<p>Insider record (SEC Form 4, last 12 months): "
+                    f"<b>{ins.get('buyers', 0)} open-market buyer(s), "
+                    f"${ins.get('buy_val', 0):,}</b>"
+                    + (f", most recent {ins.get('last_buy')}" if ins.get("last_buy") else "")
+                    + f"; {ins.get('sellers', 0)} seller(s), ${ins.get('sell_val', 0):,}.</p>")
+    return (f"<section><h2>🔎 Fallen &amp; Cheap screen</h2>"
+            f"<p>On the mechanical screener list at #{row['rank']}: "
+            f"<b>{abs(row['off_high_pct']):.1f}% below its 52-week high</b>, "
+            f"EV/EBITDA <b>{row['ev_ebitda']:.1f}×</b> vs {row['ev_ebitda_1y']:.1f}× a year ago "
+            f"({row.get('ev_comp', 0):.0f}% compression), net debt/EBITDA "
+            f"{row['nd_ebitda']:.1f}×, free cash flow ${row['fcf'] / 1e6:,.0f}M.</p>"
+            f"{ins_line}"
+            f"<p class='muted'>A purely mechanical screen (drawdown + cheap, compressing "
+            f"multiple + survivability). It does not read guidance, one-offs or filings text — "
+            f"see the research verdict, where present, for that layer.</p></section>")
+
+
+def build_screener_details(meta, top, insiders, verdicts, tverdicts,
+                           results, pro_recs, earn):
+    """Detail pages for screener names covered by no other list builder."""
+    fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
+    asof = meta["asof"]
+    rank_ix = {r["ticker"]: dict(r, rank=i + 1) for i, r in enumerate(top)}
+    for t, row in rank_ix.items():
+        if os.path.exists(os.path.join(ROOT, "stock", f"{t}.html")):
+            continue
+        k = results.get(t)
+        if not k:
+            continue
+        secs = [screener_section(t, row, insiders.get(t))]
+        prec = pro_recs.get(t)
+        psec = pro_section(t, prec, k, None)
+        if psec:
+            secs.append(psec)
+        vsec = verdict_section(t, verdicts) or verdict_section(t, tverdicts)
+        if vsec:
+            secs.append(vsec)
+        pe = (round(100 / prec["earn_y"], 1)
+              if prec and prec.get("earn_y") and prec["earn_y"] > 0 else None)
+        tiles = kpi_tiles(k, rs20=k["mom20_pct"] - meta.get("spy_mom20", 0.0),
+                          pe=pe, earn=earn.get(t), extra=(
+            _tile(f"{k['vpt20']:+.0f}%", "VPT trend (20d)",
+                  "up" if k["vpt20"] >= 0 else "dn")))
+        ys = yahoo_symbol(t)
+        page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
+{tabs_html("screener", "../")}
+<main class="main">
+<p class="crumb"><a href="../screener.html">← Back to Fallen &amp; Cheap</a></p>
+<h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
+<div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
+· Fallen &amp; Cheap — Screener Top 50</div>
+<div><span class="price">${k['last']:,.2f}</span>
+<span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
+<span class="muted"> · as of {asof} close</span></div>
+{tiles}
+<div class="bigchart">{chart_svg(k['chart'], k['high52'], k['low52'])}
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+{chr(10).join(secs)}
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
+<a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</main></div></body></html>"""
         with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
             fh.write(page)
 
@@ -2238,6 +2892,14 @@ def main():
                         results, pro_recs, earn)
     print(f"HOLDS: {len(ranked_holds)} HOLD verdicts ranked; top 50 on holds.html; "
           f"top 5: {', '.join(r['ticker'] for r in ranked_holds[:5])}")
+    scr_rows = rank_screener(results, pro_recs)
+    scr_top = scr_rows[:50]
+    insiders = fetch_insider_clusters([r["ticker"] for r in scr_top])
+    build_screener_page(meta, scr_rows, insiders, verdicts, tverdicts, kpi_ix)
+    build_screener_details(meta, scr_top, insiders, verdicts, tverdicts,
+                           results, pro_recs, earn)
+    print(f"SCREENER: {len(scr_rows)} passed gates; top 5: "
+          f"{', '.join(r['ticker'] for r in scr_top[:5])}")
 
     new_set = {r["ticker"] for r in rows}
     old_set = set(prev_ranks)

@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AA — Alcoa · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Seven lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab active" href="../screener.html">🔎 Fallen & Cheap</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../screener.html">← Back to Fallen &amp; Cheap</a></p>
+<h1>AA — Alcoa</h1>
+<div class="sub">
+· Fallen &amp; Cheap — Screener Top 50</div>
+<div><span class="price">$38.70</span>
+<span class="up" style="font-size:17px">+2.08% today</span>
+<span class="muted"> · as of 2026-10-26 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-53.8%</div><div class="l">vs 52w high ($83.79)</div></div><div class="kpi"><div class="v ">7%</div><div class="l">of 52w range (low $35.26)</div></div><div class="kpi"><div class="v ">32</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-8.4%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-8.4%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-3.0%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">31.8%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">8.7</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-9%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $83.79</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $35.26</text><polyline points="0.0,215.5 3.4,218.1 6.9,219.9 10.3,229.4 13.8,229.3 17.2,227.4 20.6,236.0 24.1,233.9 27.5,229.7 31.0,226.9 34.4,220.4 37.8,226.2 41.3,215.0 44.7,223.1 48.2,225.7 51.6,233.7 55.0,230.3 58.5,229.6 61.9,233.5 65.4,231.2 68.8,220.7 72.2,218.6 75.7,208.2 79.1,207.4 82.6,207.8 86.0,208.7 89.4,197.0 92.9,197.4 96.3,198.5 99.8,195.4 103.2,199.8 106.6,194.6 110.1,183.2 113.5,188.0 117.0,190.9 120.4,186.2 123.8,184.9 127.3,179.0 130.7,165.5 134.2,154.6 137.6,154.9 141.0,155.0 144.5,152.3 147.9,154.4 151.4,151.7 154.8,157.2 158.2,142.2 161.7,120.6 165.1,111.2 168.6,114.8 172.0,122.1 175.4,110.7 178.9,101.9 182.3,103.2 185.8,106.8 189.2,110.1 192.6,126.6 196.1,117.6 199.5,109.8 203.0,113.1 206.4,117.2 209.8,133.3 213.3,128.4 216.7,126.9 220.2,124.1 223.6,141.0 227.0,134.8 230.5,121.0 233.9,135.0 237.4,142.9 240.8,130.6 244.2,116.5 247.7,119.1 251.1,113.0 254.6,124.7 258.0,127.1 261.4,138.1 264.9,126.0 268.3,128.3 271.8,124.7 275.2,127.7 278.6,120.7 282.1,105.3 285.5,111.6 289.0,117.7 292.4,108.9 295.8,110.0 299.3,120.1 302.7,125.2 306.2,128.4 309.6,121.8 313.0,121.1 316.5,98.9 319.9,100.8 323.4,111.1 326.8,97.8 330.2,103.0 333.7,108.3 337.1,132.9 340.6,142.6 344.0,144.2 347.4,141.5 350.9,132.6 354.3,137.5 357.8,133.9 361.2,112.7 364.6,99.0 368.1,73.7 371.5,76.1 375.0,78.4 378.4,69.8 381.8,75.0 385.3,68.4 388.7,69.4 392.2,68.2 395.6,74.7 399.0,81.1 402.5,81.0 405.9,102.1 409.4,98.1 412.8,95.4 416.2,89.3 419.7,103.2 423.1,100.4 426.6,94.5 430.0,112.9 433.4,116.1 436.9,110.2 440.3,115.3 443.8,116.1 447.2,113.4 450.6,112.5 454.1,115.3 457.5,112.9 461.0,103.4 464.4,93.3 467.8,89.7 471.3,100.4 474.7,115.7 478.2,115.5 481.6,109.6 485.0,108.6 488.5,99.3 491.9,76.7 495.4,62.7 498.8,68.9 502.2,58.2 505.7,49.1 509.1,48.6 512.6,22.0 516.0,34.9 519.4,47.4 522.9,74.5 526.3,67.6 529.8,72.2 533.2,102.4 536.6,87.3 540.1,88.2 543.5,108.6 547.0,114.2 550.4,119.3 553.8,129.7 557.3,134.2 560.7,148.6 564.2,160.9 567.6,157.4 571.0,152.9 574.5,155.7 577.9,161.6 581.4,182.1 584.8,176.8 588.2,171.6 591.7,175.4 595.1,177.6 598.6,176.6 602.0,176.8 605.4,176.6 608.9,175.1 612.3,177.3 615.8,184.9 619.2,197.5 622.6,199.8 626.1,195.9 629.5,187.9 633.0,191.9 636.4,196.4 639.8,197.1 643.3,195.9 646.7,202.4 650.2,193.2 653.6,191.9 657.0,193.8 660.5,185.0 663.9,181.2 667.4,182.1 670.8,170.3 674.2,163.8 677.7,153.0 681.1,165.6 684.6,172.8 688.0,171.1 691.4,163.5 694.9,170.9 698.3,164.2 701.8,168.6 705.2,162.8 708.6,173.7 712.1,165.4 715.5,172.2 719.0,165.8 722.4,169.6 725.8,171.2 729.3,167.0 732.7,166.4 736.2,166.4 739.6,171.1 743.0,163.3 746.5,167.8 749.9,178.5 753.4,178.7 756.8,184.5 760.2,186.3 763.7,187.5 767.1,184.4 770.6,195.6 774.0,194.6 777.4,194.3 780.9,197.4 784.3,203.3 787.8,202.5 791.2,205.2 794.6,206.4 798.1,206.3 801.5,206.0 805.0,206.5 808.4,199.7 811.8,201.1 815.3,204.2 818.7,202.6 822.2,205.4 825.6,207.7 829.0,208.5 832.5,214.7 835.9,213.2 839.4,208.7 842.8,207.7 846.2,211.6 849.7,211.9 853.1,220.8 856.6,224.3 860.0,220.8" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🔎 Fallen &amp; Cheap screen</h2><p>On the mechanical screener list at #28: <b>53.8% below its 52-week high</b>, EV/EBITDA <b>5.9×</b> vs 6.3× a year ago (-5% compression), net debt/EBITDA 0.6×, free cash flow $567M.</p><p>Insider record (SEC Form 4, last 12 months): <b>0 open-market buyer(s), $0</b>; 4 seller(s), $1,347,231.</p><p class='muted'>A purely mechanical screen (drawdown + cheap, compressing multiple + survivability). It does not read guidance, one-offs or filings text — see the research verdict, where present, for that layer.</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof D+</span> <span class="fgrade chip r" title="Revisions">Revi D-</span> <span class="fgrade chip b" title="Value">Valu B+</span> <span class="fgrade chip r" title="Safety">Safe D</span> <span class="fgrade chip b" title="Growth">Grow B</span></p><p>Piotroski F-score <b>4/9</b> · FCF yield <b>5.6%</b> · net debt/EBITDA <b>0.6×</b> · avg EPS surprise (last 4) <b>+5.4%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 4/9).</li><li>Price structure: a weekly close below the 52-week low of $35.26 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Politics & Policy · Pro pool #320 (D)</span></p><p>Alcoa's operations are genuinely improving — Q3 2026 adjusted EPS of $1.82 beat the $1.51 consensus, revenue rose ~24% YoY to $3.70B, FCF was $472M, and full-year aluminum guidance was reaffirmed — and at $37.91 (−54.8% from the $84.38 high, ~6.7x trailing earnings) the price is deeply discounted. The theme fit, however, only half-survives contact with the filings: Alcoa is a net payer of Section 232 tariffs on its large Canadian smelter base (only ~345kt of its 2,645kt capacity is in the US), its Alumina segment is loss-making with a cut production outlook, and EBITDA already fell sequentially on weaker metal prices — cheap, but not yet BUY-justified.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Management guided to higher Q4 production and shipments in both segments, the AliGroup deal has shareholder approval with closing expected H1 2027, and Massena East asset sales could bring up to ~$315M</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip h'>mixed</span></td><td>Q3 adj. EPS $1.82 beat $1.51 consensus and revenue +23.7% YoY, but adjusted EBITDA fell to $789M from $901M in Q2 on weaker aluminum prices, and the FY alumina production outlook was cut 0.2–0.3Mt with the segment loss-making</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Net debt is low today (~$414M after a $2.6B bond sale; $4.4B cash), but that debt was raised to fund the AliGroup acquisition closing H1 2027, and beta of ~1.86 with commodity-priced earnings leaves little cushion if aluminum rolls over</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Metals are outside the map's severe-negative sectors, but the tariff offset is only partial and evidenced as a cost: Alcoa's filings cite Section 232 tariffs on Canadian aluminum imports (25% from Mar 2025, 50% from Jun 2025) as an earnings headwind, partly offset by US smelter scarcity value</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip sb'>pass</span></td><td>$37.91 is −54.8% below the 52-week high at a P/E of ~6.7x on EPS of $4.43 (Finnhub) — a deep cyclical discount that already prices in substantial metal-price pessimism</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Aluminum/alumina prices weaken further — Q3 already showed EBITDA falling on price despite record production at several sites</li><li>AliGroup integration and post-close leverage land just as the metal cycle softens, or Canadian tariff costs rise again instead of easing as guided</li></ul><p><b>What would change this verdict:</b> Two quarters of sequential EBITDA recovery with the alumina outlook restored would lift quality toward BUY; a metal-price break that pushes FCF negative would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://finnhub.io/?q=%22AA%22' target='_blank' rel='noopener'>Alcoa Corp (AA): Financial Market Data (P/E 6.68, price as of Oct 23 close) — Finnhub</a> <span class='dom'>finnhub.io</span></li><li><a href='https://www.tradingkey.com/news/presentation/262219931-tradingkey' target='_blank' rel='noopener'>Alcoa Q3 2026 Adjusted Earnings Fall as Aluminum Prices Weaken — TradingKey</a> <span class='dom'>tradingkey.com</span></li><li><a href='https://finvestly.com/extra/alcoa-beat-earnings-but-can-it-escape-the-aluminum-bears/' target='_blank' rel='noopener'>Alcoa Beat Earnings, But Can It Escape the Aluminum Bears? — Finvestly</a> <span class='dom'>finvestly.com</span></li><li><a href='https://kalkine.com/news/mining/what-do-alcoa-corporation-nyseaa-second-quarter-2026-results-show-ahead-of-its-15-october-third-quarter-release' target='_blank' rel='noopener'>What Do Alcoa's Second-Quarter 2026 Results Show Ahead of Its Q3 Release? (alumina outlook cut, tariff costs) — Kalkine</a> <span class='dom'>kalkine.com</span></li><li><a href='https://www.mitrade.com/au/insights/news/live-news/article-0-2167591-20261016' target='_blank' rel='noopener'>Alcoa (AA) Q3 2026 Earnings Call: Strong Operations, Cash Flow and AliGroup Progress — Mitrade</a> <span class='dom'>mitrade.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/AA" target="_blank" rel="noopener">Yahoo Finance — AA</a> ·
+<a href="https://stockanalysis.com/stocks/aa/" target="_blank" rel="noopener">StockAnalysis — AA</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</main></div></body></html>
