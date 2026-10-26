@@ -1,0 +1,1141 @@
+{
+ "checks": {
+  "ABT": {
+   "note": "TipRanks avg $122.12 vs card's $118 (+3.5%, under flag). Smart Score not rendered on live stats page.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 103.7,
+   "tipranks": {
+    "analysts": 19,
+    "avg_target": 122.12,
+    "consensus": "Strong Buy",
+    "high": 135.0,
+    "implied_pct": 17.8,
+    "low": 115.0,
+    "smart_score": null,
+    "split": "18 Buy / 1 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "ADBE": {
+   "note": "Crowd one notch more cautious (Hold, avg target at price). DATA FLAG: the ~$283 average target quoted in our Oct 25 six-name research is 7.4% above TipRanks' $262.09 \u2014 stale figure on our side.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 263.82,
+   "tipranks": {
+    "analysts": 24,
+    "avg_target": 262.09,
+    "consensus": "Hold",
+    "high": 373.0,
+    "implied_pct": -0.7,
+    "low": 195.0,
+    "smart_score": null,
+    "split": "5 Buy / 14 Hold / 5 Sell"
+   },
+   "verdict": "mixed"
+  },
+  "ADM": {
+   "note": "WEAK RECORD: current Hold/$84.75 read from TipRanks' Oct 23 ETF-holdings surfaces; the only cached forecast page is ~156 days old and shows Moderate Sell, avg $66.80. Count/split/recent actions unreadable this pass.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 80.14,
+   "tipranks": {
+    "analysts": null,
+    "avg_target": 84.75,
+    "consensus": "Hold",
+    "high": null,
+    "implied_pct": 5.7,
+    "low": null,
+    "smart_score": null,
+    "split": null
+   },
+   "verdict": "mixed"
+  },
+  "AEM": {
+   "note": "TipRanks printed -1.09% off a stale $224.11 snapshot; recomputed +27.4% vs the $173.94 close. Some targets CAD-converted.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 173.94,
+   "tipranks": {
+    "analysts": 10,
+    "avg_target": 221.67,
+    "consensus": "Moderate Buy",
+    "high": 260.0,
+    "implied_pct": 27.4,
+    "low": 190.0,
+    "smart_score": null,
+    "split": "6 Buy / 4 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "AER": {
+   "note": "",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 145.92,
+   "tipranks": {
+    "analysts": 10,
+    "avg_target": 179.78,
+    "consensus": "Strong Buy",
+    "high": 190.0,
+    "implied_pct": 23.2,
+    "low": 165.0,
+    "smart_score": 6,
+    "split": "9 Buy / 1 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "ALG": {
+   "note": "Label one notch above our HOLD, but the 'crowd' is 2 analysts with identical stale $188 targets (coverage shrank 4 -> 3 -> 2 across 2026; the $188 matches MarketBeat because it is the same pair, not independent confirmation). TipRanks' own Smart Score is 2/10 \u2014 bearish, contradicting its consensus label and consistent with our HOLD rationale.",
+   "our_flag": "HOLD",
+   "published_card": false,
+   "ref_price": 146.18,
+   "tipranks": {
+    "analysts": 2,
+    "avg_target": 188.0,
+    "consensus": "Moderate Buy",
+    "high": 188.0,
+    "implied_pct": 28.6,
+    "low": 188.0,
+    "smart_score": 2,
+    "split": "1 Buy / 1 Hold / 0 Sell"
+   },
+   "verdict": "mixed"
+  },
+  "AMGN": {
+   "note": "LABEL agrees but avg target is -7.7% BELOW ref price and Holds outnumber Buys 16-9; freshest actions include BofA Sell $328 (10/26). Same label-vs-math tension as ADBE/CHKP.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 439.26,
+   "tipranks": {
+    "analysts": 27,
+    "avg_target": 405.42,
+    "consensus": "Moderate Buy",
+    "high": 500.0,
+    "implied_pct": -7.7,
+    "low": 230.0,
+    "smart_score": null,
+    "split": "9 Buy / 16 Hold / 2 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "AMZN": {
+   "note": "Card citation CONFIRMED: our ~$327 vs TipRanks $331.54 (+1.4%). Indirect surfaces suggest Smart Score 10, not confirmed on the statistics page.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 248.0,
+   "tipranks": {
+    "analysts": 44,
+    "avg_target": 331.54,
+    "consensus": "Strong Buy",
+    "high": 400.0,
+    "implied_pct": 33.7,
+    "low": 230.0,
+    "smart_score": null,
+    "split": "42 Buy / 2 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "APA": {
+   "note": "Our BUY vs crowd Hold AND avg target -9.7% below ref price, despite an October wave of target raises. Count/split from an 83-day-old snapshot (live page 429) \u2014 inputs unsettled; label consistent across surfaces.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 51.9,
+   "tipranks": {
+    "analysts": 20,
+    "avg_target": 46.89,
+    "consensus": "Hold",
+    "high": 62.0,
+    "implied_pct": -9.7,
+    "low": 39.0,
+    "smart_score": null,
+    "split": "5 Buy / 12 Hold / 3 Sell (stale snapshot)"
+   },
+   "verdict": "mixed"
+  },
+  "ARGX": {
+   "note": "Live canonical page read in full. TipRanks' printed +15.23% used a stale $1,019.49 embedded price; +34.5% is the recomputation vs $873.71.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 873.71,
+   "tipranks": {
+    "analysts": 20,
+    "avg_target": 1174.74,
+    "consensus": "Strong Buy",
+    "high": 1400.0,
+    "implied_pct": 34.5,
+    "low": 861.0,
+    "smart_score": null,
+    "split": "19 Buy / 1 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "AXP": {
+   "note": "Label matches our card exactly; TipRanks avg $373.56 vs card's $365 (+2.3%, not material).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 313.22,
+   "tipranks": {
+    "analysts": 18,
+    "avg_target": 373.56,
+    "consensus": "Moderate Buy",
+    "high": 450.0,
+    "implied_pct": 19.3,
+    "low": 320.0,
+    "smart_score": null,
+    "split": "9 Buy / 9 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "AZN": {
+   "note": "LABEL ONLY: US forecast page open hit 429 \u2014 US avg target/split not asserted. OTC proxy (AZNCF FAQ, 360-day crawl) showed Strong Buy avg $188.86; GB page is in pence. Target data unverified this pass.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 171.49,
+   "tipranks": {
+    "analysts": 16,
+    "avg_target": null,
+    "consensus": "Strong Buy",
+    "high": null,
+    "implied_pct": null,
+    "low": null,
+    "smart_score": null,
+    "split": null
+   },
+   "verdict": "agrees"
+  },
+  "BAC": {
+   "note": "Figures from TipRanks' own Oct 18 article (corroborated by two summaries); canonical forecast page could not be re-opened after a 429 rate limit, so split/avg are article-sourced, not page-pinned. Every target in set above ref price.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 50.56,
+   "tipranks": {
+    "analysts": 16,
+    "avg_target": 62.87,
+    "consensus": "Strong Buy",
+    "high": 75.0,
+    "implied_pct": 24.3,
+    "low": 56.0,
+    "smart_score": null,
+    "split": "14 Buy / 2 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "BKR": {
+   "note": "STALE SNAPSHOT: figures from a TipRanks forecast-page FAQ snapshot crawled ~45 days ago (live page rate-limited). Directionally consistent; not a live read.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 55.86,
+   "tipranks": {
+    "analysts": 14,
+    "avg_target": 73.85,
+    "consensus": "Strong Buy",
+    "high": 80.0,
+    "implied_pct": 32.2,
+    "low": 70.0,
+    "smart_score": null,
+    "split": "12 Buy / 2 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "BMY": {
+   "note": "Hold-heavy split (12/22) despite Moderate Buy label; earlier snapshot avg $67.22/20 analysts.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 61.48,
+   "tipranks": {
+    "analysts": 22,
+    "avg_target": 66.6,
+    "consensus": "Moderate Buy",
+    "high": 82.0,
+    "implied_pct": 8.3,
+    "low": 41.0,
+    "smart_score": 7,
+    "split": "9 Buy / 12 Hold / 1 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "BR": {
+   "note": "Ref price $183.28 fetched from Finnhub (Oct 23 close) \u2014 BR is outside our current pools. A 265-day-old TipRanks snapshot showed avg $265.40; current FAQ set is $202.83.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 183.28,
+   "tipranks": {
+    "analysts": 6,
+    "avg_target": 202.83,
+    "consensus": "Moderate Buy",
+    "high": 230.0,
+    "implied_pct": 10.7,
+    "low": 176.0,
+    "smart_score": null,
+    "split": "3 Buy / 3 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "CB": {
+   "note": "Canonical forecast page could not be opened (429). Recent actions: three target raises (JPM Neutral $374, Mizuho Neutral $350, Citi Buy $405) \u2014 two of three at Neutral. Needs a re-pull.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 355.11,
+   "tipranks": {
+    "analysts": null,
+    "avg_target": null,
+    "consensus": null,
+    "high": null,
+    "implied_pct": null,
+    "low": null,
+    "smart_score": null,
+    "split": null
+   },
+   "verdict": "indeterminate"
+  },
+  "CBOE": {
+   "note": "LABEL agrees but avg target is -3.7% BELOW ref price. Smart Score conflict (6 US snapshot vs 7 GB listing). Older competitors snapshot showed Hold, 4/7/3.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 340.42,
+   "tipranks": {
+    "analysts": 14,
+    "avg_target": 327.75,
+    "consensus": "Moderate Buy",
+    "high": null,
+    "implied_pct": -3.7,
+    "low": null,
+    "smart_score": 6,
+    "split": null
+   },
+   "verdict": "agrees"
+  },
+  "CHKP": {
+   "note": "LABEL agrees but avg target is -9.1% BELOW ref price (TipRanks' printed +12.04% uses a stale $129.05 embedded price). Hold-heavy split 16/25.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 159.03,
+   "tipranks": {
+    "analysts": 25,
+    "avg_target": 144.59,
+    "consensus": "Moderate Buy",
+    "high": 188.0,
+    "implied_pct": -9.1,
+    "low": 105.0,
+    "smart_score": 8,
+    "split": "9 Buy / 16 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "CME": {
+   "note": "Label bullish but implied upside only +1.4%. Smart Score null: statistics fetch hit 429.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 305.71,
+   "tipranks": {
+    "analysts": 12,
+    "avg_target": 310.0,
+    "consensus": "Moderate Buy",
+    "high": 367.0,
+    "implied_pct": 1.4,
+    "low": 227.0,
+    "smart_score": null,
+    "split": "6 Buy / 4 Hold / 2 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "CMI": {
+   "note": "Card citation CONFIRMED: our $703.18 vs TipRanks freshest $702.64 (-0.08%). Canonical US page open hit 429, so count/split are from the older FAQ snapshot.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 517.4,
+   "tipranks": {
+    "analysts": 10,
+    "avg_target": 702.64,
+    "consensus": "Strong Buy (freshest) / Moderate Buy (older)",
+    "high": 845.0,
+    "implied_pct": 35.8,
+    "low": 600.0,
+    "smart_score": null,
+    "split": "6 Buy / 4 Hold / 0 Sell (older GB FAQ)"
+   },
+   "verdict": "agrees"
+  },
+  "CSCO": {
+   "note": "Label matches; Smart Score maximum 10. DATA FLAG (favorable direction): our card's $129 average target understates TipRanks' $138.44 by 7.3% \u2014 our figure came from a different/earlier analyst set (an FMP snapshot reads $129.77).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 106.5,
+   "tipranks": {
+    "analysts": 19,
+    "avg_target": 138.44,
+    "consensus": "Moderate Buy",
+    "high": 165.0,
+    "implied_pct": 30.0,
+    "low": 110.0,
+    "smart_score": 10,
+    "split": "12 Buy / 7 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "DG": {
+   "note": "Stats page avg $147.22 vs forecast $147.33 (trivial drift). JPM raised $176->$178 dated 10/26.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 132.69,
+   "tipranks": {
+    "analysts": 18,
+    "avg_target": 147.33,
+    "consensus": "Moderate Buy",
+    "high": 178.0,
+    "implied_pct": 11.0,
+    "low": 123.0,
+    "smart_score": 9,
+    "split": "9 Buy / 9 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "DORM": {
+   "note": "Crowd aligned and one notch stronger: every target ($150-163) above price; Wells Fargo Oct 23 cut $160->$150 (rating kept Buy) confirmed on TipRanks; the ~$160 average reported elsewhere traces to a 4-analyst staging snapshot ($162.25) \u2014 canonical 5-analyst figure is $157.40. Verdict remains conditional on the Oct 26 after-close Q3 print.",
+   "our_flag": "BUY (provisional, pre-print)",
+   "published_card": false,
+   "ref_price": 125.24,
+   "tipranks": {
+    "analysts": 5,
+    "avg_target": 157.4,
+    "consensus": "Strong Buy",
+    "high": 163.0,
+    "implied_pct": 25.7,
+    "low": 150.0,
+    "smart_score": 9,
+    "split": "4 Buy / 1 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "DXCM": {
+   "note": "PROVISIONAL: canonical forecast page hit 429. Main stock page avg $96.39; older snapshots Strong Buy $80.68 / FAQ $86.50 (19 analysts). Recent actions all Buy/raises (Mizuho $100, BTIG $96). Needs a clean re-read.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 77.94,
+   "tipranks": {
+    "analysts": null,
+    "avg_target": 96.39,
+    "consensus": null,
+    "high": null,
+    "implied_pct": 23.7,
+    "low": null,
+    "smart_score": null,
+    "split": null
+   },
+   "verdict": "agrees (provisional)"
+  },
+  "EAT": {
+   "note": "Conflict: older TipRanks snapshots cited Moderate Buy / ~$188.53 avg; canonical live page $262.14. TipRanks embedded price $240.93 vs ref close $182.70.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 182.7,
+   "tipranks": {
+    "analysts": 21,
+    "avg_target": 262.14,
+    "consensus": "Strong Buy",
+    "high": 325.0,
+    "implied_pct": 43.5,
+    "low": 210.0,
+    "smart_score": 8,
+    "split": "18 Buy / 3 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "ELV": {
+   "note": "Oct 9 article cited avg $446.40; live canonical $475.92. Recent actions are post-Q3 raises. Smart null (429).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 439.95,
+   "tipranks": {
+    "analysts": 14,
+    "avg_target": 475.92,
+    "consensus": "Moderate Buy",
+    "high": 523.0,
+    "implied_pct": 8.2,
+    "low": 406.0,
+    "smart_score": null,
+    "split": "9 Buy / 5 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "EQT": {
+   "note": "Cleanest read in batch: stats snapshot matches forecast page exactly. Smart null (429).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 55.63,
+   "tipranks": {
+    "analysts": 18,
+    "avg_target": 66.88,
+    "consensus": "Strong Buy",
+    "high": 79.0,
+    "implied_pct": 20.2,
+    "low": 54.0,
+    "smart_score": null,
+    "split": "15 Buy / 3 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "EXE": {
+   "note": "Crowd more bullish than our flag. October target cuts confirmed (Bernstein $127, Mizuho $138 after cut, UBS $120 after cut) but every listed target >= price and ratings held at Buy; Goldman raised $110->$117 on Oct 20. Smart Score 9 on today's statistics page (an Oct 6 TipRanks article said 10).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 93.23,
+   "tipranks": {
+    "analysts": 21,
+    "avg_target": 122.8,
+    "consensus": "Strong Buy",
+    "high": 141.0,
+    "implied_pct": 31.7,
+    "low": 93.0,
+    "smart_score": 9,
+    "split": "17 Buy / 4 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "EXPE": {
+   "note": "Hold-heavy split (17/28); the lone Sell (Morgan Stanley $235) is also the low target.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 289.01,
+   "tipranks": {
+    "analysts": 28,
+    "avg_target": 338.42,
+    "consensus": "Moderate Buy",
+    "high": 430.0,
+    "implied_pct": 17.1,
+    "low": 235.0,
+    "smart_score": null,
+    "split": "10 Buy / 17 Hold / 1 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "FTI": {
+   "note": "Canonical forecast page rate-limited (429, 3 attempts). Visible recent actions are Buy-side (UBS initiated Buy $89 Oct 13; BofA $80) but that is not a consensus read. Needs a re-pull. (Non-TipRanks context: StockAnalysis Buy, avg $76.41, 22 analysts.)",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 69.89,
+   "tipranks": {
+    "analysts": null,
+    "avg_target": null,
+    "consensus": null,
+    "high": null,
+    "implied_pct": null,
+    "low": null,
+    "smart_score": null,
+    "split": null
+   },
+   "verdict": "indeterminate"
+  },
+  "FTNT": {
+   "note": "Our BUY vs crowd Hold; avg target -2.2% BELOW ref price; fresh actions include two Sells (JPM $140, Arete downgrade) \u2014 yet Smart Score is a maximum 10. Forecast and statistics pages agree exactly.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 179.99,
+   "tipranks": {
+    "analysts": 33,
+    "avg_target": 176.0,
+    "consensus": "Hold",
+    "high": 225.0,
+    "implied_pct": -2.2,
+    "low": 110.0,
+    "smart_score": 10,
+    "split": "7 Buy / 22 Hold / 4 Sell"
+   },
+   "verdict": "mixed"
+  },
+  "GDDY": {
+   "note": "LABEL agrees but avg target is -5.8% BELOW ref price (TipRanks' printed +11-13% used a stale ~$95.54 price; an Admiral Markets TipRanks feed independently shows -5.84%).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 112.79,
+   "tipranks": {
+    "analysts": 17,
+    "avg_target": 106.2,
+    "consensus": "Moderate Buy",
+    "high": 170.0,
+    "implied_pct": -5.8,
+    "low": 76.0,
+    "smart_score": null,
+    "split": "8 Buy / 8 Hold / 1 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "GILD": {
+   "note": "Strong Buy label but avg target only +3.1% above ref; low target $126 below ref.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 156.04,
+   "tipranks": {
+    "analysts": 21,
+    "avg_target": 160.8,
+    "consensus": "Strong Buy",
+    "high": 177.0,
+    "implied_pct": 3.1,
+    "low": 126.0,
+    "smart_score": 8,
+    "split": "17 Buy / 4 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "GMED": {
+   "note": "Older syndicated snippets show Strong Buy off ~$74 price; canonical page is Moderate Buy $98.75.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 81.41,
+   "tipranks": {
+    "analysts": 13,
+    "avg_target": 98.75,
+    "consensus": "Moderate Buy",
+    "high": 117.0,
+    "implied_pct": 21.3,
+    "low": 82.0,
+    "smart_score": 7,
+    "split": "9 Buy / 4 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "HAL": {
+   "note": "From the live statistics page (forecast page 429): Strong Buy, 13 analysts, avg $42.92, Smart 10. Broader-set aggregators differ (MarketBeat Moderate Buy, 24 analysts, $43.86) \u2014 not TipRanks figures.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 34.92,
+   "tipranks": {
+    "analysts": 13,
+    "avg_target": 42.92,
+    "consensus": "Strong Buy",
+    "high": null,
+    "implied_pct": 22.9,
+    "low": null,
+    "smart_score": 10,
+    "split": null
+   },
+   "verdict": "agrees"
+  },
+  "HALO": {
+   "note": "LABEL agrees but avg target is -15.7% BELOW ref price: the stock (+88% YTD, at its 52w high) has run past the crowd's targets, all of which date from much lower prices.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 125.63,
+   "tipranks": {
+    "analysts": 7,
+    "avg_target": 105.86,
+    "consensus": "Moderate Buy",
+    "high": 130.0,
+    "implied_pct": -15.7,
+    "low": 78.0,
+    "smart_score": null,
+    "split": "5 Buy / 2 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "HBAN": {
+   "note": "Card citation $19.10 (+21%) matches TipRanks $19.00 within 0.5%. October flow is target cuts with ratings held.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 15.73,
+   "tipranks": {
+    "analysts": 15,
+    "avg_target": 19.0,
+    "consensus": "Moderate Buy",
+    "high": 21.0,
+    "implied_pct": 20.8,
+    "low": 17.5,
+    "smart_score": 9,
+    "split": "10 Buy / 5 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "HIG": {
+   "note": "Stats/staging snapshot avg $150.21 on 14 analysts vs live forecast $147.40 on 15; live page used.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 136.76,
+   "tipranks": {
+    "analysts": 15,
+    "avg_target": 147.4,
+    "consensus": "Moderate Buy",
+    "high": 163.0,
+    "implied_pct": 7.8,
+    "low": 135.0,
+    "smart_score": 6,
+    "split": "6 Buy / 9 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "IDXX": {
+   "note": "Most uniformly bullish target set in the pass: even the low target ($665) is +18.7% above the close. Smart Score conflict: US stats 9 vs GB snapshot 10.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 560.38,
+   "tipranks": {
+    "analysts": 10,
+    "avg_target": 710.63,
+    "consensus": "Moderate Buy",
+    "high": 805.0,
+    "implied_pct": 26.8,
+    "low": 665.0,
+    "smart_score": 9,
+    "split": "6 Buy / 4 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "IR": {
+   "note": "TipRanks stats confirm dividend yield 0.11% (matches our web-audit correction of this card).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 73.48,
+   "tipranks": {
+    "analysts": 6,
+    "avg_target": 102.6,
+    "consensus": "Strong Buy",
+    "high": 115.0,
+    "implied_pct": 39.6,
+    "low": 87.0,
+    "smart_score": 9,
+    "split": "5 Buy / 1 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "JLL": {
+   "note": "Snapshot conflict: older cached forecasts avg ~$337/7 analysts vs live canonical $423.40/6 analysts.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 300.3,
+   "tipranks": {
+    "analysts": 6,
+    "avg_target": 423.4,
+    "consensus": "Moderate Buy",
+    "high": 485.0,
+    "implied_pct": 41.0,
+    "low": 382.0,
+    "smart_score": 7,
+    "split": "4 Buy / 2 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "LMT": {
+   "note": "Label conflict between TipRanks surfaces; the 8/9/1 split fits Moderate Buy. Agreement on direction either way, but implied upside is the thinnest in the pass (+1.6%).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 604.18,
+   "tipranks": {
+    "analysts": 18,
+    "avg_target": 613.94,
+    "consensus": "Moderate Buy / Strong Buy (conflict)",
+    "high": null,
+    "implied_pct": 1.6,
+    "low": null,
+    "smart_score": null,
+    "split": "8 Buy / 9 Hold / 1 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "LNG": {
+   "note": "Unanimous Buy split; low target $283 below ref price though avg is above. Smart Score band shown as 'Outperform', numeral unreadable.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 298.67,
+   "tipranks": {
+    "analysts": 17,
+    "avg_target": 318.24,
+    "consensus": "Strong Buy",
+    "high": 344.0,
+    "implied_pct": 6.6,
+    "low": 283.0,
+    "smart_score": null,
+    "split": "17 Buy / 0 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "LPLA": {
+   "note": "Strongest confirmation in the pilot: TipRanks' lowest target is Truist's $354 = +12.2% above the close, matching our deep-dive claim ('lowest target $354, +12%') to the dollar.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 315.61,
+   "tipranks": {
+    "analysts": 14,
+    "avg_target": 395.6,
+    "consensus": "Strong Buy",
+    "high": 454.0,
+    "implied_pct": 25.3,
+    "low": 354.0,
+    "smart_score": null,
+    "split": "11 Buy / 3 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "LULU": {
+   "note": "Hold = Hold, near-zero implied upside. Only 1 of 27 analysts at Buy.",
+   "our_flag": "HOLD",
+   "published_card": false,
+   "ref_price": 99.01,
+   "tipranks": {
+    "analysts": 27,
+    "avg_target": 98.8,
+    "consensus": "Hold",
+    "high": 169.0,
+    "implied_pct": -0.2,
+    "low": 44.0,
+    "smart_score": null,
+    "split": "1 Buy / 21 Hold / 5 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "MANH": {
+   "note": "Strong Buy label but avg target essentially at price (+1.0%); TipRanks' printed +12.89% used a stale $213.10 price.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 238.19,
+   "tipranks": {
+    "analysts": 9,
+    "avg_target": 240.57,
+    "consensus": "Strong Buy",
+    "high": 260.0,
+    "implied_pct": 1.0,
+    "low": 210.0,
+    "smart_score": null,
+    "split": "8 Buy / 1 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "NKE": {
+   "note": "Label one notch above our SELL, but TipRanks' full-set average target ($36.58, below price) corroborates StockAnalysis ($36.50), not the $41-50 outlier sets. Target math agrees with our no-upside call.",
+   "our_flag": "SELL",
+   "published_card": false,
+   "ref_price": 37.3,
+   "tipranks": {
+    "analysts": 36,
+    "avg_target": 36.58,
+    "consensus": "Hold",
+    "high": 62.0,
+    "implied_pct": -1.9,
+    "low": 19.0,
+    "smart_score": null,
+    "split": "9 Buy / 18 Hold / 9 Sell"
+   },
+   "verdict": "mixed"
+  },
+  "NTNX": {
+   "note": "Older snapshots avg $55.54 (15 analysts); canonical set now includes Guggenheim $100 initiation 10/25.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 70.58,
+   "tipranks": {
+    "analysts": 16,
+    "avg_target": 78.57,
+    "consensus": "Moderate Buy",
+    "high": 100.0,
+    "implied_pct": 11.3,
+    "low": 63.0,
+    "smart_score": 7,
+    "split": "9 Buy / 7 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "NTRS": {
+   "note": "Our BUY vs crowd Hold, though the avg target is +8.4% above ref (label-only tension). Live page avg $182.00 vs indexed snapshot $183.25.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 167.92,
+   "tipranks": {
+    "analysts": 12,
+    "avg_target": 182.0,
+    "consensus": "Hold",
+    "high": 194.0,
+    "implied_pct": 8.4,
+    "low": 170.0,
+    "smart_score": null,
+    "split": "2 Buy / 8 Hold / 2 Sell"
+   },
+   "verdict": "mixed"
+  },
+  "NUE": {
+   "note": "Old staging snapshot (Moderate Buy, $191.17, 8 analysts) superseded by live page. Smart null (429).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 258.11,
+   "tipranks": {
+    "analysts": 12,
+    "avg_target": 287.75,
+    "consensus": "Strong Buy",
+    "high": 306.0,
+    "implied_pct": 11.5,
+    "low": 256.0,
+    "smart_score": null,
+    "split": "9 Buy / 3 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "NXPI": {
+   "note": "Label matches our card; avg $297.53 vs card's $302 (-1.5%, not material). October cut wave confirmed (Wells Fargo $280->$235 Oct 20 exact; Citi downgrade Oct 9). MICRO-SLIP on our card: its 'TD Cowen ->$275' is not in TipRanks' current set (latest TD Cowen action there: $290, Jul 28).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 234.92,
+   "tipranks": {
+    "analysts": 19,
+    "avg_target": 297.53,
+    "consensus": "Moderate Buy",
+    "high": 400.0,
+    "implied_pct": 26.7,
+    "low": 190.0,
+    "smart_score": null,
+    "split": "10 Buy / 8 Hold / 1 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "NYT": {
+   "note": "Cached snapshot avg $78.88 vs live FAQ $77.00; same label/count/split. Smart null (429).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 69.58,
+   "tipranks": {
+    "analysts": 8,
+    "avg_target": 77.0,
+    "consensus": "Moderate Buy",
+    "high": 85.0,
+    "implied_pct": 10.7,
+    "low": 63.0,
+    "smart_score": null,
+    "split": "5 Buy / 3 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "OXY": {
+   "note": "Hold-heavy split (10/19) under Moderate Buy label. Smart null (429).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 64.17,
+   "tipranks": {
+    "analysts": 19,
+    "avg_target": 70.11,
+    "consensus": "Moderate Buy",
+    "high": 82.0,
+    "implied_pct": 9.3,
+    "low": 58.0,
+    "smart_score": null,
+    "split": "9 Buy / 10 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "PSX": {
+   "note": "Thin implied upside (+3.0%).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 283.18,
+   "tipranks": {
+    "analysts": 16,
+    "avg_target": 291.69,
+    "consensus": "Moderate Buy",
+    "high": 345.0,
+    "implied_pct": 3.0,
+    "low": 220.0,
+    "smart_score": 8,
+    "split": "8 Buy / 8 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "QLYS": {
+   "note": "Our BUY vs crowd Hold AND avg target -15.5% BELOW ref price. Snapshot conflict: price-target page avg $177.57 vs canonical $183.07.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 216.7,
+   "tipranks": {
+    "analysts": 17,
+    "avg_target": 183.07,
+    "consensus": "Hold",
+    "high": 230.0,
+    "implied_pct": -15.5,
+    "low": 130.0,
+    "smart_score": 7,
+    "split": "4 Buy / 12 Hold / 1 Sell"
+   },
+   "verdict": "mixed"
+  },
+  "REGN": {
+   "note": "Older TipRanks article: avg $837.16 on 12/7/0 \u2014 snapshot drift, same label.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 805.02,
+   "tipranks": {
+    "analysts": 22,
+    "avg_target": 863.45,
+    "consensus": "Moderate Buy",
+    "high": 1030.0,
+    "implied_pct": 7.3,
+    "low": 740.0,
+    "smart_score": null,
+    "split": "14 Buy / 8 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "RGA": {
+   "note": "Canonical page read live. Older stats snapshots conflict (avg $237.86/$245.75).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 263.94,
+   "tipranks": {
+    "analysts": 7,
+    "avg_target": 283.33,
+    "consensus": "Moderate Buy",
+    "high": 297.0,
+    "implied_pct": 7.3,
+    "low": 250.0,
+    "smart_score": null,
+    "split": "5 Buy / 1 Hold / 1 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "RGLD": {
+   "note": "Thin coverage (5 analysts); one Sell (BofA $218) sits below ref price, the average does not. Second snapshot avg $294.00.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 227.42,
+   "tipranks": {
+    "analysts": 5,
+    "avg_target": 289.6,
+    "consensus": "Moderate Buy",
+    "high": 325.0,
+    "implied_pct": 27.3,
+    "low": 218.0,
+    "smart_score": null,
+    "split": "3 Buy / 1 Hold / 1 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "ROIV": {
+   "note": "Smart Score conflict: live US stats 9 vs 194-day-old staging snapshot 4; fresher figure used. Older stats snapshot avg $42.25/8 analysts vs forecast $47.10/12.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 36.49,
+   "tipranks": {
+    "analysts": 12,
+    "avg_target": 47.1,
+    "consensus": "Strong Buy",
+    "high": 55.0,
+    "implied_pct": 29.1,
+    "low": 40.0,
+    "smart_score": 9,
+    "split": "10 Buy / 2 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "ROST": {
+   "note": "Lowest target $234 still above ref close. Smart null (429).",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 229.3,
+   "tipranks": {
+    "analysts": 18,
+    "avg_target": 270.29,
+    "consensus": "Moderate Buy",
+    "high": 298.0,
+    "implied_pct": 17.9,
+    "low": 234.0,
+    "smart_score": null,
+    "split": "13 Buy / 5 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "RRC": {
+   "note": "Our BUY vs crowd Hold with a lopsided 13-of-15 Hold split; avg target -2.9% below ref price.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 45.52,
+   "tipranks": {
+    "analysts": 15,
+    "avg_target": 44.2,
+    "consensus": "Hold",
+    "high": 52.0,
+    "implied_pct": -2.9,
+    "low": 37.0,
+    "smart_score": null,
+    "split": "1 Buy / 13 Hold / 1 Sell"
+   },
+   "verdict": "mixed"
+  },
+  "SCHW": {
+   "note": "TipRanks' own statistics page conflicts (Moderate Buy, 18 analysts, avg $116.29) \u2014 Buy-side either way. Note the divergence: Smart Score only 4 despite Strong Buy consensus. October actions were target cuts with Buy ratings kept.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 90.58,
+   "tipranks": {
+    "analysts": 20,
+    "avg_target": 121.68,
+    "consensus": "Strong Buy",
+    "high": 150.0,
+    "implied_pct": 34.3,
+    "low": 95.0,
+    "smart_score": 4,
+    "split": "16 Buy / 3 Hold / 1 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "TW": {
+   "note": "STALE CANONICAL PAGE: newest action dated 07/16/26, avg computed off a $99.83 price. Fresher TipRanks-fed snapshots conflict (Admiral: Buy, ~$131 avg; TipRanks' Oct 19 Trumid article cites a Buy at $182). Direction agrees under either snapshot; levels should not be quoted as current.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 122.57,
+   "tipranks": {
+    "analysts": 11,
+    "avg_target": 125.0,
+    "consensus": "Moderate Buy",
+    "high": 150.0,
+    "implied_pct": 2.0,
+    "low": 109.0,
+    "smart_score": null,
+    "split": "5 Buy / 6 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "WMT": {
+   "note": "TipRanks' printed +22.60% used a stale $105.38 price; recomputed +7.8%.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 119.89,
+   "tipranks": {
+    "analysts": 31,
+    "avg_target": 129.19,
+    "consensus": "Strong Buy",
+    "high": 155.0,
+    "implied_pct": 7.8,
+    "low": 110.0,
+    "smart_score": null,
+    "split": "30 Buy / 1 Hold / 0 Sell"
+   },
+   "verdict": "agrees"
+  },
+  "WTW": {
+   "note": "Snapshot conflict on the average ($370.25 stats / $377 main / $365 FAQ / $357.69 staging); label Moderate Buy consistent across all and avg above ref under every snapshot. Freshest actions are all target cuts, ratings reiterated.",
+   "our_flag": "BUY",
+   "published_card": true,
+   "ref_price": 325.01,
+   "tipranks": {
+    "analysts": 17,
+    "avg_target": 370.25,
+    "consensus": "Moderate Buy",
+    "high": 400.0,
+    "implied_pct": 13.9,
+    "low": 325.0,
+    "smart_score": 7,
+    "split": "10 Buy / 6 Hold / 1 Sell"
+   },
+   "verdict": "agrees"
+  }
+ },
+ "meta": {
+  "date": "2026-10-26",
+  "extras_tally": {
+   "agrees": 2,
+   "mixed": 2
+  },
+  "pass": "TipRanks cross-check \u2014 FULL PASS (pilot of 10 extended to all published cards)",
+  "scope": "All 62 unique tickers behind the 100 published cards (50 Validated + 50 Macro, 38 shared), plus the 4 extra names researched 2026-10-26 (NKE, LULU, ALG, DORM). For each: our research flag vs TipRanks consensus label, analyst count, average target (implied % recomputed against the Fri 2026-10-23 close \u2014 TipRanks' embedded page prices were stale throughout), and Smart Score where publicly visible. Advisory only; no verdict was changed by this pass.",
+  "source_discipline": "Canonical pages pinned: tipranks.com/stocks/<ticker>/forecast and the LIVE /statistics page for Smart Score. TipRanks rate-limited (HTTP 429) parts of the pass: DXCM is provisional (snapshots only), CB and FTI are indeterminate (consensus unreadable), a few records rest on TipRanks' own indexed snapshots and are flagged in their notes. Smart Score coverage: 25 of 66.",
+  "tally_published": {
+   "agrees": 53,
+   "indeterminate": 2,
+   "mixed": 7
+  }
+ }
+}
