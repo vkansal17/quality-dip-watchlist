@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SNX — TD SYNNEX · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Six lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a><a class="tab active" href="../holds.html">🟡 Top 50 Holds</a></div></div>
+<p class="crumb"><a href="../holds.html">← Back to the Top 50 Holds</a></p>
+<h1>SNX — TD SYNNEX</h1>
+<div class="sub">
+· Top 50 Holds — research bench</div>
+<div><span class="price">$252.09</span>
+<span class="up" style="font-size:17px">+1.92% today</span>
+<span class="muted"> · as of 2026-10-26 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-13.1%</div><div class="l">vs 52w high ($290.14)</div></div><div class="kpi"><div class="v ">74%</div><div class="l">of 52w range (low $142.42)</div></div><div class="kpi"><div class="v ">44</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-1.8%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-1.7%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+62.6%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">46.7%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">25.1</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-8%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $290.14</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $142.42</text><polyline points="0.0,217.7 3.4,216.4 6.9,216.8 10.3,217.1 13.8,215.6 17.2,220.2 20.6,223.7 24.1,220.4 27.5,225.0 31.0,222.8 34.4,218.6 37.8,225.8 41.3,221.1 44.7,224.4 48.2,224.0 51.6,230.4 55.0,229.7 58.5,229.1 61.9,236.0 65.4,230.5 68.8,225.2 72.2,222.1 75.7,222.3 79.1,221.4 82.6,222.6 86.0,219.9 89.4,219.2 92.9,218.5 96.3,218.1 99.8,218.8 103.2,218.9 106.6,216.0 110.1,214.4 113.5,216.8 117.0,224.7 120.4,224.1 123.8,226.5 127.3,223.2 130.7,219.0 134.2,219.8 137.6,220.6 141.0,220.5 144.5,217.9 147.9,220.3 151.4,221.4 154.8,224.7 158.2,220.0 161.7,220.5 165.1,221.8 168.6,223.6 172.0,228.5 175.4,224.4 178.9,224.6 182.3,216.3 185.8,224.9 189.2,224.5 192.6,225.0 196.1,230.4 199.5,225.1 203.0,221.6 206.4,220.3 209.8,216.6 213.3,212.8 216.7,211.9 220.2,208.0 223.6,212.5 227.0,209.4 230.5,208.8 233.9,204.2 237.4,204.5 240.8,194.0 244.2,192.9 247.7,192.9 251.1,196.0 254.6,214.3 258.0,208.3 261.4,210.7 264.9,208.9 268.3,208.6 271.8,208.2 275.2,214.5 278.6,214.5 282.1,213.1 285.5,212.7 289.0,215.2 292.4,214.7 295.8,216.1 299.3,210.1 302.7,213.4 306.2,215.8 309.6,216.6 313.0,217.0 316.5,213.4 319.9,220.1 323.4,220.5 326.8,219.9 330.2,218.2 333.7,220.6 337.1,217.3 340.6,221.0 344.0,215.8 347.4,205.3 350.9,205.1 354.3,211.1 357.8,214.7 361.2,210.3 364.6,197.9 368.1,172.4 371.5,171.5 375.0,162.6 378.4,159.0 381.8,152.3 385.3,153.4 388.7,153.0 392.2,143.0 395.6,145.8 399.0,144.7 402.5,139.8 405.9,131.8 409.4,126.7 412.8,130.6 416.2,118.8 419.7,119.5 423.1,112.4 426.6,115.3 430.0,118.8 433.4,117.8 436.9,111.8 440.3,111.7 443.8,112.3 447.2,102.3 450.6,103.4 454.1,105.6 457.5,96.0 461.0,99.0 464.4,107.8 467.8,106.6 471.3,102.8 474.7,108.7 478.2,112.2 481.6,114.5 485.0,108.1 488.5,108.0 491.9,98.5 495.4,94.6 498.8,84.8 502.2,85.6 505.7,63.8 509.1,50.5 512.6,37.7 516.0,37.8 519.4,40.2 522.9,52.9 526.3,48.6 529.8,47.1 533.2,54.3 536.6,40.9 540.1,35.7 543.5,30.0 547.0,33.6 550.4,31.2 553.8,30.1 557.3,32.0 560.7,22.0 564.2,32.0 567.6,40.1 571.0,56.6 574.5,51.1 577.9,55.0 581.4,63.7 584.8,87.9 588.2,96.2 591.7,100.9 595.1,86.8 598.6,79.9 602.0,77.9 605.4,78.3 608.9,75.9 612.3,80.0 615.8,89.4 619.2,90.8 622.6,96.8 626.1,81.2 629.5,76.3 633.0,83.1 636.4,90.4 639.8,87.6 643.3,84.2 646.7,82.1 650.2,77.1 653.6,71.9 657.0,74.6 660.5,60.2 663.9,61.2 667.4,66.8 670.8,76.6 674.2,74.7 677.7,74.4 681.1,72.6 684.6,73.5 688.0,67.5 691.4,60.0 694.9,66.0 698.3,77.6 701.8,79.0 705.2,79.9 708.6,89.3 712.1,78.1 715.5,72.7 719.0,65.5 722.4,74.4 725.8,76.0 729.3,78.1 732.7,75.7 736.2,62.0 739.6,61.8 743.0,67.7 746.5,68.2 749.9,72.1 753.4,52.3 756.8,64.0 760.2,62.1 763.7,64.9 767.1,59.3 770.6,56.7 774.0,37.3 777.4,32.0 780.9,25.3 784.3,66.4 787.8,61.3 791.2,70.4 794.6,68.3 798.1,70.2 801.5,48.6 805.0,39.1 808.4,40.6 811.8,39.0 815.3,49.0 818.7,54.9 822.2,46.3 825.6,46.7 829.0,42.4 832.5,60.2 835.9,72.7 839.4,84.9 842.8,82.2 846.2,82.7 849.7,78.5 853.1,84.4 856.6,84.0 860.0,77.1" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof D</span> <span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip b" title="Value">Valu B</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip h" title="Growth">Grow C</span></p><p>Piotroski F-score <b>5/9</b> · net debt/EBITDA <b>0.0×</b> · avg EPS surprise (last 4) <b>+22.3%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 5/9).</li><li>Profitability: gross margin compresses for two straight fiscal years.</li><li>Price structure: a weekly close below the 52-week low of $142.42 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Dip pool #137 · Pro pool #111 (C+)</span></p><p>TD SYNNEX just printed a record fiscal Q3 2026 — revenue +37.7% to $21.56B, non-GAAP EPS $5.68 (+59%), Hyve more than doubling on AI rack programs — and guided Q4 well above consensus, all at a modest ~14.6x trailing earnings. What blocks BUY is the quality of that growth: free cash flow was −$976M in the quarter, inventories hit $15.3B, and gross margin compressed to 6.61% as low-margin Hyve mix grows, leaving sector and risk at mixed.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Fiscal Q4 results in early December against raised guidance (revenue $21.8–22.6B, EPS $5.65–6.15), with management stating Hyve working-capital investment is largely in place — an FCF inflection test inside the window</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Fiscal Q3 2026 revenue +37.7% YoY to a record $21.56B, non-GAAP EPS +58.7% to $5.68, gross billings +40% — broad-based beats across Distribution and Hyve</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Quarterly FCF of −$976M, $15.3B of inventory and debt-funded working capital for hyperscale programs; not a survivability issue, but cash conversion is unproven at this scale</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #1 AI infrastructure is Negative/Severe; the evidenced offset is that SNX/Hyve sells into the buildout rather than funding it, but its growth is now hostage to that same capex cycle</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip sb'>pass</span></td><td>~14.6x trailing P/E at $247.34 (−17% from the $298.77 high) for a company compounding EPS at this rate — the post-earnings selloff was cash-flow sentiment, not broken fundamentals</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Hyve working capital keeps consuming cash and gross margin slides further as AI server mix rises</li><li>A hyperscaler deployment slowdown strands $15.3B of inventory built for specific programs</li></ul><p><b>What would change this verdict:</b> A Q4 print with positive free cash flow and gross margin holding at or above ~6.6% would lift sector/risk and support BUY; another ~$1B FCF burn quarter would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://www.digitalcommerce360.com/2026/09/28/td-synnex-posts-record-q3-revenue-of-21-6-billion-as-hyve-more-than-doubles/' target='_blank' rel='noopener'>TD Synnex Q3 revenue hits $21.6 billion, Hyve more than doubles (Digital Commerce 360)</a> <span class='dom'>digitalcommerce360.com</span></li><li><a href='https://startupfortune.com/td-synnex-crushed-earnings-estimates-and-wall-street-sold-the-stock-anyway/' target='_blank' rel='noopener'>TD Synnex crushed earnings estimates and Wall Street sold the stock anyway — FCF −$975.6M, margin detail (Startup Fortune)</a> <span class='dom'>startupfortune.com</span></li><li><a href='https://finnhub.io/?q=%22SNX%22' target='_blank' rel='noopener'>TD SYNNEX (SNX): Financial Market Data — price $247.34 at Oct 23, 2026 close, P/E 14.6 (Finnhub)</a> <span class='dom'>finnhub.io</span></li><li><a href='https://noah-news.com/td-synnex-ai-quarter-is-real-cash-return-is-not/' target='_blank' rel='noopener'>TD SYNNEX's AI quarter is real. Its cash return is not. (Noah News)</a> <span class='dom'>noah-news.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/SNX" target="_blank" rel="noopener">Yahoo Finance — SNX</a> ·
+<a href="https://stockanalysis.com/stocks/snx/" target="_blank" rel="noopener">StockAnalysis — SNX</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</div></body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DVN — Devon Energy · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Six lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a><a class="tab active" href="../holds.html">🟡 Top 50 Holds</a></div></div>
+<p class="crumb"><a href="../holds.html">← Back to the Top 50 Holds</a></p>
+<h1>DVN — Devon Energy</h1>
+<div class="sub">
+· Top 50 Holds — research bench</div>
+<div><span class="price">$51.51</span>
+<span class="up" style="font-size:17px">+0.24% today</span>
+<span class="muted"> · as of 2026-10-26 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-1.1%</div><div class="l">vs 52w high ($52.07)</div></div><div class="kpi"><div class="v ">97%</div><div class="l">of 52w range (low $32.01)</div></div><div class="kpi"><div class="v ">62</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+10.2%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+10.3%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+56.4%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">33.9%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">12.3</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-05</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+42%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $52.07</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $32.01</text><polyline points="0.0,226.2 3.4,236.0 6.9,235.6 10.3,236.0 13.8,230.9 17.2,227.4 20.6,230.2 24.1,232.5 27.5,231.5 31.0,218.0 34.4,215.6 37.8,202.4 41.3,201.8 44.7,203.7 48.2,195.1 51.6,203.4 55.0,194.8 58.5,201.1 61.9,202.4 65.4,197.2 68.8,194.2 72.2,195.4 75.7,189.2 79.1,182.1 82.6,173.6 86.0,180.0 89.4,175.4 92.9,175.2 96.3,177.8 99.8,176.7 103.2,178.5 106.6,167.7 110.1,177.0 113.5,177.2 117.0,191.6 120.4,203.1 123.8,183.3 127.3,196.4 130.7,195.1 134.2,188.8 137.6,189.8 141.0,191.3 144.5,197.0 147.9,191.5 151.4,184.7 154.8,186.7 158.2,173.5 161.7,187.6 165.1,194.6 168.6,209.8 172.0,192.5 175.4,196.0 178.9,196.4 182.3,184.5 185.8,173.0 189.2,190.0 192.6,191.3 196.1,190.3 199.5,174.8 203.0,172.3 206.4,165.3 209.8,165.4 213.3,156.6 216.7,152.6 220.2,151.4 223.6,148.5 227.0,149.3 230.5,138.9 233.9,114.6 237.4,116.9 240.8,110.1 244.2,113.6 247.7,113.6 251.1,97.8 254.6,108.5 258.0,101.0 261.4,107.7 264.9,103.4 268.3,101.0 271.8,103.9 275.2,111.6 278.6,115.8 282.1,122.8 285.5,122.4 289.0,113.1 292.4,98.0 295.8,108.1 299.3,113.5 302.7,102.5 306.2,103.0 309.6,99.3 313.0,111.3 316.5,93.6 319.9,84.7 323.4,84.1 326.8,79.8 330.2,71.6 333.7,63.7 337.1,57.0 340.6,58.4 344.0,60.2 347.4,41.2 350.9,39.7 354.3,29.7 357.8,22.0 361.2,27.9 364.6,40.7 368.1,59.1 371.5,49.5 375.0,47.8 378.4,44.6 381.8,66.4 385.3,66.7 388.7,67.7 392.2,73.2 395.6,94.8 399.0,95.0 402.5,89.1 405.9,105.6 409.4,98.1 412.8,91.0 416.2,74.8 419.7,63.8 423.1,66.1 426.6,63.3 430.0,49.6 433.4,32.6 436.9,29.5 440.3,38.1 443.8,30.6 447.2,33.5 450.6,80.4 454.1,94.1 457.5,90.9 461.0,79.0 464.4,78.5 467.8,77.2 471.3,73.5 474.7,49.5 478.2,47.5 481.6,47.4 485.0,60.5 488.5,74.9 491.9,73.7 495.4,95.9 498.8,105.2 502.2,106.9 505.7,102.9 509.1,83.4 512.6,84.4 516.0,84.8 519.4,86.9 522.9,105.1 526.3,96.6 529.8,107.3 533.2,80.4 536.6,101.6 540.1,94.1 543.5,113.1 547.0,119.9 550.4,123.2 553.8,128.1 557.3,118.2 560.7,114.6 564.2,121.5 567.6,123.0 571.0,127.2 574.5,129.5 577.9,136.7 581.4,148.1 584.8,145.7 588.2,146.9 591.7,125.1 595.1,115.5 598.6,129.2 602.0,127.0 605.4,111.0 608.9,114.5 612.3,119.5 615.8,118.4 619.2,109.9 622.6,110.4 626.1,107.0 629.5,98.7 633.0,94.3 636.4,97.0 639.8,117.1 643.3,122.4 646.7,103.2 650.2,106.3 653.6,96.0 657.0,102.0 660.5,107.6 663.9,128.5 667.4,117.6 670.8,119.0 674.2,93.6 677.7,93.2 681.1,98.9 684.6,103.9 688.0,88.4 691.4,70.0 694.9,67.2 698.3,63.4 701.8,51.6 705.2,53.7 708.6,63.0 712.1,77.0 715.5,77.9 719.0,74.8 722.4,72.4 725.8,60.0 729.3,54.2 732.7,54.4 736.2,57.0 739.6,64.8 743.0,61.2 746.5,55.0 749.9,43.9 753.4,41.6 756.8,47.0 760.2,29.9 763.7,60.7 767.1,57.7 770.6,58.9 774.0,69.8 777.4,76.8 780.9,65.0 784.3,55.8 787.8,75.6 791.2,79.0 794.6,80.4 798.1,86.3 801.5,74.4 805.0,69.2 808.4,65.6 811.8,65.2 815.3,66.7 818.7,55.6 822.2,62.6 825.6,55.2 829.0,41.8 832.5,44.9 835.9,52.2 839.4,36.3 842.8,34.3 846.2,40.0 849.7,45.5 853.1,52.8 856.6,29.3 860.0,28.0" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip b" title="Value">Valu B</span> <span class="fgrade chip r" title="Safety">Safe D</span> <span class="fgrade chip r" title="Growth">Grow D</span></p><p>Piotroski F-score <b>5/9</b> · avg EPS surprise (last 3) <b>+12.2%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 5/9).</li><li>Price structure: a weekly close below the 52-week low of $32.01 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Geopolitics & Energy Security · Pro pool #162 (C)</span></p><p>Devon is executing its post-merger harvest: Q2 2026 EPS of $1.57 beat the $1.41 consensus, full-year 2026 guidance was reaffirmed after the Coterra merger closed in May, Q3 volumes are guided to 1.66–1.69M Boe/d, and the ~$3.85B Eagle Ford sale to Crescent Energy (announced Oct 8) funds buybacks and debt reduction toward a sub-1.0x leverage target. What caps the verdict is where the stock sits: $51.39 is 1.3% below the 52-week high after a ~56% one-year run, at ~16.8x trailing earnings on a commodity book whose earnings power assumes Brent above $100 holds.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q2 EPS $1.57 vs $1.41 expected, FY26 guidance unchanged post-merger, Q3 production guided up to 1.66–1.69M Boe/d with capex in line — execution intact, no guide cut</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>~16.8x trailing EPS (Finnhub) at the 52-week high after +56% in a year prices in sustained $100+ Brent; the ~$62 median analyst target is crowd context only</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip sb'>pass</span></td><td>Map #2 oil & gas is Positive/Severe and Devon is a direct price-taker on it — crude above $100 is the stated driver of its cash-flow and capital-return story</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Leverage is targeted below 1.0x net debt/EBITDAX and the Eagle Ford proceeds help, but the Coterra integration and its $1B synergy plan (targeted by end-2027) are unproven, and the equity is a single-commodity earnings stream at peak prices</td></tr><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 results on Nov 5 (consensus ~$1.22–1.28 EPS), Eagle Ford closing around year-end, and ongoing buybacks — dated drivers within two quarters</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Brent mean-reverts from above $100 and Devon's oil-weighted cash flow compresses against a stock priced at its high</li><li>Merger synergies slip or integration costs surface, delaying the sub-1.0x leverage and capital-return path</li></ul><p><b>What would change this verdict:</b> Eagle Ford closing with proceeds visibly deployed to debt/buybacks and synergies tracking at the Nov 5 print would lift risk toward BUY; a production or synergy guide cut would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://finnhub.io/?q=%22DVN%22' target='_blank' rel='noopener'>Devon Energy Corp (DVN): Financial Market Data — Finnhub (P/E 16.80, price $51.39 at Oct 23 close, 52w high $52.71)</a> <span class='dom'>finnhub.io</span></li><li><a href='https://kalkine.com/news/energy/how-did-a-usd-385-billion-sale-reshape-devon-energy-nysedvn' target='_blank' rel='noopener'>How Did a USD 3.85 Billion Sale Reshape Devon Energy? — Kalkine (Coterra merger, Eagle Ford sale, Q3 setup)</a> <span class='dom'>kalkine.com</span></li><li><a href='https://files.quartr.com/reports/7c97c6ddcb16c9dbd93b0de5bd03ba0b-2026-08-04-20-12-52.pdf?ref=cHVibGljLmNvbQ==' target='_blank' rel='noopener'>Devon Energy Q2 2026 Release — 2026 Outlook and Q3 Guidance — Quartr (production 1.66–1.69M Boe/d, leverage <1.0x commitment)</a> <span class='dom'>files.quartr.com</span></li><li><a href='https://www.marketbeat.com/instant-alerts/filing-devon-energy-corporation-dvn-stock-sterling-capital-management-llc-trims-holdings-2026-10-24/' target='_blank' rel='noopener'>Devon Energy Stock Holdings Filing Roundup — MarketBeat (Brent >$100 catalyst, median target $62 context)</a> <span class='dom'>marketbeat.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/DVN" target="_blank" rel="noopener">Yahoo Finance — DVN</a> ·
+<a href="https://stockanalysis.com/stocks/dvn/" target="_blank" rel="noopener">StockAnalysis — DVN</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</div></body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROK — Rockwell Automation · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Six lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a><a class="tab active" href="../holds.html">🟡 Top 50 Holds</a></div></div>
+<p class="crumb"><a href="../holds.html">← Back to the Top 50 Holds</a></p>
+<h1>ROK — Rockwell Automation</h1>
+<div class="sub">
+· Top 50 Holds — research bench</div>
+<div><span class="price">$431.60</span>
+<span class="up" style="font-size:17px">+1.29% today</span>
+<span class="muted"> · as of 2026-10-26 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-12.8%</div><div class="l">vs 52w high ($495.08)</div></div><div class="kpi"><div class="v ">57%</div><div class="l">of 52w range (low $348.51)</div></div><div class="kpi"><div class="v ">50</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+0.1%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+0.2%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+19.4%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">22.0%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">56.2</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-05</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-14%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $495.08</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $348.51</text><polyline points="0.0,217.0 3.4,216.3 6.9,207.3 10.3,211.0 13.8,207.0 17.2,212.6 20.6,219.4 24.1,215.4 27.5,201.0 31.0,199.5 34.4,173.6 37.8,172.4 41.3,168.8 44.7,190.5 48.2,194.2 51.6,204.5 55.0,210.4 58.5,201.0 61.9,206.5 65.4,191.9 68.8,183.6 72.2,173.5 75.7,169.6 79.1,166.9 82.6,175.5 86.0,173.7 89.4,160.3 92.9,155.1 96.3,154.6 99.8,157.6 103.2,159.9 106.6,145.9 110.1,141.8 113.5,153.3 117.0,158.4 120.4,159.2 123.8,176.1 127.3,173.1 130.7,166.9 134.2,162.9 137.6,162.5 141.0,163.4 144.5,161.1 147.9,166.0 151.4,170.0 154.8,176.8 158.2,162.9 161.7,153.9 165.1,141.3 168.6,147.2 172.0,155.5 175.4,145.4 178.9,140.2 182.3,136.2 185.8,135.7 189.2,130.0 192.6,138.2 196.1,155.0 199.5,131.2 203.0,123.9 206.4,134.8 209.8,131.0 213.3,132.0 216.7,139.1 220.2,121.8 223.6,129.2 227.0,118.3 230.5,116.6 233.9,117.3 237.4,151.0 240.8,138.9 244.2,145.3 247.7,142.4 251.1,150.9 254.6,187.1 258.0,169.0 261.4,177.7 264.9,166.0 268.3,167.6 271.8,162.6 275.2,178.9 278.6,153.1 282.1,157.3 285.5,144.3 289.0,149.9 292.4,143.1 295.8,163.0 299.3,185.1 302.7,192.2 306.2,204.9 309.6,196.5 313.0,198.7 316.5,199.9 319.9,221.9 323.4,217.9 326.8,213.3 330.2,223.0 333.7,226.4 337.1,225.5 340.6,226.4 344.0,222.4 347.4,217.4 350.9,218.3 354.3,226.8 357.8,231.6 361.2,236.0 364.6,220.9 368.1,206.2 371.5,211.9 375.0,208.7 378.4,205.5 381.8,175.5 385.3,168.3 388.7,166.7 392.2,149.5 395.6,153.1 399.0,164.6 402.5,156.7 405.9,137.9 409.4,140.8 412.8,146.2 416.2,150.6 419.7,147.8 423.1,159.1 426.6,150.7 430.0,158.9 433.4,160.5 436.9,147.8 440.3,150.0 443.8,160.4 447.2,108.4 450.6,74.2 454.1,89.9 457.5,82.1 461.0,78.1 464.4,80.4 467.8,80.5 471.3,78.3 474.7,89.7 478.2,107.7 481.6,128.3 485.0,107.9 488.5,102.1 491.9,84.5 495.4,78.6 498.8,78.9 502.2,80.8 505.7,86.3 509.1,78.0 512.6,68.2 516.0,70.7 519.4,69.9 522.9,92.6 526.3,85.4 529.8,72.5 533.2,102.3 536.6,76.7 540.1,74.2 543.5,68.0 547.0,64.0 550.4,75.1 553.8,53.1 557.3,46.8 560.7,78.5 564.2,72.7 567.6,44.9 571.0,48.7 574.5,40.6 577.9,22.0 581.4,39.9 584.8,56.1 588.2,39.8 591.7,60.2 595.1,67.9 598.6,62.3 602.0,55.5 605.4,72.6 608.9,59.0 612.3,70.4 615.8,60.6 619.2,70.5 622.6,75.1 626.1,66.2 629.5,75.8 633.0,72.3 636.4,70.1 639.8,64.5 643.3,56.9 646.7,74.1 650.2,57.1 653.6,43.9 657.0,42.6 660.5,94.8 663.9,87.7 667.4,99.8 670.8,100.9 674.2,109.4 677.7,92.2 681.1,85.8 684.6,94.4 688.0,88.7 691.4,95.7 694.9,111.7 698.3,112.2 701.8,114.9 705.2,106.7 708.6,117.5 712.1,117.9 715.5,114.5 719.0,112.6 722.4,115.8 725.8,125.2 729.3,135.2 732.7,123.8 736.2,119.5 739.6,111.5 743.0,118.3 746.5,122.7 749.9,129.6 753.4,119.4 756.8,133.3 760.2,136.0 763.7,139.0 767.1,146.1 770.6,138.0 774.0,124.5 777.4,121.1 780.9,112.8 784.3,112.7 787.8,111.0 791.2,115.2 794.6,114.8 798.1,109.2 801.5,98.8 805.0,81.5 808.4,80.3 811.8,86.7 815.3,99.6 818.7,111.0 822.2,113.2 825.6,111.2 829.0,113.7 832.5,126.6 835.9,128.7 839.4,122.5 842.8,125.1 846.2,120.3 849.7,104.6 853.1,126.0 856.6,122.7 860.0,114.7" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip r" title="Value">Valu D-</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip r" title="Growth">Grow D+</span></p><p>Piotroski F-score <b>8/9</b> · FCF yield <b>2.8%</b> · net debt/EBITDA <b>1.0×</b> · avg EPS surprise (last 4) <b>+9.8%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Cash flow: free cash flow turns negative on a trailing-year basis.</li><li>Price structure: a weekly close below the 52-week low of $348.51 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Employment & Labor · Dip pool #90 · Pro pool #156 (C)</span></p><p>Rockwell is executing the automation thesis cleanly: fiscal Q3 2026 sales rose 8% (organic +10%) to $2.31B, adjusted EPS of $3.49 beat the $3.38 consensus, and management raised FY26 guidance to 7.5–9.5% sales growth and $13.00–13.30 adjusted EPS, with demand broadening into automotive, life sciences and data centers. What blocks a BUY is price: at $426.11 the stock is ~32x the raised FY26 EPS guide (~40x trailing) despite the −13.9% pullback, and the average analyst target of ~$468 (crowd context) leaves under 10% headroom if execution slips.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Fiscal Q4/full-year results Nov 5, 2026 with first FY27 guidance, plus realization of the late-Q3 price increase in Q4</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q3 FY26 sales +8% to $2.31B, adj. EPS $3.49 vs $3.38 est., FY26 sales and EPS guidance both raised; segment operating earnings rose in Intelligent Devices and Software & Control</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip sb'>pass</span></td><td>Total debt ~$3.26B against strong FCF ($654M in Q3 alone), net debt/EBITDA ~1.1x, interest coverage ~13x and a $1B buyback authorization; component-cost (memory) inflation is a margin watch, not a solvency issue</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Factory automation is not a mapped severe-negative sector, and labor-scarcity demand is broadening — offset by delayed large capex projects in food & beverage/process and adjacency to the map #1/#3 capex debate</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>$426.11 is ~32x FY26 guided adj. EPS and ~39.9x trailing despite the multiple compressing ~22% since June; average target ~$468 (+~10%) is crowd context only</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Premium multiple leaves no cushion: shares fell ~5% on the Q3 beat-and-raise because expectations were already elevated</li><li>Persistent component-cost inflation pressures price-cost and Software & Control margins into FY27</li></ul><p><b>What would change this verdict:</b> A FY27 guide on Nov 5 implying double-digit organic growth at a de-rated multiple would support BUY; a soft FY27 outlook or margin guide-down would argue the premium is unjustified.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://www.ad-hoc-news.de/boerse/news/corporate-news/rockwell-automation-stock-gains-2-72-percent-after-guidance-rises/70224580' target='_blank' rel='noopener'>Rockwell Automation stock gains after guidance rises — fiscal Q3 sales $2.313B, adj. EPS $3.49, FY26 EPS guide $13.00–$13.30</a> <span class='dom'>ad-hoc-news.de</span></li><li><a href='https://www.trefis.com/data/companies/ROK' target='_blank' rel='noopener'>Rockwell Automation (ROK) — P/E multiple compression and Q3 2026 drivers — Trefis</a> <span class='dom'>trefis.com</span></li><li><a href='https://stockanalysis.com/stocks/rok/statistics/' target='_blank' rel='noopener'>Rockwell Automation (ROK) Statistics & Valuation — trailing P/E 39.93, forward 29.36, debt ratios, Nov 5 earnings date — StockAnalysis</a> <span class='dom'>stockanalysis.com</span></li><li><a href='https://finnhub.io/?q=%22ROK%22' target='_blank' rel='noopener'>Rockwell Automation Inc (ROK): Financial Market Data — $426.11 as of Oct 23, 2026 close — Finnhub</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/ROK" target="_blank" rel="noopener">Yahoo Finance — ROK</a> ·
+<a href="https://stockanalysis.com/stocks/rok/" target="_blank" rel="noopener">StockAnalysis — ROK</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</div></body></html>

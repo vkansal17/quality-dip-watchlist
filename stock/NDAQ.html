@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NDAQ — Nasdaq · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Six lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a><a class="tab active" href="../holds.html">🟡 Top 50 Holds</a></div></div>
+<p class="crumb"><a href="../holds.html">← Back to the Top 50 Holds</a></p>
+<h1>NDAQ — Nasdaq</h1>
+<div class="sub">
+· Top 50 Holds — research bench</div>
+<div><span class="price">$103.69</span>
+<span class="up" style="font-size:17px">+1.10% today</span>
+<span class="muted"> · as of 2026-10-26 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v up">0.0%</div><div class="l">vs 52w high ($103.69)</div></div><div class="kpi"><div class="v ">100%</div><div class="l">of 52w range (low $76.85)</div></div><div class="kpi"><div class="v ">73</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+12.0%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+12.1%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+16.8%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">29.0%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">33.6</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+57%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $103.69</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $76.85</text><polyline points="0.0,140.9 3.4,147.4 6.9,167.7 10.3,165.8 13.8,167.1 17.2,159.9 20.6,164.1 24.1,166.6 27.5,161.5 31.0,153.2 34.4,148.5 37.8,148.5 41.3,141.0 44.7,151.6 48.2,154.4 51.6,165.4 55.0,166.7 58.5,162.9 61.9,155.2 65.4,149.8 68.8,143.6 72.2,138.0 75.7,131.3 79.1,123.8 82.6,136.3 86.0,143.0 89.4,144.5 92.9,128.8 96.3,129.4 99.8,132.7 103.2,125.4 106.6,115.8 110.1,100.5 113.5,102.7 117.0,107.8 120.4,107.8 123.8,101.6 127.3,93.6 130.7,88.4 134.2,71.7 137.6,67.3 141.0,62.3 144.5,56.6 147.9,60.4 151.4,65.9 154.8,74.3 158.2,78.1 161.7,63.8 165.1,45.9 168.6,48.2 172.0,53.5 175.4,65.5 178.9,56.0 182.3,60.3 185.8,50.9 189.2,48.8 192.6,43.6 196.1,72.1 199.5,61.1 203.0,61.1 206.4,67.0 209.8,60.3 213.3,63.4 216.7,61.7 220.2,66.6 223.6,76.2 227.0,76.9 230.5,149.4 233.9,143.2 237.4,167.0 240.8,172.4 244.2,160.7 247.7,190.9 251.1,207.5 254.6,218.8 258.0,215.1 261.4,209.0 264.9,193.9 268.3,199.6 271.8,196.0 275.2,211.5 278.6,202.0 282.1,179.1 285.5,142.4 289.0,150.4 292.4,146.4 295.8,151.7 299.3,138.1 302.7,144.9 306.2,143.7 309.6,146.7 313.0,150.3 316.5,167.0 319.9,178.5 323.4,166.8 326.8,164.2 330.2,159.3 333.7,167.5 337.1,160.9 340.6,160.3 344.0,159.9 347.4,176.8 350.9,181.1 354.3,180.7 357.8,199.1 361.2,182.8 364.6,171.9 368.1,169.8 371.5,157.9 375.0,147.9 378.4,159.9 381.8,146.4 385.3,177.3 388.7,185.7 392.2,161.8 395.6,157.4 399.0,142.7 402.5,140.2 405.9,142.2 409.4,148.9 412.8,150.3 416.2,160.1 419.7,154.8 423.1,132.0 426.6,127.7 430.0,120.7 433.4,121.0 436.9,115.9 440.3,120.6 443.8,120.8 447.2,139.1 450.6,137.5 454.1,139.1 457.5,139.8 461.0,143.3 464.4,135.2 467.8,129.5 471.3,123.7 474.7,122.7 478.2,110.4 481.6,115.4 485.0,131.1 488.5,127.9 491.9,123.1 495.4,124.1 498.8,126.9 502.2,123.2 505.7,111.1 509.1,108.7 512.6,147.8 516.0,156.6 519.4,143.5 522.9,152.8 526.3,156.8 529.8,150.9 533.2,157.3 536.6,157.1 540.1,139.3 543.5,122.9 547.0,136.8 550.4,184.7 553.8,193.0 557.3,190.1 560.7,191.0 564.2,198.0 567.6,229.6 571.0,222.4 574.5,236.0 577.9,220.3 581.4,189.1 584.8,173.7 588.2,175.2 591.7,159.6 595.1,175.9 598.6,150.9 602.0,146.5 605.4,137.5 608.9,147.0 612.3,120.3 615.8,97.3 619.2,118.1 622.6,116.2 626.1,129.2 629.5,124.0 633.0,127.8 636.4,114.5 639.8,99.7 643.3,83.6 646.7,86.9 650.2,90.0 653.6,97.7 657.0,98.1 660.5,102.3 663.9,94.8 667.4,93.7 670.8,94.6 674.2,86.3 677.7,91.1 681.1,86.0 684.6,70.6 688.0,75.2 691.4,77.9 694.9,77.7 698.3,80.5 701.8,71.0 705.2,65.6 708.6,61.1 712.1,61.5 715.5,55.6 719.0,56.6 722.4,56.9 725.8,62.5 729.3,71.0 732.7,85.5 736.2,61.7 739.6,76.3 743.0,91.0 746.5,97.5 749.9,115.1 753.4,121.7 756.8,118.6 760.2,137.3 763.7,141.0 767.1,120.7 770.6,102.9 774.0,93.8 777.4,95.3 780.9,87.8 784.3,94.9 787.8,102.8 791.2,110.3 794.6,116.4 798.1,115.1 801.5,117.8 805.0,128.5 808.4,113.7 811.8,113.1 815.3,115.8 818.7,112.3 822.2,102.1 825.6,96.9 829.0,103.4 832.5,115.5 835.9,103.2 839.4,99.5 842.8,105.6 846.2,92.9 849.7,82.4 853.1,25.1 856.6,31.0 860.0,22.0" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip r" title="Value">Valu D</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip b" title="Growth">Grow B</span></p><p>Piotroski F-score <b>8/9</b> · FCF yield <b>3.3%</b> · net debt/EBITDA <b>3.3×</b> · avg EPS surprise (last 4) <b>+5.0%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Balance sheet: net debt/EBITDA rises above 4.8× (now 3.3×).</li><li>Price structure: a weekly close below the 52-week low of $76.85 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Economics & Growth · Pro pool #184 (D+)</span></p><p>Nasdaq just printed the theme's cleanest quarter: Q3 2026 net revenue rose 13–14% to $1.48B, Solutions revenue grew 17–18% to $1.17B, ARR hit a record $3.37B, Index revenue jumped 39% on $141B of trailing-twelve-month inflows, and non-GAAP EPS rose 18% to $1.04. The problem is entry price — at $102.56 the stock sits 0.7% below its high at roughly 28x trailing earnings, so the rubric pays for quality it can already see and lands HOLD on valuation.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>December launch of 23/5 trading, the Q4 print in late January, ASR execution, and a planned tokenized-equity launch in H1 2027</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q3 net revenue +13% (+14% organic) to $1.48B, Solutions +17–18% for a sixth straight double-digit organic quarter, ARR +12–14% to a record $3.37B, Index revenue +39%</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip sb'>pass</span></td><td>Gross leverage held at 2.5x, Q3 free cash flow of $616M, $496M returned via dividends and buybacks in the quarter plus a new $315–385M accelerated repurchase; no cliff identified</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #7 financials is Mixed/High; the offset is evidenced — 79% of net revenue is now recurring Solutions/ARR rather than transaction fees, and index inflows are at records — but end demand still rides capital-markets activity</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>$102.56 is essentially at the 52-week high (-0.7%) at ~28x trailing EPS (MarketBeat) and ~25x annualized non-GAAP EPS — a premium multiple with no dip to compensate for mid-teens growth</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>IPO/listings environment 'softened modestly in recent weeks' per management — a capital-markets air pocket hits Market Services and listings together</li><li>At ~28x trailing with the stock at its high, any ARR or index-flow deceleration de-rates quickly</li></ul><p><b>What would change this verdict:</b> A pullback toward the low-20s earnings multiple with ARR growth held at double digits would support BUY; ARR growth slipping to single digits would break the quality leg toward SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://www.morningstar.com/news/globe-newswire/9851046/nasdaq-reports-third-quarter-2026-results-strong-execution-drives-12-billion-of-solutions-revenue-record-arr-of-34-billion' target='_blank' rel='noopener'>Nasdaq Reports Third Quarter 2026 Results; Record ARR of $3.4 Billion (GlobeNewswire via Morningstar)</a> <span class='dom'>morningstar.com</span></li><li><a href='https://www.zacks.com/stock/news/3013009/ndaq-q3-earnings-beat-estimates-on-index-and-fintech-growth' target='_blank' rel='noopener'>NDAQ Q3 Earnings Beat Estimates on Index and FinTech Growth — Zacks</a> <span class='dom'>zacks.com</span></li><li><a href='https://www.fool.com/earnings/takeaways/2026/10/22/nasdaq-3-key-takeaways-for-long-term-investors/' target='_blank' rel='noopener'>Nasdaq: 3 Key Takeaways for Long-Term Investors — Motley Fool</a> <span class='dom'>fool.com</span></li><li><a href='https://www.thelincolnianonline.com/2026/10/23/nasdaq-nasdaqndaq-releases-earnings-results-beats-estimates-by-0-02-eps.html' target='_blank' rel='noopener'>Nasdaq (NASDAQ:NDAQ) Releases Earnings Results, Beats Estimates By $0.02 EPS — The Lincolnian Online</a> <span class='dom'>thelincolnianonline.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/NDAQ" target="_blank" rel="noopener">Yahoo Finance — NDAQ</a> ·
+<a href="https://stockanalysis.com/stocks/ndaq/" target="_blank" rel="noopener">StockAnalysis — NDAQ</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</div></body></html>

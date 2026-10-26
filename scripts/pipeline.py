@@ -934,7 +934,8 @@ TAB_DEFS = [("dip", "index.html", "📉 Quality-Dip Top 50"),
             ("pro", "pro.html", "🏦 Professional Top 50"),
             ("sectors", "sectors.html", "🌍 Sectors"),
             ("validated", "validated.html", "🏆 Validated Top 50"),
-            ("macro", "macro.html", "🌐 Macro & Themes")]
+            ("macro", "macro.html", "🌐 Macro & Themes"),
+            ("holds", "holds.html", "🟡 Top 50 Holds")]
 
 
 def tabs_html(active, prefix=""):
@@ -946,7 +947,7 @@ def tabs_html(active, prefix=""):
         for key, href, label in TAB_DEFS)
     return (f'<div class="topbar"><a class="brand" href="{prefix}index.html">'
             f'◆ Quality-Dip Watchlist</a>'
-            f'<span class="brandsub">Five lenses · one universe: top-800 by volume + the S&P 1000</span></div>'
+            f'<span class="brandsub">Six lenses · one universe: top-800 by volume + the S&P 1000</span></div>'
             f'<div class="navwrap"><div class="tabs">{tabs}</div></div>')
 
 
@@ -955,6 +956,7 @@ TABS_PRO = tabs_html("pro")
 TABS_SECTORS = tabs_html("sectors")
 TABS_VALIDATED = tabs_html("validated")
 TABS_MACRO = tabs_html("macro")
+TABS_HOLDS = tabs_html("holds")
 
 
 def pro_section(t, prec, k, rank=None):
@@ -1876,6 +1878,193 @@ def build_theme_details(meta, tverdicts, covered, results, pro_recs, earn):
             fh.write(page)
 
 
+def rank_holds(verdicts, tverdicts, pools):
+    """All HOLD-verdict names from both research stores, ranked by distance
+    to BUY. A name BUY in either store is never a hold. The card comes from
+    the validated store when present, else the theme store. Ranking is
+    mechanical, from the card's own rubric legs: most legs passing first,
+    fewest failing next; the Professional composite breaks ties, then the
+    Quality-Dip score, then the ticker (deterministic order)."""
+    rv = verdicts.get("verdicts") or {}
+    tv = tverdicts.get("verdicts") or {}
+    buy_any = {t for t, v in list(rv.items()) + list(tv.items())
+               if v.get("flag") == "BUY"}
+    pro_ix = {r["ticker"]: r for r in pools.get("pro", [])}
+    dip_ix = {r["ticker"]: r for r in pools.get("dip", [])}
+    out = []
+    for t in sorted(set(rv) | set(tv)):
+        if t in buy_any:
+            continue
+        store, v = (("validated", rv[t]) if rv.get(t, {}).get("flag") == "HOLD"
+                    else ("theme", tv.get(t)) if tv.get(t, {}).get("flag") == "HOLD"
+                    else (None, None))
+        if not v:
+            continue
+        legs = v.get("legs") or {}
+        vs_ = [lv.get("v") for lv in legs.values() if isinstance(lv, dict)]
+        passes, fails = vs_.count("pass"), vs_.count("fail")
+        blocked = [ln for ln, lv in legs.items()
+                   if isinstance(lv, dict) and lv.get("v") == "fail"]
+        out.append({"ticker": t, "card": v, "store": store,
+                    "passes": passes, "fails": fails,
+                    "mixed": vs_.count("mixed"), "blocked": blocked,
+                    "pro_comp": (pro_ix.get(t) or {}).get("composite"),
+                    "dip_score": (dip_ix.get(t) or {}).get("score")})
+    out.sort(key=lambda r: (-r["passes"], r["fails"],
+                            -(r["pro_comp"] if r["pro_comp"] is not None else -1),
+                            -(r["dip_score"] if r["dip_score"] is not None else -1),
+                            r["ticker"]))
+    return out
+
+
+def build_holds_page(meta, verdicts, tverdicts, kpi_ix=None):
+    pools_p = os.path.join(DATA, "pools.json")
+    pools = json.load(open(pools_p)) if os.path.exists(pools_p) else {"dip": [], "pro": []}
+    ranked = rank_holds(verdicts, tverdicts, pools)
+    top = ranked[:50]
+    dip_ix = {r["ticker"]: r for r in pools.get("dip", [])}
+    pro_ix = {r["ticker"]: r for r in pools.get("pro", [])}
+    kpi_ix = kpi_ix or {}
+    n_four = sum(1 for r in ranked if r["passes"] >= 4)
+    rows = []
+    for i, r in enumerate(top, 1):
+        t, v = r["ticker"], r["card"]
+        d, pr = dip_ix.get(t), pro_ix.get(t)
+        origin = []
+        if d:
+            origin.append(f"Dip #{d['rank']}")
+        if pr:
+            origin.append(f"Pro #{pr['rank']} ({pr.get('grade', '')})")
+        origin.append("Validated bench" if r["store"] == "validated" else "Macro bench")
+        src = d or pr or {}
+        k = kpi_ix.get(t, {})
+        last = k.get("last", src.get("last", 0))
+        off = k.get("off_high_pct", src.get("off_high_pct", 0))
+        rp = k.get("range_pos")
+        range_html = (f"<span class='range'><span class='fill' style='width:{rp}%'></span></span> "
+                      if rp is not None else "")
+        day = k.get("day_pct")
+        day_html = (f"<span class='{'up' if day >= 0 else 'dn'}'>{day:+.2f}%</span>"
+                    if day is not None else '<span class="muted">—</span>')
+        rsi = k.get("rsi14")
+        rsi_html = f"{rsi:.0f}" if rsi is not None else "—"
+        rs = k.get("rs20")
+        rs_html = (f"<span class='{'up' if rs >= 0 else 'dn'}'>{rs:+.1f}%</span>"
+                   if rs is not None else "—")
+        earn_html = k.get("earnings") or '<span class="muted">—</span>'
+        blocked = (" · ".join(x.capitalize() for x in r["blocked"])
+                   if r["blocked"] else "— no failing leg")
+        profile = f"{r['passes']} pass · {r['mixed']} mixed · {r['fails']} fail"
+        ev = (f"<div class='evline'>{len(v.get('sources') or [])} sources cited · "
+              f"researched {v.get('date', '')}{audit_badge(t)}</div>")
+        flip = (f"<div class='evline'><b>What flips it:</b> "
+                f"{v.get('what_changes', '')}</div>")
+        sym = (f"<a class='sym' href='stock/{t}.html'>{t}</a>" if t in kpi_ix
+               else f"<span class='sym'>{t}</span>")
+        rows.append(
+            f"<tr><td>{i}</td>"
+            f"<td>{sym}<span class='nm'>{clean_company_name(UNIVERSE_NAME.get(t, t))}</span></td>"
+            f"<td><span class='chip h'>HOLD</span> {legs_mini(v)}"
+            f"<div class='evline'>{profile}</div></td>"
+            f"<td>{blocked}</td>"
+            f"<td>{' · '.join(origin)}</td>"
+            f"<td class='num'>${last:,.2f}</td>"
+            f"<td class='num'>{day_html}</td>"
+            f"<td>{range_html}<span class='dn'>{off:.1f}%</span></td>"
+            f"<td class='num'>{rsi_html}</td>"
+            f"<td class='num'>{rs_html}</td>"
+            f"<td class='num'>{earn_html}</td>"
+            f"<td class='sum'>{v.get('summary', '')}{flip}{ev}</td></tr>")
+    html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Top 50 Holds · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="wrap">
+{TABS_HOLDS}
+<h1>🟡 Top 50 Holds — the research bench</h1>
+<div class="sub">Every deep-researched name that landed on HOLD, ranked by distance to BUY ·
+prices as of {meta['asof']} close · the dots beside each verdict are its five rubric legs
+(Quality · Valuation · Sector · Risk · Catalyst)</div>
+<div class="cards">
+  <div class="card"><div class="n">{len(top)}</div><div class="l">Holds shown</div></div>
+  <div class="card"><div class="n">{len(ranked)}</div><div class="l">HOLD verdicts in total</div></div>
+  <div class="card"><div class="n">{n_four}</div><div class="l">With 4 legs passing (one flip from BUY)</div></div>
+  <div class="card"><div class="n">{len(ranked) - len(top)}</div><div class="l">Further holds below the cut</div></div>
+</div>
+<section>A HOLD is an unproven case, not a rejected one: exactly one rubric leg failing, or only
+three passing with none failing. This tab ranks all {len(ranked)} researched HOLDs by how close they
+stand to the BUY bar and shows, for each, the leg that blocks it and the evidence that would flip it.
+<div class="tablewrap"><table id="t"><thead><tr><th>#</th><th>Stock</th><th>Verdict · legs</th><th>Blocked by</th><th>Origin</th>
+<th class="num">Price</th><th class="num">Day</th><th>vs 52w high</th>
+<th class="num">RSI</th><th class="num">Rel Str 20d</th><th class="num">Earnings</th>
+<th>Research summary · what flips it · evidence</th></tr></thead>
+<tbody>{chr(10).join(rows)}</tbody></table></div>
+<p class="muted" style="margin-top:12px">Method: the population is every HOLD verdict in the two
+research stores (Validated bench and Macro bench); a name that is BUY in either store never appears
+here. Ranking is mechanical, computed from each card's own rubric legs — legs passing (descending),
+legs failing (ascending), then the Professional composite, then the Quality-Dip score. Verdicts are
+a dated research snapshot (researched 2026-10-25; not re-researched by the daily screener, which
+refreshes prices and KPIs only) from public sources — structured research opinion, not investment
+advice or a trade instruction.</p></section>
+{glossary_html()}
+</div></body></html>"""
+    with open(os.path.join(ROOT, "holds.html"), "w") as fh:
+        fh.write(html)
+    return ranked
+
+
+def build_holds_details(meta, ranked_top, verdicts, tverdicts, covered,
+                        results, pro_recs, earn):
+    """Detail pages for Top-50 Holds covered by no other list builder."""
+    fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
+    asof = meta["asof"]
+    stores = {"validated": verdicts, "theme": tverdicts}
+    for r in ranked_top:
+        t = r["ticker"]
+        if t in covered:
+            continue
+        k = results.get(t)
+        if not k:
+            continue
+        secs = []
+        prec = pro_recs.get(t)
+        psec = pro_section(t, prec, k, None)
+        if psec:
+            secs.append(psec)
+        vsec = verdict_section(t, stores[r["store"]])
+        if vsec:
+            secs.append(vsec)
+        pe = (round(100 / prec["earn_y"], 1)
+              if prec and prec.get("earn_y") and prec["earn_y"] > 0 else None)
+        tiles = kpi_tiles(k, rs20=k["mom20_pct"] - meta.get("spy_mom20", 0.0),
+                          pe=pe, earn=earn.get(t), extra=(
+            _tile(f"{k['vpt20']:+.0f}%", "VPT trend (20d)",
+                  "up" if k["vpt20"] >= 0 else "dn")))
+        ys = yahoo_symbol(t)
+        page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="wrap">
+{tabs_html("holds", "../")}
+<p class="crumb"><a href="../holds.html">← Back to the Top 50 Holds</a></p>
+<h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
+<div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
+· Top 50 Holds — research bench</div>
+<div><span class="price">${k['last']:,.2f}</span>
+<span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
+<span class="muted"> · as of {asof} close</span></div>
+{tiles}
+<div class="bigchart">{chart_svg(k['chart'], k['high52'], k['low52'])}
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+{chr(10).join(secs)}
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
+<a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</div></body></html>"""
+        with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
+            fh.write(page)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=8)
@@ -2041,6 +2230,14 @@ def main():
     build_theme_details(meta, tverdicts,
                         {r["ticker"] for r in rows} | {r["ticker"] for r in pro_rows},
                         results, pro_recs, earn)
+    ranked_holds = build_holds_page(meta, verdicts, tverdicts, kpi_ix)
+    build_holds_details(meta, ranked_holds[:50], verdicts, tverdicts,
+                        {r["ticker"] for r in rows} | {r["ticker"] for r in pro_rows}
+                        | set(verdicts.get("final50") or [])
+                        | set(tverdicts.get("list") or []),
+                        results, pro_recs, earn)
+    print(f"HOLDS: {len(ranked_holds)} HOLD verdicts ranked; top 50 on holds.html; "
+          f"top 5: {', '.join(r['ticker'] for r in ranked_holds[:5])}")
 
     new_set = {r["ticker"] for r in rows}
     old_set = set(prev_ranks)

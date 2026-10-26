@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RL — Ralph Lauren · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Six lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a><a class="tab active" href="../holds.html">🟡 Top 50 Holds</a></div></div>
+<p class="crumb"><a href="../holds.html">← Back to the Top 50 Holds</a></p>
+<h1>RL — Ralph Lauren</h1>
+<div class="sub">
+· Top 50 Holds — research bench</div>
+<div><span class="price">$385.73</span>
+<span class="up" style="font-size:17px">+2.21% today</span>
+<span class="muted"> · as of 2026-10-26 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-6.9%</div><div class="l">vs 52w high ($414.25)</div></div><div class="kpi"><div class="v ">73%</div><div class="l">of 52w range (low $309.29)</div></div><div class="kpi"><div class="v ">63</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+8.0%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+8.1%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+14.3%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">25.6%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">25.5</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-05</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+41%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $414.25</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $309.29</text><polyline points="0.0,178.3 3.4,191.3 6.9,198.7 10.3,208.3 13.8,214.9 17.2,224.5 20.6,236.0 24.1,220.5 27.5,224.3 31.0,204.6 34.4,184.2 37.8,186.1 41.3,173.0 44.7,188.1 48.2,190.8 51.6,205.8 55.0,197.3 58.5,192.0 61.9,200.0 65.4,173.6 68.8,153.0 72.2,123.4 75.7,109.7 79.1,117.7 82.6,120.6 86.0,141.0 89.4,136.4 92.9,138.8 96.3,115.4 99.8,139.9 103.2,141.7 106.6,137.3 110.1,117.1 113.5,111.8 117.0,108.8 120.4,113.6 123.8,120.9 127.3,112.1 130.7,127.5 134.2,117.7 137.6,127.0 141.0,129.5 144.5,136.5 147.9,138.9 151.4,135.3 154.8,145.6 158.2,127.5 161.7,135.6 165.1,126.0 168.6,130.7 172.0,122.3 175.4,112.6 178.9,126.0 182.3,120.2 185.8,126.8 189.2,114.0 192.6,126.4 196.1,132.2 199.5,113.1 203.0,124.9 206.4,117.6 209.8,132.0 213.3,137.1 216.7,146.9 220.2,142.6 223.6,146.0 227.0,139.7 230.5,144.8 233.9,143.4 237.4,176.1 240.8,167.5 244.2,156.8 247.7,140.4 251.1,133.6 254.6,126.4 258.0,113.9 261.4,111.2 264.9,95.7 268.3,98.3 271.8,81.6 275.2,122.3 278.6,103.8 282.1,97.8 285.5,94.2 289.0,127.3 292.4,144.6 295.8,130.8 299.3,133.0 302.7,146.0 306.2,176.7 309.6,165.0 313.0,160.8 316.5,175.5 319.9,183.4 323.4,192.3 326.8,174.9 330.2,154.6 333.7,170.1 337.1,173.0 340.6,194.0 344.0,175.2 347.4,166.3 350.9,161.3 354.3,186.4 357.8,198.2 361.2,200.7 364.6,165.3 368.1,146.9 371.5,157.0 375.0,135.5 378.4,154.0 381.8,101.2 385.3,81.4 388.7,92.1 392.2,98.0 395.6,106.1 399.0,113.5 402.5,112.8 405.9,77.8 409.4,72.4 412.8,78.0 416.2,101.4 419.7,109.9 423.1,109.7 426.6,111.4 430.0,118.6 433.4,133.7 436.9,135.4 440.3,128.1 443.8,144.3 447.2,132.6 450.6,107.8 454.1,145.8 457.5,135.8 461.0,167.1 464.4,179.2 467.8,190.5 471.3,185.5 474.7,200.3 478.2,202.2 481.6,212.8 485.0,195.3 488.5,102.2 491.9,96.4 495.4,88.2 498.8,99.5 502.2,110.7 505.7,124.7 509.1,119.7 512.6,125.5 516.0,133.8 519.4,118.9 522.9,119.3 526.3,106.4 529.8,69.1 533.2,99.1 536.6,64.7 540.1,42.9 543.5,25.9 547.0,37.3 550.4,43.2 553.8,24.5 557.3,28.8 560.7,36.8 564.2,22.0 567.6,30.4 571.0,28.3 574.5,55.9 577.9,48.2 581.4,55.1 584.8,54.7 588.2,58.6 591.7,60.6 595.1,91.1 598.6,76.4 602.0,61.5 605.4,103.1 608.9,114.3 612.3,103.9 615.8,75.3 619.2,90.9 622.6,99.0 626.1,85.9 629.5,77.3 633.0,108.8 636.4,104.9 639.8,92.0 643.3,97.0 646.7,100.6 650.2,79.8 653.6,91.1 657.0,91.5 660.5,96.1 663.9,90.2 667.4,59.6 670.8,60.2 674.2,37.0 677.7,55.7 681.1,58.5 684.6,76.8 688.0,73.6 691.4,93.2 694.9,95.4 698.3,96.0 701.8,107.1 705.2,106.9 708.6,110.5 712.1,127.3 715.5,127.9 719.0,149.1 722.4,144.8 725.8,159.3 729.3,171.7 732.7,180.5 736.2,164.8 739.6,150.6 743.0,158.6 746.5,182.3 749.9,180.2 753.4,175.2 756.8,170.5 760.2,183.1 763.7,176.7 767.1,187.5 770.6,183.4 774.0,173.8 777.4,161.0 780.9,178.5 784.3,149.2 787.8,138.5 791.2,138.4 794.6,140.9 798.1,142.7 801.5,127.2 805.0,125.7 808.4,121.3 811.8,114.9 815.3,130.3 818.7,117.5 822.2,109.6 825.6,105.6 829.0,104.6 832.5,101.5 835.9,69.3 839.4,80.6 842.8,88.2 846.2,95.1 849.7,90.5 853.1,87.9 856.6,97.1 860.0,80.1" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip r" title="Value">Valu D+</span> <span class="fgrade chip b" title="Safety">Safe B</span> <span class="fgrade chip b" title="Growth">Grow B</span></p><p>Piotroski F-score <b>8/9</b> · net debt/EBITDA <b>-0.3×</b> · avg EPS surprise (last 4) <b>+8.7%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Price structure: a weekly close below the 52-week low of $309.29 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Pro Top 50 #11 (A)</span></p><p>Ralph Lauren is the evidenced exception to the weak-consumer map: brand elevation and reduced discounting are producing 73.7% gross margins, Q1 FY27 revenue +14% with Asia +24%, and raised full-year guidance while peers struggle. Jefferies (top fashion pick) and BofA both carry Buy ratings with $450 targets into the Nov 5 print, ~19% above the $377.40 price; the multiple (~24x) is full but supported by estimate momentum.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q2 FY27 earnings Nov 5; Jefferies raised Q2 estimates Oct 22 (rev +7% cc, EPS $4.28 vs $4.23 consensus) and BofA reiterated Buy/$450 Oct 13</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q1 FY27 rev +13.9% to $1.96B, EPS $4.59 vs $4.32 est., gross margin 73.7%; full-year constant-currency growth guidance raised (to ~5–7%) rather than cut</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip sb'>pass</span></td><td>Balance sheet solid (previously reported $1.6B cash/ST investments vs $1.2B net debt) with ongoing buybacks; wholesale-channel volatility is an earnings risk, not a survivability one</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #8 consumer is Negative/High, but the company-level offset is evidenced: premium 'silent luxury' resilience, LVMH slump shifting demand to US accessible-luxury names, Asia +24%</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>P/E ~23.8x trailing at $377.40 is a full multiple for mid-single-digit guided growth, but shares are ~10% below the $421.60 high and consensus/Jefferies/BofA targets of ~$449–450 sit ~19% above price</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>A weak US consumer (map #8) eventually reaches premium brands; North America wholesale remains the volatile channel</li><li>At ~24x, the stock needs continued margin expansion — a guidance trim on Nov 5 would de-rate it quickly</li></ul><p><b>What would change this verdict:</b> A Nov 5 guidance cut or North America wholesale deterioration would break the quality/catalyst legs and move this to HOLD.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://www.marketbeat.com/articles/luxurys-middle-market-is-crackingthese-3-stocks-could-win/' target='_blank' rel='noopener'>LVMH Slump Lifts RL, TPR and SIG Stocks as Luxury Shifts — RL Q1 FY27: rev +14%, GM 73.7%, guidance raised</a> <span class='dom'>marketbeat.com</span></li><li><a href='https://www.ad-hoc-news.de/boerse/nebenwerte/ralph-lauren-stock-jefferies-keeps-usd-450-00-target-for-ralph-lauren/70401891' target='_blank' rel='noopener'>Jefferies keeps $450 target and Buy on Ralph Lauren, raises Q2 FY27 estimates (Oct 22)</a> <span class='dom'>ad-hoc-news.de</span></li><li><a href='https://www.webull.com/news/13860331947320320' target='_blank' rel='noopener'>What Ralph Lauren's Strong Q2 Results and Upgraded Outlook Mean for Shareholders</a> <span class='dom'>webull.com</span></li><li><a href='https://finnhub.io/?q=%22RL%22' target='_blank' rel='noopener'>Ralph Lauren (RL) financial data — $377.40 close Oct 23, P/E ~23, 52w range $306.55–$421.60</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/RL" target="_blank" rel="noopener">Yahoo Finance — RL</a> ·
+<a href="https://stockanalysis.com/stocks/rl/" target="_blank" rel="noopener">StockAnalysis — RL</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</div></body></html>

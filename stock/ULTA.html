@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ULTA — Ulta Beauty · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Six lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a><a class="tab active" href="../holds.html">🟡 Top 50 Holds</a></div></div>
+<p class="crumb"><a href="../holds.html">← Back to the Top 50 Holds</a></p>
+<h1>ULTA — Ulta Beauty</h1>
+<div class="sub">
+· Top 50 Holds — research bench</div>
+<div><span class="price">$624.73</span>
+<span class="up" style="font-size:17px">+0.04% today</span>
+<span class="muted"> · as of 2026-10-26 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-11.6%</div><div class="l">vs 52w high ($706.82)</div></div><div class="kpi"><div class="v ">68%</div><div class="l">of 52w range (low $450.75)</div></div><div class="kpi"><div class="v ">69</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+13.8%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+13.9%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+19.5%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">28.3%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">24.4</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-12-03</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+53%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $706.82</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $450.75</text><polyline points="0.0,175.8 3.4,179.1 6.9,189.8 10.3,186.8 13.8,178.2 17.2,180.3 20.6,180.9 24.1,176.6 27.5,186.6 31.0,180.0 34.4,181.0 37.8,175.8 41.3,165.3 44.7,166.5 48.2,170.3 51.6,186.8 55.0,188.7 58.5,197.0 61.9,197.8 65.4,181.8 68.8,182.6 72.2,177.3 75.7,165.5 79.1,162.4 82.6,155.0 86.0,154.7 89.4,157.6 92.9,166.5 96.3,110.0 99.8,120.2 103.2,108.8 106.6,110.7 110.1,116.8 113.5,109.9 117.0,118.6 120.4,120.2 123.8,123.0 127.3,116.3 130.7,113.0 134.2,100.4 137.6,107.9 141.0,104.2 144.5,105.0 147.9,107.4 151.4,105.5 154.8,107.1 158.2,94.5 161.7,85.2 165.1,69.4 168.6,65.0 172.0,63.3 175.4,56.0 178.9,59.9 182.3,57.1 185.8,57.9 189.2,56.8 192.6,58.2 196.1,48.1 199.5,41.5 203.0,43.0 206.4,39.3 209.8,60.0 213.3,68.4 216.7,79.3 220.2,85.3 223.6,71.7 227.0,56.5 230.5,49.9 233.9,45.6 237.4,46.2 240.8,35.7 244.2,30.8 247.7,45.0 251.1,41.9 254.6,55.1 258.0,41.6 261.4,22.0 264.9,36.5 268.3,33.7 271.8,42.0 275.2,52.9 278.6,39.0 282.1,40.8 285.5,31.4 289.0,40.4 292.4,46.9 295.8,53.6 299.3,60.0 302.7,66.4 306.2,72.5 309.6,76.0 313.0,71.8 316.5,67.3 319.9,90.6 323.4,165.0 326.8,180.9 330.2,175.6 333.7,177.6 337.1,166.3 340.6,169.8 344.0,181.4 347.4,182.1 350.9,173.0 354.3,176.8 357.8,186.2 361.2,186.4 364.6,175.9 368.1,164.2 371.5,163.6 375.0,159.2 378.4,167.9 381.8,167.4 385.3,167.4 388.7,177.8 392.2,172.5 395.6,167.2 399.0,162.1 402.5,161.9 405.9,150.2 409.4,134.5 412.8,136.2 416.2,141.4 419.7,141.0 423.1,145.9 426.6,161.7 430.0,163.0 433.4,169.6 436.9,163.5 440.3,168.1 443.8,179.8 447.2,167.7 450.6,165.5 454.1,172.7 457.5,176.8 461.0,184.8 464.4,190.5 467.8,201.4 471.3,196.3 474.7,199.6 478.2,211.7 481.6,210.3 485.0,200.6 488.5,191.5 491.9,182.3 495.4,181.4 498.8,188.7 502.2,178.0 505.7,187.4 509.1,194.2 512.6,199.1 516.0,218.9 519.4,226.2 522.9,222.4 526.3,225.9 529.8,213.3 533.2,219.3 536.6,214.5 540.1,221.8 543.5,218.5 547.0,225.2 550.4,236.0 553.8,231.5 557.3,224.0 560.7,228.8 564.2,212.4 567.6,206.9 571.0,204.5 574.5,229.0 577.9,235.8 581.4,232.6 584.8,227.2 588.2,234.5 591.7,233.5 595.1,232.4 598.6,228.1 602.0,220.6 605.4,217.1 608.9,220.6 612.3,223.1 615.8,212.5 619.2,211.9 622.6,204.8 626.1,203.6 629.5,208.6 633.0,213.3 636.4,215.4 639.8,211.1 643.3,193.6 646.7,188.1 650.2,180.9 653.6,184.1 657.0,166.1 660.5,158.2 663.9,161.9 667.4,162.4 670.8,140.4 674.2,154.2 677.7,160.3 681.1,168.2 684.6,181.8 688.0,185.9 691.4,200.4 694.9,180.9 698.3,171.6 701.8,182.2 705.2,176.9 708.6,162.4 712.1,163.7 715.5,158.7 719.0,161.3 722.4,180.2 725.8,163.8 729.3,156.7 732.7,151.6 736.2,147.1 739.6,141.3 743.0,153.7 746.5,159.9 749.9,165.1 753.4,155.7 756.8,154.2 760.2,157.8 763.7,169.3 767.1,158.3 770.6,160.6 774.0,146.5 777.4,149.8 780.9,158.2 784.3,154.1 787.8,157.1 791.2,153.8 794.6,154.8 798.1,156.3 801.5,163.3 805.0,158.3 808.4,159.1 811.8,155.3 815.3,156.8 818.7,141.2 822.2,136.0 825.6,138.5 829.0,128.8 832.5,117.6 835.9,103.5 839.4,117.2 842.8,118.3 846.2,108.8 849.7,105.4 853.1,82.0 856.6,90.8 860.0,90.6" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip h" title="Profitability">Prof C+</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip h" title="Growth">Grow C</span></p><p>Piotroski F-score <b>6/9</b> · FCF yield <b>3.8%</b> · net debt/EBITDA <b>-0.1×</b> · avg EPS surprise (last 4) <b>+7.6%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 4 (now 6/9).</li><li>Price structure: a weekly close below the 52-week low of $450.75 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Pro pool #73 (B)</span></p><p>Ulta is executing well — Q2 FY26 sales +8.9% to $3.04B, EPS $6.55 beat, and FY26 guidance was raised (EPS $28.70–29.00, comps 3.2–3.7%) with the buyback lifted to $1.8B — and beauty demand is proving resilient. But at $624.46 the stock trades ~21.5x raised FY26 guidance after a +14.5% month, second-half guidance already embeds a slowdown (comps 2–3%), and it sits in the map's Negative/High consumer bucket, so the evidence supports quality without a margin of safety.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q3 FY26 earnings on Dec 3, 2026 covering the holiday setup, plus wellness category rollout and K-beauty/exclusive launches</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q2 FY26 net sales +8.9% y/y, EPS $6.55 vs ~$6.17–6.22 consensus, operating margin 12.5%, guidance raised across sales, comps and EPS; ~47M-member loyalty program and six straight quarters of double-digit e-commerce growth</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip sb'>pass</span></td><td>Net-cash-leaning balance sheet, $1.8B buyback authorization, no leverage or cliff risk; watch items are promotional intensity, flat transactions, gross-margin mix drag from Space NK and Amazon/TikTok/Sephora competition — competitive, not survivability, risks</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Consumer discretionary is map #8, Negative/High, but beauty has a specific evidenced offset — resilient prestige/fragrance demand and management seeing 'no significant shift in consumer behavior' — capping this at mixed</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>~21.5x FY26 guided EPS ($28.70–29.00) and ~22.3x trailing at $624.46, up 14.5% in a month and ~13% below the $714.97 high — full for guided mid-single-digit comp growth</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Second-half comp guide of only 2–3% with transactions flat — growth is ticket-driven into a promotional environment</li><li>Space NK mix is already compressing gross margin and competition (Sephora, Amazon, TikTok Shop) raises marketing spend</li><li>Inventory of ~$2.4B risks markdowns if holiday demand disappoints</li></ul><p><b>What would change this verdict:</b> A Dec 3 print with transaction growth turning positive and comps at or above guide would strengthen the case; a multiple pullback toward the high-teens on unchanged guidance would make this a BUY.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://TICKERON.COM/blogs/ulta-beauty-ulta-advances-8-following-strong-q2-results-and-raised-guidance-19304/' target='_blank' rel='noopener'>Ulta Beauty (ULTA) Advances +8% Following Strong Q2 Results and Raised Guidance — Tickeron</a> <span class='dom'>TICKERON.COM</span></li><li><a href='https://www.ad-hoc-news.de/boerse/news/nebenwerte/ulta-beauty-raises-fiscal-2026-guidance-what-it-means-for-ulta-beauty-stock/70248151' target='_blank' rel='noopener'>Ulta Beauty Raises Fiscal 2026 Guidance — Ad-hoc News</a> <span class='dom'>ad-hoc-news.de</span></li><li><a href='https://ts2.tech/en/ulta-beauty-stock-slips-1-5-despite-q2-beat-and-higher-2026-forecast/' target='_blank' rel='noopener'>Ulta Beauty Shares Drop 1.5% After Q2 Results Exceed Estimates and 2026 Outlook Raised — TS2</a> <span class='dom'>ts2.tech</span></li><li><a href='https://www.marketbeat.com/instant-alerts/filing-gradient-investments-llc-reduces-position-in-ulta-beauty-inc-ulta-2026-10-09/' target='_blank' rel='noopener'>Gradient Investments LLC Reduces Position in Ulta Beauty Inc — MarketBeat</a> <span class='dom'>marketbeat.com</span></li><li><a href='https://finnhub.io/?q=%22ULTA%22' target='_blank' rel='noopener'>Ulta Beauty Inc (ULTA): Financial Market Data — Finnhub</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/ULTA" target="_blank" rel="noopener">Yahoo Finance — ULTA</a> ·
+<a href="https://stockanalysis.com/stocks/ulta/" target="_blank" rel="noopener">StockAnalysis — ULTA</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</div></body></html>

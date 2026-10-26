@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MSFT — Microsoft · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+.topbar{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 12px}
+.brand{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:.01em}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:12.5px}
+h1{font-size:26px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13.5px;margin-bottom:16px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px}
+.card .n{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:10px 12px;font-size:14px;min-height:42px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:9px 10px;font-size:13.5px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tr:hover td{background:#14213d}
+td.wrap,th.wrap{white-space:normal}
+td.take{white-space:normal;min-width:210px;max-width:330px;color:#c4d2ec;font-size:12.8px;line-height:1.5}
+td.sum{white-space:normal;min-width:280px;max-width:520px;line-height:1.55}
+.sym{font-weight:700;font-size:15px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11.5px;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:110px;height:8px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.navwrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 10px;margin:0 0 8px}
+.tabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-weight:600;font-size:14px;background:var(--card);white-space:nowrap}
+.tab:hover{text-decoration:none;color:var(--txt)}
+.tab.active{background:var(--acc);border-color:var(--acc);color:#081120}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:34px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:12px;margin-right:3px}
+.biggrade{font-size:21px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14.5px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13.5px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:12px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:12px;color:var(--mut);margin-top:5px}
+@media(min-width:901px){thead th{position:sticky;top:64px;z-index:5}}
+@media(max-width:900px){.nm{max-width:110px}.hide-m{display:none}h1{font-size:22px}.wrap{padding:16px 12px 48px}}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)} .cards{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px} td.take{min-width:170px} td.sum{min-width:230px} th,td{padding:8px 8px;font-size:12.8px}
+.card .n{font-size:20px} section{padding:14px 14px}}
+</style></head><body>
+<div class="wrap">
+<div class="topbar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><span class="brandsub">Six lenses · one universe: top-800 by volume + the S&P 1000</span></div><div class="navwrap"><div class="tabs"><a class="tab" href="../index.html">📉 Quality-Dip Top 50</a><a class="tab" href="../pro.html">🏦 Professional Top 50</a><a class="tab" href="../sectors.html">🌍 Sectors</a><a class="tab" href="../validated.html">🏆 Validated Top 50</a><a class="tab" href="../macro.html">🌐 Macro & Themes</a><a class="tab active" href="../holds.html">🟡 Top 50 Holds</a></div></div>
+<p class="crumb"><a href="../holds.html">← Back to the Top 50 Holds</a></p>
+<h1>MSFT — Microsoft</h1>
+<div class="sub">
+· Top 50 Holds — research bench</div>
+<div><span class="price">$529.75</span>
+<span class="up" style="font-size:17px">+1.00% today</span>
+<span class="muted"> · as of 2026-10-26 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-2.5%</div><div class="l">vs 52w high ($543.45)</div></div><div class="kpi"><div class="v ">93%</div><div class="l">of 52w range (low $352.83)</div></div><div class="kpi"><div class="v ">56</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+4.0%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+4.1%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-0.3%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">21.6%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">38.8</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-10-28</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+15%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $543.45</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $352.83</text><polyline points="0.0,35.4 3.4,23.5 6.9,24.1 10.3,41.9 13.8,50.8 17.2,51.7 20.6,54.7 24.1,62.7 27.5,74.0 31.0,74.3 34.4,64.0 37.8,61.0 41.3,58.3 44.7,67.1 48.2,59.4 51.6,62.4 55.0,77.8 58.5,85.2 61.9,95.0 65.4,102.1 68.8,100.0 72.2,96.6 75.7,87.1 79.1,79.7 82.6,85.7 86.0,82.0 89.4,95.8 92.9,92.3 96.3,89.7 99.8,80.9 103.2,79.7 106.6,94.8 110.1,89.3 113.5,94.9 117.0,99.0 120.4,97.3 123.8,97.6 127.3,88.8 130.7,86.6 134.2,87.7 137.6,85.5 141.0,84.2 144.5,84.6 147.9,85.3 151.4,84.8 154.8,89.2 158.2,101.2 161.7,101.3 165.1,94.9 168.6,89.3 172.0,95.4 175.4,94.0 178.9,96.4 182.3,103.7 185.8,116.4 189.2,119.4 192.6,115.8 196.1,121.8 199.5,133.5 203.0,125.6 206.4,109.0 209.8,104.1 213.3,92.6 216.7,91.4 220.2,145.4 223.6,149.0 227.0,156.8 230.5,170.5 233.9,167.1 237.4,190.2 240.8,181.8 244.2,167.8 247.7,168.1 251.1,178.1 254.6,181.0 258.0,181.6 261.4,186.6 264.9,183.5 268.3,184.8 271.8,186.2 275.2,200.5 278.6,195.4 282.1,182.4 285.5,181.1 289.0,191.2 292.4,184.7 295.8,178.6 299.3,177.2 302.7,171.1 306.2,173.0 309.6,172.5 313.0,176.6 316.5,177.6 319.9,181.0 323.4,188.0 326.8,183.1 330.2,183.7 333.7,192.3 337.1,195.4 340.6,203.4 344.0,202.1 347.4,213.6 350.9,215.6 354.3,221.2 357.8,231.6 361.2,229.1 364.6,216.5 368.1,217.4 371.5,212.8 375.0,213.5 378.4,214.2 381.8,211.9 385.3,213.3 388.7,215.7 392.2,200.6 395.6,190.8 399.0,170.4 402.5,160.3 405.9,157.5 409.4,162.8 412.8,155.9 416.2,146.1 419.7,165.4 423.1,155.4 426.6,155.2 430.0,150.2 433.4,155.6 436.9,174.3 440.3,166.8 443.8,167.8 447.2,170.3 450.6,167.4 454.1,159.7 457.5,166.1 461.0,168.8 464.4,174.3 467.8,177.2 471.3,172.5 474.7,158.4 478.2,156.6 481.6,163.5 485.0,159.4 488.5,161.6 491.9,162.2 495.4,165.0 498.8,168.8 502.2,152.7 505.7,126.6 509.1,115.1 512.6,136.7 516.0,152.4 519.4,151.6 522.9,164.3 526.3,169.9 529.8,179.2 533.2,186.0 536.6,193.9 540.1,193.4 543.5,183.3 547.0,190.0 550.4,206.7 553.8,206.2 557.3,219.7 560.7,212.3 564.2,221.8 567.6,236.0 571.0,213.4 574.5,218.3 577.9,213.3 581.4,200.7 584.8,193.7 588.2,197.9 591.7,195.6 595.1,201.7 598.6,200.6 602.0,199.8 605.4,193.2 608.9,200.0 612.3,188.0 615.8,181.8 619.2,190.0 622.6,180.5 626.1,185.6 629.5,193.9 633.0,203.7 636.4,203.6 639.8,195.3 643.3,190.5 646.7,193.7 650.2,125.7 653.6,110.4 657.0,84.6 660.5,78.9 663.9,84.9 667.4,70.9 670.8,70.8 674.2,64.0 677.7,66.5 681.1,79.3 684.6,74.3 688.0,75.9 691.4,92.8 694.9,91.4 698.3,88.4 701.8,91.9 705.2,89.6 708.6,85.0 712.1,80.1 715.5,74.9 719.0,65.1 722.4,55.6 725.8,62.6 729.3,69.6 732.7,74.3 736.2,59.4 739.6,71.1 743.0,77.6 746.5,80.2 749.9,79.3 753.4,75.7 756.8,64.7 760.2,74.0 763.7,81.7 767.1,73.3 770.6,77.8 774.0,69.0 777.4,73.0 780.9,70.1 784.3,73.1 787.8,52.6 791.2,60.4 794.6,60.7 798.1,56.3 801.5,56.4 805.0,51.1 808.4,42.5 811.8,37.9 815.3,37.4 818.7,45.4 822.2,31.4 825.6,24.6 829.0,22.0 832.5,33.0 835.9,26.5 839.4,38.2 842.8,33.1 846.2,35.0 849.7,33.8 853.1,47.1 856.6,43.3 860.0,37.4" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip r" title="Value">Valu D-</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip h" title="Growth">Grow C</span></p><p>Piotroski F-score <b>5/9</b> · FCF yield <b>1.8%</b> · avg EPS surprise (last 4) <b>+9.3%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 5/9).</li><li>Cash flow: free cash flow turns negative on a trailing-year basis.</li><li>Price structure: a weekly close below the 52-week low of $352.83 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Innovation · Pro pool #139 (C)</span></p><p>Microsoft is the strongest evidenced offset in the hyperscaler map: fiscal Q4 2026 revenue rose 18% to ~$90B, Azure grew 43% (crossing $100B annual revenue) with ~45% growth guided next, Copilot passed 30M paid seats, and commercial RPO hit $678B (+84%) — while its FY27 capex outlook was revised down to ~$175B on efficiency, not up. What blocks a BUY is price and sector arithmetic: at $524.51, ~3.5% below the $553.72 high and ~29x trailing earnings, there is no dip cushion if the Oct 28 print merely meets a high bar, and it still sits inside map #1 (Negative/Severe).</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Fiscal Q1 2027 results Wed Oct 28, 2026 (consensus ~$4.71 EPS on ~$90.6B revenue) against ~45% guided Azure growth, plus Maia 300 custom-silicon rollout</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>FY26 revenue $331.8B (+18%), Q4 Azure +43% in constant currency (fastest since 2022), net income +31% to $35.8B, Copilot >30M paid seats, RPO $678B +84% — acceleration, not deterioration</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip sb'>pass</span></td><td>Debt/equity ~0.07, ~40% net margin and huge cash generation fund the ~$41B quarterly capex without leverage strain; UK CMA / EU DMA scrutiny is a margin-of-power issue, not survivability</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #1 hyperscalers Negative/Severe, but the concrete offset is evidenced: Azure accelerating with demand exceeding capacity, capex outlook trimmed to ~$175B, and the stock rose ~15% on its print while GOOGL/META were sold off — payback is visible here, though the sector derating still applies</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>~29.4x trailing P/E (Finnhub) and ~27x FY27 consensus EPS (~$19.65) at $524.51 near the high — a full multiple justified only if Azure holds ~45% growth; consensus target ~$592 is crowd context only</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>An in-line Oct 28 print at a near-high price — the bar is a beat plus raised outlook, and a merely clean quarter may not be enough</li><li>Capex intensity still pressures FCF conversion and gross-margin mix if Azure growth decelerates from the mid-40s</li></ul><p><b>What would change this verdict:</b> An Oct 28 beat with Azure at/above ~45% and disciplined FY27 capex would lift sector/valuation toward BUY; an Azure miss below ~40% would argue SELL at this multiple.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://futurumgroup.com/insights/microsoft-q4-fy-2026-ai-demand-accelerates-azure-and-enterprise-growth/' target='_blank' rel='noopener'>Microsoft Q4 FY2026: AI Demand Accelerates Azure and Enterprise Growth — Futurum Group</a> <span class='dom'>futurumgroup.com</span></li><li><a href='https://WWW.ZACKS.COM/stock/news/2968760/microsoft-azure-fiscal-2026-sales-exceed-100b-hold-the-stock-now' target='_blank' rel='noopener'>Microsoft Azure Fiscal 2026 Sales Exceed $100B: Hold the Stock Now? — Zacks</a> <span class='dom'>WWW.ZACKS.COM</span></li><li><a href='https://tickeron.com/ticker/MSFT/' target='_blank' rel='noopener'>Microsoft (MSFT) Stock Analysis: Azure Momentum and AI Monetization — Tickeron</a> <span class='dom'>tickeron.com</span></li><li><a href='https://www.marketbeat.com/instant-alerts/upcoming-microsoft-msft-projected-to-announce-quarterly-earnings-on-wednesday-2026-10-21/' target='_blank' rel='noopener'>Microsoft (MSFT) Projected to Announce Quarterly Earnings on Wednesday (Oct 28) — MarketBeat</a> <span class='dom'>marketbeat.com</span></li><li><a href='https://finnhub.io/?q=%22MSFT%22' target='_blank' rel='noopener'>Microsoft Corp (MSFT): Financial Market Data (P/E 29.4, price as of 2026-10-23) — Finnhub</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/MSFT" target="_blank" rel="noopener">Yahoo Finance — MSFT</a> ·
+<a href="https://stockanalysis.com/stocks/msft/" target="_blank" rel="noopener">StockAnalysis — MSFT</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</div></body></html>
