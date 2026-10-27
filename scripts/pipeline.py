@@ -3293,8 +3293,9 @@ bearish coverage never count.</p>
 </div>
 <p class="foot">Method and limits: {bmeta.get('methodology', '')} Sources were read
 Oct 27, 2026; Barron's and some aggregator items were visible only as snippets, and
-several widely-reported actions (e.g. target raises for Micron) were excluded because
-their dates could not be verified inside the window. Prices and % vs 52-week high come
+some widely-reported actions were excluded when verification dated them outside
+the window (the Micron bank raises, for instance, proved to be dated June 25 and
+September 23, and its Zacks growth-screen pick is what is scored here). Prices and % vs 52-week high come
 from the watchlist pool for names in the 1,654-name universe; names outside it show a
 research close (*) or no price. Buzz says nothing about valuation, balance sheet or
 whether the crowd's thesis is sound — the other eight lenses exist for that. Structured

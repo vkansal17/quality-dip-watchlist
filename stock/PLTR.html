@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PLTR — Palantir Technologies · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Nine lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab active" href="../buzz.html">📣 Most Discussed</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../buzz.html">← Back to Most Discussed</a></p>
+<h1>PLTR — Palantir Technologies</h1>
+<div class="sub">
+· Most Discussed #29 — Oct 13–27, 2026 edition</div>
+<div><span class="price">$199.20</span>
+<span class="up" style="font-size:17px">+0.18% today</span>
+<span class="muted"> · as of 2026-10-27 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-4.7%</div><div class="l">vs 52w high ($209.05)</div></div><div class="kpi"><div class="v ">90%</div><div class="l">of 52w range (low $107.27)</div></div><div class="kpi"><div class="v ">56</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+6.5%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+5.8%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+5.3%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">39.5%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">314.4</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-02</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+17%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $209.05</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $107.27</text><polyline points="0.0,63.8 3.4,62.9 6.9,43.5 10.3,52.5 13.7,40.0 17.1,25.9 20.6,60.5 24.0,66.5 27.4,93.5 30.8,87.4 34.3,54.5 37.7,60.0 41.1,74.3 44.5,99.6 48.0,95.7 51.4,101.5 54.8,109.7 58.2,113.7 61.7,134.1 65.1,136.0 68.5,120.4 72.0,117.7 75.4,113.0 78.8,107.4 82.2,109.4 85.7,102.7 89.1,91.3 92.5,87.5 95.9,79.4 99.4,79.9 102.8,79.2 106.2,66.4 109.6,67.2 113.1,75.6 116.5,76.2 119.9,66.8 123.3,88.8 126.8,71.1 130.2,54.9 133.6,53.7 137.1,53.4 140.5,53.3 143.9,64.8 147.3,74.3 150.8,81.3 154.2,87.8 157.6,108.6 161.0,95.6 164.5,83.7 167.9,79.5 171.3,89.7 174.7,88.4 178.2,84.3 181.6,85.3 185.0,86.4 188.4,89.2 191.9,102.1 195.3,107.2 198.7,113.9 202.2,112.7 205.6,104.9 209.0,109.4 212.4,113.1 215.9,130.7 219.3,142.2 222.7,153.3 226.1,150.9 229.6,129.6 233.0,168.1 236.4,188.2 239.8,175.8 243.3,161.1 246.7,168.2 250.1,176.3 253.5,190.0 257.0,185.2 260.4,181.9 263.8,176.9 267.3,177.9 270.7,177.2 274.1,186.9 277.5,190.6 281.0,179.4 284.4,175.7 287.8,173.1 291.2,156.3 294.7,152.0 298.1,139.4 301.5,140.5 304.9,131.1 308.4,132.6 311.8,143.8 315.2,142.8 318.6,138.8 322.1,144.2 325.5,140.4 328.9,135.5 332.4,140.3 335.8,134.2 339.2,144.7 342.6,123.4 346.1,136.1 349.5,135.7 352.9,151.3 356.3,160.7 359.8,172.3 363.2,154.0 366.6,153.5 370.0,149.4 373.5,150.5 376.9,146.0 380.3,165.6 383.7,187.2 387.2,192.3 390.6,183.2 394.0,176.2 397.5,162.7 400.9,161.4 404.3,153.7 407.7,154.8 411.2,154.6 414.6,140.6 418.0,163.9 421.4,160.7 424.9,160.7 428.3,164.7 431.7,171.5 435.1,169.1 438.6,158.6 442.0,154.5 445.4,175.8 448.8,180.2 452.3,173.4 455.7,171.8 459.1,173.7 462.5,175.6 466.0,188.1 469.4,180.4 472.8,179.8 476.3,177.4 479.7,177.1 483.1,173.2 486.5,172.6 490.0,173.7 493.4,174.3 496.8,182.9 500.2,160.2 503.7,132.4 507.1,123.8 510.5,141.6 513.9,162.6 517.4,163.6 520.8,176.6 524.2,174.6 527.6,183.9 531.1,187.8 534.5,185.9 537.9,192.4 541.4,178.3 544.8,181.4 548.2,186.9 551.6,191.4 555.1,210.3 558.5,216.2 561.9,222.9 565.3,236.0 568.8,224.1 572.2,218.3 575.6,216.2 579.0,197.2 582.5,189.7 585.9,182.9 589.3,179.0 592.7,183.5 596.2,190.2 599.6,195.0 603.0,188.1 606.5,180.4 609.9,180.3 613.3,178.9 616.7,183.2 620.2,178.0 623.6,182.6 627.0,199.6 630.4,202.1 633.9,203.1 637.3,185.0 640.7,201.8 644.1,202.9 647.6,204.5 651.0,202.8 654.4,197.4 657.8,119.5 661.3,128.4 664.7,133.7 668.1,99.9 671.6,93.1 675.0,93.7 678.4,101.9 681.8,85.2 685.3,95.6 688.7,98.7 692.1,100.9 695.5,93.2 699.0,95.8 702.4,83.2 705.8,91.7 709.2,98.4 712.7,88.3 716.1,70.6 719.5,69.9 722.9,69.7 726.4,83.2 729.8,105.2 733.2,77.8 736.7,95.0 740.1,103.5 743.5,105.1 746.9,112.8 750.4,109.9 753.8,97.1 757.2,98.7 760.6,95.0 764.1,91.0 767.5,88.0 770.9,76.6 774.3,72.6 777.8,58.3 781.2,56.6 784.6,62.7 788.0,67.4 791.5,68.4 794.9,68.3 798.3,62.0 801.8,64.7 805.2,63.3 808.6,57.7 812.0,53.4 815.5,43.6 818.9,22.0 822.3,22.1 825.7,22.8 829.2,39.0 832.6,40.0 836.0,70.4 839.4,53.3 842.9,56.6 846.3,37.4 849.7,49.0 853.1,47.9 856.6,43.5 860.0,42.7" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>📣 Most Discussed — Oct 13–27, 2026 edition</h2><p>Buzz score <b>4</b> (2 distinct sources: 1 analyst · 0 feature · 0 trending · 1 social).</p><p><b>The crowd's pitch:</b> A Citi target raise to $250 plus creator dip-buy content — the thinnest evidence base on this list; it is here because two distinct sources verified, no more.</p><p><b>Score breakdown:</b> 1 analyst action × 3 + 1 social × 1 = 4</p><p style='margin-top:10px'><b>Sources behind the buzz:</b></p><ul class='srcs'><li><b>Citigroup</b> <span class='muted'>analyst · 2026-10-22</span><br>Target raised to $250, Buy kept (reported via Finbold).</li><li><b>Instagram</b> <span class='muted'>social · 2026-10-22</span><br>Creator dip-buy reel pitches Palantir as a buying opportunity on the drop. Low-quality creator content — a paid-club Facebook variant was excluded, and TheStreet's Oct 23 segment actually said Sell.</li></ul><p class='muted'>An attention measure from the dated edition of 2026-10-27 — who was pitching the stock, not whether the pitch is right. The daily refresh never re-measures it.</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip r" title="Value">Valu F</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip sb" title="Growth">Grow A</span></p><p>Piotroski F-score <b>6/9</b> · FCF yield <b>0.4%</b> · net debt/EBITDA <b>-1.4×</b> · avg EPS surprise (last 4) <b>+26.1%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 4 (now 6/9).</li><li>Cash flow: free cash flow turns negative on a trailing-year basis.</li><li>Price structure: a weekly close below the 52-week low of $107.27 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Pro Top 50 #20 (A)</span></p><p>Palantir's fundamentals are exceptional — Q2 2026 revenue $1.94B (+93% YoY), U.S. commercial +149%, FY26 revenue guidance raised to ~$8.15B, high margins and a net-cash balance sheet — but at $196.75 the stock trades at ~155x trailing and ~100x+ forward earnings with consensus targets (~$203-206) only ~5% overhead. The valuation leg fails outright for pricing perfection with no margin of safety, which caps the verdict at HOLD despite quality and catalyst passing.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 earnings on Nov 2 (guided revenue $2.16B, consensus ~$2.18B / EPS ~$0.41-0.42) with a pattern of guide raises, plus defense/AIP contract flow inside the two-quarter window</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q2 2026 revenue $1.94B (+93% YoY), U.S. commercial revenue +149%, FY26 revenue guidance raised to ~$8.15B; ~49% net margin and strong FCF per factor profiles — no deterioration in evidence</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Balance sheet is a fortress (net cash, profitable, FCF-positive), so risk is valuation-driven: beta ~1.6, one-month 95% CVaR ~-28% cited by one analysis, ongoing stock-comp dilution, government-contract concentration, and visible insider/ARK trimming</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Split winds: defense demand (map #6, Mixed/Severe) supports the government book, but the AI complex (map #1, Negative/Severe) is repricing high-multiple software — PLTR fell 7.2% in one October session on valuation/inflation anxiety, not company news</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip r'>fail</span></td><td>$196.75 (Oct 23 close) is ~155x trailing P/E and ~94-123x forward earnings (~60x sales); consensus target ~$203-206 implies ~5% upside and DCF-based fair values cluster well below price — the stock prices in flawless execution for years</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Any growth deceleration below ~60% YoY or a merely in-line Nov 2 print risks a violent multiple reset from ~155x trailing earnings</li><li>Government contract delays/reassignment (e.g., NGC2) or slower U.S. commercial conversion after the +149% surge</li></ul><p><b>What would change this verdict:</b> A major derating (e.g., toward the $140-150 area) with growth intact, or sustained >80% growth that grows into the multiple, would reopen BUY; a guidance cut on Nov 2 would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://finnhub.io/?q=%22PLTR%22' target='_blank' rel='noopener'>Palantir Technologies Inc (PLTR): Financial Market Data — Finnhub</a> <span class='dom'>finnhub.io</span></li><li><a href='https://tickeron.com/ticker/PLTR/?via=niksharks' target='_blank' rel='noopener'>Palantir Technologies (PLTR) Stock Analysis: AI Momentum Meets Valuation Scrutiny — Tickeron</a> <span class='dom'>tickeron.com</span></li><li><a href='https://financefeeds.com/palantir-pltr-stock-199-citi-250-target-q3-2-november-bull-213-bear-184/' target='_blank' rel='noopener'>Palantir Stock Today: Citi $250 Target, Q3 on 2 November — FinanceFeeds</a> <span class='dom'>financefeeds.com</span></li><li><a href='https://www.foreignpolicyjournal.com/2026/10/23/palantir-technologies-nasdaq-pltr-drops-nearly-3-as-earnings-report-looms/' target='_blank' rel='noopener'>Palantir Technologies (PLTR) Stock Price Drops Nearly 3% As Earnings Report Looms — Foreign Policy Journal</a> <span class='dom'>foreignpolicyjournal.com</span></li><li><a href='https://alcapitaladvisory.com/research/equities/pltr.html' target='_blank' rel='noopener'>Palantir Technologies (PLTR) Stock Analysis October 2026 — AL Capital Advisory</a> <span class='dom'>alcapitaladvisory.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/PLTR" target="_blank" rel="noopener">Yahoo Finance — PLTR</a> ·
+<a href="https://stockanalysis.com/stocks/pltr/" target="_blank" rel="noopener">StockAnalysis — PLTR</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</main></div></body></html>
