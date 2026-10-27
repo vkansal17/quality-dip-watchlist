@@ -398,5 +398,13 @@
   "last_buy": "2026-06-04",
   "sellers": 4,
   "sell_val": 21936144
+ },
+ "CLX": {
+  "asof": "2026-10-27",
+  "buyers": 1,
+  "buy_val": 845640,
+  "last_buy": "2026-05-05",
+  "sellers": 0,
+  "sell_val": 0
  }
 }

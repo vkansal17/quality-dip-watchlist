@@ -1010,7 +1010,8 @@ TAB_DEFS = [("dip", "index.html", "📉 Quality Dips"),
             ("validated", "validated.html", "🏆 Vetted Buys"),
             ("macro", "macro.html", "🌐 Theme Buys"),
             ("holds", "holds.html", "🟡 The Bench"),
-            ("screener", "screener.html", "🔎 Fallen & Cheap")]
+            ("screener", "screener.html", "🔎 Fallen & Cheap"),
+            ("skin", "skin.html", "🤝 Skin in the Game")]
 
 
 def tabs_html(active, prefix=""):
@@ -1023,7 +1024,7 @@ def tabs_html(active, prefix=""):
         for key, href, label in TAB_DEFS)
     return (f'<aside class="sidebar">'
             f'<a class="brand" href="{prefix}index.html">◆ Quality-Dip Watchlist</a>'
-            f'<div class="brandsub">Seven lenses on one universe — the 800 '
+            f'<div class="brandsub">Eight lenses on one universe — the 800 '
             f'most-traded US stocks + every S&amp;P 1000 member.</div>'
             f'<nav class="tabs">{tabs}</nav>'
             f'<div class="sidefoot">Prices refresh daily at 7:00 AM CT. '
@@ -1038,6 +1039,7 @@ TABS_VALIDATED = tabs_html("validated")
 TABS_MACRO = tabs_html("macro")
 TABS_HOLDS = tabs_html("holds")
 TABS_SCREENER = tabs_html("screener")
+TABS_SKIN = tabs_html("skin")
 
 
 def pro_section(t, prec, k, rank=None):
@@ -2719,6 +2721,240 @@ def build_screener_details(meta, top, insiders, verdicts, tverdicts,
             fh.write(page)
 
 
+def load_skin():
+    """The Skin in the Game basket (data/skin_in_game.json) — a curated,
+    dated research store like the verdict stores. The pipeline LOADS it;
+    the daily refresh never re-scores or re-researches it."""
+    p = os.path.join(DATA, "skin_in_game.json")
+    if os.path.exists(p):
+        try:
+            return json.load(open(p))
+        except Exception:
+            pass
+    return {"meta": {}, "members": []}
+
+
+_SKIN_CRITERIA = [("brand", "Brand"), ("fallen", "Fallen"),
+                  ("trough", "Trough"), ("balance", "Balance sheet"),
+                  ("insider", "Insider buying"), ("turnaround", "Turnaround")]
+
+
+def _crit_chip(v):
+    cls = {"pass": "sb", "mixed": "h", "fail": "r"}.get(v, "na")
+    return f"<span class='chip {cls}'>{v}</span>"
+
+
+def skin_scorecard_rows(m):
+    crit = m.get("criteria") or {}
+    notes = m.get("notes") or {}
+    return "".join(
+        f"<tr><td>{label}</td><td>{_crit_chip(crit.get(key, ''))}</td>"
+        f"<td>{notes.get(key, '')}</td></tr>"
+        for key, label in _SKIN_CRITERIA)
+
+
+def _skin_verdict(t, verdicts, tverdicts):
+    for store in (verdicts, tverdicts):
+        v = (store.get("verdicts") or {}).get(t)
+        if v:
+            return v
+    return None
+
+
+def skin_section(t, m, skin_meta):
+    if not m:
+        return ""
+    hon = (f"<p><span class='chip na'>HONORARY</span> {m.get('honorary_note', '')}</p>"
+           if m.get("honorary") else "")
+    return (f"<section><h2>🤝 Skin in the Game</h2>"
+            f"<p>Basket rank #{m.get('rank', '')} · researched "
+            f"{skin_meta.get('researched', '')} — one of ten fallen famous brands "
+            f"scored against the Nike-justification template: famous durable brand, "
+            f"fallen hard to near-decade-cheapest multiples, a company-specific "
+            f"trough, a balance sheet that clearly survives, insiders buying the dip "
+            f"in a verified Form 4 cluster, and a turnaround underway.</p>{hon}"
+            f"<div class='tablewrap'><table><thead><tr><th>Criterion</th><th>Score</th>"
+            f"<th>Evidence</th></tr></thead><tbody>{skin_scorecard_rows(m)}</tbody>"
+            f"</table></div>"
+            f"<p style='margin-top:10px'><b>What's broken:</b> "
+            f"{m.get('whats_broken', '')}</p>"
+            f"<p><b>Insider detail (SEC Form 4, trailing 12 months at the edition "
+            f"date):</b> {m.get('insider_summary', '')}</p>"
+            f"<p><b>Turnaround &amp; next test:</b> "
+            f"{m.get('turnaround_test', '')}</p>"
+            f"<p class='muted'>Scores are the dated research edition "
+            f"({skin_meta.get('edition', '')}); the daily refresh updates prices "
+            f"only.</p></section>")
+
+
+def build_skin_page(meta, skin, verdicts, tverdicts, kpi_ix=None, skin_pages=None):
+    kpi_ix = kpi_ix or {}
+    skin_pages = skin_pages or set()
+    smeta = skin.get("meta") or {}
+    members = sorted(skin.get("members") or [], key=lambda m: m.get("rank", 99))
+    n_cluster = sum(1 for m in members
+                    if (m.get("criteria") or {}).get("insider") == "pass")
+    n_hon = sum(1 for m in members if m.get("honorary"))
+    trs = []
+    for m in members:
+        t = m["ticker"]
+        k = kpi_ix.get(t, {})
+        last = k.get("last", m.get("price_oct26", 0))
+        off = k.get("off_high_pct", m.get("pct_off_high", 0))
+        rp = k.get("range_pos")
+        range_html = (f"<span class='range'><span class='fill' style='width:{rp}%'></span></span> "
+                      if rp is not None else "")
+        day = k.get("day_pct")
+        day_html = (f"<span class='{'up' if day >= 0 else 'dn'}'>{day:+.2f}%</span>"
+                    if day is not None else '<span class="muted">—</span>')
+        crit = m.get("criteria") or {}
+        ins_cls = {"pass": "sb", "mixed": "h", "fail": "r"}.get(
+            crit.get("insider", ""), "na")
+        ins_chip = (f"<span class='chip {ins_cls}' title='Open-market insider "
+                    f"buying, trailing 12 months at the research date "
+                    f"(SEC Form 4)'>{m.get('insider_chip', '')}</span>")
+        hon = (" <span class='chip na' title='Honorary member — in the basket "
+               "on the other criteria despite failing one outright'>HONORARY</span>"
+               if m.get("honorary") else "")
+        sym = (f"<a class='sym' href='stock/{t}.html'>{t}</a>" if t in skin_pages
+               else f"<span class='sym'>{t}</span>")
+        v = _skin_verdict(t, verdicts, tverdicts)
+        vline = ""
+        if v:
+            vcls = {"BUY": "sb", "HOLD": "h", "SELL": "r"}.get(v.get("flag", ""), "na")
+            vline = (f"<p><span class='chip {vcls}' style='font-size:13px'>"
+                     f"{v.get('flag', '')}</span>{audit_badge(t)} "
+                     f"<span class='muted'>our standing research verdict · "
+                     f"{v.get('date', '')}</span></p>")
+        hon_det = (f"<p><span class='chip na'>HONORARY</span> "
+                   f"{m.get('honorary_note', '')}</p>" if m.get("honorary") else "")
+        det = (pkpi_grid([
+            (f"${last:,.2f}", "Price"), (day_html, "Day"),
+            (f"{off:.1f}%", "vs 52w high"),
+            (m.get("test_label", "—"), "Next test")])
+            + f"<p class='muted'>{m.get('metrics', '')}</p>"
+            + vline + hon_det
+            + f"<h3>The Nike test — six criteria</h3>"
+            f"<table><tbody>{skin_scorecard_rows(m)}</tbody></table>"
+            f"<h3>What's broken</h3><p>{m.get('whats_broken', '')}</p>"
+            f"<h3>Insider detail — SEC Form 4</h3>"
+            f"<p>{m.get('insider_summary', '')}</p>"
+            f"<h3>Turnaround &amp; next test</h3>"
+            f"<p>{m.get('turnaround_test', '')}</p>"
+            + (f"<a class='pfull' href='stock/{t}.html'>Full stock page →</a>"
+               if t in skin_pages else ""))
+        trs.append(
+            f"<tr data-q='{t} {m.get('company', '')}'><td>{m.get('rank', '')}</td>"
+            f"<td>{sym}<span class='nm'>{m.get('company', '')}</span>{hon}</td>"
+            f"<td class='num'>${last:,.2f}</td>"
+            f"<td>{range_html}<span class='dn'>{off:.1f}%</span></td>"
+            f"<td>{ins_chip}</td>"
+            f"<td class='num'>{m.get('test_label', '—')}</td>"
+            f"<td class='detail'>{det}</td></tr>")
+    html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Skin in the Game · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
+{TABS_SKIN}
+<main class="main">
+<h1>🤝 Skin in the Game</h1>
+<div class="sub">Ten fallen famous brands scored against the justification that would make
+Nike a buy: a durable brand, a fall to near-decade-cheapest multiples, a company-specific
+trough rather than a solvency story, a balance sheet that clearly survives, insiders buying
+the dip, and a turnaround underway · researched {smeta.get('researched', '')}, prices as of
+{meta['asof']} close. <b>Select any row</b> — its six-criterion scorecard opens in the panel.
+<b>Nike is the template, not a member:</b> on our research NKE itself fails the business-quality
+test, so it is excluded from its own basket.</div>
+<div class="cards">
+  <div class="card"><div class="n">{len(members)}</div><div class="l">Basket members</div></div>
+  <div class="card"><div class="n">{n_cluster}</div><div class="l">With a full insider buying cluster</div></div>
+  <div class="card"><div class="n">{n_hon}</div><div class="l">Honorary members</div></div>
+  <div class="card"><div class="n">{smeta.get('edition', '')}</div><div class="l">Research edition</div></div>
+</div>
+<p class="sub">The six criteria: <b>Brand</b> · <b>Fallen</b> (−35%+ off the high, near
+decade-cheapest trailing multiples, the multiple compressing) · <b>Trough</b> (company-specific
+problems, not solvency) · <b>Balance sheet</b> (survivable, investment-grade quality) ·
+<b>Insider buying</b> — the signature criterion: a verified SEC Form 4 open-market buying
+cluster · <b>Turnaround</b> (self-help underway, with a dated next test). Honorary members
+carry the basket on the other criteria while failing one outright — the failing criterion is
+named on their scorecard.</p>
+<div class="controls"><input id="q" type="text" placeholder="Search symbol or company…"></div>
+<div class="master">
+<div class="tablewrap"><table id="t" class="mlist"><thead><tr><th>#</th><th>Stock</th>
+<th class="num">Price</th><th>vs 52w high</th><th>Insider buying (12mo)</th>
+<th class="num">Next test</th></tr></thead>
+<tbody>{chr(10).join(trs)}</tbody></table></div>
+{panel_html()}
+</div>
+<p class="foot">Method: a curated research basket, scored by hand against the six criteria
+from public sources — SEC Form 4 filings for every insider figure (trailing 12 months at the
+edition date), company filings and earnings reports for the rest. The scorecards are the dated
+research edition ({smeta.get('edition', '')}); the daily refresh updates prices and distance
+from the 52-week high only and never re-scores a member. No stock fully replicates Nike —
+across roughly 25 candidates checked, the insider-cluster criterion is what eliminates almost
+everything. Structured research output, not investment advice or a trade instruction.</p>
+{glossary_html()}
+</main></div>
+{PANEL_JS}</body></html>"""
+    with open(os.path.join(ROOT, "skin.html"), "w") as fh:
+        fh.write(html)
+    return members
+
+
+def build_skin_details(meta, skin, verdicts, tverdicts, results, pro_recs, earn):
+    """Detail pages for Skin in the Game members covered by no other list
+    builder."""
+    fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
+    asof = meta["asof"]
+    smeta = skin.get("meta") or {}
+    for m in skin.get("members") or []:
+        t = m["ticker"]
+        if os.path.exists(os.path.join(ROOT, "stock", f"{t}.html")):
+            continue
+        k = results.get(t)
+        if not k:
+            continue
+        secs = [skin_section(t, m, smeta)]
+        prec = pro_recs.get(t)
+        psec = pro_section(t, prec, k, None)
+        if psec:
+            secs.append(psec)
+        vsec = verdict_section(t, verdicts) or verdict_section(t, tverdicts)
+        if vsec:
+            secs.append(vsec)
+        pe = (round(100 / prec["earn_y"], 1)
+              if prec and prec.get("earn_y") and prec["earn_y"] > 0 else None)
+        tiles = kpi_tiles(k, rs20=k["mom20_pct"] - meta.get("spy_mom20", 0.0),
+                          pe=pe, earn=earn.get(t), extra=(
+            _tile(f"{k['vpt20']:+.0f}%", "VPT trend (20d)",
+                  "up" if k["vpt20"] >= 0 else "dn")))
+        ys = yahoo_symbol(t)
+        page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
+{tabs_html("skin", "../")}
+<main class="main">
+<p class="crumb"><a href="../skin.html">← Back to Skin in the Game</a></p>
+<h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
+<div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
+· Skin in the Game basket</div>
+<div><span class="price">${k['last']:,.2f}</span>
+<span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
+<span class="muted"> · as of {asof} close</span></div>
+{tiles}
+<div class="bigchart">{chart_svg(k['chart'], k['high52'], k['low52'])}
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+{chr(10).join(secs)}
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
+<a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</main></div></body></html>"""
+        with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
+            fh.write(page)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=8)
@@ -2900,6 +3136,19 @@ def main():
                            results, pro_recs, earn)
     print(f"SCREENER: {len(scr_rows)} passed gates; top 5: "
           f"{', '.join(r['ticker'] for r in scr_top[:5])}")
+    skin = load_skin()
+    skin_members = skin.get("members") or []
+    skin_pages = {m["ticker"] for m in skin_members
+                  if m["ticker"] in results
+                  or os.path.exists(os.path.join(
+                      ROOT, "stock", f"{m['ticker']}.html"))}
+    build_skin_page(meta, skin, verdicts, tverdicts, kpi_ix, skin_pages)
+    build_skin_details(meta, skin, verdicts, tverdicts,
+                       results, pro_recs, earn)
+    print(f"SKIN: {len(skin_members)} members on skin.html; "
+          f"{sum(1 for m in skin_members if (m.get('criteria') or {}).get('insider') == 'pass')} "
+          f"with full insider clusters; edition "
+          f"{(skin.get('meta') or {}).get('edition', '')}")
 
     new_set = {r["ticker"] for r in rows}
     old_set = set(prev_ranks)

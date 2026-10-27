@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ADI — Analog Devices · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Eight lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>ADI — Analog Devices</h1>
+<div class="sub">Semiconductors · Fortune 500 #396
+· Rank #43 on today's list</div>
+<div><span class="price">$391.07</span>
+<span class="up" style="font-size:17px">+1.38% today</span>
+<span class="muted"> · as of 2026-10-23 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-12.2%</div><div class="l">vs 52w high ($445.48)</div></div><div class="kpi"><div class="v ">75%</div><div class="l">of 52w range (low $225.20)</div></div><div class="kpi"><div class="v ">47</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-0.6%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+0.9%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+60.9%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">32.9%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">49.7</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-24</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-29%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">6.4%</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$1,290M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $445.48</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $225.20</text><polyline points="0.0,218.7 3.5,222.3 6.9,226.4 10.4,228.5 13.8,227.3 17.3,227.8 20.7,231.9 24.2,225.5 27.6,228.5 31.1,232.8 34.5,229.4 38.0,228.0 41.4,220.2 44.9,224.0 48.4,226.6 51.8,231.4 55.3,231.2 58.7,229.2 62.2,236.0 65.6,229.1 69.1,222.2 72.5,209.9 76.0,204.2 79.4,197.0 82.9,195.9 86.3,189.6 89.8,184.5 93.3,185.4 96.7,181.5 100.2,183.6 103.6,186.4 107.1,181.2 110.5,179.5 114.0,183.4 117.4,182.3 120.9,184.3 124.3,191.5 127.8,187.7 131.2,188.2 134.7,186.8 138.2,185.9 141.6,185.1 145.1,185.8 148.5,187.0 152.0,187.8 155.4,191.3 158.9,188.8 162.3,185.4 165.8,170.2 169.2,170.2 172.7,164.1 176.1,162.4 179.6,169.3 183.1,167.0 186.5,165.3 190.0,161.3 193.4,163.1 196.9,167.5 200.3,158.5 203.8,155.1 207.2,157.9 210.7,159.4 214.1,159.6 217.6,146.2 221.0,145.2 224.5,152.8 228.0,147.0 231.4,152.4 234.9,143.5 238.3,141.8 241.8,143.5 245.2,141.0 248.7,138.9 252.1,127.4 255.6,132.9 259.0,127.3 262.5,126.9 265.9,118.3 269.4,119.3 272.9,109.9 276.3,109.8 279.8,108.8 283.2,104.3 286.7,110.5 290.1,109.1 293.6,112.4 297.0,125.5 300.5,123.0 303.9,134.5 307.4,148.0 310.8,144.2 314.3,145.1 317.8,144.7 321.2,156.3 324.7,157.4 328.1,152.7 331.6,150.1 335.0,155.0 338.5,153.2 341.9,154.2 345.4,151.5 348.8,142.1 352.3,141.9 355.7,150.3 359.2,156.1 362.7,160.3 366.1,145.7 369.6,143.3 373.0,145.5 376.5,136.8 379.9,136.7 383.4,118.4 386.8,113.4 390.3,114.6 393.7,114.7 397.2,116.1 400.6,116.8 404.1,111.1 407.6,93.9 411.0,84.6 414.5,90.2 417.9,84.2 421.4,62.4 424.8,66.6 428.3,73.4 431.7,82.4 435.2,76.6 438.6,64.0 442.1,68.4 445.5,69.1 449.0,61.5 452.4,51.0 455.9,57.9 459.4,50.1 462.8,44.1 466.3,47.1 469.7,34.7 473.2,40.2 476.6,49.2 480.1,48.1 483.5,52.3 487.0,68.1 490.4,81.5 493.9,69.0 497.3,46.8 500.8,49.8 504.3,47.7 507.7,52.7 511.2,63.6 514.6,43.6 518.1,29.6 521.5,38.2 525.0,64.8 528.4,62.4 531.9,61.7 535.3,73.3 538.8,54.4 542.2,48.9 545.7,39.4 549.2,50.6 552.6,52.1 556.1,32.7 559.5,22.0 563.0,59.1 566.4,53.4 569.9,48.8 573.3,78.9 576.8,74.2 580.2,68.9 583.7,76.9 587.1,88.4 590.6,77.0 594.1,86.6 597.5,80.4 601.0,72.4 604.4,70.4 607.9,79.8 611.3,73.2 614.8,75.0 618.2,85.1 621.7,90.1 625.1,92.9 628.6,82.9 632.0,79.1 635.5,85.4 639.0,93.5 642.4,93.5 645.9,99.4 649.3,111.5 652.8,98.6 656.2,97.8 659.7,103.2 663.1,85.3 666.6,87.9 670.0,88.2 673.5,76.0 676.9,81.8 680.4,80.5 683.9,81.3 687.3,84.5 690.8,76.5 694.2,75.6 697.7,88.9 701.1,92.2 704.6,95.1 708.0,92.3 711.5,94.2 714.9,91.8 718.4,93.6 721.8,90.9 725.3,103.3 728.8,103.0 732.2,110.4 735.7,109.2 739.1,108.4 742.6,102.9 746.0,101.9 749.5,100.1 752.9,103.8 756.4,86.8 759.8,104.1 763.3,103.7 766.7,103.1 770.2,102.5 773.7,89.8 777.1,82.7 780.6,75.5 784.0,80.5 787.5,83.1 790.9,72.4 794.4,70.6 797.8,67.9 801.3,69.4 804.7,61.7 808.2,49.5 811.6,47.6 815.1,46.2 818.6,56.4 822.0,60.4 825.5,60.2 828.9,60.1 832.4,51.9 835.8,62.7 839.3,62.3 842.7,70.6 846.2,71.7 849.6,69.0 853.1,60.4 856.5,80.0 860.0,74.9" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 12% from its 52-week high of $445.48, trading at 75% of its 52-week range. 20-day momentum is -0.6% — easing, inside the screen's not-in-freefall limit. RSI 47 says washed out rather than euphoric, and $1,290M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Analyst consensus</h2><p><span class="chip b">Moderate Buy</span> · average target $461</p><p></p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip h" title="Profitability">Prof C+</span> <span class="fgrade chip r" title="Revisions">Revi D+</span> <span class="fgrade chip r" title="Value">Valu F</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip b" title="Growth">Grow B+</span></p><p>Piotroski F-score <b>8/9</b> · FCF yield <b>2.2%</b> · net debt/EBITDA <b>1.4×</b> · avg EPS surprise (last 4) <b>+4.8%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Cash flow: free cash flow turns negative on a trailing-year basis.</li><li>Price structure: a weekly close below the 52-week low of $225.20 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Dip Top 50 #40</span></p><p>Analog Devices is executing superbly through the analog recovery — fiscal Q3 revenue hit a record $4.02B (+40% YoY, industrial +53%, communications +84%), adj. EPS of $3.45 beat, and Q4 is guided to a record $4.3B with ~74% gross margin. The problem is price and sector: at $391.07 the stock is only ~12% below its $445.91 high after a +64% one-year run, at ~46x trailing GAAP earnings inside the map's Negative/Severe semiconductor area — company offsets are real but not enough to clear the BUY bar.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Fiscal Q4 earnings expected late November against a record guide, plus announced pricing actions flowing into FQ1 and optical/data-center power growth into FY27</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>FQ3 2026 revenue $4.02B (+40% YoY, first $4B quarter), adj. EPS $3.45 vs $3.33 est., broad-based growth (industrial +53%, auto +16%, comms +84%); Q4 guided to $4.3B revenue, $3.86 adj. EPS</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip sb'>pass</span></td><td>Fortress profile: D/E 0.20, net margin ~30%, diversified end markets, $1.10/quarter dividend; cyclicality is an earnings risk, not a survivability one</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #3 semis is Negative/Severe, but a specific company offset is evidenced: diversified industrial/auto breadth plus data-center power demand (2030 SAM more than doubled) — offset earns mixed, not fail</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>$391.07 is ~12% below the $445.91 high after +44% YTD; ~46x trailing GAAP P/E and roughly 25–30x forward adjusted earnings prices in a long, flawless recovery (PEG ~1.2 is the bull offset)</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Analog cycle peaking: +40% growth off a trough invites a sharp de-rating if industrial restocking fades into 2027</li><li>At ~46x trailing GAAP earnings there is no margin of safety if hyperscaler/AI-adjacent demand or the broader semi complex corrects further</li></ul><p><b>What would change this verdict:</b> A further pullback toward the low-$300s with the recovery intact, or two more beat-and-raise quarters growing into the multiple, would support BUY; a guidance cut would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://futurumgroup.com/insights/analog-devices-q3-fy-2026-earnings-hit-first-4-billion-quarter-on-ai-demand/' target='_blank' rel='noopener'>Analog Devices Q3 FY2026 Earnings Hit First $4 Billion Quarter on AI Demand — Futurum Group</a> <span class='dom'>futurumgroup.com</span></li><li><a href='https://WWW.ZACKS.COM/stock/news/2977721/analog-devices-q3-earnings-call-highlights-ai-power-growth-runway?art_rec=blog-analyst_blog_plus-up_next-ID01-img-2977721' target='_blank' rel='noopener'>Analog Devices Q3 Earnings Call Highlights AI Power Growth Runway — Zacks</a> <span class='dom'>WWW.ZACKS.COM</span></li><li><a href='https://www.barchart.com/story/news/3916010/analog-devices-the-ai-power-story-meets-its-first-real-revenue-test' target='_blank' rel='noopener'>Analog Devices: The AI Power Story Meets Its First Real Revenue Test — Barchart</a> <span class='dom'>barchart.com</span></li><li><a href='https://finnhub.io/?q=%22ADI%22' target='_blank' rel='noopener'>Analog Devices (ADI) financial data — Finnhub</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/ADI" target="_blank" rel="noopener">Yahoo Finance — ADI</a> ·
+<a href="https://stockanalysis.com/stocks/adi/" target="_blank" rel="noopener">StockAnalysis — ADI</a> ·
+<a href="https://www.google.com/finance/quote/ADI:NASDAQ" target="_blank" rel="noopener">Google Finance — ADI</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>
