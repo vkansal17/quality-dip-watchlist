@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIX — Comfort Systems USA · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Nine lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab active" href="../buzz.html">📣 Most Discussed</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../buzz.html">← Back to Most Discussed</a></p>
+<h1>FIX — Comfort Systems USA</h1>
+<div class="sub">
+· Most Discussed #19 — Oct 13–27, 2026 edition</div>
+<div><span class="price">$1,283.15</span>
+<span class="up" style="font-size:17px">+3.13% today</span>
+<span class="muted"> · as of 2026-10-27 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-37.9%</div><div class="l">vs 52w high ($2,066.51)</div></div><div class="kpi"><div class="v ">34%</div><div class="l">of 52w range (low $876.19)</div></div><div class="kpi"><div class="v ">34</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-22.9%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-23.7%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+31.4%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">60.3%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">44.4</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-49%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $2,066.51</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $876.19</text><polyline points="0.0,218.0 3.4,217.2 6.9,211.8 10.3,220.3 13.7,219.9 17.1,217.8 20.6,221.7 24.0,215.9 27.4,221.3 30.8,221.8 34.3,218.4 37.7,221.9 41.1,218.6 44.5,232.2 48.0,230.0 51.4,228.2 54.8,227.9 58.2,226.2 61.7,236.0 65.1,232.8 68.5,223.6 72.0,221.5 75.4,219.0 78.8,217.9 82.2,220.7 85.7,225.3 89.1,222.9 92.5,212.9 95.9,213.5 99.4,215.6 102.8,216.7 106.2,209.9 109.6,209.3 113.1,219.5 116.5,219.4 119.9,219.4 123.3,234.6 126.8,228.4 130.2,224.4 133.6,222.6 137.1,220.0 140.5,221.3 143.9,220.2 147.3,222.6 150.8,223.3 154.2,225.7 157.6,213.1 161.0,207.9 164.5,207.4 167.9,207.4 171.3,218.9 174.7,211.9 178.2,206.9 181.6,200.6 185.0,204.2 188.4,197.4 191.9,192.2 195.3,189.5 198.7,187.1 202.2,190.1 205.6,191.9 209.0,190.8 212.4,184.9 215.9,183.3 219.3,182.9 222.7,188.2 226.1,182.1 229.6,176.0 233.0,192.2 236.4,187.1 239.8,172.3 243.3,162.7 246.7,165.3 250.1,152.9 253.5,159.8 257.0,153.0 260.4,153.0 263.8,156.3 267.3,146.6 270.7,130.6 274.1,139.4 277.5,129.5 281.0,132.7 284.4,135.0 287.8,136.5 291.2,135.0 294.7,143.4 298.1,136.4 301.5,151.1 304.9,163.6 308.4,146.8 311.8,144.8 315.2,140.5 318.6,146.5 322.1,148.1 325.5,139.3 328.9,137.4 332.4,137.7 335.8,133.8 339.2,149.6 342.6,140.3 346.1,130.8 349.5,129.1 352.9,149.3 356.3,147.8 359.8,164.6 363.2,145.6 366.6,136.7 370.0,138.7 373.5,135.7 376.9,137.3 380.3,119.3 383.7,110.5 387.2,107.2 390.6,100.9 394.0,96.8 397.5,97.1 400.9,104.8 404.3,96.8 407.7,91.5 411.2,92.5 414.6,83.5 418.0,74.6 421.4,83.2 424.9,71.0 428.3,84.4 431.7,83.6 435.1,62.7 438.6,57.9 442.0,53.4 445.4,39.8 448.8,31.9 452.3,44.4 455.7,42.5 459.1,28.0 462.5,31.0 466.0,27.7 469.4,26.3 472.8,35.3 476.3,60.1 479.7,65.3 483.1,63.5 486.5,63.6 490.0,64.8 493.4,54.9 496.8,57.9 500.2,60.0 503.7,64.8 507.1,72.1 510.5,54.9 513.9,60.9 517.4,49.3 520.8,62.0 524.2,60.6 527.6,64.2 531.1,84.4 534.5,62.1 537.9,56.0 541.4,42.6 544.8,49.4 548.2,46.2 551.6,39.8 555.1,22.0 558.5,50.5 561.9,42.1 565.3,30.8 568.8,60.2 572.2,43.2 575.6,37.2 579.0,58.2 582.5,80.5 585.9,71.2 589.3,90.9 592.7,90.6 596.2,73.3 599.6,77.8 603.0,82.1 606.5,74.4 609.9,81.3 613.3,91.4 616.7,92.6 620.2,85.7 623.6,74.7 627.0,71.5 630.4,64.3 633.9,81.9 637.3,82.4 640.7,101.1 644.1,120.3 647.6,88.3 651.0,82.6 654.4,75.1 657.8,74.3 661.3,81.2 664.7,85.4 668.1,88.9 671.6,92.4 675.0,90.0 678.4,80.9 681.8,82.9 685.3,74.6 688.7,55.3 692.1,80.9 695.5,88.6 699.0,92.8 702.4,95.9 705.8,104.1 709.2,112.7 712.7,103.1 716.1,103.2 719.5,120.5 722.9,115.6 726.4,114.1 729.8,113.0 733.2,109.4 736.7,104.0 740.1,97.2 743.5,103.1 746.9,107.5 750.4,89.5 753.8,109.0 757.2,110.0 760.6,108.1 764.1,110.6 767.5,96.6 770.9,100.0 774.3,101.4 777.8,101.2 781.2,98.1 784.6,95.3 788.0,95.4 791.5,94.2 794.9,96.1 798.3,90.5 801.8,82.9 805.2,85.5 808.6,66.7 812.0,80.5 815.5,86.7 818.9,85.1 822.3,99.0 825.7,101.1 829.2,116.4 832.6,127.2 836.0,134.8 839.4,130.3 842.9,142.4 846.3,141.6 849.7,163.5 853.1,184.8 856.6,169.8 860.0,162.8" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>📣 Most Discussed — Oct 13–27, 2026 edition</h2><p>Buzz score <b>4</b> (2 distinct sources: 1 analyst · 0 feature · 1 trending · 0 social).</p><p><b>The crowd's pitch:</b> The data-center buildout's picks-and-shovels winner — electrical contracting for AI campuses.</p><p><b>Score breakdown:</b> 1 analyst action × 3 + 1 trending list × 1 = 4</p><p style='margin-top:10px'><b>Sources behind the buzz:</b></p><ul class='srcs'><li><b>DA Davidson</b> <span class='muted'>analyst · 2026-10-27</span><br>Initiated Buy, $1,775 target — data-center and industrial contracting demand (via MarketBeat).</li><li><b>TipRanks</b> <span class='muted'>trending · 2026-10-27</span><br>Trending-by-analyst page — Strong Buy consensus.</li></ul><p class='muted'>An attention measure from the dated edition of 2026-10-27 — who was pitching the stock, not whether the pitch is right. The daily refresh never re-measures it.</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip h" title="Profitability">Prof C+</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip r" title="Value">Valu F</span> <span class="fgrade chip h" title="Safety">Safe C+</span> <span class="fgrade chip h" title="Growth">Grow C</span></p><p>Piotroski F-score <b>8/9</b> · FCF yield <b>2.3%</b> · net debt/EBITDA <b>-6.6×</b> · avg EPS surprise (last 4) <b>+25.8%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Cash flow: free cash flow turns negative on a trailing-year basis.</li><li>Price structure: a weekly close below the 52-week low of $876.19 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Politics & Policy · Pro pool #191 (D+)</span></p><p>First, the dip check: it is real, not a split artifact — FIX's last split was a 2:1 in December 2010, and the $2,073.99 52-week high to $1,160.86 close (−44%, −30% in one month) is a genuine repricing that accelerated after Q3. The fundamentals are the strongest in this batch: Q3 2026 revenue +54% to ~$3.8B, EPS +69% to $13.91 (a beat), and backlog at a record $17.8B, +90% y/y, with data centers at 59% of revenue. What caps it is that this demand is precisely the map's #1 Negative/Severe epicenter — the sell-off came on AI-capex-slowdown fears and a founder-CFO retirement despite the beat — and at ~31x trailing earnings the stock still carries a premium multiple into that debate.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Backlog conversion over an extended 18–24-month duration, modular capacity expanding from ~3.5M toward 5–6M sq ft by late 2027 on customer commitments, and the Q4 print — visible drivers within two quarters</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 revenue +54% y/y, EPS +69% to $13.91 beating ~$12.70 consensus, backlog +90% to a record $17.8B (eighth straight quarterly increase), FCF ~$806M in the quarter and ~$2B YTD — no deterioration anywhere in the operating data</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Balance sheet is a strength ($1.85B cash vs ~$54M debt at Q2, huge FCF), but concentration is the risk leg: ~59% of revenue from technology/data centers, labor availability (not demand) is the execution constraint, founder-CFO Bill George retires at year-end, and no forward guidance is given</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #1 hyperscalers/data centers is Negative/Severe and FIX's customers are that epicenter (technology 59% of revenue); the concrete offset is evidenced — backlog +90% with 18–24-month duration and management calling demand the strongest it has seen — which keeps this mixed, not fail</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>−44% from the high helps, but ~31x trailing P/E (Finnhub) and ~3x annualized sales remain premium for a contractor against its own history and construction peers; the multiple only works if 50%+ growth persists — targets are crowd context</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>A hyperscaler capex pause or digestion year hits the 59%-of-revenue technology book; backlog duration delays rather than prevents the earnings hit</li><li>Premium multiple compresses further on any growth normalization from 50%+ rates, as the −30% month shows, even when prints beat</li></ul><p><b>What would change this verdict:</b> Continued backlog growth with technology demand reaffirmed at the Q4 print, at a further de-rated multiple, would lift valuation/sector toward BUY; a backlog decline or a major hyperscaler pushout would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://finance.biggo.com/news/US_FIX_2026-10-23' target='_blank' rel='noopener'>Comfort Systems Posts Record $17.8B Backlog, EPS Jumps 69% to $13.91 as Data Center Demand Surges — BigGo Finance (Q3 2026 call)</a> <span class='dom'>finance.biggo.com</span></li><li><a href='https://www.fool.com/investing/2026/10/23/why-comfort-systems-plunged-today/' target='_blank' rel='noopener'>Why Comfort Systems Plunged Today — Motley Fool (sell-the-news, CFO retirement, AI build-out selling)</a> <span class='dom'>fool.com</span></li><li><a href='https://WWW.ZACKS.COM/stock/news/3000214/is-comfort-systems-92-eps-surge-just-the-start-of-more-gains-ahead?art_rec=blog-analyst_blog-up_next-ID01-img-3000214' target='_blank' rel='noopener'>Is Comfort Systems' 92% EPS Surge Just the Start of More Gains Ahead? — Zacks (Q2 detail, $1.85B cash vs $54.1M debt)</a> <span class='dom'>WWW.ZACKS.COM</span></li><li><a href='https://www.macroaxis.com/comfort-systems-usa-stock-price' target='_blank' rel='noopener'>Comfort Systems USA Inc (FIX) Price — Macroaxis (last split 2:1 on Dec 24, 2010)</a> <span class='dom'>macroaxis.com</span></li><li><a href='https://finnhub.io/?q=%22FIX%22' target='_blank' rel='noopener'>Comfort Systems USA Inc (FIX): Financial Market Data — Finnhub (price $1,160.86, 52w high $2,073.99, P/E 31.35)</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/FIX" target="_blank" rel="noopener">Yahoo Finance — FIX</a> ·
+<a href="https://stockanalysis.com/stocks/fix/" target="_blank" rel="noopener">StockAnalysis — FIX</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</main></div></body></html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CLS — Celestica · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Nine lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab active" href="../buzz.html">📣 Most Discussed</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../buzz.html">← Back to Most Discussed</a></p>
+<h1>CLS — Celestica</h1>
+<div class="sub">
+· Most Discussed #9 — Oct 13–27, 2026 edition</div>
+<div><span class="price">$277.53</span>
+<span class="up" style="font-size:17px">+12.52% today</span>
+<span class="muted"> · as of 2026-10-27 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-41.3%</div><div class="l">vs 52w high ($472.40)</div></div><div class="kpi"><div class="v ">14%</div><div class="l">of 52w range (low $246.65)</div></div><div class="kpi"><div class="v ">38</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-24.3%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-25.1%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-8.0%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">72.7%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">38.7</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-25%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $472.40</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $246.65</text><polyline points="0.0,183.7 3.4,160.4 6.9,149.6 10.3,147.4 13.7,143.3 17.1,139.0 20.6,151.5 24.0,135.6 27.4,146.8 30.8,164.5 34.3,143.1 37.7,155.2 41.1,152.7 44.5,192.3 48.0,175.1 51.4,176.5 54.8,185.5 58.2,173.6 61.7,202.2 65.1,204.3 68.5,164.1 72.0,159.1 75.4,154.9 78.8,143.3 82.2,168.0 85.7,181.4 89.1,177.5 92.5,163.8 95.9,161.6 99.4,146.8 102.8,145.6 106.2,139.3 109.6,136.7 113.1,179.3 116.5,182.6 119.9,196.0 123.3,208.3 126.8,213.0 130.2,192.7 133.6,178.9 137.1,182.1 140.5,177.3 143.9,182.1 147.3,182.4 150.8,186.0 154.2,189.6 157.6,183.2 161.0,191.8 164.5,180.7 167.9,179.9 171.3,196.2 174.7,183.2 178.2,171.5 181.6,158.4 185.0,175.9 188.4,172.6 191.9,172.5 195.3,175.2 198.7,176.2 202.2,194.0 205.6,182.5 209.0,177.6 212.4,154.0 215.9,142.6 219.3,185.4 222.7,203.4 226.1,199.5 229.6,187.8 233.0,208.3 236.4,190.3 239.8,178.3 243.3,167.2 246.7,187.4 250.1,189.5 253.5,209.3 257.0,203.8 260.4,198.1 263.8,193.6 267.3,193.6 270.7,192.4 274.1,188.6 277.5,188.9 281.0,191.1 284.4,205.2 287.8,206.6 291.2,216.7 294.7,226.2 298.1,213.3 301.5,217.8 304.9,233.3 308.4,215.8 311.8,214.6 315.2,217.8 318.6,218.7 322.1,220.1 325.5,213.4 328.9,202.5 332.4,210.5 335.8,200.3 339.2,214.7 342.6,197.8 346.1,184.0 349.5,183.3 352.9,210.7 356.3,204.2 359.8,225.9 363.2,202.8 366.6,196.1 370.0,190.3 373.5,192.7 376.9,187.9 380.3,165.8 383.7,158.6 387.2,136.8 390.6,123.4 394.0,105.5 397.5,107.8 400.9,107.4 404.3,94.4 407.7,89.6 411.2,87.8 414.6,89.0 418.0,98.6 421.4,81.0 424.9,69.6 428.3,127.1 431.7,112.9 435.1,81.5 438.6,72.7 442.0,71.0 445.4,73.9 448.8,77.5 452.3,104.7 455.7,113.8 459.1,108.7 462.5,115.2 466.0,116.7 469.4,108.1 472.8,129.9 476.3,145.0 479.7,148.3 483.1,141.4 486.5,133.5 490.0,121.6 493.4,118.3 496.8,130.7 500.2,137.1 503.7,104.5 507.1,65.5 510.5,22.0 513.9,35.5 517.4,66.6 520.8,117.4 524.2,103.4 527.6,117.3 531.1,125.8 534.5,104.0 537.9,97.2 541.4,87.4 544.8,107.7 548.2,109.2 551.6,116.7 555.1,112.6 558.5,136.9 561.9,126.4 565.3,127.2 568.8,149.9 572.2,144.4 575.6,124.0 579.0,127.0 582.5,151.1 585.9,137.8 589.3,142.7 592.7,127.8 596.2,133.5 599.6,128.7 603.0,142.6 606.5,142.7 609.9,152.5 613.3,181.8 616.7,184.2 620.2,178.5 623.6,147.9 627.0,151.8 630.4,152.5 633.9,180.4 637.3,168.1 640.7,137.8 644.1,158.5 647.6,135.6 651.0,155.6 654.4,145.7 657.8,118.0 661.3,125.9 664.7,171.7 668.1,168.5 671.6,171.6 675.0,175.6 678.4,148.0 681.8,140.3 685.3,152.2 688.7,147.1 692.1,175.4 695.5,184.1 699.0,183.5 702.4,188.7 705.8,190.6 709.2,178.9 712.7,178.5 716.1,169.0 719.5,186.7 722.9,186.0 726.4,192.5 729.8,206.5 733.2,176.1 736.7,173.7 740.1,157.0 743.5,153.6 746.9,161.5 750.4,141.3 753.8,170.2 757.2,169.5 760.6,162.8 764.1,157.0 767.5,154.5 770.9,143.3 774.3,132.3 777.8,126.8 781.2,115.7 784.6,123.4 788.0,131.8 791.5,122.4 794.9,127.2 798.3,116.1 801.8,102.7 805.2,107.0 808.6,101.8 812.0,117.6 815.5,131.8 818.9,126.5 822.3,140.4 825.7,131.0 829.2,163.3 832.6,171.0 836.0,181.8 839.4,185.1 842.9,185.7 846.3,181.1 849.7,214.8 853.1,223.3 856.6,236.0 860.0,206.7" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>📣 Most Discussed — Oct 13–27, 2026 edition</h2><p>Buzz score <b>5</b> (3 distinct sources: 1 analyst · 0 feature · 2 trending · 0 social).</p><p><b>The crowd's pitch:</b> AI hardware backlog name still re-rating — a target raise plus top trending placement.</p><p><b>Score breakdown:</b> 1 analyst action × 3 + 2 trending lists × 1 = 5</p><p style='margin-top:10px'><b>Sources behind the buzz:</b></p><ul class='srcs'><li><b>JPMorgan</b> <span class='muted'>analyst · 2026-10-14</span><br>Target raised on AI hardware momentum and backlog visibility (via MarketBeat).</li><li><b>StockAnalysis</b> <span class='muted'>trending · 2026-10-27</span><br>Most-viewed list, up ~11% on the day.</li><li><b>TipRanks</b> <span class='muted'>trending · 2026-10-27</span><br>Trending-by-analyst page.</li></ul><p class='muted'>An attention measure from the dated edition of 2026-10-27 — who was pitching the stock, not whether the pitch is right. The daily refresh never re-measures it.</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip h" title="Profitability">Prof C</span> <span class="fgrade chip r" title="Revisions">Revi D+</span> <span class="fgrade chip r" title="Value">Valu D</span> <span class="fgrade chip r" title="Safety">Safe D</span> <span class="fgrade chip sb" title="Growth">Grow A</span></p><p>Piotroski F-score <b>5/9</b> · net debt/EBITDA <b>-0.4×</b> · avg EPS surprise (last 4) <b>+8.3%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 5/9).</li><li>Price structure: a weekly close below the 52-week low of $246.65 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Innovation · Pro pool #301 (D)</span></p><p>Celestica's execution is the strongest in this batch: management raised the FY26 outlook in July to $20.5B of revenue and $11.30 of adjusted EPS, Q3 is guided to $5.25–5.55B (vs $3.19B a year ago) with communications revenue up ~60%, and the four-quarter average earnings surprise is +7.7%. The rubric still blocks it on the sector leg — Celestica's growth engine is hyperscaler AI hardware, which is precisely map #1 (Negative/Severe), and accelerating revenue is that sector's own variable, not a company-specific offset; the stock's −45% fall (including −29% in a month) is the market asking the same question. At $260.01, ~23x the raised FY26 EPS guide, the price is no longer the problem — the demand source is.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>FY26 outlook raised in July (revenue $20.5B, adj. EPS $11.30, FCF $600M), Q3 guided well above year-ago levels, CCS segment expected to grow ~85% in 2026 — acceleration, not deterioration</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip sb'>pass</span></td><td>$260.01 is ~23x FY26 guided adjusted EPS after a ~45% drawdown from the high — undemanding for the guided growth rate if hyperscaler programs hold</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip r'>fail</span></td><td>Map #1 hyperscalers/data centers is Negative/Severe and CLS's growth is that capex itself — AI servers and 800G/1.6T networking for hyperscalers; the smaller ATS segment (~10% growth) is not a sufficient offset under the rubric</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Net debt is low (~$204M at June 30) and FCF is guided positive, but revenue is concentrated in a few hyperscaler programs, 2026 capex is ~$1B, and custom-silicon/memory supply constraints are a live execution risk</td></tr><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 results Oct 26, 2026 plus the Investor & Analyst Day on Oct 27 — an immediate, dated test of order-book durability and the 2027 outlook</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>A hyperscaler capex digestion or program delay lands directly on the CCS growth engine, with the multiple now set by that single demand source</li><li>Supply constraints in custom silicon and memory, or working-capital absorption from the capacity build, pressure margins and cash conversion</li></ul><p><b>What would change this verdict:</b> Oct 26–27 evidence of broadening demand beyond hyperscaler AI programs (or multi-year funded backlog disclosure) would soften the sector leg toward BUY; a guide cut would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://quartr.com/companies/celestica-inc_11522' target='_blank' rel='noopener'>Celestica Inc. Investor Relations, Earnings Summary & Outlook — raised FY26 outlook, Q3 guidance, net debt — Quartr</a> <span class='dom'>quartr.com</span></li><li><a href='https://WWW.ZACKS.COM/stock/news/3012904/is-cls-stock-a-smart-investment-option-before-q3-earnings-release' target='_blank' rel='noopener'>Is CLS Stock a Smart Investment Option Before Q3 Earnings Release? — Zacks</a> <span class='dom'>WWW.ZACKS.COM</span></li><li><a href='https://cdn.tickeron.com/earnings/CLS/' target='_blank' rel='noopener'>Celestica (CLS) Earnings Preview: Can AI Demand Keep Up the Pace? — Tickeron</a> <span class='dom'>cdn.tickeron.com</span></li><li><a href='https://finnhub.io/?q=%22CLS%22' target='_blank' rel='noopener'>Celestica Inc (CLS): Financial Market Data (P/E ~34.5, price $260.01 at Oct 23 close) — Finnhub</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/CLS" target="_blank" rel="noopener">Yahoo Finance — CLS</a> ·
+<a href="https://stockanalysis.com/stocks/cls/" target="_blank" rel="noopener">StockAnalysis — CLS</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</main></div></body></html>

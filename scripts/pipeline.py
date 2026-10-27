@@ -1011,7 +1011,8 @@ TAB_DEFS = [("dip", "index.html", "📉 Quality Dips"),
             ("macro", "macro.html", "🌐 Theme Buys"),
             ("holds", "holds.html", "🟡 The Bench"),
             ("screener", "screener.html", "🔎 Fallen & Cheap"),
-            ("skin", "skin.html", "🤝 Skin in the Game")]
+            ("skin", "skin.html", "🤝 Skin in the Game"),
+            ("buzz", "buzz.html", "📣 Most Discussed")]
 
 
 def tabs_html(active, prefix=""):
@@ -1024,7 +1025,7 @@ def tabs_html(active, prefix=""):
         for key, href, label in TAB_DEFS)
     return (f'<aside class="sidebar">'
             f'<a class="brand" href="{prefix}index.html">◆ Quality-Dip Watchlist</a>'
-            f'<div class="brandsub">Eight lenses on one universe — the 800 '
+            f'<div class="brandsub">Nine lenses on one universe — the 800 '
             f'most-traded US stocks + every S&amp;P 1000 member.</div>'
             f'<nav class="tabs">{tabs}</nav>'
             f'<div class="sidefoot">Prices refresh daily at 7:00 AM CT. '
@@ -1040,6 +1041,7 @@ TABS_MACRO = tabs_html("macro")
 TABS_HOLDS = tabs_html("holds")
 TABS_SCREENER = tabs_html("screener")
 TABS_SKIN = tabs_html("skin")
+TABS_BUZZ = tabs_html("buzz")
 
 
 def pro_section(t, prec, k, rank=None):
@@ -3108,6 +3110,286 @@ def build_skin_details(meta, rows, skin, insiders, verdicts, tverdicts,
             fh.write(page)
 
 
+def load_buzz():
+    """The Most Discussed store (data/buzz.json) — a dated, hand-measured
+    research edition like the verdict stores. The pipeline LOADS it and
+    never re-measures or overwrites it; a new edition is a research task,
+    not part of the daily refresh."""
+    p = os.path.join(DATA, "buzz.json")
+    if os.path.exists(p):
+        try:
+            return json.load(open(p))
+        except Exception:
+            pass
+    return {"meta": {}, "entries": []}
+
+
+def _buzz_mix(counts):
+    labels = (("analyst", "analyst"), ("features", "feature"),
+              ("trending", "trending"), ("social", "social"))
+    return " · ".join(f"{counts.get(k, 0)} {lab}" for k, lab in labels)
+
+
+def _buzz_breakdown(e):
+    c = e.get("counts") or {}
+    terms = []
+    if c.get("analyst"):
+        terms.append(f"{c['analyst']} analyst action{'s' if c['analyst'] != 1 else ''} × 3")
+    if c.get("features"):
+        terms.append(f"{c['features']} feature{'s' if c['features'] != 1 else ''} × 2")
+    if c.get("trending"):
+        terms.append(f"{c['trending']} trending list{'s' if c['trending'] != 1 else ''} × 1")
+    if c.get("social"):
+        terms.append(f"{c['social']} social × 1")
+    return " + ".join(terms) if terms else "—"
+
+
+def _buzz_sources_html(e):
+    items = "".join(
+        f"<li><b>{s.get('outlet', '')}</b> <span class='muted'>"
+        f"{s.get('type', '')} · {s.get('date', '')}</span><br>{s.get('gist', '')}</li>"
+        for s in e.get("sources") or [])
+    return f"<ul class='srcs'>{items}</ul>"
+
+
+def buzz_section(t, e, bmeta):
+    """The Most Discussed evidence as a stock-page section: the crowd's
+    pitch, the score breakdown and the dated source list."""
+    if not e:
+        return ""
+    att = ("<p><span class='chip na'>ATTENTION ONLY</span> Listed on "
+           "trending lists, but no dated analyst action or feature pitch "
+           "was verified in the window.</p>" if e.get("attention_only") else "")
+    return (f"<section><h2>📣 Most Discussed — {bmeta.get('window', '')} edition</h2>"
+            f"<p>Buzz score <b>{e.get('score', '')}</b> "
+            f"({sum((e.get('counts') or {}).values())} distinct sources: "
+            f"{_buzz_mix(e.get('counts') or {})}).</p>"
+            f"<p><b>The crowd's pitch:</b> {e.get('thesis', '')}</p>{att}"
+            f"<p><b>Score breakdown:</b> {_buzz_breakdown(e)} = {e.get('score', '')}</p>"
+            f"<p style='margin-top:10px'><b>Sources behind the buzz:</b></p>"
+            f"{_buzz_sources_html(e)}"
+            f"<p class='muted'>An attention measure from the dated edition "
+            f"of {bmeta.get('edition', '')} — who was pitching the stock, "
+            f"not whether the pitch is right. The daily refresh never "
+            f"re-measures it.</p></section>")
+
+
+def _also_on_map():
+    """Which of the other tabs carry each ticker, computed from the stock
+    links on the built tab pages (buzz is built last, so every other page
+    on disk is this run's). Returns {ticker: [short tab labels]}."""
+    pages = [("index.html", "Quality Dips"), ("pro.html", "Factor Grades"),
+             ("sectors.html", "Sector Impact"), ("validated.html", "Vetted Buys"),
+             ("macro.html", "Theme Buys"), ("holds.html", "The Bench"),
+             ("screener.html", "Fallen & Cheap"), ("skin.html", "Skin in the Game")]
+    out = {}
+    for fn, label in pages:
+        p = os.path.join(ROOT, fn)
+        if not os.path.exists(p):
+            continue
+        for t in set(re.findall(r"stock/([A-Z0-9][A-Z0-9.\-]*)\.html",
+                                open(p).read())):
+            out.setdefault(t, []).append(label)
+    return out
+
+
+def build_buzz_page(meta, entries, bmeta, verdicts, tverdicts, kpi_ix=None,
+                    also_on=None, buzz_pages=None):
+    kpi_ix = kpi_ix or {}
+    also_on = also_on or {}
+    buzz_pages = buzz_pages or set()
+    n_also = sum(1 for e in entries if also_on.get(e["ticker"]))
+    trs = []
+    for e in entries:
+        t = e["ticker"]
+        counts = e.get("counts") or {}
+        nsrc = sum(counts.values())
+        k = kpi_ix.get(t, {})
+        if k:
+            price_html = f"${k['last']:,.2f}"
+            off_html = f"{k['off_high_pct']:.1f}%"
+            price_v, off_v = price_html, off_html
+        elif e.get("close"):
+            price_v = f"${e['close']:,.2f}"
+            price_html = (f"${e['close']:,.2f} <span class='muted' title='"
+                          f"{e.get('close_basis', 'research close')}'>*</span>")
+            off_v = "— (outside universe)"
+        else:
+            price_v, price_html, off_v = "—", "—", "— (outside universe)"
+        chips = _verdict_chip(t, verdicts, tverdicts)
+        if e.get("attention_only"):
+            chips += (" <span class='chip na' title='Trending-list attention "
+                      "only — no dated analyst action or feature pitch was "
+                      "verified in the window'>ATTENTION ONLY</span>")
+        sym = (f"<a class='sym' href='stock/{t}.html'>{t}</a>" if t in buzz_pages
+               else f"<span class='sym'>{t}</span>")
+        also = also_on.get(t) or []
+        also_html = (" ".join(f"<span class='chip na'>{x}</span>" for x in also)
+                     if also else '<span class="muted">—</span>')
+        v = _skin_verdict(t, verdicts, tverdicts)
+        vblock = ""
+        if v:
+            vblock = verdict_detail_html(v, t, page=t if t in buzz_pages else None)
+        att_det = ("<p><span class='chip na'>ATTENTION ONLY</span> This name "
+                   "is here on trending-list placement alone — no dated "
+                   "analyst action or feature pitch was verified in the "
+                   "window.</p>" if e.get("attention_only") else "")
+        det = (pkpi_grid([
+            (str(e.get("score", "")), "Buzz score"),
+            (str(nsrc), "Distinct sources"),
+            (price_v, "Price"),
+            (off_v, "vs 52w high")])
+            + f"<h3>The crowd's pitch</h3><p>{e.get('thesis', '')}</p>{att_det}"
+            + f"<h3>Score breakdown</h3><p>{_buzz_breakdown(e)} = "
+              f"<b>{e.get('score', '')}</b></p>"
+            + f"<h3>Sources — {bmeta.get('window', '')}</h3>"
+            + _buzz_sources_html(e)
+            + (f"<h3>Also on</h3><p>{also_html}</p>" if also else "")
+            + vblock
+            + (f"<a class='pfull' href='stock/{t}.html'>Full stock page →</a>"
+               if t in buzz_pages and not v else ""))
+        trs.append(
+            f"<tr data-q='{t} {clean_company_name(e.get('company', t))}'><td>{e.get('rank', '')}</td>"
+            f"<td>{sym}<span class='nm'>{clean_company_name(e.get('company', t))}</span>"
+            f"{chips}</td>"
+            f"<td class='num'><b>{e.get('score', '')}</b></td>"
+            f"<td>{_buzz_mix(counts)}</td>"
+            f"<td>{also_html}</td>"
+            f"<td class='num'>{price_html}</td>"
+            f"<td class='detail'>{det}</td></tr>")
+    html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Most Discussed · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
+{TABS_BUZZ}
+<main class="main">
+<h1>📣 Most Discussed</h1>
+<div class="sub">The attention lens: stocks the financial world was actively pitching
+<b>as an opportunity</b> in {bmeta.get('window', '')} — upgrades, target raises, "best stocks
+to buy" features and trending lists, hand-verified source by source. This measures
+<b>who is talking, not who is right</b>: it is not a quality verdict, and several names here
+fail this site's research tests outright. <b>Select any row</b> — its sources open in the
+panel. Edition of {bmeta.get('edition', '')}; prices as of {meta['asof']} close where the
+name sits in the watchlist universe.</div>
+<div class="cards">
+  <div class="card"><div class="n">{len(entries)}</div><div class="l">Names clearing the evidence bar (≥2 distinct sources)</div></div>
+  <div class="card"><div class="n">{bmeta.get('sources_counted', '')}</div><div class="l">Distinct opportunity sources counted</div></div>
+  <div class="card"><div class="n">{n_also}</div><div class="l">Also carried on another tab</div></div>
+  <div class="card"><div class="n">{bmeta.get('window', '')}</div><div class="l">Discussion window</div></div>
+</div>
+<p class="sub">Scoring, applied uniformly: a verified <b>analyst action</b> (upgrade, target
+raise, bullish initiation) = <b>3</b>; a major-outlet <b>opportunity feature</b> or
+fund-manager pitch = <b>2</b>; a <b>trending-list</b> appearance = <b>1</b>; verified bullish
+<b>social</b> discussion = <b>1</b> per platform, capped at 2. Ranked by score, then by
+distinct-source count. Mere mentions, earnings news without an opportunity pitch, and
+bearish coverage never count.</p>
+<div class="controls"><input id="q" type="text" placeholder="Search symbol or company…"></div>
+<div class="master">
+<div class="tablewrap"><table id="t" class="mlist"><thead><tr><th>#</th><th>Stock</th>
+<th class="num">Buzz</th><th>Source mix</th><th>Also on</th>
+<th class="num">Price</th></tr></thead>
+<tbody>{chr(10).join(trs)}</tbody></table></div>
+{panel_html()}
+</div>
+<p class="foot">Method and limits: {bmeta.get('methodology', '')} Sources were read
+Oct 27, 2026; Barron's and some aggregator items were visible only as snippets, and
+several widely-reported actions (e.g. target raises for Micron) were excluded because
+their dates could not be verified inside the window. Prices and % vs 52-week high come
+from the watchlist pool for names in the 1,654-name universe; names outside it show a
+research close (*) or no price. Buzz says nothing about valuation, balance sheet or
+whether the crowd's thesis is sound — the other eight lenses exist for that. Structured
+research output, not investment advice or a trade instruction.</p>
+{glossary_html()}
+</main></div>
+{PANEL_JS}</body></html>"""
+    with open(os.path.join(ROOT, "buzz.html"), "w") as fh:
+        fh.write(html)
+    return entries
+
+
+def build_buzz_details(meta, entries, bmeta, verdicts, tverdicts,
+                       results, pro_recs, earn):
+    """Detail pages for Most Discussed names covered by no other list
+    builder. Names inside the universe get the full page (chart + KPI
+    band); names outside it get a compact page carrying the buzz
+    evidence, so every listed name resolves."""
+    fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
+    asof = meta["asof"]
+    for e in entries:
+        t = e["ticker"]
+        if os.path.exists(os.path.join(ROOT, "stock", f"{t}.html")):
+            continue
+        name = clean_company_name(e.get("company", t))
+        bsec = buzz_section(t, e, bmeta)
+        ys = yahoo_symbol(t)
+        if t in results:
+            k = results[t]
+            secs = [bsec]
+            prec = pro_recs.get(t)
+            psec = pro_section(t, prec, k, None)
+            if psec:
+                secs.append(psec)
+            vsec = verdict_section(t, verdicts) or verdict_section(t, tverdicts)
+            if vsec:
+                secs.append(vsec)
+            pe = (round(100 / prec["earn_y"], 1)
+                  if prec and prec.get("earn_y") and prec["earn_y"] > 0 else None)
+            tiles = kpi_tiles(k, rs20=k["mom20_pct"] - meta.get("spy_mom20", 0.0),
+                              pe=pe, earn=earn.get(t), extra=(
+                _tile(f"{k['vpt20']:+.0f}%", "VPT trend (20d)",
+                      "up" if k["vpt20"] >= 0 else "dn")))
+            page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{t} — {name} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
+{tabs_html("buzz", "../")}
+<main class="main">
+<p class="crumb"><a href="../buzz.html">← Back to Most Discussed</a></p>
+<h1>{t} — {name}</h1>
+<div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
+· Most Discussed #{e.get('rank', '')} — {bmeta.get('window', '')} edition</div>
+<div><span class="price">${k['last']:,.2f}</span>
+<span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
+<span class="muted"> · as of {asof} close</span></div>
+{tiles}
+<div class="bigchart">{chart_svg(k['chart'], k['high52'], k['low52'])}
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+{chr(10).join(secs)}
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
+<a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</main></div></body></html>"""
+        else:
+            close_line = (f"<div><span class='price'>${e['close']:,.2f}</span>"
+                          f"<span class='muted'> · research close "
+                          f"({e.get('close_basis', '')})</span></div>"
+                          if e.get("close") else
+                          "<p class='muted'>Outside the watchlist universe — "
+                          "no pool price for this name.</p>")
+            vsec = verdict_section(t, verdicts) or verdict_section(t, tverdicts)
+            secs = [bsec] + ([vsec] if vsec else [])
+            page = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{t} — {name} · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
+{tabs_html("buzz", "../")}
+<main class="main">
+<p class="crumb"><a href="../buzz.html">← Back to Most Discussed</a></p>
+<h1>{t} — {name}</h1>
+<div class="sub">Most Discussed #{e.get('rank', '')} — {bmeta.get('window', '')} edition
+· outside the watchlist universe (top-800 by volume ∪ S&amp;P 1000)</div>
+{close_line}
+{chr(10).join(secs)}
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/{ys}" target="_blank" rel="noopener">Yahoo Finance — {t}</a> ·
+<a href="https://stockanalysis.com/stocks/{t.lower()}/" target="_blank" rel="noopener">StockAnalysis — {t}</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</main></div></body></html>"""
+        with open(os.path.join(ROOT, "stock", f"{t}.html"), "w") as fh:
+            fh.write(page)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=8)
@@ -3313,6 +3595,19 @@ def main():
     _extra = (f" (+{len(skin_all) - len(skin_rows)} more below the Top 20 cap)"
               if len(skin_all) > len(skin_rows) else "")
     print(f"SKIN: {len(skin_all)} qualifiers on skin.html; members: {_mem}{_extra}")
+
+    buzz = load_buzz()
+    bmeta = buzz.get("meta") or {}
+    bentries = buzz.get("entries") or []
+    build_buzz_details(meta, bentries, bmeta, verdicts, tverdicts,
+                       results, pro_recs, earn)
+    buzz_pages = {e["ticker"] for e in bentries
+                  if os.path.exists(os.path.join(
+                      ROOT, "stock", f"{e['ticker']}.html"))}
+    build_buzz_page(meta, bentries, bmeta, verdicts, tverdicts, kpi_ix,
+                    _also_on_map(), buzz_pages)
+    print(f"BUZZ: {len(bentries)} names in edition "
+          f"{bmeta.get('edition', '')} (window {bmeta.get('window', '')})")
 
     new_set = {r["ticker"] for r in rows}
     old_set = set(prev_ranks)

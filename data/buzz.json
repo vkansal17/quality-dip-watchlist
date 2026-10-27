@@ -1,0 +1,929 @@
+{
+ "meta": {
+  "edition": "2026-10-27",
+  "window": "Oct 13\u201327, 2026",
+  "window_start": "2026-10-13",
+  "window_end": "2026-10-27",
+  "measured": "2026-10-27",
+  "methodology": "Stocks discussed AS AN OPPORTUNITY (buy pitches, upgrades, target raises, 'undervalued / top pick' features) across financial and public sources in the window. Score = verified analyst action (upgrade, target raise, bullish initiation) 3 pts per firm; major-outlet opportunity feature or fund-manager pitch 2 pts per outlet; trending-list appearance 1 pt per list; verified bullish social discussion 1 pt per platform (capped at 2). A name needs at least 2 distinct sources to be listed. Social evidence scored 0 for every name in this edition: the platforms carrying ticker discussion (StockTwits, Reddit, X) could not be read for verification, and unverified chatter is never scored.",
+  "sources_counted": 73,
+  "counts_by_type": {
+   "analyst": 22,
+   "features": 16,
+   "trending": 35,
+   "social": 0
+  },
+  "names_listed": 31
+ },
+ "entries": [
+  {
+   "rank": 1,
+   "ticker": "MSFT",
+   "company": "Microsoft",
+   "score": 7,
+   "counts": {
+    "analyst": 1,
+    "features": 1,
+    "trending": 2,
+    "social": 0
+   },
+   "thesis": "The mega-cap AI laggard is catching up \u2014 Azure and Copilot monetization, at a discount to peers.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "BMO Capital Markets",
+     "date": "2026-10-15",
+     "gist": "Initiated Outperform with a $640 target on Azure strength and Copilot monetization (via MarketBeat)."
+    },
+    {
+     "type": "feature",
+     "outlet": "Barron's",
+     "date": "2026-10-14",
+     "gist": "Feature: Microsoft is catching up to its big-tech peers after lagging the AI trade (via MSN)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Top-10 most-viewed stock of the day."
+    }
+   ]
+  },
+  {
+   "rank": 2,
+   "ticker": "GOOGL",
+   "company": "Alphabet",
+   "score": 6,
+   "counts": {
+    "analyst": 1,
+    "features": 1,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "A compounding machine with Waymo optionality the market isn't paying for.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Rosenblatt",
+     "date": "2026-10-15",
+     "gist": "Initiated Buy, $372 target \u2014 Waymo optionality plus search/AI stability (via MarketBeat)."
+    },
+    {
+     "type": "feature",
+     "outlet": "Barron's",
+     "date": "2026-10-15",
+     "gist": "'Beyond the Magnificent 7' \u2014 picked as a durable compounder (MSN snippet)."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Top-10 most-viewed stock of the day."
+    }
+   ]
+  },
+  {
+   "rank": 3,
+   "ticker": "INTC",
+   "company": "Intel",
+   "score": 6,
+   "counts": {
+    "analyst": 1,
+    "features": 1,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "The foundry turnaround trade \u2014 costs peaked, cuts under way, and the story is back in fashion.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "HSBC",
+     "date": "2026-10-23",
+     "gist": "Upgraded Hold \u2192 Buy \u2014 foundry cost base has peaked, buybacks and cost cuts (via MarketBeat)."
+    },
+    {
+     "type": "feature",
+     "outlet": "Barron's",
+     "date": "2026-10-23",
+     "gist": "'Intel Is Bringing Sexy Back' \u2014 the pre-earnings bull case, with skeptics quoted (via MSN)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page."
+    }
+   ]
+  },
+  {
+   "rank": 4,
+   "ticker": "NVDA",
+   "company": "NVIDIA",
+   "score": 6,
+   "counts": {
+    "analyst": 1,
+    "features": 1,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Still the AI king \u2014 a fresh Buy initiation and features arguing the run isn't done, plus a quantum angle.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Rosenblatt",
+     "date": "2026-10-15",
+     "gist": "Initiated Buy \u2014 the AI leader, initiated in the semiconductor basket review (via MarketBeat)."
+    },
+    {
+     "type": "feature",
+     "outlet": "Motley Fool",
+     "date": "2026-10-15",
+     "gist": "Still a buy on AI demand; a separate Oct 13 piece adds the quantum-computing angle."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "#1 most-viewed stock of the day."
+    }
+   ]
+  },
+  {
+   "rank": 5,
+   "ticker": "CRM",
+   "company": "Salesforce",
+   "score": 6,
+   "counts": {
+    "analyst": 2,
+    "features": 0,
+    "trending": 0,
+    "social": 0
+   },
+   "thesis": "Agentforce AI monetization re-rates a lagging software bellwether \u2014 two firms moved in the window.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Northland Capital",
+     "date": "2026-10-27",
+     "gist": "Upgraded to Outperform with a $245 target (via MarketBeat)."
+    },
+    {
+     "type": "analyst",
+     "outlet": "BMO Capital Markets",
+     "date": "2026-10-23",
+     "gist": "Target raised $247 \u2192 $254 in the software-group note (via MarketBeat)."
+    }
+   ]
+  },
+  {
+   "rank": 6,
+   "ticker": "CYBR",
+   "company": "CyberArk Software",
+   "score": 6,
+   "counts": {
+    "analyst": 2,
+    "features": 0,
+    "trending": 0,
+    "social": 0
+   },
+   "thesis": "Identity-security leader with a merger-synergy kicker \u2014 initiated twice in five days.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Guggenheim",
+     "date": "2026-10-27",
+     "gist": "Initiated Buy, $500 target \u2014 synergies from the Palo Alto Networks deal (via MarketBeat)."
+    },
+    {
+     "type": "analyst",
+     "outlet": "BMO Capital Markets",
+     "date": "2026-10-23",
+     "gist": "Initiated Outperform in the security-software basket review (via MarketBeat)."
+    }
+   ],
+   "close": null,
+   "close_basis": "outside the watchlist universe; no close captured by the research sources"
+  },
+  {
+   "rank": 7,
+   "ticker": "IREN",
+   "company": "IREN Limited",
+   "score": 6,
+   "counts": {
+    "analyst": 2,
+    "features": 0,
+    "trending": 0,
+    "social": 0
+   },
+   "thesis": "Bitcoin miner turned AI-cloud landlord \u2014 the gigawatt power pipeline is the asset.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Roth Capital",
+     "date": "2026-10-23",
+     "gist": "Initiated Buy, $82 \u2014 the 22%-margin AI-cloud deal and HPC co-location (via Longbridge/Benzinga)."
+    },
+    {
+     "type": "analyst",
+     "outlet": "Macquarie",
+     "date": "2026-10-24",
+     "gist": "Initiated Outperform \u2014 2.8GW secured power pipeline for AI data centers (via Longbridge/Benzinga)."
+    }
+   ]
+  },
+  {
+   "rank": 8,
+   "ticker": "ABBV",
+   "company": "AbbVie",
+   "score": 5,
+   "counts": {
+    "analyst": 0,
+    "features": 2,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Post-Humira growth is back \u2014 a dividend payer with visible analyst upside.",
+   "sources": [
+    {
+     "type": "feature",
+     "outlet": "Kiplinger",
+     "date": "2026-10-15",
+     "gist": "Named among analysts' top dividend stocks \u2014 pipeline depth beyond Humira."
+    },
+    {
+     "type": "feature",
+     "outlet": "Motley Fool",
+     "date": "2026-10-18",
+     "gist": "Could reach $240 in 2026 on the post-Humira growth ramp."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page."
+    }
+   ]
+  },
+  {
+   "rank": 9,
+   "ticker": "CLS",
+   "company": "Celestica",
+   "score": 5,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 2,
+    "social": 0
+   },
+   "thesis": "AI hardware backlog name still re-rating \u2014 a target raise plus top trending placement.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "JPMorgan",
+     "date": "2026-10-14",
+     "gist": "Target raised on AI hardware momentum and backlog visibility (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Most-viewed list, up ~11% on the day."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page."
+    }
+   ]
+  },
+  {
+   "rank": 10,
+   "ticker": "LLY",
+   "company": "Eli Lilly",
+   "score": 5,
+   "counts": {
+    "analyst": 0,
+    "features": 2,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "GLP-1 supercycle \u2014 a famous fund added, and features see the ramp running into 2026.",
+   "sources": [
+    {
+     "type": "feature",
+     "outlet": "Forbes",
+     "date": "2026-10-16",
+     "gist": "Reported Druckenmiller's Duquesne increased its Lilly stake in its latest 13F."
+    },
+    {
+     "type": "feature",
+     "outlet": "Motley Fool",
+     "date": "2026-10-18",
+     "gist": "Could reach $1,400 in 2026 \u2014 the GLP-1 growth story."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  },
+  {
+   "rank": 11,
+   "ticker": "TSLA",
+   "company": "Tesla",
+   "score": 5,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 2,
+    "social": 0
+   },
+   "thesis": "Robotaxi and Optimus optionality outweighs a soft auto business, per the latest target raise.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Deutsche Bank",
+     "date": "2026-10-21",
+     "gist": "Target raised $440 \u2192 $470 \u2014 AI/robotaxi story offsets auto softness (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Top-15 most-viewed stock of the day."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  },
+  {
+   "rank": 12,
+   "ticker": "AMZN",
+   "company": "Amazon",
+   "score": 4,
+   "counts": {
+    "analyst": 0,
+    "features": 1,
+    "trending": 2,
+    "social": 0
+   },
+   "thesis": "AWS re-acceleration plus the advertising machine, at a reasonable multiple.",
+   "sources": [
+    {
+     "type": "feature",
+     "outlet": "Barron's",
+     "date": "2026-10-15",
+     "gist": "'Beyond the Magnificent 7' \u2014 the AWS/ads compounder (MSN snippet)."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Top-10 most-viewed stock of the day."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  },
+  {
+   "rank": 13,
+   "ticker": "META",
+   "company": "Meta Platforms",
+   "score": 4,
+   "counts": {
+    "analyst": 0,
+    "features": 1,
+    "trending": 2,
+    "social": 0
+   },
+   "thesis": "The cheapest mega-cap on forward numbers \u2014 a named analyst's buy-the-dip call.",
+   "sources": [
+    {
+     "type": "feature",
+     "outlet": "Motley Fool",
+     "date": "2026-10-26",
+     "gist": "Reports Evercore's Mark Mahaney calling Meta the cheapest of the Mag 7 (forward PEG 0.57) \u2014 a buy-low pitch."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Top-10 most-viewed stock of the day."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  },
+  {
+   "rank": 14,
+   "ticker": "ALNY",
+   "company": "Alnylam Pharmaceuticals",
+   "score": 4,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "RNAi leader initiated Outperform into its launch cycle, and trending with analysts.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Evercore ISI",
+     "date": "2026-10-27",
+     "gist": "Initiated Outperform in the biotech basket review (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  },
+  {
+   "rank": 15,
+   "ticker": "AMD",
+   "company": "Advanced Micro Devices",
+   "score": 4,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "The OpenAI rack-scale deal makes AMD the credible second source for AI accelerators.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "HSBC",
+     "date": "2026-10-15",
+     "gist": "Upgraded Hold \u2192 Buy on the OpenAI rack-scale AI partnership (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Top-15 most-viewed stock of the day."
+    }
+   ]
+  },
+  {
+   "rank": 16,
+   "ticker": "BA",
+   "company": "Boeing",
+   "score": 4,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Production ramp and cash-flow inflection \u2014 but the attention is two-sided: shares fell ~9.5% on Oct 27.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Barclays",
+     "date": "2026-10-27",
+     "gist": "Initiated Overweight, $277 target, in new aerospace coverage (via The Fly)."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Most-viewed list \u2014 on a ~9.5% down day; attention here is not one-directional."
+    }
+   ]
+  },
+  {
+   "rank": 17,
+   "ticker": "CDNS",
+   "company": "Cadence Design Systems",
+   "score": 4,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "EDA duopoly compounding on AI chip-design demand \u2014 target raised in the group note.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "BMO Capital Markets",
+     "date": "2026-10-27",
+     "gist": "Target raised in the software-group note (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  },
+  {
+   "rank": 18,
+   "ticker": "DDOG",
+   "company": "Datadog",
+   "score": 4,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Observability leader in the AI-infrastructure software basket BMO just initiated across.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "BMO Capital Markets",
+     "date": "2026-10-23",
+     "gist": "Initiated Outperform in the software basket review (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  },
+  {
+   "rank": 19,
+   "ticker": "FIX",
+   "company": "Comfort Systems USA",
+   "score": 4,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "The data-center buildout's picks-and-shovels winner \u2014 electrical contracting for AI campuses.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "DA Davidson",
+     "date": "2026-10-27",
+     "gist": "Initiated Buy, $1,775 target \u2014 data-center and industrial contracting demand (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  },
+  {
+   "rank": 20,
+   "ticker": "INCY",
+   "company": "Incyte",
+   "score": 4,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Biotech initiated Outperform and trending \u2014 the crowd is looking past the Jakafi cliff debate.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Evercore ISI",
+     "date": "2026-10-27",
+     "gist": "Initiated Outperform in the biotech basket review (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page."
+    }
+   ]
+  },
+  {
+   "rank": 21,
+   "ticker": "NOW",
+   "company": "ServiceNow",
+   "score": 4,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Enterprise AI workflows \u2014 carried into the window's group-wide target raises.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "BMO Capital Markets",
+     "date": "2026-10-27",
+     "gist": "Target raised in the software-group note (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  },
+  {
+   "rank": 22,
+   "ticker": "SLB",
+   "company": "SLB",
+   "score": 4,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Energy-services leader in Barclays' new Overweight energy basket.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Barclays",
+     "date": "2026-10-27",
+     "gist": "Initiated Overweight in the integrated-energy coverage launch (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Tops the trending-by-analyst page \u2014 9 Buy ratings, the most on the page."
+    }
+   ]
+  },
+  {
+   "rank": 23,
+   "ticker": "SMMT",
+   "company": "Summit Therapeutics",
+   "score": 4,
+   "counts": {
+    "analyst": 1,
+    "features": 0,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Lung-cancer data story initiated Outperform \u2014 a binary name the crowd keeps watching.",
+   "sources": [
+    {
+     "type": "analyst",
+     "outlet": "Evercore ISI",
+     "date": "2026-10-27",
+     "gist": "Initiated Outperform in the biotech basket review (via MarketBeat)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ],
+   "close": 27.49,
+   "close_basis": "TipRanks trending page, Oct 26"
+  },
+  {
+   "rank": 24,
+   "ticker": "AAPL",
+   "company": "Apple",
+   "score": 3,
+   "counts": {
+    "analyst": 0,
+    "features": 1,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "From AI laggard to AI winner as Apple Intelligence rolls out \u2014 the feature framing of the window.",
+   "sources": [
+    {
+     "type": "feature",
+     "outlet": "Motley Fool",
+     "date": "2026-10-16",
+     "gist": "Feature: Apple's deliberate AI strategy turns it from laggard to boom candidate."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page."
+    }
+   ]
+  },
+  {
+   "rank": 25,
+   "ticker": "GLW",
+   "company": "Corning",
+   "score": 3,
+   "counts": {
+    "analyst": 0,
+    "features": 1,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "AI data-center fiber demand turns a value name into a growth name.",
+   "sources": [
+    {
+     "type": "feature",
+     "outlet": "Zacks",
+     "date": "2026-10-27",
+     "gist": "'Bull of the Day' \u2014 AI-driven fiber demand and raised guidance; also on Zacks' Oct 15 value screen."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Top-15 most-viewed stock of the day."
+    }
+   ]
+  },
+  {
+   "rank": 26,
+   "ticker": "MRK",
+   "company": "Merck",
+   "score": 3,
+   "counts": {
+    "analyst": 0,
+    "features": 1,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "On analysts' highest-upside blue-chip list despite the Keytruda-cliff debate.",
+   "sources": [
+    {
+     "type": "feature",
+     "outlet": "Kiplinger",
+     "date": "2026-10-20",
+     "gist": "Blue chips with the highest analyst-consensus upside (November issue, in-window page date)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page."
+    }
+   ]
+  },
+  {
+   "rank": 27,
+   "ticker": "PFE",
+   "company": "Pfizer",
+   "score": 3,
+   "counts": {
+    "analyst": 0,
+    "features": 1,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Deep-value pharma \u2014 the value screen's top-ranked pick on price-to-sales.",
+   "sources": [
+    {
+     "type": "feature",
+     "outlet": "Zacks",
+     "date": "2026-10-15",
+     "gist": "Named a top-ranked value stock on the price-to-sales screen."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page."
+    }
+   ]
+  },
+  {
+   "rank": 28,
+   "ticker": "SOFI",
+   "company": "SoFi Technologies",
+   "score": 3,
+   "counts": {
+    "analyst": 0,
+    "features": 1,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Fintech compounder still reasonably valued after the run; the bank charter is the kicker.",
+   "sources": [
+    {
+     "type": "feature",
+     "outlet": "Seeking Alpha",
+     "date": "2026-10-22",
+     "gist": "Valuation still attractive after a big run, with the charter path ahead (via MSN)."
+    },
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "#2 most-viewed stock of the day, up ~14%."
+    }
+   ]
+  },
+  {
+   "rank": 29,
+   "ticker": "V",
+   "company": "Visa",
+   "score": 3,
+   "counts": {
+    "analyst": 0,
+    "features": 1,
+    "trending": 1,
+    "social": 0
+   },
+   "thesis": "Blue-chip compounder on analysts' highest-upside list.",
+   "sources": [
+    {
+     "type": "feature",
+     "outlet": "Kiplinger",
+     "date": "2026-10-20",
+     "gist": "Blue chips with the highest analyst-consensus upside (November issue, in-window page date)."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page."
+    }
+   ]
+  },
+  {
+   "rank": 30,
+   "ticker": "AVGO",
+   "company": "Broadcom",
+   "score": 2,
+   "counts": {
+    "analyst": 0,
+    "features": 0,
+    "trending": 2,
+    "social": 0
+   },
+   "thesis": "Attention only \u2014 top trending placement on two lists, but no dated analyst action or feature pitch was verified in the window.",
+   "attention_only": true,
+   "sources": [
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Top-5 most-viewed stock of the day."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  },
+  {
+   "rank": 31,
+   "ticker": "SPCX",
+   "company": "Space Exploration Technologies",
+   "score": 2,
+   "counts": {
+    "analyst": 0,
+    "features": 0,
+    "trending": 2,
+    "social": 0
+   },
+   "thesis": "Attention only \u2014 heavily watched on two trending lists; no in-window pitch verified, and our research verdict is SELL.",
+   "attention_only": true,
+   "sources": [
+    {
+     "type": "trending",
+     "outlet": "StockAnalysis",
+     "date": "2026-10-27",
+     "gist": "Top-5 most-viewed stock of the day."
+    },
+    {
+     "type": "trending",
+     "outlet": "TipRanks",
+     "date": "2026-10-27",
+     "gist": "Trending-by-analyst page \u2014 Strong Buy consensus."
+    }
+   ]
+  }
+ ]
+}
