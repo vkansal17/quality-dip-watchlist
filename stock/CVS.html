@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CVS — CVS Health · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Eight lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>CVS — CVS Health</h1>
+<div class="sub">
+· Rank #45 on today's list</div>
+<div><span class="price">$92.53</span>
+<span class="dn" style="font-size:17px">-1.01% today</span>
+<span class="muted"> · as of 2026-10-26 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-16.3%</div><div class="l">vs 52w high ($110.60)</div></div><div class="kpi"><div class="v ">55%</div><div class="l">of 52w range (low $70.08)</div></div><div class="kpi"><div class="v ">55</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+5.3%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+5.3%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+12.2%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">27.5%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">40.6</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-04</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+33%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">2.9%</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$763M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $110.60</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $70.08</text><polyline points="0.0,170.7 3.4,172.0 6.9,180.4 10.3,201.1 13.8,193.4 17.2,191.8 20.6,193.7 24.1,191.3 27.5,190.7 31.0,188.9 34.4,196.6 37.8,184.3 41.3,182.2 44.7,187.6 48.2,195.2 51.6,192.0 55.0,194.5 58.5,201.8 61.9,204.5 65.4,194.0 68.8,194.7 72.2,191.7 75.7,184.3 79.1,181.7 82.6,188.4 86.0,196.2 89.4,210.0 92.9,200.8 96.3,206.7 99.8,201.9 103.2,192.9 106.6,189.0 110.1,179.2 113.5,186.7 117.0,185.2 120.4,192.6 123.8,194.8 127.3,195.3 130.7,195.7 134.2,192.3 137.6,194.0 141.0,188.3 144.5,185.7 147.9,183.5 151.4,184.4 154.8,187.0 158.2,182.9 161.7,181.4 165.1,179.9 168.6,184.7 172.0,180.4 175.4,182.0 178.9,181.7 182.3,180.0 185.8,187.1 189.2,176.4 192.6,191.0 196.1,183.1 199.5,175.7 203.0,169.5 206.4,167.7 209.8,163.2 213.3,225.9 216.7,215.1 220.2,213.0 223.6,212.6 227.0,207.8 230.5,200.4 233.9,208.7 237.4,203.0 240.8,192.3 244.2,205.9 247.7,206.3 251.1,199.3 254.6,194.5 258.0,191.6 261.4,193.1 264.9,195.5 268.3,197.8 271.8,201.1 275.2,199.5 278.6,214.3 282.1,203.7 285.5,194.1 289.0,184.1 292.4,174.8 295.8,181.0 299.3,180.6 302.7,190.5 306.2,194.6 309.6,192.8 313.0,203.0 316.5,206.2 319.9,204.4 323.4,204.0 326.8,205.6 330.2,211.0 333.7,220.5 337.1,226.6 340.6,228.6 344.0,229.6 347.4,221.6 350.9,224.9 354.3,230.2 357.8,236.0 361.2,235.7 364.6,226.8 368.1,223.3 371.5,218.0 375.0,219.1 378.4,193.0 381.8,190.0 385.3,189.7 388.7,187.1 392.2,193.7 395.6,196.2 399.0,210.1 402.5,200.6 405.9,197.9 409.4,201.7 412.8,197.6 416.2,202.5 419.7,189.6 423.1,194.5 426.6,192.3 430.0,178.4 433.4,163.0 436.9,166.2 440.3,172.6 443.8,173.0 447.2,180.0 450.6,147.4 454.1,144.7 457.5,127.9 461.0,119.1 464.4,103.6 467.8,88.0 471.3,93.0 474.7,99.7 478.2,99.2 481.6,108.7 485.0,113.5 488.5,113.3 491.9,113.6 495.4,126.9 498.8,119.9 502.2,115.1 505.7,125.6 509.1,127.5 512.6,133.4 516.0,123.6 519.4,105.3 522.9,99.5 526.3,93.4 529.8,93.5 533.2,88.4 536.6,75.4 540.1,67.6 543.5,74.4 547.0,74.2 550.4,82.4 553.8,86.9 557.3,71.1 560.7,69.7 564.2,68.1 567.6,53.4 571.0,55.1 574.5,59.1 577.9,59.8 581.4,52.6 584.8,53.1 588.2,67.0 591.7,55.1 595.1,54.4 598.6,63.1 602.0,56.1 605.4,46.8 608.9,45.3 612.3,46.8 615.8,43.7 619.2,38.5 622.6,37.8 626.1,22.0 629.5,35.3 633.0,41.6 636.4,37.1 639.8,40.6 643.3,28.7 646.7,46.7 650.2,50.4 653.6,54.6 657.0,49.6 660.5,54.6 663.9,82.6 667.4,97.9 670.8,100.7 674.2,100.9 677.7,112.3 681.1,105.9 684.6,104.4 688.0,93.0 691.4,109.6 694.9,104.9 698.3,111.5 701.8,111.5 705.2,114.8 708.6,109.1 712.1,115.5 715.5,108.0 719.0,115.4 722.4,114.6 725.8,110.1 729.3,90.7 732.7,92.6 736.2,92.8 739.6,95.2 743.0,98.7 746.5,102.4 749.9,102.9 753.4,106.2 756.8,101.5 760.2,107.1 763.7,121.7 767.1,129.4 770.6,136.9 774.0,143.5 777.4,146.1 780.9,152.7 784.3,156.9 787.8,135.4 791.2,142.2 794.6,146.1 798.1,153.6 801.5,156.1 805.0,149.5 808.4,146.6 811.8,149.7 815.3,141.6 818.7,142.4 822.2,151.1 825.6,142.7 829.0,143.7 832.5,128.7 835.9,117.2 839.4,118.3 842.8,116.6 846.2,105.7 849.7,112.6 853.1,107.1 856.6,112.5 860.0,117.4" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 16% from its 52-week high of $110.60, trading at 55% of its 52-week range. The fall has stabilized — 20-day momentum is +5.3% rather than still accelerating down. RSI 55 says washed out rather than euphoric, and $763M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof D-</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip r" title="Growth">Grow D+</span></p><p>Piotroski F-score <b>6/9</b> · FCF yield <b>6.6%</b> · net debt/EBITDA <b>-1.2×</b> · avg EPS surprise (last 3) <b>+24.0%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 4 (now 6/9).</li><li>Profitability: gross margin compresses for two straight fiscal years.</li><li>Price structure: a weekly close below the 52-week low of $70.08 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Dip Top 50 #46</span></p><p>CVS's Aetna recovery is real: Q2 2026 adjusted EPS of $2.58 crushed the $1.87 consensus, the medical benefit ratio improved to 87.4% from 89.9%, and management raised FY26 adjusted EPS guidance to $7.90–8.10 (from $7.30–7.50) with revenue of at least $414B and operating cash flow of at least $11.5B. At $93.47 (~12x the raised EPS guide, −15.5% vs the 52-week high) valuation is undemanding. What holds it at HOLD is the 2027 overhang stack: Caremark 340B pressure and below-normal client retention, plus an Aetna Medicare Advantage Star Ratings drop (69% of members in 4+ star plans for 2027 vs 81% for 2026) that TD Cowen estimates as a ~$720M unmitigated 2028 headwind.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 earnings on Nov 4, 2026, and management's preliminary 2027 framing of adjusted EPS of at least $8.44 give dated checkpoints inside two quarters</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q2 2026 adj. EPS $2.58 vs $1.87 consensus, revenue $106.1B (+7.3%), MBR improved to 87.4% from 89.9%, FY26 EPS guidance raised twice in 2026 to $7.90–8.10 (Zacks/Simply Wall St)</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>~3.5x leverage and flagged 2027 headwinds: Caremark 340B pressure, retention below historical levels, and the MA Star Ratings drop implying a ~$720M unmitigated 2028 headwind (TD Cowen); ~$500M of Q2 upside also came from prior-year reserve development</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map area #7 (financials/insurers) is Mixed/High; managed-care evidence is improving (UNH and Cigna also raised 2026 outlooks after Q2) but the sector is still normalizing from the 2024–25 medical-cost shock</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip sb'>pass</span></td><td>$93.47 is −15.5% vs the $110.68 high and ~11.7x the $8.00 midpoint of raised FY26 adj. EPS guidance, with a ~3% dividend yield; consensus target ~$107–115 is crowd context only (Finnhub/MarketBeat)</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Second-half medical costs re-accelerate — full-year MBR guidance of ~89.75% already assumes H2 worsens from Q2's 87.4%</li><li>Caremark client losses and 340B pressure make 2027 earnings decline despite the 'at least $8.44' framing</li><li>PBM regulation or drug-pricing reform compresses Health Services economics</li></ul><p><b>What would change this verdict:</b> A Nov 4 print holding the guide with credible mitigation of the Stars/340B headwinds would lift risk to pass and clear BUY; an MBR blowout or guidance cut would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://WWW.ZACKS.COM/stock/news/2969956/cvs-q2-earnings-call-pairs-aetna-recovery-with-2027-pbm-risks' target='_blank' rel='noopener'>CVS Q2 Earnings Call Pairs Aetna Recovery With 2027 PBM Risks — Zacks</a> <span class='dom'>WWW.ZACKS.COM</span></li><li><a href='https://simplywall.st/community/narratives/us/healthcare/nyse-cvs/cvs-health/vfd5227r-aetnas-margin-recovery-is-real-and-the-market-is-still-pricing-the-old-insurance-scare' target='_blank' rel='noopener'>Aetna's Margin Recovery Is Real — and the Market Is Still Pricing the Old Insurance Scare — Simply Wall St</a> <span class='dom'>simplywall.st</span></li><li><a href='https://tickeron.com/ticker/CVS/' target='_blank' rel='noopener'>CVS Health (CVS) Stock Analysis: Aetna Margin Recovery Fuels a Rebound Off September Lows — Tickeron</a> <span class='dom'>tickeron.com</span></li><li><a href='https://www.ad-hoc-news.de/boerse/corporate-news/cvs-health-stock-rbc-set-a-usd-113-00-target-for-cvs-health-stock/70375627' target='_blank' rel='noopener'>CVS Health stock: RBC set a USD 113.00 target for CVS Health stock</a> <span class='dom'>ad-hoc-news.de</span></li><li><a href='https://finnhub.io/?q=%22CVS%22' target='_blank' rel='noopener'>CVS Health Corp (CVS): Financial Market Data — price $93.47 at Oct 23, 2026 close</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/CVS" target="_blank" rel="noopener">Yahoo Finance — CVS</a> ·
+<a href="https://stockanalysis.com/stocks/cvs/" target="_blank" rel="noopener">StockAnalysis — CVS</a> ·
+<a href="https://www.google.com/finance/quote/CVS:NASDAQ" target="_blank" rel="noopener">Google Finance — CVS</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>
