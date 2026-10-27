@@ -406,5 +406,229 @@
   "last_buy": "2026-05-05",
   "sellers": 0,
   "sell_val": 0
+ },
+ "ADMA": {
+  "asof": "2026-10-27",
+  "buyers": 2,
+  "buy_val": 468294,
+  "last_buy": "2026-05-27",
+  "sellers": 2,
+  "sell_val": 1565430
+ },
+ "AIR": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 7,
+  "sell_val": 27121419
+ },
+ "ASTE": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 1,
+  "sell_val": 59543
+ },
+ "BOOT": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 4,
+  "sell_val": 1698923
+ },
+ "BSX": {
+  "asof": "2026-10-27",
+  "buyers": 5,
+  "buy_val": 10040038,
+  "last_buy": "2026-08-25",
+  "sellers": 4,
+  "sell_val": 24348798
+ },
+ "CENX": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 9,
+  "sell_val": 625300203
+ },
+ "CRH": {
+  "asof": "2026-10-27",
+  "buyers": 2,
+  "buy_val": 601285,
+  "last_buy": "2026-03-12",
+  "sellers": 1,
+  "sell_val": 155832
+ },
+ "CRUS": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 7,
+  "sell_val": 13614973
+ },
+ "EPAM": {
+  "asof": "2026-10-27",
+  "buyers": 7,
+  "buy_val": 97499,
+  "last_buy": "2026-04-30",
+  "sellers": 3,
+  "sell_val": 1597071
+ },
+ "EYE": {
+  "asof": "2026-10-27",
+  "buyers": 1,
+  "buy_val": 776000,
+  "last_buy": "2026-06-05",
+  "sellers": 2,
+  "sell_val": 1274117
+ },
+ "HII": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 3,
+  "sell_val": 5606116
+ },
+ "HL": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 5,
+  "sell_val": 9699300
+ },
+ "HLI": {
+  "asof": "2026-10-27",
+  "buyers": 1,
+  "buy_val": 500570,
+  "last_buy": "2026-08-03",
+  "sellers": 3,
+  "sell_val": 2094614
+ },
+ "IBP": {
+  "asof": "2026-10-27",
+  "buyers": 4,
+  "buy_val": 1042804,
+  "last_buy": "2026-06-11",
+  "sellers": 5,
+  "sell_val": 128688609
+ },
+ "ITRI": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 8,
+  "sell_val": 10811729
+ },
+ "MZTI": {
+  "asof": "2026-10-27",
+  "buyers": 1,
+  "buy_val": 98109,
+  "last_buy": "2026-06-10",
+  "sellers": 1,
+  "sell_val": 233980
+ },
+ "NKE": {
+  "asof": "2026-10-27",
+  "buyers": 5,
+  "buy_val": 8186752,
+  "last_buy": "2026-04-13",
+  "sellers": 6,
+  "sell_val": 7717648
+ },
+ "NXT": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 9,
+  "sell_val": 52576787
+ },
+ "OLED": {
+  "asof": "2026-10-27",
+  "buyers": 3,
+  "buy_val": 1465644,
+  "last_buy": "2026-05-11",
+  "sellers": 1,
+  "sell_val": 422092
+ },
+ "PNR": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 4,
+  "sell_val": 2875114
+ },
+ "PRIM": {
+  "asof": "2026-10-27",
+  "buyers": 1,
+  "buy_val": 6721,
+  "last_buy": "2026-10-15",
+  "sellers": 5,
+  "sell_val": 9668683
+ },
+ "SMCI": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 4,
+  "sell_val": 27914178
+ },
+ "TSCO": {
+  "asof": "2026-10-27",
+  "buyers": 3,
+  "buy_val": 652394,
+  "last_buy": "2026-08-04",
+  "sellers": 5,
+  "sell_val": 11959625
+ },
+ "TTD": {
+  "asof": "2026-10-27",
+  "buyers": 1,
+  "buy_val": 148101266,
+  "last_buy": "2026-03-04",
+  "sellers": 2,
+  "sell_val": 5789929
+ },
+ "UTI": {
+  "asof": "2026-10-27",
+  "buyers": 2,
+  "buy_val": 31148147,
+  "last_buy": "2026-09-28",
+  "sellers": 11,
+  "sell_val": 135134946
+ },
+ "VRRM": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 0,
+  "sell_val": 0
+ },
+ "WSC": {
+  "asof": "2026-10-27",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 1,
+  "sell_val": 4205566
+ },
+ "ZTS": {
+  "asof": "2026-10-27",
+  "buyers": 3,
+  "buy_val": 886367,
+  "last_buy": "2026-05-13",
+  "sellers": 0,
+  "sell_val": 0
  }
 }

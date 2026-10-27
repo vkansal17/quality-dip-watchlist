@@ -2722,9 +2722,12 @@ def build_screener_details(meta, top, insiders, verdicts, tverdicts,
 
 
 def load_skin():
-    """The Skin in the Game basket (data/skin_in_game.json) — a curated,
-    dated research store like the verdict stores. The pipeline LOADS it;
-    the daily refresh never re-scores or re-researches it."""
+    """The Skin in the Game RESEARCH OVERLAY (data/skin_in_game.json) — a
+    curated, dated research store like the verdict stores. The pipeline
+    LOADS it and never re-scores or re-researches it. Tab membership no
+    longer comes from this store: since 2026-10-26 the tab is a daily
+    mechanical re-screen (skin_prepass + rank_skin), and the store only
+    supplies per-ticker researched scorecards for the panel layer."""
     p = os.path.join(DATA, "skin_in_game.json")
     if os.path.exists(p):
         try:
@@ -2761,95 +2764,236 @@ def _skin_verdict(t, verdicts, tverdicts):
     return None
 
 
+def skin_prepass(results, pro_recs):
+    """Skin in the Game gates 1-5 — everything except the insider gate,
+    which needs the Form 4 cache: fallen at least 35% off the 52-week
+    high, EV/EBITDA in (0, 15] and strictly compressing vs a year ago,
+    net debt/EBITDA <= 3, FCF >= 0, price >= $3 and ADV >= $5M. Uses the
+    same EDGAR-basis records as the Fallen & Cheap screen, so the two
+    tabs agree on every number. Returns (rows, funnel) where the funnel
+    counts survivors after each stage."""
+    rows = []
+    fun = {"pool": 0, "fallen": 0, "multiple": 0, "leverage": 0, "fcf": 0}
+    for t, r in pro_recs.items():
+        k = results.get(t)
+        if not k:
+            continue
+        fun["pool"] += 1
+        off = k["off_high_pct"]
+        evx, evx1 = r.get("ev_ebitda"), r.get("ev_ebitda_1y")
+        nd = r.get("nd_ebitda")
+        if off > -35:
+            continue
+        fun["fallen"] += 1
+        if not evx or evx > 15 or not evx1 or evx >= evx1:
+            continue
+        fun["multiple"] += 1
+        if nd is None or nd > 3:
+            continue
+        fun["leverage"] += 1
+        if (r.get("fcf") is None or r["fcf"] < 0
+                or k["last"] < 3 or k.get("adv_m", 0) < 5):
+            continue
+        fun["fcf"] += 1
+        rows.append({"ticker": t, "ev_ebitda": evx, "ev_ebitda_1y": evx1,
+                     "ev_comp": r.get("ev_comp"), "nd_ebitda": nd,
+                     "fcf": r["fcf"], "grade": r.get("grade"),
+                     "off_high_pct": off, "last": k["last"]})
+    return rows, fun
+
+
+def rank_skin(pre, insiders):
+    """Gate 6 — the signature insider gate: at least 2 distinct
+    open-market Form 4 buyers in the trailing 12 months, from the EDGAR
+    insider cache. A name with no readable cache record fails the gate
+    for that run (unverified never passes). Survivors are ranked by
+    insider conviction — distinct buyers, then dollars bought — then by
+    cheapest EV/EBITDA."""
+    out = []
+    for r in pre:
+        ins = insiders.get(r["ticker"]) or {}
+        if ins.get("buyers", 0) < 2:
+            continue
+        out.append({**r, "buyers": ins.get("buyers", 0),
+                    "buy_val": ins.get("buy_val", 0)})
+    out.sort(key=lambda r: (-r["buyers"], -r["buy_val"],
+                            r["ev_ebitda"], r["ticker"]))
+    for i, r in enumerate(out, 1):
+        r["rank"] = i
+    return out
+
+
 def skin_section(t, m, skin_meta):
+    """The researched overlay as a stock-page section: the six-criterion
+    Nike-test scorecard from the dated research edition. Display only —
+    it never gates the tab's daily mechanical membership."""
     if not m:
         return ""
     hon = (f"<p><span class='chip na'>HONORARY</span> {m.get('honorary_note', '')}</p>"
            if m.get("honorary") else "")
-    return (f"<section><h2>🤝 Skin in the Game</h2>"
-            f"<p>Basket rank #{m.get('rank', '')} · researched "
-            f"{skin_meta.get('researched', '')} — one of ten fallen famous brands "
-            f"scored against the Nike-justification template: famous durable brand, "
-            f"fallen hard to near-decade-cheapest multiples, a company-specific "
-            f"trough, a balance sheet that clearly survives, insiders buying the dip "
-            f"in a verified Form 4 cluster, and a turnaround underway.</p>{hon}"
+    tmpl = ("<p><b>The template name.</b> The six criteria were "
+            "reverse-engineered from the case for Nike itself; Nike appears "
+            "on this tab only when it passes the same daily mechanical "
+            "gates as every other name.</p>" if m.get("template") else "")
+    verd = ""
+    if m.get("verdict"):
+        vcls = {"BUY": "sb", "HOLD": "h", "SELL": "r"}.get(m["verdict"], "na")
+        verd = (f"<p><span class='chip {vcls}' style='font-size:13px'>"
+                f"{m['verdict']}</span> <span class='muted'>our standing "
+                f"research verdict · {m.get('verdict_date', '')}</span></p>"
+                f"<p>{m.get('verdict_note', '')}</p>")
+    return (f"<section><h2>🤝 Skin in the Game — researched scorecard</h2>"
+            f"<p>Researched {skin_meta.get('researched', '')} — one of the "
+            f"names scored by hand against the Nike-justification template: "
+            f"famous durable brand, fallen hard to near-decade-cheapest "
+            f"multiples, a company-specific trough, a balance sheet that "
+            f"clearly survives, insiders buying the dip in a verified Form 4 "
+            f"cluster, and a turnaround underway.</p>{tmpl}{verd}{hon}"
             f"<div class='tablewrap'><table><thead><tr><th>Criterion</th><th>Score</th>"
             f"<th>Evidence</th></tr></thead><tbody>{skin_scorecard_rows(m)}</tbody>"
             f"</table></div>"
             f"<p style='margin-top:10px'><b>What's broken:</b> "
             f"{m.get('whats_broken', '')}</p>"
-            f"<p><b>Insider detail (SEC Form 4, trailing 12 months at the edition "
-            f"date):</b> {m.get('insider_summary', '')}</p>"
+            f"<p><b>Insider detail (SEC Form 4, trailing 12 months at the "
+            f"edition date):</b> {m.get('insider_summary', '')}</p>"
             f"<p><b>Turnaround &amp; next test:</b> "
             f"{m.get('turnaround_test', '')}</p>"
             f"<p class='muted'>Scores are the dated research edition "
-            f"({skin_meta.get('edition', '')}); the daily refresh updates prices "
-            f"only.</p></section>")
+            f"({skin_meta.get('edition', '')}); the tab's membership is set "
+            f"by the daily mechanical screen, not by this overlay.</p></section>")
 
 
-def build_skin_page(meta, skin, verdicts, tverdicts, kpi_ix=None, skin_pages=None):
+def skin_screen_section(t, row, ins):
+    """The mechanical-qualifier section for a stock page (mirrors the
+    Fallen & Cheap screener_section)."""
+    if not row:
+        return ""
+    ins_line = ""
+    if ins:
+        ins_line = (f"<p>Insider record (SEC Form 4, last 12 months): "
+                    f"<b>{ins.get('buyers', 0)} open-market buyer(s), "
+                    f"${ins.get('buy_val', 0):,}</b>"
+                    + (f", most recent {ins.get('last_buy')}" if ins.get("last_buy") else "")
+                    + f"; {ins.get('sellers', 0)} seller(s), ${ins.get('sell_val', 0):,}.</p>")
+    return (f"<section><h2>🤝 Skin in the Game — daily screen</h2>"
+            f"<p>Qualifies at #{row['rank']} on the daily re-screen: "
+            f"<b>{abs(row['off_high_pct']):.1f}% below its 52-week high</b>, "
+            f"EV/EBITDA <b>{row['ev_ebitda']:.1f}×</b> vs {row['ev_ebitda_1y']:.1f}× "
+            f"a year ago, net debt/EBITDA {row['nd_ebitda']:.1f}×, free cash "
+            f"flow ${row['fcf'] / 1e6:,.0f}M — and the signature gate: "
+            f"<b>{row.get('buyers', 0)} distinct open-market insider buyers, "
+            f"${row.get('buy_val', 0):,}</b> bought in the last 12 months.</p>"
+            f"{ins_line}"
+            f"<p class='muted'>Membership is mechanical and re-screened "
+            f"daily (fallen + cheap, compressing multiple + survivability + "
+            f"a verified insider cluster). Brand and turnaround judgments "
+            f"are not part of the screen — where a hand-researched scorecard "
+            f"exists it appears below as a separate, dated layer.</p></section>")
+
+
+def build_skin_page(meta, rows, skin, insiders, verdicts, tverdicts,
+                    kpi_ix=None, skin_pages=None, n_pre=0):
     kpi_ix = kpi_ix or {}
     skin_pages = skin_pages or set()
     smeta = skin.get("meta") or {}
-    members = sorted(skin.get("members") or [], key=lambda m: m.get("rank", 99))
-    n_cluster = sum(1 for m in members
-                    if (m.get("criteria") or {}).get("insider") == "pass")
-    n_hon = sum(1 for m in members if m.get("honorary"))
+    overlay = {m["ticker"]: m for m in skin.get("members") or []}
+    total_buyers = sum(r.get("buyers", 0) for r in rows)
     trs = []
-    for m in members:
-        t = m["ticker"]
+    for r in rows:
+        t = r["ticker"]
+        ov = overlay.get(t)
         k = kpi_ix.get(t, {})
-        last = k.get("last", m.get("price_oct26", 0))
-        off = k.get("off_high_pct", m.get("pct_off_high", 0))
+        last = k.get("last", r["last"])
+        off = k.get("off_high_pct", r["off_high_pct"])
         rp = k.get("range_pos")
         range_html = (f"<span class='range'><span class='fill' style='width:{rp}%'></span></span> "
                       if rp is not None else "")
         day = k.get("day_pct")
         day_html = (f"<span class='{'up' if day >= 0 else 'dn'}'>{day:+.2f}%</span>"
                     if day is not None else '<span class="muted">—</span>')
-        crit = m.get("criteria") or {}
-        ins_cls = {"pass": "sb", "mixed": "h", "fail": "r"}.get(
-            crit.get("insider", ""), "na")
-        ins_chip = (f"<span class='chip {ins_cls}' title='Open-market insider "
-                    f"buying, trailing 12 months at the research date "
-                    f"(SEC Form 4)'>{m.get('insider_chip', '')}</span>")
-        hon = (" <span class='chip na' title='Honorary member — in the basket "
-               "on the other criteria despite failing one outright'>HONORARY</span>"
-               if m.get("honorary") else "")
+        chips = _verdict_chip(t, verdicts, tverdicts)
+        if ov and ov.get("verdict") and not chips:
+            vcls = {"BUY": "sb", "HOLD": "h", "SELL": "r"}.get(ov["verdict"], "na")
+            chips += (f" <span class='chip {vcls}' title='Researched verdict "
+                      f"({ov.get('verdict_date', '')}) — see the panel'>"
+                      f"{ov['verdict']}</span>")
+        if ov and ov.get("template"):
+            chips += (" <span class='chip na' title='The template name — "
+                      "the six criteria were reverse-engineered from this "
+                      "stock'>TEMPLATE</span>")
+        if ov and ov.get("honorary"):
+            chips += " <span class='chip na'>HONORARY</span>"
         sym = (f"<a class='sym' href='stock/{t}.html'>{t}</a>" if t in skin_pages
                else f"<span class='sym'>{t}</span>")
+        ins = insiders.get(t)
+        ins_det = ""
+        if ins:
+            ins_det = (f"<h3>Insider record — SEC Form 4, last 12 months</h3>"
+                       f"<p><b>{ins.get('buyers', 0)} open-market buyer(s), "
+                       f"${ins.get('buy_val', 0):,}</b>"
+                       + (f", most recent {ins.get('last_buy')}"
+                          if ins.get("last_buy") else "")
+                       + f"; {ins.get('sellers', 0)} seller(s), "
+                       f"${ins.get('sell_val', 0):,}.</p>")
+        why = (f"{abs(off):.0f}% off its 52-week high, EV/EBITDA compressed "
+               f"from {r['ev_ebitda_1y']:.1f}× to {r['ev_ebitda']:.1f}× in a "
+               f"year, net debt/EBITDA {r['nd_ebitda']:.1f}×, FCF "
+               f"${r['fcf'] / 1e6:,.0f}M — and {r.get('buyers', 0)} distinct "
+               f"insiders bought ${r.get('buy_val', 0):,} of it in the last "
+               f"12 months.")
         v = _skin_verdict(t, verdicts, tverdicts)
-        vline = ""
+        vblock = ""
         if v:
-            vcls = {"BUY": "sb", "HOLD": "h", "SELL": "r"}.get(v.get("flag", ""), "na")
-            vline = (f"<p><span class='chip {vcls}' style='font-size:13px'>"
-                     f"{v.get('flag', '')}</span>{audit_badge(t)} "
-                     f"<span class='muted'>our standing research verdict · "
-                     f"{v.get('date', '')}</span></p>")
-        hon_det = (f"<p><span class='chip na'>HONORARY</span> "
-                   f"{m.get('honorary_note', '')}</p>" if m.get("honorary") else "")
+            vblock = verdict_detail_html(
+                v, t, page=t if t in skin_pages else None)
+        elif ov and ov.get("verdict"):
+            vcls = {"BUY": "sb", "HOLD": "h", "SELL": "r"}.get(ov["verdict"], "na")
+            vblock = (f"<p><span class='chip {vcls}' style='font-size:13px'>"
+                      f"{ov['verdict']}</span> <span class='muted'>our "
+                      f"standing research verdict · "
+                      f"{ov.get('verdict_date', '')}</span></p>"
+                      f"<p>{ov.get('verdict_note', '')}</p>")
+        oblock = ""
+        if ov:
+            hon_det = (f"<p><span class='chip na'>HONORARY</span> "
+                       f"{ov.get('honorary_note', '')}</p>"
+                       if ov.get("honorary") else "")
+            tmpl_det = ("<p><b>The template name.</b> The six criteria were "
+                        "reverse-engineered from the case for Nike itself; it "
+                        "is listed only because it passes the same daily "
+                        "gates as every other member.</p>"
+                        if ov.get("template") else "")
+            oblock = (f"<h3>Researched {smeta.get('researched', '')} — "
+                      f"the Nike test</h3>"
+                      + tmpl_det + hon_det
+                      + f"<table><tbody>{skin_scorecard_rows(ov)}</tbody></table>"
+                      + f"<h3>Insider detail — at the research date</h3>"
+                      f"<p>{ov.get('insider_summary', '')}</p>"
+                      f"<h3>What's broken</h3><p>{ov.get('whats_broken', '')}</p>"
+                      f"<h3>Turnaround &amp; next test</h3>"
+                      f"<p>{ov.get('turnaround_test', '')}</p>")
         det = (pkpi_grid([
             (f"${last:,.2f}", "Price"), (day_html, "Day"),
             (f"{off:.1f}%", "vs 52w high"),
-            (m.get("test_label", "—"), "Next test")])
-            + f"<p class='muted'>{m.get('metrics', '')}</p>"
-            + vline + hon_det
-            + f"<h3>The Nike test — six criteria</h3>"
-            f"<table><tbody>{skin_scorecard_rows(m)}</tbody></table>"
-            f"<h3>What's broken</h3><p>{m.get('whats_broken', '')}</p>"
-            f"<h3>Insider detail — SEC Form 4</h3>"
-            f"<p>{m.get('insider_summary', '')}</p>"
-            f"<h3>Turnaround &amp; next test</h3>"
-            f"<p>{m.get('turnaround_test', '')}</p>"
+            (f"{r['ev_ebitda']:.1f}×", "EV/EBITDA now"),
+            (f"{r['ev_ebitda_1y']:.1f}×", "EV/EBITDA 1y ago"),
+            (f"{r['nd_ebitda']:.1f}×", "Net debt/EBITDA"),
+            (f"${r['fcf'] / 1e6:,.0f}M", "Free cash flow")])
+            + f"<h3>Why it's here</h3><p>{why}</p>{ins_det}"
+            + vblock + oblock
             + (f"<a class='pfull' href='stock/{t}.html'>Full stock page →</a>"
-               if t in skin_pages else ""))
+               if t in skin_pages and not v else ""))
+        test_label = ((ov.get("test_label") if ov else None)
+                      or k.get("earnings") or "—")
         trs.append(
-            f"<tr data-q='{t} {m.get('company', '')}'><td>{m.get('rank', '')}</td>"
-            f"<td>{sym}<span class='nm'>{m.get('company', '')}</span>{hon}</td>"
+            f"<tr data-q='{t} {clean_company_name(UNIVERSE_NAME.get(t, t))}'><td>{r['rank']}</td>"
+            f"<td>{sym}<span class='nm'>{clean_company_name(UNIVERSE_NAME.get(t, t))}</span>"
+            f"{chips}</td>"
             f"<td class='num'>${last:,.2f}</td>"
             f"<td>{range_html}<span class='dn'>{off:.1f}%</span></td>"
-            f"<td>{ins_chip}</td>"
-            f"<td class='num'>{m.get('test_label', '—')}</td>"
+            f"<td class='num'><b>{r['ev_ebitda']:.1f}×</b></td>"
+            f"<td>{_insider_html(ins)}</td>"
+            f"<td class='num'>{test_label}</td>"
             f"<td class='detail'>{det}</td></tr>")
     html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -2858,63 +3002,72 @@ def build_skin_page(meta, skin, verdicts, tverdicts, kpi_ix=None, skin_pages=Non
 {TABS_SKIN}
 <main class="main">
 <h1>🤝 Skin in the Game</h1>
-<div class="sub">Ten fallen famous brands scored against the justification that would make
-Nike a buy: a durable brand, a fall to near-decade-cheapest multiples, a company-specific
-trough rather than a solvency story, a balance sheet that clearly survives, insiders buying
-the dip, and a turnaround underway · researched {smeta.get('researched', '')}, prices as of
-{meta['asof']} close. <b>Select any row</b> — its six-criterion scorecard opens in the panel.
-<b>Nike is the template, not a member:</b> on our research NKE itself fails the business-quality
-test, so it is excluded from its own basket.</div>
+<div class="sub">A daily mechanical re-screen for the Nike pattern — fallen hard, cheap on a
+compressing multiple, a balance sheet that survives, and insiders buying the dip with their
+own money · prices as of {meta['asof']} close. <b>Select any row</b> — its evidence opens in
+the panel. Where a member has been hand-researched, its six-criterion Nike-test scorecard
+appears in the panel under the research date; brand and turnaround judgments live only in
+that research layer and never gate membership.</div>
 <div class="cards">
-  <div class="card"><div class="n">{len(members)}</div><div class="l">Basket members</div></div>
-  <div class="card"><div class="n">{n_cluster}</div><div class="l">With a full insider buying cluster</div></div>
-  <div class="card"><div class="n">{n_hon}</div><div class="l">Honorary members</div></div>
-  <div class="card"><div class="n">{smeta.get('edition', '')}</div><div class="l">Research edition</div></div>
+  <div class="card"><div class="n">{len(rows)}</div><div class="l">Qualifiers shown (Top 20)</div></div>
+  <div class="card"><div class="n">{total_buyers}</div><div class="l">Distinct insider buyers across the list (12mo)</div></div>
+  <div class="card"><div class="n">{n_pre}</div><div class="l">Passed the price &amp; fundamental gates</div></div>
+  <div class="card"><div class="n">{meta['asof']}</div><div class="l">Prices as of</div></div>
 </div>
-<p class="sub">The six criteria: <b>Brand</b> · <b>Fallen</b> (−35%+ off the high, near
-decade-cheapest trailing multiples, the multiple compressing) · <b>Trough</b> (company-specific
-problems, not solvency) · <b>Balance sheet</b> (survivable, investment-grade quality) ·
-<b>Insider buying</b> — the signature criterion: a verified SEC Form 4 open-market buying
-cluster · <b>Turnaround</b> (self-help underway, with a dated next test). Honorary members
-carry the basket on the other criteria while failing one outright — the failing criterion is
-named on their scorecard.</p>
+<p class="sub">The gates, applied to the same 1,654-name universe and re-run every morning:
+<b>at least 35% below the 52-week high</b> · <b>EV/EBITDA ≤ 15× and lower than a year ago</b>
+(SEC EDGAR basis, the same figures as the Fallen &amp; Cheap tab) · <b>net debt/EBITDA ≤ 3×</b> ·
+<b>positive free cash flow</b> · price ≥ $3, ADV ≥ $5M · and the hard gate — <b>an insider
+buying cluster: at least 2 distinct open-market buyers in SEC Form 4 filings over the last
+12 months</b>. Ranking is insider conviction first (distinct buyers, then dollars bought),
+then cheapest multiple. Membership changes as the numbers do: a researched name that stops
+qualifying leaves the tab, and a new qualifier enters without waiting for a research pass.</p>
 <div class="controls"><input id="q" type="text" placeholder="Search symbol or company…"></div>
 <div class="master">
 <div class="tablewrap"><table id="t" class="mlist"><thead><tr><th>#</th><th>Stock</th>
-<th class="num">Price</th><th>vs 52w high</th><th>Insider buying (12mo)</th>
-<th class="num">Next test</th></tr></thead>
+<th class="num">Price</th><th>vs 52w high</th><th class="num">EV/EBITDA</th>
+<th>Insider buying (12mo)</th><th class="num">Next test</th></tr></thead>
 <tbody>{chr(10).join(trs)}</tbody></table></div>
 {panel_html()}
 </div>
-<p class="foot">Method: a curated research basket, scored by hand against the six criteria
-from public sources — SEC Form 4 filings for every insider figure (trailing 12 months at the
-edition date), company filings and earnings reports for the rest. The scorecards are the dated
-research edition ({smeta.get('edition', '')}); the daily refresh updates prices and distance
-from the 52-week high only and never re-scores a member. No stock fully replicates Nike —
-across roughly 25 candidates checked, the insider-cluster criterion is what eliminates almost
-everything. Structured research output, not investment advice or a trade instruction.</p>
+<p class="foot">Method and limits: EV/EBITDA uses EDGAR annual filings (operating income +
+D&amp;A as the EBITDA proxy, rebuilt from net income + interest + tax + D&amp;A where
+operating income is not tagged) — a consistent basis for the now-vs-year-ago comparison, not
+identical to vendor trailing-twelve-month figures. Insider records come from each company's
+own Form 4 filings, aggregated in a weekly cache (data/insider_cache.json); a name whose
+filings cannot be read fails the insider gate for that run rather than passing unverified.
+The screen cannot see brand strength, guidance quality or whether a turnaround is real —
+those judgments exist only in the dated research overlay ({smeta.get('edition', '')}) shown
+in the panels where present, and the overlay never admits or removes a member. Micro-caps
+outside the universe (top-800 by volume ∪ S&amp;P 1000) cannot appear here at all. Structured
+research output, not investment advice or a trade instruction.</p>
 {glossary_html()}
 </main></div>
 {PANEL_JS}</body></html>"""
     with open(os.path.join(ROOT, "skin.html"), "w") as fh:
         fh.write(html)
-    return members
+    return rows
 
 
-def build_skin_details(meta, skin, verdicts, tverdicts, results, pro_recs, earn):
-    """Detail pages for Skin in the Game members covered by no other list
-    builder."""
+def build_skin_details(meta, rows, skin, insiders, verdicts, tverdicts,
+                       results, pro_recs, earn):
+    """Detail pages for Skin in the Game qualifiers covered by no other
+    list builder."""
     fortune = json.load(open(os.path.join(DATA, "fortune500.json")))
     asof = meta["asof"]
     smeta = skin.get("meta") or {}
-    for m in skin.get("members") or []:
-        t = m["ticker"]
+    overlay = {m["ticker"]: m for m in skin.get("members") or []}
+    for r in rows:
+        t = r["ticker"]
         if os.path.exists(os.path.join(ROOT, "stock", f"{t}.html")):
             continue
         k = results.get(t)
         if not k:
             continue
-        secs = [skin_section(t, m, smeta)]
+        secs = [skin_screen_section(t, r, insiders.get(t))]
+        ov = overlay.get(t)
+        if ov:
+            secs.append(skin_section(t, ov, smeta))
         prec = pro_recs.get(t)
         psec = pro_section(t, prec, k, None)
         if psec:
@@ -2938,7 +3091,7 @@ def build_skin_details(meta, skin, verdicts, tverdicts, results, pro_recs, earn)
 <p class="crumb"><a href="../skin.html">← Back to Skin in the Game</a></p>
 <h1>{t} — {clean_company_name(UNIVERSE_NAME.get(t, t))}</h1>
 <div class="sub">{INDUSTRY.get(t, '')}{' · Fortune 500 #' + str(fortune[t]) if fortune.get(t) else ''}
-· Skin in the Game basket</div>
+· Skin in the Game — daily screen #{r['rank']}</div>
 <div><span class="price">${k['last']:,.2f}</span>
 <span class="{'up' if k['day_pct'] >= 0 else 'dn'}" style="font-size:17px">{k['day_pct']:+.2f}% today</span>
 <span class="muted"> · as of {asof} close</span></div>
@@ -3130,25 +3283,36 @@ def main():
           f"top 5: {', '.join(r['ticker'] for r in ranked_holds[:5])}")
     scr_rows = rank_screener(results, pro_recs)
     scr_top = scr_rows[:50]
-    insiders = fetch_insider_clusters([r["ticker"] for r in scr_top])
+    skin_pre, skin_fun = skin_prepass(results, pro_recs)
+    # The insider cache now serves two gates: the screener's Top 50
+    # finalists (badge) and every Skin in the Game gate 1-5 passer
+    # (hard gate 6), so populate it for the union.
+    insiders = fetch_insider_clusters(
+        sorted({r["ticker"] for r in scr_top}
+               | {r["ticker"] for r in skin_pre}))
     build_screener_page(meta, scr_rows, insiders, verdicts, tverdicts, kpi_ix)
     build_screener_details(meta, scr_top, insiders, verdicts, tverdicts,
                            results, pro_recs, earn)
     print(f"SCREENER: {len(scr_rows)} passed gates; top 5: "
           f"{', '.join(r['ticker'] for r in scr_top[:5])}")
     skin = load_skin()
-    skin_members = skin.get("members") or []
-    skin_pages = {m["ticker"] for m in skin_members
-                  if m["ticker"] in results
+    skin_all = rank_skin(skin_pre, insiders)
+    skin_rows = skin_all[:20]
+    print(f"SKIN FUNNEL: pool {skin_fun['pool']} -> fallen {skin_fun['fallen']} "
+          f"-> multiple {skin_fun['multiple']} -> leverage {skin_fun['leverage']} "
+          f"-> fcf/price {skin_fun['fcf']} -> insider-gate {len(skin_all)}")
+    skin_pages = {r["ticker"] for r in skin_rows
+                  if r["ticker"] in results
                   or os.path.exists(os.path.join(
-                      ROOT, "stock", f"{m['ticker']}.html"))}
-    build_skin_page(meta, skin, verdicts, tverdicts, kpi_ix, skin_pages)
-    build_skin_details(meta, skin, verdicts, tverdicts,
+                      ROOT, "stock", f"{r['ticker']}.html"))}
+    build_skin_page(meta, skin_rows, skin, insiders, verdicts, tverdicts,
+                    kpi_ix, skin_pages, n_pre=skin_fun["fcf"])
+    build_skin_details(meta, skin_rows, skin, insiders, verdicts, tverdicts,
                        results, pro_recs, earn)
-    print(f"SKIN: {len(skin_members)} members on skin.html; "
-          f"{sum(1 for m in skin_members if (m.get('criteria') or {}).get('insider') == 'pass')} "
-          f"with full insider clusters; edition "
-          f"{(skin.get('meta') or {}).get('edition', '')}")
+    _mem = ", ".join(r["ticker"] for r in skin_rows)
+    _extra = (f" (+{len(skin_all) - len(skin_rows)} more below the Top 20 cap)"
+              if len(skin_all) > len(skin_rows) else "")
+    print(f"SKIN: {len(skin_all)} qualifiers on skin.html; members: {_mem}{_extra}")
 
     new_set = {r["ticker"] for r in rows}
     old_set = set(prev_ranks)
