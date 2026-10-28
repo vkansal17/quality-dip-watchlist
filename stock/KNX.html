@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KNX — Knight-Swift Transportation Holdings · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Nine lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>KNX — Knight-Swift Transportation Holdings</h1>
+<div class="sub">
+· Rank #43 on today's list</div>
+<div><span class="price">$63.02</span>
+<span class="up" style="font-size:17px">+4.29% today</span>
+<span class="muted"> · as of 2026-10-27 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-23.6%</div><div class="l">vs 52w high ($82.45)</div></div><div class="kpi"><div class="v ">52%</div><div class="l">of 52w range (low $41.68)</div></div><div class="kpi"><div class="v ">45</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-1.8%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-2.5%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+44.0%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">30.5%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">—</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-0%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">—</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$227M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $82.45</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $41.68</text><polyline points="0.0,225.1 3.4,221.3 6.9,226.3 10.3,217.9 13.8,224.5 17.2,219.7 20.6,220.8 24.1,222.0 27.5,211.6 31.0,214.3 34.4,222.0 37.8,219.6 41.3,224.2 44.7,229.2 48.2,235.1 51.6,234.7 55.0,235.7 58.5,236.0 61.9,222.9 65.4,221.7 68.8,216.3 72.2,214.4 75.7,214.4 79.1,206.3 82.6,198.4 86.0,188.5 89.4,187.4 92.9,185.5 96.3,187.0 99.8,193.5 103.2,184.4 106.6,179.3 110.1,175.4 113.5,175.5 117.0,174.2 120.4,178.4 123.8,178.7 127.3,179.9 130.7,174.2 134.2,173.4 137.6,173.6 141.0,175.1 144.5,175.2 147.9,178.7 151.4,180.4 154.8,180.6 158.2,171.1 161.7,165.9 165.1,165.3 168.6,156.3 172.0,154.6 175.4,156.9 178.9,155.1 182.3,154.7 185.8,152.9 189.2,157.4 192.6,165.7 196.1,150.7 199.5,142.8 203.0,155.8 206.4,159.4 209.8,166.6 213.3,163.1 216.7,161.8 220.2,165.6 223.6,144.2 227.0,141.2 230.5,139.0 233.9,144.2 237.4,138.9 240.8,143.9 244.2,139.6 247.7,138.5 251.1,140.4 254.6,142.2 258.0,140.5 261.4,143.3 264.9,144.0 268.3,130.9 271.8,144.0 275.2,138.6 278.6,146.6 282.1,130.9 285.5,124.5 289.0,128.0 292.4,131.4 295.8,121.5 299.3,134.5 302.7,156.3 306.2,151.6 309.6,153.9 313.0,162.3 316.5,181.8 319.9,182.2 323.4,175.8 326.8,179.8 330.2,177.1 333.7,174.6 337.1,175.1 340.6,170.4 344.0,166.0 347.4,159.1 350.9,163.4 354.3,163.2 357.8,163.7 361.2,152.5 364.6,152.5 368.1,147.2 371.5,141.2 375.0,142.4 378.4,126.9 381.8,132.9 385.3,130.4 388.7,130.2 392.2,129.4 395.6,131.7 399.0,117.1 402.5,116.6 405.9,110.7 409.4,114.3 412.8,118.9 416.2,109.6 419.7,112.5 423.1,115.2 426.6,110.8 430.0,122.2 433.4,114.1 436.9,118.8 440.3,128.6 443.8,131.3 447.2,117.4 450.6,121.8 454.1,118.6 457.5,129.8 461.0,140.4 464.4,141.0 467.8,97.7 471.3,92.3 474.7,91.2 478.2,95.9 481.6,82.1 485.0,86.0 488.5,86.7 491.9,72.0 495.4,65.4 498.8,61.0 502.2,57.8 505.7,45.8 509.1,47.4 512.6,43.9 516.0,42.4 519.4,42.4 522.9,31.1 526.3,33.0 529.8,38.8 533.2,22.0 536.6,26.8 540.1,38.8 543.5,48.8 547.0,71.6 550.4,65.6 553.8,59.0 557.3,66.4 560.7,63.6 564.2,50.2 567.6,52.7 571.0,44.4 574.5,46.0 577.9,48.7 581.4,54.0 584.8,62.1 588.2,64.6 591.7,61.2 595.1,49.7 598.6,60.1 602.0,64.6 605.4,59.9 608.9,68.6 612.3,48.9 615.8,52.3 619.2,57.7 622.6,52.1 626.1,55.6 629.5,75.1 633.0,74.2 636.4,83.5 639.8,86.5 643.3,81.9 646.7,88.4 650.2,89.8 653.6,95.6 657.0,78.8 660.5,83.1 663.9,91.1 667.4,87.2 670.8,94.3 674.2,95.1 677.7,80.5 681.1,70.0 684.6,74.6 688.0,72.7 691.4,83.6 694.9,88.7 698.3,90.4 701.8,79.0 705.2,92.0 708.6,95.2 712.1,89.7 715.5,93.1 719.0,101.8 722.4,95.2 725.8,104.5 729.3,100.9 732.7,89.6 736.2,76.9 739.6,83.2 743.0,93.7 746.5,92.4 749.9,98.0 753.4,95.6 756.8,95.3 760.2,109.5 763.7,104.8 767.1,104.8 770.6,105.1 774.0,102.6 777.4,102.2 780.9,111.0 784.3,120.6 787.8,121.2 791.2,117.8 794.6,121.0 798.1,111.4 801.5,104.4 805.0,112.3 808.4,115.5 811.8,120.8 815.3,113.3 818.7,116.4 822.2,116.1 825.6,124.0 829.0,123.0 832.5,112.1 835.9,114.6 839.4,123.0 842.8,122.8 846.2,123.0 849.7,126.6 853.1,133.5 856.6,137.6 860.0,124.0" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 24% from its 52-week high of $82.45, trading at 52% of its 52-week range. 20-day momentum is -1.8% — easing, inside the screen's not-in-freefall limit. RSI 45 says washed out rather than euphoric, and $227M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof D-</span> <span class="fgrade chip r" title="Revisions">Revi D+</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip r" title="Growth">Grow F</span></p><p>Piotroski F-score <b>6/9</b> · net debt/EBITDA <b>0.1×</b> · avg EPS surprise (last 4) <b>+8.1%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 4 (now 6/9).</li><li>Profitability: gross margin compresses for two straight fiscal years.</li><li>Price structure: a weekly close below the 52-week low of $41.68 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Dip pool #53 · Pro pool #536 (F)</span></p><p>Knight-Swift's Q3 2026 print (Oct 21) confirmed the freight cycle has turned: revenue +14.2% to $2.2B, adjusted EPS $0.83 vs $0.32 a year ago, and the adjusted operating ratio improved 450bp to 89.3% as supply-side capacity exits — not demand — drive pricing (revenue per mile ex-fuel +12.2%). But at $61.21 the stock already prices a good chunk of the recovery (~15x FY27 consensus EPS of ~$3.95, far more on trough FY26 earnings), and the 2027 bid-season rate story still has to be delivered against $6.20 diesel and insurance/driver cost pressure.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q4 guide $0.78–$0.84 adj. EPS, peak-season project volume at post-pandemic highs, and the November-start 2027 bid season where management targets low- to mid-double-digit rate increases</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q3 adj. EPS $0.83 beat the $0.76 consensus and company guide; revenue +14.2% YoY, truckload OR improved 700bp YoY to 89.2% on pricing, intermodal loads highest in 5+ years</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip sb'>pass</span></td><td>Debt-to-equity 0.32, diversified across truckload/LTL/logistics/intermodal; no leverage or liquidity cliff — risks are cyclical costs (fuel, claims, driver pay), not survivability</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Trucking is not directly on the map, but freight demand rides the pressured consumer/industrial economy (map #8); the offset is evidenced — regulatory-driven capacity exits are tightening supply and lifting rates even with soft demand</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>$61.21 is −25.8% off the $82.86 high but ~25x trough FY26 EPS (~$2.42–2.46 consensus) and ~15x FY27 — recovery substantially priced before bid-season rates land</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Bid-season rate increases land below the low-double-digit target if shippers push back or demand softens further</li><li>Diesel at ~$6.20/gal plus insurance-claims and driver-pay inflation outrun fuel surcharges and rate gains</li></ul><p><b>What would change this verdict:</b> Contract-rate evidence from the 2027 bid season confirming low-double-digit increases with margins holding would lift valuation/sector toward BUY; a guidance cut or spot rates rolling over would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://www.ccjdigital.com/business/article/15838241/knightswift-q3-2026-truckload-margins-rebound-on-tight-capacity' target='_blank' rel='noopener'>Knight-Swift Q3 2026: Truckload Margins Rebound on Tight Capacity — CCJ Digital</a> <span class='dom'>ccjdigital.com</span></li><li><a href='https://www.freightwaves.com/news/knight-swift-again-eyes-big-rate-increases-as-new-bid-season-nears' target='_blank' rel='noopener'>Knight-Swift again eyes big rate increases as new bid season nears — FreightWaves</a> <span class='dom'>freightwaves.com</span></li><li><a href='https://transcriptdaily.com/2026/10/23/knight-swift-transportation-nyseknx-announces-earnings-results-beats-expectations-by-0-07-eps.html' target='_blank' rel='noopener'>Knight-Swift Transportation (KNX) Announces Earnings Results, Beats Expectations By $0.07 EPS — Transcript Daily</a> <span class='dom'>transcriptdaily.com</span></li><li><a href='https://finnhub.io/?q=%22KNX%22' target='_blank' rel='noopener'>Knight-Swift Transportation Holdings Inc (KNX): Financial Market Data — Finnhub</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/KNX" target="_blank" rel="noopener">Yahoo Finance — KNX</a> ·
+<a href="https://stockanalysis.com/stocks/knx/" target="_blank" rel="noopener">StockAnalysis — KNX</a> ·
+<a href="https://www.google.com/finance/quote/KNX:NASDAQ" target="_blank" rel="noopener">Google Finance — KNX</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>

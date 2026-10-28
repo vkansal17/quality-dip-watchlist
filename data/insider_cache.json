@@ -662,5 +662,13 @@
   "last_buy": null,
   "sellers": 0,
   "sell_val": 0
+ },
+ "BFAM": {
+  "asof": "2026-10-28",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 2,
+  "sell_val": 656564
  }
 }

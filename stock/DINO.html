@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DINO — HF Sinclair · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Nine lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>DINO — HF Sinclair</h1>
+<div class="sub">
+· Rank #42 on today's list</div>
+<div><span class="price">$114.21</span>
+<span class="dn" style="font-size:17px">-8.81% today</span>
+<span class="muted"> · as of 2026-10-27 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-10.9%</div><div class="l">vs 52w high ($128.23)</div></div><div class="kpi"><div class="v ">83%</div><div class="l">of 52w range (low $45.88)</div></div><div class="kpi"><div class="v ">45</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+8.2%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+7.5%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+115.8%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">44.4%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">9.7</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-10-28</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+13%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">6.9%</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$257M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $128.23</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $45.88</text><polyline points="0.0,217.7 3.4,215.0 6.9,218.1 10.3,221.1 13.8,216.5 17.2,216.3 20.6,217.5 24.1,215.9 27.5,213.0 31.0,211.4 34.4,212.2 37.8,213.9 41.3,214.8 44.7,209.3 48.2,212.4 51.6,209.3 55.0,214.7 58.5,219.6 61.9,218.4 65.4,217.1 68.8,218.8 72.2,219.5 75.7,217.7 79.1,217.4 82.6,220.2 86.0,220.8 89.4,224.3 92.9,225.1 96.3,226.9 99.8,225.3 103.2,224.6 106.6,226.9 110.1,226.9 113.5,226.3 117.0,231.5 120.4,231.9 123.8,233.5 127.3,232.5 130.7,234.1 134.2,233.1 137.6,234.8 141.0,236.0 144.5,235.7 147.9,235.0 151.4,235.5 154.8,233.5 158.2,227.2 161.7,230.1 165.1,230.0 168.6,223.7 172.0,224.5 175.4,226.5 178.9,226.7 182.3,223.8 185.8,225.8 189.2,228.9 192.6,230.1 196.1,225.2 199.5,226.3 203.0,225.3 206.4,227.0 209.8,225.4 213.3,223.3 216.7,222.0 220.2,220.1 223.6,220.5 227.0,213.3 230.5,207.5 233.9,208.1 237.4,203.0 240.8,204.0 244.2,205.4 247.7,202.5 251.1,206.1 254.6,203.1 258.0,204.9 261.4,221.2 264.9,224.0 268.3,223.0 271.8,226.4 275.2,226.2 278.6,225.7 282.1,223.4 285.5,225.3 289.0,215.4 292.4,214.6 295.8,208.0 299.3,206.7 302.7,209.1 306.2,218.0 309.6,217.2 313.0,208.7 316.5,206.3 319.9,210.4 323.4,208.2 326.8,203.4 330.2,199.5 333.7,198.0 337.1,198.7 340.6,201.2 344.0,195.6 347.4,197.0 350.9,190.9 354.3,189.6 357.8,191.4 361.2,193.1 364.6,196.9 368.1,197.4 371.5,196.2 375.0,197.2 378.4,204.0 381.8,208.6 385.3,205.8 388.7,203.0 392.2,206.7 395.6,203.8 399.0,199.0 402.5,206.7 405.9,204.8 409.4,200.5 412.8,200.7 416.2,200.5 419.7,198.6 423.1,194.6 426.6,192.2 430.0,183.9 433.4,180.6 436.9,175.5 440.3,168.7 443.8,161.6 447.2,170.5 450.6,172.0 454.1,167.0 457.5,166.0 461.0,169.8 464.4,174.9 467.8,176.7 471.3,173.3 474.7,172.5 478.2,168.6 481.6,170.4 485.0,177.5 488.5,173.6 491.9,177.1 495.4,178.3 498.8,177.8 502.2,173.6 505.7,171.2 509.1,165.0 512.6,164.6 516.0,166.0 519.4,169.7 522.9,167.1 526.3,174.3 529.8,171.3 533.2,173.6 536.6,170.0 540.1,180.5 543.5,182.2 547.0,183.9 550.4,187.6 553.8,184.1 557.3,184.6 560.7,184.3 564.2,179.1 567.6,177.8 571.0,171.2 574.5,174.2 577.9,166.7 581.4,166.8 584.8,161.8 588.2,163.1 591.7,150.9 595.1,153.8 598.6,152.3 602.0,142.9 605.4,139.3 608.9,137.1 612.3,129.6 615.8,125.0 619.2,120.3 622.6,117.0 626.1,119.1 629.5,123.7 633.0,125.8 636.4,119.3 639.8,123.2 643.3,121.3 646.7,115.0 650.2,117.5 653.6,124.9 657.0,125.9 660.5,139.6 663.9,139.7 667.4,143.7 670.8,133.8 674.2,132.9 677.7,126.7 681.1,116.5 684.6,111.8 688.0,108.4 691.4,106.5 694.9,109.3 698.3,114.3 701.8,102.3 705.2,107.9 708.6,112.9 712.1,104.4 715.5,103.2 719.0,96.1 722.4,91.2 725.8,85.0 729.3,79.6 732.7,79.4 736.2,81.3 739.6,73.8 743.0,74.2 746.5,75.3 749.9,75.0 753.4,77.4 756.8,63.5 760.2,59.1 763.7,52.2 767.1,54.0 770.6,71.2 774.0,78.0 777.4,79.4 780.9,80.3 784.3,77.6 787.8,79.3 791.2,80.8 794.6,76.3 798.1,62.4 801.5,60.6 805.0,55.8 808.4,57.4 811.8,54.7 815.3,41.5 818.7,40.0 822.2,35.8 825.6,22.0 829.0,23.4 832.5,31.2 835.9,29.6 839.4,31.9 842.8,29.6 846.2,28.9 849.7,37.4 853.1,39.1 856.6,29.7 860.0,58.4" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 11% from its 52-week high of $128.23, trading at 83% of its 52-week range. The fall has stabilized — 20-day momentum is +8.2% rather than still accelerating down. RSI 45 says washed out rather than euphoric, and $257M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof D-</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip h" title="Growth">Grow C</span></p><p>Piotroski F-score <b>7/9</b> · FCF yield <b>4.1%</b> · net debt/EBITDA <b>0.3×</b> · avg EPS surprise (last 4) <b>+31.7%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Profitability: gross margin compresses for two straight fiscal years.</li><li>Price structure: a weekly close below the 52-week low of $45.88 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip sb' style='font-size:15px'>BUY</span> <span class="audit" title="Every load-bearing figure on this card was checked against its cited sources in the 2026-10-25 evidence audit (data/web_crosscheck.json). Overall: mixed.">✓ evidence cross-checked · mixed</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Geopolitics & Energy Security · Pro pool #236 (D+)</span></p><p>The refining upcycle is flowing straight through: Q2 2026 adjusted EPS of $5.31 nearly tripled the year-ago figure on a $25.95/bbl refining margin, Q3 consensus sits at $7.99, and management expects tight refining markets into 2027 on disrupted global capacity and low product inventories. The balance sheet is a fortress for a refiner — net debt/capital of just 4% and $4.26B of liquidity — and the planned Lubricants & Specialties spin-off plus the Go West expansion FID give the story company-specific catalysts beyond crack spreads. The one soft leg is valuation: after a +164% YTD run, the price capitalizes peak-cycle cracks even though the trailing multiple (~11.4x) is not stretched.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q2 adj. EPS $5.31 vs $1.70 a year ago, adjusted EBITDA $1.5B with Refining at $1.0B; four straight consensus beats (avg surprise ~195%) and the dividend raised 5% — acceleration, not deterioration</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>$121.66 is ~11.4x trailing earnings (Finnhub) after +164% YTD and only ~-6.0% off the $129.37 high; the multiple looks modest but is computed on peak crack-spread earnings, and analyst targets ($119–142) straddle the price (crowd context)</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip sb'>pass</span></td><td>Map #2 oil & gas/refiners is Positive/Severe and DINO is the direct expression: EIA data show elevated gasoline, distillate and jet cracks with distillate inventories below historical norms</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip sb'>pass</span></td><td>Debt ~$2.8B against $2.26B cash and a $2.0B undrawn revolver; net debt/capital ~4%, $5.2B returned to shareholders since Mar 2022 with >68M shares repurchased — cyclicality is an earnings question, not survivability</td></tr><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 results Oct 28 against a $7.99 consensus, the Lubes & Specialties spin-off (12–18 months), and the Go West expansion adding ~35k bpd into Nevada</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Crack spreads normalize from crisis levels — refining earnings are the most cyclical in the energy complex and the stock now prices a long plateau</li><li>Proposed diesel export restrictions or RIN/renewables policy shifts hit the Renewables segment ($123M Q2 EBITDA) and product placement</li></ul><p><b>What would change this verdict:</b> A Q3 miss with management guiding cracks materially lower for 2027, or the spin-off being shelved, would move this to HOLD; sustained distillate tightness into the Oct 28 print firms the BUY.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://www.zacks.com/stock/news/3014248/hf-sinclair-q3-earnings-ahead-whats-in-store-for-the-stock' target='_blank' rel='noopener'>HF Sinclair Q3 Earnings Ahead: What's in Store for the Stock? — Zacks</a> <span class='dom'>zacks.com</span></li><li><a href='https://www.alphaspread.com/security/nyse/dino/earnings-calls/q1-2019' target='_blank' rel='noopener'>HF Sinclair (DINO) Q2 2026 earnings call / IR data — AlphaSpread (adj. EPS $5.31, liquidity $4.26B, net debt/cap 4%)</a> <span class='dom'>alphaspread.com</span></li><li><a href='https://www.quiverquant.com/news/HF+Sinclair+Gains+as+Higher+Refining+Margin+Expectations+and+Analyst+Target+Increases+Support+Shares' target='_blank' rel='noopener'>HF Sinclair Gains as Higher Refining Margin Expectations and Analyst Target Increases Support Shares — Quiver Quantitative</a> <span class='dom'>quiverquant.com</span></li><li><a href='https://kalkine.com/news/energy/why-did-hf-sinclair-nysedino-jump-5-on-a-spin-off-plan' target='_blank' rel='noopener'>Why Did HF Sinclair (DINO) Jump 5% on a Spin-Off Plan? — Kalkine</a> <span class='dom'>kalkine.com</span></li><li><a href='https://finnhub.io/?q=%22DINO%22' target='_blank' rel='noopener'>HF Sinclair Corp (DINO): Financial Market Data (P/E 11.36, price $121.66 at Oct 23 close) — Finnhub</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/DINO" target="_blank" rel="noopener">Yahoo Finance — DINO</a> ·
+<a href="https://stockanalysis.com/stocks/dino/" target="_blank" rel="noopener">StockAnalysis — DINO</a> ·
+<a href="https://www.google.com/finance/quote/DINO:NASDAQ" target="_blank" rel="noopener">Google Finance — DINO</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>
