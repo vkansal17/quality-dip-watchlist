@@ -670,5 +670,21 @@
   "last_buy": null,
   "sellers": 2,
   "sell_val": 656564
+ },
+ "ALG": {
+  "asof": "2026-10-29",
+  "buyers": 2,
+  "buy_val": 290817,
+  "last_buy": "2026-03-24",
+  "sellers": 2,
+  "sell_val": 1079508
+ },
+ "ENPH": {
+  "asof": "2026-10-29",
+  "buyers": 2,
+  "buy_val": 1114031,
+  "last_buy": "2026-06-12",
+  "sellers": 3,
+  "sell_val": 10821860
  }
 }
