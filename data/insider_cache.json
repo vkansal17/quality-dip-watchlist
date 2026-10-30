@@ -686,5 +686,37 @@
   "last_buy": "2026-06-12",
   "sellers": 3,
   "sell_val": 10821860
+ },
+ "DPZ": {
+  "asof": "2026-10-30",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 6,
+  "sell_val": 14672728
+ },
+ "JBSS": {
+  "asof": "2026-10-30",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 4,
+  "sell_val": 1448761
+ },
+ "NVR": {
+  "asof": "2026-10-30",
+  "buyers": 2,
+  "buy_val": 577832,
+  "last_buy": "2026-08-07",
+  "sellers": 2,
+  "sell_val": 9012736
+ },
+ "TDS": {
+  "asof": "2026-10-30",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 3,
+  "sell_val": 3875699
  }
 }
