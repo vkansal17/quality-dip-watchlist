@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PANW — Palo Alto Networks · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Nine lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>PANW — Palo Alto Networks</h1>
+<div class="sub">
+· Rank #26 on today's list</div>
+<div><span class="price">$365.87</span>
+<span class="dn" style="font-size:17px">-3.86% today</span>
+<span class="muted"> · as of 2026-10-30 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-12.9%</div><div class="l">vs 52w high ($419.91)</div></div><div class="kpi"><div class="v ">81%</div><div class="l">of 52w range (low $141.67)</div></div><div class="kpi"><div class="v ">46</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-9.3%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-7.5%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+66.1%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">55.1%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">297.5</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-18</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-21%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">—</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$2,068M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $419.91</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $141.67</text><polyline points="0.0,175.6 3.4,176.3 6.9,180.0 10.3,181.0 13.8,182.4 17.2,181.7 20.6,178.4 24.1,177.1 27.5,183.4 31.0,187.5 34.4,187.1 37.8,188.9 41.3,190.4 44.7,191.2 48.2,202.6 51.6,204.3 55.0,203.5 58.5,201.7 61.9,202.4 65.4,198.7 68.8,200.6 72.2,198.9 75.7,196.0 79.1,194.5 82.6,192.0 86.0,194.7 89.4,195.0 92.9,196.6 96.3,198.6 99.8,197.5 103.2,202.0 106.6,201.1 110.1,203.9 113.5,202.0 117.0,201.2 120.4,199.2 123.8,200.3 127.3,201.0 130.7,200.0 134.2,201.3 137.6,201.3 141.0,203.3 144.5,207.0 147.9,204.9 151.4,202.0 154.8,195.8 158.2,198.2 161.7,199.6 165.1,199.7 168.6,198.2 172.0,198.1 175.4,200.6 178.9,200.6 182.3,203.4 185.8,205.4 189.2,204.8 192.6,206.4 196.1,203.3 199.5,203.8 203.0,203.6 206.4,209.4 209.8,208.9 213.3,210.0 216.7,217.1 220.2,216.7 223.6,225.9 227.0,222.4 230.5,217.3 233.9,217.7 237.4,217.8 240.8,219.7 244.2,216.6 247.7,219.2 251.1,227.8 254.6,228.8 258.0,230.6 261.4,234.1 264.9,236.0 268.3,233.6 271.8,230.1 275.2,230.4 278.6,229.5 282.1,224.9 285.5,223.0 289.0,219.5 292.4,218.0 295.8,218.0 299.3,217.6 302.7,218.1 306.2,215.7 309.6,216.5 313.0,216.2 316.5,214.8 319.9,215.0 323.4,214.4 326.8,219.6 330.2,218.8 333.7,224.0 337.1,227.1 340.6,224.7 344.0,231.9 347.4,226.2 350.9,221.7 354.3,221.4 357.8,219.4 361.2,220.4 364.6,214.3 368.1,211.3 371.5,216.5 375.0,225.2 378.4,220.0 381.8,220.7 385.3,218.7 388.7,216.5 392.2,215.9 395.6,214.5 399.0,210.4 402.5,205.6 405.9,211.7 409.4,207.6 412.8,204.3 416.2,205.8 419.7,205.3 423.1,207.0 426.6,205.7 430.0,203.0 433.4,203.5 436.9,203.7 440.3,193.8 443.8,185.1 447.2,180.6 450.6,179.1 454.1,169.8 457.5,161.7 461.0,158.2 464.4,154.6 467.8,160.3 471.3,155.3 474.7,150.4 478.2,144.5 481.6,147.5 485.0,153.9 488.5,146.7 491.9,128.3 495.4,113.9 498.8,116.4 502.2,129.3 505.7,130.2 509.1,135.7 512.6,140.1 516.0,144.6 519.4,142.5 522.9,130.0 526.3,129.9 529.8,126.1 533.2,129.7 536.6,128.0 540.1,123.6 543.5,124.7 547.0,121.2 550.4,125.6 553.8,119.5 557.3,111.0 560.7,89.6 564.2,82.7 567.6,74.2 571.0,77.3 574.5,70.0 577.9,85.7 581.4,98.4 584.8,84.8 588.2,94.3 591.7,90.9 595.1,73.5 598.6,72.7 602.0,72.7 605.4,69.1 608.9,76.8 612.3,81.8 615.8,87.1 619.2,94.5 622.6,95.9 626.1,100.9 629.5,99.6 633.0,103.3 636.4,94.5 639.8,89.7 643.3,78.0 646.7,63.2 650.2,66.0 653.6,68.5 657.0,65.1 660.5,48.8 663.9,49.8 667.4,47.3 670.8,40.4 674.2,49.4 677.7,56.0 681.1,57.2 684.6,68.3 688.0,76.1 691.4,69.7 694.9,75.1 698.3,83.5 701.8,84.0 705.2,50.5 708.6,59.2 712.1,51.1 715.5,66.5 719.0,92.3 722.4,89.7 725.8,88.6 729.3,85.8 732.7,87.2 736.2,84.6 739.6,90.7 743.0,57.4 746.5,56.5 749.9,56.0 753.4,56.5 756.8,65.3 760.2,59.0 763.7,56.9 767.1,42.5 770.6,45.1 774.0,56.7 777.4,43.4 780.9,46.2 784.3,39.4 787.8,40.2 791.2,34.8 794.6,32.1 798.1,22.0 801.5,33.0 805.0,38.5 808.4,22.9 811.8,34.4 815.3,39.6 818.7,56.5 822.2,60.2 825.6,81.9 829.0,78.1 832.5,83.2 835.9,77.9 839.4,72.0 842.8,52.3 846.2,44.7 849.7,36.0 853.1,41.6 856.6,52.3 860.0,63.6" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 13% from its 52-week high of $419.91, trading at 81% of its 52-week range. 20-day momentum is -9.3% — easing, inside the screen's not-in-freefall limit. RSI 46 says washed out rather than euphoric, and $2,068M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof D+</span> <span class="fgrade chip r" title="Revisions">Revi F</span> <span class="fgrade chip r" title="Value">Valu F</span> <span class="fgrade chip h" title="Safety">Safe C</span> <span class="fgrade chip r" title="Growth">Grow D</span></p><p>Piotroski F-score <b>4/9</b> · net debt/EBITDA <b>-1.6×</b> · avg EPS surprise (last 3) <b>-5.2%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 4/9).</li><li>Price structure: a weekly close below the 52-week low of $141.67 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Innovation · Pro pool #586 (F)</span></p><p>Platformization is working in the numbers: fiscal 2026 revenue rose ~24% to $11.48B, Next-Gen Security ARR jumped 63% to $9.1B, RPO crossed $21.2B (+34%), adjusted FCF margin held 38.4%, and FY27 revenue is guided +23–24% to $14.1–14.2B. The problem is entirely price: after a +107% year-to-date run to $380.55, the stock trades at ~25x trailing sales and ~91x the FY27 guided non-GAAP EPS of $4.16–4.19, with two straight GAAP-loss quarters from acquisition charges — a perfection multiple that fails the valuation leg.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Fiscal Q1 2027 results (quarter ending Oct 31) against guided revenue of $3.30–3.31B (+33–34%) and NGS ARR of $9.54–9.56B, testing whether FY27 guidance is met from the first print</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>FY26 revenue $11.48B (+24%), Q4 revenue +34% to $3.41B with non-GAAP EPS $1.02 beating the $0.98 consensus, NGS ARR +63% to $9.1B and RPO +34% — growth accelerating, not deteriorating</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Survivability is fine ($4.55B operating cash flow, $2.51B cash), but >$20B of acquisitions (CyberArk, Chronosphere) left ~$29B of goodwill/intangibles, heavy stock comp ($487M in Q4) and GAAP losses in both H2 FY26 quarters — integration risk is real</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip sb'>pass</span></td><td>Cybersecurity is not on the map's severe-negative list and AI-era security spend is a demonstrated tailwind (security names rallied on AI-driven vulnerability discovery); PANW is the consolidation winner with a $340B-by-2030 TAM framing</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip r'>fail</span></td><td>~$290B market cap is ~25x trailing sales and ~91x FY27 guided non-GAAP EPS ($4.16–4.19) after a ~+107% YTD run; adjusted FCF of $4.41B is a ~1.5% yield — priced for flawless execution</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Any NGS ARR or RPO miss against a ~91x forward multiple triggers swift de-rating, as post-earnings sell-offs earlier in FY26 showed</li><li>CyberArk/Chronosphere integration disappoints or GAAP charges keep mounting, widening the GAAP-vs-adjusted credibility gap</li></ul><p><b>What would change this verdict:</b> Two quarters of FY27 guide delivery with organic (ex-acquisition) NGS ARR growth above ~20% at a lower multiple would support BUY; an ARR guidance cut would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://cdn.tickeron.com/earnings/PANW/' target='_blank' rel='noopener'>Palo Alto Networks (PANW) Q4 FY2026 Earnings Recap: AI Security Demand Fuels a Record Quarter — Tickeron</a> <span class='dom'>cdn.tickeron.com</span></li><li><a href='https://www.stocktitan.net/news/PANW/palo-alto-networks-reports-fiscal-fourth-quarter-and-fiscal-year-2rsk10ytpsr2.html' target='_blank' rel='noopener'>Palo Alto Networks Reports Fiscal Fourth Quarter and Fiscal Year 2026 Results — StockTitan</a> <span class='dom'>stocktitan.net</span></li><li><a href='https://www.MarketBeat.com/earnings/reports/2026-8-17-palo-alto-networks-inc-stock/' target='_blank' rel='noopener'>Palo Alto Networks Q4 2026 earnings call transcript — FY27 guidance detail — MarketBeat</a> <span class='dom'>MarketBeat.com</span></li><li><a href='https://www.ainvest.com/news/palo-alto-networks-doubled-months-forecast-growth-slowing-2609/' target='_blank' rel='noopener'>Palo Alto Networks Has Doubled in Four Months — Its Own Forecast Says Growth Is Slowing — AInvest</a> <span class='dom'>ainvest.com</span></li><li><a href='https://finnhub.io/?q=%22PANW%22' target='_blank' rel='noopener'>Palo Alto Networks Inc (PANW): Financial Market Data (market cap $290.3B, price as of 2026-10-23) — Finnhub</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/PANW" target="_blank" rel="noopener">Yahoo Finance — PANW</a> ·
+<a href="https://stockanalysis.com/stocks/panw/" target="_blank" rel="noopener">StockAnalysis — PANW</a> ·
+<a href="https://www.google.com/finance/quote/PANW:NASDAQ" target="_blank" rel="noopener">Google Finance — PANW</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>

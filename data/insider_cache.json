@@ -718,5 +718,21 @@
   "last_buy": null,
   "sellers": 3,
   "sell_val": 3875699
+ },
+ "CACC": {
+  "asof": "2026-10-31",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 10,
+  "sell_val": 86755375
+ },
+ "SKYW": {
+  "asof": "2026-10-31",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 5,
+  "sell_val": 16349151
  }
 }

@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RDDT — Reddit, Inc. Class A · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Nine lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab" href="../index.html">📉 Quality Dips</a><a class="tab active" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../pro.html">← Back to Factor Grades</a></p>
+<h1>RDDT — Reddit, Inc. Class A</h1>
+<div class="sub">
+· Professional rank #42 · composite grade A</div>
+<div><span class="price">$91.73</span>
+<span class="dn" style="font-size:17px">-29.22% today</span>
+<span class="muted"> · as of 2026-10-30 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-64.6%</div><div class="l">vs 52w high ($258.93)</div></div><div class="kpi"><div class="v ">0%</div><div class="l">of 52w range (low $91.73)</div></div><div class="kpi"><div class="v ">18</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-38.0%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-36.2%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-56.1%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">108.9%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">35.0</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v ">A</div><div class="l">Professional composite grade</div></div><div class="kpi"><div class="v ">6/9</div><div class="l">Piotroski F-score</div></div><div class="kpi"><div class="v dn">-89%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $258.93</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $91.73</text><polyline points="0.0,86.0 3.4,91.1 6.9,113.1 10.3,102.2 13.8,118.4 17.2,104.4 20.6,92.1 24.1,86.9 27.5,93.8 31.0,111.0 34.4,106.0 37.8,113.4 41.3,115.7 44.7,113.1 48.2,120.6 51.6,118.6 55.0,103.8 58.5,73.8 61.9,87.7 65.4,76.3 68.8,67.5 72.2,68.3 75.7,70.8 79.1,68.3 82.6,53.8 86.0,50.1 89.4,51.2 92.9,48.6 96.3,54.5 99.8,65.7 103.2,73.7 106.6,66.7 110.1,62.4 113.5,57.3 117.0,54.9 120.4,55.0 123.8,64.4 127.3,64.3 130.7,64.4 134.2,53.1 137.6,54.7 141.0,59.2 144.5,43.8 147.9,41.0 151.4,28.6 154.8,26.4 158.2,28.4 161.7,40.4 165.1,41.1 168.6,22.0 172.0,30.4 175.4,60.6 178.9,57.7 182.3,65.0 185.8,84.5 189.2,78.8 192.6,73.3 196.1,80.0 199.5,102.2 203.0,106.2 206.4,110.2 209.8,122.7 213.3,126.7 216.7,141.7 220.2,158.0 223.6,160.1 227.0,174.4 230.5,172.0 233.9,161.4 237.4,175.1 240.8,185.6 244.2,174.7 247.7,175.2 251.1,164.7 254.6,166.4 258.0,161.2 261.4,171.1 264.9,171.6 268.3,161.8 271.8,159.8 275.2,166.8 278.6,165.1 282.1,166.9 285.5,164.9 289.0,168.7 292.4,175.0 295.8,175.7 299.3,181.7 302.7,177.9 306.2,184.1 309.6,184.0 313.0,174.2 316.5,168.7 319.9,170.6 323.4,176.6 326.8,174.4 330.2,173.0 333.7,179.2 337.1,174.7 340.6,190.5 344.0,197.5 347.4,194.5 350.9,181.1 354.3,179.1 357.8,179.3 361.2,176.3 364.6,172.8 368.1,167.8 371.5,176.3 375.0,174.6 378.4,162.3 381.8,155.6 385.3,150.6 388.7,145.5 392.2,143.8 395.6,140.6 399.0,152.7 402.5,143.1 405.9,157.6 409.4,155.2 412.8,148.4 416.2,164.1 419.7,164.3 423.1,165.0 426.6,140.3 430.0,137.0 433.4,133.7 436.9,140.2 440.3,143.6 443.8,154.0 447.2,149.2 450.6,158.4 454.1,156.1 457.5,153.3 461.0,151.0 464.4,149.8 467.8,155.2 471.3,165.6 474.7,161.4 478.2,172.1 481.6,168.3 485.0,156.1 488.5,138.8 491.9,128.1 495.4,125.8 498.8,136.9 502.2,136.5 505.7,118.0 509.1,131.4 512.6,134.4 516.0,125.4 519.4,133.0 522.9,131.6 526.3,145.9 529.8,120.6 533.2,128.9 536.6,141.0 540.1,129.5 543.5,135.3 547.0,141.4 550.4,147.7 553.8,151.2 557.3,139.7 560.7,130.2 564.2,131.2 567.6,100.3 571.0,104.2 574.5,96.3 577.9,98.1 581.4,103.4 584.8,97.0 588.2,103.4 591.7,96.2 595.1,93.2 598.6,99.9 602.0,116.3 605.4,121.5 608.9,120.9 612.3,115.5 615.8,135.3 619.2,137.4 622.6,137.4 626.1,124.0 629.5,125.0 633.0,125.6 636.4,125.5 639.8,173.4 643.3,155.4 646.7,148.7 650.2,154.7 653.6,160.3 657.0,146.4 660.5,150.3 663.9,153.5 667.4,157.0 670.8,151.0 674.2,125.5 677.7,142.9 681.1,150.9 684.6,159.2 688.0,161.0 691.4,157.2 694.9,158.0 698.3,145.5 701.8,154.6 705.2,156.4 708.6,157.6 712.1,164.2 715.5,168.3 719.0,151.1 722.4,153.8 725.8,155.7 729.3,162.2 732.7,166.0 736.2,154.6 739.6,151.5 743.0,145.6 746.5,149.1 749.9,151.7 753.4,157.8 756.8,160.3 760.2,150.2 763.7,154.2 767.1,158.9 770.6,157.9 774.0,161.6 777.4,170.3 780.9,167.4 784.3,171.1 787.8,162.0 791.2,164.2 794.6,160.9 798.1,162.8 801.5,158.0 805.0,153.1 808.4,148.7 811.8,148.7 815.3,154.6 818.7,163.2 822.2,149.4 825.6,153.6 829.0,154.8 832.5,154.2 835.9,157.2 839.4,161.1 842.8,168.8 846.2,176.2 849.7,178.7 853.1,181.0 856.6,187.5 860.0,236.0" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Professional rank #42 · composite grade <b>A</b></p><p><span class="fgrade chip b" title="Profitability">Prof B+</span> <span class="fgrade chip sb" title="Revisions">Revi A</span> <span class="fgrade chip r" title="Value">Valu D-</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip b" title="Growth">Grow B+</span></p><p>Piotroski F-score <b>6/9</b> · FCF yield <b>3.7%</b> · net debt/EBITDA <b>-3.2×</b> · avg EPS surprise (last 4) <b>+25.6%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 4 (now 6/9).</li><li>Price structure: a weekly close below the 52-week low of $91.73 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Pro Top 50 #14 (A)</span></p><p>Reddit's operating performance is elite - Q2 2026 revenue +61% to $805M at a 43% adjusted EBITDA margin, operating cash flow doubled, and it is buying back stock - but growth is guided down to 47-49% for Q3, US daily users slipped sequentially, and the thesis leans heavily on Google (search referrals and licensing renewals). At ~43x forward earnings with three mixed legs, it does not clear the BUY bar today.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 results are due within days (guided +47-49% revenue growth); JPMorgan expects Google and OpenAI licensing renewals over the next year, a concrete second catalyst.</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q2 2026 was the 8th straight quarter of 60%+ revenue growth ($805M), ad revenue +64%, adj. EBITDA margin 43%, OCF $262M (2x YoY) and a $235M buyback (GuruFocus earnings highlights).</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Balance sheet is strong (asset-light, >91% gross margin, FCF-positive), but US DAU declined sequentially, search-referral traffic is volatile under Google AI answers, and Google/OpenAI licensing renewals have no clear timeline (GuruFocus).</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Sector map #8 (consumer/ads) is Negative/High, but Reddit shows a strong company offset - performance ads now 60%+ of ad revenue and advertiser counts growing - so the headwind is blunted, not absent.</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>$144.25 is ~43x FY26 EPS forecasts (~$3.31) after a ~45% fall from the Sep 2025 peak (~$271) - de-rated but still pricing durable high growth (ts2.tech/stockanalysis forecasts; treated as crowd estimates).</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Google AI search answers structurally reducing referral traffic and logged-out user growth</li><li>Licensing renewals landing smaller or later than the market assumes</li></ul><p><b>What would change this verdict:</b> US DAU stabilization plus a renewed Google/OpenAI licensing deal at equal-or-better terms upgrades this toward BUY; a Q3 miss on users or ads makes it a SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://www.gurufocus.com/news/8993622/reddit-inc-rddt-q2-2026-earnings-call-highlights-record-revenue-and-strategic-pivots-amid-user-growth-challenges' target='_blank' rel='noopener'>Reddit (RDDT) Q2 2026 Earnings Call Highlights: Record Revenue (GuruFocus)</a> <span class='dom'>gurufocus.com</span></li><li><a href='https://www.investopedia.com/reddit-ad-revenue-and-user-growth-outpace-projections-the-stock-is-rallying-rddt-11963665' target='_blank' rel='noopener'>Reddit's Ad Revenue and User Growth Outpace Projections (Investopedia)</a> <span class='dom'>investopedia.com</span></li><li><a href='https://summitstocks.substack.com/p/deep-dive-reddit-rddt' target='_blank' rel='noopener'>Deep Dive: Reddit ($RDDT) (Summit Stocks)</a> <span class='dom'>summitstocks.substack.com</span></li><li><a href='https://ts2.tech/en/reddits-rollercoaster-how-booming-ads-ai-deals-and-political-scrutiny-could-shock-rddt-investors/' target='_blank' rel='noopener'>Reddit's Rollercoaster: Booming Ads, AI Deals and Political Scrutiny (ts2.tech)</a> <span class='dom'>ts2.tech</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/RDDT" target="_blank" rel="noopener">Yahoo Finance — RDDT</a> ·
+<a href="https://stockanalysis.com/stocks/rddt/" target="_blank" rel="noopener">StockAnalysis — RDDT</a> ·
+<a href="https://www.google.com/finance/quote/RDDT:NASDAQ" target="_blank" rel="noopener">Google Finance — RDDT</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR.
+Research and education only — not investment advice.</p></section>
+</main></div></body></html>

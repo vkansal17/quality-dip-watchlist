@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>APP — Applovin · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Nine lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab" href="../index.html">📉 Quality Dips</a><a class="tab active" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../pro.html">← Back to Factor Grades</a></p>
+<h1>APP — Applovin</h1>
+<div class="sub">
+· Professional rank #43 · composite grade A</div>
+<div><span class="price">$228.50</span>
+<span class="dn" style="font-size:17px">-10.36% today</span>
+<span class="muted"> · as of 2026-10-30 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-68.9%</div><div class="l">vs 52w high ($733.60)</div></div><div class="kpi"><div class="v ">0%</div><div class="l">of 52w range (low $228.50)</div></div><div class="kpi"><div class="v ">25</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-14.8%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-13.0%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-64.1%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">54.7%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">23.4</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-04</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v ">A</div><div class="l">Professional composite grade</div></div><div class="kpi"><div class="v ">9/9</div><div class="l">Piotroski F-score</div></div><div class="kpi"><div class="v dn">-37%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $733.60</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $228.50</text><polyline points="0.0,62.8 3.4,65.0 6.9,74.9 10.3,71.4 13.8,69.6 17.2,70.2 20.6,56.9 24.1,80.8 27.5,85.0 31.0,97.2 34.4,96.5 37.8,104.3 41.3,110.0 44.7,108.2 48.2,112.2 51.6,112.4 55.0,95.6 58.5,97.2 61.9,84.4 65.4,78.8 68.8,68.6 72.2,56.1 75.7,52.2 79.1,43.1 82.6,39.7 86.0,40.6 89.4,25.8 92.9,34.8 96.3,29.0 99.8,48.7 103.2,46.8 106.6,45.9 110.1,54.4 113.5,38.6 117.0,27.2 120.4,22.0 123.8,24.2 127.3,24.6 130.7,30.2 134.2,36.7 137.6,38.9 141.0,47.3 144.5,70.8 147.9,64.7 151.4,71.3 154.8,64.7 158.2,71.6 161.7,58.4 165.1,53.8 168.6,49.5 172.0,71.1 175.4,75.6 178.9,91.8 182.3,93.2 185.8,107.2 189.2,111.7 192.6,110.6 196.1,106.0 199.5,102.5 203.0,103.0 206.4,91.6 209.8,132.4 213.3,128.2 216.7,137.2 220.2,168.7 223.6,173.8 227.0,160.5 230.5,137.8 233.9,132.4 237.4,139.3 240.8,177.4 244.2,167.3 247.7,173.3 251.1,161.5 254.6,158.3 258.0,155.4 261.4,171.6 264.9,166.2 268.3,154.2 271.8,144.3 275.2,148.6 278.6,149.4 282.1,146.9 285.5,128.3 289.0,117.3 292.4,120.1 295.8,113.7 299.3,130.6 302.7,137.3 306.2,142.4 309.6,138.5 313.0,140.8 316.5,138.3 319.9,145.3 323.4,146.4 326.8,145.4 330.2,138.4 333.7,148.1 337.1,147.8 340.6,167.1 344.0,171.3 347.4,175.2 350.9,164.2 354.3,168.5 357.8,169.1 361.2,158.0 364.6,158.9 368.1,167.1 371.5,172.2 375.0,167.0 378.4,155.9 381.8,149.1 385.3,136.0 388.7,135.3 392.2,130.6 395.6,124.8 399.0,132.3 402.5,127.9 405.9,140.4 409.4,142.9 412.8,137.8 416.2,142.6 419.7,144.9 423.1,143.7 426.6,137.9 430.0,131.6 433.4,130.2 436.9,134.2 440.3,121.5 443.8,134.3 447.2,130.1 450.6,124.9 454.1,140.7 457.5,127.3 461.0,120.5 464.4,124.2 467.8,130.8 471.3,128.5 474.7,126.9 478.2,128.7 481.6,114.9 485.0,92.2 488.5,78.7 491.9,73.1 495.4,72.8 498.8,76.2 502.2,91.0 505.7,96.0 509.1,96.7 512.6,94.0 516.0,112.1 519.4,123.9 522.9,130.1 526.3,122.3 529.8,112.1 533.2,114.5 536.6,129.7 540.1,133.8 543.5,133.9 547.0,134.9 550.4,135.8 553.8,143.9 557.3,130.7 560.7,121.5 564.2,114.5 567.6,93.6 571.0,109.5 574.5,102.4 577.9,109.1 581.4,111.6 584.8,112.3 588.2,118.0 591.7,145.2 595.1,142.6 598.6,141.0 602.0,148.7 605.4,152.9 608.9,152.9 612.3,151.2 615.8,158.1 619.2,163.8 622.6,166.7 626.1,157.9 629.5,155.6 633.0,163.6 636.4,161.7 639.8,165.1 643.3,160.7 646.7,155.0 650.2,155.8 653.6,190.6 657.0,185.9 660.5,189.2 663.9,197.8 667.4,204.1 670.8,200.3 674.2,199.2 677.7,200.6 681.1,202.6 684.6,201.1 688.0,202.0 691.4,203.3 694.9,206.3 698.3,201.2 701.8,202.3 705.2,200.4 708.6,198.2 712.1,200.6 715.5,200.7 719.0,197.6 722.4,200.0 725.8,197.0 729.3,200.6 732.7,203.6 736.2,199.6 739.6,195.6 743.0,191.2 746.5,192.4 749.9,194.5 753.4,196.6 756.8,202.3 760.2,192.9 763.7,193.5 767.1,199.2 770.6,200.4 774.0,201.2 777.4,202.2 780.9,203.3 784.3,209.8 787.8,213.6 791.2,219.2 794.6,213.3 798.1,214.7 801.5,213.6 805.0,214.1 808.4,215.4 811.8,218.0 815.3,217.5 818.7,221.7 822.2,214.5 825.6,220.1 829.0,218.8 832.5,217.4 835.9,219.3 839.4,220.8 842.8,222.5 846.2,222.3 849.7,221.5 853.1,222.7 856.6,224.8 860.0,236.0" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🏦 Professional lens</h2><p>Professional rank #43 · composite grade <b>A</b></p><p><span class="fgrade chip sb" title="Profitability">Prof A+</span> <span class="fgrade chip r" title="Revisions">Revi D+</span> <span class="fgrade chip r" title="Value">Valu D+</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip sb" title="Growth">Grow A+</span></p><p>Piotroski F-score <b>9/9</b> · FCF yield <b>5.1%</b> · net debt/EBITDA <b>0.1×</b> · avg EPS surprise (last 4) <b>+5.3%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Price structure: a weekly close below the 52-week low of $228.50 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Pro Top 50 #12 (A)</span></p><p>AppLovin's fundamentals are the strongest in this batch — Q2 revenue +53%, four straight EPS beats, ~84% adjusted EBITDA margins, Q3 guided +46–48% — and the stock has de-rated violently (−65% from $738, ~20x trailing / ~16x forward). What blocks a BUY is the risk and durability debate: an October wave of target cuts (Goldman $465→$400 Hold, Wedbush $610→$560, Oppenheimer $560→$490) plus mounting legal/data-practice scrutiny say the market is pricing sustainability, not the current numbers.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip h'>mixed</span></td><td>Q3 print Nov 4 is a clear test (consensus EPS $3.95, +61%; Wedbush expects revenue at guidance top end) and estimates were revised +1.2% last month — but the bar is high and three firms cut targets into it, so a merely in-line print may not re-rate the stock</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q2 2026 rev $1.92B +53% YoY, net income +55%, EPS $3.76; four consecutive EPS beats; Q3 guided to $2.055–2.085B (+46–48%)</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Beta ~2.5, mounting legal scrutiny of its AI ad tech/data practices and prior short-seller history; growth still concentrated in mobile-gaming ads with e-commerce expansion unproven — mitigated by net-cash-generative, ~84% EBITDA-margin model, so not a fail</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Digital-ad demand is strong and APP is taking share, but it trades inside the AI-complex repricing (map #1 Negative/Severe sentiment): −61% YTD despite beat-after-beat, showing sector flows dominate fundamentals near term</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip sb'>pass</span></td><td>$260.25 is −65% from the $738.01 high; TTM P/E ~20x and ~16x FY26 consensus EPS ($15.67, +56%) — a large margin of safety vs its own history if growth holds; average analyst target $483–529 remains ~85% above price</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Regulatory/legal action on data practices or ad attribution could impair the AXON model itself, not just sentiment</li><li>If growth decelerates from ~50% toward the 20s faster than expected, the de-rating has further to run despite the low headline multiple</li></ul><p><b>What would change this verdict:</b> A clean Q3 beat-and-raise with no new legal escalation would push quality/catalyst confidence to a BUY; an SEC/regulatory escalation or a guidance miss flips it to SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://www.ad-hoc-news.de/boerse/corporate-news/goldman-sachs-cuts-target-for-applovin-stock-from-usd-465-to-usd-400/70398294' target='_blank' rel='noopener'>Goldman Sachs cuts AppLovin target from $465 to $400 (Hold) — Q2 results vs target reset</a> <span class='dom'>ad-hoc-news.de</span></li><li><a href='https://www.ad-hoc-news.de/boerse/corporate-news/wedbush-cuts-applovin-target-to-usd-560-for-applovin-stock/70371535' target='_blank' rel='noopener'>Wedbush cuts AppLovin target to $560, keeps Outperform — Q3 guidance detail</a> <span class='dom'>ad-hoc-news.de</span></li><li><a href='https://beardsleyfe.com/news/story/8232022/what-to-expect-from-applovin-s-q3-2026-earnings-report' target='_blank' rel='noopener'>What to Expect From AppLovin's Q3 2026 Earnings Report — four straight beats, legal scrutiny noted (Barchart)</a> <span class='dom'>beardsleyfe.com</span></li><li><a href='https://www.zacks.com/stock/news/3010755/applovin-app-beats-stock-market-upswing-what-investors-need-to-know' target='_blank' rel='noopener'>AppLovin Beats Stock Market Upswing — Nov 4 report, consensus EPS $3.95 (+61%), rev $2.08B (+48%)</a> <span class='dom'>zacks.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/APP" target="_blank" rel="noopener">Yahoo Finance — APP</a> ·
+<a href="https://stockanalysis.com/stocks/app/" target="_blank" rel="noopener">StockAnalysis — APP</a> ·
+<a href="https://www.google.com/finance/quote/APP:NASDAQ" target="_blank" rel="noopener">Google Finance — APP</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR.
+Research and education only — not investment advice.</p></section>
+</main></div></body></html>
