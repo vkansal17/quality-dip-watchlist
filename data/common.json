@@ -1,0 +1,294 @@
+{
+ "meta": {
+  "asof": "2026-10-30",
+  "generated": "2026-10-31 07:41",
+  "universe_n": 1654,
+  "screened": 1653,
+  "candidates": 655,
+  "spy_mom20": -1.8086434801172668,
+  "keep_extra": [
+   "PIPR",
+   "HCI",
+   "UFCS",
+   "PJT",
+   "YELP",
+   "TPR",
+   "SPNT",
+   "MLI",
+   "APA",
+   "INCY",
+   "FOXA",
+   "NEM",
+   "RNR",
+   "PTCT",
+   "MCY",
+   "LRN",
+   "PRDO",
+   "FAF",
+   "CRUS",
+   "CARG",
+   "MD",
+   "PRI",
+   "YOU",
+   "WFRD",
+   "KNSL",
+   "RGA",
+   "PGR",
+   "PLMR",
+   "DECK",
+   "SIG",
+   "WT",
+   "TRV",
+   "LPG",
+   "ANIP",
+   "INVA",
+   "MUSA",
+   "THG",
+   "RRC",
+   "TRN",
+   "HLNE",
+   "DAVE",
+   "RDDT",
+   "APP",
+   "TILE",
+   "SEZL",
+   "RRR",
+   "USLM",
+   "THC",
+   "SIGI",
+   "FHI",
+   "EXE",
+   "APA",
+   "RGA",
+   "RRC",
+   "AMZN",
+   "QLYS",
+   "CSCO",
+   "ABT",
+   "CHKP",
+   "NTNX",
+   "AER",
+   "AXP",
+   "BMY",
+   "EAT",
+   "GILD",
+   "NXPI",
+   "DG",
+   "ADBE",
+   "GMED",
+   "JLL",
+   "IR",
+   "LPLA",
+   "LNG",
+   "TW",
+   "EXPE",
+   "HAL",
+   "NYT",
+   "DXCM",
+   "EQT",
+   "OXY",
+   "FTNT",
+   "HBAN",
+   "BAC",
+   "WTW",
+   "NTRS",
+   "GDDY",
+   "AZN",
+   "HIG",
+   "PSX",
+   "CBOE",
+   "REGN",
+   "FTI",
+   "MANH",
+   "CMI",
+   "BR",
+   "AMGN",
+   "ROIV",
+   "SCHW",
+   "HALO",
+   "IDXX",
+   "EXE",
+   "APA",
+   "RGA",
+   "RRC",
+   "QLYS",
+   "CSCO",
+   "CHKP",
+   "NTNX",
+   "AXP",
+   "GILD",
+   "NXPI",
+   "DG",
+   "ADBE",
+   "GMED",
+   "JLL",
+   "LPLA",
+   "LNG",
+   "TW",
+   "HAL",
+   "DXCM",
+   "EQT",
+   "OXY",
+   "FTNT",
+   "HBAN",
+   "BAC",
+   "NTRS",
+   "AZN",
+   "HIG",
+   "PSX",
+   "CBOE",
+   "REGN",
+   "FTI",
+   "MANH",
+   "CMI",
+   "AMGN",
+   "ROIV",
+   "SCHW",
+   "HALO",
+   "BKR",
+   "CB",
+   "ARGX",
+   "LMT",
+   "WMT",
+   "RGLD",
+   "ADM",
+   "AEM",
+   "CME",
+   "NUE",
+   "ROST",
+   "ELV"
+  ]
+ },
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "AMZN",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "Vetted Buys",
+    "Most Discussed"
+   ]
+  },
+  {
+   "rank": 2,
+   "ticker": "APA",
+   "count": 3,
+   "tabs": [
+    "Factor Grades",
+    "Vetted Buys",
+    "Theme Buys"
+   ]
+  },
+  {
+   "rank": 3,
+   "ticker": "BAC",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "Vetted Buys",
+    "Theme Buys"
+   ]
+  },
+  {
+   "rank": 4,
+   "ticker": "BKNG",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "The Bench",
+    "Fallen & Cheap"
+   ]
+  },
+  {
+   "rank": 5,
+   "ticker": "CRM",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "The Bench",
+    "Most Discussed"
+   ]
+  },
+  {
+   "rank": 6,
+   "ticker": "CSCO",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "Vetted Buys",
+    "Theme Buys"
+   ]
+  },
+  {
+   "rank": 7,
+   "ticker": "EXE",
+   "count": 3,
+   "tabs": [
+    "Vetted Buys",
+    "Theme Buys",
+    "Fallen & Cheap"
+   ]
+  },
+  {
+   "rank": 8,
+   "ticker": "MU",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "The Bench",
+    "Most Discussed"
+   ]
+  },
+  {
+   "rank": 9,
+   "ticker": "NVDA",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "The Bench",
+    "Most Discussed"
+   ]
+  },
+  {
+   "rank": 10,
+   "ticker": "NXPI",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "Vetted Buys",
+    "Theme Buys"
+   ]
+  },
+  {
+   "rank": 11,
+   "ticker": "RGA",
+   "count": 3,
+   "tabs": [
+    "Factor Grades",
+    "Vetted Buys",
+    "Theme Buys"
+   ]
+  },
+  {
+   "rank": 12,
+   "ticker": "RRC",
+   "count": 3,
+   "tabs": [
+    "Factor Grades",
+    "Vetted Buys",
+    "Theme Buys"
+   ]
+  },
+  {
+   "rank": 13,
+   "ticker": "SFM",
+   "count": 3,
+   "tabs": [
+    "The Bench",
+    "Fallen & Cheap",
+    "Skin in the Game"
+   ]
+  }
+ ]
+}

@@ -1012,7 +1012,8 @@ TAB_DEFS = [("dip", "index.html", "📉 Quality Dips"),
             ("holds", "holds.html", "🟡 The Bench"),
             ("screener", "screener.html", "🔎 Fallen & Cheap"),
             ("skin", "skin.html", "🤝 Skin in the Game"),
-            ("buzz", "buzz.html", "📣 Most Discussed")]
+            ("buzz", "buzz.html", "📣 Most Discussed"),
+            ("common", "common.html", "🔁 Most Common")]
 
 
 def tabs_html(active, prefix=""):
@@ -1025,7 +1026,7 @@ def tabs_html(active, prefix=""):
         for key, href, label in TAB_DEFS)
     return (f'<aside class="sidebar">'
             f'<a class="brand" href="{prefix}index.html">◆ Quality-Dip Watchlist</a>'
-            f'<div class="brandsub">Nine lenses on one universe — the 800 '
+            f'<div class="brandsub">Ten lenses on one universe — the 800 '
             f'most-traded US stocks + every S&amp;P 1000 member.</div>'
             f'<nav class="tabs">{tabs}</nav>'
             f'<div class="sidefoot">Prices refresh daily at 7:00 AM CT. '
@@ -1042,6 +1043,7 @@ TABS_HOLDS = tabs_html("holds")
 TABS_SCREENER = tabs_html("screener")
 TABS_SKIN = tabs_html("skin")
 TABS_BUZZ = tabs_html("buzz")
+TABS_COMMON = tabs_html("common")
 
 
 def pro_section(t, prec, k, rank=None):
@@ -3391,6 +3393,133 @@ def build_buzz_details(meta, entries, bmeta, verdicts, tverdicts,
             fh.write(page)
 
 
+def compute_common(dip_rows, pro_rows, verdicts, tverdicts, ranked_holds,
+                   scr_top, skin_rows, bentries):
+    """Cross-tab overlap: which tickers the displayed lists carry, counted
+    across the eight stock-carrying tabs (Sector Impact carries no stocks;
+    Most Common never counts itself). Returns (rows, stats) where rows are
+    the tickers on >= 3 tabs, sorted by tab count desc, then ticker."""
+    tab_lists = [
+        ("Quality Dips", "index.html",
+         {r["ticker"]: f"#{r['rank']}" for r in dip_rows}),
+        ("Factor Grades", "pro.html",
+         {r["ticker"]: f"#{r['rank']}" for r in pro_rows}),
+        ("Vetted Buys", "validated.html",
+         {t: f"#{i}" for i, t in enumerate(verdicts.get("final50") or [], 1)}),
+        ("Theme Buys", "macro.html",
+         {t: f"#{i}" for i, t in enumerate(tverdicts.get("list") or [], 1)}),
+        ("The Bench", "holds.html",
+         {r["ticker"]: f"#{i}" for i, r in enumerate(ranked_holds[:50], 1)}),
+        ("Fallen & Cheap", "screener.html",
+         {r["ticker"]: f"#{i}" for i, r in enumerate(scr_top, 1)}),
+        ("Skin in the Game", "skin.html",
+         {r["ticker"]: f"#{i}" for i, r in enumerate(skin_rows, 1)}),
+        ("Most Discussed", "buzz.html",
+         {e["ticker"]: f"#{e.get('rank', '')} · score {e.get('score', '')}"
+          for e in bentries}),
+    ]
+    seen = {}
+    slots = 0
+    for label, href, members in tab_lists:
+        slots += len(members)
+        for t, note in members.items():
+            seen.setdefault(t, []).append(
+                {"label": label, "href": href, "note": note})
+    rows = [{"ticker": t, "tabs": tabs, "count": len(tabs)}
+            for t, tabs in seen.items() if len(tabs) >= 3]
+    rows.sort(key=lambda r: (-r["count"], r["ticker"]))
+    for i, r in enumerate(rows, 1):
+        r["rank"] = i
+    stats = {"slots": slots, "unique": len(seen),
+             "max_tabs": max((len(v) for v in seen.values()), default=0)}
+    return rows, stats
+
+
+def build_common_page(meta, common, stats, kpi_ix, verdicts, tverdicts):
+    kpi_ix = kpi_ix or {}
+    trs = []
+    for r in common:
+        t = r["ticker"]
+        k = kpi_ix.get(t, {})
+        price_html = f"${k['last']:,.2f}" if k else "—"
+        off_html = f"{k['off_high_pct']:.1f}%" if k else "—"
+        price_v = price_html
+        off_v = off_html
+        earn_v = k.get("earnings") or "—"
+        chips = _verdict_chip(t, verdicts, tverdicts)
+        has_page = os.path.exists(os.path.join(ROOT, "stock", f"{t}.html"))
+        sym = (f"<a class='sym' href='stock/{t}.html'>{t}</a>" if has_page
+               else f"<span class='sym'>{t}</span>")
+        tabs_html_cell = " ".join(
+            f"<span class='chip na'>{x['label']}</span>" for x in r["tabs"])
+        where = "".join(
+            f"<p>· <a href='{x['href']}'>{x['label']}</a> — {x['note']}</p>"
+            for x in r["tabs"])
+        v = _skin_verdict(t, verdicts, tverdicts)
+        vblock = (verdict_detail_html(v, t, page=t if has_page else None)
+                  if v else "")
+        det = (pkpi_grid([(str(r["count"]), "Tabs"),
+                          (price_v, "Price"),
+                          (off_v, "vs 52w high"),
+                          (earn_v, "Earnings")])
+               + f"<h3>Where it appears</h3>{where}"
+               + vblock
+               + (f"<a class='pfull' href='stock/{t}.html'>Full stock page →</a>"
+                  if has_page and not v else ""))
+        trs.append(
+            f"<tr data-q='{t} {clean_company_name(UNIVERSE_NAME.get(t, t))}'>"
+            f"<td>{r['rank']}</td>"
+            f"<td>{sym}<span class='nm'>"
+            f"{clean_company_name(UNIVERSE_NAME.get(t, t))}</span>{chips}</td>"
+            f"<td class='num'><b>{r['count']}</b></td>"
+            f"<td>{tabs_html_cell}</td>"
+            f"<td class='num'>{price_html}</td>"
+            f"<td class='num'>{off_html}</td>"
+            f"<td class='detail'>{det}</td></tr>")
+    html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Most Common · Quality-Dip Watchlist</title><style>{CSS}</style></head><body>
+<div class="shell">
+{TABS_COMMON}
+<main class="main">
+<h1>🔁 Most Common</h1>
+<div class="sub">The overlap lens: stocks carried by <b>three or more</b> of this site's
+stock lists at once — a dip screen, a factor model, a dated research verdict, an insider
+gate, the crowd. Membership is recomputed on every refresh from the displayed lists
+themselves (the Top 50s, Skin's qualifiers, Most Discussed's edition); this tab counts
+the other lists and never counts itself. <b>Select any row</b> — where it appears opens
+in the panel. Prices as of {meta['asof']} close.</div>
+<div class="cards">
+  <div class="card"><div class="n">{len(common)}</div><div class="l">Names on 3 or more tabs</div></div>
+  <div class="card"><div class="n">{stats['max_tabs']}</div><div class="l">Most tabs for any one name</div></div>
+  <div class="card"><div class="n">{stats['unique']}</div><div class="l">Unique stocks across all stock lists</div></div>
+  <div class="card"><div class="n">{stats['slots']}</div><div class="l">Total list slots counted</div></div>
+</div>
+<div class="controls"><input id="q" type="text" placeholder="Search symbol or company…"></div>
+<div class="master">
+<div class="tablewrap"><table id="t" class="mlist"><thead><tr><th>#</th><th>Stock</th>
+<th class="num">Tabs</th><th>Appears on</th>
+<th class="num">Price</th><th class="num">vs 52w high</th></tr></thead>
+<tbody>{chr(10).join(trs)}</tbody></table></div>
+{panel_html()}
+</div>
+<p class="foot">Method and limits: a name counts once per list it appears on, across
+Quality Dips, Factor Grades, Vetted Buys, Theme Buys, The Bench (displayed Top 50),
+Fallen &amp; Cheap (displayed Top 50), Skin in the Game and Most Discussed, and is
+listed here at 3 or more. Ranked by tab count, then ticker. Overlap is not independent
+confirmation in every case: Theme Buys was swept from vetted BUY verdicts, so a name on
+both Vetted Buys and Theme Buys has cleared one research process, not two — the panel
+shows exactly which lists each name sits on so the mix is visible. The mechanical lists
+re-rank daily, so membership moves with them. Structured research output, not
+investment advice or a trade instruction.</p>
+{glossary_html()}
+</main></div>
+{PANEL_JS}</body></html>"""
+    with open(os.path.join(ROOT, "common.html"), "w") as fh:
+        fh.write(html)
+    return common
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=8)
@@ -3609,6 +3738,30 @@ def main():
                     _also_on_map(), buzz_pages)
     print(f"BUZZ: {len(bentries)} names in edition "
           f"{bmeta.get('edition', '')} (window {bmeta.get('window', '')})")
+
+    common, common_stats = compute_common(rows, pro_rows, verdicts, tverdicts,
+                                          ranked_holds, scr_top, skin_rows,
+                                          bentries)
+    common_path = os.path.join(DATA, "common.json")
+    prev_common = set()
+    if os.path.exists(common_path):
+        try:
+            prev_common = {r["ticker"] for r in
+                           json.load(open(common_path))["rows"]}
+        except Exception:
+            pass
+    json.dump({"meta": meta,
+               "rows": [{"rank": r["rank"], "ticker": r["ticker"],
+                         "count": r["count"],
+                         "tabs": [x["label"] for x in r["tabs"]]}
+                        for r in common]},
+              open(common_path, "w"), indent=1)
+    build_common_page(meta, common, common_stats, kpi_ix, verdicts, tverdicts)
+    print(f"COMMON: {len(common)} names in 3+ tabs; members: "
+          f"{', '.join(r['ticker'] for r in common)}")
+    _cnew = {r["ticker"] for r in common}
+    print("COMMON ENTRANTS:", ", ".join(sorted(_cnew - prev_common)) or "none")
+    print("COMMON EXITS:", ", ".join(sorted(prev_common - _cnew)) or "none")
 
     new_set = {r["ticker"] for r in rows}
     old_set = set(prev_ranks)
