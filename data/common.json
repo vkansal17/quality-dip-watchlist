@@ -1,15 +1,14 @@
 {
  "meta": {
-  "asof": "2026-11-02",
-  "generated": "2026-11-03 13:04",
+  "asof": "2026-11-03",
+  "generated": "2026-11-04 13:04",
   "universe_n": 1645,
-  "screened": 1641,
-  "candidates": 576,
-  "spy_mom20": -2.933552005287199,
+  "screened": 1640,
+  "candidates": 635,
+  "spy_mom20": -3.175506092586766,
   "keep_extra": [
    "HCI",
    "UFCS",
-   "PJT",
    "YELP",
    "TPR",
    "SPNT",
@@ -17,17 +16,17 @@
    "MLI",
    "PIPR",
    "INCY",
-   "FOXA",
    "NEM",
    "RNR",
-   "PTCT",
+   "FOXA",
    "LRN",
-   "MCY",
    "PRDO",
    "WFRD",
    "FAF",
-   "CRUS",
+   "MCY",
    "PRI",
+   "CRUS",
+   "PTCT",
    "YOU",
    "MD",
    "CARG",
@@ -35,27 +34,28 @@
    "KNSL",
    "PGR",
    "PLMR",
-   "SIG",
-   "LPG",
-   "DECK",
    "WT",
-   "ANIP",
+   "SIG",
+   "DECK",
+   "LPG",
    "TRV",
    "MUSA",
+   "ANIP",
    "VRRM",
    "INVA",
    "RRC",
    "THG",
-   "HLNE",
    "DAVE",
-   "RDDT",
    "TRN",
-   "APP",
    "SEZL",
+   "RDDT",
    "TILE",
+   "APP",
    "THC",
-   "SIGI",
    "CF",
+   "PJT",
+   "SIGI",
+   "UTI",
    "QLYS",
    "EXE",
    "APA",
@@ -162,12 +162,13 @@
  "rows": [
   {
    "rank": 1,
-   "ticker": "ADBE",
-   "count": 3,
+   "ticker": "EQT",
+   "count": 4,
    "tabs": [
     "Quality Dips",
     "Vetted Buys",
-    "Theme Buys"
+    "Theme Buys",
+    "Fallen & Cheap"
    ]
   },
   {
@@ -222,16 +223,6 @@
   },
   {
    "rank": 7,
-   "ticker": "CSCO",
-   "count": 3,
-   "tabs": [
-    "Quality Dips",
-    "Vetted Buys",
-    "Theme Buys"
-   ]
-  },
-  {
-   "rank": 8,
    "ticker": "EXE",
    "count": 3,
    "tabs": [
@@ -241,7 +232,7 @@
    ]
   },
   {
-   "rank": 9,
+   "rank": 8,
    "ticker": "NVDA",
    "count": 3,
    "tabs": [
@@ -251,7 +242,7 @@
    ]
   },
   {
-   "rank": 10,
+   "rank": 9,
    "ticker": "NXPI",
    "count": 3,
    "tabs": [
@@ -261,7 +252,7 @@
    ]
   },
   {
-   "rank": 11,
+   "rank": 10,
    "ticker": "QLYS",
    "count": 3,
    "tabs": [
@@ -271,7 +262,7 @@
    ]
   },
   {
-   "rank": 12,
+   "rank": 11,
    "ticker": "RGA",
    "count": 3,
    "tabs": [
@@ -281,7 +272,7 @@
    ]
   },
   {
-   "rank": 13,
+   "rank": 12,
    "ticker": "RRC",
    "count": 3,
    "tabs": [
@@ -291,7 +282,7 @@
    ]
   },
   {
-   "rank": 14,
+   "rank": 13,
    "ticker": "SFM",
    "count": 3,
    "tabs": [
