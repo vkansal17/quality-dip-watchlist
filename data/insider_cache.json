@@ -488,7 +488,7 @@
   "sell_val": 1274117
  },
  "HII": {
-  "asof": "2026-10-27",
+  "asof": "2026-11-06",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -696,10 +696,10 @@
   "sell_val": 14672728
  },
  "JBSS": {
-  "asof": "2026-10-30",
-  "buyers": 0,
-  "buy_val": 0,
-  "last_buy": null,
+  "asof": "2026-11-06",
+  "buyers": 1,
+  "buy_val": 27586,
+  "last_buy": "2026-11-05",
   "sellers": 4,
   "sell_val": 1448761
  },
@@ -712,7 +712,7 @@
   "sell_val": 9012736
  },
  "TDS": {
-  "asof": "2026-10-30",
+  "asof": "2026-11-06",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -814,5 +814,53 @@
   "last_buy": null,
   "sellers": 0,
   "sell_val": 0
+ },
+ "BDC": {
+  "asof": "2026-11-06",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 5,
+  "sell_val": 2931282
+ },
+ "HRMY": {
+  "asof": "2026-11-06",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 3,
+  "sell_val": 5951534
+ },
+ "INVX": {
+  "asof": "2026-11-06",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 4,
+  "sell_val": 614646329
+ },
+ "KMT": {
+  "asof": "2026-11-06",
+  "buyers": 2,
+  "buy_val": 354750,
+  "last_buy": "2026-09-10",
+  "sellers": 5,
+  "sell_val": 5728991
+ },
+ "OII": {
+  "asof": "2026-11-06",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 13,
+  "sell_val": 11562525
+ },
+ "STRA": {
+  "asof": "2026-11-06",
+  "buyers": 2,
+  "buy_val": 106381,
+  "last_buy": "2026-04-24",
+  "sellers": 6,
+  "sell_val": 5167154
  }
 }
