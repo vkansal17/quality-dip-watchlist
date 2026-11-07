@@ -192,7 +192,7 @@
   "sell_val": 69455233
  },
  "INGR": {
-  "asof": "2026-10-26",
+  "asof": "2026-11-07",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -728,7 +728,7 @@
   "sell_val": 86755375
  },
  "SKYW": {
-  "asof": "2026-10-31",
+  "asof": "2026-11-07",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -862,5 +862,13 @@
   "last_buy": "2026-04-24",
   "sellers": 6,
   "sell_val": 5167154
+ },
+ "LZ": {
+  "asof": "2026-11-07",
+  "buyers": 1,
+  "buy_val": 768988,
+  "last_buy": "2026-05-11",
+  "sellers": 2,
+  "sell_val": 4227184
  }
 }

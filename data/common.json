@@ -1,11 +1,11 @@
 {
  "meta": {
-  "asof": "2026-11-05",
-  "generated": "2026-11-06 13:04",
+  "asof": "2026-11-06",
+  "generated": "2026-11-07 13:04",
   "universe_n": 1645,
   "screened": 1640,
-  "candidates": 598,
-  "spy_mom20": -5.288591095206185,
+  "candidates": 646,
+  "spy_mom20": -5.558912993016429,
   "keep_extra": [
    "HCI",
    "UFCS",
@@ -16,47 +16,47 @@
    "MLI",
    "PIPR",
    "INCY",
-   "FOXA",
    "RNR",
+   "FOXA",
    "MCY",
-   "NEM",
    "LRN",
    "PRDO",
    "WFRD",
    "PTCT",
+   "NEM",
    "RGA",
    "FAF",
+   "CARG",
    "CRUS",
-   "LPG",
-   "YOU",
-   "MD",
-   "WT",
    "KNSL",
+   "LPG",
+   "MD",
+   "YOU",
    "PGR",
    "PRI",
-   "CARG",
    "ANIP",
+   "WT",
    "SIG",
    "RRC",
    "VRRM",
    "DECK",
-   "MUSA",
+   "TILE",
    "TRV",
-   "VCYT",
+   "MUSA",
    "THG",
-   "PLMR",
+   "VCYT",
    "TRN",
+   "PLMR",
    "UTI",
    "RDDT",
-   "TILE",
-   "INVA",
    "QLYS",
+   "INVA",
    "PJT",
    "NTCT",
-   "HLNE",
    "SIGI",
+   "HLNE",
+   "SEZL",
    "ALL",
-   "THC",
    "EXE",
    "APA",
    "RGA",
@@ -162,17 +162,6 @@
  "rows": [
   {
    "rank": 1,
-   "ticker": "EQT",
-   "count": 4,
-   "tabs": [
-    "Quality Dips",
-    "Vetted Buys",
-    "Theme Buys",
-    "Fallen & Cheap"
-   ]
-  },
-  {
-   "rank": 2,
    "ticker": "QLYS",
    "count": 4,
    "tabs": [
@@ -183,17 +172,7 @@
    ]
   },
   {
-   "rank": 3,
-   "ticker": "ADBE",
-   "count": 3,
-   "tabs": [
-    "Quality Dips",
-    "Vetted Buys",
-    "Theme Buys"
-   ]
-  },
-  {
-   "rank": 4,
+   "rank": 2,
    "ticker": "APA",
    "count": 3,
    "tabs": [
@@ -203,7 +182,7 @@
    ]
   },
   {
-   "rank": 5,
+   "rank": 3,
    "ticker": "BAC",
    "count": 3,
    "tabs": [
@@ -213,7 +192,7 @@
    ]
   },
   {
-   "rank": 6,
+   "rank": 4,
    "ticker": "BKNG",
    "count": 3,
    "tabs": [
@@ -223,7 +202,7 @@
    ]
   },
   {
-   "rank": 7,
+   "rank": 5,
    "ticker": "CRM",
    "count": 3,
    "tabs": [
@@ -233,13 +212,33 @@
    ]
   },
   {
-   "rank": 8,
+   "rank": 6,
+   "ticker": "EQT",
+   "count": 3,
+   "tabs": [
+    "Vetted Buys",
+    "Theme Buys",
+    "Fallen & Cheap"
+   ]
+  },
+  {
+   "rank": 7,
    "ticker": "EXE",
    "count": 3,
    "tabs": [
     "Vetted Buys",
     "Theme Buys",
     "Fallen & Cheap"
+   ]
+  },
+  {
+   "rank": 8,
+   "ticker": "HALO",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "Vetted Buys",
+    "Theme Buys"
    ]
   },
   {
@@ -254,6 +253,16 @@
   },
   {
    "rank": 10,
+   "ticker": "NVDA",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "The Bench",
+    "Most Discussed"
+   ]
+  },
+  {
+   "rank": 11,
    "ticker": "NXPI",
    "count": 3,
    "tabs": [
@@ -263,7 +272,7 @@
    ]
   },
   {
-   "rank": 11,
+   "rank": 12,
    "ticker": "PSX",
    "count": 3,
    "tabs": [
@@ -273,7 +282,7 @@
    ]
   },
   {
-   "rank": 12,
+   "rank": 13,
    "ticker": "RGA",
    "count": 3,
    "tabs": [
@@ -283,21 +292,11 @@
    ]
   },
   {
-   "rank": 13,
+   "rank": 14,
    "ticker": "RRC",
    "count": 3,
    "tabs": [
     "Factor Grades",
-    "Vetted Buys",
-    "Theme Buys"
-   ]
-  },
-  {
-   "rank": 14,
-   "ticker": "SCHW",
-   "count": 3,
-   "tabs": [
-    "Quality Dips",
     "Vetted Buys",
     "Theme Buys"
    ]
@@ -308,16 +307,6 @@
    "count": 3,
    "tabs": [
     "The Bench",
-    "Fallen & Cheap",
-    "Skin in the Game"
-   ]
-  },
-  {
-   "rank": 16,
-   "ticker": "UTI",
-   "count": 3,
-   "tabs": [
-    "Factor Grades",
     "Fallen & Cheap",
     "Skin in the Game"
    ]
