@@ -736,15 +736,15 @@
   "sell_val": 16349151
  },
  "AMRZ": {
-  "asof": "2026-11-01",
+  "asof": "2026-11-08",
   "buyers": 13,
-  "buy_val": 10221482,
+  "buy_val": 10018742,
   "last_buy": "2026-09-02",
   "sellers": 0,
   "sell_val": 0
  },
  "BLDR": {
-  "asof": "2026-11-01",
+  "asof": "2026-11-08",
   "buyers": 1,
   "buy_val": 4386500,
   "last_buy": "2026-03-13",

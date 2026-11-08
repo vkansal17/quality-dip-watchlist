@@ -1,7 +1,7 @@
 {
  "meta": {
   "asof": "2026-11-06",
-  "generated": "2026-11-07 13:04",
+  "generated": "2026-11-08 13:07",
   "universe_n": 1645,
   "screened": 1640,
   "candidates": 646,
@@ -40,9 +40,9 @@
    "RRC",
    "VRRM",
    "DECK",
-   "TILE",
    "TRV",
    "MUSA",
+   "TILE",
    "THG",
    "VCYT",
    "TRN",
