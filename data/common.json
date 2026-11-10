@@ -1,11 +1,11 @@
 {
  "meta": {
-  "asof": "2026-11-06",
-  "generated": "2026-11-09 13:04",
+  "asof": "2026-11-09",
+  "generated": "2026-11-10 13:06",
   "universe_n": 1645,
-  "screened": 1640,
-  "candidates": 646,
-  "spy_mom20": -5.558912993016429,
+  "screened": 1638,
+  "candidates": 571,
+  "spy_mom20": -3.2656437401115013,
   "keep_extra": [
    "HCI",
    "UFCS",
@@ -16,47 +16,47 @@
    "MLI",
    "PIPR",
    "INCY",
-   "FOXA",
    "RNR",
+   "FOXA",
    "MCY",
    "LRN",
    "PRDO",
    "WFRD",
    "PTCT",
-   "NEM",
    "RGA",
    "FAF",
+   "NEM",
+   "LPG",
    "CARG",
+   "MD",
    "KNSL",
    "CRUS",
-   "LPG",
    "YOU",
-   "MD",
    "PGR",
-   "PRI",
    "ANIP",
-   "WT",
+   "PRI",
    "SIG",
    "RRC",
    "VRRM",
-   "DECK",
    "TRV",
    "MUSA",
-   "TILE",
+   "WT",
+   "DECK",
    "THG",
-   "VCYT",
+   "TILE",
    "TRN",
    "PLMR",
-   "UTI",
+   "VCYT",
    "RDDT",
-   "QLYS",
    "INVA",
    "PJT",
-   "NTCT",
+   "SEZL",
    "SIGI",
    "HLNE",
-   "SEZL",
+   "UTI",
    "ALL",
+   "NTCT",
+   "THC",
    "EXE",
    "APA",
    "RGA",
@@ -162,17 +162,6 @@
  "rows": [
   {
    "rank": 1,
-   "ticker": "QLYS",
-   "count": 4,
-   "tabs": [
-    "Quality Dips",
-    "Factor Grades",
-    "Vetted Buys",
-    "Theme Buys"
-   ]
-  },
-  {
-   "rank": 2,
    "ticker": "APA",
    "count": 3,
    "tabs": [
@@ -182,7 +171,7 @@
    ]
   },
   {
-   "rank": 3,
+   "rank": 2,
    "ticker": "BAC",
    "count": 3,
    "tabs": [
@@ -192,7 +181,7 @@
    ]
   },
   {
-   "rank": 4,
+   "rank": 3,
    "ticker": "BKNG",
    "count": 3,
    "tabs": [
@@ -202,7 +191,7 @@
    ]
   },
   {
-   "rank": 5,
+   "rank": 4,
    "ticker": "CRM",
    "count": 3,
    "tabs": [
@@ -212,7 +201,7 @@
    ]
   },
   {
-   "rank": 6,
+   "rank": 5,
    "ticker": "EQT",
    "count": 3,
    "tabs": [
@@ -222,7 +211,7 @@
    ]
   },
   {
-   "rank": 7,
+   "rank": 6,
    "ticker": "EXE",
    "count": 3,
    "tabs": [
@@ -232,7 +221,7 @@
    ]
   },
   {
-   "rank": 8,
+   "rank": 7,
    "ticker": "HALO",
    "count": 3,
    "tabs": [
@@ -242,7 +231,7 @@
    ]
   },
   {
-   "rank": 9,
+   "rank": 8,
    "ticker": "LNG",
    "count": 3,
    "tabs": [
@@ -252,27 +241,7 @@
    ]
   },
   {
-   "rank": 10,
-   "ticker": "NVDA",
-   "count": 3,
-   "tabs": [
-    "Quality Dips",
-    "The Bench",
-    "Most Discussed"
-   ]
-  },
-  {
-   "rank": 11,
-   "ticker": "NXPI",
-   "count": 3,
-   "tabs": [
-    "Quality Dips",
-    "Vetted Buys",
-    "Theme Buys"
-   ]
-  },
-  {
-   "rank": 12,
+   "rank": 9,
    "ticker": "PSX",
    "count": 3,
    "tabs": [
@@ -282,7 +251,17 @@
    ]
   },
   {
-   "rank": 13,
+   "rank": 10,
+   "ticker": "QLYS",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "Vetted Buys",
+    "Theme Buys"
+   ]
+  },
+  {
+   "rank": 11,
    "ticker": "RGA",
    "count": 3,
    "tabs": [
@@ -292,7 +271,7 @@
    ]
   },
   {
-   "rank": 14,
+   "rank": 12,
    "ticker": "RRC",
    "count": 3,
    "tabs": [
@@ -302,7 +281,7 @@
    ]
   },
   {
-   "rank": 15,
+   "rank": 13,
    "ticker": "SFM",
    "count": 3,
    "tabs": [

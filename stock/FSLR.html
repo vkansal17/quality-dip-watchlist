@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FSLR — First Solar · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Ten lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab active" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a><a class="tab" href="../common.html">🔁 Most Common</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../screener.html">← Back to Fallen &amp; Cheap</a></p>
+<h1>FSLR — First Solar</h1>
+<div class="sub">
+· Fallen &amp; Cheap — Screener Top 50</div>
+<div><span class="price">$191.61</span>
+<span class="dn" style="font-size:17px">-4.74% today</span>
+<span class="muted"> · as of 2026-11-09 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-39.8%</div><div class="l">vs 52w high ($318.25)</div></div><div class="kpi"><div class="v ">16%</div><div class="l">of 52w range (low $168.15)</div></div><div class="kpi"><div class="v ">57</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+6.6%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+9.9%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-29.7%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">38.1%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">13.5</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+31%</div><div class="l">VPT trend (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $318.25</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $168.15</text><polyline points="0.0,87.0 3.4,99.1 6.9,94.3 10.3,109.9 13.8,114.9 17.2,114.3 20.6,116.2 24.1,116.6 27.5,125.2 31.0,119.4 34.4,105.3 37.8,104.5 41.3,87.6 44.7,86.6 48.2,100.0 51.6,101.4 55.0,110.7 58.5,108.9 61.9,108.5 65.4,110.9 68.8,114.4 72.2,101.9 75.7,86.8 79.1,112.5 82.6,110.9 86.0,107.2 89.4,113.6 92.9,102.5 96.3,95.1 99.8,70.0 103.2,91.7 106.6,87.6 110.1,91.2 113.5,93.3 117.0,98.9 120.4,103.3 123.8,84.6 127.3,87.9 130.7,92.5 134.2,132.0 137.6,124.6 141.0,135.5 144.5,136.7 147.9,131.6 151.4,138.6 154.8,128.4 158.2,128.2 161.7,130.6 165.1,128.3 168.6,134.0 172.0,130.5 175.4,129.3 178.9,140.6 182.3,120.1 185.8,156.4 189.2,154.2 192.6,147.0 196.1,134.9 199.5,136.3 203.0,141.6 206.4,163.9 209.8,159.0 213.3,153.2 216.7,151.0 220.2,161.4 223.6,154.0 227.0,153.5 230.5,135.6 233.9,143.1 237.4,130.9 240.8,130.5 244.2,129.0 247.7,176.2 251.1,190.4 254.6,194.6 258.0,190.8 261.4,194.1 264.9,194.5 268.3,202.3 271.8,206.0 275.2,197.2 278.6,193.7 282.1,190.2 285.5,194.1 289.0,196.2 292.4,191.3 295.8,190.0 299.3,193.7 302.7,191.1 306.2,200.8 309.6,205.0 313.0,200.8 316.5,199.8 319.9,210.8 323.4,204.4 326.8,212.4 330.2,194.5 333.7,191.4 337.1,197.3 340.6,196.9 344.0,201.6 347.4,189.5 350.9,194.5 354.3,185.6 357.8,190.1 361.2,189.7 364.6,197.4 368.1,202.5 371.5,204.2 375.0,201.3 378.4,209.7 381.8,206.7 385.3,196.0 388.7,199.5 392.2,194.2 395.6,196.5 399.0,204.0 402.5,187.9 405.9,173.9 409.4,174.4 412.8,163.0 416.2,164.9 419.7,169.8 423.1,162.1 426.6,143.2 430.0,150.6 433.4,141.3 436.9,145.5 440.3,143.0 443.8,142.6 447.2,159.6 450.6,136.6 454.1,120.9 457.5,108.1 461.0,90.9 464.4,85.6 467.8,43.2 471.3,38.3 474.7,43.7 478.2,32.3 481.6,22.0 485.0,26.7 488.5,77.9 491.9,83.1 495.4,101.9 498.8,120.3 502.2,89.1 505.7,94.6 509.1,85.8 512.6,98.8 516.0,112.5 519.4,108.3 522.9,100.6 526.3,120.4 529.8,121.6 533.2,121.2 536.6,134.9 540.1,143.8 543.5,139.3 547.0,144.9 550.4,155.6 553.8,143.5 557.3,151.1 560.7,155.9 564.2,150.0 567.6,150.9 571.0,160.6 574.5,161.2 577.9,156.6 581.4,173.6 584.8,173.5 588.2,183.0 591.7,182.0 595.1,178.0 598.6,182.2 602.0,186.6 605.4,182.3 608.9,186.9 612.3,191.7 615.8,182.0 619.2,174.9 622.6,143.9 626.1,128.4 629.5,138.1 633.0,127.7 636.4,119.2 639.8,134.5 643.3,132.3 646.7,152.4 650.2,156.8 653.6,154.1 657.0,165.1 660.5,162.1 663.9,158.7 667.4,170.5 670.8,170.2 674.2,178.7 677.7,180.9 681.1,182.1 684.6,176.2 688.0,184.2 691.4,187.9 694.9,191.1 698.3,186.9 701.8,180.0 705.2,184.2 708.6,171.7 712.1,186.2 715.5,180.4 719.0,177.7 722.4,180.6 725.8,187.3 729.3,203.3 732.7,188.9 736.2,196.4 739.6,190.8 743.0,189.5 746.5,202.0 749.9,230.3 753.4,222.4 756.8,229.1 760.2,223.5 763.7,226.0 767.1,230.4 770.6,226.8 774.0,224.6 777.4,219.4 780.9,218.9 784.3,220.7 787.8,222.2 791.2,219.5 794.6,209.7 798.1,220.4 801.5,220.8 805.0,229.6 808.4,230.8 811.8,227.0 815.3,226.5 818.7,231.6 822.2,230.5 825.6,236.0 829.0,225.0 832.5,224.4 835.9,223.5 839.4,227.1 842.8,216.2 846.2,210.7 849.7,198.4 853.1,196.6 856.6,189.0 860.0,202.6" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>🔎 Fallen &amp; Cheap screen</h2><p>On the mechanical screener list at #48: <b>39.8% below its 52-week high</b>, EV/EBITDA <b>8.9×</b> vs 15.8× a year ago (-44% compression), net debt/EBITDA -0.8×, free cash flow $1,187M.</p><p>Insider record (SEC Form 4, last 12 months): <b>0 open-market buyer(s), $0</b>; 11 seller(s), $24,195,568.</p><p class='muted'>A purely mechanical screen (drawdown + cheap, compressing multiple + survivability). It does not read guidance, one-offs or filings text — see the research verdict, where present, for that layer.</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip b" title="Profitability">Prof B</span> <span class="fgrade chip h" title="Revisions">Revi C</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip b" title="Safety">Safe B+</span> <span class="fgrade chip h" title="Growth">Grow C</span></p><p>Piotroski F-score <b>8/9</b> · FCF yield <b>5.8%</b> · net debt/EBITDA <b>-0.8×</b> · avg EPS surprise (last 4) <b>+14.8%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Price structure: a weekly close below the 52-week low of $168.15 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Dip pool #317 · Pro pool #85 (B)</span></p><p>First Solar's current economics are superb — Q2 2026 gross margin ~57%, net income $423M, $1.7B net cash and a 45.1 GW / $13.6B contracted backlog — but the earnings base is policy-built (~$2.1–2.2B of Section 45X credits inside ~49.5% guided gross margin) and bookings quality is deteriorating: the backlog shrank ~5 GW in H1 on only 2.8 GW of new bookings, and 2026 guidance was already cut in February on federal permitting delays. At $171.99, −46% off the $320.95 high and ~11x trailing earnings, price compensates for much of this, but it does not clear BUY into the Oct 29 print.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 results on Oct 29, 2026 (consensus EPS ~$4.67), the pending Section 232 tariff decision and final AD/CVD determinations are all identifiable drivers within two quarters.</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip h'>mixed</span></td><td>Margins and volumes are strong (record H1 sales, Q2 EPS $3.92 beat), but FY26 sales guidance was cut to $4.9–5.2B in February, backlog fell from 50.1 to 45.1 GW in H1, and new bookings (2.8 GW) ran well below volumes sold (7.6 GW).</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Balance sheet is a strength ($1.7B net cash), yet the earnings cliff is real: 45X credits supply most of guided gross profit, plus ~$125–135M net tariff cost, furloughed Southeast Asia capacity (~$30M/quarter) and permitting-dependent customers.</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Solar sits adjacent to map #1's power chain (Negative/Severe); the evidenced offset is that tariffs and pending Section 232/AD-CVD actions (preliminary rates ~81–126% on Laos/India/Indonesia supply) protect First Solar's U.S. manufacturing — but that makes policy itself the sector bet.</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip sb'>pass</span></td><td>~10.8x trailing P/E and PEG ~0.47 at $171.99 with $1.7B net cash and a $13.6B backlog against an ~$18.8B market cap — the −46% drawdown prices in substantial policy disappointment.</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Section 232 or FEOC/domestic-content rules land with carve-outs that dilute the expected pricing benefit (Jefferies' downgrade thesis)</li><li>Bookings stay below shipments, shrinking the backlog and 2027–28 revenue visibility; further permitting delays hit utility customers</li></ul><p><b>What would change this verdict:</b> Backlog rebuilding with book-to-bill above 1.0 and 45X/tariff policy visibility locked in would lift quality and risk and support BUY.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://finnhub.io/?q=%22FSLR%22' target='_blank' rel='noopener'>First Solar Inc (FSLR): Financial Market Data — Finnhub</a> <span class='dom'>finnhub.io</span></li><li><a href='https://pv-magazine-usa.com/2026/08/03/first-solar-hits-sales-record-as-it-reaffirms-2026-guidance-balances-tariff-risk/' target='_blank' rel='noopener'>First Solar hits sales record as it reaffirms 2026 guidance, balances tariff risk — pv magazine USA</a> <span class='dom'>pv-magazine-usa.com</span></li><li><a href='https://ts2.tech/en/first-solar-stock-jolts-traders-after-weak-2026-outlook-tariffs-and-permitting-delays-loom/' target='_blank' rel='noopener'>First Solar stock jolts traders after weak 2026 outlook; tariffs and permitting delays loom — TS2</a> <span class='dom'>ts2.tech</span></li><li><a href='https://ts2.tech/en/why-first-solar-stock-is-sliding-today-jefferies-downgrade-puts-2026-bookings-in-the-spotlight/' target='_blank' rel='noopener'>Why First Solar stock is sliding today: Jefferies downgrade puts 2026 bookings in the spotlight — TS2</a> <span class='dom'>ts2.tech</span></li><li><a href='https://www.businesswire.com/news/home/20261015638937/en/First-Solar-Inc.-to-Announce-Third-Quarter-2026-Financial-Results-on-October-29-2026' target='_blank' rel='noopener'>First Solar, Inc. to Announce Third Quarter 2026 Financial Results on October 29, 2026 — Business Wire</a> <span class='dom'>businesswire.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/FSLR" target="_blank" rel="noopener">Yahoo Finance — FSLR</a> ·
+<a href="https://stockanalysis.com/stocks/fslr/" target="_blank" rel="noopener">StockAnalysis — FSLR</a></p>
+<p class="muted">Research and education only — not investment advice.</p></section>
+</main></div></body></html>

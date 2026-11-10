@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASML — ASML Holding N.V. · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Ten lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a><a class="tab" href="../common.html">🔁 Most Common</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>ASML — ASML Holding N.V.</h1>
+<div class="sub">Semiconductor Equipment
+· Rank #5 on today's list</div>
+<div><span class="price">$1,513.25</span>
+<span class="up" style="font-size:17px">+6.21% today</span>
+<span class="muted"> · as of 2026-11-09 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-23.9%</div><div class="l">vs 52w high ($1,989.44)</div></div><div class="kpi"><div class="v ">53%</div><div class="l">of 52w range (low $966.57)</div></div><div class="kpi"><div class="v ">43</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-13.5%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v dn">-10.2%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+45.7%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">54.9%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">—</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-41%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">—</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$2,804M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $1,989.44</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $966.57</text><polyline points="0.0,220.9 3.4,224.3 6.9,221.2 10.3,224.9 13.8,227.5 17.2,224.8 20.6,228.2 24.1,220.8 27.5,233.0 31.0,236.0 34.4,231.6 37.8,228.3 41.3,220.4 44.7,216.5 48.2,210.6 51.6,206.2 55.0,199.5 58.5,206.0 61.9,208.2 65.4,204.0 68.8,205.7 72.2,204.0 75.7,203.3 79.1,212.1 82.6,210.6 86.0,213.1 89.4,225.8 92.9,221.4 96.3,217.3 99.8,217.1 103.2,216.1 106.6,215.3 110.1,213.8 113.5,215.2 117.0,213.9 120.4,214.4 123.8,194.7 127.3,181.3 130.7,178.3 134.2,181.2 137.6,188.4 141.0,171.7 144.5,170.2 147.9,172.5 151.4,173.8 154.8,159.6 158.2,154.0 161.7,160.8 165.1,153.7 168.6,146.4 172.0,147.6 175.4,142.5 178.9,133.9 182.3,140.5 185.8,133.8 189.2,140.5 192.6,136.7 196.1,146.2 199.5,158.1 203.0,155.7 206.4,142.6 209.8,139.2 213.3,142.5 216.7,137.9 220.2,143.9 223.6,143.9 227.0,141.2 230.5,130.9 233.9,133.0 237.4,130.8 240.8,127.3 244.2,124.9 247.7,118.9 251.1,132.0 254.6,134.7 258.0,140.4 261.4,153.5 264.9,145.5 268.3,151.9 271.8,167.7 275.2,154.2 278.6,148.8 282.1,148.1 285.5,155.5 289.0,156.7 292.4,150.4 295.8,147.6 299.3,154.7 302.7,152.4 306.2,162.6 309.6,151.7 313.0,145.4 316.5,146.6 319.9,160.1 323.4,165.7 326.8,175.9 330.2,161.9 333.7,153.7 337.1,162.6 340.6,165.4 344.0,164.9 347.4,140.9 350.9,135.1 354.3,128.9 357.8,124.4 361.2,120.6 364.6,128.2 368.1,143.1 371.5,132.8 375.0,129.3 378.4,133.0 381.8,136.2 385.3,141.6 388.7,133.2 392.2,138.5 395.6,148.6 399.0,146.6 402.5,137.2 405.9,139.7 409.4,148.2 412.8,136.3 416.2,115.0 419.7,120.9 423.1,105.1 426.6,110.6 430.0,120.0 433.4,107.3 436.9,106.7 440.3,124.0 443.8,130.2 447.2,132.9 450.6,113.9 454.1,105.2 457.5,96.6 461.0,96.8 464.4,103.9 467.8,102.3 471.3,100.8 474.7,97.5 478.2,81.4 481.6,77.0 485.0,70.5 488.5,94.7 491.9,72.3 495.4,66.3 498.8,75.4 502.2,40.8 505.7,48.3 509.1,42.2 512.6,60.8 516.0,47.4 519.4,34.5 522.9,34.6 526.3,66.1 529.8,69.4 533.2,53.0 536.6,62.8 540.1,44.2 543.5,22.0 547.0,52.6 550.4,68.1 553.8,56.4 557.3,72.7 560.7,68.2 564.2,60.7 567.6,62.2 571.0,77.1 574.5,66.7 577.9,58.4 581.4,64.8 584.8,72.6 588.2,74.4 591.7,61.3 595.1,61.2 598.6,61.0 602.0,70.6 605.4,91.9 608.9,107.0 612.3,113.8 615.8,92.7 619.2,97.4 622.6,94.6 626.1,80.1 629.5,87.1 633.0,81.6 636.4,74.0 639.8,75.6 643.3,61.8 646.7,59.5 650.2,51.6 653.6,52.4 657.0,44.2 660.5,61.0 663.9,71.7 667.4,72.0 670.8,69.2 674.2,74.2 677.7,73.3 681.1,73.0 684.6,75.2 688.0,83.4 691.4,83.4 694.9,89.8 698.3,86.3 701.8,93.8 705.2,79.4 708.6,69.0 712.1,76.4 715.5,85.2 719.0,82.9 722.4,108.7 725.8,105.3 729.3,103.0 732.7,97.3 736.2,86.8 739.6,80.2 743.0,72.5 746.5,73.2 749.9,77.8 753.4,73.4 756.8,67.6 760.2,54.4 763.7,59.2 767.1,59.9 770.6,47.6 774.0,49.1 777.4,54.5 780.9,60.6 784.3,68.0 787.8,65.7 791.2,72.0 794.6,78.8 798.1,93.0 801.5,91.5 805.0,94.8 808.4,93.6 811.8,97.0 815.3,87.4 818.7,111.7 822.2,109.4 825.6,105.4 829.0,96.0 832.5,90.3 835.9,87.6 839.4,110.6 842.8,118.9 846.2,113.5 849.7,125.2 853.1,154.4 856.6,140.1 860.0,121.6" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 24% from its 52-week high of $1,989.44, trading at 53% of its 52-week range. 20-day momentum is -13.5% — easing, inside the screen's not-in-freefall limit. RSI 43 says washed out rather than euphoric, and $2,804M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken. It carries a full hand-researched brief below (dip cause, business pulse, analyst consensus, risks).</p></section>
+<section><h2>What caused the dip</h2><p>Oct 14 Q3: record results but revenue narrowly missed the consensus figure, shares -3% overnight and ~14% below the June high; investors also focused on the rising cost of ASML's capacity-expansion plans, plus the broader AI-unwind/rate backdrop (-7.8% that week).</p></section>
+<section><h2>Business pulse</h2><p>Very strong. Q3 sales +55% YoY, net income more than doubled to EUR 4.96B, EPS beat, gross margin 57.5% vs 55-57% guidance; FY26 outlook raised a third time; demand exceeds planned supply through 2028 with customers asking about 2029-30 orders; EUR 4.1B buyback in Q3.</p></section>
+<section><h2>What analysts say</h2><p>Buy/Moderate Buy consensus — MarketBeat average target $2,079 (+32%); another tally counts 31 Buy + 7 Overweight of 45, consensus $2,138.73. October: Citi reiterated Buy (Oct 15), JPMorgan trimmed to $2,350 keeping Overweight, RBC Outperform $2,100, CFRA Strong Buy $2,602. One outlier downgrade to Sell at $749.</p></section>
+<section><h2>Media &amp; social buzz</h2><p>Positive dip framing — coverage led with 'the Q3 beat is real' and a Buy stance on the ADR; retail sentiment described as 'extremely bullish' post-print; the ~$1,560 level near the 200-day average framed as a typical long-term entry zone.</p></section>
+<section><h2>Risks &amp; what would break the thesis</h2><p>Premium multiple leaves no room for error; any hyperscaler capex pullback pushes out EUV orders; China/export-control exposure (~20% of business); high beta amplifies AI-trade swings both ways.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Dip Top 50 #7</span></p><p>ASML the business is unambiguous — EUV monopoly, record Q3 sales of EUR11.7B at a 57.5% gross margin, full-year guidance raised three times in 2026, and demand outrunning planned capacity into 2028. ASML the stock still carries a ~55x trailing multiple and an open regulatory cliff over the ~20% of sales from China (the proposed MATCH Act), leaving only two legs as clean passes: HOLD — the research validates the company, not yet the price.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q4 guide of EUR14.2-15.2B sales at ~57% gross margin sits above consensus; 2027 low-NA EUV demand nearly fully covered by orders, capacity expansion beyond +30% under study, and a EUR12B buyback runs through 2028.</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 record net sales EUR11.66B, gross margin 57.5%, net income ~EUR4.96B; FY26 guidance raised to EUR44-45B (from EUR43-45B in July and EUR36-40B in April).</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>China is ~20% of sales and the proposed MATCH Act could extend DUV restrictions — material and unresolved, though guidance already contemplates current controls and EUV (the growth engine) is unaffected.</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #3 semis is Negative/Severe, but that selloff was memory-led (China's CXMT) — ASML is the monopoly equipment supplier to all sides and memory makers diversify its demand (South Korea 45% of sales); China controls are its real sector drag.</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>-21% from its high with guidance rising, but ~55x trailing and ~34x 2027 EPS (CFRA) still price years of flawless AI-capex execution; CFRA itself says regulatory risk should pressure the multiple.</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>MATCH Act passage would directly cut China DUV revenue and likely compress the multiple further</li><li>Customer concentration is extreme — a capex pause at TSMC, Samsung or SK Hynix hits orders immediately</li><li>Q3 net income included a ~EUR500M investment revaluation gain; underlying growth is strong but slightly below the headline</li></ul><p><b>What would change this verdict:</b> MATCH Act passage (or its clear defeat) resolves the risk leg either way; a 2027 guidance raise with the January Q4 print would strengthen the valuation case toward BUY.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://intickers.com/reports/asml/' target='_blank' rel='noopener'>ASML Holding N.V. — Q3 2026 results and guidance timeline — InTickers</a> <span class='dom'>intickers.com</span></li><li><a href='https://watcher.guru/news/asml-stock-rises-as-profit-beats-estimates-demand-extends-into-2030' target='_blank' rel='noopener'>ASML Stock Rises as Profit Beats Estimates & Demand Extends Into 2030 — Watcher Guru</a> <span class='dom'>watcher.guru</span></li><li><a href='https://kurums.com/asml-euv-monopoly-veldhoven-story/?v=0b3b97fa6688' target='_blank' rel='noopener'>ASML Story: EUV Monopoly, China Rules and 2026 Guidance — Kurums</a> <span class='dom'>kurums.com</span></li><li><a href='https://mlq.ai/news/asml-earnings-preview-investors-look-for-euv-orders-and-china-demand/' target='_blank' rel='noopener'>ASML earnings preview: Investors look for EUV orders and China demand — MLQ</a> <span class='dom'>mlq.ai</span></li><li><a href='https://seekingalpha.com/article/4952397-asml-buy-before-earnings-as-the-growth-runway-extends' target='_blank' rel='noopener'>ASML: Buy Before Earnings As The Growth Runway Extends — Seeking Alpha</a> <span class='dom'>seekingalpha.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/ASML" target="_blank" rel="noopener">Yahoo Finance — ASML</a> ·
+<a href="https://stockanalysis.com/stocks/asml/" target="_blank" rel="noopener">StockAnalysis — ASML</a> ·
+<a href="https://www.google.com/finance/quote/ASML:NASDAQ" target="_blank" rel="noopener">Google Finance — ASML</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>
