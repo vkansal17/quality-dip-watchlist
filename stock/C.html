@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C — Citigroup · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Ten lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a><a class="tab" href="../common.html">🔁 Most Common</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>C — Citigroup</h1>
+<div class="sub">Banking · Fortune 500 #24
+· Rank #47 on today's list</div>
+<div><span class="price">$122.27</span>
+<span class="up" style="font-size:17px">+0.25% today</span>
+<span class="muted"> · as of 2026-11-10 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-16.1%</div><div class="l">vs 52w high ($145.67)</div></div><div class="kpi"><div class="v ">51%</div><div class="l">of 52w range (low $97.63)</div></div><div class="kpi"><div class="v ">46</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-1.8%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+1.8%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+21.3%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">30.2%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">16.8</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-20%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">—</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$1,214M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $145.67</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $97.63</text><polyline points="0.0,222.1 3.4,212.7 6.9,222.5 10.3,224.1 13.8,233.5 17.2,232.9 20.6,226.2 24.1,236.0 27.5,231.2 31.0,226.8 34.4,220.2 37.8,214.3 41.3,209.4 44.7,213.5 48.2,211.2 51.6,195.5 55.0,190.7 58.5,185.9 61.9,185.7 65.4,183.4 68.8,176.0 72.2,173.1 75.7,172.9 79.1,168.4 82.6,175.2 86.0,174.4 89.4,168.3 92.9,159.2 96.3,144.9 99.8,139.0 103.2,129.4 106.6,134.5 110.1,144.7 113.5,148.8 117.0,151.1 120.4,142.1 123.8,121.6 127.3,125.2 130.7,130.2 134.2,133.7 137.6,130.5 141.0,146.6 144.5,152.8 147.9,170.2 151.4,147.7 154.8,145.1 158.2,168.4 161.7,163.7 165.1,155.7 168.6,164.9 172.0,159.4 175.4,159.6 178.9,162.2 182.3,157.7 185.8,155.5 189.2,153.1 192.6,146.6 196.1,147.8 199.5,155.3 203.0,124.4 206.4,119.6 209.8,126.8 213.3,148.0 216.7,175.8 220.2,177.1 223.6,164.1 227.0,153.0 230.5,156.2 233.9,154.2 237.4,177.6 240.8,182.9 244.2,161.6 247.7,153.3 251.1,180.0 254.6,174.4 258.0,177.5 261.4,175.0 264.9,185.6 268.3,196.4 271.8,196.1 275.2,185.5 278.6,184.5 282.1,200.9 285.5,200.1 289.0,192.7 292.4,191.1 295.8,186.8 299.3,181.6 302.7,183.0 306.2,173.6 309.6,164.2 313.0,160.9 316.5,170.2 319.9,192.6 323.4,193.1 326.8,165.7 330.2,157.3 333.7,157.5 337.1,148.1 340.6,149.1 344.0,120.8 347.4,114.4 350.9,116.8 354.3,108.4 357.8,93.7 361.2,84.3 364.6,94.7 368.1,82.1 371.5,78.2 375.0,84.3 378.4,93.0 381.8,98.4 385.3,100.8 388.7,95.6 392.2,98.4 395.6,102.5 399.0,100.8 402.5,103.2 405.9,111.3 409.4,100.7 412.8,102.5 416.2,95.9 419.7,111.6 423.1,110.3 426.6,107.7 430.0,118.1 433.4,114.9 436.9,121.1 440.3,125.6 443.8,136.5 447.2,114.9 450.6,113.1 454.1,113.7 457.5,105.8 461.0,112.3 464.4,115.5 467.8,110.1 471.3,95.9 474.7,86.2 478.2,92.1 481.6,68.9 485.0,80.8 488.5,77.2 491.9,70.7 495.4,76.7 498.8,55.9 502.2,48.0 505.7,41.9 509.1,33.9 512.6,30.4 516.0,33.6 519.4,22.0 522.9,25.1 526.3,31.3 529.8,25.1 533.2,39.4 536.6,36.2 540.1,47.4 543.5,46.7 547.0,47.4 550.4,30.1 553.8,43.8 557.3,58.9 560.7,49.2 564.2,43.7 567.6,44.1 571.0,77.2 574.5,70.0 577.9,84.2 581.4,94.7 584.8,97.5 588.2,79.2 591.7,81.8 595.1,83.4 598.6,82.0 602.0,78.0 605.4,80.8 608.9,104.6 612.3,81.5 615.8,80.9 619.2,75.9 622.6,61.2 626.1,57.8 629.5,74.8 633.0,69.5 636.4,68.6 639.8,66.1 643.3,58.0 646.7,52.9 650.2,50.2 653.6,53.9 657.0,57.7 660.5,78.9 663.9,93.3 667.4,84.5 670.8,84.1 674.2,77.3 677.7,75.9 681.1,79.9 684.6,78.9 688.0,84.6 691.4,80.5 694.9,72.5 698.3,55.5 701.8,57.4 705.2,61.8 708.6,57.1 712.1,53.9 715.5,52.5 719.0,64.3 722.4,64.3 725.8,78.7 729.3,79.8 732.7,83.9 736.2,69.3 739.6,80.8 743.0,83.2 746.5,82.4 749.9,72.7 753.4,86.0 756.8,88.2 760.2,94.1 763.7,105.2 767.1,98.5 770.6,98.3 774.0,98.4 777.4,103.7 780.9,100.4 784.3,93.4 787.8,83.3 791.2,116.2 794.6,126.2 798.1,122.1 801.5,117.4 805.0,128.8 808.4,125.2 811.8,119.2 815.3,125.2 818.7,133.6 822.2,131.7 825.6,124.4 829.0,118.0 832.5,110.7 835.9,124.6 839.4,122.5 842.8,124.3 846.2,115.2 849.7,143.3 853.1,140.6 856.6,127.6 860.0,126.2" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 16% from its 52-week high of $145.67, trading at 51% of its 52-week range. 20-day momentum is -1.8% — easing, inside the screen's not-in-freefall limit. RSI 46 says washed out rather than euphoric, and $1,214M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Analyst consensus</h2><p><span class="chip b">Moderate Buy</span> · average target $151</p><p></p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof F</span> <span class="fgrade chip h" title="Revisions">Revi C+</span> <span class="fgrade chip h" title="Value">Valu C</span> <span class="fgrade chip r" title="Safety">Safe D-</span> <span class="fgrade chip h" title="Growth">Grow C</span></p><p>Piotroski F-score <b>5/9</b> · FCF yield <b>-32.4%</b> · net debt/EBITDA <b>3.1×</b> · avg EPS surprise (last 4) <b>+12.1%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 5/9).</li><li>Balance sheet: net debt/EBITDA rises above 4.6× (now 3.1×).</li><li>Cash flow: free cash flow turns negative on a trailing-year basis.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Economics & Growth · Dip pool #86 · Pro pool #550 (F)</span></p><p>The restructuring is measurably working: Q3 2026 revenue hit a decade-high $23.85B (+8%), EPS of $2.85 beat the $2.65 consensus, ROTCE reached 11.5%, Services and Wealth each grew 15%, expenses fell, and Citi returned $4.1B in the quarter under a new $30B buyback with CET1 at 12.8%. At $120.62 (~1.2x tangible book, ~11.5x trailing earnings, -17.2% from the high) valuation genuinely helps — but management guided Q4 Markets revenue down ~20% sequentially, cards were flat, and credit costs are building into a cooling jobs market, which caps this at HOLD until 2027 returns are proven.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q4 print in January, Banamex IPO/deconsolidation in 2027, the $30B multi-year buyback (share count already -8.4% YoY) and a raised $0.67 quarterly dividend</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip sb'>pass</span></td><td>Best Q3 revenue in a decade ($23.85B, +8%), EPS $2.85 vs $2.65 consensus, ROTCE 11.5% vs 8.0% a year ago, Services +15% and Wealth +15%, efficiency ratio improved to 58.5% from 64.7%</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Cost of credit rose 6% to $2.59B with a consumer reserve build as payroll growth cools (+29k in September), U.S. card revenue is flat, and the Banamex exit (49% sold, IPO expected 2027) leaves a currency-translation overhang; capital itself is strong</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #7 banks/financials is Mixed/High and the group has de-rated (KBW well off its peak); the offset is evidenced — CET1 12.8%, a passed 2026 stress test and NII ex-Markets +7% — but Citi carries the sector's execution discount for a reason</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip sb'>pass</span></td><td>$120.62 is ~1.2x tangible book value ($101.59/share) and ~11.5x trailing EPS after a 17.2% pullback — the cheapest large-bank multiple against a credible path toward the 11–13% ROTCE target</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Q4 Markets revenue falling 20%+ sequentially, as guided, exposes how much of the beat was trading-led</li><li>Consumer credit deteriorates faster than reserves if the jobs cooldown deepens, pressuring ROTCE below the 11% floor of target</li></ul><p><b>What would change this verdict:</b> Two more quarters of ROTCE at or above ~11.5% with credit costs stabilizing would lift risk/sector toward BUY; ROTCE slipping back under 10% would break the restructuring thesis toward SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://tickeron.com/ticker/C/?via=7554321' target='_blank' rel='noopener'>Citigroup (C) Stock Analysis: Best Q3 in a Decade Meets a Pullback — Tickeron</a> <span class='dom'>tickeron.com</span></li><li><a href='https://financialreportinsights.com/companies/c/2026/q3' target='_blank' rel='noopener'>Citigroup (C) Q3 2026 Earnings: Revenue $23.8B (+7.9%), RoTCE 11.5% — Financial Report Insights</a> <span class='dom'>financialreportinsights.com</span></li><li><a href='https://www.bullished.co/citigroup-third-quarter-net-income-rises-40-to-5-2-billion-as-revenue-climbs-8-465aa05d' target='_blank' rel='noopener'>Citigroup Third-Quarter Net Income Rises 40% To $5.2 Billion As Revenue Climbs 8% — Bullished</a> <span class='dom'>bullished.co</span></li><li><a href='https://www.tradingview.com/news/tradingview:9382bb6432003:0-key-facts-citigroup-inc-q3-2-85-markets-rev-may-drop-20-stock-5/' target='_blank' rel='noopener'>Key facts: Citigroup Inc. Q3 $2.85; Markets rev may drop 20%; stock -5% — TradingView/Reuters</a> <span class='dom'>tradingview.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/C" target="_blank" rel="noopener">Yahoo Finance — C</a> ·
+<a href="https://stockanalysis.com/stocks/c/" target="_blank" rel="noopener">StockAnalysis — C</a> ·
+<a href="https://www.google.com/finance/quote/C:NASDAQ" target="_blank" rel="noopener">Google Finance — C</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>
