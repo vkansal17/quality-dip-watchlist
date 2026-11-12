@@ -216,7 +216,7 @@
   "sell_val": 19646314
  },
  "AA": {
-  "asof": "2026-10-26",
+  "asof": "2026-11-12",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -672,7 +672,7 @@
   "sell_val": 656564
  },
  "ALG": {
-  "asof": "2026-11-05",
+  "asof": "2026-11-12",
   "buyers": 2,
   "buy_val": 290817,
   "last_buy": "2026-03-24",
@@ -792,15 +792,15 @@
   "sell_val": 25641798
  },
  "CMI": {
-  "asof": "2026-11-05",
+  "asof": "2026-11-12",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
-  "sellers": 12,
-  "sell_val": 37672190
+  "sellers": 10,
+  "sell_val": 29336122
  },
  "MOD": {
-  "asof": "2026-11-05",
+  "asof": "2026-11-12",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -808,7 +808,7 @@
   "sell_val": 40422277
  },
  "NFG": {
-  "asof": "2026-11-05",
+  "asof": "2026-11-12",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -884,6 +884,14 @@
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
+  "sellers": 0,
+  "sell_val": 0
+ },
+ "ENS": {
+  "asof": "2026-11-12",
+  "buyers": 1,
+  "buy_val": 24675,
+  "last_buy": "2026-05-29",
   "sellers": 0,
   "sell_val": 0
  }
