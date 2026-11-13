@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MCD — McDonald's · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Ten lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a><a class="tab" href="../common.html">🔁 Most Common</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>MCD — McDonald's</h1>
+<div class="sub">Restaurants · Fortune 500 #170
+· Rank #10 on today's list</div>
+<div><span class="price">$273.63</span>
+<span class="dn" style="font-size:17px">-0.43% today</span>
+<span class="muted"> · as of 2026-11-12 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-19.8%</div><div class="l">vs 52w high ($341.06)</div></div><div class="kpi"><div class="v ">39%</div><div class="l">of 52w range (low $230.88)</div></div><div class="kpi"><div class="v ">64</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+12.8%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+14.7%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-11.0%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">27.0%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">21.4</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+53%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">25.6%</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$1,481M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $341.06</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $230.88</text><polyline points="0.0,87.0 3.4,88.1 6.9,92.2 10.3,92.8 13.8,96.4 17.2,93.7 20.6,83.6 24.1,92.2 27.5,81.5 31.0,77.7 34.4,78.8 37.8,94.8 41.3,100.4 44.7,86.8 48.2,85.2 51.6,79.9 55.0,82.7 58.5,80.8 61.9,81.3 65.4,82.9 68.8,69.3 72.2,65.4 75.7,73.6 79.1,65.4 82.6,63.6 86.0,71.0 89.4,70.2 92.9,80.7 96.3,75.9 99.8,81.0 103.2,85.2 106.6,86.2 110.1,90.8 113.5,95.4 117.0,102.0 120.4,96.4 123.8,93.7 127.3,84.5 130.7,87.5 134.2,88.6 137.6,83.4 141.0,86.0 144.5,85.0 147.9,87.3 151.4,96.2 154.8,90.7 158.2,90.0 161.7,83.8 165.1,76.6 168.6,74.3 172.0,76.9 175.4,71.6 178.9,72.6 182.3,65.8 185.8,63.9 189.2,55.7 192.6,56.1 196.1,49.0 199.5,52.0 203.0,51.3 206.4,56.7 209.8,39.4 213.3,48.2 216.7,48.1 220.2,47.6 223.6,49.1 227.0,45.0 230.5,34.6 233.9,37.6 237.4,37.6 240.8,34.7 244.2,22.0 247.7,34.1 251.1,39.3 254.6,40.1 258.0,48.4 261.4,47.2 264.9,41.9 268.3,47.5 271.8,52.8 275.2,55.3 278.6,50.4 282.1,50.0 285.5,50.7 289.0,71.2 292.4,83.1 295.8,84.6 299.3,85.3 302.7,86.5 306.2,79.0 309.6,84.4 313.0,90.3 316.5,85.2 319.9,80.8 323.4,87.6 326.8,87.9 330.2,82.8 333.7,92.3 337.1,88.1 340.6,83.2 344.0,90.7 347.4,93.0 350.9,95.5 354.3,89.6 357.8,88.2 361.2,79.7 364.6,88.3 368.1,98.2 371.5,101.6 375.0,96.8 378.4,103.0 381.8,120.8 385.3,116.5 388.7,121.0 392.2,114.2 395.6,127.7 399.0,132.6 402.5,130.6 405.9,132.6 409.4,133.4 412.8,148.9 416.2,151.1 419.7,150.6 423.1,148.9 426.6,150.4 430.0,147.6 433.4,135.8 436.9,139.0 440.3,140.1 443.8,132.5 447.2,136.2 450.6,142.0 454.1,138.8 457.5,144.5 461.0,142.1 464.4,148.2 467.8,147.7 471.3,153.6 474.7,154.7 478.2,140.9 481.6,144.9 485.0,136.2 488.5,135.7 491.9,131.3 495.4,131.3 498.8,128.7 502.2,125.2 505.7,133.2 509.1,143.3 512.6,159.8 516.0,156.8 519.4,152.5 522.9,170.6 526.3,160.5 529.8,165.5 533.2,159.4 536.6,161.1 540.1,139.4 543.5,141.6 547.0,136.3 550.4,144.0 553.8,147.4 557.3,151.1 560.7,154.9 564.2,162.1 567.6,169.8 571.0,153.3 574.5,164.5 577.9,164.6 581.4,171.8 584.8,172.5 588.2,174.0 591.7,170.2 595.1,158.7 598.6,154.2 602.0,157.1 605.4,163.0 608.9,158.8 612.3,169.3 615.8,163.2 619.2,152.2 622.6,147.9 626.1,151.3 629.5,152.8 633.0,152.0 636.4,148.9 639.8,155.6 643.3,154.5 646.7,168.7 650.2,165.9 653.6,165.0 657.0,161.7 660.5,158.2 663.9,155.1 667.4,163.7 670.8,166.0 674.2,179.3 677.7,169.7 681.1,172.6 684.6,177.3 688.0,177.6 691.4,180.2 694.9,187.8 698.3,187.6 701.8,192.1 705.2,192.9 708.6,193.9 712.1,184.3 715.5,193.5 719.0,201.7 722.4,201.8 725.8,202.3 729.3,203.0 732.7,198.2 736.2,221.5 739.6,224.1 743.0,225.1 746.5,230.7 749.9,230.0 753.4,235.9 756.8,234.2 760.2,234.0 763.7,231.8 767.1,233.0 770.6,236.0 774.0,224.3 777.4,227.6 780.9,226.7 784.3,226.4 787.8,221.6 791.2,213.4 794.6,212.5 798.1,213.1 801.5,205.6 805.0,206.1 808.4,193.8 811.8,201.9 815.3,197.3 818.7,199.9 822.2,197.9 825.6,184.5 829.0,183.1 832.5,168.5 835.9,173.5 839.4,140.2 842.8,144.4 846.2,147.4 849.7,137.8 853.1,136.4 856.6,150.7 860.0,153.0" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 20% from its 52-week high of $341.06, trading at 39% of its 52-week range. The fall has stabilized — 20-day momentum is +12.8% rather than still accelerating down. RSI 64 says washed out rather than euphoric, and $1,481M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken. It carries a full hand-researched brief below (dip cause, business pulse, analyst consensus, risks).</p></section>
+<section><h2>What caused the dip</h2><p>Company-specific U.S. slump — shares -22.9% in six months on weak U.S. comps, a value menu that missed, poor marketing/execution and negative guest counts, plus investor concern over the $8.5B 'McDonald's > NEXT' plan (Sep 23 Investor Day) slowing unit growth and lifting capex.</p></section>
+<section><h2>Business pulse</h2><p>Slowing but still growing and profitable. Q2 global comps +1.3%, U.S. comps +0.8% (traffic negative, check positive), revenue $7.10B (+3.7%), EPS $3.38 vs $3.32 consensus. The NEXT plan targets low-to-mid-50% operating margin by 2030. Q3 due Nov 4.</p></section>
+<section><h2>What analysts say</h2><p>Moderate Buy consensus, average target $295.94 (+19%) — but October was a wave of cuts: Bernstein $295->$250 Market Perform, Guggenheim $290->$250 Neutral, Wells Fargo $300->$270 Overweight, KeyCorp $305->$280 Overweight. Lone Sell: Melius at $230.</p></section>
+<section><h2>Media &amp; social buzz</h2><p>Very explicit dip coverage — Zacks: 'McDonald's Stock Down 23% in 6 Months: Should Investors Buy the Dip?'; MarketBeat: 'MCD Stock Is Deeply Oversold: Is It Time to Buy the Dip?' (~30% implied upside, 3.2% dividend); TipRanks: 'McDonald's Stock Looks Like a Buy after the Dip.'</p></section>
+<section><h2>Risks &amp; what would break the thesis</h2><p>U.S. guest counts (especially low-income) haven't stabilized — an affordability headwind management itself acknowledged; GLP-1/wellness trends are a structural overhang; $229 support and the 2022 low (~$217) are must-hold levels, with Nov 4 earnings the decider.</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip h" title="Profitability">Prof C+</span> <span class="fgrade chip h" title="Revisions">Revi C</span> <span class="fgrade chip sb" title="Value">Valu A+</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip r" title="Growth">Grow D+</span></p><p>Piotroski F-score <b>7/9</b> · FCF yield <b>3665.8%</b> · net debt/EBITDA <b>3.0×</b> · avg EPS surprise (last 4) <b>+3.4%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Balance sheet: net debt/EBITDA rises above 4.5× (now 3.0×).</li><li>Price structure: a weekly close below the 52-week low of $230.88 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Dip Top 50 #12</span></p><p>McDonald's is cheap for a reason that hasn't finished playing out: at ~18x forward earnings it trades well below restaurant peers and yields ~3%, but US comparable sales were slightly negative in July–August and management guided Q3 comps slightly negative, with the entry-level value fix not yet launched in the US. The Nov 4 print — and whether September comps actually turned positive as the CFO projected — is the whole debate; until traffic inflects, the dip case is unproven rather than wrong.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip h'>mixed</span></td><td>Q3 earnings Nov 4 (consensus $3.38) is a low-bar test and entry-level US pricing is promised with '100% confidence' by the CEO, but neither the launch timing nor a comp inflection is confirmed</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip h'>mixed</span></td><td>Q2 EPS beat ($3.38 vs $3.32) and 31.7% net margins, but US comps fell (a recent quarter −1.4%) and CFO guided Q3 US comps slightly negative — traffic, not profitability, is deteriorating</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Franchise model cash flows are durable, but the balance sheet runs structurally levered (negative book equity, current ratio ~1.08), franchisees are pushing back on ~$800K/store overhaul costs, and an AI-pricing class action was filed Oct 2 (unproven)</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #8 consumer Negative/High, but trade-down cuts both ways for the value leader ($5 meal deal, entry pricing push); offset only partly evidenced — share losses to Chick-fil-A/coffee narrowed in September per Consumer Edge data</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip sb'>pass</span></td><td>$248.46 is −27.2% vs high; ~18x NTM P/E vs YUM/CMG ~24x and SBUX ~33x (TIKR); ~3.0% dividend yield with 50 years of dividend growth (MarketBeat)</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>US traffic stays negative if entry-level pricing slips or value perception doesn't recover — the dip thesis needs comps, not just cheapness</li><li>GLP-1/protein demand shift and franchisee economics (4-year payback on remodels) pressure the model longer term</li></ul><p><b>What would change this verdict:</b> Two consecutive quarters of positive US comps would flip quality/catalyst and make this a BUY; another year of negative traffic at a still-full multiple argues SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://www.thestreet.com/investing/stocks/mcd-mcdonalds-pricing-power-problem-morgan-stanley' target='_blank' rel='noopener'>McDonald's menu appears to have a price problem — CEO/CFO comments, Jul–Aug sales slightly negative, Q3 seen slightly negative</a> <span class='dom'>thestreet.com</span></li><li><a href='https://www.tikr.com/blog/mcdonalds-stock-is-down-21-in-2026-heading-into-q3-earnings-heres-where-the-stock-could-go-by-2030' target='_blank' rel='noopener'>McDonald's Stock Is Down 21% in 2026 Heading Into Q3 Earnings — traffic, franchisee and peer-multiple detail</a> <span class='dom'>tikr.com</span></li><li><a href='https://www.marketbeat.com/compare-stocks/?Symbols=NYSE:QSR,NYSE:MCD,NYSE:CMG' target='_blank' rel='noopener'>Compare Stocks: QSR, MCD, CMG — MCD forward P/E 18.2, dividend $7.44 (2.99%), Q2 EPS beat</a> <span class='dom'>marketbeat.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/MCD" target="_blank" rel="noopener">Yahoo Finance — MCD</a> ·
+<a href="https://stockanalysis.com/stocks/mcd/" target="_blank" rel="noopener">StockAnalysis — MCD</a> ·
+<a href="https://www.google.com/finance/quote/MCD:NASDAQ" target="_blank" rel="noopener">Google Finance — MCD</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>
