@@ -1,9 +1,9 @@
 {
  "meta": {
   "asof": "2026-11-13",
-  "generated": "2026-11-14 13:04",
+  "generated": "2026-11-15 13:04",
   "universe_n": 1645,
-  "screened": 1638,
+  "screened": 1640,
   "candidates": 620,
   "spy_mom20": -1.1634464307648251,
   "keep_extra": [
@@ -38,8 +38,8 @@
    "ANIP",
    "DECK",
    "RRC",
-   "TRV",
    "WT",
+   "TRV",
    "TILE",
    "VCYT",
    "MUSA",
@@ -49,8 +49,8 @@
    "QLYS",
    "RDDT",
    "INVA",
-   "PJT",
    "USLM",
+   "PJT",
    "NTCT",
    "SIGI",
    "UTI",
