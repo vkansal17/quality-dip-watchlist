@@ -1,6 +1,6 @@
 {
  "BKNG": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -16,7 +16,7 @@
   "sell_val": 502350
  },
  "CMCSA": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -24,7 +24,7 @@
   "sell_val": 2280934
  },
  "WAFD": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 1,
   "buy_val": 100200,
   "last_buy": "2025-12-03",
@@ -32,7 +32,7 @@
   "sell_val": 955141
  },
  "PPC": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -48,7 +48,7 @@
   "sell_val": 188500
  },
  "LAD": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -64,15 +64,15 @@
   "sell_val": 0
  },
  "COLL": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
-  "sellers": 7,
-  "sell_val": 6029289
+  "sellers": 6,
+  "sell_val": 4383754
  },
  "CPB": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 1,
   "buy_val": 6435,
   "last_buy": "2026-06-09",
@@ -80,7 +80,7 @@
   "sell_val": 396653
  },
  "LULU": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 2,
   "buy_val": 1994952,
   "last_buy": "2026-06-15",
@@ -88,15 +88,15 @@
   "sell_val": 3418145
  },
  "WU": {
-  "asof": "2026-11-09",
-  "buyers": 1,
-  "buy_val": 89540,
-  "last_buy": "2025-11-10",
+  "asof": "2026-11-16",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
   "sellers": 2,
   "sell_val": 240733
  },
  "EXE": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 3,
   "buy_val": 876540,
   "last_buy": "2026-06-12",
@@ -104,7 +104,7 @@
   "sell_val": 0
  },
  "RH": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 1,
   "buy_val": 1832322,
   "last_buy": "2026-06-29",
@@ -112,7 +112,7 @@
   "sell_val": 26459674
  },
  "HUBG": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 1,
   "buy_val": 199694,
   "last_buy": "2025-12-11",
@@ -120,15 +120,15 @@
   "sell_val": 1397699
  },
  "TBBK": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 4,
-  "buy_val": 1121393,
+  "buy_val": 901277,
   "last_buy": "2026-11-04",
   "sellers": 4,
-  "sell_val": 1234995
+  "sell_val": 1452224
  },
  "GAP": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -136,7 +136,7 @@
   "sell_val": 83755461
  },
  "YELP": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -144,7 +144,7 @@
   "sell_val": 17116758
  },
  "LVS": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -152,12 +152,12 @@
   "sell_val": 211038620
  },
  "COF": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
-  "sellers": 11,
-  "sell_val": 59108670
+  "sellers": 12,
+  "sell_val": 59703659
  },
  "LZB": {
   "asof": "2026-10-26",
@@ -184,7 +184,7 @@
   "sell_val": 1541712
  },
  "POWL": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -232,7 +232,7 @@
   "sell_val": 24850
  },
  "ACM": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 3,
   "buy_val": 699391,
   "last_buy": "2026-06-16",
@@ -240,7 +240,7 @@
   "sell_val": 3216024
  },
  "THRM": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 2,
   "buy_val": 662600,
   "last_buy": "2026-10-23",
@@ -248,7 +248,7 @@
   "sell_val": 243056
  },
  "LCII": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -264,7 +264,7 @@
   "sell_val": 0
  },
  "DKS": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 7,
   "buy_val": 5588664,
   "last_buy": "2026-09-30",
@@ -280,12 +280,12 @@
   "sell_val": 15675231
  },
  "SMPL": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 3,
   "buy_val": 1209262,
   "last_buy": "2026-05-14",
-  "sellers": 1,
-  "sell_val": 114053
+  "sellers": 0,
+  "sell_val": 0
  },
  "LRN": {
   "asof": "2026-11-03",
@@ -296,7 +296,7 @@
   "sell_val": 0
  },
  "AMSF": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -304,7 +304,7 @@
   "sell_val": 50142
  },
  "SFM": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 2,
   "buy_val": 440248,
   "last_buy": "2026-03-10",
@@ -312,7 +312,7 @@
   "sell_val": 23770649
  },
  "DECK": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -328,7 +328,7 @@
   "sell_val": 189976809
  },
  "FSLR": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -344,7 +344,7 @@
   "sell_val": 26430056
  },
  "UPWK": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -360,7 +360,7 @@
   "sell_val": 2041675
  },
  "EXP": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -376,7 +376,7 @@
   "sell_val": 13541285
  },
  "BKE": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-16",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
