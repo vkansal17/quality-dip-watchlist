@@ -8,7 +8,7 @@
   "sell_val": 54617948
  },
  "TRN": {
-  "asof": "2026-11-09",
+  "asof": "2026-11-18",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -200,7 +200,7 @@
   "sell_val": 1504009
  },
  "APAM": {
-  "asof": "2026-11-02",
+  "asof": "2026-11-18",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -432,10 +432,10 @@
   "sell_val": 59543
  },
  "BOOT": {
-  "asof": "2026-11-11",
-  "buyers": 0,
-  "buy_val": 0,
-  "last_buy": null,
+  "asof": "2026-11-18",
+  "buyers": 1,
+  "buy_val": 270740,
+  "last_buy": "2026-11-12",
   "sellers": 3,
   "sell_val": 464303
  },
@@ -544,15 +544,15 @@
   "sell_val": 2139794
  },
  "NXT": {
-  "asof": "2026-10-27",
+  "asof": "2026-11-18",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
   "sellers": 9,
-  "sell_val": 52576787
+  "sell_val": 48218941
  },
  "OLED": {
-  "asof": "2026-11-04",
+  "asof": "2026-11-18",
   "buyers": 3,
   "buy_val": 1465644,
   "last_buy": "2026-05-11",
@@ -664,7 +664,7 @@
   "sell_val": 0
  },
  "BFAM": {
-  "asof": "2026-11-11",
+  "asof": "2026-11-18",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -776,15 +776,15 @@
   "sell_val": 15822204
  },
  "EQT": {
-  "asof": "2026-11-11",
+  "asof": "2026-11-18",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
-  "sellers": 8,
-  "sell_val": 24204512
+  "sellers": 7,
+  "sell_val": 20718287
  },
  "PARR": {
-  "asof": "2026-11-11",
+  "asof": "2026-11-18",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -934,5 +934,29 @@
   "last_buy": "2026-08-07",
   "sellers": 1,
   "sell_val": 15284
+ },
+ "BOH": {
+  "asof": "2026-11-18",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 5,
+  "sell_val": 2323345
+ },
+ "HBAN": {
+  "asof": "2026-11-18",
+  "buyers": 2,
+  "buy_val": 854780,
+  "last_buy": "2026-10-27",
+  "sellers": 5,
+  "sell_val": 4911713
+ },
+ "HWC": {
+  "asof": "2026-11-18",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 5,
+  "sell_val": 7252867
  }
 }

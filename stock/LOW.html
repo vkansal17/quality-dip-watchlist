@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LOW — Lowe's Companies · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Ten lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a><a class="tab" href="../common.html">🔁 Most Common</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>LOW — Lowe's Companies</h1>
+<div class="sub">
+· Rank #49 on today's list</div>
+<div><span class="price">$220.46</span>
+<span class="dn" style="font-size:17px">-1.99% today</span>
+<span class="muted"> · as of 2026-11-17 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-23.3%</div><div class="l">vs 52w high ($287.39)</div></div><div class="kpi"><div class="v ">38%</div><div class="l">of 52w range (low $179.50)</div></div><div class="kpi"><div class="v ">57</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+11.0%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+15.8%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+0.4%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">38.5%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">15.4</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-11-18</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+35%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">—</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$760M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $287.39</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $179.50</text><polyline points="0.0,156.5 3.4,139.0 6.9,138.9 10.3,127.3 13.8,138.3 17.2,119.8 20.6,112.8 24.1,111.1 27.5,103.3 31.0,109.7 34.4,102.2 37.8,103.8 41.3,99.2 44.7,106.4 48.2,110.7 51.6,103.7 55.0,100.0 58.5,101.5 61.9,98.6 65.4,103.2 68.8,100.2 72.2,100.7 75.7,115.1 79.1,111.9 82.6,111.7 86.0,110.0 89.4,107.1 92.9,108.4 96.3,109.7 99.8,113.7 103.2,102.3 106.6,106.6 110.1,103.1 113.5,101.9 117.0,83.8 120.4,62.0 123.8,54.7 127.3,48.1 130.7,46.7 134.2,42.6 137.6,41.5 141.0,59.7 144.5,42.4 147.9,46.7 151.4,43.1 154.8,40.8 158.2,48.7 161.7,57.6 165.1,63.2 168.6,62.3 172.0,58.4 175.4,46.9 178.9,44.9 182.3,46.8 185.8,39.9 189.2,42.8 192.6,27.4 196.1,22.7 199.5,25.7 203.0,22.0 206.4,34.4 209.8,32.4 213.3,40.3 216.7,35.9 220.2,47.8 223.6,39.5 227.0,70.3 230.5,67.6 233.9,67.3 237.4,81.9 240.8,80.9 244.2,79.1 247.7,86.8 251.1,92.4 254.6,95.7 258.0,94.0 261.4,102.4 264.9,117.1 268.3,120.8 271.8,111.8 275.2,116.6 278.6,133.7 282.1,136.4 285.5,146.5 289.0,127.4 292.4,127.0 295.8,123.6 299.3,123.9 302.7,135.2 306.2,130.7 309.6,123.4 313.0,124.0 316.5,133.8 319.9,125.5 323.4,132.6 326.8,108.7 330.2,100.5 333.7,107.6 337.1,102.0 340.6,99.3 344.0,108.1 347.4,111.2 350.9,92.8 354.3,89.6 357.8,93.8 361.2,105.7 364.6,103.0 368.1,107.2 371.5,110.9 375.0,115.4 378.4,128.9 381.8,118.4 385.3,129.2 388.7,148.3 392.2,145.3 395.6,129.1 399.0,134.1 402.5,137.4 405.9,143.6 409.4,146.7 412.8,154.8 416.2,148.5 419.7,158.8 423.1,159.6 426.6,158.9 430.0,153.6 433.4,160.8 436.9,165.5 440.3,171.4 443.8,161.9 447.2,159.8 450.6,166.9 454.1,180.1 457.5,182.2 461.0,180.2 464.4,180.4 467.8,174.0 471.3,179.5 474.7,160.9 478.2,163.2 481.6,153.6 485.0,154.1 488.5,155.3 491.9,147.7 495.4,161.1 498.8,151.3 502.2,166.8 505.7,168.5 509.1,152.8 512.6,151.8 516.0,150.7 519.4,156.4 522.9,154.7 526.3,151.9 529.8,140.8 533.2,148.2 536.6,153.9 540.1,169.9 543.5,169.6 547.0,172.3 550.4,180.1 553.8,180.1 557.3,176.2 560.7,163.3 564.2,178.0 567.6,186.0 571.0,188.4 574.5,186.7 577.9,191.5 581.4,180.2 584.8,172.4 588.2,159.2 591.7,164.2 595.1,175.3 598.6,179.8 602.0,171.4 605.4,159.5 608.9,155.8 612.3,158.8 615.8,149.0 619.2,157.9 622.6,153.2 626.1,163.7 629.5,159.2 633.0,158.7 636.4,164.0 639.8,164.3 643.3,155.7 646.7,160.9 650.2,163.4 653.6,161.7 657.0,166.4 660.5,174.8 663.9,182.0 667.4,179.4 670.8,186.0 674.2,195.2 677.7,195.7 681.1,191.6 684.6,186.5 688.0,193.8 691.4,198.1 694.9,202.1 698.3,201.6 701.8,199.0 705.2,206.0 708.6,207.0 712.1,206.9 715.5,210.2 719.0,213.2 722.4,203.1 725.8,212.5 729.3,218.2 732.7,216.6 736.2,219.8 739.6,220.6 743.0,226.5 746.5,230.3 749.9,233.4 753.4,236.0 756.8,227.7 760.2,232.0 763.7,217.5 767.1,223.1 770.6,224.0 774.0,217.7 777.4,218.5 780.9,203.8 784.3,200.5 787.8,203.4 791.2,198.3 794.6,202.2 798.1,186.7 801.5,198.0 805.0,198.9 808.4,198.9 811.8,198.5 815.3,180.9 818.7,177.3 822.2,159.3 825.6,168.8 829.0,137.1 832.5,141.3 835.9,146.6 839.4,131.7 842.8,132.1 846.2,132.7 849.7,140.9 853.1,140.3 856.6,145.9 860.0,154.8" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 23% from its 52-week high of $287.39, trading at 38% of its 52-week range. The fall has stabilized — 20-day momentum is +11.0% rather than still accelerating down. RSI 57 says washed out rather than euphoric, and $760M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof D+</span> <span class="fgrade chip h" title="Revisions">Revi C</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip r" title="Growth">Grow D+</span></p><p>Piotroski F-score <b>6/9</b> · FCF yield <b>6.2%</b> · net debt/EBITDA <b>3.0×</b> · avg EPS surprise (last 4) <b>+2.8%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 4 (now 6/9).</li><li>Balance sheet: net debt/EBITDA rises above 4.5× (now 3.0×).</li><li>Profitability: gross margin compresses for two straight fiscal years.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Economics & Growth · Dip pool #123 · Pro pool #276 (D)</span></p><p>Lowe's is the housing map made flesh: fiscal Q2 2026 sales rose 8.3% to $25.96B almost entirely on the ADG and Foundation Building Materials acquisitions, while comparable sales stalled at +0.2%, DIY transactions fell, and management narrowed full-year guidance to the bottom of its ranges (~$92B sales, flat comps, $12.25 adj. EPS) explicitly on housing trends and mortgage rates. The Pro business and online (+15.7%) are genuine offsets, but they did not stop the guide cut — and at ~16x guided EPS the stock already pays for a housing recovery that has no dated catalyst.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip h'>mixed</span></td><td>Fiscal Q3 results on Nov 18 are a checkpoint, not a catalyst — management guided Q3 adj. EPS ~7% below prior year; no housing-turnover or rate catalyst is identifiable within two quarters, and FBM/ADG synergy delivery is gradual</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip h'>mixed</span></td><td>Adj. EPS $4.40 beat the $4.22 consensus and Pro/online grew, but comps were +0.2% with transactions −2.1% and FY guidance was trimmed to the low end of every range — a stall, not yet a break</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Net debt ~$34.4B with adjusted debt/EBITDAR at 3.0x vs a 2.75x target for mid-2027; interest is covered ~6.4x and cash generation is steady, so leverage is a constraint on buybacks, not a survivability issue</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip r'>fail</span></td><td>Map #4 housing is Negative/Severe (mortgage ~7.40%, builder sentiment at lows) and housing is Lowe's direct demand driver; the Pro offset is only partial — management itself cited residential-construction pressure inside its acquired FBM business when cutting guidance</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip sb'>pass</span></td><td>$198.68 is ~16x the guided $12.25 adj. EPS and ~31% below the 52-week high; Morningstar's $255 fair value is crowd context, but the multiple no longer assumes DIY strength</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Comparable sales slip negative if DIY weakness spreads to Pro as residential construction stays 'softer for longer,' breaking the quality leg</li><li>Leverage at 3.0x EBITDAR plus tariff and fuel cost pressure limits financial flexibility if the housing freeze extends through 2027</li></ul><p><b>What would change this verdict:</b> Two consecutive quarters of positive comps with Pro growth intact and guidance re-raised would clear quality and soften the sector leg toward BUY; a comp decline or another guide cut would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://cdn.tickeron.com/earnings/LOW/' target='_blank' rel='noopener'>Lowe's Companies (LOW) Second Quarter Fiscal 2026 Earnings Recap: Pro Strength Collides With DIY Weakness — Tickeron</a> <span class='dom'>cdn.tickeron.com</span></li><li><a href='https://corporate.lowes.com/sites/lowes-corp/files/low-usq-transcript-2026-08-19.pdf' target='_blank' rel='noopener'>Q2 2026 Lowe's Companies Inc Earnings Call, August 19, 2026 — Lowe's (guidance update)</a> <span class='dom'>corporate.lowes.com</span></li><li><a href='https://www.trefis.com/stock/low/articles/616797/should-you-buy-lowes-stock-for-its-cash/2026-09-28' target='_blank' rel='noopener'>Should You Buy Lowe's Stock For Its Cash? (net debt, coverage, guidance cut) — Trefis</a> <span class='dom'>trefis.com</span></li><li><a href='https://TICKERON.COM/ticker/LOW/' target='_blank' rel='noopener'>Lowe's Companies (LOW) Stock Analysis: Pro, Online, and AI Growth Offset Soft DIY Demand — Tickeron</a> <span class='dom'>TICKERON.COM</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/LOW" target="_blank" rel="noopener">Yahoo Finance — LOW</a> ·
+<a href="https://stockanalysis.com/stocks/low/" target="_blank" rel="noopener">StockAnalysis — LOW</a> ·
+<a href="https://www.google.com/finance/quote/LOW:NASDAQ" target="_blank" rel="noopener">Google Finance — LOW</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>
