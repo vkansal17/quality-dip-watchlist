@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HSY — The Hershey Company · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Ten lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a><a class="tab" href="../common.html">🔁 Most Common</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>HSY — The Hershey Company</h1>
+<div class="sub">
+· Rank #50 on today's list</div>
+<div><span class="price">$175.94</span>
+<span class="up" style="font-size:17px">+1.28% today</span>
+<span class="muted"> · as of 2026-11-18 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-25.5%</div><div class="l">vs 52w high ($236.28)</div></div><div class="kpi"><div class="v ">23%</div><div class="l">of 52w range (low $157.61)</div></div><div class="kpi"><div class="v ">57</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+4.8%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+10.3%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-3.6%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">32.5%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">88.4</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+18%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">12.0%</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$352M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $236.28</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $157.61</text><polyline points="0.0,168.3 3.4,167.9 6.9,158.8 10.3,159.3 13.8,156.7 17.2,152.8 20.6,153.1 24.1,161.3 27.5,167.6 31.0,173.4 34.4,168.4 37.8,168.8 41.3,173.0 44.7,178.4 48.2,174.9 51.6,170.8 55.0,170.1 58.5,153.0 61.9,152.9 65.4,150.8 68.8,152.9 72.2,149.9 75.7,157.7 79.1,168.0 82.6,162.0 86.0,163.7 89.4,173.0 92.9,169.1 96.3,169.7 99.8,168.5 103.2,175.1 106.6,177.1 110.1,174.9 113.5,162.2 117.0,150.4 120.4,139.4 123.8,133.5 127.3,123.1 130.7,117.8 134.2,126.8 137.6,123.8 141.0,131.4 144.5,146.1 147.9,144.6 151.4,148.0 154.8,143.5 158.2,142.5 161.7,146.4 165.1,135.0 168.6,126.1 172.0,116.7 175.4,104.9 178.9,54.4 182.3,34.9 185.8,37.6 189.2,41.8 192.6,36.8 196.1,49.3 199.5,59.3 203.0,67.9 206.4,60.7 209.8,66.5 213.3,61.5 216.7,49.8 220.2,38.5 223.6,40.1 227.0,35.0 230.5,22.0 233.9,23.6 237.4,27.8 240.8,33.5 244.2,48.4 247.7,52.7 251.1,58.7 254.6,69.0 258.0,72.1 261.4,78.5 264.9,74.2 268.3,66.0 271.8,72.5 275.2,86.1 278.6,91.9 282.1,93.1 285.5,79.4 289.0,79.3 292.4,74.4 295.8,92.3 299.3,83.3 302.7,83.8 306.2,99.2 309.6,112.8 313.0,103.9 316.5,99.0 319.9,101.7 323.4,96.2 326.8,91.2 330.2,114.4 333.7,127.2 337.1,127.0 340.6,142.8 344.0,144.2 347.4,140.7 350.9,143.9 354.3,151.4 357.8,151.6 361.2,142.2 364.6,143.9 368.1,157.4 371.5,153.6 375.0,150.2 378.4,159.5 381.8,168.7 385.3,169.6 388.7,161.7 392.2,157.7 395.6,155.9 399.0,158.9 402.5,150.0 405.9,142.7 409.4,132.5 412.8,147.0 416.2,156.1 419.7,143.2 423.1,140.3 426.6,145.6 430.0,146.8 433.4,134.9 436.9,144.8 440.3,126.6 443.8,128.7 447.2,136.9 450.6,157.7 454.1,164.0 457.5,166.4 461.0,167.7 464.4,162.6 467.8,186.2 471.3,186.4 474.7,184.3 478.2,172.8 481.6,170.6 485.0,172.1 488.5,168.2 491.9,187.9 495.4,195.1 498.8,199.9 502.2,177.1 505.7,166.8 509.1,184.1 512.6,177.5 516.0,170.8 519.4,187.5 522.9,178.7 526.3,169.3 529.8,181.9 533.2,186.1 536.6,190.3 540.1,197.8 543.5,192.3 547.0,188.0 550.4,198.3 553.8,201.6 557.3,189.5 560.7,198.4 564.2,197.7 567.6,200.6 571.0,196.0 574.5,196.5 577.9,190.6 581.4,174.6 584.8,165.9 588.2,164.5 591.7,182.6 595.1,188.6 598.6,181.4 602.0,177.7 605.4,176.2 608.9,166.9 612.3,168.7 615.8,167.6 619.2,169.7 622.6,163.6 626.1,158.4 629.5,163.6 633.0,172.2 636.4,165.7 639.8,151.2 643.3,152.5 646.7,157.5 650.2,148.1 653.6,155.6 657.0,160.5 660.5,171.5 663.9,177.7 667.4,185.4 670.8,186.0 674.2,182.1 677.7,188.5 681.1,193.7 684.6,193.4 688.0,196.3 691.4,190.5 694.9,193.3 698.3,192.3 701.8,201.2 705.2,200.1 708.6,206.8 712.1,202.9 715.5,208.0 719.0,206.5 722.4,206.5 725.8,210.8 729.3,212.2 732.7,217.5 736.2,225.7 739.6,236.0 743.0,231.4 746.5,229.0 749.9,226.8 753.4,227.3 756.8,228.6 760.2,222.6 763.7,222.0 767.1,219.1 770.6,221.2 774.0,217.9 777.4,205.9 780.9,200.0 784.3,210.5 787.8,203.4 791.2,208.3 794.6,187.0 798.1,203.3 801.5,207.1 805.0,217.2 808.4,219.2 811.8,228.7 815.3,214.2 818.7,198.9 822.2,209.0 825.6,190.1 829.0,182.1 832.5,180.3 835.9,192.8 839.4,191.6 842.8,184.8 846.2,193.3 849.7,190.7 853.1,189.0 856.6,192.2 860.0,186.1" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 26% from its 52-week high of $236.28, trading at 23% of its 52-week range. The fall has stabilized — 20-day momentum is +4.8% rather than still accelerating down. RSI 57 says washed out rather than euphoric, and $352M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip h" title="Profitability">Prof C</span> <span class="fgrade chip b" title="Revisions">Revi B+</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip r" title="Growth">Grow F</span></p><p>Piotroski F-score <b>5/9</b> · net debt/EBITDA <b>2.4×</b> · avg EPS surprise (last 4) <b>+23.1%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 5/9).</li><li>Balance sheet: net debt/EBITDA rises above 3.9× (now 2.4×).</li><li>Price structure: a weekly close below the 52-week low of $157.61 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/HSY" target="_blank" rel="noopener">Yahoo Finance — HSY</a> ·
+<a href="https://stockanalysis.com/stocks/hsy/" target="_blank" rel="noopener">StockAnalysis — HSY</a> ·
+<a href="https://www.google.com/finance/quote/HSY:NASDAQ" target="_blank" rel="noopener">Google Finance — HSY</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>

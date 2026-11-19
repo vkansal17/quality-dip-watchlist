@@ -1,11 +1,11 @@
 {
  "meta": {
-  "asof": "2026-11-17",
-  "generated": "2026-11-18 13:04",
+  "asof": "2026-11-18",
+  "generated": "2026-11-19 13:03",
   "universe_n": 1645,
-  "screened": 1638,
-  "candidates": 681,
-  "spy_mom20": -4.760416869211115,
+  "screened": 1635,
+  "candidates": 679,
+  "spy_mom20": -5.547868056569294,
   "keep_extra": [
    "HCI",
    "UFCS",
@@ -17,46 +17,46 @@
    "PIPR",
    "INCY",
    "RNR",
-   "FOXA",
-   "MCY",
    "NEM",
+   "FOXA",
    "PTCT",
+   "MCY",
    "WFRD",
    "LRN",
    "FAF",
-   "PRDO",
    "RGA",
+   "PRDO",
    "LPG",
-   "SIG",
    "CARG",
    "YOU",
+   "SIG",
    "CRUS",
    "KNSL",
    "PGR",
    "PRI",
+   "WT",
    "DECK",
+   "RRC",
    "VRRM",
    "ANIP",
-   "RRC",
-   "WT",
    "TRV",
-   "TILE",
    "MUSA",
    "MD",
-   "VCYT",
    "THG",
+   "TILE",
    "TRN",
+   "VCYT",
    "PLMR",
-   "USLM",
    "RDDT",
-   "QLYS",
+   "USLM",
    "INVA",
    "PJT",
-   "NTCT",
+   "THC",
    "HLNE",
    "UTI",
-   "SEZL",
    "SIGI",
+   "SEZL",
+   "ALL",
    "EXE",
    "APA",
    "RGA",
@@ -212,6 +212,16 @@
   },
   {
    "rank": 6,
+   "ticker": "CSCO",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "Vetted Buys",
+    "Theme Buys"
+   ]
+  },
+  {
+   "rank": 7,
    "ticker": "EQT",
    "count": 3,
    "tabs": [
@@ -221,7 +231,7 @@
    ]
   },
   {
-   "rank": 7,
+   "rank": 8,
    "ticker": "EXE",
    "count": 3,
    "tabs": [
@@ -231,7 +241,17 @@
    ]
   },
   {
-   "rank": 8,
+   "rank": 9,
+   "ticker": "FOXA",
+   "count": 3,
+   "tabs": [
+    "Quality Dips",
+    "Factor Grades",
+    "The Bench"
+   ]
+  },
+  {
+   "rank": 10,
    "ticker": "HBAN",
    "count": 3,
    "tabs": [
@@ -241,7 +261,7 @@
    ]
   },
   {
-   "rank": 9,
+   "rank": 11,
    "ticker": "NXPI",
    "count": 3,
    "tabs": [
@@ -251,17 +271,7 @@
    ]
   },
   {
-   "rank": 10,
-   "ticker": "QLYS",
-   "count": 3,
-   "tabs": [
-    "Factor Grades",
-    "Vetted Buys",
-    "Theme Buys"
-   ]
-  },
-  {
-   "rank": 11,
+   "rank": 12,
    "ticker": "RGA",
    "count": 3,
    "tabs": [
@@ -271,7 +281,7 @@
    ]
   },
   {
-   "rank": 12,
+   "rank": 13,
    "ticker": "RRC",
    "count": 3,
    "tabs": [
@@ -281,7 +291,7 @@
    ]
   },
   {
-   "rank": 13,
+   "rank": 14,
    "ticker": "SCHW",
    "count": 3,
    "tabs": [
@@ -291,7 +301,7 @@
    ]
   },
   {
-   "rank": 14,
+   "rank": 15,
    "ticker": "SFM",
    "count": 3,
    "tabs": [
