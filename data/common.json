@@ -1,11 +1,11 @@
 {
  "meta": {
-  "asof": "2026-11-18",
-  "generated": "2026-11-19 13:03",
+  "asof": "2026-11-19",
+  "generated": "2026-11-20 13:08",
   "universe_n": 1645,
-  "screened": 1635,
-  "candidates": 679,
-  "spy_mom20": -5.547868056569294,
+  "screened": 1636,
+  "candidates": 745,
+  "spy_mom20": -6.294835524415698,
   "keep_extra": [
    "HCI",
    "UFCS",
@@ -16,46 +16,46 @@
    "MLI",
    "PIPR",
    "INCY",
-   "RNR",
    "NEM",
    "FOXA",
+   "RNR",
    "PTCT",
    "MCY",
    "WFRD",
    "LRN",
    "FAF",
-   "RGA",
    "PRDO",
-   "LPG",
    "CARG",
-   "YOU",
+   "RGA",
+   "LPG",
    "SIG",
+   "YOU",
    "CRUS",
-   "KNSL",
-   "PGR",
-   "PRI",
    "WT",
+   "KNSL",
+   "PRI",
+   "PGR",
    "DECK",
    "RRC",
    "VRRM",
    "ANIP",
+   "MD",
    "TRV",
    "MUSA",
-   "MD",
-   "THG",
    "TILE",
+   "THG",
    "TRN",
    "VCYT",
-   "PLMR",
    "RDDT",
+   "PLMR",
    "USLM",
    "INVA",
    "PJT",
    "THC",
-   "HLNE",
-   "UTI",
-   "SIGI",
    "SEZL",
+   "HLNE",
+   "FHI",
+   "QLYS",
    "ALL",
    "EXE",
    "APA",
@@ -202,26 +202,6 @@
   },
   {
    "rank": 5,
-   "ticker": "CHKP",
-   "count": 3,
-   "tabs": [
-    "Quality Dips",
-    "Vetted Buys",
-    "Theme Buys"
-   ]
-  },
-  {
-   "rank": 6,
-   "ticker": "CSCO",
-   "count": 3,
-   "tabs": [
-    "Quality Dips",
-    "Vetted Buys",
-    "Theme Buys"
-   ]
-  },
-  {
-   "rank": 7,
    "ticker": "EQT",
    "count": 3,
    "tabs": [
@@ -231,7 +211,7 @@
    ]
   },
   {
-   "rank": 8,
+   "rank": 6,
    "ticker": "EXE",
    "count": 3,
    "tabs": [
@@ -241,17 +221,7 @@
    ]
   },
   {
-   "rank": 9,
-   "ticker": "FOXA",
-   "count": 3,
-   "tabs": [
-    "Quality Dips",
-    "Factor Grades",
-    "The Bench"
-   ]
-  },
-  {
-   "rank": 10,
+   "rank": 7,
    "ticker": "HBAN",
    "count": 3,
    "tabs": [
@@ -261,7 +231,7 @@
    ]
   },
   {
-   "rank": 11,
+   "rank": 8,
    "ticker": "NXPI",
    "count": 3,
    "tabs": [
@@ -271,7 +241,17 @@
    ]
   },
   {
-   "rank": 12,
+   "rank": 9,
+   "ticker": "QLYS",
+   "count": 3,
+   "tabs": [
+    "Factor Grades",
+    "Vetted Buys",
+    "Theme Buys"
+   ]
+  },
+  {
+   "rank": 10,
    "ticker": "RGA",
    "count": 3,
    "tabs": [
@@ -281,7 +261,7 @@
    ]
   },
   {
-   "rank": 13,
+   "rank": 11,
    "ticker": "RRC",
    "count": 3,
    "tabs": [
@@ -291,7 +271,7 @@
    ]
   },
   {
-   "rank": 14,
+   "rank": 12,
    "ticker": "SCHW",
    "count": 3,
    "tabs": [
@@ -301,7 +281,7 @@
    ]
   },
   {
-   "rank": 15,
+   "rank": 13,
    "ticker": "SFM",
    "count": 3,
    "tabs": [
