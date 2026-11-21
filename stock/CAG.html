@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CAG — ConAgra Brands · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Ten lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a><a class="tab" href="../common.html">🔁 Most Common</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>CAG — ConAgra Brands</h1>
+<div class="sub">
+· Rank #38 on today's list</div>
+<div><span class="price">$14.92</span>
+<span class="up" style="font-size:17px">+1.63% today</span>
+<span class="muted"> · as of 2026-11-20 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-25.5%</div><div class="l">vs 52w high ($20.02)</div></div><div class="kpi"><div class="v ">31%</div><div class="l">of 52w range (low $12.58)</div></div><div class="kpi"><div class="v ">53</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v up">+0.4%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+9.6%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v dn">-16.0%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">41.5%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">—</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">2026-12-18</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v up">+18%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">-8.6%</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$154M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $20.02</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $12.58</text><polyline points="0.0,86.7 3.4,93.9 6.9,87.6 10.3,85.3 13.8,84.4 17.2,89.6 20.6,102.5 24.1,104.3 27.5,110.3 31.0,107.4 34.4,105.7 37.8,105.4 41.3,96.2 44.7,91.6 48.2,87.3 51.6,81.8 55.0,87.6 58.5,82.4 61.9,85.9 65.4,98.8 68.8,101.4 72.2,109.4 75.7,106.6 79.1,102.0 82.6,95.6 86.0,96.5 89.4,99.9 92.9,100.2 96.3,106.6 99.8,113.2 103.2,135.3 106.6,120.9 110.1,110.6 113.5,117.8 117.0,121.2 120.4,105.4 123.8,98.2 127.3,110.0 130.7,104.0 134.2,100.2 137.6,95.3 141.0,94.5 144.5,77.5 147.9,81.5 151.4,89.3 154.8,85.0 158.2,65.4 161.7,69.2 165.1,48.2 168.6,28.3 172.0,35.5 175.4,41.3 178.9,46.2 182.3,41.8 185.8,22.0 189.2,24.3 192.6,29.5 196.1,54.5 199.5,57.4 203.0,60.3 206.4,66.6 209.8,55.4 213.3,48.5 216.7,60.8 220.2,59.1 223.6,44.1 227.0,46.2 230.5,52.5 233.9,55.7 237.4,62.6 240.8,50.8 244.2,61.1 247.7,77.8 251.1,109.4 254.6,132.7 258.0,125.8 261.4,136.8 264.9,132.2 268.3,150.3 271.8,154.9 275.2,161.8 278.6,153.2 282.1,150.3 285.5,157.2 289.0,160.6 292.4,148.6 295.8,145.4 299.3,145.7 302.7,151.4 306.2,145.7 309.6,144.0 313.0,152.3 316.5,149.7 319.9,150.6 323.4,161.2 326.8,180.5 330.2,187.1 333.7,192.6 337.1,175.0 340.6,170.4 344.0,171.0 347.4,175.9 350.9,179.9 354.3,183.4 357.8,190.3 361.2,191.7 364.6,187.4 368.1,188.5 371.5,185.1 375.0,193.4 378.4,199.5 381.8,195.2 385.3,193.1 388.7,184.8 392.2,191.4 395.6,197.2 399.0,195.2 402.5,192.6 405.9,204.6 409.4,211.6 412.8,201.2 416.2,197.2 419.7,202.1 423.1,213.0 426.6,207.8 430.0,219.6 433.4,214.4 436.9,213.0 440.3,215.9 443.8,220.8 447.2,227.9 450.6,236.0 454.1,233.1 457.5,223.6 461.0,219.6 464.4,219.9 467.8,214.1 471.3,211.0 474.7,202.6 478.2,206.4 481.6,207.8 485.0,219.3 488.5,218.2 491.9,228.2 495.4,211.6 498.8,206.4 502.2,201.5 505.7,192.9 509.1,195.7 512.6,210.7 516.0,186.5 519.4,185.4 522.9,201.2 526.3,194.3 529.8,201.8 533.2,213.3 536.6,200.0 540.1,185.7 543.5,190.8 547.0,192.6 550.4,181.6 553.8,187.1 557.3,176.7 560.7,170.7 564.2,171.3 567.6,184.5 571.0,173.0 574.5,159.5 577.9,154.0 581.4,152.0 584.8,165.5 588.2,180.5 591.7,169.0 595.1,166.4 598.6,166.1 602.0,170.7 605.4,163.2 608.9,173.0 612.3,168.4 615.8,167.5 619.2,155.2 622.6,148.6 626.1,150.9 629.5,151.4 633.0,131.3 636.4,129.9 639.8,125.3 643.3,118.4 646.7,129.9 650.2,132.2 653.6,137.1 657.0,135.0 660.5,137.1 663.9,134.5 667.4,132.5 670.8,148.6 674.2,152.6 677.7,158.9 681.1,163.2 684.6,175.0 688.0,177.9 691.4,172.4 694.9,165.8 698.3,161.2 701.8,161.2 705.2,162.7 708.6,170.4 712.1,172.7 715.5,172.7 719.0,175.9 722.4,186.0 725.8,190.6 729.3,191.4 732.7,211.3 736.2,218.2 739.6,213.6 743.0,218.5 746.5,211.0 749.9,216.7 753.4,207.5 756.8,209.8 760.2,204.4 763.7,203.8 767.1,199.8 770.6,190.0 774.0,181.6 777.4,194.3 780.9,182.5 784.3,194.0 787.8,164.4 791.2,170.4 794.6,178.5 798.1,188.3 801.5,197.5 805.0,192.6 808.4,178.8 811.8,172.4 815.3,183.4 818.7,158.6 822.2,151.7 825.6,159.5 829.0,158.1 832.5,160.9 835.9,171.3 839.4,179.3 842.8,174.2 846.2,161.8 849.7,175.9 853.1,171.3 856.6,175.6 860.0,168.7" fill="none" stroke="#f87171" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 26% from its 52-week high of $20.02, trading at 31% of its 52-week range. The fall has stabilized — 20-day momentum is +0.4% rather than still accelerating down. RSI 53 says washed out rather than euphoric, and $154M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof F</span> <span class="fgrade chip r" title="Revisions">Revi D+</span> <span class="fgrade chip h" title="Value">Valu C+</span> <span class="fgrade chip r" title="Safety">Safe D+</span> <span class="fgrade chip r" title="Growth">Grow F</span></p><p>Piotroski F-score <b>5/9</b> · FCF yield <b>13.7%</b> · avg EPS surprise (last 4) <b>+8.5%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 5/9).</li><li>Profitability: gross margin compresses for two straight fiscal years.</li><li>Price structure: a weekly close below the 52-week low of $12.58 — structure break, not noise.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · Dip pool #50 · Pro pool #562 (F)</span></p><p>Conagra's fundamentals are deteriorating: fiscal Q1 2027 revenue fell 1.4% to $2.60B with weak organic volumes, FY27 guidance calls for organic sales down 1–3% and adjusted EPS of only $1.40–1.50, and the dividend was cut 50% in July 2026 to $0.70/year. The offset is price: at ~$14–15 the stock trades near 10x guided EPS with a ~5% post-cut yield, and Q1 adjusted EPS of $0.41 actually beat the $0.28 consensus. With net debt around $7.4B against a ~$6.6B market cap, the quality leg fails but leverage is not yet a survivability cliff — a classic value-trap-versus-turnaround standoff that lands at HOLD.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip h'>mixed</span></td><td>Announced strategic review of non-core assets/divestitures and Q2 FY27 earnings in December 2026 are possible drivers, but neither is a firm dated catalyst</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip r'>fail</span></td><td>FY27 guidance for organic sales −1% to −3% and adj. EPS $1.40–1.50, volumes declining, and a 50% dividend cut in July 2026 signal real deterioration</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Net debt ~$7.4B (~4x EBITDA) and negative Q1 free cash flow (−$128M) constrain flexibility, though divestiture proceeds are reducing debt and liquidity is adequate</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip h'>mixed</span></td><td>Map #9 agriculture & food is Negative/High with input-cost and GLP-1 volume headwinds, partly offset by staples defensiveness (Slim Jim/pantry resilience)</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>~10x FY27 guided EPS and ~1x book look cheap, but the multiple is low because earnings are shrinking — partly justified, not a clear mispricing</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>Volume declines accelerating under GLP-1 adoption and private-label share gains, forcing another guidance cut</li><li>Leverage limiting investment while margins (guided 10.0–10.5% operating) keep compressing</li></ul><p><b>What would change this verdict:</b> Two quarters of volume stabilization with debt paydown would repair quality toward BUY; another guidance or dividend cut would push this to SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://www.thelincolnianonline.com/2026/10/02/conagra-brands-nysecag-issues-earnings-results.html' target='_blank' rel='noopener'>Conagra Brands (NYSE:CAG) Issues Earnings Results — The Lincolnian Online</a> <span class='dom'>thelincolnianonline.com</span></li><li><a href='https://blockonomi.com/conagra-brands-cag-stock-fluctuates-as-q1-earnings-surpass-projections/' target='_blank' rel='noopener'>Conagra Brands (CAG) Stock Fluctuates as Q1 Earnings Surpass Projections — Blockonomi</a> <span class='dom'>blockonomi.com</span></li><li><a href='https://www.tickerreport.com/banking-finance/13602308/conagra-brands-nysecag-announces-earnings-results.html' target='_blank' rel='noopener'>Conagra Brands (NYSE:CAG) Announces Earnings Results — Ticker Report</a> <span class='dom'>tickerreport.com</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/CAG" target="_blank" rel="noopener">Yahoo Finance — CAG</a> ·
+<a href="https://stockanalysis.com/stocks/cag/" target="_blank" rel="noopener">StockAnalysis — CAG</a> ·
+<a href="https://www.google.com/finance/quote/CAG:NASDAQ" target="_blank" rel="noopener">Google Finance — CAG</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>

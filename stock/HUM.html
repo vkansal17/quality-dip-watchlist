@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HUM — Humana · Quality-Dip Watchlist</title><style>
+:root{--bg:#0b1220;--card:#111a2e;--card2:#0e1730;--line:#1e2a45;--txt:#e6ecf7;--mut:#8fa3c8;--acc:#4da3ff;--up:#34d399;--dn:#f87171;--warn:#fbbf24;--rad:12px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);-webkit-text-size-adjust:100%}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+/* ---- v3 shell: left sidebar + content ---- */
+.shell{display:flex;align-items:stretch;min-height:100vh}
+.sidebar{flex:0 0 232px;width:232px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--card2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px;z-index:60}
+.brand{font-size:16.5px;font-weight:800;color:var(--txt);letter-spacing:.01em;line-height:1.3}
+.brand:hover{text-decoration:none;color:var(--acc)}
+.brandsub{color:var(--mut);font-size:11.5px;line-height:1.5;margin:2px 0 12px}
+.tabs{display:flex;flex-direction:column;gap:5px}
+.tab{padding:9px 12px;border:1px solid transparent;border-radius:10px;color:var(--mut);font-weight:600;font-size:13.5px;white-space:nowrap;display:block}
+.tab:hover{text-decoration:none;color:var(--txt);background:var(--card)}
+.tab.active{background:var(--acc);color:#081120}
+.sidefoot{margin-top:auto;color:var(--mut);font-size:11px;line-height:1.55;padding-top:14px}
+.main{flex:1;min-width:0;padding:20px 22px 60px;max-width:1240px}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.25} .sub{color:var(--mut);font-size:13px;margin-bottom:14px;line-height:1.55}
+.sub b{color:var(--txt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:10px 14px}
+.card .n{font-size:20px;font-weight:700} .card .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.controls input,.controls select{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:9px 12px;font-size:14px;min-height:40px}
+.controls input{flex:1;min-width:180px}
+/* ---- v3 master-detail ---- */
+.master{display:grid;grid-template-columns:minmax(0,1fr) 402px;gap:16px;align-items:start}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rad)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+th,td{padding:7px 9px;font-size:13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:middle}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;user-select:none;background:var(--card2)}
+th:hover{color:var(--txt)} td.num,th.num{text-align:right} td.num{font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tr:hover td{background:#14213d}
+tr.sel td{background:#1b2c52}
+tr.sel{outline:1px solid var(--acc);outline-offset:-1px}
+td.detail{display:none}
+td.wrap,th.wrap{white-space:normal}
+.sym{font-weight:700;font-size:14.5px} .nm{display:block;color:var(--mut);font-weight:400;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind{color:var(--mut)} .muted{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.sb{background:#064e3b;color:#6ee7b7}.b{background:#0c3540;color:#67e8f9}.h{background:#3f3413;color:#fcd34d}.r{background:#450a0a;color:#fca5a5}.na{background:#1f2937;color:#9ca3af}
+.range{position:relative;width:86px;height:7px;background:#1e2a45;border-radius:4px;display:inline-block;vertical-align:middle}
+.range .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399);border-radius:4px;opacity:.85}
+.flag{color:#fca5a5} .foot{color:var(--mut);font-size:12.5px;margin-top:18px;line-height:1.6}
+.star{color:#fbbf24}
+.panel{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);max-height:calc(100vh - 32px);overflow-y:auto;padding:0}
+.phead{position:sticky;top:0;background:var(--card2);padding:11px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;z-index:2}
+.phead .pt{font-weight:800;font-size:15px}
+.phead .pn{color:var(--mut);font-size:11.5px;display:block;font-weight:400}
+#pclose{display:none;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;font-size:16px;width:32px;height:32px;cursor:pointer}
+#pbody{padding:13px 16px 16px;font-size:13.5px;line-height:1.6;color:#dbe4f5}
+#pbody p{margin:6px 0;line-height:1.6}
+#pbody h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:14px 0 5px}
+#pbody ul{margin:5px 0;padding-left:18px} #pbody li{margin:3px 0;line-height:1.55}
+#pbody table{margin:8px 0} #pbody td,#pbody th{white-space:normal;cursor:default}
+.pfull{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--acc);color:#081120;font-weight:700;border-radius:9px}
+.pfull:hover{text-decoration:none;opacity:.9}
+.pkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pkpi{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+.pkpi .v{font-size:14.5px;font-weight:700} .pkpi .l{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.fbar{height:7px;background:#1e2a45;border-radius:4px;position:relative;margin:3px 0 8px}
+.fbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.crumb{font-size:13px;margin:2px 0 10px}
+.fgrade{display:inline-block;min-width:32px;text-align:center;padding:2px 5px;border-radius:6px;font-weight:700;font-size:11.5px;margin-right:3px}
+.biggrade{font-size:20px;font-weight:800;padding:5px 12px;border-radius:9px;display:inline-block}
+ul.kill{margin:6px 0;padding-left:20px} ul.kill li{line-height:1.6;font-size:14px;color:#dbe4f5;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:12px 14px}
+.kpi .v{font-size:19px;font-weight:700} .kpi .l{color:var(--mut);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;line-height:1.4}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 20px;margin:14px 0}
+section h2{margin:0 0 8px;font-size:17px} section p{line-height:1.65;font-size:14.5px;color:#dbe4f5;margin:6px 0}
+section table{margin:10px 0}
+.bigchart{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px;margin:14px 0}
+.price{font-size:30px;font-weight:800}
+.legs{display:inline-flex;gap:4px;vertical-align:middle}
+.legdot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.legdot.pass{background:var(--up)} .legdot.mixed{background:var(--warn)} .legdot.fail{background:var(--dn)}
+.srcs{margin:6px 0;padding-left:18px} .srcs li{line-height:1.55;font-size:13px;margin:3px 0}
+.srcs .dom{color:var(--mut);font-size:11.5px}
+.audit{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:#13294d;color:#9ec2ff;border:1px solid #25497f}
+details.gloss{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:14px 18px;margin:14px 0}
+details.gloss summary{cursor:pointer;font-weight:700;font-size:14.5px}
+details.gloss p,details.gloss li{font-size:13.5px;line-height:1.6;color:#c4d2ec}
+details.gloss ul{margin:6px 0;padding-left:20px}
+.evline{font-size:11.5px;color:var(--mut);margin-top:4px}
+@media(min-width:901px){.master thead th{position:sticky;top:0;z-index:5}}
+@media(max-width:1080px){.master{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:900px){
+.shell{flex-direction:column}
+.sidebar{flex:none;width:100%;height:auto;position:sticky;top:0;padding:10px 12px 8px;border-right:none;border-bottom:1px solid var(--line)}
+.brandsub{display:none}.sidefoot{display:none}
+.tabs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tab{padding:7px 11px;font-size:12.5px}
+.main{padding:14px 12px 48px}
+.master{grid-template-columns:minmax(0,1fr)}
+.panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:74vh;z-index:90;border-radius:16px 16px 0 0;transform:translateY(106%);transition:transform .25s ease;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.panel.open{transform:none}
+#pclose{display:block}
+.nm{max-width:104px}.hide-m{display:none}h1{font-size:20px}
+th,td{padding:6px 7px;font-size:12.3px}
+.cards{grid-template-columns:repeat(4,1fr);gap:7px}.card{padding:7px 9px}.card .n{font-size:16px}.card .l{font-size:9.5px}
+}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}
+.price{font-size:24px}.cards{grid-template-columns:repeat(2,1fr)}
+section{padding:14px 14px}}
+</style></head><body>
+<div class="shell">
+<aside class="sidebar"><a class="brand" href="../index.html">◆ Quality-Dip Watchlist</a><div class="brandsub">Ten lenses on one universe — the 800 most-traded US stocks + every S&amp;P 1000 member.</div><nav class="tabs"><a class="tab active" href="../index.html">📉 Quality Dips</a><a class="tab" href="../pro.html">🏦 Factor Grades</a><a class="tab" href="../sectors.html">🌍 Sector Impact</a><a class="tab" href="../validated.html">🏆 Vetted Buys</a><a class="tab" href="../macro.html">🌐 Theme Buys</a><a class="tab" href="../holds.html">🟡 The Bench</a><a class="tab" href="../screener.html">🔎 Fallen & Cheap</a><a class="tab" href="../skin.html">🤝 Skin in the Game</a><a class="tab" href="../buzz.html">📣 Most Discussed</a><a class="tab" href="../common.html">🔁 Most Common</a></nav><div class="sidefoot">Prices refresh daily at 7:00 AM CT. Research verdicts are dated editions.<br>Not investment advice.</div></aside>
+<main class="main">
+<p class="crumb"><a href="../index.html">← Back to Quality Dips</a></p>
+<h1>HUM — Humana</h1>
+<div class="sub">
+· Rank #40 on today's list</div>
+<div><span class="price">$390.00</span>
+<span class="up" style="font-size:17px">+2.63% today</span>
+<span class="muted"> · as of 2026-11-20 close</span></div>
+<div class="kpis"><div class="kpi"><div class="v dn">-15.4%</div><div class="l">vs 52w high ($461.25)</div></div><div class="kpi"><div class="v ">76%</div><div class="l">of 52w range (low $163.67)</div></div><div class="kpi"><div class="v ">41</div><div class="l">RSI (14)</div></div><div class="kpi"><div class="v dn">-7.6%</div><div class="l">Momentum (20d)</div></div><div class="kpi"><div class="v up">+1.6%</div><div class="l">Rel. strength vs S&amp;P 500 (20d)</div></div><div class="kpi"><div class="v up">+71.7%</div><div class="l">Performance (1y)</div></div><div class="kpi"><div class="v ">53.2%</div><div class="l">Volatility (30d, ann.)</div></div><div class="kpi"><div class="v ">21.1</div><div class="l">P/E</div></div><div class="kpi"><div class="v ">—</div><div class="l">Next earnings</div></div><div class="kpi"><div class="v dn">-31%</div><div class="l">VPT trend (20d)</div></div><div class="kpi"><div class="v ">9.2%</div><div class="l">ROIC (SEC filings)</div></div><div class="kpi"><div class="v ">$738M</div><div class="l">Avg daily $ volume (20d)</div></div></div>
+<div class="bigchart"><svg viewBox="0 0 860 250" width="100%"><line x1="0" y1="22.0" x2="860" y2="22.0" stroke="#fbbf24" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="17.0" fill="#fbbf24" font-size="12">52w high $461.25</text><line x1="0" y1="236.0" x2="860" y2="236.0" stroke="#f87171" stroke-dasharray="5 5" stroke-width="1"/><text x="6" y="251.0" fill="#f87171" font-size="12">52w low $163.67</text><polyline points="0.0,190.4 3.4,188.9 6.9,182.6 10.3,176.8 13.8,177.0 17.2,179.5 20.6,179.7 24.1,168.9 27.5,171.7 31.0,168.3 34.4,169.3 37.8,173.6 41.3,169.1 44.7,162.1 48.2,160.6 51.6,156.1 55.0,168.0 58.5,166.5 61.9,166.2 65.4,167.2 68.8,168.4 72.2,168.8 75.7,167.3 79.1,167.6 82.6,167.9 86.0,167.4 89.4,169.5 92.9,163.5 96.3,155.4 99.8,152.5 103.2,155.9 106.6,154.1 110.1,154.6 113.5,154.8 117.0,156.7 120.4,156.6 123.8,149.5 127.3,157.2 130.7,161.0 134.2,159.1 137.6,162.2 141.0,162.1 144.5,164.1 147.9,204.2 151.4,214.2 154.8,212.3 158.2,213.3 161.7,219.1 165.1,214.9 168.6,215.6 172.0,214.5 175.4,214.2 178.9,217.4 182.3,223.3 185.8,227.6 189.2,225.1 192.6,221.3 196.1,220.7 199.5,219.1 203.0,216.7 206.4,217.2 209.8,223.4 213.3,228.1 216.7,227.1 220.2,219.3 223.6,216.7 227.0,219.0 230.5,223.1 233.9,222.0 237.4,223.7 240.8,224.9 244.2,225.3 247.7,228.8 251.1,230.8 254.6,236.0 258.0,234.7 261.4,231.5 264.9,230.9 268.3,231.1 271.8,234.0 275.2,231.5 278.6,231.3 282.1,229.8 285.5,228.4 289.0,227.8 292.4,232.1 295.8,234.3 299.3,229.0 302.7,226.4 306.2,225.8 309.6,222.4 313.0,211.9 316.5,211.0 319.9,211.8 323.4,215.5 326.8,211.1 330.2,212.6 333.7,211.0 337.1,209.3 340.6,206.2 344.0,202.4 347.4,197.4 350.9,197.4 354.3,199.1 357.8,198.9 361.2,192.9 364.6,188.5 368.1,178.9 371.5,183.7 375.0,185.7 378.4,182.6 381.8,181.4 385.3,176.6 388.7,176.0 392.2,156.0 395.6,156.5 399.0,141.3 402.5,134.5 405.9,137.0 409.4,134.3 412.8,133.6 416.2,130.4 419.7,135.0 423.1,135.3 426.6,132.2 430.0,136.7 433.4,133.5 436.9,131.7 440.3,134.1 443.8,117.6 447.2,122.9 450.6,118.2 454.1,102.1 457.5,101.9 461.0,97.7 464.4,92.5 467.8,91.6 471.3,88.6 474.7,81.0 478.2,80.2 481.6,88.0 485.0,93.4 488.5,94.3 491.9,94.3 495.4,95.4 498.8,93.6 502.2,83.3 505.7,77.7 509.1,74.0 512.6,68.0 516.0,59.3 519.4,68.4 522.9,71.2 526.3,69.9 529.8,68.7 533.2,67.7 536.6,71.6 540.1,61.7 543.5,61.2 547.0,60.5 550.4,75.8 553.8,66.0 557.3,67.3 560.7,62.9 564.2,67.8 567.6,70.0 571.0,73.7 574.5,79.6 577.9,74.2 581.4,90.9 584.8,90.0 588.2,92.0 591.7,84.4 595.1,93.3 598.6,92.1 602.0,89.6 605.4,76.8 608.9,76.3 612.3,85.6 615.8,74.1 619.2,76.9 622.6,73.9 626.1,77.3 629.5,79.0 633.0,81.9 636.4,79.9 639.8,81.2 643.3,75.7 646.7,73.4 650.2,72.5 653.6,71.3 657.0,76.4 660.5,78.1 663.9,69.7 667.4,65.3 670.8,61.4 674.2,64.9 677.7,63.8 681.1,66.0 684.6,65.5 688.0,59.0 691.4,61.0 694.9,68.5 698.3,77.0 701.8,77.2 705.2,76.0 708.6,81.5 712.1,86.2 715.5,84.2 719.0,80.2 722.4,67.5 725.8,73.5 729.3,75.5 732.7,79.3 736.2,80.7 739.6,74.4 743.0,63.1 746.5,63.0 749.9,68.6 753.4,75.3 756.8,43.1 760.2,42.0 763.7,51.4 767.1,46.3 770.6,42.9 774.0,56.6 777.4,55.3 780.9,46.4 784.3,47.8 787.8,51.0 791.2,50.2 794.6,53.7 798.1,55.4 801.5,57.5 805.0,53.4 808.4,55.6 811.8,58.6 815.3,53.2 818.7,53.5 822.2,57.6 825.6,41.8 829.0,49.3 832.5,38.7 835.9,32.7 839.4,34.6 842.8,30.1 846.2,22.0 849.7,34.9 853.1,76.3 856.6,80.4 860.0,73.2" fill="none" stroke="#34d399" stroke-width="2"/></svg>
+<div class="muted" style="font-size:12px">One year of daily closes.</div></div>
+<section><h2>Why it's on this list</h2><p>Down 15% from its 52-week high of $461.25, trading at 76% of its 52-week range. 20-day momentum is -7.6% — easing, inside the screen's not-in-freefall limit. RSI 41 says washed out rather than euphoric, and $738M of average daily dollar volume makes it a large, liquid name — the dip is in the price, screened against evidence the business itself is broken.</p></section>
+<section><h2>Research depth</h2><p class='muted'>This name entered via the quantitative screen and carries aggregator consensus data. The ★ names on the list carry full hand-researched briefs (dip cause, business pulse, buzz, risks).</p></section>
+<section><h2>🏦 Professional lens</h2><p>Graded in the professional pool but outside its Top 50</p><p><span class="fgrade chip r" title="Profitability">Prof D-</span> <span class="fgrade chip b" title="Revisions">Revi B</span> <span class="fgrade chip r" title="Value">Valu D+</span> <span class="fgrade chip r" title="Safety">Safe D</span> <span class="fgrade chip h" title="Growth">Grow C</span></p><p>Piotroski F-score <b>4/9</b> · FCF yield <b>0.8%</b> · net debt/EBITDA <b>2.2×</b> · avg EPS surprise (last 4) <b>+14.8%</b></p><p style='margin-top:10px'><b>Exit rules decided in advance (kill criteria):</b></p><ul class='kill'><li>Estimates: two straight negative EPS surprises, or a guidance cut at the next print — the professional exit signal.</li><li>Quality: Piotroski F-score slips below 3 (now 4/9).</li><li>Balance sheet: net debt/EBITDA rises above 3.7× (now 2.2×).</li><li>Cash flow: free cash flow turns negative on a trailing-year basis.</li></ul><p class='muted'>Factor grades follow the professional composite style (profitability, revision momentum, value, safety, growth, momentum — percentile-ranked across the screened pool). Revisions use reported EPS-surprise history, the free proxy for analyst revision momentum.</p></section>
+<section><h2>🔬 Research verdict</h2><p><span class='chip h' style='font-size:15px'>HOLD</span> <span class='muted'>deep-researched 2026-10-25 · 🌐 Politics & Policy · Pro pool #450 (D-)</span></p><p>The policy cycle has whipsawed Humana in both directions: weak 2026 Star Ratings imposed a ~$3.5B profit hit and cut the 2026 adjusted EPS floor to at least $9.00, but the final 2027 ratings (Oct 8, 2026) put 95% of members in 4-star-plus plans, up from ~20% for 2026, restoring 2028 bonus eligibility worth an estimated ~$3.6B of revenue. At $422.07 after a ~96% six-month run, the stock is priced on that 2028 recovery (Baird sees >$35 adjusted EPS in 2028) rather than on current earnings — ~40x trailing — so the rubric waits for the Nov 6 print and the April rate finalization to confirm the bridge.</p><div class='tablewrap'><table><thead><tr><th>Rubric leg</th><th>Finding</th><th>Evidence</th></tr></thead><tbody><tr><td style='text-transform:capitalize'>catalyst</td><td><span class='chip sb'>pass</span></td><td>Q3 2026 results Nov 6 (medical-cost trend is the test), open enrollment on the stronger 2027 plan lineup, and the April 2027 final MA rate notice — identifiable policy and earnings catalysts within two quarters</td></tr><tr><td style='text-transform:capitalize'>quality</td><td><span class='chip h'>mixed</span></td><td>Guidance reaffirmed at ≥$9.00 adjusted EPS, but that floor sits well below the ~$11.92 analysts once expected after the $3.5B Stars hit; margin/ROE compression is real even as the 2027 Stars rebound (95% in 4★+ vs ~20%) evidences operational repair</td></tr><tr><td style='text-transform:capitalize'>risk</td><td><span class='chip h'>mixed</span></td><td>Medicare Advantage pure-play concentration is the risk: CMS's proposed 2027 rate hike of just 0.09% and a single Stars cycle swung profit by ~$3.5B; partly offset by an investment-grade balance sheet and the BlackRock CenterWell JV adding capital flexibility</td></tr><tr><td style='text-transform:capitalize'>sector</td><td><span class='chip sb'>pass</span></td><td>Healthcare is not in the map's negative ten and behaved as a defensive beneficiary (+6.55% Q3); managed care is policy-sensitive, but the sector backdrop itself is a tailwind, not a headwind</td></tr><tr><td style='text-transform:capitalize'>valuation</td><td><span class='chip h'>mixed</span></td><td>$422.07 is ~40x trailing EPS (Finnhub P/E ~40) and ~47x the 2026 guide, yet ~12x Baird's >$35 2028 EPS scenario; post-ratings targets of $495–$596 (Mizuho, Baird, Barclays) are crowd context only — full price for a recovery not yet in the numbers</td></tr></tbody></table></div><p style='margin-top:10px'><b>Key risks:</b></p><ul><li>April 2027 final rate notice lands near the proposed 0.09% and medical-cost trend re-accelerates, squeezing 2027 margins before the 2028 Stars bonus arrives</li><li>The market is already paying for 2028 earnings power (~$35 EPS scenario); any slip in Stars, bids or enrollment de-rates a stock up ~96% in six months</li></ul><p><b>What would change this verdict:</b> A Nov 6 print with controlled medical costs plus a final 2027 rate notice at or above proposal would lift quality toward BUY; another guidance cut or adverse rate finalization would argue SELL.</p><p style='margin-top:10px'><b>Evidence — sources behind this card:</b></p><ul class='srcs'><li><a href='https://tickergrove.com/stories/humana-2027-ma-star-ratings-fy26-eps-20261009' target='_blank' rel='noopener'>Humana beats its 2027 Medicare Star Ratings target and keeps its $9 profit guide — TickerGrove</a> <span class='dom'>tickergrove.com</span></li><li><a href='https://tickeron.com/blogs/humana-hum-star-ratings-rebound-signals-stronger-path-ahead-18553/' target='_blank' rel='noopener'>Humana (HUM) Star Ratings Rebound Signals Stronger Path Ahead — Tickeron</a> <span class='dom'>tickeron.com</span></li><li><a href='https://stocktwits.com/news-articles/markets/equity/humana-gets-bullish-calls-from-baird-barclays-on-medicare-advantage-recovery/cZD6F7PRBVx' target='_blank' rel='noopener'>Why Is HUM Stock Surging Premarket? Star Rating Recovery Sparks Fresh Bullish Calls — Stocktwits</a> <span class='dom'>stocktwits.com</span></li><li><a href='https://ts2.tech/en/humana-stock-slips-after-medicare-star-ratings-hit-2026-profit-outlook/' target='_blank' rel='noopener'>Humana stock slips after Medicare star ratings hit 2026 profit outlook — TS2</a> <span class='dom'>ts2.tech</span></li><li><a href='https://finnhub.io/?q=%22HUM%22' target='_blank' rel='noopener'>Humana Inc (HUM): Financial Market Data — Finnhub</a> <span class='dom'>finnhub.io</span></li></ul><p class='muted'>A structured research verdict from public sources, not a trade instruction.</p></section>
+<section><h2>Dig deeper</h2><p>
+<a href="https://finance.yahoo.com/quote/HUM" target="_blank" rel="noopener">Yahoo Finance — HUM</a> ·
+<a href="https://stockanalysis.com/stocks/hum/" target="_blank" rel="noopener">StockAnalysis — HUM</a> ·
+<a href="https://www.google.com/finance/quote/HUM:NASDAQ" target="_blank" rel="noopener">Google Finance — HUM</a></p>
+<p class="muted">Data: Yahoo Finance daily bars, Nasdaq earnings calendar, SEC EDGAR, aggregator
+analyst consensus (curated). Research and education only — not investment advice.</p></section>
+</main></div></body></html>
