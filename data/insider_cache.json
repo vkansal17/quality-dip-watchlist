@@ -424,7 +424,7 @@
   "sell_val": 27121419
  },
  "ASTE": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -440,7 +440,7 @@
   "sell_val": 464303
  },
  "BSX": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 5,
   "buy_val": 10040038,
   "last_buy": "2026-08-25",
@@ -448,7 +448,7 @@
   "sell_val": 16801583
  },
  "CENX": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -480,7 +480,7 @@
   "sell_val": 1597071
  },
  "EYE": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 1,
   "buy_val": 776000,
   "last_buy": "2026-06-05",
@@ -496,7 +496,7 @@
   "sell_val": 5606116
  },
  "HL": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 1,
   "buy_val": 125000,
   "last_buy": "2026-11-16",
@@ -528,7 +528,7 @@
   "sell_val": 10811729
  },
  "MZTI": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 1,
   "buy_val": 98109,
   "last_buy": "2026-06-10",
@@ -536,7 +536,7 @@
   "sell_val": 233980
  },
  "NKE": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 4,
   "buy_val": 7183999,
   "last_buy": "2026-04-13",
@@ -560,7 +560,7 @@
   "sell_val": 422092
  },
  "PNR": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -568,7 +568,7 @@
   "sell_val": 2054349
  },
  "PRIM": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 1,
   "buy_val": 6721,
   "last_buy": "2026-10-15",
@@ -576,7 +576,7 @@
   "sell_val": 7524228
  },
  "SMCI": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 1,
   "buy_val": 49941,
   "last_buy": "2026-11-06",
@@ -592,15 +592,15 @@
   "sell_val": 11959625
  },
  "TTD": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 1,
   "buy_val": 148101266,
   "last_buy": "2026-03-04",
-  "sellers": 2,
-  "sell_val": 5886541
+  "sellers": 3,
+  "sell_val": 6049516
  },
  "UTI": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 2,
   "buy_val": 31148147,
   "last_buy": "2026-09-28",
@@ -624,7 +624,7 @@
   "sell_val": 4205566
  },
  "ZTS": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 3,
   "buy_val": 886367,
   "last_buy": "2026-05-13",
@@ -632,7 +632,7 @@
   "sell_val": 0
  },
  "BURL": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -640,7 +640,7 @@
   "sell_val": 16648125
  },
  "LII": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -648,7 +648,7 @@
   "sell_val": 1471277
  },
  "CTSH": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 1,
   "buy_val": 209768,
   "last_buy": "2026-06-10",
@@ -656,7 +656,7 @@
   "sell_val": 1035468
  },
  "WSO": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -752,7 +752,7 @@
   "sell_val": 390850
  },
  "ADEA": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -760,12 +760,12 @@
   "sell_val": 3154108
  },
  "AKAM": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 1,
   "buy_val": 2552400,
   "last_buy": "2026-11-13",
   "sellers": 11,
-  "sell_val": 13139630
+  "sell_val": 13404432
  },
  "AMKR": {
   "asof": "2026-11-21",
@@ -928,7 +928,7 @@
   "sell_val": 10762200
  },
  "SON": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-24",
   "buyers": 3,
   "buy_val": 989628,
   "last_buy": "2026-08-07",
@@ -1062,5 +1062,13 @@
   "last_buy": null,
   "sellers": 4,
   "sell_val": 4858927
+ },
+ "CNX": {
+  "asof": "2026-11-24",
+  "buyers": 0,
+  "buy_val": 0,
+  "last_buy": null,
+  "sellers": 3,
+  "sell_val": 3907585
  }
 }
