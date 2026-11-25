@@ -8,7 +8,7 @@
   "sell_val": 57665589
  },
  "TRN": {
-  "asof": "2026-11-18",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -200,7 +200,7 @@
   "sell_val": 1504009
  },
  "APAM": {
-  "asof": "2026-11-18",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -208,7 +208,7 @@
   "sell_val": 298143
  },
  "CBT": {
-  "asof": "2026-11-02",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -376,7 +376,7 @@
   "sell_val": 13541285
  },
  "BKE": {
-  "asof": "2026-11-16",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -464,12 +464,12 @@
   "sell_val": 155832
  },
  "CRUS": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
   "sellers": 7,
-  "sell_val": 12437139
+  "sell_val": 12571334
  },
  "EPAM": {
   "asof": "2026-11-03",
@@ -544,15 +544,15 @@
   "sell_val": 2139794
  },
  "NXT": {
-  "asof": "2026-11-18",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
   "sellers": 9,
-  "sell_val": 48218941
+  "sell_val": 50090699
  },
  "OLED": {
-  "asof": "2026-11-18",
+  "asof": "2026-11-25",
   "buyers": 3,
   "buy_val": 1465644,
   "last_buy": "2026-05-11",
@@ -664,12 +664,12 @@
   "sell_val": 0
  },
  "BFAM": {
-  "asof": "2026-11-18",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
   "sellers": 2,
-  "sell_val": 656564
+  "sell_val": 943883
  },
  "ALG": {
   "asof": "2026-11-19",
@@ -776,7 +776,7 @@
   "sell_val": 13517817
  },
  "EQT": {
-  "asof": "2026-11-18",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -784,7 +784,7 @@
   "sell_val": 20718287
  },
  "PARR": {
-  "asof": "2026-11-18",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -920,12 +920,12 @@
   "sell_val": 14
  },
  "OSIS": {
-  "asof": "2026-11-17",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
-  "sellers": 2,
-  "sell_val": 10762200
+  "sellers": 3,
+  "sell_val": 10858200
  },
  "SON": {
   "asof": "2026-11-24",
@@ -936,7 +936,7 @@
   "sell_val": 15284
  },
  "BOH": {
-  "asof": "2026-11-18",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
@@ -944,7 +944,7 @@
   "sell_val": 2323345
  },
  "HBAN": {
-  "asof": "2026-11-18",
+  "asof": "2026-11-25",
   "buyers": 2,
   "buy_val": 854780,
   "last_buy": "2026-10-27",
@@ -952,7 +952,7 @@
   "sell_val": 4911713
  },
  "HWC": {
-  "asof": "2026-11-18",
+  "asof": "2026-11-25",
   "buyers": 0,
   "buy_val": 0,
   "last_buy": null,
