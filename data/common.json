@@ -1,11 +1,11 @@
 {
  "meta": {
-  "asof": "2026-11-24",
-  "generated": "2026-11-25 13:03",
+  "asof": "2026-11-25",
+  "generated": "2026-11-26 13:03",
   "universe_n": 1645,
   "screened": 1636,
-  "candidates": 641,
-  "spy_mom20": -6.610704158068737,
+  "candidates": 604,
+  "spy_mom20": -7.200474618657704,
   "keep_extra": [
    "HCI",
    "UFCS",
@@ -17,8 +17,8 @@
    "PIPR",
    "INCY",
    "NEM",
-   "RNR",
    "FOXA",
+   "RNR",
    "WFRD",
    "MCY",
    "PTCT",
@@ -28,20 +28,20 @@
    "YOU",
    "CARG",
    "LPG",
-   "RGA",
    "SIG",
+   "RGA",
    "CRUS",
-   "PGR",
-   "PRI",
-   "KNSL",
    "WT",
-   "RRC",
+   "PRI",
+   "PGR",
+   "KNSL",
+   "ANIP",
    "VRRM",
    "DECK",
-   "ANIP",
+   "RRC",
    "MUSA",
-   "TRV",
    "MD",
+   "TRV",
    "THG",
    "TILE",
    "TRN",
@@ -49,13 +49,13 @@
    "USLM",
    "VCYT",
    "PLMR",
-   "PJT",
    "INVA",
+   "INTU",
+   "PJT",
    "SEZL",
-   "THC",
    "NTCT",
    "HLNE",
-   "INTU",
+   "THC",
    "FHI",
    "EXE",
    "APA",
@@ -162,6 +162,17 @@
  "rows": [
   {
    "rank": 1,
+   "ticker": "EQT",
+   "count": 4,
+   "tabs": [
+    "Quality Dips",
+    "Vetted Buys",
+    "Theme Buys",
+    "Fallen & Cheap"
+   ]
+  },
+  {
+   "rank": 2,
    "ticker": "AMZN",
    "count": 3,
    "tabs": [
@@ -171,7 +182,7 @@
    ]
   },
   {
-   "rank": 2,
+   "rank": 3,
    "ticker": "APA",
    "count": 3,
    "tabs": [
@@ -181,7 +192,7 @@
    ]
   },
   {
-   "rank": 3,
+   "rank": 4,
    "ticker": "AXP",
    "count": 3,
    "tabs": [
@@ -191,7 +202,7 @@
    ]
   },
   {
-   "rank": 4,
+   "rank": 5,
    "ticker": "BAC",
    "count": 3,
    "tabs": [
@@ -201,22 +212,12 @@
    ]
   },
   {
-   "rank": 5,
+   "rank": 6,
    "ticker": "BKNG",
    "count": 3,
    "tabs": [
     "Quality Dips",
     "The Bench",
-    "Fallen & Cheap"
-   ]
-  },
-  {
-   "rank": 6,
-   "ticker": "EQT",
-   "count": 3,
-   "tabs": [
-    "Vetted Buys",
-    "Theme Buys",
     "Fallen & Cheap"
    ]
   },
