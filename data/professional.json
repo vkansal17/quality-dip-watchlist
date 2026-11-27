@@ -1,7 +1,7 @@
 {
  "meta": {
   "asof": "2026-11-25",
-  "generated": "2026-11-26 13:03",
+  "generated": "2026-11-27 13:06",
   "universe_n": 1645,
   "screened": 1636,
   "candidates": 604,
@@ -43,12 +43,12 @@
    "factors": {
     "Profitability": 91.6486980574294,
     "Revisions": 78.4090909090909,
-    "Value": 85.24497906324396,
+    "Value": 85.28023097147467,
     "Safety": 63.888540658541395,
     "Growth": 88.00194907828251,
     "Momentum": null
    },
-   "composite": 82.13006894006598,
+   "composite": 82.13790269745058,
    "veto": null,
    "grade": "A+",
    "rank": 1,
@@ -93,12 +93,12 @@
    "factors": {
     "Profitability": null,
     "Revisions": 94.18449197860963,
-    "Value": 83.46563151552219,
+    "Value": 83.51263405982981,
     "Safety": 61.911116107081234,
     "Growth": 79.96426689815382,
     "Momentum": null
    },
-   "composite": 81.19418648771845,
+   "composite": 81.20801076545598,
    "veto": null,
    "grade": "A+",
    "rank": 2,
@@ -143,12 +143,12 @@
    "factors": {
     "Profitability": 75.00427331899316,
     "Revisions": 98.26203208556149,
-    "Value": 91.89551785009672,
+    "Value": 91.93076975832743,
     "Safety": 76.78272189856133,
     "Growth": 45.82981871388131,
     "Momentum": null
    },
-   "composite": 80.00859426099879,
+   "composite": 80.0164280183834,
    "veto": null,
    "grade": "A+",
    "rank": 3,
@@ -193,12 +193,12 @@
    "factors": {
     "Profitability": 89.08931998457277,
     "Revisions": 86.89839572192514,
-    "Value": 60.21884022187817,
+    "Value": 60.23762309190071,
     "Safety": 69.03883628524241,
     "Growth": 86.85134370086848,
     "Momentum": null
    },
-   "composite": 78.52177523251771,
+   "composite": 78.52594920363383,
    "veto": null,
    "grade": "A+",
    "rank": 4,
@@ -243,12 +243,12 @@
    "factors": {
     "Profitability": null,
     "Revisions": 90.40775401069519,
-    "Value": 87.93593460658914,
+    "Value": 87.96887268300549,
     "Safety": 40.26756602208248,
     "Growth": 89.05707196029776,
     "Momentum": null
    },
-   "composite": 78.36219409059993,
+   "composite": 78.37188176013414,
    "veto": null,
    "grade": "A+",
    "rank": 5,
@@ -293,12 +293,12 @@
    "factors": {
     "Profitability": 85.44826214509473,
     "Revisions": 73.26203208556149,
-    "Value": 93.537059419201,
+    "Value": 93.60756323566241,
     "Safety": 52.58526954301641,
     "Growth": null,
     "Momentum": null
    },
-   "composite": 77.98211221341013,
+   "composite": 78.0004248930105,
    "veto": null,
    "grade": "A+",
    "rank": 6,
@@ -343,12 +343,12 @@
    "factors": {
     "Profitability": 84.10810384222289,
     "Revisions": null,
-    "Value": 86.81234699737439,
+    "Value": 86.859349541682,
     "Safety": 62.41590687299522,
     "Growth": 69.89304637659797,
     "Momentum": null
    },
-   "composite": 77.59247757810134,
+   "composite": 77.60590687647493,
    "veto": null,
    "grade": "A+",
    "rank": 7,
@@ -393,12 +393,12 @@
    "factors": {
     "Profitability": null,
     "Revisions": 62.533422459893046,
-    "Value": 95.15046700025688,
+    "Value": 95.1755108269536,
     "Safety": 67.55682454568701,
     "Growth": 84.33951087416435,
     "Momentum": null
    },
-   "composite": 77.40358527577118,
+   "composite": 77.41095110715257,
    "veto": null,
    "grade": "A+",
    "rank": 8,
@@ -443,12 +443,12 @@
    "factors": {
     "Profitability": 89.75110131088937,
     "Revisions": 83.22192513368984,
-    "Value": 52.73822216405497,
+    "Value": 52.763265990751684,
     "Safety": 79.43173352021888,
     "Growth": 77.62028203618969,
     "Momentum": null
    },
-   "composite": 76.60296493409123,
+   "composite": 76.60853022891274,
    "veto": null,
    "grade": "A+",
    "rank": 9,
@@ -493,12 +493,12 @@
    "factors": {
     "Profitability": null,
     "Revisions": 81.51737967914438,
-    "Value": 62.46047595749403,
+    "Value": 62.48551978419076,
     "Safety": 77.51947414159736,
     "Growth": 87.58756520813373,
     "Momentum": null
    },
-   "composite": 76.19099371415392,
+   "composite": 76.19835954553531,
    "veto": null,
    "grade": "A+",
    "rank": 10,
@@ -543,12 +543,12 @@
    "factors": {
     "Profitability": 73.62621022586526,
     "Revisions": 81.81818181818181,
-    "Value": 76.81013096176821,
+    "Value": 76.84538286999893,
     "Safety": 66.46628564904607,
     "Growth": 80.6656893977239,
     "Momentum": null
    },
-   "composite": 75.97767919415708,
+   "composite": 75.9855129515417,
    "veto": null,
    "grade": "A+",
    "rank": 11,
@@ -593,12 +593,12 @@
    "factors": {
     "Profitability": null,
     "Revisions": 85.59491978609626,
-    "Value": 87.171155946523,
+    "Value": 87.2181584908306,
     "Safety": 51.98984098794324,
     "Growth": 71.52595904751766,
     "Momentum": null
    },
-   "composite": 75.95597936895975,
+   "composite": 75.96980364669729,
    "veto": null,
    "grade": "A+",
    "rank": 12,
@@ -643,12 +643,12 @@
    "factors": {
     "Profitability": 86.47754959972156,
     "Revisions": 65.04010695187165,
-    "Value": 84.02597192864748,
+    "Value": 84.0729744729551,
     "Safety": 60.08000435089864,
     "Growth": null,
     "Momentum": null
    },
-   "composite": 75.130230312568,
+   "composite": 75.14243876563492,
    "veto": null,
    "grade": "A+",
    "rank": 13,
@@ -693,12 +693,12 @@
    "factors": {
     "Profitability": 87.71169303077389,
     "Revisions": 85.6283422459893,
-    "Value": 86.92770710674229,
+    "Value": 86.97470965104988,
     "Safety": 41.74783349180053,
     "Growth": 57.51927059452473,
     "Momentum": null
    },
-   "composite": 75.05273615374986,
+   "composite": 75.06318116359598,
    "veto": null,
    "grade": "A+",
    "rank": 14,
@@ -743,12 +743,12 @@
    "factors": {
     "Profitability": 63.557264732942286,
     "Revisions": 93.41577540106952,
-    "Value": 80.81158714517072,
+    "Value": 80.84683905340142,
     "Safety": 58.522148341051704,
     "Growth": null,
     "Momentum": null
    },
-   "composite": 74.81349740474428,
+   "composite": 74.82265374454448,
    "veto": null,
    "grade": "A+",
    "rank": 15,
@@ -793,12 +793,12 @@
    "factors": {
     "Profitability": 66.32636941914494,
     "Revisions": 64.90641711229947,
-    "Value": 80.74498440844303,
+    "Value": 80.76376727846556,
     "Safety": 85.42249664060404,
     "Growth": 80.90041342059537,
     "Momentum": null
    },
-   "composite": 74.50278868569822,
+   "composite": 74.50696265681432,
    "veto": null,
    "grade": "A",
    "rank": 16,
@@ -843,12 +843,12 @@
    "factors": {
     "Profitability": null,
     "Revisions": 58.79010695187166,
-    "Value": 89.20702412359242,
+    "Value": 89.25402666790002,
     "Safety": 61.26213040328324,
     "Growth": 90.70123141346392,
     "Momentum": null
    },
-   "composite": 74.38221449902295,
+   "composite": 74.39603877676048,
    "veto": null,
    "grade": "A",
    "rank": 17,
@@ -893,12 +893,12 @@
    "factors": {
     "Profitability": 75.00127522225807,
     "Revisions": 66.00935828877006,
-    "Value": 75.60855383203388,
+    "Value": 75.6555563763415,
     "Safety": 84.51667105615392,
     "Growth": 71.34732083630199,
     "Momentum": null
    },
-   "composite": 74.19612815577767,
+   "composite": 74.20657316562382,
    "veto": null,
    "grade": "A",
    "rank": 18,
@@ -993,12 +993,12 @@
    "factors": {
     "Profitability": 93.23371416534756,
     "Revisions": 53.409090909090914,
-    "Value": 62.95051498955777,
+    "Value": 62.96929785958031,
     "Safety": 78.91260978852041,
     "Growth": 83.19223428574854,
     "Momentum": null
    },
-   "composite": 73.81691135725731,
+   "composite": 73.82108532837341,
    "veto": null,
    "grade": "A",
    "rank": 20,
@@ -1043,12 +1043,12 @@
    "factors": {
     "Profitability": 76.23676393889309,
     "Revisions": null,
-    "Value": 70.54787831606485,
+    "Value": 70.59488086037247,
     "Safety": 58.659193499368435,
     "Growth": 91.75198661305336,
     "Momentum": null
    },
-   "composite": 73.72614430624523,
+   "composite": 73.73957360461883,
    "veto": null,
    "grade": "A",
    "rank": 21,
@@ -1093,12 +1093,12 @@
    "factors": {
     "Profitability": 54.48722332202315,
     "Revisions": 89.27139037433156,
-    "Value": 85.63774292070691,
+    "Value": 85.65652579072946,
     "Safety": 75.40923199139027,
     "Growth": 61.600818363117504,
     "Momentum": null
    },
-   "composite": 73.65389663974068,
+   "composite": 73.65807061085678,
    "veto": null,
    "grade": "A",
    "rank": 22,
@@ -1143,12 +1143,12 @@
    "factors": {
     "Profitability": null,
     "Revisions": 89.07085561497327,
-    "Value": 77.49888389013698,
+    "Value": 77.5239277168337,
     "Safety": 52.34464893508606,
     "Growth": 68.49492393408076,
     "Momentum": null
    },
-   "composite": 73.63233140105214,
+   "composite": 73.63969723243353,
    "veto": null,
    "grade": "A",
    "rank": 23,
@@ -1193,12 +1193,12 @@
    "factors": {
     "Profitability": 79.5739530904399,
     "Revisions": 66.74465240641712,
-    "Value": 70.41170740747884,
+    "Value": 70.43049027750138,
     "Safety": 90.55388981464787,
     "Growth": 56.975640349466055,
     "Momentum": null
    },
-   "composite": 73.2527315114486,
+   "composite": 73.25690548256472,
    "veto": null,
    "grade": "A",
    "rank": 24,
@@ -1243,12 +1243,12 @@
    "factors": {
     "Profitability": 89.10818601110911,
     "Revisions": 81.8850267379679,
-    "Value": 46.37328543895702,
+    "Value": 46.39206830897956,
     "Safety": 65.99889348078197,
     "Growth": 81.55942641410543,
     "Momentum": null
    },
-   "composite": 73.06446979308888,
+   "composite": 73.06864376420499,
    "veto": null,
    "grade": "A",
    "rank": 25,
@@ -1293,12 +1293,12 @@
    "factors": {
     "Profitability": 93.0855325305815,
     "Revisions": 70.48796791443851,
-    "Value": 69.2397222850427,
+    "Value": 69.28672482935032,
     "Safety": 57.6330617311929,
     "Growth": 66.41833662274416,
     "Momentum": null
    },
-   "composite": 73.00410913028873,
+   "composite": 73.01455414013486,
    "veto": null,
    "grade": "A",
    "rank": 26,
@@ -1343,12 +1343,12 @@
    "factors": {
     "Profitability": 81.6617243459568,
     "Revisions": 59.52540106951872,
-    "Value": 79.34383941566765,
+    "Value": 79.37909132389836,
     "Safety": 65.70124199769043,
     "Growth": 77.52513464745978,
     "Momentum": null
    },
-   "composite": 72.96986806330123,
+   "composite": 72.97770182068582,
    "veto": null,
    "grade": "A",
    "rank": 27,
@@ -1393,12 +1393,12 @@
    "factors": {
     "Profitability": 90.30783348573155,
     "Revisions": 69.31818181818181,
-    "Value": 58.40089765186814,
+    "Value": 58.41968052189068,
     "Safety": 69.24125675279937,
     "Growth": 74.8909034824078,
     "Momentum": null
    },
-   "composite": 72.81505025167094,
+   "composite": 72.81922422278707,
    "veto": null,
    "grade": "A",
    "rank": 28,
@@ -1443,12 +1443,12 @@
    "factors": {
     "Profitability": 65.58606083836102,
     "Revisions": 71.22326203208556,
-    "Value": 77.71246708651975,
+    "Value": 77.73124995654229,
     "Safety": 77.78101784410208,
     "Growth": null,
     "Momentum": null
    },
-   "composite": 72.57562582438415,
+   "composite": 72.58050449192248,
    "veto": null,
    "grade": "A",
    "rank": 29,
@@ -1493,12 +1493,12 @@
    "factors": {
     "Profitability": 76.85479753007627,
     "Revisions": 47.52673796791444,
-    "Value": 97.98858382819616,
+    "Value": 98.0073666982187,
     "Safety": 56.09483955340236,
     "Growth": 83.47670250896057,
     "Momentum": null
    },
-   "composite": 72.53035230557124,
+   "composite": 72.53452627668737,
    "veto": null,
    "grade": "A",
    "rank": 30,
@@ -1543,12 +1543,12 @@
    "factors": {
     "Profitability": 83.70541918334892,
     "Revisions": 67.61363636363637,
-    "Value": 76.03780290668482,
+    "Value": 76.07305481491554,
     "Safety": 75.64200379997389,
     "Growth": 51.72934275259191,
     "Momentum": null
    },
-   "composite": 72.46288355803782,
+   "composite": 72.47071731542242,
    "veto": null,
    "grade": "A",
    "rank": 31,
@@ -1593,12 +1593,12 @@
    "factors": {
     "Profitability": 80.57098121746397,
     "Revisions": 87.83422459893049,
-    "Value": 59.03479366762313,
+    "Value": 59.059837494319844,
     "Safety": 56.618813862322696,
     "Growth": 74.01403412923364,
     "Momentum": null
    },
-   "composite": 72.46007337477953,
+   "composite": 72.46563866960102,
    "veto": null,
    "grade": "A",
    "rank": 32,
@@ -1643,12 +1643,12 @@
    "factors": {
     "Profitability": 72.27892517800967,
     "Revisions": 83.35561497326202,
-    "Value": 75.56967741012902,
+    "Value": 75.59472123682575,
     "Safety": 52.6837559410576,
     "Growth": null,
     "Momentum": null
    },
-   "composite": 72.1934875415571,
+   "composite": 72.19999243160821,
    "veto": null,
    "grade": "A",
    "rank": 33,
@@ -1693,12 +1693,12 @@
    "factors": {
     "Profitability": 82.41012381283875,
     "Revisions": 75.16711229946524,
-    "Value": 73.5452803275297,
+    "Value": 73.58284606757478,
     "Safety": 51.160857971557775,
     "Growth": null,
     "Momentum": null
    },
-   "composite": 72.13874605189244,
+   "composite": 72.14850338696908,
    "veto": null,
    "grade": "A",
    "rank": 34,
@@ -1743,12 +1743,12 @@
    "factors": {
     "Profitability": null,
     "Revisions": 93.34893048128342,
-    "Value": 69.85559663138415,
+    "Value": 69.88064045808086,
     "Safety": 58.621326626995476,
     "Growth": 57.32138226229571,
     "Momentum": null
    },
-   "composite": 71.89100604511951,
+   "composite": 71.8983718765009,
    "veto": null,
    "grade": "A",
    "rank": 35,
@@ -1793,12 +1793,12 @@
    "factors": {
     "Profitability": 69.48639545336698,
     "Revisions": 89.77272727272728,
-    "Value": 79.26653323689654,
+    "Value": 79.28531610691907,
     "Safety": 47.50465551739865,
     "Growth": 63.98556480958269,
     "Momentum": null
    },
-   "composite": 71.70964539391227,
+   "composite": 71.7138193650284,
    "veto": null,
    "grade": "A",
    "rank": 36,
@@ -1843,12 +1843,12 @@
    "factors": {
     "Profitability": 57.2612840392384,
     "Revisions": 91.27673796791444,
-    "Value": 72.08796156992379,
+    "Value": 72.10674443994634,
     "Safety": 68.34101037154984,
     "Growth": 68.45977726890513,
     "Momentum": null
    },
-   "composite": 71.57927221876693,
+   "composite": 71.58344618988306,
    "veto": null,
    "grade": "A",
    "rank": 37,
@@ -1893,12 +1893,12 @@
    "factors": {
     "Profitability": 70.89992263529179,
     "Revisions": null,
-    "Value": 90.39433309628966,
+    "Value": 90.42958500452036,
     "Safety": 55.53556843570211,
     "Growth": 61.41681781765923,
     "Momentum": null
    },
-   "composite": 71.41624454381878,
+   "composite": 71.42631651759898,
    "veto": null,
    "grade": "A",
    "rank": 38,
@@ -1943,12 +1943,12 @@
    "factors": {
     "Profitability": 81.59410265738494,
     "Revisions": 88.83689839572193,
-    "Value": 27.86394793917772,
+    "Value": 27.882730809200257,
     "Safety": 80.81928747561045,
     "Growth": 82.21851439871463,
     "Momentum": null
    },
-   "composite": 71.22463538308789,
+   "composite": 71.22880935420399,
    "veto": null,
    "grade": "A",
    "rank": 39,
@@ -1993,12 +1993,12 @@
    "factors": {
     "Profitability": 82.14194565866423,
     "Revisions": null,
-    "Value": 42.6208533568803,
+    "Value": 42.63963622690285,
     "Safety": 84.5635269485437,
     "Growth": 80.95307286069298,
     "Momentum": null
    },
-   "composite": 71.14832461493405,
+   "composite": 71.15369114922622,
    "veto": null,
    "grade": "A",
    "rank": 40,
@@ -2043,12 +2043,12 @@
    "factors": {
     "Profitability": 53.618336523884025,
     "Revisions": 96.08957219251337,
-    "Value": 43.47464987412585,
+    "Value": 43.49343274414839,
     "Safety": 86.56742795680137,
     "Growth": 87.18317962825061,
     "Momentum": null
    },
-   "composite": 71.14200665975012,
+   "composite": 71.14618063086625,
    "veto": null,
    "grade": "A",
    "rank": 41,
@@ -2093,12 +2093,12 @@
    "factors": {
     "Profitability": 86.56605988432551,
     "Revisions": 72.72727272727273,
-    "Value": 50.876450609096274,
+    "Value": 50.895233479118815,
     "Safety": 52.738762418041865,
     "Growth": 91.40934192674851,
     "Momentum": null
    },
-   "composite": 70.62145183889889,
+   "composite": 70.62562581001501,
    "veto": null,
    "grade": "A",
    "rank": 42,
@@ -2193,12 +2193,12 @@
    "factors": {
     "Profitability": 82.86896710449456,
     "Revisions": 70.72192513368984,
-    "Value": 57.19023498600193,
+    "Value": 57.209017856024474,
     "Safety": 64.30956902575817,
     "Growth": 76.52157771608427,
     "Momentum": null
    },
-   "composite": 70.45316138209093,
+   "composite": 70.45733535320704,
    "veto": null,
    "grade": "A",
    "rank": 44,
@@ -2293,12 +2293,12 @@
    "factors": {
     "Profitability": 78.69884065318917,
     "Revisions": 84.0909090909091,
-    "Value": 21.238069434084487,
+    "Value": 21.256852304107028,
     "Safety": 86.00104498930936,
     "Growth": 92.063456966044,
     "Momentum": null
    },
-   "composite": 70.27549644742496,
+   "composite": 70.27967041854107,
    "veto": null,
    "grade": "A",
    "rank": 46,
@@ -2343,12 +2343,12 @@
    "factors": {
     "Profitability": 61.59802077865895,
     "Revisions": 85.12700534759358,
-    "Value": 65.96787397026695,
+    "Value": 65.98665684028948,
     "Safety": 80.09546125868737,
     "Growth": 56.74082313681868,
     "Momentum": null
    },
-   "composite": 70.17907403496291,
+   "composite": 70.18324800607903,
    "veto": null,
    "grade": "A",
    "rank": 47,
@@ -2443,12 +2443,12 @@
    "factors": {
     "Profitability": 77.51513180416639,
     "Revisions": 92.54679144385027,
-    "Value": 85.93039649212855,
+    "Value": 85.96564840035926,
     "Safety": 47.462595654124655,
     "Growth": 24.934634902696224,
     "Momentum": null
    },
-   "composite": 70.12184274397953,
+   "composite": 70.12967650136413,
    "veto": null,
    "grade": "A",
    "rank": 49,
@@ -2493,12 +2493,12 @@
    "factors": {
     "Profitability": 83.13661029393819,
     "Revisions": 65.64171122994652,
-    "Value": 72.2256824097226,
+    "Value": 72.26093431795331,
     "Safety": 50.34966412985636,
     "Growth": 73.53083447302546,
     "Momentum": null
    },
-   "composite": 69.9722123261911,
+   "composite": 69.98004608357571,
    "veto": null,
    "grade": "A",
    "rank": 50,
