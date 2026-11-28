@@ -1,11 +1,11 @@
 {
  "meta": {
-  "asof": "2026-11-25",
-  "generated": "2026-11-27 13:06",
+  "asof": "2026-11-27",
+  "generated": "2026-11-28 13:03",
   "universe_n": 1645,
   "screened": 1636,
-  "candidates": 604,
-  "spy_mom20": -7.200474618657704,
+  "candidates": 592,
+  "spy_mom20": -5.33430108255375,
   "keep_extra": [
    "HCI",
    "UFCS",
@@ -16,46 +16,46 @@
    "MLI",
    "PIPR",
    "INCY",
-   "NEM",
-   "FOXA",
    "RNR",
-   "WFRD",
+   "FOXA",
+   "NEM",
    "MCY",
    "PTCT",
+   "WFRD",
    "LRN",
    "FAF",
    "PRDO",
    "YOU",
-   "CARG",
    "LPG",
-   "SIG",
+   "CARG",
    "RGA",
+   "SIG",
    "CRUS",
-   "WT",
    "PRI",
    "PGR",
+   "WT",
    "KNSL",
-   "ANIP",
    "VRRM",
-   "DECK",
+   "ANIP",
    "RRC",
+   "DECK",
    "MUSA",
    "MD",
    "TRV",
    "THG",
    "TILE",
    "TRN",
-   "RDDT",
-   "USLM",
    "VCYT",
+   "USLM",
+   "RDDT",
    "PLMR",
    "INVA",
    "INTU",
    "PJT",
    "SEZL",
-   "NTCT",
    "HLNE",
    "THC",
+   "NTCT",
    "FHI",
    "EXE",
    "APA",
@@ -233,16 +233,6 @@
   },
   {
    "rank": 8,
-   "ticker": "FOXA",
-   "count": 3,
-   "tabs": [
-    "Quality Dips",
-    "Factor Grades",
-    "The Bench"
-   ]
-  },
-  {
-   "rank": 9,
    "ticker": "HBAN",
    "count": 3,
    "tabs": [
@@ -252,7 +242,7 @@
    ]
   },
   {
-   "rank": 10,
+   "rank": 9,
    "ticker": "NXPI",
    "count": 3,
    "tabs": [
@@ -262,7 +252,7 @@
    ]
   },
   {
-   "rank": 11,
+   "rank": 10,
    "ticker": "PSX",
    "count": 3,
    "tabs": [
@@ -272,7 +262,7 @@
    ]
   },
   {
-   "rank": 12,
+   "rank": 11,
    "ticker": "RGA",
    "count": 3,
    "tabs": [
@@ -282,7 +272,7 @@
    ]
   },
   {
-   "rank": 13,
+   "rank": 12,
    "ticker": "RRC",
    "count": 3,
    "tabs": [
@@ -292,7 +282,7 @@
    ]
   },
   {
-   "rank": 14,
+   "rank": 13,
    "ticker": "SCHW",
    "count": 3,
    "tabs": [
@@ -302,7 +292,7 @@
    ]
   },
   {
-   "rank": 15,
+   "rank": 14,
    "ticker": "SFM",
    "count": 3,
    "tabs": [
